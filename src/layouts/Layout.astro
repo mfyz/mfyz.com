@@ -1,0 +1,94 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import { AstroFont } from "astro-font";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import "@styles/global.css";
+import { SITE } from "@/consts";
+
+const pathname = Astro.url.pathname;
+const {
+  website,
+  author,
+  description: defaultDescription,
+  ogImage,
+  title: defaultTitle,
+} = SITE;
+
+const { title = defaultTitle, description = defaultDescription } = Astro.props;
+
+const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}og.png`;
+---
+
+<!doctype html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Pridi&family=Rubik:ital@0;1&display=swap" rel="stylesheet"/>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f5f4" media="(prefers-color-scheme: light)"/>
+    <meta name="theme-color" content="#1f2937" media="(prefers-color-scheme: dark)"/>
+
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="200x200" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- General Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="author" content={author} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={`${website}/`} />
+    <meta property="og:image" content={website + ogImageBasedOnPath} />
+    <meta property="og:image:height" content="600" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter -->
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={website + ogImageBasedOnPath} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image:width" content="800" />
+    <meta name="twitter:image:height" content="600" />
+
+    {import.meta.env.PUBLIC_VERCEL_ENV === 'production' && (
+      <>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MP2JXY39CE"></script>
+        <script is:inline>
+          const isAdmin = document.cookie.includes('mfyz_admin=');
+          if (!isAdmin) {
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-MP2JXY39CE');
+          }
+        </script>
+      </>
+    )}
+
+    <ViewTransitions />
+  </head>
+
+  <body
+    class="grid min-h-screen grid-rows-[1fr_auto] bg-white text-text dark:bg-gray-900 dark:text-gray-200"
+    style="scrollbar-gutter: stable"
+  >
+    <Header />
+    <main
+      class="container mt-24 overflow-hidden pb-4"
+      style="scrollbar-gutter: stable"
+    >
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

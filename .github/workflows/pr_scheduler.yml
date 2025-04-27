@@ -1,0 +1,24 @@
+# https://github.com/gr2m/merge-schedule-action
+# Example: `/schedule YYYY-MM-DD HH:MM` to PR description to schedule
+
+name: PR Merge Schedule
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+  schedule:
+    # Check every hour.
+    - cron: 0 * * * *
+
+jobs:
+  merge_schedule:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: gr2m/merge-schedule-action@v2
+        with:
+          merge_method: merge
+          time_zone: "America/New_York"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

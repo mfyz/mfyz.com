@@ -1,0 +1,132 @@
+/*
+  The CSS in this style tag is based off of Bear Blog's default CSS.
+  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
+  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
+ */
+
+/* https://www.realtimecolors.com/?colors=0c0a09-f5f5f4-f59f0a-56534e-443dff&fonts=Inter%20Tight-Inter */
+/* --text: #0c0a09;
+--background: #f5f5f4;
+--primary: #f59f0a;
+--primary-light: #d97706;
+--secondary: #56534e;
+ */
+
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+@layer base {
+  :root {
+    --primary: 245 159 10;
+    --primary-light: 253 216 173;
+    --background: 255 255 255;
+    --text: 20 14 4;
+    --shopify: 150 191 72; /* Shopify green #96bf48 */
+  }
+
+  :root.dark {
+    --primary: 245 159 10;
+    --primary-light: 253 216 173;
+    --background: 17 24 39;
+    --text: 229 231 235;
+  }
+
+  html {
+    @apply scroll-m-20 overflow-auto scroll-smooth bg-white dark:bg-gray-900 text-text selection:bg-primary selection:text-background dark:text-gray-200;
+  }
+
+  body {
+    @apply font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-secondary dark:text-gray-100 font-normal;
+  }
+
+  /* Inline code styles */
+  :not(pre) > code {
+    @apply bg-primary/20 dark:bg-primary/30 px-2 py-0.5 rounded text-[0.9em];
+  }
+
+  /* Reset prose inline code backticks */
+  .prose :not(pre) > code::before,
+  .prose :not(pre) > code::after {
+    content: none !important;
+  }
+
+  /* Dark mode prose styles */
+  .prose.dark {
+    @apply prose-invert;
+  }
+
+  .prose.dark a {
+    @apply text-primary-light;
+  }
+
+  .prose.dark pre {
+    @apply bg-gray-800;
+  }
+
+  /* Improved dark mode text contrast */
+  .dark .prose p, 
+  .dark .prose li {
+    @apply text-gray-200;
+  }
+
+  /* Softer borders for feature boxes in dark mode */
+  .dark .border-gray-200 {
+    @apply border-gray-700/50;
+  }
+
+  /* Note box in dark mode */
+  .dark .bg-primary\/10 {
+    @apply bg-primary/20;
+  }
+}
+
+@layer components {
+  .btn-shopify {
+    @apply inline-block rounded-lg bg-[rgb(var(--shopify))] px-6 py-3 text-white hover:bg-[rgb(var(--shopify))]/90 transition-colors;
+  }
+
+  .btn-secondary {
+    @apply inline-block rounded-lg border border-gray-200 px-6 py-3 hover:bg-gray-50 transition-colors
+    dark:border-gray-700 dark:hover:bg-gray-800 dark:text-gray-200;
+  }
+
+  .btn-icon {
+    @apply rounded-full p-2 hover:bg-gray-100 transition-colors
+    dark:hover:bg-gray-800;
+  }
+}
+
+@layer utilities {
+  .tag {
+    @apply rounded-md bg-primary/15 dark:bg-primary/30 px-2 py-1 text-sm text-primary dark:text-primary-light;
+  }
+}
+
+.dot {
+  opacity: 0;
+  animation: dot-blink 1.4s infinite ease-in-out both;
+}
+
+.dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes dot-blink {
+  0%,
+  80%,
+  100% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+}

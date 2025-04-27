@@ -1,0 +1,33 @@
+## 1. TRANSITION ANIMATIONS
+
+**IMPORTANT**: Preserve the transition animations for cover images
+- CoverImage.astro must include transition:name={slug} on the Image component
+- This enables the zoom animation when navigating between:
+  - Blog list and blog detail pages
+  - App list and app detail pages
+- Do not remove this attribute in future edits
+
+## 2. TYPOGRAPHY
+
+**IMPORTANT**: Maintain Georgia font for headings
+- tailwind.config.mjs: fontFamily.secondary must be ["Georgia", "serif"]
+- This provides the distinct serif typography for all headings
+- global.css should keep h1-h6 with font-secondary and font-normal classes
+- BlogPost.astro uses prose-headings:font-secondary prose-headings:font-normal
+
+## 3. OTHER VISUAL ELEMENTS
+
+- Preserve hover animations (scale-105) on images
+- Maintain the dark mode implementation
+- Keep the consistent color scheme defined in global.css
+
+These elements are core to the site's visual identity and user experience.
+Please consult with Fatih before changing any of these design patterns.
+
+## 4. COMPONENT USAGE GUIDELINES
+
+- For all images prefer Image astro component, instead of <img> tag
+- For images that are larger than 700px width, use ImageZoom component
+- For Q&A style content, especially if multiple next to each other, prefer using CollapsibleText
+  (Don't use CollapsibleText if it's just a single piece of content)
+- For YouTube links in content, prefer using YouTube component which shows the video as embed

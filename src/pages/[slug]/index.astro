@@ -1,0 +1,27 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import BlogPost from "@layouts/BlogPost.astro";
+import Layout from "@layouts/Layout.astro";
+
+// astro takes care of filtering the blog posts
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => !data.hidden);
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+
+const { Content } = await post.render();
+const { title, summary } = post.data;
+
+export const prerender = true;
+---
+
+<Layout title={title} description={summary}>
+  <BlogPost {...post.data} slug={post.slug} content={post.body}>
+    <Content />
+  </BlogPost>
+</Layout>
