@@ -9,7 +9,7 @@ import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://mfyz.app",
+  site: "https://mfyz.com",
   integrations: [mdx(), sitemap(), react(), tailwind()],
   markdown: {
     shikiConfig: {
