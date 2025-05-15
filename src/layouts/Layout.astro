@@ -37,9 +37,13 @@ const formattedTitle = rawTitle !== defaultTitle ? `${rawTitle} - mfyz.com` : de
 const titleSource = frontmatter.title ? 'frontmatter' : (Astro.props.title ? 'props' : 'default');
 console.log(`Page: ${pathname}, Title: ${formattedTitle}, Source: ${titleSource}`);
 
-
-
 const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}og.png`;
+
+const proseClasses = `prose prose-lg prose-orange lg:prose-xl marker:text-primary prose-headings:font-secondary
+  prose-headings:font-normal prose-a:text-primary dark:prose-a:text-primary-light prose-a:after:content-['↗']
+  prose-blockquote:border-primary prose-blockquote:bg-primary/10 dark:prose-blockquote:bg-primary/20
+  prose-blockquote:py-1 prose-img:rounded-md prose-img:hover:scale-105 prose-img:transition-transform dark:prose-invert`;
+
 ---
 
 <!doctype html>
@@ -109,7 +113,7 @@ const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}og.png`;
       class="container mt-24 overflow-hidden pb-4"
       style="scrollbar-gutter: stable"
     >
-      <div class={`mx-auto max-w-3xl ${!noProse ? 'prose prose-lg prose-orange lg:prose-xl marker:text-primary prose-headings:font-secondary prose-headings:font-normal prose-a:text-primary dark:prose-a:text-primary-light prose-a:after:content-[\'↗\'] prose-blockquote:border-primary prose-blockquote:bg-primary/10 dark:prose-blockquote:bg-primary/20 prose-blockquote:py-1 prose-img:rounded-md dark:prose-invert' : ''}`}>
+      <div class={`mx-auto max-w-3xl ${!noProse ? proseClasses : ''}`}>
         <slot />
       </div>
     </main>
