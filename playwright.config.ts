@@ -65,7 +65,7 @@ export default defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'node ./e2e/check-server.js || npm run dev',
+    command: 'node check-server-running.js || npm run dev',
     url: 'http://localhost:4321',
     reuseExistingServer: true, // Always try to reuse a running server
     stdout: 'pipe',

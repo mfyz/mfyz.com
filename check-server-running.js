@@ -1,12 +1,16 @@
 /**
- * Script to check if the dev server is already running on port 4321
+ * Script to check if the Astro dev server is already running
  * Returns exit code 0 if server is running (success)
- * Returns exit code 1 if server is not running (command will then proceed to npm run dev)
+ * Returns exit code 1 if server is not running (command will proceed to start a server)
+ * 
+ * Usage: 
+ * - As standalone: node check-server.js [port]
+ * - In package.json: "dev": "node check-server.js || astro dev"
  */
-const http = require('http');
+import http from 'http';
 
-// The port where your Astro server should be running
-const PORT = 4321;
+// Get the port from command line args or use default
+const PORT = process.argv[2] || 4321;
 const HOST = 'localhost';
 
 console.log(`Checking if server is already running on ${HOST}:${PORT}...`);
@@ -21,20 +25,21 @@ const req = http.request(
     timeout: 3000, // Timeout after 3 seconds
   },
   (res) => {
-    console.log(`Server is already running on port ${PORT} (status code: ${res.statusCode})`);
+    console.log(`✅ Server is already running on port ${PORT} (status code: ${res.statusCode})`);
+    console.log(`🌐 You can access it at: http://${HOST}:${PORT}/`);
     process.exit(0); // Exit with success code (server IS running)
   }
 );
 
 // Handle errors (likely means server is not running)
 req.on('error', (error) => {
-  console.log(`Server is not running on port ${PORT}: ${error.message}`);
+  console.log(`❌ Server is not running on port ${PORT}: ${error.message}`);
   process.exit(1); // Exit with error code (server IS NOT running)
 });
 
 // Handle request timeout
 req.on('timeout', () => {
-  console.log(`Timed out checking if server is running on port ${PORT}`);
+  console.log(`⏱️ Timed out checking if server is running on port ${PORT}`);
   req.destroy(); // Destroy the request
   process.exit(1); // Exit with error code (assume server is not running)
 });
