@@ -101,8 +101,57 @@ const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}og.png`;
       class="container mt-24 overflow-hidden pb-4"
       style="scrollbar-gutter: stable"
     >
-      <slot />
+      <div class="prose prose-lg prose-orange mx-auto max-w-3xl lg:prose-xl marker:text-primary prose-headings:font-secondary prose-headings:font-normal prose-a:text-primary dark:prose-a:text-primary-light prose-a:after:content-['↗'] prose-blockquote:border-primary prose-blockquote:bg-primary/10 dark:prose-blockquote:bg-primary/20 prose-blockquote:py-1 prose-img:rounded-md prose-img:hover:scale-105 prose-img:transition-transform dark:prose-invert">
+        <slot />
+      </div>
     </main>
+    
+    <script>
+      /** Attaches copy buttons to code blocks in the document,
+       * allowing users to copy code easily. */
+      document.addEventListener("astro:page-load", () => {
+        function attachCopyButtons() {
+          const copyButtonLabel = "Copy";
+          const codeBlocks = Array.from(document.querySelectorAll("pre"));
+
+          for (const codeBlock of codeBlocks) {
+            const wrapper = document.createElement("div");
+            wrapper.style.position = "relative";
+
+            const copyButton = document.createElement("button");
+            copyButton.className =
+              "copy-code absolute right-3 -top-3 rounded bg-gray-500 dark:bg-gray-700 py-1 px-2 text-base leading-4 text-xs text-white font-medium";
+            copyButton.innerHTML = copyButtonLabel;
+            codeBlock.setAttribute("tabindex", "0");
+            codeBlock.appendChild(copyButton);
+
+            // wrap codebock with relative parent element
+            codeBlock?.parentNode?.insertBefore(wrapper, codeBlock);
+            wrapper.appendChild(codeBlock);
+
+            copyButton.addEventListener("click", async () => {
+              await copyCode({ block: codeBlock, button: copyButton });
+            });
+          }
+
+          async function copyCode({ block, button }) {
+            let code = block.querySelector("code");
+            let text = code?.innerText;
+
+            await navigator.clipboard.writeText(text);
+
+            // Visual feedback that task is completed
+            button.innerHTML = "Copied!";
+
+            setTimeout(() => {
+              button.innerHTML = copyButtonLabel;
+            }, 700);
+          }
+        }
+
+        attachCopyButtons();
+      });
+    </script>
     <Footer />
   </body>
 </html>
