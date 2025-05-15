@@ -101,11 +101,14 @@ const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}og.png`;
       class="container mt-24 overflow-hidden pb-4"
       style="scrollbar-gutter: stable"
     >
-      <div class="prose prose-lg prose-orange mx-auto max-w-3xl lg:prose-xl marker:text-primary prose-headings:font-secondary prose-headings:font-normal prose-a:text-primary dark:prose-a:text-primary-light prose-a:after:content-['↗'] prose-blockquote:border-primary prose-blockquote:bg-primary/10 dark:prose-blockquote:bg-primary/20 prose-blockquote:py-1 prose-img:rounded-md prose-img:hover:scale-105 prose-img:transition-transform dark:prose-invert">
+      <div class="prose prose-lg prose-orange mx-auto max-w-3xl lg:prose-xl marker:text-primary prose-headings:font-secondary
+        prose-headings:font-normal prose-a:text-primary dark:prose-a:text-primary-light 
+        prose-a:after:content-['↗'] prose-blockquote:border-primary prose-blockquote:bg-primary/10 
+        dark:prose-blockquote:bg-primary/20 prose-blockquote:py-1 prose-img:rounded-md dark:prose-invert">
         <slot />
       </div>
     </main>
-    
+
     <script>
       /** Attaches copy buttons to code blocks in the document,
        * allowing users to copy code easily. */
@@ -152,6 +155,7 @@ const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}og.png`;
         attachCopyButtons();
       });
     </script>
+
     <Footer />
   </body>
 </html>
