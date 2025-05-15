@@ -8,8 +8,12 @@ test('About page has correct headings and content', async ({ page }) => {
   // Wait for the page to load
   await page.waitForLoadState('networkidle');
   
-  // Test that the page title contains the site name
-  await expect(page).toHaveTitle(/mfyz\.com/);
+  // Check the current page title
+  const title = await page.title();
+  console.log(`Current page title: "${title}"`);  
+  
+  // Verify expected title format
+  await expect(page).toHaveTitle('About this website - mfyz.com');
   
   // Test the h1 heading
   const h1 = page.locator('h1:has-text("About this website")');

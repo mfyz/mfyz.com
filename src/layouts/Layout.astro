@@ -15,7 +15,21 @@ const {
   title: defaultTitle,
 } = SITE;
 
-const { title = defaultTitle, description = defaultDescription } = Astro.props;
+// In Astro, MDX frontmatter is made available in Astro.props.frontmatter
+const frontmatter = Astro.props.frontmatter || {};
+
+// Extract title from frontmatter, props, or use default
+const rawTitle = frontmatter.title || Astro.props.title || defaultTitle;
+const description = frontmatter.description || Astro.props.description || defaultDescription;
+
+// Format title consistently: "Page Title - mfyz.com" for pages with custom titles
+const title = rawTitle !== defaultTitle ? `${rawTitle} - mfyz.com` : defaultTitle;
+
+// Log for debugging purposes
+const titleSource = frontmatter.title ? 'frontmatter' : (Astro.props.title ? 'props' : 'default');
+console.log(`Page: ${pathname}, Title: ${title}, Source: ${titleSource}`);
+
+
 
 const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}og.png`;
 ---
