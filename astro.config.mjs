@@ -6,11 +6,12 @@ import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import { transformerNotationHighlight } from "@shikijs/transformers";
 import vercel from "@astrojs/vercel";
+import remarkToc from 'remark-toc'
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://mfyz.com",
-  integrations: [mdx(), sitemap(), react(), tailwind()],
+  integrations: [mdx({remarkPlugins: [remarkToc]}), sitemap(), react(), tailwind()],
   markdown: {
     shikiConfig: {
       themes: {
