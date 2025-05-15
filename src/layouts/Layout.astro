@@ -6,6 +6,14 @@ import Footer from "@components/Footer.astro";
 import "@styles/global.css";
 import { SITE } from "@/consts";
 
+interface Props {
+  title?: string;
+  description?: string;
+  noProse?: boolean;
+}
+
+const { title, description, noProse = false } = Astro.props;
+
 const pathname = Astro.url.pathname;
 const {
   website,
@@ -19,15 +27,15 @@ const {
 const frontmatter = Astro.props.frontmatter || {};
 
 // Extract title from frontmatter, props, or use default
-const rawTitle = frontmatter.title || Astro.props.title || defaultTitle;
-const description = frontmatter.description || Astro.props.description || defaultDescription;
+const rawTitle = frontmatter.title || title || defaultTitle;
+const pageDescription = frontmatter.description || description || defaultDescription;
 
 // Format title consistently: "Page Title - mfyz.com" for pages with custom titles
-const title = rawTitle !== defaultTitle ? `${rawTitle} - mfyz.com` : defaultTitle;
+const formattedTitle = rawTitle !== defaultTitle ? `${rawTitle} - mfyz.com` : defaultTitle;
 
 // Log for debugging purposes
 const titleSource = frontmatter.title ? 'frontmatter' : (Astro.props.title ? 'props' : 'default');
-console.log(`Page: ${pathname}, Title: ${title}, Source: ${titleSource}`);
+console.log(`Page: ${pathname}, Title: ${formattedTitle}, Source: ${titleSource}`);
 
 
 
@@ -50,15 +58,15 @@ const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}og.png`;
     <link rel="sitemap" href="/sitemap-index.xml" />
 
     <!-- General Meta Tags -->
-    <title>{title}</title>
-    <meta name="title" content={title} />
-    <meta name="description" content={description} />
+    <title>{formattedTitle}</title>
+    <meta name="title" content={formattedTitle} />
+    <meta name="description" content={pageDescription} />
     <meta name="author" content={author} />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:title" content={formattedTitle} />
+    <meta property="og:description" content={pageDescription} />
     <meta property="og:url" content={`${website}/`} />
     <meta property="og:image" content={website + ogImageBasedOnPath} />
     <meta property="og:image:height" content="600" />
@@ -67,8 +75,8 @@ const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}og.png`;
     <meta property="og:type" content="website" />
 
     <!-- Twitter -->
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
+    <meta property="twitter:title" content={formattedTitle} />
+    <meta property="twitter:description" content={pageDescription} />
     <meta property="twitter:image" content={website + ogImageBasedOnPath} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image:width" content="800" />
@@ -101,10 +109,7 @@ const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}og.png`;
       class="container mt-24 overflow-hidden pb-4"
       style="scrollbar-gutter: stable"
     >
-      <div class="prose prose-lg prose-orange mx-auto max-w-3xl lg:prose-xl marker:text-primary prose-headings:font-secondary
-        prose-headings:font-normal prose-a:text-primary dark:prose-a:text-primary-light 
-        prose-a:after:content-['↗'] prose-blockquote:border-primary prose-blockquote:bg-primary/10 
-        dark:prose-blockquote:bg-primary/20 prose-blockquote:py-1 prose-img:rounded-md dark:prose-invert">
+      <div class={`mx-auto max-w-3xl ${!noProse ? 'prose prose-lg prose-orange lg:prose-xl marker:text-primary prose-headings:font-secondary prose-headings:font-normal prose-a:text-primary dark:prose-a:text-primary-light prose-a:after:content-[\'↗\'] prose-blockquote:border-primary prose-blockquote:bg-primary/10 dark:prose-blockquote:bg-primary/20 prose-blockquote:py-1 prose-img:rounded-md dark:prose-invert' : ''}`}>
         <slot />
       </div>
     </main>
