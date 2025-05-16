@@ -35,7 +35,7 @@ const formattedTitle = rawTitle !== defaultTitle ? `${rawTitle} - mfyz.com` : de
 
 // Log for debugging purposes
 const titleSource = frontmatter.title ? 'frontmatter' : (Astro.props.title ? 'props' : 'default');
-console.log(`Page: ${pathname}, Title: ${formattedTitle}, Source: ${titleSource}`);
+// console.log(`Page: ${pathname}, Title: ${formattedTitle}, Source: ${titleSource}`);
 
 const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}og.png`;
 
