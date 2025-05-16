@@ -27,6 +27,16 @@
   font-weight: normal;
 }
 
+/* Dark mode text color adjustment */
+.dark .blog-grid .bg-\[\#fafafa\] h4,
+.dark .blog-grid .bg-\[\#fafafa\] h3 {
+  color: #333333; /* Darker text for light tiles in dark mode */
+}
+
+.dark .blog-grid .bg-\[\#fafafa\] .text-gray-500 {
+  color: #555555; /* Darker metadata text for light tiles in dark mode */
+}
+
 /* Remove any gaps in the grid */
 .blog-grid ul {
   display: grid;
