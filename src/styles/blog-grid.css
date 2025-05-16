@@ -61,8 +61,11 @@
 
 /* Styles for the checker pattern */
 .blog-grid .bg-\[\#222\] h4,
-.blog-grid .bg-primary h4 {
-  color: #ffffff;
+.blog-grid .bg-primary h4, 
+.blog-grid .bg-\[\#222\] h1,
+.blog-grid .bg-\[\#222\] h2,
+.blog-grid .bg-\[\#222\] h3 {
+  color: #ffffff !important;
 }
 
 /* Post Bg Patterns */
@@ -71,42 +74,48 @@
   background-repeat: no-repeat;
 }
 
+.blog-bg-pattern-cone,
+.blog-bg-pattern-cone-white,
+.blog-bg-pattern-cube,
+.blog-bg-pattern-cube-white {
+  background-position: 100% 90%;
+}
+
+.blog-bg-pattern-triangle,
+.blog-bg-pattern-triangle-white,
+.blog-bg-pattern-wave,
+.blog-bg-pattern-wave-white {
+  background-position: right 30px bottom 30px;
+}
+
 .blog-bg-pattern-cone {
   background-image: url(/images/post-patterns/pt-cone.svg);
-  background-position: 100% 90%
 }
 
 .blog-bg-pattern-cone-white {
   background-image: url(/images/post-patterns/pt-cone-white.svg);
-  background-position: 100% 90%
 }
 
 .blog-bg-pattern-cube {
   background-image: url(/images/post-patterns/pt-cube.svg);
-  background-position: 100% 90%
 }
 
 .blog-bg-pattern-cube-white {
   background-image: url(/images/post-patterns/pt-cube-white.svg);
-  background-position: 100% 90%
 }
 
 .blog-bg-pattern-triangle {
   background-image: url(/images/post-patterns/pt-triangle.svg);
-  background-position: 80% 90%
 }
 
 .blog-bg-pattern-triangle-white {
   background-image: url(/images/post-patterns/pt-triangle-white.svg);
-  background-position: 80% 90%
 }
 
 .blog-bg-pattern-wave {
   background-image: url(/images/post-patterns/pt-wave.svg);
-  background-position: 80% 90%
 }
 
 .blog-bg-pattern-wave-white {
   background-image: url(/images/post-patterns/pt-wave-white.svg);
-  background-position: 80% 90%
 }

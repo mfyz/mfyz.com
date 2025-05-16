@@ -1,0 +1,88 @@
+---
+import { format } from "date-fns";
+import { getPatternName } from "@utils/get-pattern-name";
+import readingTime from "reading-time";
+import Tags from "@components/Tags";
+import "@styles/blog-grid.css";
+
+export interface Props {
+  title: string;
+  date: string;
+  slug: string;
+  content: string;
+  tags: string[];
+}
+
+const { title, date, slug, content, tags } = Astro.props;
+
+// Get the pattern based on slug
+const patternName = getPatternName(slug);
+// Use the white pattern variant for the dark background
+const patternClass = `blog-bg-pattern blog-bg-pattern-${patternName}-white`;
+
+// Calculate reading time
+const time = readingTime(content);
+
+// Helper function to format date without timezone adjustments
+function formatDatePreserveDay(dateStr) {
+  // Handle cases where dateStr might not be a string
+  if (!dateStr) return '';
+  
+  // Convert to string if it's a Date object
+  const dateString = dateStr instanceof Date ? dateStr.toISOString() : String(dateStr);
+  
+  try {
+    // Extract year, month, day directly from the string to avoid timezone issues
+    const [year, month, day] = dateString.split('T')[0].split('-').map(num => parseInt(num, 10));
+    // Format the date to "Feb 1, 2023" style
+    return format(new Date(year, month - 1, day), "MMM d, yyyy");
+  } catch (error) {
+    console.error("Error formatting date:", dateString, error);
+    return dateString; // Return original value if formatting fails
+  }
+}
+---
+
+<!-- Important: Keep the transition:name on this element to preserve animations -->
+<div class="blog-grid">
+  <div 
+    class={`w-full bg-[#222] text-white p-12 mb-10 ${patternClass}`}
+    transition:name={slug}
+  >
+  <div class="max-w-4xl mx-auto">
+    <div class="mb-4 flex items-center justify-between text-gray-300">
+      <time class="shrink-0">
+        {formatDatePreserveDay(date)}
+      </time>
+
+      <div class="flex items-center gap-6">
+        <span class="flex items-center gap-1">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+          </svg>
+
+          {time.text}
+        </span>
+      </div>
+    </div>
+    
+    <h1 class="font-secondary text-5xl md:text-6xl font-normal max-w-3xl text-white">
+      {title}
+    </h1>
+    
+    <div class="mt-6">
+      <Tags list={tags} className="tags-light" />
+    </div>
+  </div>
+  </div>
+</div>

@@ -3,7 +3,7 @@ import type { CollectionEntry } from "astro:content";
 import { format } from "date-fns";
 import Tags from "@components/Tags";
 import readingTime from "reading-time";
-import CoverImage from "@components/CoverImage.astro";
+import BlogHero from "@components/BlogHero.astro";
 import path from "path";
 
 const { title, date, imageURL, tags, content, slug } = Astro.props;
@@ -32,44 +32,15 @@ function formatDatePreserveDay(dateStr) {
 
 <article class="mx-auto max-w-3xl">
 
-  <div class="-mx-2 mb-8 overflow-hidden sm:-mx-4 md:-mx-6 lg:-mx-8">
-    <CoverImage
-      imageURL={imageURL}
+  <div class="-mx-4 md:-mx-8 lg:-mx-12">
+    <BlogHero
+      title={title}
+      date={date}
       slug={slug}
-      size="large"
-      transition:name={slug}
+      content={content}
+      tags={tags}
     />
   </div>
-
-  <h1>{title}</h1>
-
-  <div class="mb-4 flex items-center justify-between text-gray-500 dark:text-gray-400">
-    <time class="shrink-0">
-      {formatDatePreserveDay(date)}
-    </time>
-
-    <div class="flex items-center gap-6">
-      <span class="flex items-center gap-1">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="size-6"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
-        </svg>
-
-        {time.text}
-      </span>
-    </div>
-  </div>
-
-  <Tags list={tags} />
 
   <div class="mt-6"></div>
   <slot />
