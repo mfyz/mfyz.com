@@ -12,7 +12,11 @@ interface Props {
   size?: "small" | "large";
 }
 
-const { title, description, size } = Astro.props;
+// Get properties from Astro.props and handle frontmatter data
+const pageFrontmatter = Astro.props.frontmatter || {};
+
+// Merge frontmatter and props, giving props priority
+const { title, description, size } = { ...pageFrontmatter, ...Astro.props };
 
 const pathname = Astro.url.pathname;
 const {
@@ -23,18 +27,15 @@ const {
   title: defaultTitle,
 } = SITE;
 
-// In Astro, MDX frontmatter is made available in Astro.props.frontmatter
-const frontmatter = Astro.props.frontmatter || {};
-
 // Extract title from frontmatter, props, or use default
-const rawTitle = frontmatter.title || title || defaultTitle;
-const pageDescription = frontmatter.description || description || defaultDescription;
+const rawTitle = pageFrontmatter.title || title || defaultTitle;
+const pageDescription = pageFrontmatter.description || description || defaultDescription;
 
 // Format title consistently: "Page Title - mfyz.com" for pages with custom titles
 const formattedTitle = rawTitle !== defaultTitle ? `${rawTitle} - mfyz.com` : defaultTitle;
 
 // Log for debugging purposes
-const titleSource = frontmatter.title ? 'frontmatter' : (Astro.props.title ? 'props' : 'default');
+const titleSource = pageFrontmatter.title ? 'frontmatter' : (Astro.props.title ? 'props' : 'default');
 // console.log(`Page: ${pathname}, Title: ${formattedTitle}, Source: ${titleSource}`);
 
 const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}og.png`;
