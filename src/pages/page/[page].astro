@@ -11,7 +11,7 @@ export async function getStaticPaths({ paginate }) {
     .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
   
   // Posts per page
-  const POSTS_PER_PAGE = 9;
+  const POSTS_PER_PAGE = 10;
   
   // Generate pages with pagination
   return paginate(posts, { pageSize: POSTS_PER_PAGE });
@@ -22,13 +22,11 @@ const { page } = Astro.props;
 ---
 
 <Layout>
-  <div class="blog-grid">
-    <BlogGrid posts={page.data} />
-    
-    <Pagination 
-      currentPage={page.currentPage} 
-      totalPages={page.lastPage} 
-      baseUrl="/page"
-    />
-  </div>
+  <BlogGrid posts={page.data} />
+  
+  <Pagination 
+    currentPage={page.currentPage} 
+    totalPages={page.lastPage} 
+    baseUrl="/page"
+  />
 </Layout>

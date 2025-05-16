@@ -1,4 +1,4 @@
-/* Custom styles specific to the homepage */
+/* Custom styles for blog grid layout */
 
 /* Remove list styling from grid */
 .blog-grid ul {
@@ -9,33 +9,70 @@
 
 .blog-grid li {
   margin-bottom: 0;
+  border-radius: 0;
+  overflow: hidden;
+  transition: transform 0.3s ease;
 }
 
-/* Remove underlines from article titles */
+/* Remove underlines from titles */
 .blog-grid a {
   text-decoration: none;
 }
 
-/* Fix image height to maintain original proportions */
-/* .blog-grid .cover-image-container {
-  aspect-ratio: 16/9;
-} */
+/* Style for featured post */
+.blog-grid .w-full h3 {
+  font-family: "Georgia", serif;
+  font-size: 2rem;
+  line-height: 1.2;
+}
 
-/* .blog-grid .cover-image-container img {
-  object-fit: cover;
-} */
-
-/* Fix specific title styling */
+/* Make titles black for non-colored cards */
 .blog-grid h4 {
   color: #000000;
   font-size: 1.25rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
-.blog-grid h4:hover {
-  color: var(--color-primary);
-}
-
-/* Ensure Georgia font is maintained on headings */
+/* Ensure consistent typography */
 .blog-grid h4 {
   font-family: "Georgia", serif;
+}
+
+/* Remove any gaps in the grid */
+.blog-grid ul {
+  display: grid;
+  grid-gap: 0;
+}
+
+/* Add padding to grid items */
+.blog-grid ul > li {
+  padding: 1.25rem;
+  margin: 0;
+}
+
+/* Add shadow to the overall grid and the first featured post */
+.blog-grid {
+  margin-top: 2rem;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.2);
+}
+
+/* Styles for the checker pattern */
+.blog-grid .bg-\[\#222\] h4 {
+  color: #ffffff;
+}
+
+.blog-grid .bg-primary h4 {
+  color: #ffffff;
+}
+
+/* Ensure images maintain aspect ratio */
+.blog-grid .cover-image-container {
+  overflow: hidden;
+  border-radius: 0;
+}
+
+/* Improve spacing in featured post */
+.blog-grid .w-full {
+  margin-bottom: 3rem;
 }

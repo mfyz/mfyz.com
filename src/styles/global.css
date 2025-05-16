@@ -18,16 +18,15 @@
 
 @layer base {
   :root {
-    --primary: 245 159 10;
-    --primary-light: 253 216 173;
+    --primary: 209 91 53; /* #D15B35 */
     --background: 255 255 255;
     --text: 20 14 4;
     --shopify: 150 191 72; /* Shopify green #96bf48 */
   }
 
   :root.dark {
-    --primary: 245 159 10;
-    --primary-light: 253 216 173;
+    --primary: 209 91 53; /* #D15B35 */
+    --primary-light: 227 110 72; /* #e36e48 - lighter version for dark mode */
     --background: 17 24 39;
     --text: 229 231 235;
   }
