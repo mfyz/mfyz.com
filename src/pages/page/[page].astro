@@ -1,0 +1,34 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import BlogGrid from "@components/BlogGrid.astro";
+import Pagination from "@components/Pagination.astro";
+import "@styles/blog-grid.css";
+
+export async function getStaticPaths({ paginate }) {
+  // Get all blog posts sorted by date
+  const posts = (await getCollection("blog", ({ data }) => !data.hidden))
+    .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+  
+  // Posts per page
+  const POSTS_PER_PAGE = 9;
+  
+  // Generate pages with pagination
+  return paginate(posts, { pageSize: POSTS_PER_PAGE });
+}
+
+// Page data is available in Astro.props.page
+const { page } = Astro.props;
+---
+
+<Layout>
+  <div class="blog-grid">
+    <BlogGrid posts={page.data} />
+    
+    <Pagination 
+      currentPage={page.currentPage} 
+      totalPages={page.lastPage} 
+      baseUrl="/page"
+    />
+  </div>
+</Layout>
