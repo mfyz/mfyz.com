@@ -58,7 +58,7 @@ function formatDatePreserveDay(dateStr) {
     )}
 
     {/* Rest of the posts in checker pattern */}
-    <ul class="grid gap-0 md:grid-cols-3 border-t border-gray-150">
+    <ul class="grid gap-0 sm:grid-cols-3 border-t border-gray-150">
       {
         displayPosts.slice(1).map((post, index) => {
           const { title, date, imageURL, summary, tags } = post.data;
@@ -81,7 +81,7 @@ function formatDatePreserveDay(dateStr) {
                 {formatDatePreserveDay(date)}
               </time>
               <a href={`/${post.slug}/`}>
-                <h4 class={`font-secondary text-2xl mb-2 transition-colors ${bgColor ? "hover:text-gray-300" : "hover:text-primary"}`}>
+                <h4 class={`font-secondary mb-2 transition-colors ${bgColor ? "hover:text-gray-300" : "hover:text-primary"}`}>
                   {title}
                 </h4>
               </a>

@@ -19,24 +19,12 @@
   text-decoration: none;
 }
 
-/* Style for featured post */
-.blog-grid .w-full h3 {
-  font-family: "Georgia", serif;
-  font-size: 2rem;
-  line-height: 1.2;
-}
-
 /* Make titles black for non-colored cards and not bold */
 .blog-grid h4, .blog-grid h3 {
   color: #000000;
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
   font-weight: normal;
-}
-
-/* Ensure consistent typography */
-.blog-grid h4 {
-  font-family: "Georgia", serif;
 }
 
 /* Remove any gaps in the grid */
@@ -62,16 +50,7 @@
 }
 
 /* Styles for the checker pattern */
-.blog-grid .bg-\[\#222\] h4 {
-  color: #ffffff;
-}
-
+.blog-grid .bg-\[\#222\] h4,
 .blog-grid .bg-primary h4 {
   color: #ffffff;
-}
-
-/* Ensure images maintain aspect ratio */
-.blog-grid .cover-image-container {
-  overflow: hidden;
-  border-radius: 0;
 }
