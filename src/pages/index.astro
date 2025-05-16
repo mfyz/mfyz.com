@@ -11,7 +11,7 @@ const posts = (await getCollection("blog", ({ data }) => !data.hidden)).sort(
 
 <Layout>
   <section class="mb-16">
-    <BlogGrid posts={posts} limit={10} />
+    <BlogGrid posts={posts} limit={25} />
     <div class="mt-16 mb-8 flex items-center justify-between">
       <a href="/page/2" class="text-primary hover:underline">Next Page</a>
     </div>

@@ -184,7 +184,11 @@
 
 @layer utilities {
   .tag {
-    @apply rounded-md bg-primary/15 dark:bg-primary/30 px-2 py-1 text-sm text-primary dark:text-primary-light;
+    @apply rounded-md bg-primary/15 dark:bg-primary/30 px-2 py-0.5 text-xs text-primary dark:text-primary-light;
+  }
+  
+  .tag-light {
+    @apply rounded-md bg-white/80 px-2 py-0.5 text-xs text-gray-800;
   }
 }
 

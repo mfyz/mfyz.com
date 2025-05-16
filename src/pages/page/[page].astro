@@ -10,11 +10,8 @@ export async function getStaticPaths({ paginate }) {
   const posts = (await getCollection("blog", ({ data }) => !data.hidden))
     .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
   
-  // Posts per page
-  const POSTS_PER_PAGE = 10;
-  
   // Generate pages with pagination
-  return paginate(posts, { pageSize: POSTS_PER_PAGE });
+  return paginate(posts, { pageSize: 25 });
 }
 
 // Page data is available in Astro.props.page

@@ -34,22 +34,22 @@ function formatDatePreserveDay(dateStr) {
   <div class="blog-grid">
     {/* First post - full width */}
     {displayPosts.length > 0 && (
-      <div class="p-8">
+      <div class="p-10 py-16">
         {(() => {
           const post = displayPosts[0];
           const { title, date, tags } = post.data;
           return (
             <div>
+              <time class="block mb-2 text-xs text-gray-500">
+                {formatDatePreserveDay(date)}
+              </time>
               <a href={`/${post.slug}/`}>
-                <h3 class="font-secondary text-3xl mb-4 transition-colors hover:text-primary">
+                <h3 class="font-secondary text-6xl transition-colors hover:text-primary">
                   {title}
                 </h3>
               </a>
-              <div class="flex items-center justify-between">
+              <div class="flex items-center">
                 <Tags list={tags} />
-                <time class="shrink-0 text-sm text-gray-500">
-                  {formatDatePreserveDay(date)}
-                </time>
               </div>
             </div>
           );
@@ -77,16 +77,16 @@ function formatDatePreserveDay(dateStr) {
           
           return (
             <li class={`relative p-5 transition-transform hover:scale-[1.02] ${bgColor}`}>
+              <time class={`block mb-2 text-xs ${bgColor ? "text-gray-300" : "text-gray-500"}`}>
+                {formatDatePreserveDay(date)}
+              </time>
               <a href={`/${post.slug}/`}>
                 <h4 class={`font-secondary text-2xl mb-2 transition-colors ${bgColor ? "hover:text-gray-300" : "hover:text-primary"}`}>
                   {title}
                 </h4>
               </a>
-              <div class="flex items-center justify-between">
-                <Tags list={tags} />
-                <time class={`shrink-0 text-sm ${bgColor ? "text-gray-300" : "text-gray-500"}`}>
-                  {formatDatePreserveDay(date)}
-                </time>
+              <div class="flex items-center">
+                <Tags list={tags} className={bgColor ? "tags-light" : ""} />
               </div>
             </li>
           );

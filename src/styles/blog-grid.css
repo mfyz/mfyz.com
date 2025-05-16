@@ -26,12 +26,12 @@
   line-height: 1.2;
 }
 
-/* Make titles black for non-colored cards */
-.blog-grid h4 {
+/* Make titles black for non-colored cards and not bold */
+.blog-grid h4, .blog-grid h3 {
   color: #000000;
-  font-size: 1.25rem;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  font-weight: normal;
 }
 
 /* Ensure consistent typography */
@@ -45,10 +45,14 @@
   grid-gap: 0;
 }
 
-/* Add padding to grid items */
+/* Make grid cells square */
 .blog-grid ul > li {
-  padding: 1.25rem;
+  padding: 3rem 1.25rem;
   margin: 0;
+  aspect-ratio: 1/1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 /* Add shadow to the overall grid and the first featured post */
@@ -70,9 +74,4 @@
 .blog-grid .cover-image-container {
   overflow: hidden;
   border-radius: 0;
-}
-
-/* Improve spacing in featured post */
-.blog-grid .w-full {
-  margin-bottom: 3rem;
 }
