@@ -39,7 +39,10 @@ function formatDatePreserveDay(dateStr) {
       const { title, date, tags } = post.data;
       const patternName = getPatternName(post.slug);
       return (
-        <div class={`p-10 pt-10 pb-24 blog-bg-pattern blog-bg-pattern-${patternName}`}>
+        <div 
+          class={`p-10 pt-10 pb-24 blog-bg-pattern blog-bg-pattern-${patternName}`}
+          transition:name={post.slug}
+        >
           <time class="block mb-2 text-xs text-gray-500">
             {formatDatePreserveDay(date)}
           </time>
@@ -85,7 +88,10 @@ function formatDatePreserveDay(dateStr) {
           const patternClass = `blog-bg-pattern blog-bg-pattern-${patternName}${bgDark ? "-white" : ""}`;
 
           return (
-            <li class={`relative transition-transform hover:scale-[1.02] ${bgColor} ${patternClass}`}>
+            <li 
+              class={`relative transition-transform hover:scale-[1.02] ${bgColor} ${patternClass}`}
+              transition:name={post.slug}
+            >
               <time class={`block mb-2 text-xs ${bgDark ? "text-gray-300" : "text-gray-500"}`}>
                 {formatDatePreserveDay(date)}
               </time>

@@ -20,7 +20,7 @@ const { title, summary } = post.data;
 export const prerender = true;
 ---
 
-<Layout title={title} description={summary}>
+<Layout title={title} description={summary} size="small">
   <BlogPost {...post.data} slug={post.slug} content={post.body}>
     <Content />
   </BlogPost>

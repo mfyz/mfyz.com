@@ -9,9 +9,10 @@ import { SITE } from "@/consts";
 interface Props {
   title?: string;
   description?: string;
+  size?: "small" | "large";
 }
 
-const { title, description } = Astro.props;
+const { title, description, size } = Astro.props;
 
 const pathname = Astro.url.pathname;
 const {
@@ -102,9 +103,9 @@ const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}og.png`;
     class="grid min-h-screen grid-rows-[1fr_auto] bg-white text-text dark:bg-gray-900 dark:text-gray-200"
     style="scrollbar-gutter: stable"
   >
-    <Header />
+    <Header size={size} />
     <main class="container mt-24 pb-4" style="scrollbar-gutter: stable">
-      <div class="main-content-wrapper mx-auto max-w-5xl">
+      <div class={`main-content-wrapper mx-auto max-w-${size === "small" ? "3xl" : "5xl"}`}>
         <slot />
       </div>
     </main>
