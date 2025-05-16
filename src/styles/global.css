@@ -37,41 +37,127 @@
   }
 
   body {
-    @apply font-sans;
+    @apply font-sans text-base md:text-lg;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-secondary dark:text-gray-100 font-normal;
   }
 
+  /* Content styling */
+  .main-content-wrapper {
+    @apply leading-7 md:leading-8 text-base md:text-lg tracking-normal;
+  }
+
+  /* Headings - preserve Georgia font as required */
+  .main-content-wrapper h1 {
+    @apply font-secondary font-normal text-4xl md:text-5xl mt-14 mb-10 text-slate-800 dark:text-gray-100;
+  }
+
+  .main-content-wrapper h2 {
+    @apply font-secondary font-normal text-3xl md:text-4xl mt-14 mb-10 text-slate-800 dark:text-gray-100;
+  }
+
+  .main-content-wrapper h3 {
+    @apply font-secondary font-semibold text-2xl md:text-3xl mt-14 mb-10 text-slate-800 dark:text-gray-100;
+  }
+
+  .main-content-wrapper h4 {
+    @apply font-secondary font-semibold text-xl md:text-2xl mt-12 mb-8 text-slate-800 dark:text-gray-100;
+  }
+
+  .main-content-wrapper h5 {
+    @apply font-secondary font-semibold text-lg md:text-xl mt-10 mb-6 text-slate-800 dark:text-gray-100;
+  }
+
+  .main-content-wrapper h6 {
+    @apply font-secondary font-bold text-base md:text-lg mt-10 mb-6 text-slate-800 dark:text-gray-100;
+  }
+
+  /* Paragraphs */
+  .main-content-wrapper p, .main-content-wrapper li {
+    @apply mb-5;
+  }
+
+  /* Links with arrow */
+  .main-content-wrapper a {
+    @apply text-primary dark:text-primary-light underline;
+  }
+
+  .main-content-wrapper a[href^="http"]:not(:has(img))::after {
+    content: "↗";
+  }
+
+  /* Lists */
+  .main-content-wrapper ul {
+    @apply list-disc pl-6 my-6 marker:text-primary dark:marker:text-primary-light;
+  }
+
+  .main-content-wrapper ol {
+    @apply list-decimal pl-6 my-6 marker:text-primary dark:marker:text-primary-light;
+  }
+  
+  /* Nested lists - reduce spacing */
+  .main-content-wrapper ul ul,
+  .main-content-wrapper ul ol,
+  .main-content-wrapper ol ul,
+  .main-content-wrapper ol ol {
+    @apply my-2 pl-4;
+  }
+  
+  .main-content-wrapper ul li, .main-content-wrapper ol li {
+    @apply ml-3 mb-3 pl-1;
+  }
+  
+  .main-content-wrapper li:last-child {
+    @apply mb-0;
+  }
+
+  /* Blockquotes */
+  .main-content-wrapper blockquote {
+    @apply border-l-4 border-primary bg-primary/10 dark:bg-primary/20 pl-4 py-1 my-6 italic;
+  }
+
+  /* Code blocks */
+  .main-content-wrapper pre {
+    @apply my-6 p-4 rounded-md overflow-auto bg-slate-100 dark:bg-slate-800 text-sm md:text-base;
+  }
+
   /* Inline code styles */
-  :not(pre) > code {
-    @apply bg-primary/20 dark:bg-primary/30 px-2 py-0.5 rounded text-[0.9em];
+  .main-content-wrapper :not(pre) > code {
+    @apply bg-primary/20 dark:bg-primary/30 px-2 py-0.5 rounded text-xs md:text-sm;
   }
 
-  /* Reset prose inline code backticks */
-  .prose :not(pre) > code::before,
-  .prose :not(pre) > code::after {
-    content: none !important;
+  /* Tables */
+  .main-content-wrapper table {
+    @apply w-full border-collapse my-6;
   }
 
-  /* Dark mode prose styles */
-  .prose.dark {
-    @apply prose-invert;
+  .main-content-wrapper th {
+    @apply border border-gray-300 dark:border-gray-700 px-4 py-2 text-left bg-gray-100 dark:bg-gray-800;
   }
 
-  .prose.dark a {
-    @apply text-primary-light;
+  .main-content-wrapper td {
+    @apply border border-gray-300 dark:border-gray-700 px-4 py-2;
   }
 
-  .prose.dark pre {
-    @apply bg-gray-800;
+  /* Images */
+  .main-content-wrapper img {
+    @apply rounded-md my-6;
+    /* hover:scale-105 transition-transform */
   }
 
-  /* Improved dark mode text contrast */
-  .dark .prose p, 
-  .dark .prose li {
-    @apply text-gray-200;
+  .main-content-wrapper hr {
+    @apply mt-14 mb-14;
+  }
+
+  /* Remove any extra spacing */
+  .main-content-wrapper > *:first-child {
+    @apply mt-0;
+  }
+
+  .main-content-wrapper > *:last-child {
+    @apply mb-0;
   }
 
   /* Softer borders for feature boxes in dark mode */
@@ -86,10 +172,6 @@
 }
 
 @layer components {
-  .btn-shopify {
-    @apply inline-block rounded-lg bg-[rgb(var(--shopify))] px-6 py-3 text-white hover:bg-[rgb(var(--shopify))]/90 transition-colors;
-  }
-
   .btn-secondary {
     @apply inline-block rounded-lg border border-gray-200 px-6 py-3 hover:bg-gray-50 transition-colors
     dark:border-gray-700 dark:hover:bg-gray-800 dark:text-gray-200;

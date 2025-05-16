@@ -30,13 +30,14 @@ function formatDatePreserveDay(dateStr) {
 }
 ---
 
-<article>
+<article class="mx-auto max-w-3xl">
 
-  <div class="not-prose -mx-2 mb-8 overflow-hidden sm:-mx-4 md:-mx-6 lg:-mx-8">
+  <div class="-mx-2 mb-8 overflow-hidden sm:-mx-4 md:-mx-6 lg:-mx-8">
     <CoverImage
       imageURL={imageURL}
       slug={slug}
       size="large"
+      transition:name={slug}
     />
   </div>
 
@@ -70,5 +71,6 @@ function formatDatePreserveDay(dateStr) {
 
   <Tags list={tags} />
 
+  <div class="mt-6"></div>
   <slot />
 </article>

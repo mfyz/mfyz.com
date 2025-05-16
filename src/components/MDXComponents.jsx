@@ -180,7 +180,7 @@ export const hr = (props) => (
 // ----------------
 export const img = (props) => (
   <img 
-    className="no-prose rounded-lg mx-auto my-6 max-w-full h-auto hover:scale-105 transition-transform duration-300" 
+    className="rounded-lg mx-auto my-6 max-w-full h-auto hover:scale-105 transition-transform duration-300" 
     alt={props.alt || 'Image'}
     loading="lazy"
     {...props} 

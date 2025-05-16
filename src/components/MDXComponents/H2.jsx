@@ -22,7 +22,7 @@ const H2 = ({ children }) => {
 
   return (
     <h2 id={id} className="group hover:!text-text/80">
-      <a href={`#${id}`} className="not-prose flex items-center gap-2">
+      <a href={`#${id}`} className="flex items-center gap-2">
         {children}
 
         <svg

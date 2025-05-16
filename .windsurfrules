@@ -13,7 +13,6 @@
 - tailwind.config.mjs: fontFamily.secondary must be ["Georgia", "serif"]
 - This provides the distinct serif typography for all headings
 - global.css should keep h1-h6 with font-secondary and font-normal classes
-- BlogPost.astro uses prose-headings:font-secondary prose-headings:font-normal
 
 ## 3. OTHER VISUAL ELEMENTS
 

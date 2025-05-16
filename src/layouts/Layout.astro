@@ -9,10 +9,9 @@ import { SITE } from "@/consts";
 interface Props {
   title?: string;
   description?: string;
-  noProse?: boolean;
 }
 
-const { title, description, noProse = false } = Astro.props;
+const { title, description } = Astro.props;
 
 const pathname = Astro.url.pathname;
 const {
@@ -38,11 +37,6 @@ const titleSource = frontmatter.title ? 'frontmatter' : (Astro.props.title ? 'pr
 // console.log(`Page: ${pathname}, Title: ${formattedTitle}, Source: ${titleSource}`);
 
 const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}og.png`;
-
-const proseClasses = `prose prose-lg prose-orange lg:prose-xl marker:text-primary prose-headings:font-secondary
-  prose-headings:font-normal prose-a:text-primary dark:prose-a:text-primary-light prose-a:after:content-['↗']
-  prose-blockquote:border-primary prose-blockquote:bg-primary/10 dark:prose-blockquote:bg-primary/20
-  prose-blockquote:py-1 prose-img:rounded-md prose-img:hover:scale-105 prose-img:transition-transform dark:prose-invert`;
 
 ---
 
@@ -113,7 +107,7 @@ const proseClasses = `prose prose-lg prose-orange lg:prose-xl marker:text-primar
       class="container mt-24 overflow-hidden pb-4"
       style="scrollbar-gutter: stable"
     >
-      <div class={`main-content-wrapper mx-auto max-w-6xl ${!noProse ? proseClasses : ''}`}>
+      <div class="main-content-wrapper mx-auto max-w-5xl">
         <slot />
       </div>
     </main>

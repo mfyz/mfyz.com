@@ -37,7 +37,7 @@ export default function ImageZoom({ src, alt, width, height, class: className, m
     <>
       <button
         onClick={toggleZoom}
-        className="w-full cursor-zoom-in not-prose"
+        className="w-full cursor-zoom-in"
         aria-label="Click to zoom image"
       >
         <img 

@@ -28,7 +28,7 @@ const Message = ({
       }`}
     >
       <img
-        className="not-prose size-12 flex-shrink-0 rounded-full bg-slate-300 object-cover mt-8"
+        className="size-12 flex-shrink-0 rounded-full bg-slate-300 object-cover mt-8"
         src={imageURL}
         alt={`${name} profile-pic`}
         height={50}
@@ -39,7 +39,7 @@ const Message = ({
       <div className="overflow-hidden">
         <p
           data-direction={direction}
-          className="not-prose m-1 text-sm text-gray-500 data-[direction=right]:text-right"
+          className="m-1 text-sm text-gray-500 data-[direction=right]:text-right"
         >
           {name}
         </p>

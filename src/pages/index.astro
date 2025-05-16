@@ -9,7 +9,7 @@ const posts = (await getCollection("blog", ({ data }) => !data.hidden)).sort(
 
 ---
 
-<Layout noProse>
+<Layout>
   <section class="mb-16">
     <BlogGrid posts={posts} limit={6} />
     <div class="mt-16 mb-8 flex items-center justify-between">
