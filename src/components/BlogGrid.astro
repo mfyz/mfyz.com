@@ -2,6 +2,7 @@
 import { format, parseISO } from "date-fns";
 import Tags from "@components/Tags";
 import CoverImage from "@components/CoverImage.astro";
+import { getPatternName } from "@utils/get-pattern-name";
 
 interface Props {
   posts: any[];
@@ -33,32 +34,29 @@ function formatDatePreserveDay(dateStr) {
 <div>
   <div class="blog-grid">
     {/* First post - full width */}
-    {displayPosts.length > 0 && (
-      <div class="p-10 py-16">
-        {(() => {
-          const post = displayPosts[0];
-          const { title, date, tags } = post.data;
-          return (
-            <div>
-              <time class="block mb-2 text-xs text-gray-500">
-                {formatDatePreserveDay(date)}
-              </time>
-              <a href={`/${post.slug}/`}>
-                <h3 class="font-secondary text-6xl transition-colors hover:text-primary">
-                  {title}
-                </h3>
-              </a>
-              <div class="flex items-center">
-                <Tags list={tags} />
-              </div>
-            </div>
-          );
-        })()}
-      </div>
-    )}
+    {displayPosts.length > 0 && (() => {
+      const post = displayPosts[0];
+      const { title, date, tags } = post.data;
+      const patternName = getPatternName(post.slug);
+      return (
+        <div class={`p-10 py-24 blog-bg-pattern blog-bg-pattern-${patternName}`}>
+          <time class="block mb-2 text-xs text-gray-500">
+            {formatDatePreserveDay(date)}
+          </time>
+          <a href={`/${post.slug}/`}>
+            <h3 class="font-secondary text-6xl transition-colors hover:text-primary">
+              {title}
+            </h3>
+          </a>
+          <div class="flex items-center">
+            <Tags list={tags} />
+          </div>
+        </div>
+      );
+    })()}
 
     {/* Rest of the posts in checker pattern */}
-    <ul class="grid gap-0 sm:grid-cols-3 border-t border-gray-150">
+    <ul class="grid gap-0 sm:grid-cols-3">
       {
         displayPosts.slice(1).map((post, index) => {
           const { title, date, imageURL, summary, tags } = post.data;
@@ -67,26 +65,40 @@ function formatDatePreserveDay(dateStr) {
           
           // Determine background color based on position
           let bgColor = "";
+          let bgDark = false;
           if (rowIndex % 2 === 0) {
             // First row pattern: black - white - black
-            bgColor = colIndex % 2 === 0 ? "bg-[#222] text-white" : "";
+            if (colIndex % 2 === 0) {
+              bgColor = "bg-[#222] text-white";
+              bgDark = true;
+            }
           } else {
             // Second row pattern: white - red - white
-            bgColor = colIndex === 1 ? "bg-primary text-white" : "";
+            if (colIndex === 1) {
+              bgColor = "bg-primary text-white";
+              bgDark = true;
+            }
           }
-          
+
+          if (!bgColor) {
+            bgColor = "bg-[#fafafa]";
+          }
+
+          const patternName = getPatternName(post.slug);
+          const patternClass = `blog-bg-pattern blog-bg-pattern-${patternName}${bgDark ? "-white" : ""}`;
+
           return (
-            <li class={`relative p-5 transition-transform hover:scale-[1.02] ${bgColor}`}>
-              <time class={`block mb-2 text-xs ${bgColor ? "text-gray-300" : "text-gray-500"}`}>
+            <li class={`relative p-5 transition-transform hover:scale-[1.02] ${bgColor} ${patternClass}`}>
+              <time class={`block mb-2 text-xs ${bgDark ? "text-gray-300" : "text-gray-500"}`}>
                 {formatDatePreserveDay(date)}
               </time>
               <a href={`/${post.slug}/`}>
-                <h4 class={`font-secondary mb-2 transition-colors ${bgColor ? "hover:text-gray-300" : "hover:text-primary"}`}>
+                <h4 class={`font-secondary mb-2 transition-colors ${bgDark ? "hover:text-gray-300" : "hover:text-primary"}`}>
                   {title}
                 </h4>
               </a>
               <div class="flex items-center">
-                <Tags list={tags} className={bgColor ? "tags-light" : ""} />
+                <Tags list={tags} className={bgDark ? "tags-light" : ""} />
               </div>
             </li>
           );

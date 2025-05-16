@@ -54,3 +54,49 @@
 .blog-grid .bg-primary h4 {
   color: #ffffff;
 }
+
+/* Post Bg Patterns */
+
+.blog-bg-pattern {
+  background-repeat: no-repeat;
+}
+
+.blog-bg-pattern-cone {
+  background-image: url(/images/post-patterns/pt-cone.svg);
+  background-position: 100% 90%
+}
+
+.blog-bg-pattern-cone-white {
+  background-image: url(/images/post-patterns/pt-cone-white.svg);
+  background-position: 100% 90%
+}
+
+.blog-bg-pattern-cube {
+  background-image: url(/images/post-patterns/pt-cube.svg);
+  background-position: 100% 90%
+}
+
+.blog-bg-pattern-cube-white {
+  background-image: url(/images/post-patterns/pt-cube-white.svg);
+  background-position: 100% 90%
+}
+
+.blog-bg-pattern-triangle {
+  background-image: url(/images/post-patterns/pt-triangle.svg);
+  background-position: 80% 90%
+}
+
+.blog-bg-pattern-triangle-white {
+  background-image: url(/images/post-patterns/pt-triangle-white.svg);
+  background-position: 80% 90%
+}
+
+.blog-bg-pattern-wave {
+  background-image: url(/images/post-patterns/pt-wave.svg);
+  background-position: 80% 90%
+}
+
+.blog-bg-pattern-wave-white {
+  background-image: url(/images/post-patterns/pt-wave-white.svg);
+  background-position: 80% 90%
+}
