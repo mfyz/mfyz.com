@@ -43,14 +43,22 @@
   grid-gap: 0;
 }
 
-/* Make grid cells square */
+/* Make grid cells square on larger screens, but not on mobile */
 .blog-grid ul > li {
   padding: 2rem;
   margin: 0;
-  aspect-ratio: 1/1;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  padding-bottom: 6rem; /* Add extra bottom padding for mobile view (pb-24) */
+}
+
+/* Only apply aspect ratio on screens larger than mobile */
+@media (min-width: 640px) {
+  .blog-grid ul > li {
+    aspect-ratio: 1/1;
+    padding-bottom: 2rem; /* Reset to normal padding on larger screens */
+  }
 }
 
 /* Add shadow to the overall grid and the first featured post */
