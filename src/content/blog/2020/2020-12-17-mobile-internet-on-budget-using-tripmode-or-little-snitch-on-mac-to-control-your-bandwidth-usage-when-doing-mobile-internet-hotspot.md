@@ -1,0 +1,41 @@
+---
+title: "Mobile internet on budget - Using tripmode or little snitch on mac to control your bandwidth usage when doing mobile internet hotspot"
+slug: mobile-internet-on-budget-using-tripmode-or-little-snitch-on-mac-to-control-your-bandwidth-usage-when-doing-mobile-internet-hotspot
+date: 2020-12-17
+url: https://mfyz.com/?p=602
+tags: ["Geekin'"]
+category: Geekin'
+migration: {"wpId":602,"wpPostDate":"2020-12-17T01:28:23.000Z"}
+---
+
+![Editing with a View by Avi Richards](/images/archive/en/2020/12/Z3ownETsdNQ.jpg)
+
+Editing with a View by Avi Richards
+
+I talked about in certain years and months I travel extensively and have the issue of [Having reliable internet while travelling every corner of the world](https://mfyz.com/having-reliable-internet-while-travelling-every-corner-of-the-world/).
+
+My solution was to use a mobile modem (wifi) or my phone’s hotspot. But first and the biggest issue I face with that option is to hit package limits pretty quickly, or seeing dropbox eating 8gb in 10 minutes without me knowing it (yes, I realized I had a pretty good connectivity and noticed our designer has uploaded huge set of project assets and photoshop/illustrator files that ate up 8 GB when dropbox synchronized the files super quickly - damn fast mobile internet). Live and learn right?
+
+After having few accidents to see my mobile internet package getting destroyed with few apps, updates and stuff that is transferred without me knowing them and doing the detective work to learn that I really didn’t need these apps to do those trasnfers while I’m on a “budget internet”. 
+
+Then I started to look for solutions. At the end of the day, you want to stop an app (or a process) to access internet and continue doing their transfers. This is actually a “firewall”s job. 
+
+### Little Snitch
+
+![decide-immediately.png](/images/archive/en/2020/12/image-2.png)
+
+In macOS, I’ve been using “little snitch” which is a fantastic firewall software that shows every single process that wants to connect to internet and I can investigate the process’ path, it’s software signature source (signed by ABC software studio for example) and the target domain, ip it wants to connect, then I can allow and disallow these. Little snitch also allows me to set separate rule sets for each wifi network that can be automatically switched based on the network name. I tried this but it was too much prompts and setting up stuff from scratch. Because I already spent a lot of time in the past (progressively) to have my current configuration that is designed for my home connection (that is configured for security in mind instead of bandwidth).
+
+So I continued on my research to find something simpler that allows me to turn apps on and off for internet connectivity - almost same approach in mobile OSes that you can toggle permissions for certain things like location access, or mobile internet in cellular mode...
+
+[https://www.obdev.at/products/littlesnitch/](https://www.obdev.at/products/littlesnitch/)
+
+### Trip Mode
+
+![ucarecdn.png](/images/archive/en/2020/12/image-3.png)
+
+And I found Trip Mode. It’s a paid (but cheap) app that does this exactly the way I needed it. It appears as a menubar icon at top right and flashes when there is an app has connectivity. Then you see a simple list of apps/processes that you can toggle them. All apps are disabled to access internet by default, they you enable apps one by one as you needed it.
+
+Trip Mode also shows the total bandwidth use per session as well breakdown of each app’s individual bandwidth use which is super helpful. It’s nice to see how much my 1 hour hangouts session ate after hang up.
+
+[https://tripmode.ch/](https://tripmode.ch/)

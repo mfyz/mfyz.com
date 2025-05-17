@@ -1,0 +1,24 @@
+---
+title: "Web, UI and browser automation with headless browsers"
+slug: web-ui-browser-automation-headless-browsers
+date: 2018-03-13
+url: https://mfyz.com/?p=209
+tags: ["automation","browser","Front-End","testing","web"]
+category: Front-End
+migration: {"wpId":209,"wpPostDate":"2018-03-13T16:00:03.000Z"}
+---
+
+![](/images/archive/en/2020/05/bot-icon-2883144_1280_upfg3q.png?resize=150%2C150&ssl=1&cld_params=h_1280,w_1280,x_0,y_0/h_150,w_150)Wanted to give you a short information about browser automation. You visualize a desktop app when a “browser” comes to minds right? All browsers use an engine to render web pages on our screen. And these engines can actually work without rendering pages in the UI. All they need is to render the elements in memory. From there, it can allow us to interact with rendered pages programmatically without displaying the rendered page on our screens. There are browsers only works in this mode and they are called “headless” browsers. Means they have no UI. This browsers are meaningless for general consumers but it comes very handy to developer and testing community. Many companies build their testing and QA process utilizing these headless browser, do execute their UI flows with browser automation scripts. For instance, headless browser can be programmed to run and simulate the following user experience flow:
+
+*   Load http://example.com web page,
+*   Wait until page is completely rendered including javascript and css,
+*   Fill “Fatih” to the field called “Name”,
+*   Click to the button called “Send”,
+*   Wait 5 seconds,
+*   Take screenshot and save as JPEG
+
+This can be very useful when doing regression tests. Event utilizing screenshots with headless browsers will be very useful. There are many companies doing screenshot comparison for high level understanding changes done visually based on any given iteration on the code. This process simply takes and keeps versions of each page and in every release, it takes a new one with latest version and compares the pixels (and colors) to the previous version to determine a percentage for the change it detects. Then you can set some report and process to make sure you track of big changes to detect if a tiny css change blew a page you usually don't test manually. It becomes very meaningful when you think about a web page with 100 different pages.
+
+## Are there any headless browsers I can use?
+
+The well known headless browsers; the one named “Phantom” (and phantomjs) that is big on nodejs community. There is also headless chrome which is based on chromium. There is an extensive list of all headless browsers out there here: [https://github.com/dhamaniasad/HeadlessBrowsers](https://github.com/dhamaniasad/HeadlessBrowsers) Happy browser automations :)

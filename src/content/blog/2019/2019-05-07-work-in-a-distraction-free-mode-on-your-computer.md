@@ -1,0 +1,27 @@
+---
+title: "Work in a distraction free mode on your computer"
+slug: work-in-a-distraction-free-mode-on-your-computer
+date: 2019-05-07
+url: https://mfyz.com/?p=296
+tags: ["Geekin'"]
+category: Geekin'
+migration: {"wpId":296,"wpPostDate":"2019-05-07T08:58:31.000Z"}
+---
+
+![](/images/archive/en/2019/05/Screen-Shot-2019-04-26-at-10.17.44-AM.jpg)
+
+I always tune my work style and seek for ways to increase my focus and productivity. From my previous posts ([screen-less saturdays](https://mfyz.com/ive-screen-less-no-screen-saturdays-year-now/)), you can see I am also sensitive to the screen time the distractions comes with the screens. There are endless ways to waste time as well as get distracted on screens as things pop-up. Namely notifications. God, I started to hate notifications. So much noise!
+
+I've been using an app called [focus.app](http://focus.app/) for last few years here and ther. I've have been incorporating it to me pomodoro-like sessions. Focus is a paid app but cheap that helps tremendously to keep my focus together while I set a session for myself to be distraction-free and get stuff done.
+
+The app is very minimal, sits on your menubar and you simply toggle in focus and unfocus modes. When in focus mode, app blocks predefined and extendable list of websites and apps. If these pages are open, they show an inspirational quote. If a blocked app is open when getting into focus mode, focus.app closes the app.
+
+![](/images/archive/en/2019/05/Slice.jpg)
+
+I set up my pomodoro length sessions with blocking all communication apps. Also turning my mac's do not disturb mode on and with a custom script. With this scripts, I set my slack status to do not disturb so my team mates can see that I'm in focus mode and will not get response from me right away.
+
+The last two things I explained is unfortunately done with a bash script. This script runs from focus app when getting in and out of focus modes. I also use some additional scripts that re-opens all apps and restore my “connected” work session after a focus session is completed.
+
+I highly suggest focus to anyone can get easily distracted with an email they received, or a thing they wanted to check in twitter.
+
+[https://heyfocus.com/](https://heyfocus.com/)

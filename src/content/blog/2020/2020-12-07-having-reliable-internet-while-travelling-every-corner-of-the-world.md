@@ -1,0 +1,31 @@
+---
+title: "Having reliable internet while travelling every corner of the world"
+slug: having-reliable-internet-while-travelling-every-corner-of-the-world
+date: 2020-12-07
+url: https://mfyz.com/?p=596
+tags: ["Life"]
+category: Life
+migration: {"wpId":596,"wpPostDate":"2020-12-07T15:40:07.000Z"}
+---
+
+In recent years - of being true digital nomad, I had to work in weird places, somewhat often remote locations. Also sometimes, regardless of local connectivity options, having to change places too frequently and have to sit down and need to work between travels, connections/layovers, or just plain jumping around too quickly between coffee shops, park benches (you name it)...
+
+I started to love the mobile internet options that becoming more mainstream to replace permanent cable (or sort) subscriptions that we need to have on-grid approach to get internet service. Recently, in my home country (Turkey), one of the most popular mobile carriers (happens to own one of the largest ISPs as well), came up with a solution that provides pretty nice speeds for home internet connectivity at regular internet service costs with the ability to just plug in this device called SuperBox to the outlet and start/continue using your internet service. It uses the mobile network 4G, 4,5G (similar to LTE in the region) that brings up to 200mbit/s speeds which is more than enough one can consume.
+
+When I travel to my home country (where I often travel too frequently domestically there), I face the reliability of the connectivity I need/seek for when I change places - even though pretty much everywhere I visit has some form of internet service (cable, fiber etc). Almost always I find myself struggling to have stable connection rather than speed. More problematic issue is the concern of eating up all the bandwidth while doing my work.
+
+### Solution - mobile modems or your smart phone
+
+My solution to this for last 3-4 years, has been a good old mobile wifi device and have temporary service that I pay for when I travel for few weeks or a month in my home country. But this is a solution that works everywhere depending on the carriers, internet packages and their costs - often cheaper solution, or more reliable solution that gives freedom to continue allowing me spontaneously travel anywhere.
+
+![61mM5-WhEXL._AC_SX679_.jpg](/images/archive/en/2020/12/image-1.png)
+
+I use TP-Link’s [M7350](https://www.tp-link.com/en/home-networking/mifi/m7350/) mobile modem/router. It is super compact (similar size, weight with a mobile phone) and holds it charge pretty long with allowing 4-5 devices to be connected at the same time. I’m currently visiting my mom’s summer house and working in the afternoons and evenings wit my wife using this device - often both of us having zoom or google hangouts sessions at the same time (eating up a lot of bandwidth, but it’s working without any hiccup).
+
+![4_mlvw.jpg](/images/archive/en/2020/12/image.png)
+
+You actually don’t need a mobile modem where you can use your smart phone to hot spot to your computer or other devices, but your smart phone has to be able to operate without issue in the country you are visiting. Apple particularly started to roll out eSims enabled iPhones in recent years and they are definitely not supported in many countries yet. So you have to do some "sim" card work to obtain, enable and make sure it works with your smart phone. One of the biggest reason that I had to choose a mobile modem/wifi is because in Turkey, all telecom devices (using mobile network) has to be registered in communications department of the government. And registering a foreign device is both difficult and you pay some taxes in order to do so. Instead I bought the mobile modem in Turkey from a electronics store which was already registered. So I just found a plan and sim card to get it working.
+
+### Watch out for bandwidth
+
+Despite it’s ease and convenience of the mobile model, we have to be watching out how much bandwidth we use every day and in lookout for our monthly quota or keep upgrading when we need. Every country’s mobile carriers approach is different. Where, some countries are more “contract” lock-in focused but more loose on bandwidth (like giving unlimited packages easily), where some other countries are more focused on freedom of long terms contracts but they are either expensive or more complicated on their plans with giving download and upload speeds separately which you may need to study them little bit harder.
