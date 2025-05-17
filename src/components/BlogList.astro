@@ -29,31 +29,57 @@ function formatDatePreserveDay(dateStr) {
     return dateString; // Return original value if formatting fails
   }
 }
+
+// Group posts by year
+const getYear = (date) => {
+  if (!date) return '';
+  return new Date(date).getFullYear();
+};
+
+// Group posts by year
+const postsByYear = posts.reduce((acc, post) => {
+  const year = getYear(post.data.date);
+  if (!acc[year]) {
+    acc[year] = [];
+  }
+  acc[year].push(post);
+  return acc;
+}, {});
+
+// Sort years in descending order
+const sortedYears = Object.keys(postsByYear).sort((a, b) => b - a);
 ---
 
 <div class="blog-list mt-12 border border-gray-200">
-  <ul>
-    {posts.map((post) => {
-      const { title, date, tags } = post.data;
-      const patternName = getPatternName(post.slug);
-      return (
-        <li>
-          <div 
-            class={`p-6 border-b border-gray-200 blog-bg-pattern blog-bg-pattern-${patternName}`}
-            transition:name={post.slug}
-          >
-            <div class="flex items-center text-xs text-gray-500 whitespace-nowrap">
-              <time>{formatDatePreserveDay(date)}</time>
-              {/* <Tags list={tags} /> */}
-            </div>
-            <a href={`/${post.slug}/`}>
-              <h4 class="font-secondary text-4xl transition-colors hover:text-primary">
-                {title}
-              </h4>
-            </a>
-          </div>
-        </li>
-      );
-    })}
-  </ul>
+  {sortedYears.map(year => (
+    <div class="year-section">
+      <div class="year-header">
+        <h2 class="font-secondary text-5xl py-4 px-6 backdrop-blur-sm bg-white/80 dark:bg-gray-900/80 supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-gray-900/60">{year}</h2>
+      </div>
+      <ul>
+        {postsByYear[year].map((post) => {
+          const { title, date, tags } = post.data;
+          const patternName = getPatternName(post.slug);
+          return (
+            <li>
+              <div 
+                class={`p-6 border-b border-gray-200 blog-bg-pattern blog-bg-pattern-${patternName}`}
+                transition:name={post.slug}
+              >
+                <div class="flex items-center text-xs text-gray-500 whitespace-nowrap">
+                  <time>{formatDatePreserveDay(date)}</time>
+                  {/* <Tags list={tags} /> */}
+                </div>
+                <a href={`/${post.slug}/`}>
+                  <h4 class="font-secondary text-4xl transition-colors hover:text-primary">
+                    {title}
+                  </h4>
+                </a>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  ))}
 </div>

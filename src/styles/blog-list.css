@@ -1,3 +1,21 @@
+/* Year sections */
+.blog-list .year-section:not(:first-child) {
+  margin-top: 4rem;
+}
+
+.blog-list .year-header {
+  position: sticky;
+  top: 78px;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.blog-list .year-header h2 {
+  font-weight: normal;
+  margin: 0;
+}
+
+/* Post lists */
 .blog-list ul {
   list-style: none;
   padding: 0;
