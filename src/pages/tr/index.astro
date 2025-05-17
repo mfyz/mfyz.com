@@ -2,11 +2,12 @@
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import BlogGrid from "@components/BlogGrid.astro";
-import "../styles/blog-grid.css";
+import "../../styles/blog-grid.css";
 
+// Get only Turkish posts (either in tr/ folder or with lang: tr in frontmatter)
 const posts = (await getCollection("blog", ({ data, id }) => {
-  // Exclude Turkish posts (either in tr/ folder or with lang: tr)
-  return !data.hidden && !id.startsWith('tr/') && data.lang !== 'tr';
+  // Include if in tr/ folder or has lang: tr
+  return (id.startsWith('tr/') || data.lang === 'tr') && !data.hidden;
 })).sort(
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
@@ -17,7 +18,7 @@ const posts = (await getCollection("blog", ({ data, id }) => {
     <section class="-mt-10 mb-16">
       <BlogGrid posts={posts} limit={25} />
       <div class="mt-16 mb-8 flex items-center justify-between">
-        <a href="/page/2" class="text-primary hover:underline">Next Page</a>
+        <a href="/tr/page/2" class="text-primary hover:underline">Next Page</a>
       </div>
     </section>
   </div>

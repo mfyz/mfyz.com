@@ -1,6 +1,6 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
-import { SITE } from "../consts";
+import { SITE, CATEGORIES } from "../consts";
 import DarkModeToggle from "./DarkModeToggle";
 
 interface Props {
@@ -8,14 +8,20 @@ interface Props {
 }
 
 const { size } = Astro.props;
+
+const categoriesInNav = ["programming", "geekin", "life"];
 ---
 
 <header class="fixed left-0 top-0 z-50 w-full backdrop-blur-sm bg-white/80 dark:bg-gray-900/80 supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-gray-900/60">
   <nav class={`mx-auto max-w-${size === "small" ? "3xl" : "5xl"}`}>
     <h2><a href="/" class="font-secondary text-xl dark:text-white">{SITE.title}</a></h2>
     <div class="flex items-center gap-4">
+      {categoriesInNav.map((category) => (
+        <HeaderLink href={`/category/${category}`}>{CATEGORIES[category]}</HeaderLink>
+      ))}
+      <!-- <HeaderLink href="/code">Code</HeaderLink> -->
       <HeaderLink href="/about">About</HeaderLink>
-      <!-- <HeaderLink href="/tr">🇹🇷</HeaderLink> -->
+      <HeaderLink href="/tr">🇹🇷 Türkçe Yazılar</HeaderLink>
       <DarkModeToggle client:load />
     </div>
   </nav>
