@@ -1,5 +1,5 @@
 ---
-title: "Smart(er) documents - Quip, Notion, Airtable, Coda or good old GDocs&amp;GSheets"
+title: "Smart(er) documents - Quip, Notion, Airtable, Coda or good old GDocs & GSheets"
 slug: smarter-documents-quip-notion-airtable-coda-or-good-old-gdocsgsheets
 date: 2020-01-29
 url: https://mfyz.com/?p=412

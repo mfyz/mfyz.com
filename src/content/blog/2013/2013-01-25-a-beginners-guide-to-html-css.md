@@ -1,5 +1,5 @@
 ---
-title: "A Beginner's Guide to HTML &amp; CSS"
+title: "A Beginner's Guide to HTML & CSS"
 slug: a-beginners-guide-to-html-css
 date: 2013-01-25
 url: http://mfyz.com/a-beginners-guide-to-html-css/

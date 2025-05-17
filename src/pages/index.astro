@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import BlogGrid from "@components/BlogGrid.astro";
+import BlogList from "@components/BlogList.astro";
 import "../styles/blog-grid.css";
 
 const posts = (await getCollection("blog", ({ data, id }) => {
@@ -10,15 +11,19 @@ const posts = (await getCollection("blog", ({ data, id }) => {
 })).sort(
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
+
+const gridPosts = posts.slice(0, 25);
+const listPosts = posts.slice(25);
 ---
 
 <Layout>
   <div>
     <section class="-mt-10 mb-16">
-      <BlogGrid posts={posts} limit={25} />
-      <div class="mt-16 mb-8 flex items-center justify-between">
-        <a href="/page/2" class="text-primary hover:underline">Next Page</a>
-      </div>
+      <BlogGrid posts={gridPosts} limit={25} />
+      
+      {listPosts.length > 0 && (
+        <BlogList posts={listPosts} />
+      )}
     </section>
   </div>
 </Layout>

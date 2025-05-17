@@ -1,5 +1,5 @@
 ---
-title: "Using rclone &amp; cronjobs for simple server backup solution"
+title: "Using rclone & cronjobs for simple server backup solution"
 slug: using-rclone-cronjobs-for-simple-server-backup-solution
 date: 2021-11-23
 url: https://mfyz.com/?p=707

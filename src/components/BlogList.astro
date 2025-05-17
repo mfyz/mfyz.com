@@ -1,0 +1,59 @@
+---
+import { format, parseISO } from "date-fns";
+import Tags from "@components/Tags.jsx";
+import CoverImage from "@components/CoverImage.astro";
+import { getPatternName } from "@utils/get-pattern-name";
+import "../styles/blog-list.css";
+
+interface Props {
+  posts: any[];
+}
+
+const { posts } = Astro.props;
+
+// Helper function to format date without timezone adjustments (copied from BlogGrid for consistency)
+function formatDatePreserveDay(dateStr) {
+  // Handle cases where dateStr might not be a string
+  if (!dateStr) return '';
+  
+  // Convert to string if it's a Date object
+  const dateString = dateStr instanceof Date ? dateStr.toISOString() : String(dateStr);
+  
+  try {
+    // Extract year, month, day directly from the string to avoid timezone issues
+    const [year, month, day] = dateString.split('T')[0].split('-').map(num => parseInt(num, 10));
+    // Format the date to "Feb 1, 2023" style
+    return format(new Date(year, month - 1, day), "MMM d, yyyy");
+  } catch (error) {
+    console.error("Error formatting date:", dateString, error);
+    return dateString; // Return original value if formatting fails
+  }
+}
+---
+
+<div class="blog-list mt-12 border border-gray-200">
+  <ul>
+    {posts.map((post) => {
+      const { title, date, tags } = post.data;
+      const patternName = getPatternName(post.slug);
+      return (
+        <li>
+          <div 
+            class={`p-6 border-b border-gray-200 blog-bg-pattern blog-bg-pattern-${patternName}`}
+            transition:name={post.slug}
+          >
+            <div class="flex items-center text-xs text-gray-500 whitespace-nowrap">
+              <time>{formatDatePreserveDay(date)}</time>
+              {/* <Tags list={tags} /> */}
+            </div>
+            <a href={`/${post.slug}/`}>
+              <h4 class="font-secondary text-4xl transition-colors hover:text-primary">
+                {title}
+              </h4>
+            </a>
+          </div>
+        </li>
+      );
+    })}
+  </ul>
+</div>
