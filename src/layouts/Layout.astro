@@ -32,11 +32,7 @@ const rawTitle = pageFrontmatter.title || title || defaultTitle;
 const pageDescription = pageFrontmatter.description || description || defaultDescription;
 
 // Format title consistently: "Page Title - mfyz.com" for pages with custom titles
-const formattedTitle = rawTitle !== defaultTitle ? `${rawTitle} - mfyz.com` : defaultTitle;
-
-// Log for debugging purposes
-const titleSource = pageFrontmatter.title ? 'frontmatter' : (Astro.props.title ? 'props' : 'default');
-// console.log(`Page: ${pathname}, Title: ${formattedTitle}, Source: ${titleSource}`);
+const formattedTitle = rawTitle !== defaultTitle ? rawTitle : `${SITE.title} - ${SITE.description}`;
 
 const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}og.png`;
 
