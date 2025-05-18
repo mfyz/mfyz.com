@@ -1,5 +1,5 @@
 ---
-title: "Durulduk: "Zombie mode on""
+title: 'Durulduk: "Zombie mode on"'
 slug: durulduk-zombie-mode-on
 date: 2008-03-09
 url: http://mfyz.com/tr/durulduk-zombie-mode-on/

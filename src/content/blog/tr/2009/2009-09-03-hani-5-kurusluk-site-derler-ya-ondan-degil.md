@@ -1,5 +1,5 @@
 ---
-title: "Hani "5 kuruşluk site" derler ya, ondan değil"
+title: 'Hani "5 kuruşluk site" derler ya, ondan değil'
 slug: hani-5-kurusluk-site-derler-ya-ondan-degil
 date: 2009-09-03
 url: http://mfyz.com/tr/hani-5-kurusluk-site-derler-ya-ondan-degil/
