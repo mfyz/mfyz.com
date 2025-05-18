@@ -6,7 +6,7 @@ import readingTime from "reading-time";
 import BlogHero from "@components/BlogHero.astro";
 import path from "path";
 
-const { title, date, imageURL, tags, content, slug } = Astro.props;
+const { title, date, imageURL, tags, content, slug, lang } = Astro.props;
 
 const time = readingTime(content);
 
@@ -38,6 +38,7 @@ function formatDatePreserveDay(dateStr) {
       slug={slug}
       content={content}
       tags={tags}
+      lang={lang}
     />
   </div>
   <div class="mt-6"></div>

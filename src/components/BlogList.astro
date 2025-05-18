@@ -1,5 +1,37 @@
 ---
 import { format, parseISO } from "date-fns";
+
+// Turkish month names for localization
+const turkishMonths = {
+  'Jan': 'Ocak',
+  'Feb': 'Şubat',
+  'Mar': 'Mart',
+  'Apr': 'Nisan',
+  'May': 'Mayıs',
+  'Jun': 'Haziran',
+  'Jul': 'Temmuz',
+  'Aug': 'Ağustos',
+  'Sep': 'Eylül',
+  'Oct': 'Ekim',
+  'Nov': 'Kasım',
+  'Dec': 'Aralık'
+};
+
+// Full English month names for enhanced formatting
+const fullEnglishMonths = {
+  'Jan': 'January',
+  'Feb': 'February',
+  'Mar': 'March',
+  'Apr': 'April',
+  'May': 'May',
+  'Jun': 'June',
+  'Jul': 'July',
+  'Aug': 'August',
+  'Sep': 'September',
+  'Oct': 'October',
+  'Nov': 'November',
+  'Dec': 'December'
+};
 import Tags from "@components/Tags.jsx";
 import CoverImage from "@components/CoverImage.astro";
 import { getPatternName } from "@utils/get-pattern-name";
@@ -11,8 +43,13 @@ interface Props {
 
 const { posts } = Astro.props;
 
-// Helper function to format date without timezone adjustments (copied from BlogGrid for consistency)
-function formatDatePreserveDay(dateStr) {
+// Get the current page path to determine language
+const pathname = Astro.url.pathname;
+// Check if exact /tr or under /tr/ directory
+const isTurkish = pathname === '/tr' || pathname.startsWith('/tr/');
+
+// Helper function to format date without timezone adjustments
+function formatDatePreserveDay(dateStr, useTurkish = false) {
   // Handle cases where dateStr might not be a string
   if (!dateStr) return '';
   
@@ -22,8 +59,22 @@ function formatDatePreserveDay(dateStr) {
   try {
     // Extract year, month, day directly from the string to avoid timezone issues
     const [year, month, day] = dateString.split('T')[0].split('-').map(num => parseInt(num, 10));
-    // Format the date to "Feb 1, 2023" style
-    return format(new Date(year, month - 1, day), "MMM d, yyyy");
+    const dateObj = new Date(year, month - 1, day);
+    
+    if (useTurkish) {
+      // Format with just the day number first
+      const dayStr = format(dateObj, "d");
+      // Get month abbreviation and translate
+      const monthAbbr = format(dateObj, "MMM");
+      const turkishMonth = turkishMonths[monthAbbr] || monthAbbr;
+      // Add the year
+      return `${turkishMonth} ${dayStr}, ${year}`;
+    } else {
+      // Full English month with day and year
+      const monthAbbr = format(dateObj, "MMM");
+      const fullMonth = fullEnglishMonths[monthAbbr] || monthAbbr;
+      return `${fullMonth} ${format(dateObj, "d, yyyy")}`;
+    }
   } catch (error) {
     console.error("Error formatting date:", dateString, error);
     return dateString; // Return original value if formatting fails
@@ -67,7 +118,7 @@ const sortedYears = Object.keys(postsByYear).sort((a, b) => b - a);
                 transition:name={post.slug}
               >
                 <div class="flex items-center text-xs text-gray-500 whitespace-nowrap">
-                  <time>{formatDatePreserveDay(date)}</time>
+                  <time>{formatDatePreserveDay(date, isTurkish)}</time>
                   {/* <Tags list={tags} /> */}
                 </div>
                 <a href={`/${post.slug}/`}>

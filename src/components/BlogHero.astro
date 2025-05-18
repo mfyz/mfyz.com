@@ -5,15 +5,50 @@ import readingTime from "reading-time";
 import Tags from "@components/Tags";
 import "@styles/blog-grid.css";
 
+// Turkish month names for localization
+const turkishMonths = {
+  'Jan': 'Ocak',
+  'Feb': 'Şubat',
+  'Mar': 'Mart',
+  'Apr': 'Nisan',
+  'May': 'Mayıs',
+  'Jun': 'Haziran',
+  'Jul': 'Temmuz',
+  'Aug': 'Ağustos',
+  'Sep': 'Eylül',
+  'Oct': 'Ekim',
+  'Nov': 'Kasım',
+  'Dec': 'Aralık'
+};
+
+// Full English month names for enhanced formatting
+const fullEnglishMonths = {
+  'Jan': 'January',
+  'Feb': 'February',
+  'Mar': 'March',
+  'Apr': 'April',
+  'May': 'May',
+  'Jun': 'June',
+  'Jul': 'July',
+  'Aug': 'August',
+  'Sep': 'September',
+  'Oct': 'October',
+  'Nov': 'November',
+  'Dec': 'December'
+};
+
 export interface Props {
   title: string;
   date: string;
   slug: string;
   content: string;
   tags: string[];
+  lang?: string; // Optional language property (tr for Turkish)
 }
 
-const { title, date, slug, content, tags } = Astro.props;
+const { title, date, slug, content, tags, lang } = Astro.props;
+// Check both lang prop and URL path for Turkish
+const isTurkish = lang === 'tr' || Astro.url.pathname.startsWith('/tr/');
 
 // Get the pattern based on slug
 const patternName = getPatternName(slug);
@@ -24,7 +59,7 @@ const patternClass = `blog-bg-pattern blog-bg-pattern-${patternName}-white`;
 const time = readingTime(content);
 
 // Helper function to format date without timezone adjustments
-function formatDatePreserveDay(dateStr) {
+function formatDatePreserveDay(dateStr, useTurkish = false) {
   // Handle cases where dateStr might not be a string
   if (!dateStr) return '';
   
@@ -34,8 +69,22 @@ function formatDatePreserveDay(dateStr) {
   try {
     // Extract year, month, day directly from the string to avoid timezone issues
     const [year, month, day] = dateString.split('T')[0].split('-').map(num => parseInt(num, 10));
-    // Format the date to "Feb 1, 2023" style
-    return format(new Date(year, month - 1, day), "MMM d, yyyy");
+    const dateObj = new Date(year, month - 1, day);
+    
+    if (useTurkish) {
+      // Format with just the day number first
+      const dayStr = format(dateObj, "d");
+      // Get month abbreviation and translate
+      const monthAbbr = format(dateObj, "MMM");
+      const turkishMonth = turkishMonths[monthAbbr] || monthAbbr;
+      // Add the year
+      return `${turkishMonth} ${dayStr}, ${year}`;
+    } else {
+      // Full English month with day and year
+      const monthAbbr = format(dateObj, "MMM");
+      const fullMonth = fullEnglishMonths[monthAbbr] || monthAbbr;
+      return `${fullMonth} ${format(dateObj, "d, yyyy")}`;
+    }
   } catch (error) {
     console.error("Error formatting date:", dateString, error);
     return dateString; // Return original value if formatting fails
@@ -52,7 +101,7 @@ function formatDatePreserveDay(dateStr) {
   <div class="max-w-4xl mx-auto">
     <div class="mb-4 flex items-center justify-between text-gray-300">
       <time class="shrink-0">
-        {formatDatePreserveDay(date)}
+        {formatDatePreserveDay(date, isTurkish)}
       </time>
 
       <div class="flex items-center gap-6">
@@ -71,7 +120,10 @@ function formatDatePreserveDay(dateStr) {
               d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
           </svg>
 
-          {time.text}
+          {isTurkish 
+            ? `${Math.ceil(time.minutes)} dk okuma` 
+            : time.text
+          }
         </span>
       </div>
     </div>
