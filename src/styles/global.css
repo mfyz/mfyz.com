@@ -96,6 +96,49 @@
     @apply list-decimal pl-6 my-6 marker:text-primary dark:marker:text-primary-light;
   }
   
+  /* Site logo styling with star icon default and home icon on hover */
+  .mfyz-logo {
+    display: inline-block;
+    position: relative;
+    padding-left: 30px; /* Space for the icon */
+    transition: opacity 0.3s ease;
+  }
+  
+  .mfyz-logo::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    background: url('/images/star-icon.svg') no-repeat center center;
+    background-size: contain;
+    transition: opacity 0.3s ease;
+  }
+  
+  .mfyz-logo::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    background: url('/images/home.svg') no-repeat center center;
+    background-size: contain;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .mfyz-logo:hover::before {
+    opacity: 0;
+  }
+  
+  .mfyz-logo:hover::after {
+    opacity: 1;
+  }
+
   /* Nested lists - reduce spacing */
   .main-content-wrapper ul ul,
   .main-content-wrapper ul ol,
