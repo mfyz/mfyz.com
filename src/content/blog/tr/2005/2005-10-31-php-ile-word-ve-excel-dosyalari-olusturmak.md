@@ -12,6 +12,7 @@ lang: tr
 #### Nasıl?
 
 PHP'deki COM nesnesi sayesinde Word, Excel gibi programlarla bağlantı kurulup onları kolayca yönetebiliriz. Tabiki kullanılacak olan bu programlar çalışılan sunucuda yüklü olması gerekmektedir. İşte buna ait kısa bir kodla rahatça anlayabileceğiniz 1-2 örnek. Basitçe bir metini bir word dosyasına (.doc) kaydetmeyi aşağıdaki örnekte görelim :
+
 ```
 \# Word programını çalıştırıyoruz
   $Word = new COM("Word.Application") or die("Word Başlatılamıyor!");
@@ -29,7 +30,11 @@ PHP'deki COM nesnesi sayesinde Word, Excel gibi programlarla bağlantı kurulup 
   $Word->Quit();
 
 ```
-"Bu metin php tarafından dinamik olarak yazdırılmıştır." yazısı içerikli bir dosya C:\\Deneme.doc konumuna kaydedilecektir. Şimdi de Excel ile bir veriyi kaydetmeyi göreceğimiz bir bir örneğe bakalım:
+
+"Bu metin php tarafından dinamik olarak yazdırılmıştır." yazısı içerikli bir dosya C:\\Deneme.doc konumuna kaydedilecektir.
+
+Şimdi de Excel ile bir veriyi kaydetmeyi göreceğimiz bir bir örneğe bakalım:
+
 ```
 \# Excel e bağlanmak için
   $yeni\_excel = new COM("Excel.Application");
@@ -61,4 +66,5 @@ PHP'deki COM nesnesi sayesinde Word, Excel gibi programlarla bağlantı kurulup 
   $yeni\_excel->Quit();
 
 ```
+
 Örnekler zaten yeterince açıklamalı ve basit. Kendinize kolayca uyarlayabilirsiniz. Excel örneği için forumdaki bir konudan faydalandım, soruyu soran ve kendi yanıtını bulan Sezgin Bilketay'a teşekkürler :)

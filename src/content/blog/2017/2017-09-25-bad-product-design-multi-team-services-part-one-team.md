@@ -8,7 +8,9 @@ category: Product Design
 migration: {"wpId":127,"wpPostDate":"2017-09-25T16:58:51.000Z"}
 ---
 
-![](/images/archive/en/2020/05/team-feature_jc8t1f.png?fit=650%2C325&ssl=1) I started to see this bad product design of having personal and team accounts linked together on some services. Most of them are doing wrong! The biggest limitation to be able to only have one team linked along with personal accounts. Two popular ones that drove me crazy lately!
+![](/images/archive/en/2020/05/team-feature_jc8t1f.png?fit=650%2C325&ssl=1)
+
+I started to see this bad product design of having personal and team accounts linked together on some services. Most of them are doing wrong! The biggest limitation to be able to only have one team linked along with personal accounts. Two popular ones that drove me crazy lately!
 
 *   Dropbox
 *   Quip

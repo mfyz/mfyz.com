@@ -9,7 +9,9 @@ migration: {"wpId":299,"wpPostDate":"2012-02-03T18:04:58.000Z"}
 lang: tr
 ---
 
-"Yil 20XX olmuş hala IE ile uğraşıyoruz" diyeceğiz herhalde yıllar sonra da. Bu süreçte ie'ye tekmeyle de olsa html5'i en azından etiketleri tanıması için en basit çözüm olarak iki şey yapmanız gerekiyor. Birincisi IE'nin dom ağacında html5 etiketlerine ait hiçbir initialization yok. Bunu tetiklemek için kullandığınız her html5 etiketi için en az bir tane element üretmeniz yetiyor. Sonrasında IE dökümandaki tüm elementleri dom ağacınızda tanımaya başlıyor. Bunun için:
+"Yil 20XX olmuş hala IE ile uğraşıyoruz" diyeceğiz herhalde yıllar sonra da. Bu süreçte ie'ye tekmeyle de olsa html5'i en azından etiketleri tanıması için en basit çözüm olarak iki şey yapmanız gerekiyor.
+
+Birincisi IE'nin dom ağacında html5 etiketlerine ait hiçbir initialization yok. Bunu tetiklemek için kullandığınız her html5 etiketi için en az bir tane element üretmeniz yetiyor. Sonrasında IE dökümandaki tüm elementleri dom ağacınızda tanımaya başlıyor. Bunun için:
 ```
 <script type="text/javascript">
 	elements = "article footer header nav sidebar section".split(' ');

@@ -11,7 +11,15 @@ lang: tr
 
 ## Başlıklar
 
-**p Paragraf Etiketi** Seçilen metini paragrafa dönüştürür, biraz içeri, alt ve üste de biraz boşluk ekler. Kapanış etiketi zorunludur. **h\* (Headings : Başlıklar)** H etiketi başlıkları belirler. h1, h2, ... h6 başlıklarından sayı büyüdükçe yazı küçülür. **div ve span** Stil uygulamak için kullandığımız metin bloğudur. class, id, style parametrelerini kullanarak stil tanımlayabilirsiniz. **br ve nobr** Yeni satırla ilgili etiketler; **br** etiketi yeni etikete geçişi sağlar. HTML yazarken yazdığınız metinde satır sonlarında br etiketi yoksa, yeni satırlar kelime ayracı yani boşluk olarak algılanır. Eğer yazdığınız metin bloğunu tek bir satırda görüntülemek istiyorsanız **nobr** kullanırsınız. Normalde metinler tarayıcı penceresine sığdırılır. nobr etiketini kullanarak bunu engelleyebilirsiniz. Örnekler:
+**p Paragraf Etiketi** Seçilen metini paragrafa dönüştürür, biraz içeri, alt ve üste de biraz boşluk ekler. Kapanış etiketi zorunludur.
+
+**h\* (Headings : Başlıklar)** H etiketi başlıkları belirler. h1, h2, ... h6 başlıklarından sayı büyüdükçe yazı küçülür.
+
+**div ve span** Stil uygulamak için kullandığımız metin bloğudur. class, id, style parametrelerini kullanarak stil tanımlayabilirsiniz.
+
+**br ve nobr** Yeni satırla ilgili etiketler; **br** etiketi yeni etikete geçişi sağlar. HTML yazarken yazdığınız metinde satır sonlarında br etiketi yoksa, yeni satırlar kelime ayracı yani boşluk olarak algılanır. Eğer yazdığınız metin bloğunu tek bir satırda görüntülemek istiyorsanız **nobr** kullanırsınız. Normalde metinler tarayıcı penceresine sığdırılır. nobr etiketini kullanarak bunu engelleyebilirsiniz.
+
+Örnekler:
 ```
 <!-- BAŞLIKLAR -->
 <h1>En büyük başlık bu başlık</h1>
@@ -44,7 +52,13 @@ cikacaktir
 
 ## Metin biçimlendirmek
 
-**font** : Metin bloğunu ifade eder. size parametresine, web font boyutu standartlarında verilen boyuta göre metin bloğundaki yazıların boyutunu, face ile de metin bloğundaki yazıların yazı karakterini ayarlar. size geçerli olarak 3'tür ve 1 ile 7 arasında değerler alır. **b ve strong** : İçindeki metni kalın yazı stilinde görüntüler. **i ve em** : İçindeki metni yatık stilde görüntüler. **u** : İçindeki metni altı çizgili stilde görüntüler. **pre** (preformatted : formatlanmamış) : Eşaralıklı (daktilo) metin biçimini ifade eder. Genellikle kod çıktılarını verirken, konsol, komut çıktısı veya ascii çalışmaları görüntülerken kullanırız. Bu etiketler arasına yazılan metinlerde, boşluk sayıları, yeni satırlar olduğu gibi korunur. Örnekler:
+**font** : Metin bloğunu ifade eder. size parametresine, web font boyutu standartlarında verilen boyuta göre metin bloğundaki yazıların boyutunu, face ile de metin bloğundaki yazıların yazı karakterini ayarlar. size geçerli olarak 3'tür ve 1 ile 7 arasında değerler alır.
+
+**b ve strong** : İçindeki metni kalın yazı stilinde görüntüler. **i ve em** : İçindeki metni yatık stilde görüntüler. **u** : İçindeki metni altı çizgili stilde görüntüler.
+
+**pre** (preformatted : formatlanmamış) : Eşaralıklı (daktilo) metin biçimini ifade eder. Genellikle kod çıktılarını verirken, konsol, komut çıktısı veya ascii çalışmaları görüntülerken kullanırız. Bu etiketler arasına yazılan metinlerde, boşluk sayıları, yeni satırlar olduğu gibi korunur.
+
+Örnekler:
 ```
 <!-- METİN STİLLERİ -->
 <b>Koyu yazı</b>
@@ -80,7 +94,17 @@ gördüğünüz bir preformatted text örneğin.)
 
 ## Köprüler
 
-Başka bir sayfa, sayfa konumu veya dosyaya köprü kurmak için **a** etiketi kullanılır. Sayfa konumu belirlemek için sadece name parametresi belirleyin. Çağırırken **href**\="#konum\_adi" şeklinde kullanın. Dosya veya başka bir sayfaya köprü için href="sayfa\_dosyasi\_adresi" şeklindeki parametreyi belirleyin. Başka sitedeki linkler için kesin protokolü belirlemeniz gerekir. ("www..." yerine "http://www..." şeklinde) Köprülerin farklı çerçevelerde veya yeni bir pencerede açılmasını sağlamak için **target**\="cerceve\_adi" parametresini ayarlayın. Eğer belirtilen çerçeve mevcut değilse sayfa, yeni pencerede açılır. Yeni pencere de açmanın bir diğer (ve en genel) yolu parametreye \_blank değeri vermektir. Epostalara doğrudan köprü vermek için href parametresine "**mailto:**gonderilecek@adres.com" şeklinde değer verin. İşletim sisteminizin geçerli eposta programına, belirtilen eposta adresine yeni ileti açmasını emreder. Örnekler:
+Başka bir sayfa, sayfa konumu veya dosyaya köprü kurmak için **a** etiketi kullanılır.
+
+Sayfa konumu belirlemek için sadece name parametresi belirleyin. Çağırırken **href**\="#konum\_adi" şeklinde kullanın.
+
+Dosya veya başka bir sayfaya köprü için href="sayfa\_dosyasi\_adresi" şeklindeki parametreyi belirleyin. Başka sitedeki linkler için kesin protokolü belirlemeniz gerekir. ("www..." yerine "http://www..." şeklinde)
+
+Köprülerin farklı çerçevelerde veya yeni bir pencerede açılmasını sağlamak için **target**\="cerceve\_adi" parametresini ayarlayın. Eğer belirtilen çerçeve mevcut değilse sayfa, yeni pencerede açılır. Yeni pencere de açmanın bir diğer (ve en genel) yolu parametreye \_blank değeri vermektir.
+
+Epostalara doğrudan köprü vermek için href parametresine "**mailto:**gonderilecek@adres.com" şeklinde değer verin. İşletim sisteminizin geçerli eposta programına, belirtilen eposta adresine yeni ileti açmasını emreder.
+
+Örnekler:
 ```
 <a href="http://www.mfyz.com/">Normal link</a>
 

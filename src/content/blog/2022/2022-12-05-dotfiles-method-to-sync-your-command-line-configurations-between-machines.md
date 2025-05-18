@@ -71,7 +71,9 @@ done
 Further more, you can automate the whole installation steps:
 
 *   clone the github repo, so you have local copy
+
 *   install gnu stow using the operating system’s package manager
+
 *   walk all directories and run stow command that will link files to the root folder.
 
 The final installation script will look like this:

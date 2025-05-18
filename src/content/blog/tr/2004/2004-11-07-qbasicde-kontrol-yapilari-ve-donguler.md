@@ -83,4 +83,6 @@ DO
 WHILE(A=B)
 
 ```
-A, B'ye eşit olana kadar belirtilen işlemlerin yapılmasını sağlar. Not : Bu döküman 15 Eylül 2006 tarihinde tekrar düzenlenmiştir.
+A, B'ye eşit olana kadar belirtilen işlemlerin yapılmasını sağlar.
+
+Not : Bu döküman 15 Eylül 2006 tarihinde tekrar düzenlenmiştir.

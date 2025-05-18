@@ -11,7 +11,14 @@ lang: tr
 
 ### CURL, ( **C**lient **URL** Library Functions)
 
-PHP 4.0.2 versiyonu ile yanında çok işe yarayacak bir kütüphane getirdi. Curl kütüphanesiyle upload/download, GET/POST işlemleri, çerez ve proxy yollama işlemleri, kullanıcı, şifre onaylama sayfaları(auth.) yapılabilir. Bu makaleyi okumadan önce sunucunuzda curl yüklü olup olmadığından emin olun. Eğer yüklü değilse [http://curl.haxx.se/libcurl/php/install.html](http://curl.haxx.se/libcurl/php/install.html) adresinden nasıl yükleme & kurulum yapıldığına bakabilirsiniz. Curl oturumlarında sıkça kullanacağımız birkaç fonksiyon var. [curl\_init()]("http://php.net/curl_init") : Yeni bir curl oturumu başlatır. [curl\_setopt()]("http://php.net/curl_setopt") : Curl transferi için seçenekleri parametreler halinde kullanmaya yarar. [curl\_exec()]("http://php.net/curl_exec") : curl\_setopt() ile belirlenmiş seçenekleri işler ve transfer işlemini yapar. [curl\_close()]("http://php.net/curl_close") : Daha önceden curl\_init ile açılmış curl oturumunu kapatır. [curl\_getinfo()]("http://php.net/curl_getinfo") : Yapılan curl işlemi hakkında çeşitli bilgilere ulaşmak için kullanılır. Bu fonksiyonların hakkında daha ayrıntılı bilgiye tıklayarak (php manual) ulaşabilirsiniz. Curl ile bir sayfanın çıktısını alan örnek bir uygulama yapalım.
+PHP 4.0.2 versiyonu ile yanında çok işe yarayacak bir kütüphane getirdi. Curl kütüphanesiyle upload/download, GET/POST işlemleri, çerez ve proxy yollama işlemleri, kullanıcı, şifre onaylama sayfaları(auth.) yapılabilir.
+
+Bu makaleyi okumadan önce sunucunuzda curl yüklü olup olmadığından emin olun. Eğer yüklü değilse [http://curl.haxx.se/libcurl/php/install.html](http://curl.haxx.se/libcurl/php/install.html) adresinden nasıl yükleme & kurulum yapıldığına bakabilirsiniz. Curl oturumlarında sıkça kullanacağımız birkaç fonksiyon var.
+
+[curl\_init()]("http://php.net/curl_init") : Yeni bir curl oturumu başlatır. [curl\_setopt()]("http://php.net/curl_setopt") : Curl transferi için seçenekleri parametreler halinde kullanmaya yarar. [curl\_exec()]("http://php.net/curl_exec") : curl\_setopt() ile belirlenmiş seçenekleri işler ve transfer işlemini yapar. [curl\_close()]("http://php.net/curl_close") : Daha önceden curl\_init ile açılmış curl oturumunu kapatır. [curl\_getinfo()]("http://php.net/curl_getinfo") : Yapılan curl işlemi hakkında çeşitli bilgilere ulaşmak için kullanılır.
+
+Bu fonksiyonların hakkında daha ayrıntılı bilgiye tıklayarak (php manual) ulaşabilirsiniz. Curl ile bir sayfanın çıktısını alan örnek bir uygulama yapalım.
+
 ```
 // Curl oturum baslatiliyor.
 $ch = curl\_init();
@@ -24,7 +31,9 @@ curl\_exec($ch); // ekrana basiliyor
 curl\_close($ch); // sunucu hafizasindan siliniyor
 
 ```
+
 Bu kod URL içeriğini sayfaya basacaktır. curl\_init ile yeni bir oturum başlatıldı, setopt ile transfer seçenekleri tanımlandı, işlem yapıldı ve curl\_close ile hafızadan silindi. curl\_setopt içindeki header parametresi sayfa çıktısını almak için gerekli. Url parametresi ise çıktısı alınacak adresi temsil ediyor. curl\_init("$adres"); şeklinde yapılma imkanıda mevcut. Şimdide curl ile localde olmayan bir sunucuya POST olarak veri gönderelim.
+
 ```
 $ch = curl\_init(); // oturum baslat
 // POST  adresi
@@ -37,7 +46,11 @@ curl\_exec ($ch);
 curl\_close ($ch);
 
 ```
-POSTFIELDS seçeneğinde, normalde nasıl GET ile browser üzerinden veri yolluyorsak aynı şekilde yolluyoruz. Bu şekilde üyelik isteyen sitelere otomatik olarak üyelikler açılabilir. (foreach yardımıyla).çeşitli log sistemlerinde kullanılabilir. Mesela yazıp, sattığınız sistemlerin nerelerde kullanıldığını loglamak için kendi sunucunuza nerede kullanıldığına ait çeşitli bilgiler yollayabilirsiniz. curl ile sockets kütüphanesinde olduğu gibi sahte isteklerde yollamak mümkündür. Örneğin; referer bilgisini istediğimiz şekilde değiştirip istek gönderebiliriz.
+
+POSTFIELDS seçeneğinde, normalde nasıl GET ile browser üzerinden veri yolluyorsak aynı şekilde yolluyoruz. Bu şekilde üyelik isteyen sitelere otomatik olarak üyelikler açılabilir. (foreach yardımıyla).çeşitli log sistemlerinde kullanılabilir. Mesela yazıp, sattığınız sistemlerin nerelerde kullanıldığını loglamak için kendi sunucunuza nerede kullanıldığına ait çeşitli bilgiler yollayabilirsiniz.
+
+curl ile sockets kütüphanesinde olduğu gibi sahte isteklerde yollamak mümkündür. Örneğin; referer bilgisini istediğimiz şekilde değiştirip istek gönderebiliriz.
+
 ```
 $ch = curl\_init();
 curl\_setopt($ch, CURLOPT\_URL,"http://localhost/test.php");
@@ -47,7 +60,9 @@ curl\_exec ($ch);
 curl\_close ($ch);
 
 ```
+
 CURLOPT\_REFERER parametresini istediğimiz şekilde değiştirdik :) Bu şekilde ".htaccess" ile yapılan korumalarda aşılabiliyor. Diğer sayfada öğrendiklerimizle birkaç CURLOPT parametresi ekleyip bir dosya indirme fonksiyonu yazalım.
+
 ```
 <?
 /\*
@@ -85,14 +100,24 @@ function dosya\_indir($adres,$ad)
 ?>
 
 ```
-Şimdi gelelim sistemin nasıl işlediğine; İlk once curl'un yüklü olup olmadığına bakılıyor, eğer yüklü değilse hata mesajı veriliyor. Curl işlemi başlatıldıktan sonra CURLOPT\_RETURNTRANSFER seçeneğiyle curl\_exec()'ten dönen dener sayfaya çıktı olarak verilmez, tanımlandığı değişkende, örnekte $data tutulur. $data değişkenine adres'in bilgileri alındıktan sonra dosya yazma işlemi fonksiyonları ile sunucuda yeni dosya oluşturulur. Sonra dosya indirme işlemi tamamlanır. Eğer bu işlemi local olmayan sunucunuzda yaparsanız çok büyük dosyaları çok az bir zamanda çekebileceğinizi görebilirsiniz. Ben yaptığım testlerde saniyede 400 kb civarı çekiyordum :) İşleme curl\_Getinfo altında CURLINFO\_SPEED\_DOWNLOAD parametresi eklerseniz download hızını ölçebilirsiniz.
+
+Şimdi gelelim sistemin nasıl işlediğine;
+
+İlk once curl'un yüklü olup olmadığına bakılıyor, eğer yüklü değilse hata mesajı veriliyor. Curl işlemi başlatıldıktan sonra CURLOPT\_RETURNTRANSFER seçeneğiyle curl\_exec()'ten dönen dener sayfaya çıktı olarak verilmez, tanımlandığı değişkende, örnekte $data tutulur. $data değişkenine adres'in bilgileri alındıktan sonra dosya yazma işlemi fonksiyonları ile sunucuda yeni dosya oluşturulur. Sonra dosya indirme işlemi tamamlanır. Eğer bu işlemi local olmayan sunucunuzda yaparsanız çok büyük dosyaları çok az bir zamanda çekebileceğinizi görebilirsiniz.
+
+Ben yaptığım testlerde saniyede 400 kb civarı çekiyordum :) İşleme curl\_Getinfo altında CURLINFO\_SPEED\_DOWNLOAD parametresi eklerseniz download hızını ölçebilirsiniz.
+
 ```
 $dlhizi = curl\_getInfo($ch,"CURLINFO\_SPEED\_DOWNLOAD");
 
 ```
+
 Tüm bu fonksiyonun yaptığını \*nix curl'u ilede yapabilirsiniz. Örneğin;
+
 ```
 system("curl -o dosyaadi.rar http://www.ceviz.net/dosyaadi.rar");
 
 ```
-aynı işi görecektir. Ama system, passthru gibi komutlar güvenlik nedeniyle genelde yasaklıdır. **Hazırlayan :** Yunus Emre Yılmaz (Ceviz.net)
+aynı işi görecektir. Ama system, passthru gibi komutlar güvenlik nedeniyle genelde yasaklıdır.
+
+**Hazırlayan :** Yunus Emre Yılmaz (Ceviz.net)

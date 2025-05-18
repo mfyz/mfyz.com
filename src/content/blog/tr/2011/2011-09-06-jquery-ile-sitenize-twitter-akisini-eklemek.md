@@ -9,12 +9,21 @@ migration: {"wpId":156,"wpPostDate":"2011-09-06T09:50:48.000Z"}
 lang: tr
 ---
 
-Twitter'in kendi widgetları sayesinde twitter hesabınızın public timeline yani akışını sitenize ekleyebiliyorsunuz fakat o widgetı kullanmak zorunda değilsiniz. Twitter api ile akışınızı jquery ile alıp kendiniz çizebilirsiniz. Aslında çok basit. Twitter apisi zaten size public timeline'ınızı json nesnesi olarak veriyor herhangi bir api key kayıdı yapmaya gerek kalmadan. Bu json nesnesinin adresi
+Twitter'in kendi widgetları sayesinde twitter hesabınızın public timeline yani akışını sitenize ekleyebiliyorsunuz fakat o widgetı kullanmak zorunda değilsiniz. Twitter api ile akışınızı jquery ile alıp kendiniz çizebilirsiniz. Aslında çok basit. Twitter apisi zaten size public timeline'ınızı json nesnesi olarak veriyor herhangi bir api key kayıdı yapmaya gerek kalmadan.
+
+Bu json nesnesinin adresi
+
 ```
 http://api.twitter.com/1/statuses/user\_timeline.json?screen\_name=mfyz&count=10&callback=?
 
 ```
-Adresteki mfyz benim twitter kullanıcı adım. count parametresiyle de en son pos edilen içeriklerin listesinin boyutunu belirleyebiliyorsunuz, sanırım bu parametrede bir üst limit var. Yukaridaki adresi tarayıcınıza yapıştırırsanız json nesnesi alırsınız. jQuery ile bu json nesnesini işleyecegiz. Bunun için jquery'deki getJSON() fonksiyonunu kullanacağız. jQuery, normal .ajax() fonksiyonu gibi bu json nesnesini xmlhttprequest yani ajax ile alıp sonucunda işleyebileceğimiz bir javascript objesi olarak bize sunuyor. Size bu işi yapan tüm kodu verip sonra kod üstünden açıklayacağım:
+
+Adresteki mfyz benim twitter kullanıcı adım. count parametresiyle de en son pos edilen içeriklerin listesinin boyutunu belirleyebiliyorsunuz, sanırım bu parametrede bir üst limit var.
+
+Yukaridaki adresi tarayıcınıza yapıştırırsanız json nesnesi alırsınız. jQuery ile bu json nesnesini işleyecegiz. Bunun için jquery'deki getJSON() fonksiyonunu kullanacağız. jQuery, normal .ajax() fonksiyonu gibi bu json nesnesini xmlhttprequest yani ajax ile alıp sonucunda işleyebileceğimiz bir javascript objesi olarak bize sunuyor.
+
+Size bu işi yapan tüm kodu verip sonra kod üstünden açıklayacağım:
+
 ```
 var $tweetList;
 var $tweetUrl = 'http://api.twitter.com/1/statuses/user\_timeline.json?screen\_name=mfyz&&count=10&callback=?';
@@ -37,4 +46,13 @@ $.getJSON($tweetUrl, function (data) {
 });
 
 ```
-Yukaridaki kod 2 tane değişken tanımlaması ile başlıyor. Birisi api url'i diğeri de html kodunu üreteceğimiz taşıyıcı değişken. Gördüğünüz gibi getJSON fonksiyonu ile url'i belirtip ikinci parametre olarak callback fonksiyonunu tanımladık. Callback fonksiyonu, dönen json nesnesini içerir, bu örnekte "data" adındaki değişken olarak geçiyor. data dizisini dönerek tüm elemanları html kodu üreterek ekleyecegiz listeye. Döngü içindeki ilk kontrolde eğer taşıyıcı değişken daha üretilmediyse html listesi olarak üretiliyor. Sonrasında bu liste içine satır olarak ekleyecegiz tüm twitter girdilerini. Bir diğer kontrol ise sadece doğrudan yazılan tweet'leri işleyecegiz, bunu da yazılan tweet'in cevap olmamasını kontrol ederek yapıyoruz. Sonra da taşıyıcı listeye ekliyoruz tweet edilen yazıyı işleyerek. Bu aşamada ise regular expressions ile @username, #hashtag veya url gibi özel yazıları linklere dönüştürüyoruz. Döngü bittiğinde de html'inizdeki herhangi bir elemanın içine bu üretilen listeyi basabilirsiniz, bu örnekte tweetStream kimliğine sahip nesnenin içine basılıyor. Bu kodun calışan örneğini anasayfadaki sağdaki kolonda görebilirsiniz. Home.js dosyasında yukarıdaki örnegi görebilirsiniz.
+
+Yukaridaki kod 2 tane değişken tanımlaması ile başlıyor. Birisi api url'i diğeri de html kodunu üreteceğimiz taşıyıcı değişken. Gördüğünüz gibi getJSON fonksiyonu ile url'i belirtip ikinci parametre olarak callback fonksiyonunu tanımladık. Callback fonksiyonu, dönen json nesnesini içerir, bu örnekte "data" adındaki değişken olarak geçiyor. data dizisini dönerek tüm elemanları html kodu üreterek ekleyecegiz listeye.
+
+Döngü içindeki ilk kontrolde eğer taşıyıcı değişken daha üretilmediyse html listesi olarak üretiliyor. Sonrasında bu liste içine satır olarak ekleyecegiz tüm twitter girdilerini.
+
+Bir diğer kontrol ise sadece doğrudan yazılan tweet'leri işleyecegiz, bunu da yazılan tweet'in cevap olmamasını kontrol ederek yapıyoruz. Sonra da taşıyıcı listeye ekliyoruz tweet edilen yazıyı işleyerek. Bu aşamada ise regular expressions ile @username, #hashtag veya url gibi özel yazıları linklere dönüştürüyoruz.
+
+Döngü bittiğinde de html'inizdeki herhangi bir elemanın içine bu üretilen listeyi basabilirsiniz, bu örnekte tweetStream kimliğine sahip nesnenin içine basılıyor.
+
+Bu kodun calışan örneğini anasayfadaki sağdaki kolonda görebilirsiniz. Home.js dosyasında yukarıdaki örnegi görebilirsiniz.

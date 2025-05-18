@@ -89,7 +89,9 @@ If you want a more robust monitoring tool that has more ways to monitor your ser
 It has almost all the features [healthchecks.io](http://healthchecks.io) has, plus a few more:
 
 *   Status pages
+
 *   More check methods like DNS record, ping, docker container, SSL cert
+
 *   Its Web UI looks more traditional monitoring tools like uptime history, response time, etc
 
 Run via Docker:

@@ -16,7 +16,9 @@ RSS günümüz teknolojileri arasında en yaygın takip standardı haline geldi.
 header('Content-type: text/xml');
 
 ```
-kodunu basıyoruz sayfanın çıktı basılmamış bir kısmına. Şimdi size 2 kayıtlık bir XML çıktısı örneği verip açıklayayım:
+kodunu basıyoruz sayfanın çıktı basılmamış bir kısmına.
+
+Şimdi size 2 kayıtlık bir XML çıktısı örneği verip açıklayayım:
 ```
 <?xml version="1.0" encoding="iso-8859-9"?>
 <rss version="2.0">
@@ -53,9 +55,17 @@ Bu gördüğünüz kod RSS işlem sayfanız tarafından çıktısı yapılmış 
 </item>
 
 ```
-kod bloğu ise sizin for veya while gibi bir döngü mekanizması ile kayıtlarınızı dönüp çıktısını alacağınız kısımdır. Bunun dışında kalan kısımlar (öncesindeki kısım ve sonrasindaki kısım) sizin statik basacağınız bölümdür. Burada dikkat edilmesi gereken nokta pubDate olarak çıktı vereceğiniz tarih yukarıda gödrüğünüz formatta olmak zorundadır. Bu tarih formatını "Y-m-d H:i:s" formatındaki genel kullanımdan bu formata;
+kod bloğu ise sizin for veya while gibi bir döngü mekanizması ile kayıtlarınızı dönüp çıktısını alacağınız kısımdır. Bunun dışında kalan kısımlar (öncesindeki kısım ve sonrasindaki kısım) sizin statik basacağınız bölümdür.
+
+Burada dikkat edilmesi gereken nokta pubDate olarak çıktı vereceğiniz tarih yukarıda gödrüğünüz formatta olmak zorundadır.
+
+Bu tarih formatını "Y-m-d H:i:s" formatındaki genel kullanımdan bu formata;
 ```
 gmdate( 'D, d M Y H:i:s', $tarihinize\_ait\_degisken ) . " GMT"
 
 ```
-ile oluşturabilirsiniz. 2.önemli konu ise kod olarak basacağınız diğer string'ler yani title ve description etiketlerinin içerisine ekleri ile basmanızdır. Tahmin edeceğiniz gibi link etiketinde ise bu gönderinize ait url/link olacak. RSS çıktısı basan işlemler bundan ibaret. Ben dinamik gönderileri basarken tüm kayıtlarımı RSS'e yazdırmıyorum. RSS okuyucular genelde yeni eklenen kayıtları saptayıp onları kullanıcıya gösterir. Bu yüzden sitenizde RSS export edeceğiniz kayıt kümesinin güncellenme yoğunluğuna bağlı olarak maksimum 50-100 kayıt bastırın. Çünkü eğer büyük boyutta bir RSS çıktınız olursa, hem kullanıcılar tarafından bunun güncellenmesi zor/uzun olacaktır. Hemde gereksiz kayıtları her seferinde boşuna transfer ettirmiş olursunuz.
+ile oluşturabilirsiniz.
+
+2.önemli konu ise kod olarak basacağınız diğer string'ler yani title ve description etiketlerinin içerisine ekleri ile basmanızdır. Tahmin edeceğiniz gibi link etiketinde ise bu gönderinize ait url/link olacak. RSS çıktısı basan işlemler bundan ibaret.
+
+Ben dinamik gönderileri basarken tüm kayıtlarımı RSS'e yazdırmıyorum. RSS okuyucular genelde yeni eklenen kayıtları saptayıp onları kullanıcıya gösterir. Bu yüzden sitenizde RSS export edeceğiniz kayıt kümesinin güncellenme yoğunluğuna bağlı olarak maksimum 50-100 kayıt bastırın. Çünkü eğer büyük boyutta bir RSS çıktınız olursa, hem kullanıcılar tarafından bunun güncellenmesi zor/uzun olacaktır. Hemde gereksiz kayıtları her seferinde boşuna transfer ettirmiş olursunuz.

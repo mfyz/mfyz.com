@@ -9,7 +9,23 @@ migration: {"wpId":356,"wpPostDate":"2013-04-08T15:44:21.000Z"}
 lang: tr
 ---
 
-![](/images/archive/tr/2013/04/mongo-db-huge-logo_0.png) NoSQL vertiabanı motorları son yıllarda çok popülerleşti, çünkü yapısız olmalarından dolayı daha kolay mimari değişiklik yapabileceğiniz veri yapıları olduğu için tercih edilmeye başladı. Ölçeklenebilirlik de klasik sql veritabanlarının sınırlı ve geleneksel kaldığı konulardı. NoSQL çıkışı kesinlikle modern bir çözüm olarak görülebilir. İnternette bir çok karşılaştırma, performans analiz yazıları bulabilirsiniz sql ve nosql veritabanları hakkında. Ancak her yere uyan mükemmel bir çözüm yok. Benim gördüğüm kadarıyla, hibrid ve akıllıca kurgulanarak dengelenmiş ve dağıtılmış sistemler en yaygın kullanımlar. Yani bazı şeyleri nosql ile daha zor ve daha çok kodlama zamanı harcayarak yapabilir, bazı şeyleri de sql ile yönetemez ve yapamazsınız. Daha teknik konulara giriyorsanız zaten bu yazıdan daha çoğuna ihtiyacınız var :) Bu yazı daha çok mongo'ya giriş ve flörtleşme dönemi hakkında. Eğer MongoDB'yi denemek istiyorsanız, mongodb sunucusunu bilgisayarınıza yüklemek zorunda değilsiniz. Kurulumu da çok zor değil fakat sadece denemek için sunucu kurulumu konfigurasyonu gibi şeylerle uğraşmak zorunda değilsiniz. Sadece istemci sürücülerini kurmanız yeterli. Bu konu hakkında mongodb dökümantasyonundaki http://docs.mongodb.org/ecosystem/drivers/php/ sayfasını inceleyebilirsiniz. MongoLab adında bağımsız bir servis sayesinde ücretsiz bir mongo veritabanı oluşturabilir ve denemelerinizi onun üstünde yapabilirsiniz. MongoLab veritabanı ve kullanıcınızı oluşturduktan sonra açık erişim izni veriyor. Dolayısıyla php'den veya herhangi diğer bir ortamdan doğrudan erişebiliyorsunuz. Tabi ki servisin amacı mongo denemek isteyen insanlara servis sunmak değil. MongoLab bulut veritabanı servisi. Veri dosyalarının saklanmasını istediğiniz alt servisi (Amazon, Rackspace, Windows Azure vs...), hatta yüzeysel de olsa bölge seçebiliyorsunuz (Amerika veya Avrupa veya uzak doğudaki bir veri merkezi şeklinde). MongoLab 500mblık bir alanı ücretsiz sağlıyor. Diğer sınırlamalarını bilmiyorum fakat ufak projeleriniz için veya deneme yapmak için ideal. Eğer uygulamanız çok veri kullanmaya başlarsa küçük, büyük paketleri veya kurumsal hizmetlerinden faydalanabilirsiniz. MongoLab ile tamamen php mongo eklentisi bağımlılığından da kurtularak doğrudan servisin basit REST apisini kullanabilir ve tek başına çalışan bir uygulama yazmanız da mümkün. Konumuz mongo iken, birkaç php-mongo interaksiyonunu denediğim bir php dosyasının kodunu doğrudan vermek istiyorum.
+![](/images/archive/tr/2013/04/mongo-db-huge-logo_0.png) NoSQL vertiabanı motorları son yıllarda çok popülerleşti, çünkü yapısız olmalarından dolayı daha kolay mimari değişiklik yapabileceğiniz veri yapıları olduğu için tercih edilmeye başladı. Ölçeklenebilirlik de klasik sql veritabanlarının sınırlı ve geleneksel kaldığı konulardı. NoSQL çıkışı kesinlikle modern bir çözüm olarak görülebilir.
+
+İnternette bir çok karşılaştırma, performans analiz yazıları bulabilirsiniz sql ve nosql veritabanları hakkında. Ancak her yere uyan mükemmel bir çözüm yok. Benim gördüğüm kadarıyla, hibrid ve akıllıca kurgulanarak dengelenmiş ve dağıtılmış sistemler en yaygın kullanımlar. Yani bazı şeyleri nosql ile daha zor ve daha çok kodlama zamanı harcayarak yapabilir, bazı şeyleri de sql ile yönetemez ve yapamazsınız.
+
+Daha teknik konulara giriyorsanız zaten bu yazıdan daha çoğuna ihtiyacınız var :) Bu yazı daha çok mongo'ya giriş ve flörtleşme dönemi hakkında.
+
+Eğer MongoDB'yi denemek istiyorsanız, mongodb sunucusunu bilgisayarınıza yüklemek zorunda değilsiniz. Kurulumu da çok zor değil fakat sadece denemek için sunucu kurulumu konfigurasyonu gibi şeylerle uğraşmak zorunda değilsiniz. Sadece istemci sürücülerini kurmanız yeterli. Bu konu hakkında mongodb dökümantasyonundaki http://docs.mongodb.org/ecosystem/drivers/php/ sayfasını inceleyebilirsiniz.
+
+MongoLab adında bağımsız bir servis sayesinde ücretsiz bir mongo veritabanı oluşturabilir ve denemelerinizi onun üstünde yapabilirsiniz. MongoLab veritabanı ve kullanıcınızı oluşturduktan sonra açık erişim izni veriyor. Dolayısıyla php'den veya herhangi diğer bir ortamdan doğrudan erişebiliyorsunuz.
+
+Tabi ki servisin amacı mongo denemek isteyen insanlara servis sunmak değil. MongoLab bulut veritabanı servisi. Veri dosyalarının saklanmasını istediğiniz alt servisi (Amazon, Rackspace, Windows Azure vs...), hatta yüzeysel de olsa bölge seçebiliyorsunuz (Amerika veya Avrupa veya uzak doğudaki bir veri merkezi şeklinde).
+
+MongoLab 500mblık bir alanı ücretsiz sağlıyor. Diğer sınırlamalarını bilmiyorum fakat ufak projeleriniz için veya deneme yapmak için ideal. Eğer uygulamanız çok veri kullanmaya başlarsa küçük, büyük paketleri veya kurumsal hizmetlerinden faydalanabilirsiniz.
+
+MongoLab ile tamamen php mongo eklentisi bağımlılığından da kurtularak doğrudan servisin basit REST apisini kullanabilir ve tek başına çalışan bir uygulama yazmanız da mümkün.
+
+Konumuz mongo iken, birkaç php-mongo interaksiyonunu denediğim bir php dosyasının kodunu doğrudan vermek istiyorum.
 ```
 <?php
 $mongo = new Mongo("mongodb://dbuser:dbpassword@\*\*\*\*\*\*.mongolab.com:45297/test\_database");
@@ -82,4 +98,10 @@ switch ($action) {
 }
 
 ```
-İlk satırlarda göreceğiniz dsn'i mongolab'den edineceğiniz sunucu adresi ve portunu (tahminimce her kullanıcı için farklı olma durumu var), veritabanı kullanıcı adınız ve şifrenizi belirterek tek parça string şeklinde belirttiginiz takdirde bağlantı sağlayabileceksiniz. Mongo, küçük uygulamalarda veri düzeni zorunluluğu olmadığı için kullanması çok keyifli, fakat verinizi dökümante etmeyi unutmayın. Yoksa neyin ne olduğunu unutur veya ipin ucunu kaçırarak karmaşık bir veri yığını elde edebilirsiniz günün sonunda. MongoDB dökümantasyonunu inceleyerek indeksleme, sorgulama ve veri yönetimi nasıl yapılıyor fikir edinebilirsiniz. Ayrıca php manual'daki bazı SQL örneklerinin php ile mongo sınıfında nasıl yapıldığını gösteren bu sayfayı: [http://php.net/manual/en/mongo.sqltomongo.php](http://php.net/manual/en/mongo.sqltomongo.php) incelemekte fayda var. MongoLab servisinin adresi [https://mongolab.com](https://mongolab.com)
+İlk satırlarda göreceğiniz dsn'i mongolab'den edineceğiniz sunucu adresi ve portunu (tahminimce her kullanıcı için farklı olma durumu var), veritabanı kullanıcı adınız ve şifrenizi belirterek tek parça string şeklinde belirttiginiz takdirde bağlantı sağlayabileceksiniz.
+
+Mongo, küçük uygulamalarda veri düzeni zorunluluğu olmadığı için kullanması çok keyifli, fakat verinizi dökümante etmeyi unutmayın. Yoksa neyin ne olduğunu unutur veya ipin ucunu kaçırarak karmaşık bir veri yığını elde edebilirsiniz günün sonunda.
+
+MongoDB dökümantasyonunu inceleyerek indeksleme, sorgulama ve veri yönetimi nasıl yapılıyor fikir edinebilirsiniz. Ayrıca php manual'daki bazı SQL örneklerinin php ile mongo sınıfında nasıl yapıldığını gösteren bu sayfayı: [http://php.net/manual/en/mongo.sqltomongo.php](http://php.net/manual/en/mongo.sqltomongo.php) incelemekte fayda var.
+
+MongoLab servisinin adresi [https://mongolab.com](https://mongolab.com)

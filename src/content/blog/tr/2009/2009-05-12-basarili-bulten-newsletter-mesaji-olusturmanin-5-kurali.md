@@ -23,7 +23,9 @@ Postalanan bu epostalar şu an dünyada kullanılan belli başlı e-posta okuyuc
 
 #### Problem
 
-Burada yaptığınız şey aslında bir mesajı bir kitleye ulaştırmak. Fakat müşteriniz sizden görseli çok, genelde birkaç bağlantı bulunan bir HTML mesaj göndermenizi isteyecek. Bu noktada ilk etapta postalama servislerinin kodlarınız üzerinde yapabileceği olası değişiklikleri düşünmek gerekecek. Profesyonel destek veren postalama servislerinin çoğunda kodunuza dokunulmadan gönderilmesini sağlayabiliyorsunuz ama böyle bir faktörün bulunduğunu da bilmeniz gerekiyor. Burada asıl karşılaşacağınız problem ikinci kısımda anlattığım bir çok e-posta okuyucu program ve servis tarafından html mesajınız gösterilirken farklı çizilecek. Mesjaınızı oluştururken kullancağınız html aynı zamanda spam (istenmeyen) eposta yakalayıcı filtrelere de takılmasını sağlayabilir. Kullanıcının kendi rızası ile bile gönderiyor olsanız e-posta sağlayıcı servisiniz bunu bilmeyecek ve e-postanızın kodlamasına ve bu noktadaki kaliteye bakacaktır. Yani mesajınızı oluştururken dikkat etmeniz gereken noktalar var. Bunlardan önemli olan bazılarına değineceğim.
+Burada yaptığınız şey aslında bir mesajı bir kitleye ulaştırmak. Fakat müşteriniz sizden görseli çok, genelde birkaç bağlantı bulunan bir HTML mesaj göndermenizi isteyecek. Bu noktada ilk etapta postalama servislerinin kodlarınız üzerinde yapabileceği olası değişiklikleri düşünmek gerekecek. Profesyonel destek veren postalama servislerinin çoğunda kodunuza dokunulmadan gönderilmesini sağlayabiliyorsunuz ama böyle bir faktörün bulunduğunu da bilmeniz gerekiyor. Burada asıl karşılaşacağınız problem ikinci kısımda anlattığım bir çok e-posta okuyucu program ve servis tarafından html mesajınız gösterilirken farklı çizilecek. Mesjaınızı oluştururken kullancağınız html aynı zamanda spam (istenmeyen) eposta yakalayıcı filtrelere de takılmasını sağlayabilir. Kullanıcının kendi rızası ile bile gönderiyor olsanız e-posta sağlayıcı servisiniz bunu bilmeyecek ve e-postanızın kodlamasına ve bu noktadaki kaliteye bakacaktır.
+
+Yani mesajınızı oluştururken dikkat etmeniz gereken noktalar var. Bunlardan önemli olan bazılarına değineceğim.
 
 #### Hazırlık
 
@@ -44,11 +46,23 @@ Mesajı boyutu da trafiği artırmanın dışında ideal bir mesajdan daha uzun 
 
 #### 2\. Standart ve Temiz Kod
 
-E-posta okuyucular tarafından yorumlanacak kodun standart olması crossplatform bir ürün çıkarmanız için gerekli ilk kural. Bu kurala ne kadar özen gösterirseniz o kadar az sorun yaşarsınız. Zaten şu an internette standart kod yazmanın önemini vurgulayan birçok yazı bulabilirsiniz. Yadığınız e-posta'yı bir sunucuda host edip w3c standartlık kontrol sayfasından standartlara uygun olup olmadığını kontrol edebilirsiniz. Birçok web geliştirici dreamweaver veya frontpage gibi editorler kullanıyorlar. Bu tarz yazılımlar birçok yardımcı betik, stilleme farklı yaklaşım kullanırlar. Bundan dolayı da kodunuzda çok fazla artık oluşur. Tabiki yorumlamada burada kullanılan yenilikçi yaklaşımların bazıları takılır. Bundan dolayı kodunuzu elle, sade yazın.
+E-posta okuyucular tarafından yorumlanacak kodun standart olması crossplatform bir ürün çıkarmanız için gerekli ilk kural. Bu kurala ne kadar özen gösterirseniz o kadar az sorun yaşarsınız. Zaten şu an internette standart kod yazmanın önemini vurgulayan birçok yazı bulabilirsiniz.
+
+Yadığınız e-posta'yı bir sunucuda host edip w3c standartlık kontrol sayfasından standartlara uygun olup olmadığını kontrol edebilirsiniz.
+
+Birçok web geliştirici dreamweaver veya frontpage gibi editorler kullanıyorlar. Bu tarz yazılımlar birçok yardımcı betik, stilleme farklı yaklaşım kullanırlar. Bundan dolayı da kodunuzda çok fazla artık oluşur. Tabiki yorumlamada burada kullanılan yenilikçi yaklaşımların bazıları takılır. Bundan dolayı kodunuzu elle, sade yazın.
 
 #### 3\. İlkel Yapı
 
-HTML mesajınızda birçok resim olacaktır. Bu resimleri doğru yerleştirmek için aklınıza gelen ilk yol ne oluyor? Tabiki css ile pozisyonlamayı düşünüyorsunuz ama yapmayın. CSS'i sadece basit kurallar için kullanın (yazıların boyut, font, rengi vs). Pozisyonlamayı eski mantığa göre tablolarla yapın. Ayrıca tablo kullanırken 3-4 derinliği geçmemeye dikkat edin. Ayrıca cellpadding ve cellspacing kullanmayın (Gmail desteklemiyor). 600px genişliğini aşmamaya çalışın. Bu genişlik neredeyse tüm kullanıcılar için görülebilir alanınızı rahatlıkla takip edebilmelerini sağlayacaktır. HTML mesajınızda DTD tanımı ve <html> ve body etiketleri kullanın fakat içine meta tanımı, css, javascript import tanımları yerleştirmeyin, çalışmayacaktır. Mesajınızıda form ve form elementleri kullamayın bazı servisler formları süzgeçten geçiriyor (örnek Hotmail) Paragraf yerine <br> kullanın.
+HTML mesajınızda birçok resim olacaktır. Bu resimleri doğru yerleştirmek için aklınıza gelen ilk yol ne oluyor? Tabiki css ile pozisyonlamayı düşünüyorsunuz ama yapmayın. CSS'i sadece basit kurallar için kullanın (yazıların boyut, font, rengi vs). Pozisyonlamayı eski mantığa göre tablolarla yapın. Ayrıca tablo kullanırken 3-4 derinliği geçmemeye dikkat edin. Ayrıca cellpadding ve cellspacing kullanmayın (Gmail desteklemiyor).
+
+600px genişliğini aşmamaya çalışın. Bu genişlik neredeyse tüm kullanıcılar için görülebilir alanınızı rahatlıkla takip edebilmelerini sağlayacaktır.
+
+HTML mesajınızda DTD tanımı ve <html> ve body etiketleri kullanın fakat içine meta tanımı, css, javascript import tanımları yerleştirmeyin, çalışmayacaktır.
+
+Mesajınızıda form ve form elementleri kullamayın bazı servisler formları süzgeçten geçiriyor (örnek Hotmail)
+
+Paragraf yerine <br> kullanın.
 
 #### 4\. Türkçe ve ASCII dışı karakterler
 
@@ -56,6 +70,10 @@ ASCII dışı tüm karakterleri html entity olarak kullanın mesela © yerine &c
 
 #### 5\. Metin sürümü (Plain text version)
 
-E-postanızın içine multipart olarak text versiyonunu da ekleyin. Mesjaınızı düz metin olarak linklerden bağımsızlaştırarak metin sürümünü ekleyin. Bu kurallara dikkat ettiğiniz sürece e-posta bültenleriniz daha düzgün ve her okuyucuda aynı görünecektir. Tabiki yazdığınız mesajı bir deneme grubu oluşturarak her gönderimde test ediniz. Son olarak aşağıdaki tabloda hangi e-posta okuyucunun neyi destekleyip desteklemediğini görebilirsiniz.
+E-postanızın içine multipart olarak text versiyonunu da ekleyin. Mesjaınızı düz metin olarak linklerden bağımsızlaştırarak metin sürümünü ekleyin.
+
+Bu kurallara dikkat ettiğiniz sürece e-posta bültenleriniz daha düzgün ve her okuyucuda aynı görünecektir. Tabiki yazdığınız mesajı bir deneme grubu oluşturarak her gönderimde test ediniz.
+
+Son olarak aşağıdaki tabloda hangi e-posta okuyucunun neyi destekleyip desteklemediğini görebilirsiniz.
 
 #### ![](/images/archive/tr/2009/05/email-html-coding-support-table.png)

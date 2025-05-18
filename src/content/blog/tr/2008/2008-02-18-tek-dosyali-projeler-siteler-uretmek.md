@@ -9,7 +9,11 @@ migration: {"wpId":135,"wpPostDate":"2008-02-18T21:43:41.000Z"}
 lang: tr
 ---
 
-Bazen yazdığınız/yazacağınız modül/sayfa/proje çok işlem ve bölüm içermeyebilir. Farklı içeriğe sahip kısa ama çok metin olabilir elinizde. Ya da modülünüzde işlemler kısadır. Ya da tamamen ilginçlik olsun diye tek dosyada birçok işi yaptırmak isteyebilirsiniz. Mesela sadece bir dizini listeleyip, dosyalar üzerinde ufak işlemler yaptıran bir betik yazıyor olabilirsiniz. Ya da bir reklam kampanyası için reklam sayfasının yanında ufak bir bilgi (hakkında) sayfası ve iletişim formu olan ufak bir site yapıyor olabilirsiniz. Ufak işlemler içeren sayfalara bir sürü dosya oluşturup dosya kalabalığı yaptırmaktansa tek dosyada toplayabilirsiniz. Bu dökümanda ufak bir örnekle tek dosyadan oluşan bir site/sayfa yapacağım.
+Bazen yazdığınız/yazacağınız modül/sayfa/proje çok işlem ve bölüm içermeyebilir. Farklı içeriğe sahip kısa ama çok metin olabilir elinizde. Ya da modülünüzde işlemler kısadır. Ya da tamamen ilginçlik olsun diye tek dosyada birçok işi yaptırmak isteyebilirsiniz.
+
+Mesela sadece bir dizini listeleyip, dosyalar üzerinde ufak işlemler yaptıran bir betik yazıyor olabilirsiniz. Ya da bir reklam kampanyası için reklam sayfasının yanında ufak bir bilgi (hakkında) sayfası ve iletişim formu olan ufak bir site yapıyor olabilirsiniz.
+
+Ufak işlemler içeren sayfalara bir sürü dosya oluşturup dosya kalabalığı yaptırmaktansa tek dosyada toplayabilirsiniz. Bu dökümanda ufak bir örnekle tek dosyadan oluşan bir site/sayfa yapacağım.
 
 #### Başlıyoruz
 
@@ -40,7 +44,9 @@ Bazen yazdığınız/yazacağınız modül/sayfa/proje çok işlem ve bölüm i�
 </html>
 
 ```
-gördüğünüz gibi oldukça basit. Site başlığı, ufak bir menü iki HR arasında sayfa içeriği ve sayfa sonu notu. Sayfa içeriği kısmına modüler yapıdaki gibi içerğimizi basacağız. Şimdi 4-5 tane sayfamız var bunların içeriklerini gömeceğiz dosyamızın içine. Aslında hepsi basit bir kontrol mekanizması ile hallolacak.
+gördüğünüz gibi oldukça basit. Site başlığı, ufak bir menü iki HR arasında sayfa içeriği ve sayfa sonu notu. Sayfa içeriği kısmına modüler yapıdaki gibi içerğimizi basacağız.
+
+Şimdi 4-5 tane sayfamız var bunların içeriklerini gömeceğiz dosyamızın içine. Aslında hepsi basit bir kontrol mekanizması ile hallolacak.
 ```
 <?php
 
@@ -102,14 +108,18 @@ ob\_end\_clean();
   "http://www.w3.org/TR/html4/loose.dtd">
 ...
 ```
+
 Yukarıda gördüğünüz gibi sayfa içeriklerini kontrole göre ekrana bastık. Burada dikkatinizi 2 şey çekmiştir. ob\_start, ob\_get\_contents ve ob\_end\_clean fonksiyonlarını ekrana basılan şeyleri $icerik değişkenine aktarabilmek için yaptım.
+
 ```
 echo <<<HTML\_SON
 ...
 HTML\_SON;
 
 ```
-kullanımı ise "HTML\_SON" kelimesini bitirme kelimesi olarak görerek içeride tırnakları istediğimiz gibi kullanma özgürlüğü sunduğu için yaptım. Yani HTML\_SON'ların arasında özgürce istediğiniz her karakteri kullanabilirsiniz. Bu sayede html olarak hazırladığınız sayfa içeriklerini 1-1 kopyala yapıştırarak rahatça işinizi halledebilirsiniz. Gelelim neden çıktıyı tamponladığıma, bu işlemi hiç echo, tamponlama kullanmadan şöyle de yapabilirdiniz :
+kullanımı ise "HTML\_SON" kelimesini bitirme kelimesi olarak görerek içeride tırnakları istediğimiz gibi kullanma özgürlüğü sunduğu için yaptım. Yani HTML\_SON'ların arasında özgürce istediğiniz her karakteri kullanabilirsiniz. Bu sayede html olarak hazırladığınız sayfa içeriklerini 1-1 kopyala yapıştırarak rahatça işinizi halledebilirsiniz.
+
+Gelelim neden çıktıyı tamponladığıma, bu işlemi hiç echo, tamponlama kullanmadan şöyle de yapabilirdiniz :
 ```
 if( $bolum == 'hakkimda' ){
 $icerik = "<h2>Hakkımda</h2>
@@ -128,7 +138,9 @@ else if( $bolum == 'iletisim' ){
 ...
 
 ```
-Ama bir sürü tırnak sorunu ile uğraşmanız gerekebilirdi. Neyse içeriklerimizi get ile gelen bolum parametresine göre belirlediğimize göre htlm'imizde konumlandırabiliriz. Sayfanızdaki "içerik kısmı" yazan yere
+Ama bir sürü tırnak sorunu ile uğraşmanız gerekebilirdi.
+
+Neyse içeriklerimizi get ile gelen bolum parametresine göre belirlediğimize göre htlm'imizde konumlandırabiliriz. Sayfanızdaki "içerik kısmı" yazan yere
 ```
 ...
   <hr>
@@ -139,7 +151,9 @@ Ama bir sürü tırnak sorunu ile uğraşmanız gerekebilirdi. Neyse içerikleri
 ...
 
 ```
-$icerik değişkenini basıyoruz. Böylece tek sayfada içerik basabiliyoruz.İşin bir de işlem kısmı var. Yani tek dosyada toplamaya çalıştığınız site/sayfa sadece içerikten oluşmak zorunda değil. Aynı zamanda php'ye bazı işler yaptırmanız gerekebilir. Hatta modül için bu tek dosya mantığını düşünürseniz işlem modüllerinde içerik değil sadece işlemler vardır. Aynı mantıkla bunu da yapabilirsiniz. Örnekte gördüğünüz gibi iletişim bölümünde bir iletişim formu var. Bunu işleyen kısmı buraya gömmek için sayfa içeriklerini seçtirmeden önce işlemler için de bir kontrol bloüu koyuyoruz.
+$icerik değişkenini basıyoruz. Böylece tek sayfada içerik basabiliyoruz.İşin bir de işlem kısmı var. Yani tek dosyada toplamaya çalıştığınız site/sayfa sadece içerikten oluşmak zorunda değil. Aynı zamanda php'ye bazı işler yaptırmanız gerekebilir. Hatta modül için bu tek dosya mantığını düşünürseniz işlem modüllerinde içerik değil sadece işlemler vardır. Aynı mantıkla bunu da yapabilirsiniz.
+
+Örnekte gördüğünüz gibi iletişim bölümünde bir iletişim formu var. Bunu işleyen kısmı buraya gömmek için sayfa içeriklerini seçtirmeden önce işlemler için de bir kontrol bloüu koyuyoruz.
 ```
 <?php
 // bilgiler

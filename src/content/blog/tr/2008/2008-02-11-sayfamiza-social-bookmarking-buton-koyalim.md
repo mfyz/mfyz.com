@@ -9,7 +9,13 @@ migration: {"wpId":131,"wpPostDate":"2008-02-11T02:19:39.000Z"}
 lang: tr
 ---
 
-Soyal link sitelerini çoğumuz kullanır olduk. Delicious, google bookmarks, digg, technorati vs. v0.7'de gördüğünüz gibi her sayfanın altında bu sitelerin ikonları var ve bu butonlar sayesinde gezindiğiniz sayfayı doğrudan o servise eklemek için istek gönderebiliyorsunuz. Bu butonları da çoğu sitede görmeye başladık. Bu dökümanda kısaca bu butonları koymanızı sağlayacak işlemlerden bahsedeceğim. Neredeyse bütün sosyal link siteleri url kaydetme formlarını GET methodu ile gelen verilerle otomatik doldurabiliyor. Böylece hiçbir API veya benzeri zorlukla uğraşmadan dışarıdan istek kabul edebiliyorlar. Bu sayede buton haline dönüştürmek çok kolay. Ben bu servislerin bağlantılarını
+Soyal link sitelerini çoğumuz kullanır olduk. Delicious, google bookmarks, digg, technorati vs.
+
+v0.7'de gördüğünüz gibi her sayfanın altında bu sitelerin ikonları var ve bu butonlar sayesinde gezindiğiniz sayfayı doğrudan o servise eklemek için istek gönderebiliyorsunuz. Bu butonları da çoğu sitede görmeye başladık. Bu dökümanda kısaca bu butonları koymanızı sağlayacak işlemlerden bahsedeceğim.
+
+Neredeyse bütün sosyal link siteleri url kaydetme formlarını GET methodu ile gelen verilerle otomatik doldurabiliyor. Böylece hiçbir API veya benzeri zorlukla uğraşmadan dışarıdan istek kabul edebiliyorlar. Bu sayede buton haline dönüştürmek çok kolay.
+
+Ben bu servislerin bağlantılarını
 ```
 Bu sayfayı "Sosyal Bağlantı" (Social Bookmarking) sitelerine kaydedin
 <ul>
@@ -54,8 +60,14 @@ function sayfayiImle(servis){
 
 
 ```
-Burada her servisin bir url'si var ve her servis 2 parametre istiyor. Bunlar kaydetmek istediginiz sayfanın URL'si ve Başlığı URL'lerde dinamik olarak **$URL** ve **$TITLE** stringlerini sonradan değiştirmek üzere dinamik url cümleleri oluşturdum. Fonksiyonun ilk parametresine göre, yani hangi servise kaydedilecekse o servisin cümlesini alıp, $URL ve $TITLE stringlerini document.title ve document.url ile değiştirip oluşan son URL'ye yönlendirdim sayfaları. Aslında yapılan iş çok basit, bunu dinamik olarak php'ye de yaptırıp statik linkler basabilirsiniz. Ama bu yöntem en pratik olanı :) Burada kullanmadığım diğer servislerin de url kurallarını öğrenip bu listeye ekleyebilirsiniz. Zira sosyal link sitelerini sayısı oldukça fazla.
+Burada her servisin bir url'si var ve her servis 2 parametre istiyor. Bunlar kaydetmek istediginiz sayfanın URL'si ve Başlığı URL'lerde dinamik olarak **$URL** ve **$TITLE** stringlerini sonradan değiştirmek üzere dinamik url cümleleri oluşturdum. Fonksiyonun ilk parametresine göre, yani hangi servise kaydedilecekse o servisin cümlesini alıp, $URL ve $TITLE stringlerini document.title ve document.url ile değiştirip oluşan son URL'ye yönlendirdim sayfaları.
+
+Aslında yapılan iş çok basit, bunu dinamik olarak php'ye de yaptırıp statik linkler basabilirsiniz. Ama bu yöntem en pratik olanı :) Burada kullanmadığım diğer servislerin de url kurallarını öğrenip bu listeye ekleyebilirsiniz. Zira sosyal link sitelerini sayısı oldukça fazla.
 
 #### AddThis hizmetini kullanmak
 
-Başka bir tercihiniz de var, AddThis ([http://addthis.com/](http://addthis.com/)) hizmetini kullanmak. Bu servisde bulunan html kodunu ekleyerek sayfanıza bir buton koyuyorsunuz ve bu buton sayesinde tüm sosyal link sitelerine sayfanızı kaydedebilir hale geliyorsunuz. Buton opsiyonları: ![](/images/archive/tr/2008/02/addthis-social-sharing-buttons.png) şeklinde görünüyor sitenizde.
+Başka bir tercihiniz de var, AddThis ([http://addthis.com/](http://addthis.com/)) hizmetini kullanmak. Bu servisde bulunan html kodunu ekleyerek sayfanıza bir buton koyuyorsunuz ve bu buton sayesinde tüm sosyal link sitelerine sayfanızı kaydedebilir hale geliyorsunuz. Buton opsiyonları:
+
+![](/images/archive/tr/2008/02/addthis-social-sharing-buttons.png)
+
+şeklinde görünüyor sitenizde.

@@ -11,7 +11,9 @@ lang: tr
 
 #### PHP Dışından Değişken Nasıl Gelir?
 
-PHP'de işlerimizi çok kolaylaştıran bazı özel değişkenler vardır. Bu özel değişkenler olmasa php'de yapılabilecekler çok sınırlandırılırdı. Mesela bir çerez kontrolü yaparken $\_COOKIE dizisini kullanırız. Ya da bir betik dosyamızda hata kontrolü yaparken dosya ismini değişimlere rağmen koruyabileceğimiz değişkenler, kodun hangi satırında hata olduğunu tutan başka bir değişken vardır. Şimdi bu değişkenleri; sabitler, php değişkenleri ve sunucu değişkenleri olarak üçe ayıracağız.
+PHP'de işlerimizi çok kolaylaştıran bazı özel değişkenler vardır. Bu özel değişkenler olmasa php'de yapılabilecekler çok sınırlandırılırdı. Mesela bir çerez kontrolü yaparken $\_COOKIE dizisini kullanırız. Ya da bir betik dosyamızda hata kontrolü yaparken dosya ismini değişimlere rağmen koruyabileceğimiz değişkenler, kodun hangi satırında hata olduğunu tutan başka bir değişken vardır.
+
+Şimdi bu değişkenleri; sabitler, php değişkenleri ve sunucu değişkenleri olarak üçe ayıracağız.
 
 #### Sabitler
 
@@ -24,7 +26,9 @@ E\_WARNING     Scriptin icra edilmesi için gerekli olan hatayı bildirir.
 E\_PARSE       Scriptteki yazım hatasını bildirir.
 
 ```
+
 $ gibi degişken işareti almadan doğrudan kullanılır. Örneğin:
+
 ```
 if( $hata ){
   print \_\_FILE\_\_ . " dosyasında, " .
@@ -45,7 +49,9 @@ HTTP\_USER\_AGENT        Sayfayı görüntülemek için kullanılan web tarayıc
 REMOTE\_ADDR            Kullanıcının IP numarasını içerir.
 
 ```
+
 Sunucu değişkenlerini bir ortam değişkeni olan $\_SERVER dizisinin indisleri olarak düşünürsek örnek olarak şu şekilde kullanacağız:
+
 ```
 print 'Merhaba arkadaşım, ip adresin: ' . $\_SERVER\["REMOTE\_ADDR"\] .
 ' ve tarayıcı bilgilerin: ' . $\_SERVER\["HTT\_USER\_AGENT"\];
@@ -63,4 +69,7 @@ $\_FILES     Post methodu ile gönderilen dosyaların temporary yollarını tuta
 $\_SERVER    Server değişkenlerini kullanmamızı yarayan dizidir.
 
 ```
-Ortam değişkenleri ise tahmin ettiğiniz gibi doğrudan değişken olarak kullanabilirsiniz. Bu değişkenleri çok çeşitli scriptlerde görmek mümkün. Dediğim gibi bu değişkenleri kullanamamak php'nin olanaklarını çok fazla biçimde kısıtlamak hatta neredeyse php'yi kullanılmaz hale getirmektir. Çünkü php gibi dinamik bir dil kullanmadaki ana amaçlardan biri, kullanıcının hareketlerine tepki veren uygulamalar yazmaktır. Kullanıcı tepkisini ise bu değişkenler yardımı ile belirleriz.
+
+Ortam değişkenleri ise tahmin ettiğiniz gibi doğrudan değişken olarak kullanabilirsiniz.
+
+Bu değişkenleri çok çeşitli scriptlerde görmek mümkün. Dediğim gibi bu değişkenleri kullanamamak php'nin olanaklarını çok fazla biçimde kısıtlamak hatta neredeyse php'yi kullanılmaz hale getirmektir. Çünkü php gibi dinamik bir dil kullanmadaki ana amaçlardan biri, kullanıcının hareketlerine tepki veren uygulamalar yazmaktır. Kullanıcı tepkisini ise bu değişkenler yardımı ile belirleriz.

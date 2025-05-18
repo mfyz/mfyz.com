@@ -30,7 +30,9 @@ post\_max\_size         Aslında post ile gönderilebilecek en yüksek veri
                       dosya gönderimini de etkiler.
 
 ```
-PHP, gönderilen dosyaları php.ini deki ayarlar doğrultusunda geçici klasöre geçici bir isimle kaydeder ve gerekli bilgileri $\_FILES adlı özel bir değişkende aşağıdaki şekilde kaydeder. ( PHP'nin 4.1.0 sürümü öncesi $\_FILES değişkeni yerine $HTTP\_POST\_FILES kullanılıyordu ) Örneğimizdeki form yoluyla herhangi bir dosya gönderildiğinde yukle.php dosyamızda $\_FILES değişkeninin içeriği aşağıdaki gibi olacaktır.
+PHP, gönderilen dosyaları php.ini deki ayarlar doğrultusunda geçici klasöre geçici bir isimle kaydeder ve gerekli bilgileri $\_FILES adlı özel bir değişkende aşağıdaki şekilde kaydeder. ( PHP'nin 4.1.0 sürümü öncesi $\_FILES değişkeni yerine $HTTP\_POST\_FILES kullanılıyordu )
+
+Örneğimizdeki form yoluyla herhangi bir dosya gönderildiğinde yukle.php dosyamızda $\_FILES değişkeninin içeriği aşağıdaki gibi olacaktır.
 ```
 $\_FILES\['dosya\_yukle'\]\['name'\]       Gönderilen dosyanın orjinal adı.
 $\_FILES\['dosya\_yukle'\]\['type'\]       Eğer tarayıcı tarafından sağlanmışsa dosyanın mime türü. ( örneğin: image/gif )
@@ -39,7 +41,9 @@ $\_FILES\['dosya\_yukle'\]\['tmp\_name'\]   Sunucudaki geçici dosyanın adı.
 $\_FILES\['dosya\_yukle'\]\['error'\]      İşlemle ilgili hata kodu. Bu PHP 4.2.0 ve sonrasında eklenmiştir.
 
 ```
-Burada dosya\_yukle olarak geçen ismi biz formda atamış olduk. Yukarıdaki örnekte ilgili alana ne isim verilmişse o isimle kaydedilecektir. Bu sayede birden fazla dosyayı tek seferde gönderebilirsiniz. 'error' parametresinin alabileceği değerler hakkında;
+Burada dosya\_yukle olarak geçen ismi biz formda atamış olduk. Yukarıdaki örnekte ilgili alana ne isim verilmişse o isimle kaydedilecektir. Bu sayede birden fazla dosyayı tek seferde gönderebilirsiniz.
+
+'error' parametresinin alabileceği değerler hakkında;
 ```
 0   Yükleme işleminde herhangi bir hata ile karşılaşılmadığı anlamına gelir.
 1   php.ini de belirtilmiş olan upload\_max\_filesize ayarını aşan boyutta bir dosya gönderilmeye çalışılıyor.
@@ -61,11 +65,15 @@ Ayrıca PHP 4.3.0. sürümünden sonra aşağıdaki gibi hata sabitleride tanım
 7 = UPLOAD\_ERR\_CANT\_WRITE
 
 ```
-Eğer kullanıcının tarayıcısı bir şekilde bize \['type'\] alanını sağlamıyorsa; bunu mime\_content\_type() fonksiyonunu kullanarak bulabiliriz. Ancak bildiğim kadarıyla bu fonksiyon sadece Linux ortamında çalışacaktır. **Hata 2 :** Eğer istersek formumuzda
+Eğer kullanıcının tarayıcısı bir şekilde bize \['type'\] alanını sağlamıyorsa; bunu mime\_content\_type() fonksiyonunu kullanarak bulabiliriz. Ancak bildiğim kadarıyla bu fonksiyon sadece Linux ortamında çalışacaktır.
+
+**Hata 2 :** Eğer istersek formumuzda
 ```
 <input name="MAX\_FILE\_SIZE" type="hidden" value="30000" />
 ```
-şeklinde bir alan daha tanımlayarak kullanabiliriz. Avantajı, dosya daha sunucuya gönderilmeden önce boyut kontrolünden geçirildiği ve işleme buna göre devam edildiğinden boyutu limiti aşacak olan dosya sunucuya gönderilmeden önce işlem iptal edilmiş olur. Ayrıca, herhangi bir ayarı tamamiyle kullanıcının denetimindeki bir ortama göndererek ondan gizlemeye çalışmak mantıklı olmayacağından tavsiye edilmez. Çünkü hidden özelliği sadece html ile ilgili bir durumdur. Kullanıcı, "gizli olsa dahi" bu değeri değiştirebilir. Eğer herhangi bir şekilde dosya boyutu kontrolü yapmak istiyorsak bunun yanısıra php içerisinde \['size'\] değişkeniyle gelen değeri kontrol ederek yapabiliriz ki bu şekilde daha güvenli olacaktır. Sanırım artık bir örnek ile sonlandırmalıyım. Yukarıdaki formumuza basit bir php programı entegre edeyim.
+şeklinde bir alan daha tanımlayarak kullanabiliriz. Avantajı, dosya daha sunucuya gönderilmeden önce boyut kontrolünden geçirildiği ve işleme buna göre devam edildiğinden boyutu limiti aşacak olan dosya sunucuya gönderilmeden önce işlem iptal edilmiş olur. Ayrıca, herhangi bir ayarı tamamiyle kullanıcının denetimindeki bir ortama göndererek ondan gizlemeye çalışmak mantıklı olmayacağından tavsiye edilmez. Çünkü hidden özelliği sadece html ile ilgili bir durumdur. Kullanıcı, "gizli olsa dahi" bu değeri değiştirebilir. Eğer herhangi bir şekilde dosya boyutu kontrolü yapmak istiyorsak bunun yanısıra php içerisinde \['size'\] değişkeniyle gelen değeri kontrol ederek yapabiliriz ki bu şekilde daha güvenli olacaktır.
+
+Sanırım artık bir örnek ile sonlandırmalıyım. Yukarıdaki formumuza basit bir php programı entegre edeyim.
 ```
 <?php
 // sayfanin ilk açilisinda herhangi bir islem yapmamak için böyle bir degisken
@@ -91,4 +99,8 @@ Eğer kullanıcının tarayıcısı bir şekilde bize \['type'\] alanını sağl
 </form>
 
 ```
-Tabi bu kod sadece örnek olduğu için fazlaca karışmasını istemedim. dosya türü yada boyutu sınaması yapabilirdik oluşan hataya göre farklı ve tam olarak hatanın ne olduğunu anlatan mesajlar verebilirdik, yada copy fonksiyonu görevini yerine getiremezse (yazma izinleri ?) bu durumda yine hata mesajı verdirebilirdik. Kaynaklar; [http://tr.php.net/manual/en/function.mime-content-type.php](http://tr.php.net/manual/en/function.mime-content-type.php) [http://tr.php.net/manual/en/features.file-upload.php](http://tr.php.net/manual/en/features.file-upload.php) [http://tr.php.net/manual/en/features.file-upload.errors.php](http://tr.php.net/manual/en/features.file-upload.errors.php) **Hazırlayan :** Orhan KURNAZ
+Tabi bu kod sadece örnek olduğu için fazlaca karışmasını istemedim. dosya türü yada boyutu sınaması yapabilirdik oluşan hataya göre farklı ve tam olarak hatanın ne olduğunu anlatan mesajlar verebilirdik, yada copy fonksiyonu görevini yerine getiremezse (yazma izinleri ?) bu durumda yine hata mesajı verdirebilirdik.
+
+Kaynaklar; [http://tr.php.net/manual/en/function.mime-content-type.php](http://tr.php.net/manual/en/function.mime-content-type.php) [http://tr.php.net/manual/en/features.file-upload.php](http://tr.php.net/manual/en/features.file-upload.php) [http://tr.php.net/manual/en/features.file-upload.errors.php](http://tr.php.net/manual/en/features.file-upload.errors.php)
+
+**Hazırlayan :** Orhan KURNAZ

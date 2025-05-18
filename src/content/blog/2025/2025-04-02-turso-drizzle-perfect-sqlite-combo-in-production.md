@@ -29,7 +29,9 @@ Even though there's some skepticism around using SQLite in production, I find it
 Using SQLite can be a game-changer for various reasons:
 
 *   **Simplicity**: Its ease of setup and minimal configuration is perfect for rapid development.
+
 *   **Lightweight**: Taking up a fraction of the resources compared to other databases.
+
 *   **Portability**: SQLite databases can be easily moved around, making it a breeze to manage local development and testing environments.
 
 ## Introducing Drizzle
@@ -37,6 +39,7 @@ Using SQLite can be a game-changer for various reasons:
 Now, let’s talk about Drizzle. Drizzle is a fantastic TypeScript ORM (Object-Relational Mapping) tool. Here’s why I think Drizzle is great:
 
 *   **Type Safety**: Built with TypeScript, it provides type safety, reducing runtime errors.
+
 *   **Simple Relationships**: Managing schema and migrations with Drizzle is a walk in the park. You can ease your work by using a clear and concise API, simplifying data manipulation and access.
 
 ## A Great Match: Turso and Drizzle
@@ -46,6 +49,7 @@ Turso is a hosted SQLite service that has come to embrace modern development wor
 The synergy between Turso and Drizzle makes for an efficient development experience. You can run local SQLite for development and testing, and when you're ready to go live, transition to Turso seamlessly. Here’s why this combo works so well:
 
 *   **Connection Simplicity**: Switching from a local SQLite file to a Turso-hosted database is smooth, making the transition to production seamless.
+
 *   **Consistent Development Environment**: You can maintain consistency between your local and production environments, reducing deployment headaches.
 
 ## Setting Up Turso and Local DB with Drizzle

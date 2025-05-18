@@ -30,7 +30,9 @@ alert("Hata Yaptınız!");
 
 #### Nesneler
 
-Javascript'de nesneler üzerinde çalıştığımız elemanlar veya değerlerdir. Mesela bir form elemanını kodlarımızda adresleyerek nesne şeklinde kullanırız, ya da yaptığımız matematiksel işlemlerde değişkenlerimizi bazı nesne kullanırız. Javascriptte fonksiyonlar kadar nesne özellikleri ile de çalışılır. Zaten çoğu nesne, fonksiyon şeklindedir. Sadece kulalnımı farklıdır. Bunlara ayrıntılı olarak bakalım : **String nesnesi**
+Javascript'de nesneler üzerinde çalıştığımız elemanlar veya değerlerdir. Mesela bir form elemanını kodlarımızda adresleyerek nesne şeklinde kullanırız, ya da yaptığımız matematiksel işlemlerde değişkenlerimizi bazı nesne kullanırız. Javascriptte fonksiyonlar kadar nesne özellikleri ile de çalışılır. Zaten çoğu nesne, fonksiyon şeklindedir. Sadece kulalnımı farklıdır. Bunlara ayrıntılı olarak bakalım :
+
+**String nesnesi**
 ```
 string.bold()                string'i  etiketi içine alır.
 string.charAt(x)             string'deki x indeksli karakteri verir.
@@ -106,4 +108,6 @@ document.write(sonuc);
 // sonuc 8 olacaktır.
 
 ```
-  [Temel JavaScript (4) - Zamanlayıcılarla çalışmak]("http://www.mfyz.com/?/dokuman/87/temel-javascript-4---zamanlayicilarla-calismak/") dökümanından devam edin.
+ 
+
+[Temel JavaScript (4) - Zamanlayıcılarla çalışmak]("http://www.mfyz.com/?/dokuman/87/temel-javascript-4---zamanlayicilarla-calismak/") dökümanından devam edin.

@@ -9,4 +9,6 @@ migration: {"wpId":298,"wpPostDate":"2012-01-30T03:06:56.000Z"}
 lang: tr
 ---
 
-![](/images/archive/tr/2012/01/logo-1.png)Less dosyalarıyla çalışıyorsanız ve eğer arayüz geliştiriyorsanız yazdığınız kodu tarayıcıda anlık olarak görmek isteyeceksiniz. Less dosyalarını kaydettiğiniz gibi derleyen aşağıdaki araçlarla hangi platformda çalışıyor olursanız olun otomatik olarak derletebilirsiniz. Less derleyicilerini toparladığım ufak bir yazı hazırladım: https://tr.mfyz.com/less-dosyalarinizi-anlik-csse-cevirin
+![](/images/archive/tr/2012/01/logo-1.png)Less dosyalarıyla çalışıyorsanız ve eğer arayüz geliştiriyorsanız yazdığınız kodu tarayıcıda anlık olarak görmek isteyeceksiniz. Less dosyalarını kaydettiğiniz gibi derleyen aşağıdaki araçlarla hangi platformda çalışıyor olursanız olun otomatik olarak derletebilirsiniz.
+
+Less derleyicilerini toparladığım ufak bir yazı hazırladım: https://tr.mfyz.com/less-dosyalarinizi-anlik-csse-cevirin

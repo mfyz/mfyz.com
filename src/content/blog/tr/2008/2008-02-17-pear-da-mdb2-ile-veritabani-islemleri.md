@@ -11,22 +11,32 @@ lang: tr
 
 #### MDB2 nedir?
 
-MDB2 pear'da eskiden DB adıyla geliştirilen ve bir süre önce gelişimi durdurulup projeyi mdb2 olarak devam ettirdikleri bir veritabanı yönetim kütüphanesidir. Aslında sırayla girdiğimiz mysql\_connect, mysql\_select\_db, mysql\_query ... gibi işlemleri biraz daha ortak yapıda kullanmamızı sağlayan, çeşitli yetenekleri olan güvenli bir kütüphane. Normalde veritabanımıza (mysql, mssql veya pgsql farketmez) bağlanırken bağlantı kaynak değşkeni oluştururuz. Örneğin :
+MDB2 pear'da eskiden DB adıyla geliştirilen ve bir süre önce gelişimi durdurulup projeyi mdb2 olarak devam ettirdikleri bir veritabanı yönetim kütüphanesidir. Aslında sırayla girdiğimiz mysql\_connect, mysql\_select\_db, mysql\_query ... gibi işlemleri biraz daha ortak yapıda kullanmamızı sağlayan, çeşitli yetenekleri olan güvenli bir kütüphane.
+
+Normalde veritabanımıza (mysql, mssql veya pgsql farketmez) bağlanırken bağlantı kaynak değşkeni oluştururuz. Örneğin :
 ```
 $db = mysql\_connect(...);
 
 ```
-sonra da bu değişkeni kullanarak fonksiyonlarımızı işletiriz. Bu noktadan sonra veritabanı seçeriz ve sorgular üretip sonuçlarını işleriz. MDB2'de veritabanı bağlantı cümleleri vardır. Tek hamlede hem bağlantı değişkenimizi oluşturur hem de veritabanı seçeriz.
+sonra da bu değişkeni kullanarak fonksiyonlarımızı işletiriz. Bu noktadan sonra veritabanı seçeriz ve sorgular üretip sonuçlarını işleriz.
+
+MDB2'de veritabanı bağlantı cümleleri vardır. Tek hamlede hem bağlantı değişkenimizi oluşturur hem de veritabanı seçeriz.
 ```
 $db = MDB2::connect("bağlantı cümlesi");
 
 ```
-connect yerine **factory** fonksiyonunu da kullanabilirsiniz, aynı işi görmektedir. Bağlantı cümlesi, pear dizininde MDB2'nin dizinindeki Drivers klasöründe yüklediğiniz veritabanı sürücülerine göre değişir. Genellikle mysql için kullanacağınızdan örnek vermek gerekirse
+connect yerine **factory** fonksiyonunu da kullanabilirsiniz, aynı işi görmektedir. Bağlantı cümlesi, pear dizininde MDB2'nin dizinindeki Drivers klasöründe yüklediğiniz veritabanı sürücülerine göre değişir.
+
+Genellikle mysql için kullanacağınızdan örnek vermek gerekirse
 ```
 mysql://kullanici:sifre@localhost/veritabanim
 
 ```
-yeterince açık ama yine de üstünden geçeyim. Gördüğünüz gibi cümle bir protokol adresi gibi. Yani ftp'ye bağlanmaktan farksız :) önce protokol türünü belirtiyoruz (mysql, pgsql, sqlite vs) arada "://" işaretlemesinden sonra kullanıcı, ":" ve şifreyi belirtiyoruz. @ işaretinden sonra sunucu adresi. Sonrasında da klasör ifade eder gibi veritabanı adını veriyoruz. SQLite için ise protokoldan sonra doğrudan dosya adresini veriyorsunuz. (Daha fazla bilgi için [http://pear.php.net/manual/en/package.database.mdb2.intro-dsn.php](http://pear.php.net/manual/en/package.database.mdb2.intro-dsn.php)) Biliyorsunuz mysql mssql sqlite pgsql arasında çok fazla kural farkı yok. Yani aynı sorgularla veri ekleyebiliyor, güncelleyebiliyor, silebiliyor ve listeletebiliyoruz. Böylece aynı veritabanı yapısına sahip mysql ile çalışan bir projeyi mssql'e geçirmek çok da zor olmuyor :) Şimdi basitçe bir sorgu işletmeyi göstereyim. MySQL'de bir sorgu işletmek için:
+yeterince açık ama yine de üstünden geçeyim. Gördüğünüz gibi cümle bir protokol adresi gibi. Yani ftp'ye bağlanmaktan farksız :) önce protokol türünü belirtiyoruz (mysql, pgsql, sqlite vs) arada "://" işaretlemesinden sonra kullanıcı, ":" ve şifreyi belirtiyoruz. @ işaretinden sonra sunucu adresi. Sonrasında da klasör ifade eder gibi veritabanı adını veriyoruz. SQLite için ise protokoldan sonra doğrudan dosya adresini veriyorsunuz. (Daha fazla bilgi için [http://pear.php.net/manual/en/package.database.mdb2.intro-dsn.php](http://pear.php.net/manual/en/package.database.mdb2.intro-dsn.php))
+
+Biliyorsunuz mysql mssql sqlite pgsql arasında çok fazla kural farkı yok. Yani aynı sorgularla veri ekleyebiliyor, güncelleyebiliyor, silebiliyor ve listeletebiliyoruz. Böylece aynı veritabanı yapısına sahip mysql ile çalışan bir projeyi mssql'e geçirmek çok da zor olmuyor :)
+
+Şimdi basitçe bir sorgu işletmeyi göstereyim. MySQL'de bir sorgu işletmek için:
 ```
 $sorgu = mysql\_query("select ...");
 // veya
@@ -63,7 +73,9 @@ olarak kullanırsak taboldaki indis adlarına göre doğrudan seçebiliriz verim
 $db->setFetchMode(MDB2\_FETCHMODE\_ASSOC);
 
 ```
-ile "İşleme Türü"nü tüm betik için ayarlamış oluruz. Bundan sonra ilk verdiğim örnek koda göre işleminizi kolayca yapabilirsiniz. Genellikle 2 tür veri çekeriz, tek satırlık sonuçlar veya listeler. Mesela yukarıdaki sql cümlesi bize tek kayıt döner yani 5 nolu üyenin bilgilerini. Bunun için doğrudan fetchRow() kullanarak bilgileri aldık. Çok satırlı bir sql sorgusu işletiyor olsaydık :
+ile "İşleme Türü"nü tüm betik için ayarlamış oluruz. Bundan sonra ilk verdiğim örnek koda göre işleminizi kolayca yapabilirsiniz.
+
+Genellikle 2 tür veri çekeriz, tek satırlık sonuçlar veya listeler. Mesela yukarıdaki sql cümlesi bize tek kayıt döner yani 5 nolu üyenin bilgilerini. Bunun için doğrudan fetchRow() kullanarak bilgileri aldık. Çok satırlı bir sql sorgusu işletiyor olsaydık :
 ```
 $sorgu = $db->query("select no, adi, eposta from uyeler");  // tum uyeler
 while( $uye\_bilgisi = $sorgu->fetchRow() ){
@@ -84,7 +96,11 @@ foreach( $tum\_uyeler as $uye ){
 }
 
 ```
-Tabi $tum\_uyeler dizisi bizim listeledigimiz sql sonucunu dizi olarak donuyor bize. Dizi boyutu da kayıt sayısı yani üye sayısını veriyor count($tum\_uyeler) ile. Aynı işlemi **$sorgu->numRows()** ile de yapabilirdik. Zira while ile kullanıyorsak dizi boyutu diye birşey olmayacak ve **numRows**'u kullanacağız. Bu iki yol da neredeyse aynı. while, foreach veya verinizin dizi olarak olup olmaması alışkanlıklarınız ve programlama anlayışınız ile ilgili birşey. Daha da hızlı dizi olarak almak istiyorsanız
+Tabi $tum\_uyeler dizisi bizim listeledigimiz sql sonucunu dizi olarak donuyor bize. Dizi boyutu da kayıt sayısı yani üye sayısını veriyor count($tum\_uyeler) ile. Aynı işlemi **$sorgu->numRows()** ile de yapabilirdik. Zira while ile kullanıyorsak dizi boyutu diye birşey olmayacak ve **numRows**'u kullanacağız.
+
+Bu iki yol da neredeyse aynı. while, foreach veya verinizin dizi olarak olup olmaması alışkanlıklarınız ve programlama anlayışınız ile ilgili birşey.
+
+Daha da hızlı dizi olarak almak istiyorsanız
 ```
 $uyeler = $db->queryAll("select \* from uyeler");
 
@@ -93,7 +109,13 @@ size tüm üyleri çok boyutlu dizi olarak $uyeler değişkenine atayacaktır. q
 
 #### Ek olarak
 
-**$sorgu->numCols()** ile sorgudan kaç tane kolon çıktığını öğrenebilirsiniz. Aynı zamanda **$sorgu->fethcCol()** ile verinizi kolon kolon alabilirsiniz de (nerede kullanacağınızı bilmiyorum ama işe yarayabilir). **$sorgu->getColumnNames()** ile işlenen kolonları dizi olarak alırsınız. İşleme sırasıyla yerleşecektir dizide. Sorgudan hangi kolonların döndüğünü bilmediğiniz sorgularda kolonları meta olarak basabilmek için kullanabilirsiniz bu fonksiyonu. **$sorgu->seek(5)** ile sorguları dönerken 5 kayıt atlamanızı sağlar (ilginç). **$db->lastInsertID()** ile son "insert into uyeler (...) values (...)" tipi, veri kayıt sql sorgunuzda eklenen kayıt için, auto\_increment olan kolona atanan numarasını döner.
+**$sorgu->numCols()** ile sorgudan kaç tane kolon çıktığını öğrenebilirsiniz. Aynı zamanda **$sorgu->fethcCol()** ile verinizi kolon kolon alabilirsiniz de (nerede kullanacağınızı bilmiyorum ama işe yarayabilir).
+
+**$sorgu->getColumnNames()** ile işlenen kolonları dizi olarak alırsınız. İşleme sırasıyla yerleşecektir dizide. Sorgudan hangi kolonların döndüğünü bilmediğiniz sorgularda kolonları meta olarak basabilmek için kullanabilirsiniz bu fonksiyonu.
+
+**$sorgu->seek(5)** ile sorguları dönerken 5 kayıt atlamanızı sağlar (ilginç).
+
+**$db->lastInsertID()** ile son "insert into uyeler (...) values (...)" tipi, veri kayıt sql sorgunuzda eklenen kayıt için, auto\_increment olan kolona atanan numarasını döner.
 
 #### Hata yakalamak
 
@@ -106,4 +128,6 @@ if(PEAR::isError($sorgu)) {
 }
 
 ```
-kullanımı; PEAR:isError($sorgu) $sorgu degişkeni ile tanımlanan veritabanı sorgu nesnesinde hata varsa, aynı nesnedeki **getMessage()** fonksiyonu ile hata mesajını iletir. [http://pear.php.net/manual/en/package.database.mdb2.php](http://pear.php.net/manual/en/package.database.mdb2.php) adresinden mdb2 manual'ına ulaşabilirsiniz.
+kullanımı; PEAR:isError($sorgu) $sorgu degişkeni ile tanımlanan veritabanı sorgu nesnesinde hata varsa, aynı nesnedeki **getMessage()** fonksiyonu ile hata mesajını iletir.
+
+[http://pear.php.net/manual/en/package.database.mdb2.php](http://pear.php.net/manual/en/package.database.mdb2.php) adresinden mdb2 manual'ına ulaşabilirsiniz.

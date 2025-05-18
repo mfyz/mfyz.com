@@ -39,4 +39,6 @@ while( $bilgi = odbc\_fetch\_array($sorgu) ){
 }
 
 ```
-İşte bu kadar kolay. Genel olarak fonksiyonlar aynı, başına mysql yerine odbc geliyor o kadar. Sorguarımızı ise odbc\_exec($baglanti\_degiskeni,"sorgu"); şeklinde veriyoruz. Geri kalan kısımları mysql'de bildiğiniz tekniklerle halledebiliyoruz. ODBC fonksiyonları bazı fonksiyonlarda aynı bazılarında da oldukça farklı. [http://php.net/odbc](http://php.net/odbc) adresinden php'nin odbc fonksiyonları hakkında bilgi edinebilir.
+İşte bu kadar kolay. Genel olarak fonksiyonlar aynı, başına mysql yerine odbc geliyor o kadar. Sorguarımızı ise odbc\_exec($baglanti\_degiskeni,"sorgu"); şeklinde veriyoruz. Geri kalan kısımları mysql'de bildiğiniz tekniklerle halledebiliyoruz. ODBC fonksiyonları bazı fonksiyonlarda aynı bazılarında da oldukça farklı.
+
+[http://php.net/odbc](http://php.net/odbc) adresinden php'nin odbc fonksiyonları hakkında bilgi edinebilir.

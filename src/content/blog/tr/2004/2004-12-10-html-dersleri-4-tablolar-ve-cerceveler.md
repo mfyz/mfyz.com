@@ -15,7 +15,9 @@ Ana tablo etiketleri 3 tanedir, tablo tanımı, tablo satırı ve tablo hücresi
 
 #### table
 
-Boş bir tabloyu ifade eder. içerisine girilen satır, sütun kuralları ile tabloyu oluşturur. Tablo hakkında genel bilgileri, ayarları içerir. Argümanları şöyle **bgcolor** artalan rengini, **cellpadding** tablo hücrelerindeki kenar boşluklarını, **cellspacing** tablo hücrelerinin birbirleri arasındaki boşluğu, **border** tablo ve hücrelerini belirleyen çerçeveyi ayarlar.
+Boş bir tabloyu ifade eder. içerisine girilen satır, sütun kuralları ile tabloyu oluşturur. Tablo hakkında genel bilgileri, ayarları içerir. Argümanları şöyle
+
+**bgcolor** artalan rengini, **cellpadding** tablo hücrelerindeki kenar boşluklarını, **cellspacing** tablo hücrelerinin birbirleri arasındaki boşluğu, **border** tablo ve hücrelerini belirleyen çerçeveyi ayarlar.
 
 #### tr (Table Row : Tablo Satırı)
 
@@ -23,7 +25,9 @@ Tabloda satırlar eklemeden sütun ekleyemezsiniz. Her sütun bulunması gereken
 
 #### td (Table Data : Tablo Hücresi)
 
-Tablodaki hücreler için tanımlanması gereken son etikettir. İçinde bulunduğu satırda bir sütunu ifade eder. Örnek tablo yapısı;
+Tablodaki hücreler için tanımlanması gereken son etikettir. İçinde bulunduğu satırda bir sütunu ifade eder.
+
+Örnek tablo yapısı;
 ```
 <table border="1" cellpadding="5">
   <tr bgcolor="#CCCCCC">
@@ -44,7 +48,9 @@ Tablodaki hücreler için tanımlanması gereken son etikettir. İçinde bulundu
 
 3.Sütun
 
-**Önemli NOT :** Her satırdaki sütun sayısı eşit olmalıdır. Eşit olmayan tabloların yapısı bozuktur. Bir hücre kendi dengindeki hücrelerden kapsaması gereken kadar hücreyi td etiketinde [cospan ve rowspan](http://www.htmlcodetutorial.com/tables/index_famsupp_30.html) parametreleri belirtilerek ayarlanabilir.
+**Önemli NOT :** Her satırdaki sütun sayısı eşit olmalıdır. Eşit olmayan tabloların yapısı bozuktur.
+
+Bir hücre kendi dengindeki hücrelerden kapsaması gereken kadar hücreyi td etiketinde [cospan ve rowspan](http://www.htmlcodetutorial.com/tables/index_famsupp_30.html) parametreleri belirtilerek ayarlanabilir.
 
 ## Çerçeveler
 

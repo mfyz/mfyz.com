@@ -11,7 +11,13 @@ lang: tr
 
 #### Neden Dosyaları Parçalayayım Ki?
 
-İnternette hızlı bant genişlikleri kullansak da hala dosyaları taşırken ufaltmak zorunda kalabiliyoruz. Aşırı büyük bir dosyayı (CD-DVD boyutunda mesela) parçalayarak ufak zaman dilimleriyle yükleme işlemi yapıp yüklenmeme riskini azaltırız mesela. Ya da paylaşım siteleri, eposta hizmeti veren servisler limitler uygulayabiliyorlar. En basitinden başka bir örnek de elinizdeki FAT türü dosya sisteme double layer dvd isosu kaydedemezsiniz. Çünkü 4.0GB'dan fazla boyutludur ve FAT dosya sistemleri 4.0GB üzeri dosya kaydedemez. Dosyanızı taşımak için parçalayabilir başka bir dosya sisteminde tekrar birleştirerek işinizi halletmiş olursunuz. Bazen de disketlerden çok az büyük dosyalarla çalışıyor olabilirsiniz (Tabi hala disketle çalışmak zorunda iseniz). Mesela bir proje dosyası 10 mb tuttu, bunu sıkıştırarak 2 MB'a indirdiniz ancak bunun için bir cd yazmaya değmez. Disetlere sığacak kadar da küçük değil. İşte böyle zamanlarda dosyaları diketlerin alacağı boyutlara bölerek çalışabiliriz. Örnekler çoğaltılabilir, bu gibi durumlarda dosyalarınızı parçalayabilirisiniz.
+İnternette hızlı bant genişlikleri kullansak da hala dosyaları taşırken ufaltmak zorunda kalabiliyoruz. Aşırı büyük bir dosyayı (CD-DVD boyutunda mesela) parçalayarak ufak zaman dilimleriyle yükleme işlemi yapıp yüklenmeme riskini azaltırız mesela. Ya da paylaşım siteleri, eposta hizmeti veren servisler limitler uygulayabiliyorlar.
+
+En basitinden başka bir örnek de elinizdeki FAT türü dosya sisteme double layer dvd isosu kaydedemezsiniz. Çünkü 4.0GB'dan fazla boyutludur ve FAT dosya sistemleri 4.0GB üzeri dosya kaydedemez. Dosyanızı taşımak için parçalayabilir başka bir dosya sisteminde tekrar birleştirerek işinizi halletmiş olursunuz.
+
+Bazen de disketlerden çok az büyük dosyalarla çalışıyor olabilirsiniz (Tabi hala disketle çalışmak zorunda iseniz). Mesela bir proje dosyası 10 mb tuttu, bunu sıkıştırarak 2 MB'a indirdiniz ancak bunun için bir cd yazmaya değmez. Disetlere sığacak kadar da küçük değil. İşte böyle zamanlarda dosyaları diketlerin alacağı boyutlara bölerek çalışabiliriz.
+
+Örnekler çoğaltılabilir, bu gibi durumlarda dosyalarınızı parçalayabilirisiniz.
 
 #### Linux'ta Dosyaları Parçalamak!
 
@@ -36,7 +42,9 @@ total 9680
 
 #### Dosyaları Birleştirmek
 
-Dosyaları birleştirirken cat komutu ile parçaları teker teker birbiri ardına ekliyoruz. Yukarıdaki örnekte dosya.txt'nin parçalarını birleştirirken sırayla cat dosya\_parca\_ag >> dosya\_parca\_af ardından, cat dosya\_parca\_af >> dosya\_parca\_ae... komutlarını aa parçasına kadar uygulayarak dosya.txt'yi dosya\_parca\_aa dosyasında oluşturmuş yani birleştirmiş olduk. Bu uzun işlemi yapmak yerine şu pratik yolu tercih ediniz (Zira sadece mantığını anlamamız için üstteki detayı verdim :) ).
+Dosyaları birleştirirken cat komutu ile parçaları teker teker birbiri ardına ekliyoruz. Yukarıdaki örnekte dosya.txt'nin parçalarını birleştirirken sırayla cat dosya\_parca\_ag >> dosya\_parca\_af ardından, cat dosya\_parca\_af >> dosya\_parca\_ae... komutlarını aa parçasına kadar uygulayarak dosya.txt'yi dosya\_parca\_aa dosyasında oluşturmuş yani birleştirmiş olduk.
+
+Bu uzun işlemi yapmak yerine şu pratik yolu tercih ediniz (Zira sadece mantığını anlamamız için üstteki detayı verdim :) ).
 ```
 for i in \`ls parca\_\*\`; do cat $i >> dosya.wav; done
 ```

@@ -8,7 +8,11 @@ category: Geekin'
 migration: {"wpId":243,"wpPostDate":"2018-11-16T14:30:00.000Z"}
 ---
 
-For most of the GTD ([Get(ting) Things Done](https://en.wikipedia.org/wiki/Getting_Things_Done)) mastery student, there is a constant research of better “todo” app or tool. I've been in this for a very long time and used many apps. Desktop, mobile, command line, cloud, API... You name it, I've probably used it for some time. ![](/images/archive/en/2020/05/GTD-workflow-resized_flhy4a.png?fit=860%2C856&ssl=1) At the end, I found myself staying very plainly managing my todos without needing a lot of features. In fact, I needed not to worry about the features of the apps I used. This especially become an issue as I'm OCD (obsessed about “order” and tidy) and a little bit ADD (regularly distracted). When you have a todo app that looks ugly and you need to use their features in order to clean things up, it eats up your time aside of actually focusing on your todos.
+For most of the GTD ([Get(ting) Things Done](https://en.wikipedia.org/wiki/Getting_Things_Done)) mastery student, there is a constant research of better “todo” app or tool. I've been in this for a very long time and used many apps. Desktop, mobile, command line, cloud, API... You name it, I've probably used it for some time.
+
+![](/images/archive/en/2020/05/GTD-workflow-resized_flhy4a.png?fit=860%2C856&ssl=1)
+
+At the end, I found myself staying very plainly managing my todos without needing a lot of features. In fact, I needed not to worry about the features of the apps I used. This especially become an issue as I'm OCD (obsessed about “order” and tidy) and a little bit ADD (regularly distracted). When you have a todo app that looks ugly and you need to use their features in order to clean things up, it eats up your time aside of actually focusing on your todos.
 
 ### Methods and apps
 
@@ -23,4 +27,22 @@ For long time, I used cloud based (to sync between my devices) tools. I used eve
 
 ### Todo.txt
 
-After many years trying different things, I came across with the todo.txt format. It's a very low level and with few simple rules to give you the freedom to use whatever tool you want, wherever you want with having additional capabilities with community implementations on CLI, cloud, mobile etc... [https://github.com/todotxt/todo.txt](https://github.com/todotxt/todo.txt) todo.txt format is so simple that is explained in one annotation below: ![](/images/archive/en/2020/05/description_jlfcei.png?fit=852%2C379&ssl=1) To be honest, I don't use almost any of these things except the “done” marker. So for me, it's as simple as todos are either not done or done. That's it. What I want to do manually is always re-ordered them and have separators (which I simply use 3-5 dash characters “------” as an extra line). I love this format is because I use it in a few different tools on my platforms. Wasn't super happy with the desktop solutions, so I forked and enhanced a simple code editor written on electron/nodejs. Added a few capabilities and adjusted the color schema to my liking and open sourced published it (You can find, download and contribute to it here: [https://github.com/mfyz/todox](https://github.com/mfyz/todox)). ![](/images/archive/en/2020/05/Screen-Shot-2018-11-16-at-1.34.55-AM_io8913.jpg?fit=850%2C710&ssl=1) On mobile, it's not that easy to have a custom code editor without getting my hands dirty with a lot of native coding which I felt lazy. Also, another point that I had to figure out was the sync between my devices. I live on apple ecosystem so I simply used iCloud drive of the text editor app I use on my iOS devices (Textastic). ![](/images/archive/en/2020/05/IMG_8DBF1CC8F853-1_kz3tjb.jpg?fit=473%2C1024&ssl=1) Texastic supports textmate and sublime bundles (including custom syntax support and themes). I installed a sublime text implementation of todo.txt format and had color coding which all I needed on my mobile devices. Most of the time my activity on my mobile devices are simply adding new stuff to the list or mark them done.
+After many years trying different things, I came across with the todo.txt format. It's a very low level and with few simple rules to give you the freedom to use whatever tool you want, wherever you want with having additional capabilities with community implementations on CLI, cloud, mobile etc...
+
+[https://github.com/todotxt/todo.txt](https://github.com/todotxt/todo.txt)
+
+todo.txt format is so simple that is explained in one annotation below:
+
+![](/images/archive/en/2020/05/description_jlfcei.png?fit=852%2C379&ssl=1)
+
+To be honest, I don't use almost any of these things except the “done” marker. So for me, it's as simple as todos are either not done or done. That's it. What I want to do manually is always re-ordered them and have separators (which I simply use 3-5 dash characters “------” as an extra line).
+
+I love this format is because I use it in a few different tools on my platforms. Wasn't super happy with the desktop solutions, so I forked and enhanced a simple code editor written on electron/nodejs. Added a few capabilities and adjusted the color schema to my liking and open sourced published it (You can find, download and contribute to it here: [https://github.com/mfyz/todox](https://github.com/mfyz/todox)).
+
+![](/images/archive/en/2020/05/Screen-Shot-2018-11-16-at-1.34.55-AM_io8913.jpg?fit=850%2C710&ssl=1)
+
+On mobile, it's not that easy to have a custom code editor without getting my hands dirty with a lot of native coding which I felt lazy. Also, another point that I had to figure out was the sync between my devices. I live on apple ecosystem so I simply used iCloud drive of the text editor app I use on my iOS devices (Textastic).
+
+![](/images/archive/en/2020/05/IMG_8DBF1CC8F853-1_kz3tjb.jpg?fit=473%2C1024&ssl=1)
+
+Texastic supports textmate and sublime bundles (including custom syntax support and themes). I installed a sublime text implementation of todo.txt format and had color coding which all I needed on my mobile devices. Most of the time my activity on my mobile devices are simply adding new stuff to the list or mark them done.

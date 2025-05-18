@@ -43,6 +43,16 @@ function replaceImageUrls(content, isTraUrlPrefix) {
     );
 }
 
+// Add special rule for paragraph breaks
+turndown.addRule('paragraphBreak', {
+    filter: function(node) {
+        return node.nodeName === 'P' && node.getAttribute('data-paragraph-break') !== null;
+    },
+    replacement: function() {
+        return '\n\n';
+    }
+});
+
 // Configure code blocks to use triple backticks
 turndown.addRule('pre', {
     filter: 'pre',
@@ -117,8 +127,22 @@ async function processPost(post) {
         frontMatter.lang = 'tr';
     }
 
+    // Preprocessing to better identify and preserve paragraph breaks in the HTML
+    // This works by identifying double newlines in the HTML (which indicate paragraph breaks)
+    // and marking them with a special marker that will be preserved through turndown
+    let preprocessedHtml = post.post_content
+        // Normalize all newlines first
+        .replace(/\r\n|\r/g, '\n')
+        // Mark paragraph breaks with a special token
+        .replace(/\n\n+/g, '\n\n<p data-paragraph-break></p>\n\n');
+    
     // Convert HTML to Markdown
-    let content = turndown.turndown(post.post_content);
+    let content = turndown.turndown(preprocessedHtml);
+    
+    // Post-process the markdown to restore proper paragraph spacing
+    content = content
+        // Replace our paragraph break markers with double newlines
+        .replace(/\n*<p data-paragraph-break><\/p>\n*/g, '\n\n');
     
     // Replace WordPress image URLs with local paths
     content = replaceImageUrls(content, isTurkish);

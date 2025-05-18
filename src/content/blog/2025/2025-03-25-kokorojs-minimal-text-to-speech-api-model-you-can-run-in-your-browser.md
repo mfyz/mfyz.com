@@ -21,9 +21,13 @@ Kokoro.js is a minimalistic JavaScript library that enables text-to-speech synth
 Here are some great reasons to use Kokoro.js in your projects:
 
 *   **Easy to Use**: The API is straightforward and requires minimal setup.
+
 *   **Browser-Based**: No need for server-side infrastructure; everything runs on the client.
+
 *   **Fast Performance**: Generate real-time audio with minimal latency.
+
 *   **Customizable Voices**: Select different voice styles and modulations.
+
 *   **Open Source**: Modify and extend it based on your needs.
 
 ### Getting Started
@@ -64,17 +68,23 @@ You can test Kokoro.js without installing anything by trying it online at [Huggi
 Kokoro.js operates with a simple four-step process:
 
 1.  **Input Text**: Provide the text you want to convert.
-2.  **Select a Voice**: Choose from multiple voices (`tts.list_voices()` lists available options).
-3.  **Generate Audio**: The TTS model processes the text into speech.
-4.  **Output**: Play or save the generated audio file.
+
+3.  **Select a Voice**: Choose from multiple voices (`tts.list_voices()` lists available options).
+
+5.  **Generate Audio**: The TTS model processes the text into speech.
+
+7.  **Output**: Play or save the generated audio file.
 
 ### Potential Use Cases
 
 Kokoro.js can be useful for many applications, such as:
 
 *   **Accessibility Features**: Assisting visually impaired users with spoken content.
+
 *   **E-Learning Platforms**: Enhancing educational tools with voice support.
+
 *   **Storytelling & Audiobooks**: Adding narration to text-based content.
+
 *   **Voice Assistants**: Building interactive AI-driven assistants.
 
 ### Final Thoughts

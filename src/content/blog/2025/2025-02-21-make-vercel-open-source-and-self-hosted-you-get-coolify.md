@@ -17,17 +17,28 @@ If you've been browsing through options for cloud deployment, you may have stumb
 There's a lot to love about Coolify. Here are some reasons that caught my interest:
 
 *   **It’s Lightweight.** Don't you just hate when tools hog all your system resources? Coolify is designed to be lean, meaning it won't slow you down.
+
 *   **SSH Connection Required.** All you need to get started is an SSH connection. This simplicity makes the setup process fairly straightforward.
+
 *   **Supports Any Language.** Are you a polyglot programmer? Coolify embraces that! You can work with any programming language you like, providing flexibility for your projects.
+
 *   **Compatible with Any Service that Runs on Docker.** If you’re familiar with Docker, you need not worry. Coolify is designed to accommodate any Docker services, making deployment a breeze.
+
 *   **Versatile Server Support.** Want to run multiple applications on different servers? Coolify doesn’t limit you to a specific server type; it allows you to use any server that meets your requirements.
+
 *   **Emphasis on GitOps Based Deployments.** The latest trends in deployment revolve around GitOps, and Coolify supports that approach, making it easier to manage your deployments through code.
+
 *   **Additional Features**:
     *   SSL certificates
+    
     *   Automatic backups
+    
     *   Webhooks
+    
     *   API-first approach
+    
     *   Collaboration tools
+    
     *   Monitoring and notifications
 
 ![](/images/archive/en/2025/02/coolify-deploy-1600x957.png)

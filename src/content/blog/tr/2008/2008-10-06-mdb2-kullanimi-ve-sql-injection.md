@@ -11,18 +11,24 @@ lang: tr
 
 #### MDB2 Nedir?
 
-MDB2 ilk başta DB olarak başlayan sonra MDB olan ve en son MDB2 ismine dönüşen PEAR'ın veritabanı yönetim paketlerinden birisidir. Oldukça fazla türde veritabanı sürücüsü (driver) bulunduğu için, projenizde bu kütüphaneyi kullanıp fakrlı veritabanı yapılarını aynı kodda rahatça kullanabilmenizi sağlar. Ayrıca "prepare & execute" gibi yapılarla hem sql sorgularınızı daha anlaşılır yapar, hem de injection gibi saldırılar için veri türü kontrollerini otomatik yapar. Sonuç olarak güvenlik, daha taşınabilir kod, kolaylık gibi özelliklerinden dolayı tercih edilmesi gereklidir diye düşünüyorum. Genel olarak PHP'nin PDO'suna benzeyen bir yapısı var (özellikler bakımından).
+MDB2 ilk başta DB olarak başlayan sonra MDB olan ve en son MDB2 ismine dönüşen PEAR'ın veritabanı yönetim paketlerinden birisidir. Oldukça fazla türde veritabanı sürücüsü (driver) bulunduğu için, projenizde bu kütüphaneyi kullanıp fakrlı veritabanı yapılarını aynı kodda rahatça kullanabilmenizi sağlar. Ayrıca "prepare & execute" gibi yapılarla hem sql sorgularınızı daha anlaşılır yapar, hem de injection gibi saldırılar için veri türü kontrollerini otomatik yapar.
+
+Sonuç olarak güvenlik, daha taşınabilir kod, kolaylık gibi özelliklerinden dolayı tercih edilmesi gereklidir diye düşünüyorum. Genel olarak PHP'nin PDO'suna benzeyen bir yapısı var (özellikler bakımından).
 
 #### Örneklerle Genel Kullanımı
 
 PEAR'ı sisteminize kurmanız gerekiyor. Ya da PEAR'ı kendi projenize gömerek de kullanabilirsiniz. http://pear.php.net/package/MDB2 adresinden MDB2'yi indirebilirsiniz. PEAR dizininizi include\_path'a tanıtırsanız şu şekilde sayfa başında MDB2'yi çalıştırabilirsiniz :
+
 ```
 require\_once('MDB2.php');
 ```
 
 #### Bağlantı
 
-MDB2'yi bağlamak çok kolay. Bağlantı fonksiyonunda DSN (Data Source Name) denilen bir cümle ile veritabanı türü, kullanıcı, şifresi, sunucu, port, veritabanı adını bir url olarak veriyorsunuz. Yani fonksiyona 100 tane parametre girmek zorunda kalmıyorsunuz. Aşağıdaki örnekten rahatça anlayacaksınız zaten DSN'nin nasıl birşey olduğunu :
+MDB2'yi bağlamak çok kolay. Bağlantı fonksiyonunda DSN (Data Source Name) denilen bir cümle ile veritabanı türü, kullanıcı, şifresi, sunucu, port, veritabanı adını bir url olarak veriyorsunuz. Yani fonksiyona 100 tane parametre girmek zorunda kalmıyorsunuz.
+
+Aşağıdaki örnekten rahatça anlayacaksınız zaten DSN'nin nasıl birşey olduğunu :
+
 ```
 $db = MDB2::connect("mysql://kullanici:sifre@localhost/veritabani");
 if(PEAR::isError($db)){
@@ -31,7 +37,12 @@ if(PEAR::isError($db)){
 }
 
 ```
-gördüğünüz gibi bir web sitesi url'si tanımlamak gibi. Daha doğrusu ftp erişimi yapmak gibi. protokol türü + "://" + kullanıcı + ":" + şifre + "@" + sunucu (+":port") + "/" veritabanı Yani siz aynı veritabanı yapısını oluşturduğunuz sürece projenizi ileride mysql:// yerine pgsql:// yazarak kolayca çevirebileceksiniz. Neyse, bağlantı kısmı işin başlangıcı. Asıl sık sık kullanacağımız olan şey sorgu işletmek, sonuçları işlemek vs.
+
+gördüğünüz gibi bir web sitesi url'si tanımlamak gibi. Daha doğrusu ftp erişimi yapmak gibi. protokol türü + "://" + kullanıcı + ":" + şifre + "@" + sunucu (+":port") + "/" veritabanı
+
+Yani siz aynı veritabanı yapısını oluşturduğunuz sürece projenizi ileride mysql:// yerine pgsql:// yazarak kolayca çevirebileceksiniz.
+
+Neyse, bağlantı kısmı işin başlangıcı. Asıl sık sık kullanacağımız olan şey sorgu işletmek, sonuçları işlemek vs.
 
 #### Sorgu işletmek
 
@@ -59,22 +70,30 @@ if( $sorgu->numRows() > 0 ){
 }
 
 ```
+
 Örnekte tüm detayları açıkladım :) Eğer çok boyutlu sonuçlarla çalışıyorsanız fetchAll ile halletmenizi öneririm işlerinizi. Eğer tek boyutlu sonuç bekliyorsanız fetchRow işinizi görecektir.
 
 #### Injection için güzellikler
 
 En sevdiğim kısmı ise sizi verilerinizin türünü kontrol etme işini üstünüzden alması. Bunun için iki yol var. Birincisi query kullanarak quote yapmak. Yani Türkçesi, yukarıdaki methodu kullanarak sorgu işletmek, ama işletirken de değişkenleri tek tek bir fonksiyondan geçirmek. Örnekle anlatırsam :
+
 ```
 // elimizde $ad, $ziyaret\_sayisi degiskenleri olsun
 
 $sorgu = $db->query('insert into uyeler (ad, ziyaret) values ('. $db->quote($ad, 'text') .', '. $db->quote($ziyaret\_sayisi, 'integer') .')');
 
 ```
-görüldüğü gibi sql içinde herhangi bir tırnak kullanmadan doğrudan quote() fonksiyonunu kullandım. ilk parametrede veri ikinci parametrede de veri türünü belirtiyorsunuz. Eğer text ise sql injection önlemlerini alıyor. integer ise zaten sayısallaştırıp kaydediyor. Ancak yine de sqliniz oldukça karışık görünüyor. Yani baksanıza bir sürü tırnak ile SQL cümlesini oluşturan string'den kaçmak için uğraştık. Ayrıca sürekli $db->quote(...) gibi bir fonksiyon çağırmak, elinizde 20 tane alan varsa sıkıcı bir işe dönüşecektir. Bunun için prepare & execute yapısını kullanacağız.
+
+görüldüğü gibi sql içinde herhangi bir tırnak kullanmadan doğrudan quote() fonksiyonunu kullandım. ilk parametrede veri ikinci parametrede de veri türünü belirtiyorsunuz. Eğer text ise sql injection önlemlerini alıyor. integer ise zaten sayısallaştırıp kaydediyor.
+
+Ancak yine de sqliniz oldukça karışık görünüyor. Yani baksanıza bir sürü tırnak ile SQL cümlesini oluşturan string'den kaçmak için uğraştık. Ayrıca sürekli $db->quote(...) gibi bir fonksiyon çağırmak, elinizde 20 tane alan varsa sıkıcı bir işe dönüşecektir. Bunun için prepare & execute yapısını kullanacağız.
 
 #### Prepare & Execute
 
-quote kullanımından biraz daha uzun. Ancak eğer sorgunuzda kullanıcıdan gelebilecek bir veri kullanıyorsanız KESİNLİKLE bu yapıyı kullanmanızı öneririm. Yani sonuçta gözünüzden kaçabiliyor bazen değişkenlerinizi izlemek ve kontrol etmek. Bu kullanıma alışırsanız farkında olmadan vereceğiniz açık sayısı en az inecektir. Gelelim kullanıma, bunu da örnekleyerek anlatacağım :
+quote kullanımından biraz daha uzun. Ancak eğer sorgunuzda kullanıcıdan gelebilecek bir veri kullanıyorsanız KESİNLİKLE bu yapıyı kullanmanızı öneririm. Yani sonuçta gözünüzden kaçabiliyor bazen değişkenlerinizi izlemek ve kontrol etmek. Bu kullanıma alışırsanız farkında olmadan vereceğiniz açık sayısı en az inecektir.
+
+Gelelim kullanıma, bunu da örnekleyerek anlatacağım :
+
 ```
 // prepare ile ilk parametrede sorgunuzu yazıyorsunuz. Değişken olan her yere tırnak fln koymadan sadece soru işareti koyuyorsunuz. prepare fonksiyonunun ikinci parametresinde de dizi olarak sırasıyla o soru işaretlerinin veri türlerini belirtiyorsunuz.
 $sorgu = $db->prepare("select \* from uyeler where adi like ?", array('text'));
@@ -87,7 +106,9 @@ if($sonuc->numRows() < 1) die("sonuc bulunamadi"); $uyeler = $sonuc->fetchAll();
 // ...
 
 ```
+
 Bu örnekte tek değişken gösterdiğim için pek anlaşılmamış olabilir. Ancak alttaki örnekte prepare & execute yapısının önemini kavrayacaksınız.
+
 ```
 // elimizde çok değişken olsun
 
@@ -114,4 +135,7 @@ function uye\_kaydet($veri){
 }
 
 ```
-Son kısımda bahsettiğim detayı umarım anlayabilmişsinizdir. Çünkü bu şekilde uygulama geliştirdiğiniz zaman, uygulamanız daha esnek, daha rahat müdahale edilebilir ve daha rahat geliştirilebilir hale gelecektir. Siz üye kayıt sayfasını daha sadeleştirmiş olacak, eğer gerekirse üye veritabanında yapacağınız bir değişiklik için gidip üye kayıt sayfasının içinde HTML, PHP karışık kodun içinde aramak yerine doğrudan fonksiyonunuzdaki sql'i güncelleyerek daha hızlı çalışacaksınız. Bu noktada iş gruplarına ait fonksiyonları sınıflandırırsanız zaten Nesne Tabanlı Programlama (OOP)'ya adım atmış olacaksınız :)
+
+Son kısımda bahsettiğim detayı umarım anlayabilmişsinizdir. Çünkü bu şekilde uygulama geliştirdiğiniz zaman, uygulamanız daha esnek, daha rahat müdahale edilebilir ve daha rahat geliştirilebilir hale gelecektir. Siz üye kayıt sayfasını daha sadeleştirmiş olacak, eğer gerekirse üye veritabanında yapacağınız bir değişiklik için gidip üye kayıt sayfasının içinde HTML, PHP karışık kodun içinde aramak yerine doğrudan fonksiyonunuzdaki sql'i güncelleyerek daha hızlı çalışacaksınız.
+
+Bu noktada iş gruplarına ait fonksiyonları sınıflandırırsanız zaten Nesne Tabanlı Programlama (OOP)'ya adım atmış olacaksınız :)

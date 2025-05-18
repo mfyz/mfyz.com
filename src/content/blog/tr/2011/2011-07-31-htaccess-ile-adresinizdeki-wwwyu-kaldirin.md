@@ -9,7 +9,9 @@ migration: {"wpId":277,"wpPostDate":"2011-07-31T13:02:52.000Z"}
 lang: tr
 ---
 
-Herhalde milyon tane baslik acilmis ve bu soru cevaplanmistir fakat su an duzenleme yaparken daha dogru bir cozum buldum bu konuya ve sizinle paylasmak istedim. Web sitenizin adresindeki www'dan kurtulmak icin htaccess'da mod\_rewrite'i kullanabilirsiniz. Bircok farkli cozum var fakat icinde domain, hostname degisikligi yapmadan her yerde kullanabileceginiz ve bence en dogru cozum olarak su kodu kullanabilirsiniz:
+Herhalde milyon tane baslik acilmis ve bu soru cevaplanmistir fakat su an duzenleme yaparken daha dogru bir cozum buldum bu konuya ve sizinle paylasmak istedim.
+
+Web sitenizin adresindeki www'dan kurtulmak icin htaccess'da mod\_rewrite'i kullanabilirsiniz. Bircok farkli cozum var fakat icinde domain, hostname degisikligi yapmadan her yerde kullanabileceginiz ve bence en dogru cozum olarak su kodu kullanabilirsiniz:
 ```
 RewriteEngine On
 RewriteBase /

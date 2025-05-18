@@ -13,7 +13,9 @@ lang: tr
 
 #### 1\. Giriş & Açıklamalar
 
-Gentoo kurmak aslında kurulum işlemi değildir. Bir kaynağı kendinize kullanılabilir hale getirmektir. Zaten öyle olmasa idi büyük ihtimalle bir kurulum sihirbazı ile ileri ileri diyerek kurardık.. :) Gentoo kurulumu aslında 3-4 bölümden ibarettir. Öncelikle diskimizi hazırlarız partitionlarımızı hazırlar kurulumda kullanacağımız internet için network ayarları yaparız.. Hatta eski makineler için ses kartını tanıtıp kurulum sırasında müzik de dinleyebiliriz. Gentoo kurmak için ihtiyacımız olan sadece 2 dosyadır. Biri stage dosyaları diğeri de son güncel portage paketi. Gentoo live cd sadece bir live cd olarak kurulumda işimize yarayacak olan araçları barındırır. Bir knoppix cd'si ile de gentoo kurulumu yapabilir, kurarken video seyredebilirsiniz. Gerçi 15 dakkada derlenecek olan kernel 3-4 saatte derlenir o ayrı konu :) Neyse diskimizi hazırladıktan sonra dosyalarımız açar ve dosyaları açtığımız sistemegeçiş yaparak onun üzerindeki OS'un açılmasını sağlayacak olan 2 şeyi yaparız. Kernel derlemek ve lilo. Tabiki bunlarla beraber çok fazla ayarlama da yapacağız. Şimdi bu işlemleri daha ayrıntılı yapalım.
+Gentoo kurmak aslında kurulum işlemi değildir. Bir kaynağı kendinize kullanılabilir hale getirmektir. Zaten öyle olmasa idi büyük ihtimalle bir kurulum sihirbazı ile ileri ileri diyerek kurardık.. :) Gentoo kurulumu aslında 3-4 bölümden ibarettir. Öncelikle diskimizi hazırlarız partitionlarımızı hazırlar kurulumda kullanacağımız internet için network ayarları yaparız.. Hatta eski makineler için ses kartını tanıtıp kurulum sırasında müzik de dinleyebiliriz. Gentoo kurmak için ihtiyacımız olan sadece 2 dosyadır. Biri stage dosyaları diğeri de son güncel portage paketi. Gentoo live cd sadece bir live cd olarak kurulumda işimize yarayacak olan araçları barındırır. Bir knoppix cd'si ile de gentoo kurulumu yapabilir, kurarken video seyredebilirsiniz. Gerçi 15 dakkada derlenecek olan kernel 3-4 saatte derlenir o ayrı konu :) Neyse diskimizi hazırladıktan sonra dosyalarımız açar ve dosyaları açtığımız sistemegeçiş yaparak onun üzerindeki OS'un açılmasını sağlayacak olan 2 şeyi yaparız. Kernel derlemek ve lilo. Tabiki bunlarla beraber çok fazla ayarlama da yapacağız.
+
+Şimdi bu işlemleri daha ayrıntılı yapalım.
 
 #### 2\. Öneriler
 
@@ -39,7 +41,15 @@ Buna benzer bir çıktı alacaksınız eğer internette bir yer edinememişseniz
 
 #### 4\. Diskin Hazırlanması
 
-Disk için yapılması gereken tek şey daha önceden gentoo kurmak için boş bir alan ayırmış olmak veya bazı disklerin alanını kullanmak olacaktır. Şimdi **dmesg | grep hd** yazarak o anda bağlanmış olan disklerin adları ve aygıtlarını görelim. Diskinizin markasına göre yüklemek için alan ayırdığınız diskin ne olduğunu öğrenmemiz gerek, ben burada hda olarak varsayıp devam edeceğim. Diskte en az 2 alan yaratacağız biri / diğeri de swap olacak. **cfdisk /dev/hda** komutu ile cfdisk programını çalıştırıyoruz. cfdisk programı oldukça basit yapıdadır. Altta opsiyonlar ve yukarıda da o disktaki partition'ları belirten bir tablodan oluşur. Daha önceden boş alan ayırmış isek free space olarak geçen kısımlara gelerek yeni partition'lar yaratacağız. Eğer boş alan yoksa bir bölümü silip oraya kurmamız gerek. **Dikkat : Sildiğiniz bölümdeki bütün bilgiler gidecektir.** free space olan kısımı seçtiğimzde alttaki menüden new'i seçiyoruz (sağ sol ok tuşları ile). Önce küçük olan bölümden başlayacağız yani swap'dan. Günümüzdeki ram'lere göre 250-500mb'lık bir swap yetecekir. Size (in MB): yazan kısıma 500 girerek devam ediyoruz. Begining ardından da Primary seçerek swap bölümü oluştumuş oluyoruz. free space'e gelip geri kalanı ile de aynı opsiyonları belirterek /'u da oluşturmuş olduk. Şimdi / için yaptığımız son bölümü seçip bootable olarak işaretliyoruz. Write diyip sonra yes diyerek Diske yazıyoruz değişiklikleri.. swap ve / için yapılan bölümlerin adlarını bir yere not alıyoruz (anlatırken hda1 swap, hda2 / olarak anlatacağım). Quit ile çıkıyoruz. Disk'te partitionları yaptık şimdi bu partitionlaru formatlayacağız. **mke2fs -j /dev/hda2** ile /'u ext3 olarak formatladık. **mkswap /dev/hda1** ardından da **swapon /dev/hda1** komutları ile swap formatlayıp swap yaptırdık. **mount /dev/hda2 /mnt/gentoo** ile /'u çalışmak için /mnt/gentoo'ya bağladık. **cd /mnt/gentoo** ile /mnt/gentoo'ya giriyoruz. **mkdir boot** ve **mkdir proc** ile boot, proc dizinlerini yaratalım. Ardından **mount -t proc none proc** ile özel aygıtımızı bağlayalım. Diskle ilgili işlemlerimiz bitti. Artık kurulum paketerini diske açabiliriz.
+Disk için yapılması gereken tek şey daha önceden gentoo kurmak için boş bir alan ayırmış olmak veya bazı disklerin alanını kullanmak olacaktır. Şimdi **dmesg | grep hd** yazarak o anda bağlanmış olan disklerin adları ve aygıtlarını görelim. Diskinizin markasına göre yüklemek için alan ayırdığınız diskin ne olduğunu öğrenmemiz gerek, ben burada hda olarak varsayıp devam edeceğim.
+
+Diskte en az 2 alan yaratacağız biri / diğeri de swap olacak. **cfdisk /dev/hda** komutu ile cfdisk programını çalıştırıyoruz. cfdisk programı oldukça basit yapıdadır. Altta opsiyonlar ve yukarıda da o disktaki partition'ları belirten bir tablodan oluşur. Daha önceden boş alan ayırmış isek free space olarak geçen kısımlara gelerek yeni partition'lar yaratacağız. Eğer boş alan yoksa bir bölümü silip oraya kurmamız gerek. **Dikkat : Sildiğiniz bölümdeki bütün bilgiler gidecektir.** free space olan kısımı seçtiğimzde alttaki menüden new'i seçiyoruz (sağ sol ok tuşları ile). Önce küçük olan bölümden başlayacağız yani swap'dan. Günümüzdeki ram'lere göre 250-500mb'lık bir swap yetecekir. Size (in MB): yazan kısıma 500 girerek devam ediyoruz. Begining ardından da Primary seçerek swap bölümü oluştumuş oluyoruz. free space'e gelip geri kalanı ile de aynı opsiyonları belirterek /'u da oluşturmuş olduk. Şimdi / için yaptığımız son bölümü seçip bootable olarak işaretliyoruz. Write diyip sonra yes diyerek Diske yazıyoruz değişiklikleri.. swap ve / için yapılan bölümlerin adlarını bir yere not alıyoruz (anlatırken hda1 swap, hda2 / olarak anlatacağım). Quit ile çıkıyoruz. Disk'te partitionları yaptık şimdi bu partitionlaru formatlayacağız.
+
+**mke2fs -j /dev/hda2** ile /'u ext3 olarak formatladık. **mkswap /dev/hda1** ardından da **swapon /dev/hda1** komutları ile swap formatlayıp swap yaptırdık.
+
+**mount /dev/hda2 /mnt/gentoo** ile /'u çalışmak için /mnt/gentoo'ya bağladık. **cd /mnt/gentoo** ile /mnt/gentoo'ya giriyoruz. **mkdir boot** ve **mkdir proc** ile boot, proc dizinlerini yaratalım. Ardından **mount -t proc none proc** ile özel aygıtımızı bağlayalım.
+
+Diskle ilgili işlemlerimiz bitti. Artık kurulum paketerini diske açabiliriz.
 
 #### 5\. Kurulum Paketlerinin Diske Açılması
 
@@ -66,7 +76,9 @@ Komut dizisi ile asıl çalışacağımız sisteme geçiş yaptık.
 
 #### 7\. Çekirdek (Kernel) Ayarları & Derlenmesi
 
-**ln -sf /usr/share/zoneinfo/Turkey /etc/localtime** ile zaman dilimini ayarlayalım. **emerge gentoo-dev-sources** ile kernel kaynak kodunu kuralım. **emerge genkernel** ile genkernel aracını kuralım. **genkernel all** komutu ile kernel ayarı sonra da derlenmesini sağlayalım. Derleme uzun sürecektir. Bittiğinde /boot dizinini inceliyoruz kernel\* ve initrd\* şeklinde iki dosya bulunması gerek. Şu anda bunlar çok anlamsız gelebilir ancak sistemin kurulumunu başarıyla tamamlayabilmek için bunları görmezden gelin sadece yazıp işletin. İleride anlayacağınız bol zamanınınz olacak :)
+**ln -sf /usr/share/zoneinfo/Turkey /etc/localtime** ile zaman dilimini ayarlayalım. **emerge gentoo-dev-sources** ile kernel kaynak kodunu kuralım. **emerge genkernel** ile genkernel aracını kuralım. **genkernel all** komutu ile kernel ayarı sonra da derlenmesini sağlayalım. Derleme uzun sürecektir. Bittiğinde /boot dizinini inceliyoruz kernel\* ve initrd\* şeklinde iki dosya bulunması gerek.
+
+Şu anda bunlar çok anlamsız gelebilir ancak sistemin kurulumunu başarıyla tamamlayabilmek için bunları görmezden gelin sadece yazıp işletin. İleride anlayacağınız bol zamanınınz olacak :)
 
 #### 8\. Sistemin Ayarlanması
 
@@ -85,14 +97,18 @@ none                 /proc      proc      defaults          0 0
 none                 /dev/shm   tmpfs     defaults          0 0
 
 ```
-Bu yapıya benzer biçimde disk yapınızı oluşturun. Kaydedip çıkın. Ağ bilgilerini ayarlamamız gerekiyor. Kısa işlemlerle bunu da yapıyoruz;
+Bu yapıya benzer biçimde disk yapınızı oluşturun. Kaydedip çıkın.
+
+Ağ bilgilerini ayarlamamız gerekiyor. Kısa işlemlerle bunu da yapıyoruz;
 ```
 echo benim\_bilgisayarim > /etc/hostname
 echo mfyz.com > /etc/dnsdomainname
 rc-update add domainname default
 
 ```
-/etc/conf.d/net dosyasını açıyoruz. iface\_eth0 satırında statik veya dinamik olmasına göre ayarlarını yapıyoruz. DHCP için yani dinamik ip için iface\_eth0="dhcp" satırını aktif hale getiriyor, statik için de iface\_eth0="192.168.1.10 broadcast 192.168.0.255 netmask 255.255.255.0" şeklinde ayarlıyoruz. Diğer ethernet kartlarını da bu şekilde ayarlıyoruz. **rc-update add net.eth0 deafult** ile başlangıçta aktifleştiriyoruz ethernet ayarlarını.. /etc/rc.conf dosyası ile de sistem ayarları yapıyoruz. Konsolda Türkçe klavye kullanmak için keymap="trq" yapmanız yeterli diğer ayarları da kendinize göre değiştirebilirsiniz.
+/etc/conf.d/net dosyasını açıyoruz. iface\_eth0 satırında statik veya dinamik olmasına göre ayarlarını yapıyoruz. DHCP için yani dinamik ip için iface\_eth0="dhcp" satırını aktif hale getiriyor, statik için de iface\_eth0="192.168.1.10 broadcast 192.168.0.255 netmask 255.255.255.0" şeklinde ayarlıyoruz. Diğer ethernet kartlarını da bu şekilde ayarlıyoruz. **rc-update add net.eth0 deafult** ile başlangıçta aktifleştiriyoruz ethernet ayarlarını..
+
+/etc/rc.conf dosyası ile de sistem ayarları yapıyoruz. Konsolda Türkçe klavye kullanmak için keymap="trq" yapmanız yeterli diğer ayarları da kendinize göre değiştirebilirsiniz.
 
 #### 9\. Önyükleyiciyi Ayarlayalım
 
@@ -115,11 +131,19 @@ other=/dev/hda3
 label=windows
 
 ```
-Şeklindeki ayarda kernel-2.6.7-r12 ve initrd-2.6.7-r12 dediğim dosyalar kernel derledikten sonra /boot dizininde kontrol ettiğimiz kernel ve initrd dosyasıdır. Bu dosyayı ayarladıktan sonra kaydedip çıkıyoruz. ve lilo komutunu veriyoruz Bir uyarı ve Added gentoo\* Added windows demesi gerekiyor. Böylece önyükleyiciyi de kurmuş olduk. **Güncelleme :** GRUB kurmanızı tavsiye ederim. Lilo çok geride kaldı!
+Şeklindeki ayarda kernel-2.6.7-r12 ve initrd-2.6.7-r12 dediğim dosyalar kernel derledikten sonra /boot dizininde kontrol ettiğimiz kernel ve initrd dosyasıdır. Bu dosyayı ayarladıktan sonra kaydedip çıkıyoruz. ve lilo komutunu veriyoruz Bir uyarı ve Added gentoo\* Added windows demesi gerekiyor. Böylece önyükleyiciyi de kurmuş olduk.
+
+**Güncelleme :** GRUB kurmanızı tavsiye ederim. Lilo çok geride kaldı!
 
 #### 10\. Sistem Araçlarının Kurulması ve Son
 
-Hotplug bilgisayarınıza taktığımız donanımı eşzamanlı tanıyan bir araçtır. Olmazsa olmaz **emerge hotplug** ile hotplug'ı kuralım **rc-update add hotplug default** ile geçerli seviyede çalıştırılmasını sağlayalım. Syslog'da sistem loglarını tutan bir araçtır. Sisteminizde bir arıza olduğunda veya bir sorun yaşadığınızda loglar her zaman imdaat'ınıza koşar bu açıdan bunu da kurmanız şiddetle önerilir. **emerge syslog-ng** ile syslog'u kuralım **rc-update add syslog-ng default** ile geçerli seviyede çalıştırılmasını sağlayalım. Gerekli araçları kurduktan sonra sistemden çıkmadan önce root şifresini ayarlayıp, bir kullanıcı ekleyelim. passwd komutu ile root şifresini ayarlayın. **useradd mfyz -G wheel,users -m -s /bin/bash** ile de mfyz kullanıcımızı ekliyoruz. passwd mfyz ile mfyz kullanıcısının şifresini ayarlayalım. root'un seri konsola erişebilmesi için : **echo "tts/0" >> /etc/securetty** komutun veriyoruz. Ve sistemi terk edip ilk bootumuzu yapıyoruz...
+Hotplug bilgisayarınıza taktığımız donanımı eşzamanlı tanıyan bir araçtır. Olmazsa olmaz **emerge hotplug** ile hotplug'ı kuralım **rc-update add hotplug default** ile geçerli seviyede çalıştırılmasını sağlayalım.
+
+Syslog'da sistem loglarını tutan bir araçtır. Sisteminizde bir arıza olduğunda veya bir sorun yaşadığınızda loglar her zaman imdaat'ınıza koşar bu açıdan bunu da kurmanız şiddetle önerilir. **emerge syslog-ng** ile syslog'u kuralım **rc-update add syslog-ng default** ile geçerli seviyede çalıştırılmasını sağlayalım.
+
+Gerekli araçları kurduktan sonra sistemden çıkmadan önce root şifresini ayarlayıp, bir kullanıcı ekleyelim. passwd komutu ile root şifresini ayarlayın. **useradd mfyz -G wheel,users -m -s /bin/bash** ile de mfyz kullanıcımızı ekliyoruz. passwd mfyz ile mfyz kullanıcısının şifresini ayarlayalım. root'un seri konsola erişebilmesi için : **echo "tts/0" >> /etc/securetty** komutun veriyoruz.
+
+Ve sistemi terk edip ilk bootumuzu yapıyoruz...
 ```
 exit
 cd /
@@ -127,4 +151,8 @@ umount /mnt/gentoo /mnt/gentoo/proc
 reboot
 
 ```
-Gentoo'nun düzgünce konsola düşmemesi veya lilo konfigürasyonundan dolayı sistemin açılmaması durumunda live cd veya knoppix ile açıp, /dev/hda2'yi bir yere bağlayıp sisteme geçiş yapabilir, lilo'yu tekrar ayarlayabilir, kernel eksiklerini giderebilir, gentoo'nun boot'daki sorunlarını giderebilirsiniz. Sistem sorunsuz boot ettikten sonra yapmanız gereken X ortamı ve kde/gnome gibi bir masaüstü yöneticisini kurmak olacaktır. Bir programı kurmak için yapmanız gereken tek şey emerge komutunu kullanmak olmalıdır. **emerge xfree, emerge mozilla-firefox-bin, emerge gnome** Sorunsuz derlemeler...
+Gentoo'nun düzgünce konsola düşmemesi veya lilo konfigürasyonundan dolayı sistemin açılmaması durumunda live cd veya knoppix ile açıp, /dev/hda2'yi bir yere bağlayıp sisteme geçiş yapabilir, lilo'yu tekrar ayarlayabilir, kernel eksiklerini giderebilir, gentoo'nun boot'daki sorunlarını giderebilirsiniz.
+
+Sistem sorunsuz boot ettikten sonra yapmanız gereken X ortamı ve kde/gnome gibi bir masaüstü yöneticisini kurmak olacaktır. Bir programı kurmak için yapmanız gereken tek şey emerge komutunu kullanmak olmalıdır. **emerge xfree, emerge mozilla-firefox-bin, emerge gnome**
+
+Sorunsuz derlemeler...

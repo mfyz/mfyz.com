@@ -13,7 +13,15 @@ Linux'ta VI'ı bilmeyen yoktur herhalde, vi çok fonksiyonel ve öğrenilemeyece
 
 #### VI komutlarının kullanımı
 
-Aslında basit bir mantık içeriyor. önce sınırlarını belirtiyoruz klavyeden, sonra işletilecek komut ve ardından nesnemizi. Örnek olarak şu tuş kombinasyonu : **12dw** , aslında kursorün bulunduğu konumdan başlayarak, d yani silme işlemi, w yani ondan sonra gelen kelime sonunu ifade eder; yani kursörden itibaren 12 kelime siler. **Bazı komutlar ve örnek kullanımları** **d** Silme işlemi **r** Karakter değiştirme "**rx**" şeklinde kullanımda kursörün altında bulunan karakteri **x** ile değiştirir. **w,e** w, kelime başına; e ise kelime sonuna gider. **o,O** o 'ya basıldığında kursörün bulunduğu satırın altında yazmaya hazır boş satır açar. O'da ise kursörün bulunduğu satırın üstünde boş satır açar.
+Aslında basit bir mantık içeriyor. önce sınırlarını belirtiyoruz klavyeden, sonra işletilecek komut ve ardından nesnemizi. Örnek olarak şu tuş kombinasyonu : **12dw** , aslında kursorün bulunduğu konumdan başlayarak, d yani silme işlemi, w yani ondan sonra gelen kelime sonunu ifade eder; yani kursörden itibaren 12 kelime siler.
+
+**Bazı komutlar ve örnek kullanımları**
+
+**d** Silme işlemi **r** Karakter değiştirme "**rx**" şeklinde kullanımda kursörün altında bulunan karakteri **x** ile değiştirir.
+
+**w,e** w, kelime başına; e ise kelime sonuna gider.
+
+**o,O** o 'ya basıldığında kursörün bulunduğu satırın altında yazmaya hazır boş satır açar. O'da ise kursörün bulunduğu satırın üstünde boş satır açar.
 
 #### Dosya içinde bişeyler arama
 
@@ -29,4 +37,14 @@ Düzenli ifade kullanan arkadaşlar sed ve grep gibi araçlarda regex kullanmı�
 
 #### Özellikler ve kullanımları
 
-VI'da özellikler açıp kapamak için vi komut satırında set kullanılır. "**set ozellik**" o özelliği açar, "**set ozellik!**" o özelliği kapatır. wrap Geçerli olarak kapalı olarak açılan vi'da sözcük kaydırma özelliğini ifade eder. Bu özellik açıldığında yazılar konsolun boyutuna sığmaya çalışarak yerleşir. Ancak sayfanın yapısında değişiklik olmaz! **nu nu** özelliği satır numaralandırmadır. Geçerli olarak kapalıdır. açıldığında her satırın başına satır numaraları eklenir. **syntax** Bu özellik kod renklendirmenin ayarlanması içindir. VI dosya soyadlarına göre otomatik olarak açtığınız dosyaya uygun kod renklendirmesi yapar. Ancak yeni dosya yazarken veya farklı uzantılarla çalışırken (mesela php uzantılı html dosyalarında) kod renklendirme türünü değiştirmek isteyebilirsiniz. syntax özelliği parametreli kullanılır. Örneğin : set syntax=html veya set syntax=php gibi... **autoindent** Geçerli olarak açık olan ve iç içe yazmayı kolaylaştıran bir özelliktir. Not: Bu döküman 2 Ocak 2008 tarihinde yeniden düzenlenmiştir.
+VI'da özellikler açıp kapamak için vi komut satırında set kullanılır. "**set ozellik**" o özelliği açar, "**set ozellik!**" o özelliği kapatır.
+
+wrap Geçerli olarak kapalı olarak açılan vi'da sözcük kaydırma özelliğini ifade eder. Bu özellik açıldığında yazılar konsolun boyutuna sığmaya çalışarak yerleşir. Ancak sayfanın yapısında değişiklik olmaz!
+
+**nu nu** özelliği satır numaralandırmadır. Geçerli olarak kapalıdır. açıldığında her satırın başına satır numaraları eklenir.
+
+**syntax** Bu özellik kod renklendirmenin ayarlanması içindir. VI dosya soyadlarına göre otomatik olarak açtığınız dosyaya uygun kod renklendirmesi yapar. Ancak yeni dosya yazarken veya farklı uzantılarla çalışırken (mesela php uzantılı html dosyalarında) kod renklendirme türünü değiştirmek isteyebilirsiniz. syntax özelliği parametreli kullanılır. Örneğin : set syntax=html veya set syntax=php gibi...
+
+**autoindent** Geçerli olarak açık olan ve iç içe yazmayı kolaylaştıran bir özelliktir.
+
+Not: Bu döküman 2 Ocak 2008 tarihinde yeniden düzenlenmiştir.

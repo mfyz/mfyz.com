@@ -9,15 +9,27 @@ migration: {"wpId":161,"wpPostDate":"2012-02-27T12:54:46.000Z"}
 lang: tr
 ---
 
-Bir web sayfasındaki yüklenmeyen resimleri çoğu zaman doğru yönetilmediği için bozuk resim olarak görüyoruz hatta bazen de tasarımın kaymasını, arayüzde bozukluklar olabiliyor. Örnek bir senaryo: bir makele yazdınız ve internette başka bir sitedeki resimi kullandınız, 1 ay sonra resim o siteden kaldırıldığı zaman, veya site kapandığı zaman sizin sitenizdeki yazıda resimler bozuk görünecektir. Tabi ki bunun tek cözümü resimleri bulmaya çalışmak, ya da o şekilde bırakmak isteyebilirsiniz. Fakat siz bu değişiklikleri yapana kadar, sitenizde bozuk resim (yuklenemeyen) olarak görünecek. Bir resim yükleyemediğinizde yapabileceğiniz birkaç şey var, birincisi yüklenmemiş resimleri ortadan kaldırabilirsiniz, ama resimler içerikle çok ilişkili ise, mesela yazınızda ekran görüntüsünden bahsediyorsanız ve oratada bir ekran görüntusü yoksa resmin bozuk görünmesinden daha büyük bir yanlış anlaşılma ile karşılaşabilirsiniz. Resmi kaldırabilir veya jenerik bir "yuklenemis resim" imaji gösterebilirsiniz. Eğer kaldırmak istiyorsanız img etiketi içindeki onerror özelliğinde resminizi kaldırabilirsiniz. Not: Sayfanızda jQuery kullanıldığını varsayıyorum.
+Bir web sayfasındaki yüklenmeyen resimleri çoğu zaman doğru yönetilmediği için bozuk resim olarak görüyoruz hatta bazen de tasarımın kaymasını, arayüzde bozukluklar olabiliyor.
+
+Örnek bir senaryo: bir makele yazdınız ve internette başka bir sitedeki resimi kullandınız, 1 ay sonra resim o siteden kaldırıldığı zaman, veya site kapandığı zaman sizin sitenizdeki yazıda resimler bozuk görünecektir. Tabi ki bunun tek cözümü resimleri bulmaya çalışmak, ya da o şekilde bırakmak isteyebilirsiniz. Fakat siz bu değişiklikleri yapana kadar, sitenizde bozuk resim (yuklenemeyen) olarak görünecek.
+
+Bir resim yükleyemediğinizde yapabileceğiniz birkaç şey var, birincisi yüklenmemiş resimleri ortadan kaldırabilirsiniz, ama resimler içerikle çok ilişkili ise, mesela yazınızda ekran görüntüsünden bahsediyorsanız ve oratada bir ekran görüntusü yoksa resmin bozuk görünmesinden daha büyük bir yanlış anlaşılma ile karşılaşabilirsiniz. Resmi kaldırabilir veya jenerik bir "yuklenemis resim" imaji gösterebilirsiniz.
+
+Eğer kaldırmak istiyorsanız img etiketi içindeki onerror özelliğinde resminizi kaldırabilirsiniz.
+
+Not: Sayfanızda jQuery kullanıldığını varsayıyorum.
 ```
 <img src=""..."" alt="""" />
 ```
-Böylece resminiz yüklenmede başarısız olursa ortadan kaldırılacaktır. Eğer jenerik bir resime çevirmek istiyorsanız:
+Böylece resminiz yüklenmede başarısız olursa ortadan kaldırılacaktır.
+
+Eğer jenerik bir resime çevirmek istiyorsanız:
 ```
 <img src=""..."" alt="""" />
 ```
-Bu örnekler sadece tek imaj için yazılmış örnekler, Eğer tüm sayfanıza etki edecek daha jenerik bir uygulama yapmak için;
+Bu örnekler sadece tek imaj için yazılmış örnekler,
+
+Eğer tüm sayfanıza etki edecek daha jenerik bir uygulama yapmak için;
 ```
 $(function(){
   $('img').bind('error', function(){

@@ -21,9 +21,13 @@ You probably know Vercel as the go-to place for frontend apps, especially Next.j
 Here’s why:
 
 *   **Zero-config deploys**
+
 *   **Built-in scalability**
+
 *   **Serverless by default**
+
 *   **Free tier good enough for small APIs**
+
 *   **Instant previews for each commit**
 
 That means your idea can go from local to live in minutes.
@@ -110,8 +114,11 @@ You’ll get a `201 Created` with the new book entry.
 Fastify has a rich plugin ecosystem. Some handy ones to know:
 
 *   [`@fastify/swagger`](https://github.com/fastify/fastify-swagger) – Auto-generate OpenAPI docs
+
 *   [`@fastify/rate-limit`](https://github.com/fastify/fastify-rate-limit) – Protect endpoints from abuse
+
 *   [`@fastify/jwt`](https://github.com/fastify/fastify-jwt) – Simple JWT authentication
+
 *   [`@fastify/cors`](https://github.com/fastify/fastify-cors) – Easy CORS handling
 
 Adding them is just a few lines of code. That’s part of the joy of Fastify.
@@ -121,8 +128,11 @@ Adding them is just a few lines of code. That’s part of the joy of Fastify.
 Fastify on Vercel is perfect for AI-generated APIs. When tools or agents generate code for your backend, you want:
 
 *   Fast iteration
+
 *   Clear docs
+
 *   Built-in tests
+
 *   Easy deploys
 
 This combo checks all those boxes. It’s low friction, flexible, and fun to build with. You can write code manually or have AI generate it—and either way, it just works.

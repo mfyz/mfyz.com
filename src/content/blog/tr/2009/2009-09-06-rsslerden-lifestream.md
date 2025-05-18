@@ -27,7 +27,9 @@ Bu işin güzel yanı, hazırladığınız sayfa tamamen organik bir yapıda sü
 
 #### Simple pie
 
-Bunu yapmak için bu sosyal medya servislerindeki rss kaynaklarınızı işleyerek yapacağız. Bunun için php'de simple pie kütüphanesini kullanacağız ve bu kütüphanenin kullanımı ve rss okumak için yardımcı fonksiyon açılımı için önce [Simplepie ile rss işlemek (okumak)](https://tr.mfyz.com/simplepie-ile-rss-islemek-okumak) dökümanını inceleyin. Simple pie ile rss okuma konusunda bilgi sahibi olduğunuzu varsayarak dökümana devam ediyorum (eğer yoksa öncelikle verdiğim dökümanı uygulayın).
+Bunu yapmak için bu sosyal medya servislerindeki rss kaynaklarınızı işleyerek yapacağız. Bunun için php'de simple pie kütüphanesini kullanacağız ve bu kütüphanenin kullanımı ve rss okumak için yardımcı fonksiyon açılımı için önce [Simplepie ile rss işlemek (okumak)](https://tr.mfyz.com/simplepie-ile-rss-islemek-okumak) dökümanını inceleyin.
+
+Simple pie ile rss okuma konusunda bilgi sahibi olduğunuzu varsayarak dökümana devam ediyorum (eğer yoksa öncelikle verdiğim dökümanı uygulayın).
 
 #### Hazırlık ve Başlangıç
 
@@ -45,7 +47,9 @@ $feeds = array(
 );
 
 ```
-Bu şekilde istediğiniz kadar rss kaynağı tanımlayabilirsiniz. Az sonra simplepie kullanarak bu kaynakları okuyacak, kronolojik sıralayıp çıktısı sayfalar halinde oluşturacağız. Şimdi index.php dosyasında kaynakları okumaya başlayalım.
+Bu şekilde istediğiniz kadar rss kaynağı tanımlayabilirsiniz. Az sonra simplepie kullanarak bu kaynakları okuyacak, kronolojik sıralayıp çıktısı sayfalar halinde oluşturacağız.
+
+Şimdi index.php dosyasında kaynakları okumaya başlayalım.
 ```
 require\_once('config.php');
 // libs
@@ -64,7 +68,11 @@ foreach ($feeds as $feedKey => $feed){
 }
 
 ```
-Yukarıda config ve mypie dosyalarını include ettik. Config'de rss kaynakları tanımları var, mypie'de ise simplepie kullanarak rss kaynağı okuyan fonksiyonumuz var. Bu fonksiyon hakkında daha detaylı bilgi almak için [Simplepie ile rss işlemek (okumak)]("http://mfyz.com/?/dokuman/114/simplepie-ile-rss-islemek-okumak/") dökümanını inceleyin. $feeds dizisini dönerek feed bilgilerini ve anahtar kelimesini alıyoruz. Döngü içinde ise feed url'deki kaynağı okuyoruz. Eğer hata olursa o feed ingore edilip bir sonrakine geçiliyor. Eğer okundu ise $allItems adlı bir diziye okunan veri ekleniyor. Tabi haber eklenirken tür olarak da o feed'in anahtar kelimesi ekleniyor. Bu sayede ekrana basarken, farklı haber kaynakları için farklı çıktı verebileceğiz. Şimdi elimizde tüm kaynaklardaki tüm haberler $allItems adlı dizide tutulmakta. Bu dizideki veri yapısın daha iyi anlamanız için dizideki ilk elemanı verelim :
+Yukarıda config ve mypie dosyalarını include ettik. Config'de rss kaynakları tanımları var, mypie'de ise simplepie kullanarak rss kaynağı okuyan fonksiyonumuz var. Bu fonksiyon hakkında daha detaylı bilgi almak için [Simplepie ile rss işlemek (okumak)]("http://mfyz.com/?/dokuman/114/simplepie-ile-rss-islemek-okumak/") dökümanını inceleyin.
+
+$feeds dizisini dönerek feed bilgilerini ve anahtar kelimesini alıyoruz. Döngü içinde ise feed url'deki kaynağı okuyoruz. Eğer hata olursa o feed ingore edilip bir sonrakine geçiliyor. Eğer okundu ise $allItems adlı bir diziye okunan veri ekleniyor. Tabi haber eklenirken tür olarak da o feed'in anahtar kelimesi ekleniyor. Bu sayede ekrana basarken, farklı haber kaynakları için farklı çıktı verebileceğiz.
+
+Şimdi elimizde tüm kaynaklardaki tüm haberler $allItems adlı dizide tutulmakta. Bu dizideki veri yapısın daha iyi anlamanız için dizideki ilk elemanı verelim :
 ```
 Array
 (
@@ -82,7 +90,9 @@ Gördüğünüz gibi tarih, başlık, url, kaynağı ve içerik olarak basit ana
 $allItems = @arrayMultiSort($allItems, 'date');
 
 ```
-Bu fonksiyonu çağıdrıktan sonra $allItems dizisindeki haberler artık kronolojik sıraya girmiş oldu. Tam istediğimiz kıvama geldi fakat elimizdeki dizide yüzlerce haber olabilir isterseniz bu diziyi belirli bir tarihe kadar kırpabilirsiniz. Mesela son 2 haftaki haberleri listelemek isterseniz $allItems'i dönerek date alanını timestamp'a çevirip 2 haftadan eski haberleri tespit edebilirsiniz. Doğal olarak onları temizleme şansınız da olur. Ben herhangi bir kırpma işlemi yapmadan tüm haberleri sayfalayarak göstereceğim.
+Bu fonksiyonu çağıdrıktan sonra $allItems dizisindeki haberler artık kronolojik sıraya girmiş oldu. Tam istediğimiz kıvama geldi fakat elimizdeki dizide yüzlerce haber olabilir isterseniz bu diziyi belirli bir tarihe kadar kırpabilirsiniz. Mesela son 2 haftaki haberleri listelemek isterseniz $allItems'i dönerek date alanını timestamp'a çevirip 2 haftadan eski haberleri tespit edebilirsiniz. Doğal olarak onları temizleme şansınız da olur.
+
+Ben herhangi bir kırpma işlemi yapmadan tüm haberleri sayfalayarak göstereceğim.
 ```
 // pagination
 $itemCount = count($allItems);
@@ -156,4 +166,6 @@ değişkenlerini kullanarak sayfalamayı ve haber içeriklerini basabiliriz. Ger
 </html>
 
 ```
-Bu dökümanda anlatılan kod, proje olarak http://projects.mfyz.com/lifestream/ adresinde Lifestream olarak bulunabilir. Buradaki kodun çıktısını merak ediyorsanız : http://projects.mfyz.com/lifestream/demo/ adresinde biraz şekillendirilmiş şekilde bulabilirsiniz. Bu kodu biraz daha özelleştirerek [http://mfyz.org](http://mfyz.org)'daki gibi bir lifestream elde edebilirsiniz.
+Bu dökümanda anlatılan kod, proje olarak http://projects.mfyz.com/lifestream/ adresinde Lifestream olarak bulunabilir. Buradaki kodun çıktısını merak ediyorsanız : http://projects.mfyz.com/lifestream/demo/ adresinde biraz şekillendirilmiş şekilde bulabilirsiniz.
+
+Bu kodu biraz daha özelleştirerek [http://mfyz.org](http://mfyz.org)'daki gibi bir lifestream elde edebilirsiniz.

@@ -9,7 +9,9 @@ migration: {"wpId":250,"wpPostDate":"2010-05-03T04:35:17.000Z"}
 lang: tr
 ---
 
-![](/images/archive/tr/2010/05/htk3lays.jpg) Yeni projeler yapıldı, kodlandı, lanse edildi, kampanyalar bitti bile. Ama ben bi xml editleyip 2 thumbnail yapıp siteye koyamadım, taa ki bu haftasonuna kadar.
+![](/images/archive/tr/2010/05/htk3lays.jpg)
+
+Yeni projeler yapıldı, kodlandı, lanse edildi, kampanyalar bitti bile. Ama ben bi xml editleyip 2 thumbnail yapıp siteye koyamadım, taa ki bu haftasonuna kadar.
 
 *   Lay's Facebook Uygulaması
 *   Doritos Hisselitatlar Kampanyası - (3.Faz) Oylama Aşaması

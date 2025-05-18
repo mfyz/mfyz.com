@@ -16,17 +16,20 @@ Kontrol yapıları programların neredeyse her 5 kodundan birinde vardır. Çün
 #### if Kontrolü
 
 Basit bir yapıdır. Basitçe kullanımı:
+
 ```
 if( koşullar ){
   print 'koşul sağlandı';
 }
 
 ```
+
 şeklindedir. Koşullar gerçeklendiği sürece işlemler yapılacaktır.
 
 #### if else Kontrolü
 
 if kontrolüne koşulun olmadığı zaman da görev verilenidir.
+
 ```
 if( koşullar ){
   print 'koşul sağlanıyor';
@@ -40,6 +43,7 @@ else{
 #### if else if kontrolü
 
 Bir if else kontrolünde else yani ilk koşulun sağlanmaması halindeki duruma bir if eklenirse yani üsttekilerin sağlanmaması ve burada tanımlanan koşulun sağlanması halidir.
+
 ```
 if( ilk koşullar ){
   // ilk koşular sağlanıyorsa yapılacaklar
@@ -63,6 +67,7 @@ else{
 #### switch / case Yapısı
 
 switch / case yapısını çok sonuçlu olayları kontrol ederken kullanırız. Mesela bir olay sonucu $deg değişkeni 3 değer alabilsin ("1x","2x","3x"). Burada if'leri kullanmaktansa switch / case yapılarını kullanmak daha kısadır.
+
 ```
 switch($deg){
   case '1x': 
@@ -79,4 +84,5 @@ switch($deg){
 }
 
 ```
+
 Kontrol yapıları aslında programlamada en sık kullanılan yapılardır. Farkında olmadan çok kez bu yapıları defalarca defalarca yazarız. Kullanımlarını, esnekliklerini iyi bilmek gerektiğini düşünüyorum.

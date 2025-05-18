@@ -9,7 +9,11 @@ migration: {"wpId":174,"wpPostDate":"2008-02-05T08:51:45.000Z"}
 lang: tr
 ---
 
-Biri beni durdursun :) Flood ile ilgili güvenlik açığını nasıl yaparım diye düşünürken çok da yarayıcı yeni fikirlere kasmamam gerektiğini düşündüm. PEAR'ın captcha kütüphanesini kullanarak sitedeki tüm formlara güvenlik kodu ekledim. Eskisi gibi değil, gayet sade ve anlaşılır bir font, artalan vs kullandım. Kural şöyle : ziyaretçilere her yerde güvenlik kodu sorulacak, üyelere ise günde 10 taneyi aşana kadar güvenlik kodu sorulmayacak. 10 adet yazıdan sonra güvenlik kodu girerek gönderi yapabilecekler. Daha önce yazdığım ve yayınlayamadığım 3 dökümanı ekledim. Bir tane de müthiş bir alıntı döküman ekledim. Kesinlikle paylaşmam gerektiğini düşündüğüm için çevirisini yayınlıyorum. İşte dökümanlar :
+Biri beni durdursun :)
+
+Flood ile ilgili güvenlik açığını nasıl yaparım diye düşünürken çok da yarayıcı yeni fikirlere kasmamam gerektiğini düşündüm. PEAR'ın captcha kütüphanesini kullanarak sitedeki tüm formlara güvenlik kodu ekledim. Eskisi gibi değil, gayet sade ve anlaşılır bir font, artalan vs kullandım. Kural şöyle : ziyaretçilere her yerde güvenlik kodu sorulacak, üyelere ise günde 10 taneyi aşana kadar güvenlik kodu sorulmayacak. 10 adet yazıdan sonra güvenlik kodu girerek gönderi yapabilecekler.
+
+Daha önce yazdığım ve yayınlayamadığım 3 dökümanı ekledim. Bir tane de müthiş bir alıntı döküman ekledim. Kesinlikle paylaşmam gerektiğini düşündüğüm için çevirisini yayınlıyorum. İşte dökümanlar :
 
 ### [· Web Tasarımcısına Öğütler](https://tr.mfyz.com/web-tasarimcisina-ogutler/)
 
@@ -19,7 +23,11 @@ Biri beni durdursun :) Flood ile ilgili güvenlik açığını nasıl yaparım d
 
 ### [· Ubuntu'da NTFS disklere yazma desteği kazandırmak](https://tr.mfyz.com/ubuntuda-ntfs-disklere-yazma-destegi-kazandirmak/)
 
-  -- Düzenleme -- 2 tane daha geldi :) yeni günlük girdisi yapmayayım dedim.
+ 
+
+\-- Düzenleme --
+
+2 tane daha geldi :) yeni günlük girdisi yapmayayım dedim.
 
 ### [· Mootools ile ipucu açıklamaları (tooltip)](https://tr.mfyz.com/mootools-ile-ipucu-aciklamalari-tooltip/)
 

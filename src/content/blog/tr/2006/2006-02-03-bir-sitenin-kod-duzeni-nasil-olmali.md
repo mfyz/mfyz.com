@@ -17,7 +17,11 @@ _Öncelikle şunu belirteyim, genel uyguladığım bir sistematiğim var ve bunu
 
 #### Bu neden gereklidir?
 
-Çünkü kodlardaki değişimleri HIZLI yükleyip yedeklerini alabilmek için tüm site dizinimizi upload edip download etmemize gerek kalmaz. Toplam 1mb olan kodu güncellemek için 30mb olan tüm site dosyalarının transferi için zaman kaybetmemiş oluruz. İkinci düşüneceğimiz şey ise tasarımı nasıl şekillendireceğimizdir. Yani, her sayfada sabit olan kısımlarımız vardır. Ve değişken kısımlarımız. Mesela bu site için düşünürsek, üstteki menü, sol sütun ve alt kısım her sayfada mevcuttur. Ben ilk başladığımda sabit şu dizinleri oluştururum;
+Çünkü kodlardaki değişimleri HIZLI yükleyip yedeklerini alabilmek için tüm site dizinimizi upload edip download etmemize gerek kalmaz. Toplam 1mb olan kodu güncellemek için 30mb olan tüm site dosyalarının transferi için zaman kaybetmemiş oluruz.
+
+İkinci düşüneceğimiz şey ise tasarımı nasıl şekillendireceğimizdir. Yani, her sayfada sabit olan kısımlarımız vardır. Ve değişken kısımlarımız. Mesela bu site için düşünürsek, üstteki menü, sol sütun ve alt kısım her sayfada mevcuttur.
+
+Ben ilk başladığımda sabit şu dizinleri oluştururum;
 ```
 Site
  |
@@ -55,8 +59,16 @@ $modul = $\_GET\["modul"\];
   }
 
 ```
-Şimdi menüdeki linkleri buna göre düzenlemeliyiz. Dosyalar: index.php?modul=dosyalar Galeri: index.php?modul=galeri Dökümanlar: index.php?modul=dokumanlar Artık modul\_dosyasi değişkeni seçili modülü belirlemektedir. Şimdi şöyle düşünelim. mfyz.com'da sadece şu anda okuduğunuz yazının bulunduğu orta kısım değişmektedir. Diğer kısımlardaki küçük değişimlere geleceğim. Bu orta kısımda sadece 1 adet değişken print ettiriliyor. $icerik diye bir değişken. Bu değişkeni ise modul dosyaları oluşturuyor. Diyelim ki BASİT bir tablo içeriyor bir bölümünüz. Mesela örneğe göre olan dosyalar bölümünde basit bir liste var. Şimdi burada dosyalar.php modülü sadece bu basit olan tabloyu print ettiriyor. biz index.php'de print ettirilen bu tabloyu ortaya yerleştiriyoruz. Sistem bu şekilde işliyor. Siz statik bir sayfa yapmışsanız bile bunu modül dosyası olarak tanıtıyorsunuz ve modül seçildiğinde basılması gereken yere statik içerik basılıyor.
+Şimdi menüdeki linkleri buna göre düzenlemeliyiz.
+
+Dosyalar: index.php?modul=dosyalar Galeri: index.php?modul=galeri Dökümanlar: index.php?modul=dokumanlar
+
+Artık modul\_dosyasi değişkeni seçili modülü belirlemektedir. Şimdi şöyle düşünelim. mfyz.com'da sadece şu anda okuduğunuz yazının bulunduğu orta kısım değişmektedir. Diğer kısımlardaki küçük değişimlere geleceğim. Bu orta kısımda sadece 1 adet değişken print ettiriliyor. $icerik diye bir değişken. Bu değişkeni ise modul dosyaları oluşturuyor. Diyelim ki BASİT bir tablo içeriyor bir bölümünüz. Mesela örneğe göre olan dosyalar bölümünde basit bir liste var. Şimdi burada dosyalar.php modülü sadece bu basit olan tabloyu print ettiriyor. biz index.php'de print ettirilen bu tabloyu ortaya yerleştiriyoruz. Sistem bu şekilde işliyor. Siz statik bir sayfa yapmışsanız bile bunu modül dosyası olarak tanıtıyorsunuz ve modül seçildiğinde basılması gereken yere statik içerik basılıyor.
 
 #### Bunun avantajları neler?
 
-Modül dosyaları asıl dosyalardan bağımsız yazıldığı için kod kalabalığı olmuyor. Yani 1000 satırlık tek dosyada çalışmakla 10'ar satırlık 100 dosyada çalışmak gibi.. Siz dosyalar modülünü yazarken dosyalar modülü dosyasında sadece o işi yapan kod bulunuyor. Ekrana basarken çok fazla şey düşünerek basmıyorsunuz. İş basitleşiyor. Sitenizin statik kısımlarında yapacağınız değişimler sizin için çocuk oyuncağı olmuş oluyor. Yaptığınız yeni bir eklentiyi, mesela footer'ınıza yerleştireceğiniz bir banner exchange kodunu index.php'nizde oynayarak rahatlıkla işin içinden sıyrılabiliyorsunuz. Bölümler $module değişkeni ile kolaylıkla da seçilebiliyor. Bölümleriniz çoğaldıkça bu sistemin artılarını daha rahat görebiliyorsunuz :) Ben şu an mfyz.com'da mükemmel rahat ediyorum. Çok rahat siteye entegre şeyler yazıp bölümleri değiştirebiliyorum. Mesela yeni bir kod buldunuz ve dosyalar bölümünü bu şekilde yapmak istiyorsunuz, yapacağınız şey css'leri ile oynayıp modul olarak tanıtmanız, bu kadar. Uygulamalı bir örnek olmadı özür dilerim ama yine de size yol gösterici bir döküman olduğundan eminim :)
+Modül dosyaları asıl dosyalardan bağımsız yazıldığı için kod kalabalığı olmuyor. Yani 1000 satırlık tek dosyada çalışmakla 10'ar satırlık 100 dosyada çalışmak gibi.. Siz dosyalar modülünü yazarken dosyalar modülü dosyasında sadece o işi yapan kod bulunuyor. Ekrana basarken çok fazla şey düşünerek basmıyorsunuz. İş basitleşiyor. Sitenizin statik kısımlarında yapacağınız değişimler sizin için çocuk oyuncağı olmuş oluyor. Yaptığınız yeni bir eklentiyi, mesela footer'ınıza yerleştireceğiniz bir banner exchange kodunu index.php'nizde oynayarak rahatlıkla işin içinden sıyrılabiliyorsunuz. Bölümler $module değişkeni ile kolaylıkla da seçilebiliyor.
+
+Bölümleriniz çoğaldıkça bu sistemin artılarını daha rahat görebiliyorsunuz :) Ben şu an mfyz.com'da mükemmel rahat ediyorum. Çok rahat siteye entegre şeyler yazıp bölümleri değiştirebiliyorum. Mesela yeni bir kod buldunuz ve dosyalar bölümünü bu şekilde yapmak istiyorsunuz, yapacağınız şey css'leri ile oynayıp modul olarak tanıtmanız, bu kadar.
+
+Uygulamalı bir örnek olmadı özür dilerim ama yine de size yol gösterici bir döküman olduğundan eminim :)

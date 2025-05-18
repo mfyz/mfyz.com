@@ -9,4 +9,6 @@ migration: {"wpId":232,"wpPostDate":"2009-10-04T04:03:08.000Z"}
 lang: tr
 ---
 
-Sosyal medya'daki kullanıcı cinsiyet dağılımına göre neredeyse heryerde kadınlar daha fazla. Bu da "apache" ruhunu besliyor değil mi? :) ![](/images/archive/tr/2009/10/chicksrule.gif)
+Sosyal medya'daki kullanıcı cinsiyet dağılımına göre neredeyse heryerde kadınlar daha fazla. Bu da "apache" ruhunu besliyor değil mi? :)
+
+![](/images/archive/tr/2009/10/chicksrule.gif)

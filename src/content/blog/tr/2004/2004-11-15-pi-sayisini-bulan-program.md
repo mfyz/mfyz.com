@@ -26,4 +26,5 @@ DONGU:
  GOTO DONGU
 
 ```
+
 Örnke çıktı yok; çünkü program kısır bir döngüden oluşuyor. Sadece gözlemek amaçlı yani... Programı çalıştırdığınızda sonsuza kadar ekrana sayılar yazdırır. Durdurmak için CTL+C'yi Kulanın.

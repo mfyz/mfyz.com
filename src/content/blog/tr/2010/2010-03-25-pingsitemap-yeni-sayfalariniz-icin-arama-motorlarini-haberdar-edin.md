@@ -13,15 +13,24 @@ Sitemap'ın öneminden ve nasıl üreteceğinizden daha önce bahsetmiştim ([Di
 
 ### Sitemap.xml dosyanızı oluşturdunuz peki sonra?
 
-Tabiki arama motorları servislerinin botları sitenize geldiğinde ilk olarak sitemap.xml'inizi bulmaya çalışacak, bulduğu zaman da site indeksini hızlıca çıkaracaktır. Fakat botlar sık sık sayfalarınızı gezse de sitemap.xml'inizi her zaman anlık olarak kontrol etmezler. Arama motorlarının ping servisleri vardır ve bu servisleri kullanarak sitemap.xml'inizin güncellendiğini, hemen kuyruğa alınmasını istediğinizi belirtebilirsiniz. Bu uygulamayı birçok büyük web servisi, wordpress, blogger gibi blog hizmeti veren servisler, hatta kendi sunucunuza kuracağınız wordpress de bunu yapmaktadır. Yeni bir içerik girildiği zaman sitenize yeni sayfalar eklenmiş, bazı varolan sayfaların da güncellenmiş olması anlamına gelmektedir. Arama motorlarının bu değişiklikleri hemen tarafamasını isterseniz az sonra anlatacağım ufak teknikle bunu yapabilirsiniz.
+Tabiki arama motorları servislerinin botları sitenize geldiğinde ilk olarak sitemap.xml'inizi bulmaya çalışacak, bulduğu zaman da site indeksini hızlıca çıkaracaktır. Fakat botlar sık sık sayfalarınızı gezse de sitemap.xml'inizi her zaman anlık olarak kontrol etmezler.
+
+Arama motorlarının ping servisleri vardır ve bu servisleri kullanarak sitemap.xml'inizin güncellendiğini, hemen kuyruğa alınmasını istediğinizi belirtebilirsiniz. Bu uygulamayı birçok büyük web servisi, wordpress, blogger gibi blog hizmeti veren servisler, hatta kendi sunucunuza kuracağınız wordpress de bunu yapmaktadır.
+
+Yeni bir içerik girildiği zaman sitenize yeni sayfalar eklenmiş, bazı varolan sayfaların da güncellenmiş olması anlamına gelmektedir. Arama motorlarının bu değişiklikleri hemen tarafamasını isterseniz az sonra anlatacağım ufak teknikle bunu yapabilirsiniz.
 
 ### Ping servisleri
 
 Arama motorlarının birçoğu ping servisini bir URL üstünden sitemap.xml dosyanızın adresini alarak yapar. Aslında bir çeşit kayıt olma işlemidir ama çok daha basit hali. Örneğin google'ın ping servisi
+
 ```
 http://www.google.com/webmasters/sitemaps/ping?sitemap=
 ```
-şeklindedir. Tabiki bu url'in sonuna sitenizin sitemap.xml dosyasının url'ini vererek bu adresi çağırmanız gerekir. Şimdi kod üzerinde bir dizide popüler arama motorlarının ping servisleri ve yapılarını göreceksiniz. Zaten kodun yaptığı işi hemen anlayabilirsiniz. Basitçe sitemap.xml dosyanızı belirten urlleri "file" fonksiyonu ile almaya çalışıyoruz. Zaten bu url'ler ziyaret edildiği ve cevapları geldiği için bu servisler pinglenmiş olacak.
+
+şeklindedir. Tabiki bu url'in sonuna sitenizin sitemap.xml dosyasının url'ini vererek bu adresi çağırmanız gerekir.
+
+Şimdi kod üzerinde bir dizide popüler arama motorlarının ping servisleri ve yapılarını göreceksiniz. Zaten kodun yaptığı işi hemen anlayabilirsiniz. Basitçe sitemap.xml dosyanızı belirten urlleri "file" fonksiyonu ile almaya çalışıyoruz. Zaten bu url'ler ziyaret edildiği ve cevapları geldiği için bu servisler pinglenmiş olacak.
+
 ```
 $services = array(
 	'http://www.google.com/webmasters/sitemaps/ping?sitemap=###',

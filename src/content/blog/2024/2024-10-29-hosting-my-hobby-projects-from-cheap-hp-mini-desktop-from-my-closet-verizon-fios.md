@@ -19,7 +19,9 @@ As part of my job, I need to have a deep understanding of developer experience. 
 There are a bunch of other reasons one may choose to do this:
 
 *   **Privacy**: your data
+
 *   **Full control**: You own it (well, both good and bad)
+
 *   **Cost-effective**: (may not be always true, but mostly true)
 
 ## You shouldn’t do this… But if you really want to…

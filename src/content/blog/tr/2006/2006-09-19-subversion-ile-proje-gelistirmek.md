@@ -15,15 +15,21 @@ Subversion, adından da anlayabileceğiniz gibi sürüm yönetim sistemidir. Dos
 
 #### Neden Subversion kullanayım?
 
-Subversion'un proje geliştirirken birçok artısı var. Öncelikle her dosyanızın sürümlerini takip edebiliyorsunuz. En güzeli de subversion size o kadar güzel bir inceleme ortamı sunuyor ki, subversion ile eski sürüm dosyalarınızı, yeni sürümlerde neler değişmiş birebir görebiliyorsunuz. Diff görüntüleyici programlar kullanarak (ki çoğu GUI bazlı subversion clientlarında diff görüntüleyici vardır) son sürümde hangi satırlar eklenmiş hangileri değişmiş. hangi satırlar silinmiş kolaylıkla görebilirsiniz. Bir diğer güzelliği de editör bazlı görebilmektir. Yani subversion'a atadığınız kullanıcılar veya sisteme ait kullanıcıların subversion'u kullanması iznini vererek. Bu sürümlerdeki değişimlerin kimler tarafında yapıldığını görebilmektir. Mesela bir düzenleme yapıldı ve ya hatalar oluştu ya da kodlar kayboldu, ya da gerçekten güzel bir düzenleme yapıldı, bunu kimin tarafından yapıldığını görebilirsiniz. Ayrıca kendi dosya transfer protokolü sayesinde herhangi bir ftp gibi bir sunucu kurmanıza gerek kalmayacaktır.
+Subversion'un proje geliştirirken birçok artısı var. Öncelikle her dosyanızın sürümlerini takip edebiliyorsunuz. En güzeli de subversion size o kadar güzel bir inceleme ortamı sunuyor ki, subversion ile eski sürüm dosyalarınızı, yeni sürümlerde neler değişmiş birebir görebiliyorsunuz. Diff görüntüleyici programlar kullanarak (ki çoğu GUI bazlı subversion clientlarında diff görüntüleyici vardır) son sürümde hangi satırlar eklenmiş hangileri değişmiş. hangi satırlar silinmiş kolaylıkla görebilirsiniz. Bir diğer güzelliği de editör bazlı görebilmektir. Yani subversion'a atadığınız kullanıcılar veya sisteme ait kullanıcıların subversion'u kullanması iznini vererek. Bu sürümlerdeki değişimlerin kimler tarafında yapıldığını görebilmektir. Mesela bir düzenleme yapıldı ve ya hatalar oluştu ya da kodlar kayboldu, ya da gerçekten güzel bir düzenleme yapıldı, bunu kimin tarafından yapıldığını görebilirsiniz.
+
+Ayrıca kendi dosya transfer protokolü sayesinde herhangi bir ftp gibi bir sunucu kurmanıza gerek kalmayacaktır.
 
 #### SVN kurulumu
 
-http://subversion.tigris.org/ adresinden işletim sisteminize uygun paketi inidirip kurabilirsiniz. Debian ve debian tabanlı (mesela ubuntu) sistemlerde kolayca;
+http://subversion.tigris.org/ adresinden işletim sisteminize uygun paketi inidirip kurabilirsiniz.
+
+Debian ve debian tabanlı (mesela ubuntu) sistemlerde kolayca;
 ```
 apt-get install subversion
 ```
-komutu ile kurabilirsiniz. Ben ubuntu'da;
+komutu ile kurabilirsiniz.
+
+Ben ubuntu'da;
 ```
 apt-get install subversion subversion-helper-scripts subversion-tools
 ```
@@ -105,7 +111,11 @@ yani;
 ```
 svn import /tmp/projem file:///home/deneme/ -m "Proje Adı"
 ```
-komutu ile projemizi depomuza ekliyoruz. Bu işlem sonucunda artık SVN üzerinden çalışabiliriz. Bu komut /tmp/projem dizinini çalışma dizini haline getirmez! Bu noktadan itibaren geliştirici grubu svn üzerinden sürüm yönetimi ile çalışabilecektir.
+komutu ile projemizi depomuza ekliyoruz.
+
+Bu işlem sonucunda artık SVN üzerinden çalışabiliriz. Bu komut /tmp/projem dizinini çalışma dizini haline getirmez!
+
+Bu noktadan itibaren geliştirici grubu svn üzerinden sürüm yönetimi ile çalışabilecektir.
 
 ###### SVN'deki bir proje ile çalışmak (geliştirici komutları)
 
@@ -139,11 +149,15 @@ yani;
 ```
 svn commit --message "hatalar düzeltildi"
 ```
-komutu bize düzenlediğimiz dosyaları otomatik olarak sunucuya yükleyecek ve yeni sürümlere yükseltecektir. Burada sadece değişen dosyalar yüklenecektir. SVN bunu otomatik olarak tespit edip yapacaktır. --message ile yeni sürüme ait notları belirtiriz. Siz projeyi geliştirirken başka bir geliştirici kod ile oynamış olabilir onun için çalışmaya başlamadan
+komutu bize düzenlediğimiz dosyaları otomatik olarak sunucuya yükleyecek ve yeni sürümlere yükseltecektir. Burada sadece değişen dosyalar yüklenecektir. SVN bunu otomatik olarak tespit edip yapacaktır. --message ile yeni sürüme ait notları belirtiriz.
+
+Siz projeyi geliştirirken başka bir geliştirici kod ile oynamış olabilir onun için çalışmaya başlamadan
 ```
 snv update
 ```
-komutu ile projeyi son sürüme güncellemiş oluruz. Unutmayın, svn oturum tutarak çalışır. Yani checkout ile bir svn deposuna bağlanmamışsanız update, commit gibi komutlar bir işe yaramayacaktır. Bu komutlar son bağlantı kurduğunuz SVN deposunda çalışacaktır. Projeye dosya ekleme, çıkarma, kopyalama ve taşıma işlemlerini;
+komutu ile projeyi son sürüme güncellemiş oluruz. Unutmayın, svn oturum tutarak çalışır. Yani checkout ile bir svn deposuna bağlanmamışsanız update, commit gibi komutlar bir işe yaramayacaktır. Bu komutlar son bağlantı kurduğunuz SVN deposunda çalışacaktır.
+
+Projeye dosya ekleme, çıkarma, kopyalama ve taşıma işlemlerini;
 ```
 svn add dosya.txt
 svn delete dosya.txt
@@ -151,19 +165,29 @@ svn copy orjinal\_dosya.txt kopya.txt
 svn move eski\_dosya.txt yeni\_dosya.txt
 
 ```
-komutları ile yapabilirsiniz. Projedeki değişimleri izlemek için;
+komutları ile yapabilirsiniz.
+
+Projedeki değişimleri izlemek için;
 ```
 svn log
 
 ```
-komutu ile değişiklik listesini alabilirsiniz. Subversion, commit işlemi yaparken transferin daha güvenli olması için işlemleri bir günlük (log) dosyasına atar. Sunucuya yükleme işlemi yapıldıktan sonra bu günlük dosyasındaki değişimler uygulanır ve commit işlemi sona erer. Eğer commit işlemi olurken bir aksaklık olursa (bağlantı kopması, elektirik kesilmesi gibi) bu günlük dosyası silinmez ve kalır. Bu günlükteki işlemleri tamamlatmak için;
+komutu ile değişiklik listesini alabilirsiniz.
+
+Subversion, commit işlemi yaparken transferin daha güvenli olması için işlemleri bir günlük (log) dosyasına atar. Sunucuya yükleme işlemi yapıldıktan sonra bu günlük dosyasındaki değişimler uygulanır ve commit işlemi sona erer. Eğer commit işlemi olurken bir aksaklık olursa (bağlantı kopması, elektirik kesilmesi gibi) bu günlük dosyası silinmez ve kalır. Bu günlükteki işlemleri tamamlatmak için;
 ```
 svn cleanup
 
 ```
-komutu uygulanır. Eğer süreçlerden birisi kitli kalmışsa;
+komutu uygulanır.
+
+Eğer süreçlerden birisi kitli kalmışsa;
 ```
 svn status
 
 ```
-çıktısında "L" olarak görünen dosyalar kitli kalmıştır, bu da svn cleanup komutu ile çözülür. SVN hakkında çok geniş bilgi edinmek için Dosyalar bölümündeki dökümanlar klasöründeki [http://www.mfyz.com/Files/Dokumanlar/svn-book-html.tar.bz2](http://www.mfyz.com/Files/Dokumanlar/svn-book-html.tar.bz2) dosyasını indirerek edinebilirsiniz. (SVNBOOK, İngilizce) **Kaynaklar :** [Belgeler.org SVN kullanım dökümanı](http://www.belgeler.org/howto/svn-nasil.html)
+çıktısında "L" olarak görünen dosyalar kitli kalmıştır, bu da svn cleanup komutu ile çözülür.
+
+SVN hakkında çok geniş bilgi edinmek için Dosyalar bölümündeki dökümanlar klasöründeki [http://www.mfyz.com/Files/Dokumanlar/svn-book-html.tar.bz2](http://www.mfyz.com/Files/Dokumanlar/svn-book-html.tar.bz2) dosyasını indirerek edinebilirsiniz. (SVNBOOK, İngilizce)
+
+**Kaynaklar :** [Belgeler.org SVN kullanım dökümanı](http://www.belgeler.org/howto/svn-nasil.html)

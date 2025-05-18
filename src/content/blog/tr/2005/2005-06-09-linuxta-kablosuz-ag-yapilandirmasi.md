@@ -34,6 +34,7 @@ RX bytes:3712909 (3.5 MiB)  TX bytes:304047 (296.9 KiB)
 Interrupt:18 Base address:0x6000 Memory:fe8fe000-fe8fefff
 
 ```
+
 Normalde ip almamış şekilde olması gerekir. Eğer almışsa zaten wirelles ağındasınızdır. Şimdi çevreyi tarayalım. iwlist eth1 scan komutu ile çevredeki erişim aygıtlarını tarayalım :
 ```
 root@tux:/home/fatih # iwlist eth1 scan
@@ -50,7 +51,11 @@ Extra: RSSI: -57  dBm
 Extra: Last beacon: 27ms ago
 
 ```
-Çevrede birden fazla kablosuz ağ bulunabilir bu listede gerekli bilgileri görüyoruz zaten. Şimdi birkaç ayarlama ile erişim sağlayacağız. Gerekli olan şeyler; ESSID denilen ağ kimliği benim ağım MFYZ adıyla görünüyor. Bu ağa kaydolmak için **iwconfig eth1 essid MFYZ** ile ağ kimliğini belirttik. Benim ağım şifreli, WEP denilen bir hexademical anahtar ile erişilebiliyor sadece. Bunu **iwconfig eth1 enc XXXXXXX** şeklinde ayarlayacağız. Eğer şifreleme yoksa bu kısmı geçin. Varsayılan olarak şifreleme kapalı kabul edilecektir. Şimdi iwconfig ile baktığımızda eth1 aygıtının bağlanıp bağlanmadığını göreceğiz.
+Çevrede birden fazla kablosuz ağ bulunabilir bu listede gerekli bilgileri görüyoruz zaten. Şimdi birkaç ayarlama ile erişim sağlayacağız. Gerekli olan şeyler; ESSID denilen ağ kimliği benim ağım MFYZ adıyla görünüyor. Bu ağa kaydolmak için **iwconfig eth1 essid MFYZ** ile ağ kimliğini belirttik.
+
+Benim ağım şifreli, WEP denilen bir hexademical anahtar ile erişilebiliyor sadece. Bunu **iwconfig eth1 enc XXXXXXX** şeklinde ayarlayacağız. Eğer şifreleme yoksa bu kısmı geçin. Varsayılan olarak şifreleme kapalı kabul edilecektir.
+
+Şimdi iwconfig ile baktığımızda eth1 aygıtının bağlanıp bağlanmadığını göreceğiz.
 ```
 root@tux:/home/fatih # iwconfig
 lo        no wireless extensions.
@@ -70,7 +75,9 @@ Tx excessive retries:0 Invalid misc:1 Missed beacon:0
 sit0 no wireless extensions.
 
 ```
-Şu an bir sorun olduğunu "unassociated"den anlayabiliyoruz. (şu an salonda uzaktayım :) sorun bu). Ayarları tekrar kontrol edip şifreli ise doğru şifre girdiğimizden emin oluyoruz. Bazı aygıtlar için aygıtı durdurup tekrar başlatmak gerekebilir. Hatta aygıtlar yeniden başlarken bile sorun yaratabilir. Bilgisayarı yeniden başlatmak da bir çözüm olabilir (ki linux şenliğinde oldu :) ). Gerekli kontrolleri yaptıktan sonra şu aşağıdaki çıktıyı almaya kadar gelmemiz gerekiyor.
+Şu an bir sorun olduğunu "unassociated"den anlayabiliyoruz. (şu an salonda uzaktayım :) sorun bu). Ayarları tekrar kontrol edip şifreli ise doğru şifre girdiğimizden emin oluyoruz. Bazı aygıtlar için aygıtı durdurup tekrar başlatmak gerekebilir. Hatta aygıtlar yeniden başlarken bile sorun yaratabilir. Bilgisayarı yeniden başlatmak da bir çözüm olabilir (ki linux şenliğinde oldu :) ).
+
+Gerekli kontrolleri yaptıktan sonra şu aşağıdaki çıktıyı almaya kadar gelmemiz gerekiyor.
 ```
 root@tux:/home/fatih # iwconfig
 lo        no wireless extensions.

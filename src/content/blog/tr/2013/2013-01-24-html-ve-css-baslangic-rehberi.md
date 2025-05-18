@@ -9,4 +9,6 @@ migration: {"wpId":348,"wpPostDate":"2013-01-24T06:00:00.000Z"}
 lang: tr
 ---
 
-![](/images/archive/tr/2013/01/html5beginner.png)@shayhowe tarafından hazırlanan HTML ve CSS'e giriş rehberi çok derin olmasa da HTML ve CSS'i genel hatlarıyla özetlemiş. Hem güzel bir sunum ile hazırlanmış hem de güncel bilgilere yer verilmiş. [http://learn.shayhowe.com/html-css/](http://learn.shayhowe.com/html-css/) adresinden ulaşabileceğiniz rehber 10 başlıkta toplanmış güzel bir kaynak. Shay Howe'un daha derin HTML ve CSS konularını topladığı hatta halen yazmaya devam ettiği, gelişmiş HTML ve CSS rehberine de [http://learn.shayhowe.com/advanced-html-css/](http://learn.shayhowe.com/advanced-html-css/) adresinden ulaşabilirsiniz.
+![](/images/archive/tr/2013/01/html5beginner.png)@shayhowe tarafından hazırlanan HTML ve CSS'e giriş rehberi çok derin olmasa da HTML ve CSS'i genel hatlarıyla özetlemiş. Hem güzel bir sunum ile hazırlanmış hem de güncel bilgilere yer verilmiş. [http://learn.shayhowe.com/html-css/](http://learn.shayhowe.com/html-css/) adresinden ulaşabileceğiniz rehber 10 başlıkta toplanmış güzel bir kaynak.
+
+Shay Howe'un daha derin HTML ve CSS konularını topladığı hatta halen yazmaya devam ettiği, gelişmiş HTML ve CSS rehberine de [http://learn.shayhowe.com/advanced-html-css/](http://learn.shayhowe.com/advanced-html-css/) adresinden ulaşabilirsiniz.

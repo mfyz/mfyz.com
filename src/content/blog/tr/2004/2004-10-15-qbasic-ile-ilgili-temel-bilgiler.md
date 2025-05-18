@@ -11,7 +11,9 @@ lang: tr
 
 #### QBasic Yeterli Bir Dil Midir?
 
-QBasic son derece yetersiz bir dildir. Basit programlama mantığı içeren basit bir dil olup program geliştirme altyapısı da günümüzdeki diğer dillere göre çok kısıtlıdır. Bu kısıtlama ile günümüzde qbasic örnekleri, dersleri gibi kaynakları bulmak zor. Hele hele Türkçe bulmak daha da zor. İnternette qbasic hakkında makale ve ders içeren iki yada üç siteden biri de mfyz.com'dur. QBasic programlamaya yeni girenler için bulunamaz bir başlangıçtır. Yani programlama mantığını öğrenmek çok kolaydır. QBasic ile küçük çaplı matematiksel programlar, basit dosya işlemlerini işleten programlar veya metin üzerinde işlemlerle ilgili basit programlar ve bazı basit oyunlar yazılabilir. Bu sitede ağırlıklı matematiksel işlemlerle ilgili qbasic programları bulacaksınız.
+QBasic son derece yetersiz bir dildir. Basit programlama mantığı içeren basit bir dil olup program geliştirme altyapısı da günümüzdeki diğer dillere göre çok kısıtlıdır. Bu kısıtlama ile günümüzde qbasic örnekleri, dersleri gibi kaynakları bulmak zor. Hele hele Türkçe bulmak daha da zor. İnternette qbasic hakkında makale ve ders içeren iki yada üç siteden biri de mfyz.com'dur.
+
+QBasic programlamaya yeni girenler için bulunamaz bir başlangıçtır. Yani programlama mantığını öğrenmek çok kolaydır. QBasic ile küçük çaplı matematiksel programlar, basit dosya işlemlerini işleten programlar veya metin üzerinde işlemlerle ilgili basit programlar ve bazı basit oyunlar yazılabilir. Bu sitede ağırlıklı matematiksel işlemlerle ilgili qbasic programları bulacaksınız.
 
 #### QBasic Ne İşime Yarar?
 
@@ -25,4 +27,6 @@ QBasic kodlarını veya programlarını adam akıllı öğrenirseniz, Visual Bas
 *   QBasic'te dizilerin boyutları kesinlikle tanımlı olmalıdır. (Şimdilik anlamaya gerek yok)
 *   String değişkenlerle integer veya diğer değişkenler arasında değişken biçimi farkı vardır. integer'lar direk yazılır, string'ler ise sonuna $ işareti ile. (Bunu da şimdilik anlamaya gerek yok)
 
-Buradaki makaleleri takip ederek qbasic hakkında temel bilgi edinebilirsiniz. Not : Bu döküman 15 Eylül 2006 tarihinde yeniden düzenlenmiştir
+Buradaki makaleleri takip ederek qbasic hakkında temel bilgi edinebilirsiniz.
+
+Not : Bu döküman 15 Eylül 2006 tarihinde yeniden düzenlenmiştir

@@ -23,6 +23,7 @@ User journeys can easily highlight differences between these users and how they 
 Sequence diagram is a type of diagram that does great job telling 2 things:
 
 *   How many participants in a journey
+
 *   The order of things between which participants happen.
 
 And example to this would be, order a food at a restaurant.
@@ -30,19 +31,29 @@ And example to this would be, order a food at a restaurant.
 Participants:
 
 *   Guest
+
 *   Host
+
 *   Waiter
+
 *   Kitchen
 
 And maybe steps would be:
 
 *   Guest asks Host can I have a table for 2?
+
 *   Host shows and sits the Guests to a table.
+
 *   Waiter comes to the table and asks for order from Guests.
+
 *   Guests places their order.
+
 *   Waiter tells Kitchen about the order
+
 *   Kitchen prepares the order
+
 *   Kitchen tells Waiter that order is ready.
+
 *   Waiter brings food to the table to the Guests
 
 A journey like this can be visualized in a sequence diagram like this:

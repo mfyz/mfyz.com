@@ -17,7 +17,9 @@ I appreciate how user-friendly and intuitive Cronicle is. The web interface is c
 I've used Cronicle to automate a variety of tasks, including:
 
 *   **Backups:** Ensuring my data is safe and sound.
+
 *   **Health Checks:** Monitoring the status of my server and applications.
+
 *   **Random Stuff:** Just for fun, I've even used Cronicle to automate some silly stuff.
 
 ### Stuff I look for

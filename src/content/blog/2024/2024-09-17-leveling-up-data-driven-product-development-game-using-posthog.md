@@ -36,10 +36,15 @@ posthog.init('phc\_.........................', {
 **Beyond the basics, Posthog has a ton of cool features that make it a powerhouse. Here are a few of my favorites:**
 
 *   **HogQL:** Their SQL-like querying language. This is an awesome capability for a data nerd like me. Even though alternatives like Amplitude have similar SQL-ish capabilities, they are almost always included in their Enterprise plans, unlike Posthog which is included in all plans.
+
 *   **User funnels:** I can easily visualize how users flow through my product and identify bottlenecks where they might be dropping off.
+
 *   **Cohort analysis:** I can segment my users into groups based on their behavior and track their performance over time.
+
 *   **Heatmaps:** I can see exactly where users are clicking on my website or app, helping me optimize the user experience.
+
 *   **Session recordings:** I can watch actual recordings of user sessions to see how they're interacting with my product.
+
 *   **Web Analytics:** A recently added feature for people who struggled to adopt GA4. They have pretty simple old-school web analytics automatically tracked.
 
 ![](/images/archive/en/2024/09/image-1-1600x918.jpg)

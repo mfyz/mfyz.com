@@ -13,7 +13,11 @@ LESS bir çeşit css derleyicisi ve aslında css sytax'ı üstüne ek özellikle
 
 #### Neden LESS kullanmalısınız?
 
-Aslında LESS kullanmak için genel ve çok önemli ihtiyaç yok bana kalırsa. Fakat artık web uygulamaları eskisi gibi basit veya küçük css dosyaları ile şekillendirilen uygulamalar olmaktan çıktılar. Güçlü css seçicileri olsa bile her (grup) element için bir sınıf tanımladığınızı düşünürseniz orta ölçekli bir stil dosyası binlerce satıra ulaşması çok normal. Dosyanızın uzunluğundan çok iç içe tanımlı grup tanımlaları arasında kaybolmak çok kolay. Dolayısıyla css dosyanızı hiyerarşik bir şekilde organize edecek bir araca sahip olmak her zaman bir artı. Sadece bu ihtiyacınızı kullandığınız gelişitirici uygulamayı degiştirerek sağlamak da mümkün. Örneğin çok basit bir css dosyanızda
+Aslında LESS kullanmak için genel ve çok önemli ihtiyaç yok bana kalırsa. Fakat artık web uygulamaları eskisi gibi basit veya küçük css dosyaları ile şekillendirilen uygulamalar olmaktan çıktılar. Güçlü css seçicileri olsa bile her (grup) element için bir sınıf tanımladığınızı düşünürseniz orta ölçekli bir stil dosyası binlerce satıra ulaşması çok normal.
+
+Dosyanızın uzunluğundan çok iç içe tanımlı grup tanımlaları arasında kaybolmak çok kolay. Dolayısıyla css dosyanızı hiyerarşik bir şekilde organize edecek bir araca sahip olmak her zaman bir artı. Sadece bu ihtiyacınızı kullandığınız gelişitirici uygulamayı degiştirerek sağlamak da mümkün.
+
+Örneğin çok basit bir css dosyanızda
 ```
 ul.menu {
     margin: 0;
@@ -82,7 +86,15 @@ ul.menu {
 }
 
 ```
-Gördüğünüz gibi herşey doğru şekilde indent edilmiş ve & gibi referanslar ile bütün css kurallarınızı hiyerarşik hale getirmeniz kolay. Böyle bir yapının sınıf isimlerinden bağımsızlaşması da işinizi kolaylaştıracaktır. LESS'in diğer birkaç özelliği gercekten alışkanlık yapmaya yeterli. Eğer bir arayüz tasarımcısıysanız genelde matematiksel veya mimari modellere, gridlerle calışıyor olmalısınız. Aynı şeyler tipografi kuralları için de geçerli. Görsel her öğe bir şekilde birbirleriyle çok doğru orantılılar. Font boyutları, renkler vs. Mesela font boyutunuz 16px iken satır aralığınız bunun 1.5 katı, padding'leriniz 1.5 katı belki koyduğunuz arayüz kuralına göre de kenarlıklarınız 0.2 katı olabilir veya ürettiğiniz grid arayüzünde bir grid genişliğini tanımlayıp sidebarınızı 2 kolon, ana içerik alanınızı 10 kolon olarak ayarlamış olabilirsiniz. Bunları düz CSS'de hesaplayıp tanımlamak durumundasınız. Kuralların bu kadar net belirlenebildiği bir ortamda CSS'de statik renk kodlarına, sürekli hesaplama yaparak font boyutu, padding, margin, border radius hesaplamak zorunda kalıyor olabilirsiniz. LESS size bu matematiği LESS dosyanız içinde yapmanızı sağlıyor. Bir rengi belli bir contrast değeriyle daha açık veya daha koyu bir renge dönüştürebilir, matematiksel değerleri formülasyona sokabilir veya başka sınıfları kendi sınıfınıza dahil edebilirsiniz. Örnek vermek gerekirse siteniz için genel bir oran ve başlangıç rakamı belirleyebilirsiniz, veya 3-4 renkten oluşan bir renk paletiniz var olabilir. Düz CSS'de her varyasyonu hesaplayarak yazmak zorunda kalabilirisiniz:
+Gördüğünüz gibi herşey doğru şekilde indent edilmiş ve & gibi referanslar ile bütün css kurallarınızı hiyerarşik hale getirmeniz kolay. Böyle bir yapının sınıf isimlerinden bağımsızlaşması da işinizi kolaylaştıracaktır.
+
+LESS'in diğer birkaç özelliği gercekten alışkanlık yapmaya yeterli. Eğer bir arayüz tasarımcısıysanız genelde matematiksel veya mimari modellere, gridlerle calışıyor olmalısınız. Aynı şeyler tipografi kuralları için de geçerli. Görsel her öğe bir şekilde birbirleriyle çok doğru orantılılar. Font boyutları, renkler vs.
+
+Mesela font boyutunuz 16px iken satır aralığınız bunun 1.5 katı, padding'leriniz 1.5 katı belki koyduğunuz arayüz kuralına göre de kenarlıklarınız 0.2 katı olabilir veya ürettiğiniz grid arayüzünde bir grid genişliğini tanımlayıp sidebarınızı 2 kolon, ana içerik alanınızı 10 kolon olarak ayarlamış olabilirsiniz. Bunları düz CSS'de hesaplayıp tanımlamak durumundasınız.
+
+Kuralların bu kadar net belirlenebildiği bir ortamda CSS'de statik renk kodlarına, sürekli hesaplama yaparak font boyutu, padding, margin, border radius hesaplamak zorunda kalıyor olabilirsiniz. LESS size bu matematiği LESS dosyanız içinde yapmanızı sağlıyor. Bir rengi belli bir contrast değeriyle daha açık veya daha koyu bir renge dönüştürebilir, matematiksel değerleri formülasyona sokabilir veya başka sınıfları kendi sınıfınıza dahil edebilirsiniz.
+
+Örnek vermek gerekirse siteniz için genel bir oran ve başlangıç rakamı belirleyebilirsiniz, veya 3-4 renkten oluşan bir renk paletiniz var olabilir. Düz CSS'de her varyasyonu hesaplayarak yazmak zorunda kalabilirisiniz:
 ```
 div.user {
     width: 400px;
@@ -106,7 +118,9 @@ div.user div.avatar {
 }
 
 ```
-Yorumlarda kurallari yazmaya çalıştım ve normalde bir arayüz tasarımcısı böyle arayüzler geliştirirken bu tarz kurallara sahiptir, en büyük örnegini Apple arayüzlerinde görebilirsiniz. Mimari bir ürün gibidir. Böyle kurallarla donatılmış bir arayüzün css'lerini yazarken her değeri hesaplamak zorunda kalabilirsiniz fakat LESS ile bu işlemlerin hepsini matematiksel olarak hesaplatmanız mümkün. Yukarıdaki örnek çok küçük bir örnek ama büyük bir css dosyasını düşünürseniz başa çıkılamaz bir iş haline gelebilir. Ayrıca kuralları matematiksel yazmanın ikinci avantajı, bütün parametreleri birkaç değişken ile yönetip değiştirebilme olanağına sahip olmanızdır. Yukarıdaki örneğin LESS ile yazılmış hali:
+Yorumlarda kurallari yazmaya çalıştım ve normalde bir arayüz tasarımcısı böyle arayüzler geliştirirken bu tarz kurallara sahiptir, en büyük örnegini Apple arayüzlerinde görebilirsiniz. Mimari bir ürün gibidir.
+
+Böyle kurallarla donatılmış bir arayüzün css'lerini yazarken her değeri hesaplamak zorunda kalabilirsiniz fakat LESS ile bu işlemlerin hepsini matematiksel olarak hesaplatmanız mümkün. Yukarıdaki örnek çok küçük bir örnek ama büyük bir css dosyasını düşünürseniz başa çıkılamaz bir iş haline gelebilir. Ayrıca kuralları matematiksel yazmanın ikinci avantajı, bütün parametreleri birkaç değişken ile yönetip değiştirebilme olanağına sahip olmanızdır. Yukarıdaki örneğin LESS ile yazılmış hali:
 ```
 @fontSize: 18px;
 @mainColor: #f00;
@@ -137,7 +151,13 @@ div.user {
 }
 
 ```
-Bu özellikleri çok kullanabilirsiniz fakat daha hiyerarşik bir yapıda ortak kullanılan parçaları gruplamak isteyebilirsiniz hatta bazı grupları parametrik olarak değiştirebilmeyi isteyebilirsiniz. Örneğin bir kutu modeli ürettiniz, kenarları köşeli, içindeki h1 başlığını şekillendirdiniz ve bu kutu modelinin farklı boyutlarını ve renklerini üretiyorsunuz sürekli. Genel kutu modelinizde kullandığınız tipografik tanımlamaları, kenar boşluğu kurallarını tekrar tekrar yazmak istemiyorsunuz. Ya da CSS3 kurallarının farklı tarayiıcılarla çalışması için yazmanız gereken 4 farklı kuralı farklı değerlerle sürekli tekrarlamak yerine fonksiyon şeklinde tanımlayıp LESS'e ürettirebilirsiniz. Bunu açıklamak için CSS örnegi yazacağım son olarak.
+Bu özellikleri çok kullanabilirsiniz fakat daha hiyerarşik bir yapıda ortak kullanılan parçaları gruplamak isteyebilirsiniz hatta bazı grupları parametrik olarak değiştirebilmeyi isteyebilirsiniz.
+
+Örneğin bir kutu modeli ürettiniz, kenarları köşeli, içindeki h1 başlığını şekillendirdiniz ve bu kutu modelinin farklı boyutlarını ve renklerini üretiyorsunuz sürekli. Genel kutu modelinizde kullandığınız tipografik tanımlamaları, kenar boşluğu kurallarını tekrar tekrar yazmak istemiyorsunuz.
+
+Ya da CSS3 kurallarının farklı tarayiıcılarla çalışması için yazmanız gereken 4 farklı kuralı farklı değerlerle sürekli tekrarlamak yerine fonksiyon şeklinde tanımlayıp LESS'e ürettirebilirsiniz.
+
+Bunu açıklamak için CSS örnegi yazacağım son olarak.
 ```
 .kutu\_gri\_buyuk {
     padding: 20px;
@@ -211,4 +231,6 @@ Bu ornegin LESS ile hazirlayabileceginiz versiyonu.
 .kutu\_mavi\_kucuk { .kutu(11px, 15px, 1px, #00f, 10px, 3px); }
 
 ```
-Bu örnek yukarıdaki CSS'i üretecektir. Gördüğünüz gibi borderRadius tanımlarını da bir fonsiyon olarak tanımlayıp kullandım. Bunu yapmadan doğrudan kutu tanımlaması içinde de kullanabilirdim. Fakat uygulamanız içindeki tüm border radius kullanımınızı bu fonksiyon üzerinden ürettirebilirsiniz. Son olarak, yazdığınız LESS dosyalarınızı css'e render ettirmenin bir çok yolu olduğunu unutmayın. Bunun için kullanıcının tarayıcısında javascript ile derletebilir, php veya diğer sunucu taraflı kütüphanelerle sunucunuzda derletip css'leri sunabilir veya LESS.app gibi uygulamalarla masaustünüzde yazarken eş zamanlı olarak css'lere derletip kullanabilirsiniz.
+Bu örnek yukarıdaki CSS'i üretecektir. Gördüğünüz gibi borderRadius tanımlarını da bir fonsiyon olarak tanımlayıp kullandım. Bunu yapmadan doğrudan kutu tanımlaması içinde de kullanabilirdim. Fakat uygulamanız içindeki tüm border radius kullanımınızı bu fonksiyon üzerinden ürettirebilirsiniz.
+
+Son olarak, yazdığınız LESS dosyalarınızı css'e render ettirmenin bir çok yolu olduğunu unutmayın. Bunun için kullanıcının tarayıcısında javascript ile derletebilir, php veya diğer sunucu taraflı kütüphanelerle sunucunuzda derletip css'leri sunabilir veya LESS.app gibi uygulamalarla masaustünüzde yazarken eş zamanlı olarak css'lere derletip kullanabilirsiniz.

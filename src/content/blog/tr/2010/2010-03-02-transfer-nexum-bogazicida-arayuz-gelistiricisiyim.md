@@ -9,4 +9,6 @@ migration: {"wpId":247,"wpPostDate":"2010-03-02T16:13:10.000Z"}
 lang: tr
 ---
 
-![](/images/archive/tr/2010/03/nexum.jpg) 2 hafta önce Wanda Digital'den Nexum Boğaziçi'ne Arayüz Geliştiricisi olarak transfer oldum. Şu an 2. haftamda işlere/projelere yavaş yavaş alışmaya başladım. Yakında portfolyomda yeni markalarla karşınızda olacağım :)
+![](/images/archive/tr/2010/03/nexum.jpg)
+
+2 hafta önce Wanda Digital'den Nexum Boğaziçi'ne Arayüz Geliştiricisi olarak transfer oldum. Şu an 2. haftamda işlere/projelere yavaş yavaş alışmaya başladım. Yakında portfolyomda yeni markalarla karşınızda olacağım :)

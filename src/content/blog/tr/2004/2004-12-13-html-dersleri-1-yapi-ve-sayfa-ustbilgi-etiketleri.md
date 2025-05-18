@@ -51,7 +51,11 @@ Sayfanın içeriğine ait anahtar kelimeleri belirler. Arama motorlarında bu an
 
 #### body etiketi (Sayfa kodları)
 
-Bütün sayfa içeriğini bu blok içerisine yazın. Sayfa hakkında bazı görünüm ayarlarını da bu etiketin özniteliklerini ayarlayarak belirleyebiliriz. Bunlar; **bgcolor="RENK\_KODU"** : Sayfanın artalan rengini belirler. **background="RESIM\_DOSYASI\_ADRESI"** : Artalan resmini belirler. **text="RENK\_KODU"** : Geçerli metin rengini belirler. **link="RENK\_KODU"** : Geçerli link rengini belirler. (NOT : alink, aktif linkler. vlink, ziyaret edilmiş linkler) **topmargin="X"** : Üstten kaç piksel boşluk bırakılıp sayfa içeriğinin başlayacağını belirler. (NOT : left, right, bottom ile diğerleri de belirlenebilir.) _Bunların hepsi sayfanın stilleri ile ilgili özelliklerdir. Onun için bu öznitelikleri CSS ile ayarlamaya çalışın/alışın._
+Bütün sayfa içeriğini bu blok içerisine yazın. Sayfa hakkında bazı görünüm ayarlarını da bu etiketin özniteliklerini ayarlayarak belirleyebiliriz. Bunlar;
+
+**bgcolor="RENK\_KODU"** : Sayfanın artalan rengini belirler. **background="RESIM\_DOSYASI\_ADRESI"** : Artalan resmini belirler. **text="RENK\_KODU"** : Geçerli metin rengini belirler. **link="RENK\_KODU"** : Geçerli link rengini belirler. (NOT : alink, aktif linkler. vlink, ziyaret edilmiş linkler) **topmargin="X"** : Üstten kaç piksel boşluk bırakılıp sayfa içeriğinin başlayacağını belirler. (NOT : left, right, bottom ile diğerleri de belirlenebilir.)
+
+_Bunların hepsi sayfanın stilleri ile ilgili özelliklerdir. Onun için bu öznitelikleri CSS ile ayarlamaya çalışın/alışın._
 
 #### base etiketi
 
@@ -64,7 +68,9 @@ Dış bir dosya ile ilişki yaratır. Genel 2 özellik için kullanılır. Bunla
 <link rel="stylesheet" type="text/css" href="stil\_dosyasi.css">
 
 ```
+
 şeklinde kullanıldığında stil.css stil dosyası ile sayfayı ilişkilendirir. Yani stil.css'deki stilleri sayfaya uygular.
+
 ```
 <link rel="shortcut icon" href="favicon.ico">
 

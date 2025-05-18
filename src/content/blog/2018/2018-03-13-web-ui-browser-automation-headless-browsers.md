@@ -17,8 +17,14 @@ migration: {"wpId":209,"wpPostDate":"2018-03-13T16:00:03.000Z"}
 *   Wait 5 seconds,
 *   Take screenshot and save as JPEG
 
-This can be very useful when doing regression tests. Event utilizing screenshots with headless browsers will be very useful. There are many companies doing screenshot comparison for high level understanding changes done visually based on any given iteration on the code. This process simply takes and keeps versions of each page and in every release, it takes a new one with latest version and compares the pixels (and colors) to the previous version to determine a percentage for the change it detects. Then you can set some report and process to make sure you track of big changes to detect if a tiny css change blew a page you usually don't test manually. It becomes very meaningful when you think about a web page with 100 different pages.
+This can be very useful when doing regression tests.
+
+Event utilizing screenshots with headless browsers will be very useful. There are many companies doing screenshot comparison for high level understanding changes done visually based on any given iteration on the code. This process simply takes and keeps versions of each page and in every release, it takes a new one with latest version and compares the pixels (and colors) to the previous version to determine a percentage for the change it detects. Then you can set some report and process to make sure you track of big changes to detect if a tiny css change blew a page you usually don't test manually. It becomes very meaningful when you think about a web page with 100 different pages.
 
 ## Are there any headless browsers I can use?
 
-The well known headless browsers; the one named “Phantom” (and phantomjs) that is big on nodejs community. There is also headless chrome which is based on chromium. There is an extensive list of all headless browsers out there here: [https://github.com/dhamaniasad/HeadlessBrowsers](https://github.com/dhamaniasad/HeadlessBrowsers) Happy browser automations :)
+The well known headless browsers; the one named “Phantom” (and phantomjs) that is big on nodejs community. There is also headless chrome which is based on chromium.
+
+There is an extensive list of all headless browsers out there here: [https://github.com/dhamaniasad/HeadlessBrowsers](https://github.com/dhamaniasad/HeadlessBrowsers)
+
+Happy browser automations :)

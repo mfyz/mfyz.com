@@ -23,8 +23,11 @@ You’d need extra tools or integrations to make things work.
 With n8n’s Form node:
 
 *   The form and logic live in the same workflow
+
 *   You don’t need webhooks or third-party automation platforms
+
 *   You keep your data private (self-hosted)
+
 *   You get full flexibility—send emails, update spreadsheets, trigger scripts, whatever you want
 
 **If you're already using n8n, look nowhere else.** This is the simplest and most powerful way to collect data and do something with it.
@@ -56,28 +59,42 @@ This will launch the n8n editor at: [](http://localhost:5678/)[http://localhost:
 Let’s create a simple form that collects name and email, and sends a confirmation email.
 
 1.  **Create a New Workflow** Open the n8n editor and click “New Workflow.”
-2.  **Add a Form Node**
+
+3.  **Add a Form Node**
     *   Search for “Form” and add it.
+    
     *   Set title and description.
+    
     *   Add fields like:
         *   `Name` (text)
+        
         *   `Email` (email)
+    
     *   Save the node. It will give you a public form URL.
-3.  **Add Next Steps** After the Form node, connect whatever you want:
+
+5.  **Add Next Steps** After the Form node, connect whatever you want:
     *   Email node (send confirmation)
+    
     *   Google Sheets node (log submission)
+    
     *   HTTP node (send data to an API)
+    
     *   Any other of the 200+ integrations
-4.  **Activate the Workflow** Save and activate the workflow so the form becomes live.
+
+7.  **Activate the Workflow** Save and activate the workflow so the form becomes live.
 
 Now, share the form link and start collecting data. Every submission will go through your automation steps.
 
 ### Use Case Ideas
 
 *   **Internal forms**: collect input from your team (ideas, feedback, etc.)
+
 *   **Mini surveys**: run a quick form for user research
+
 *   **Beta signup**: collect early access signups and auto-reply
+
 *   **Manual triggers**: trigger dev/test workflows with custom input
+
 *   **AI workflows** (highlighted): Forms are a great entry point for AI-powered workflows. You can collect user input and feed it into large language models, prompt chains, or API calls. n8n also has built-in **AI and agentic nodes**, which makes it easy to build GPT-style workflows without writing glue code.
 
 ### Form node is another way n8n makes things really low-effort

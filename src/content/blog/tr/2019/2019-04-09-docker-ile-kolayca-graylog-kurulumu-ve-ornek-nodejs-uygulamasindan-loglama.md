@@ -9,11 +9,21 @@ migration: {"wpId":1455,"wpPostDate":"2019-04-09T06:44:36.000Z"}
 lang: tr
 ---
 
-Docker, acik kaynak kodlu bir uygulamayi deneme ve gelistirme icin gelistirme bilgisayariniza kurulum surecini inanilmaz kolaylastirdi. Bu kisa yazida size docker kullanarak bir graylog kurulumu yapip basit bir nodejs uygulamasindan mantiksal log gonderme ornegi verecegim. 1) Asagida kaynagi verilen docker-compose.yml dosyasini kopyalayip kaydedin ve asagidaki komutla docker instance kurulumu yapin:
+Docker, acik kaynak kodlu bir uygulamayi deneme ve gelistirme icin gelistirme bilgisayariniza kurulum surecini inanilmaz kolaylastirdi. Bu kisa yazida size docker kullanarak bir graylog kurulumu yapip basit bir nodejs uygulamasindan mantiksal log gonderme ornegi verecegim.
+
+1) Asagida kaynagi verilen docker-compose.yml dosyasini kopyalayip kaydedin ve asagidaki komutla docker instance kurulumu yapin:
 ```
 docker-compose -f docker-compose.yml up
 ```
-2) Kurulan graylog'a http://127.0.0.1:9000/ adresini kullanarak giris yapin Kullanici: admin Sifre: admin 3) "Input" ayarlamasi yapmak icin, graylog arayuzunde: System > Inputs'a gidin ve "GELF UDP" kaynagi secerek "global" tanimlama yapin. Bu konfigurasyonu yaparken de 12201 portunu belirleyin. Bu noktada graylog kullanima hazir. 4) Asagidaki uygulama ornegini kopyalayip kaydedin ve calistirin. Bunu yapmadan once de tek bagimli paketi, "npm init" ve "npm install graylog2" komutlariyla kurun.   docker-compose.yml
+2) Kurulan graylog'a http://127.0.0.1:9000/ adresini kullanarak giris yapin Kullanici: admin Sifre: admin
+
+3) "Input" ayarlamasi yapmak icin, graylog arayuzunde: System > Inputs'a gidin ve "GELF UDP" kaynagi secerek "global" tanimlama yapin. Bu konfigurasyonu yaparken de 12201 portunu belirleyin. Bu noktada graylog kullanima hazir.
+
+4) Asagidaki uygulama ornegini kopyalayip kaydedin ve calistirin. Bunu yapmadan once de tek bagimli paketi, "npm init" ve "npm install graylog2" komutlariyla kurun.
+
+ 
+
+docker-compose.yml
 ```
 version: '2'
 services:
@@ -52,7 +62,9 @@ services:
       - 12201:12201 # GELF TCP
       - 12201:12201/udp # GELF UDP
 ```
-  app.js
+ 
+
+app.js
 ```
 var graylog2 = require("graylog2");
 

@@ -23,7 +23,9 @@ GitHub Actions is a built-in CI/CD (Continuous Integration and Continuous Deploy
 ### Why Use GitHub Actions?
 
 *   **Seamless Integration**: It’s built into GitHub, so you don’t need any external setup.
+
 *   **Flexible Workflows**: You can create custom automation with YAML.
+
 *   **Pre-Built Actions**: A marketplace full of ready-to-use workflows.
 
 [Read more on GitHub Actions](https://docs.github.com/en/actions).
@@ -35,7 +37,9 @@ Playwright, developed by Microsoft, is an automation framework for browser testi
 ### Why Playwright?
 
 *   **Multi-Browser Support**: Works with Chromium, Firefox, and WebKit.
+
 *   **Headless Mode**: Run tests in the background without opening a browser.
+
 *   **Powerful API**: Automate clicks, form fills, and even screenshots effortlessly.
 
 [Check out Playwright on GitHub](https://github.com/microsoft/playwright).
@@ -47,8 +51,10 @@ Let’s get started by setting up a GitHub repository and configuring Playwright
 ### Step 1: Create a New GitHub Repository
 
 1.  Head to [GitHub](https://github.com/) and create a new repository.
-2.  Name it something like `webpage-screenshot-automation`.
-3.  Clone the repo to your local machine.
+
+3.  Name it something like `webpage-screenshot-automation`.
+
+5.  Clone the repo to your local machine.
 
 ### Step 2: Install Playwright
 
@@ -185,7 +191,9 @@ That’s it! You’ve successfully set up an automated workflow that generates w
 ### Next Steps
 
 *   Modify the script to capture multiple pages.
+
 *   Add email or Slack notifications.
+
 *   Extend it to handle different screen sizes.
 
 If you found this guide useful, share it with your fellow developers! Got questions? Drop them in the comments. 🚀

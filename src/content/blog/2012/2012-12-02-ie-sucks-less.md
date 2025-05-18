@@ -8,4 +8,10 @@ category: Other
 migration: {"wpId":48,"wpPostDate":"2012-12-02T03:16:16.000Z"}
 ---
 
-Microsoft doing things less sucks lately. I like their Windows 8 release strategy, even if they still copy Apple products and services (look new Microsoft stores). I shouldn't criticize without using it but reaction on social media agrees me. IE is the most hated browser or more generally, most hated software all times. But it looks like Microsoft turned this into a good oppurtunity with creating their new ad campaign based on this. They release this new video. llowfullscreen"> Also you can check the website they have [http://browseryoulovedtohate.com](http://browseryoulovedtohate.com)
+Microsoft doing things less sucks lately. I like their Windows 8 release strategy, even if they still copy Apple products and services (look new Microsoft stores). I shouldn't criticize without using it but reaction on social media agrees me.
+
+IE is the most hated browser or more generally, most hated software all times. But it looks like Microsoft turned this into a good oppurtunity with creating their new ad campaign based on this. They release this new video.
+
+llowfullscreen">
+
+Also you can check the website they have [http://browseryoulovedtohate.com](http://browseryoulovedtohate.com)

@@ -86,7 +86,8 @@ production\_deployment:
 Essentially we need to do:
 
 1.  Upload (or update) the files in the server
-2.  Restart the application (if needed)
+
+3.  Restart the application (if needed)
 
 You get a deployment log like this:
 

@@ -66,10 +66,15 @@ Cleaner, right?
 But it’s not just syntax. `fetch` also offers:
 
 *   **Request/Response objects** for better control and more flexibility
+
 *   **Stream support** for efficiently handling large data responses
+
 *   **AbortController** to cancel requests mid-flight
+
 *   **Improved CORS support** out-of-the-box
+
 *   **Consistent error handling**, unlike XHR which requires extra boilerplate to detect errors
+
 *   **Support for modern content types** like JSON, FormData, and Blob directly
 
 ### Debugging Advantage
@@ -87,7 +92,9 @@ But now that fetch is native in almost all major environments (including Node 18
 ## What to Keep in Mind
 
 *   `XMLHttpRequest` is still widely supported and may be required in legacy codebases or certain environments where `fetch` isn't polyfilled.
+
 *   `fetch` isn’t available in very old browsers, so you’ll need a polyfill if supporting them matters to your audience. But who cares old browsers anymore?
+
 *   `fetch` doesn’t reject on HTTP error statuses (like 404 or 500). You still need to check `res.ok` manually and handle those cases accordingly.
 
 ```

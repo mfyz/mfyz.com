@@ -19,7 +19,12 @@ Projenizi yazarken 2 yol izlemiş olabilirsiniz, birincisi modüler, template ya
 
 #### Peki bu dil yorumlayıcısı ne iş görecek?
 
-Bu dil yorumlayıcısı oturumdaki dil değişkenine göre bütün içeriği oturumdfaki kayıtlı dile göre ayarlamamızı sağlayacaktır. Daha açık konuşursak tercümanımız olacaktır :) Şimdi daha rahat anlayabileceğiniz uygulamaya geçelim. Diyelimki sitemiz farklı farklı sayfalardan oluşuyor. (index.php, dosyalar.php, ziyaretci\_defteri.php vs...) Normal bi şekilde kendi dilimizde yazıp bitiriyoruz projemizi.. Ben burada tek bir dosya üzerinde örnek göstereceğim; Önce dizin yapımıza dil diye bir klasör ekliyoruz; Son yapı şuna benzer olsun;
+Bu dil yorumlayıcısı oturumdaki dil değişkenine göre bütün içeriği oturumdfaki kayıtlı dile göre ayarlamamızı sağlayacaktır. Daha açık konuşursak tercümanımız olacaktır :) Şimdi daha rahat anlayabileceğiniz uygulamaya geçelim.
+
+Diyelimki sitemiz farklı farklı sayfalardan oluşuyor. (index.php, dosyalar.php, ziyaretci\_defteri.php vs...) Normal bi şekilde kendi dilimizde yazıp bitiriyoruz projemizi.. Ben burada tek bir dosya üzerinde örnek göstereceğim;
+
+Önce dizin yapımıza dil diye bir klasör ekliyoruz; Son yapı şuna benzer olsun;
+
 ```
 Proje
  |
@@ -38,6 +43,7 @@ Proje
      '- dil.php
 
 ```
+
 Bu şekilde bir dizin yapımız olsun.. (buradaki örnek sadece :) )(sadece dil dizini, dilsec.php ve dil.php'ye dikkat edin. dil dizininde dil dosyaları olacak tabiki) Kullanıcılar için arabirim basan tüm dosyalarda başında dil.php'yi include edin. Bu tercümanımızdı bizim.
 
 #### Neden tercümana ihtiyacımız var?
@@ -47,6 +53,7 @@ Bu şekilde bir dizin yapımız olsun.. (buradaki örnek sadece :) )(sadece dil 
 #### Peki çeviriyi sayfalarımızda nasıl uygulayacağız?
 
 Sayfalarımızda basitçe metinleri yazdık ve siteyi bitirmiştik değil mi? Mesela Menümüz şöyle idi;
+
 ```
 <!-- MENU -->
 <a href="index.php">Anasayfa</a>
@@ -54,7 +61,9 @@ Sayfalarımızda basitçe metinleri yazdık ve siteyi bitirmiştik değil mi? Me
 <a href="#...">Linkler</a>
 
 ```
+
 Yani kullanıcılar doğrudan bir yazıyı statik olarak görüyorlardı. Tek yapmamız gereken şey, çevirilerimizi değişkenlerde tutmak, Zaten tercüman dosyamız dile göre bu değişkenleri değiştirecektir. Sizin kodda oynama yapmanıza gerek kalmaz. Tercüman otomatik olarak seçer ve bu değişkenleri ayarlar. Ekrana seçili dil basılır. Yani yukarıdaki kodumuz şu şekilde olmalıdır;
+
 ```
 
 <a href="index.php"><?=$dil\["menu\_anasayfa"\];?></a>
@@ -62,7 +71,15 @@ Yani kullanıcılar doğrudan bir yazıyı statik olarak görüyorlardı. Tek ya
 <a href="#..."><?=$dil\["menu\_linkler"\];?></a>
 
 ```
-Amacımız, daha önce kullanıcının önüne getirdiğimiz (print ettiğimiz veya etmediğimiz) tüm metinleri değişkenlerle değiştirmek. Şimdi bu dökümandaki örneğe ait hazırladığım index.php ve dosyalar.php'yi dökümanın sonunda bulacaksınız, bunları inceleyin. Bütün içeriğe ait kısımlarda değişkenler göreceksiniz. $dil diye bir dizide toplanıyor olacaktır bunlar.. Bu değişkenleştirme işlemini yaparken kendi dilimizdeki çeviri dosyamızı da hazırlamış oluyoruz. dil klasörüne o dildeki (bilgisayara göre tabiki) dilin kısaltmasına ait bir dosya oluşturuyoruz. (Türkçe için tr.php, İngilizce için -english- en.php, İspanyolca için -espanol- es.php gibi..) Bu dosya şu şekilde olacak biçimde değişkenlerimizi çevirerek koyuyoruz. Türkçe çeviri dosyamız;
+
+Amacımız, daha önce kullanıcının önüne getirdiğimiz (print ettiğimiz veya etmediğimiz) tüm metinleri değişkenlerle değiştirmek.
+
+Şimdi bu dökümandaki örneğe ait hazırladığım index.php ve dosyalar.php'yi dökümanın sonunda bulacaksınız, bunları inceleyin. Bütün içeriğe ait kısımlarda değişkenler göreceksiniz. $dil diye bir dizide toplanıyor olacaktır bunlar..
+
+Bu değişkenleştirme işlemini yaparken kendi dilimizdeki çeviri dosyamızı da hazırlamış oluyoruz. dil klasörüne o dildeki (bilgisayara göre tabiki) dilin kısaltmasına ait bir dosya oluşturuyoruz. (Türkçe için tr.php, İngilizce için -english- en.php, İspanyolca için -espanol- es.php gibi..) Bu dosya şu şekilde olacak biçimde değişkenlerimizi çevirerek koyuyoruz.
+
+Türkçe çeviri dosyamız;
+
 ```
 <?php
 
@@ -103,7 +120,9 @@ unset($dil);
 ?>
 
 ```
+
 İngilizçe çeviri dosyamız;
+
 ```
 <?php
 
@@ -144,11 +163,17 @@ unset($dil);
 ?>
 
 ```
-Burada sadece Türkçe ve ingilizcesini yazdım, rahatlıkla çoğaltabilirsiniz/çoğalttırabilirsiniz.. Gördüğünüz gibi içerikleri oldukça basit. Tek yaptığımız metinlerimizi değişkenlere dönüştürüp içeriklerini bir dosyaya (çeviri dosyalarımız) yazmak. Projeleriniz bu şekilde yapıp, Mesela sadece kendi ana dilinizde yapıp, bilen insanlara bu dosyaları verip çevirmelerini isteyebilirsiniz. Bu işlem hem zahmetsiz hem de çok işe yarar. Ben çoklu dilli projelerimde çok fazla dili bilmeden bilen arkadaşlarımın sayesinde ekledim ;) Çeviri dosyalarımızı da yazdık, bütün projede değişken dışında bişey kalmadı, (Bu örneğe ait index.php'yi ve dosyalar.php'yi bu dökümanın sonunda görebilirsiniz.)
+
+Burada sadece Türkçe ve ingilizcesini yazdım, rahatlıkla çoğaltabilirsiniz/çoğalttırabilirsiniz..
+
+Gördüğünüz gibi içerikleri oldukça basit. Tek yaptığımız metinlerimizi değişkenlere dönüştürüp içeriklerini bir dosyaya (çeviri dosyalarımız) yazmak. Projeleriniz bu şekilde yapıp, Mesela sadece kendi ana dilinizde yapıp, bilen insanlara bu dosyaları verip çevirmelerini isteyebilirsiniz. Bu işlem hem zahmetsiz hem de çok işe yarar. Ben çoklu dilli projelerimde çok fazla dili bilmeden bilen arkadaşlarımın sayesinde ekledim ;)
+
+Çeviri dosyalarımızı da yazdık, bütün projede değişken dışında bişey kalmadı, (Bu örneğe ait index.php'yi ve dosyalar.php'yi bu dökümanın sonunda görebilirsiniz.)
 
 #### Tercüman dosyası
 
 Şimdi gelelim çeviri dosyalarını seçecek ve siteye uygulayacak olan tercümanımızı kodlamaya :) Önce kodu vereyim, sonra açıklayalım.
+
 ```
 <?php
 
@@ -178,11 +203,13 @@ include("dil/".$secili\_dil.".php");
 ?>
 
 ```
+
 Kodu açıklayalım; ilk önce $secili\_dil degiskenine oturumda kayitli olan dili aliyoruz, eğer oturuma kaydedip onu seçtirmezsek, kullanıcı, browser'in geçerli dilinden başka bir dil seçtiğinde her sayfada bu değer sıfırlanacak ve browser'in geçerli dili ile görüntülenecektir. Bunu yaparak oturum boyunca aynı dilde kalmayı sağlıyoruz. Cookie desteği koyup da hangi bilgisayarda hangi dilde gösterilecek bunu da rahatlıkla kontrol ettirebiliriz. Devam edelim; eğer dil değişkeni boş ise, demektir ki, kullanıcı ilk sayfasında ve dil seçilmedi. Site için uygun olan geçerli dili seçtirmeliyiz. Öncelikle kullanıcının tarayıcı bilgisinden tarayıcısını hangi dilde kullanıyor bunu bulduralım. Mesela Türkçe işletim sistemi, ve Türkçe tarayıcı kullanıyorsa sayfasyı Türkçe göstermemiz muhtemel olacaktır. İspanyol girdiğinde siteye, tarayıcısı ispanyolca olduğundan otomatik olarak site ispanyolda açılacaktır böylece.. :) $secili\_dil = $\_SERVER\["HTTP\_ACCEP\_LANGUAGE"\]; ile bunu sağlamış olduk. Çeviri dosyalarımız dil klasöründe idi. Şimdi çeviri dosyamızı yüklememiz gerek. Ancak eğer tarayıcıda bulunan dil'e ait çeviri dosyamız yok ise sistem hata verecektir, çeviri görünmeyecektir. Bunun için dosya varmı kontrol ettiriyoruz. Eğer yoksa bize göre, yani projenin ana diline göre $secili\_dil'e istediğimiz çeviri dosyasının adını giriyoruz. Bu örnekte Türkçe olmasını istediğimiz için "tr" girdik. Daha sonra oturuma daha sonraki sayfalarda bu dil görünmesi için dil değişkenini kaydettik ve son olarak çeviri dosyamızı yükledik. Böylece dosyanın devamında basılacak değişkenler seçili olan dile göre yer alacaktır.
 
 #### Dil seçimi
 
 Şimdi index dosyamıza dil seçici bir seçim kutusu koyuyoruz. Kodu şuna benzer olacaktır;
+
 ```
 <select onChange="window.top.location='dilsec.php?dil='+this.value;">
   <option value="tr">Türkçe</option>
@@ -195,7 +222,9 @@ Kodu açıklayalım; ilk önce $secili\_dil degiskenine oturumda kayitli olan di
 </select>
 
 ```
+
 Görüldüğü gibi seçildiği anda dilsec.php dosyasına dil değişkenini GET methodu yöntemi ile gönderiyoruz. dilsec.php dosyamız da, aktif bulunan oturumda kullanıcının sitenin dilini değiştirmesini sağlayacaktır. Kodu şu şekilde;
+
 ```
 <?php
 
@@ -217,7 +246,11 @@ exit;
 ?>
 
 ```
-Yapılan işlem çok basit. GET methodu ile gelen değişkene ait çeviri dosyası VAR ise oturuma o dili kaydedip anasayfa'ya geri dönüyoruz. Böylece projemiz çok dilli olmuş olacaktır. Aşağıdaki index ve dosyalar.php'nin içeriklerini yukarıdaki anlatımla birleştirirseniz daha rahat alnayabilirsiniz. index.php
+
+Yapılan işlem çok basit. GET methodu ile gelen değişkene ait çeviri dosyası VAR ise oturuma o dili kaydedip anasayfa'ya geri dönüyoruz. Böylece projemiz çok dilli olmuş olacaktır. Aşağıdaki index ve dosyalar.php'nin içeriklerini yukarıdaki anlatımla birleştirirseniz daha rahat alnayabilirsiniz.
+
+index.php
+
 ```
 <?php
 // dili sectiriyoruz.
@@ -258,7 +291,9 @@ include("dil.php");
 </html>
 
 ```
+
 dosyalar.php
+
 ```
 <?php
 // dili sectiriyoruz.
@@ -299,4 +334,5 @@ include("dil.php");
 </html>
 
 ```
+
 Hemen küçük bir uygulama da siz yazın.

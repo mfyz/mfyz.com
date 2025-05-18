@@ -21,7 +21,11 @@ Bu konuda bir çok örnek verilebilir fakat bu kadarının konuyu anlamaya yard�
 
 #### XML ile HTML Arasında Ne Fark Vardır?
 
-Başta da söylediğim gibi XML verinin taşıma ve saklama işini yapar. Fakat HTML verinin görünümü ile ilgili düzenlemeleri yapmamıza olanak sağlayacaktır. Mesela bir yazının italik mi, kalın mı, font değeri gibi bilgileri HTML'i kullanarak ayarlayabiliriz fakat verini türünün ne olduğu bilgisini HTML ile belirleyemeyiz. XML ise kullanıcının kendi oluşturduğu etiketlerle verinin biçimi koruyarak onu istediği sisteme ve uygulamaya kolayca taşıyabilmektedir. Aralarındaki en önemli fark HTML'de belirli olarak etiketlerin olması fakat XML'de etiketleri kullanıcının belirliyor olmasıdır. Burada iki ayrı işaretleme diline ait bir örnek vermek gerekirse; 1. Örnek: HTML
+Başta da söylediğim gibi XML verinin taşıma ve saklama işini yapar. Fakat HTML verinin görünümü ile ilgili düzenlemeleri yapmamıza olanak sağlayacaktır. Mesela bir yazının italik mi, kalın mı, font değeri gibi bilgileri HTML'i kullanarak ayarlayabiliriz fakat verini türünün ne olduğu bilgisini HTML ile belirleyemeyiz. XML ise kullanıcının kendi oluşturduğu etiketlerle verinin biçimi koruyarak onu istediği sisteme ve uygulamaya kolayca taşıyabilmektedir. Aralarındaki en önemli fark HTML'de belirli olarak etiketlerin olması fakat XML'de etiketleri kullanıcının belirliyor olmasıdır.
+
+Burada iki ayrı işaretleme diline ait bir örnek vermek gerekirse;
+
+1\. Örnek: HTML
 ```
 <html>
   <head>
@@ -74,7 +78,13 @@ XML dokümanları ilişkisel veritabanlarından farklı olarak hiyerarşik bir y
 </Uyeler>
 
 ```
-**<?xml version="1.0" encoding="ISO-8859-9" ?>** bu satır başlangıç etiketidir ve kapanış etiketi yoktur. Üç adet özniteliği vardır ve “version” özniteliği verilmek zorundadır. “version” özniteliği XML dosyasının versiyonunu belirtir ve bu bilgi dokümanı parse(okuma) edecek uygulama için gereklidir. “encoding” özniteliği doküman içerisindeki dil seçeneğini belirtmek için kullanılır. Ben burada Türkçe dil setini kullandım. **<Uyeler> </Uyeler>** etiketi ise kök (root) etikettir ve XLM dokümanın da en az bir tane bulunmak zorundadır. Bu etiket diğer bütün etiketleri içerisine almak zorundadır. **<Uye uye\_id="..."> </Uye>** etiketi çocuk (child) etiket olarak isimlendirilir ve element olarakta bilinir. Buradaki uye\_id bir özniteliktir ve öznitelik değerleri “” arasında verilmek zorundadır. **Genel kuralları belirtmek gerekirse;**
+**<?xml version="1.0" encoding="ISO-8859-9" ?>** bu satır başlangıç etiketidir ve kapanış etiketi yoktur. Üç adet özniteliği vardır ve “version” özniteliği verilmek zorundadır. “version” özniteliği XML dosyasının versiyonunu belirtir ve bu bilgi dokümanı parse(okuma) edecek uygulama için gereklidir. “encoding” özniteliği doküman içerisindeki dil seçeneğini belirtmek için kullanılır. Ben burada Türkçe dil setini kullandım.
+
+**<Uyeler> </Uyeler>** etiketi ise kök (root) etikettir ve XLM dokümanın da en az bir tane bulunmak zorundadır. Bu etiket diğer bütün etiketleri içerisine almak zorundadır.
+
+**<Uye uye\_id="..."> </Uye>** etiketi çocuk (child) etiket olarak isimlendirilir ve element olarakta bilinir. Buradaki uye\_id bir özniteliktir ve öznitelik değerleri “” arasında verilmek zorundadır.
+
+**Genel kuralları belirtmek gerekirse;**
 
 *   *   *   XML dokümanında her alan bir etiket çifti arasında belirtilir ve açılan her etiket kapatılmak zorundadır.
         *   Etiketler büyük küçük harf (case sensitivity) duyarlıdır.
@@ -83,4 +93,12 @@ XML dokümanları ilişkisel veritabanlarından farklı olarak hiyerarşik bir y
         *   <, >, ", ', & bu karakterler XML içerisinde kullanılamaz. Bunların yarine sırasıyla < yerine **&lt;**, > yerine **&gt;**, " yerine **"**, ' yerine **&apos;**, & yerine **&amp;** kullanılmalıdır.
         *   Doküman içerisinde en az bir element olmalıdır.
 
-Tüm bu kurallara uyarak oluşturulmuş dokümanlara iyi yapılanmış anlamında, “well-formed” adı verilir. **XML hakkında daha detaylı bilgi için :** › [http://www.softwareag.com/turkiye/XML\_Kutuphanesi/](http://www.softwareag.com/turkiye/XML_Kutuphanesi/) › [http://www.w3.org/XML/](http://www.w3.org/XML/) › [http://www.w3schools.com/xml/](http://www.w3schools.com/xml/) › [http://xml.silmaril.ie/](http://xml.silmaril.ie/) kaynaklarını kurcalamanızı tavsiye ederim. **Hazırlayan :** Yahya ÖZTÜRK **Kaynak :** Verivizyon
+Tüm bu kurallara uyarak oluşturulmuş dokümanlara iyi yapılanmış anlamında, “well-formed” adı verilir.
+
+**XML hakkında daha detaylı bilgi için :**
+
+› [http://www.softwareag.com/turkiye/XML\_Kutuphanesi/](http://www.softwareag.com/turkiye/XML_Kutuphanesi/) › [http://www.w3.org/XML/](http://www.w3.org/XML/) › [http://www.w3schools.com/xml/](http://www.w3schools.com/xml/) › [http://xml.silmaril.ie/](http://xml.silmaril.ie/)
+
+kaynaklarını kurcalamanızı tavsiye ederim.
+
+**Hazırlayan :** Yahya ÖZTÜRK **Kaynak :** Verivizyon

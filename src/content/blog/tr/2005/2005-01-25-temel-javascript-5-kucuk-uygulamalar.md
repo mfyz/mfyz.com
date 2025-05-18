@@ -42,7 +42,15 @@ Sayfamızda kullandığımız iletişim formu gibi yapılar için için e-posta 
 
 #### 2\. Basit Rollover efekti
 
-Bütün rollover efektlerinde üstüne geldiğiniz nesne kendini yöneterek değişimi sağlar. Mesela bir butonun üstüne gelince kabarması aslında tamamiyle gözümüzün bir geçiş olayında efektmiş gibi algılamasından kaynaklanır. Bu tarz bütün sayfalarda aslında sadece 2 grafik kullanılır. İlki üstünde olmadığınız zamanki kabarmamış buton diğeri ise kabarmış halidir. Üstine geldiğimizde kendi etiketini yöneterek src parametresinin değerini kabarmış olanın url'i ile değiştirmesi ile o grafiğin sayfadaki görünümü değişir. Boyutları aynı olduğu için sayfada gördüğümüz tek fark grafikler arasındaki görünüm farkıdır. Fark ne kadar az ise o kadar küçük değişimler vardır. Bu küçük değişimler iyi ayarlandığında efektler oluşur. Şimdi 2 basit grafik ile bir rollover efektir yapalım : Grafikler şöyle olsun : ![Yazı](/images/archive/tr/2005/01/yazi-1.gif) 1.gif ![Yazı](/images/archive/tr/2005/01/yazi_over-1.gif) 2.gif Bu grafiklerin imaj boyutları aynı. Sayfa yüklendiğinde 1.gif yüklenecek biz imaj'ın onMouseOver ve Out olaylarında kendisinin src'lerini kontrol etmesini sağlayacağız.
+Bütün rollover efektlerinde üstüne geldiğiniz nesne kendini yöneterek değişimi sağlar. Mesela bir butonun üstüne gelince kabarması aslında tamamiyle gözümüzün bir geçiş olayında efektmiş gibi algılamasından kaynaklanır. Bu tarz bütün sayfalarda aslında sadece 2 grafik kullanılır. İlki üstünde olmadığınız zamanki kabarmamış buton diğeri ise kabarmış halidir. Üstine geldiğimizde kendi etiketini yöneterek src parametresinin değerini kabarmış olanın url'i ile değiştirmesi ile o grafiğin sayfadaki görünümü değişir. Boyutları aynı olduğu için sayfada gördüğümüz tek fark grafikler arasındaki görünüm farkıdır. Fark ne kadar az ise o kadar küçük değişimler vardır. Bu küçük değişimler iyi ayarlandığında efektler oluşur. Şimdi 2 basit grafik ile bir rollover efektir yapalım :
+
+Grafikler şöyle olsun :
+
+![Yazı](/images/archive/tr/2005/01/yazi-1.gif) 1.gif
+
+![Yazı](/images/archive/tr/2005/01/yazi_over-1.gif) 2.gif
+
+Bu grafiklerin imaj boyutları aynı. Sayfa yüklendiğinde 1.gif yüklenecek biz imaj'ın onMouseOver ve Out olaylarında kendisinin src'lerini kontrol etmesini sağlayacağız.
 ```
 <img src="1.gif" border="0" onMouseOver="this.src='2.gif';" onMouseOut="this.src='1.gif';">
 
@@ -50,7 +58,9 @@ Bütün rollover efektlerinde üstüne geldiğiniz nesne kendini yöneterek değ
 
 #### 3\. Basit bir oyun yazalım
 
-Bu oyun casino'larda bol bulunan şu 3 şeyi aynı tutturduğumuzda kazandığımız şey (adını ben de bilmiyorum :) ). Bunun için öncelikle 3 tane imaj basıp altına bir buton koymalıyız. Buton bir fonksiyonu çağırmalı ve oyunu ilerletmeli. Sonra farklı olan şeyleri (sayı veya herhangi birşey olabilir) sayısını belirlemeliyiz. Ben bu oyunda 4 tane yapacağım. İşte seçtiğim 4 farklı grafik. ![](/images/archive/tr/2005/01/1.gif)![](/images/archive/tr/2005/01/2.gif)![](/images/archive/tr/2005/01/3.gif)![](/images/archive/tr/2005/01/4.gif)
+Bu oyun casino'larda bol bulunan şu 3 şeyi aynı tutturduğumuzda kazandığımız şey (adını ben de bilmiyorum :) ). Bunun için öncelikle 3 tane imaj basıp altına bir buton koymalıyız. Buton bir fonksiyonu çağırmalı ve oyunu ilerletmeli. Sonra farklı olan şeyleri (sayı veya herhangi birşey olabilir) sayısını belirlemeliyiz. Ben bu oyunda 4 tane yapacağım. İşte seçtiğim 4 farklı grafik.
+
+![](/images/archive/tr/2005/01/1.gif)![](/images/archive/tr/2005/01/2.gif)![](/images/archive/tr/2005/01/3.gif)![](/images/archive/tr/2005/01/4.gif)
 ```
 <img src="0.gif" border="1" id="r1">
 <img src="0.gif" border="1" id="r2">

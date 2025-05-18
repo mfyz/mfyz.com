@@ -29,4 +29,6 @@ Daha sayamadığım bir çok operasyonu grunt ile farklı kombinasyonlarda hazı
 
 #### Örnek
 
-Versiyonlamayı denemek için kendime bir örnek kod hazırladım ve github'da paylaştım. Basit bir css javascript projesinde kodumu yayınlamadan önce bütün css ve javascript kaynaklarımı sıkıştırıp adlarını versiyonlamarak yayındaki tüm dosyaların en taze kodu kullanmasını sağlamak için grunt kullandım. Projeye [https://github.com/mfyz/grunt-release-boilerplate](https://github.com/mfyz/grunt-release-boilerplate) adresinden erişebilirsiniz. Grunt hakkinda daha fazla bilgiye sitesinden erişebilirsiniz: [http://gruntjs.com/](http://gruntjs.com/)
+Versiyonlamayı denemek için kendime bir örnek kod hazırladım ve github'da paylaştım. Basit bir css javascript projesinde kodumu yayınlamadan önce bütün css ve javascript kaynaklarımı sıkıştırıp adlarını versiyonlamarak yayındaki tüm dosyaların en taze kodu kullanmasını sağlamak için grunt kullandım. Projeye [https://github.com/mfyz/grunt-release-boilerplate](https://github.com/mfyz/grunt-release-boilerplate) adresinden erişebilirsiniz.
+
+Grunt hakkinda daha fazla bilgiye sitesinden erişebilirsiniz: [http://gruntjs.com/](http://gruntjs.com/)

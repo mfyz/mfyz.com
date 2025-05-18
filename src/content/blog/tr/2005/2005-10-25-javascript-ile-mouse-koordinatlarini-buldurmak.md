@@ -13,20 +13,26 @@ var IE = (document.all?true:false); if (!IE){ document.captureEvents(Event.MOUSE
 
  **X** 
 
-  Bu dökümanda javascript ile sayfanızda mouse koordinatlarını tespit eden kısa bir koda değineceğim. Örneği yukarıdaki gibidir.
+ 
+
+Bu dökümanda javascript ile sayfanızda mouse koordinatlarını tespit eden kısa bir koda değineceğim. Örneği yukarıdaki gibidir.
+
 ```
 var IE = document.all ? true : false;
 if (!IE) document.captureEvents( Event.MOUSEMOVE )
 document.onmousemove = getMouseXY;
 
 ```
+
 Bu kısımda browser'a göre mouse hareketini getMouseXY fonksiyonu çalıştırmaya yönlendiriyoruz.
+
 ```
 var tempX = 0;
 var tempY = 0;
 
 ```
 Geçici mouse X, Y değerlerini saklayan değişkenler.
+
 ```
 function getMouseXY(e) {
 
@@ -51,4 +57,9 @@ function getMouseXY(e) {
 }
 
 ```
-Mouse koordinatlarını bulduran ve Show formundaki MouseX ve MouseY inputlarına değerleri yazdıran fonksiyon. Buradaki kodu, fonksiyonu kullanarak layer'lari taşıyabilir, mouse'un bazı objeler üstüne gelmesiyle değişik artaksiyonlar yapabilirsiniz. Eski sitedeki tooltip'ler bu şekilde çalışıyordu.
+
+Mouse koordinatlarını bulduran ve Show formundaki MouseX ve MouseY inputlarına değerleri yazdıran fonksiyon.
+
+Buradaki kodu, fonksiyonu kullanarak layer'lari taşıyabilir, mouse'un bazı objeler üstüne gelmesiyle değişik artaksiyonlar yapabilirsiniz.
+
+Eski sitedeki tooltip'ler bu şekilde çalışıyordu.

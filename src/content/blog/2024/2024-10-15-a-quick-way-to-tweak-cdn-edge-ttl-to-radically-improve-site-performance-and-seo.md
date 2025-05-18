@@ -61,6 +61,7 @@ This is where the real value of super-long TTLs comes in. Especially if you comb
 There is one caveat though, which is content freshness. When you bump the Edge TTL up to multi-day TTLs like I did, you need to make sure your CMS/site is nicely integrated with your CDN’s cache clear systems, in the case you make updates. Two scenarios:
 
 *   You update existing content (like fixing a typo, or changing the cover image of a post), the change should be reflected on the content’s detail page right away.
+
 *   You publish new content, so the new content is supposed to show up in common places like your homepage.
 
 You can use your CDN’s cache clear UI or APIs to trigger “purge” on URLs you think it’s impacted (homepage, section pages, etc), or highly visible pages like the homepage can be configured with a lower TTL in a separate cache rule set.

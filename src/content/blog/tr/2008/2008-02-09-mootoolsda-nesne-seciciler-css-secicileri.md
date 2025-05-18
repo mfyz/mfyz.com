@@ -37,14 +37,18 @@ adreslemesini kullanırız. Bu adresleme aslında nesnelere erişimimizi oldukç
 
 #### JavaScript ile ne ilgisi var peki?
 
-DOM'da seçici fonksiyonlar vardır bilirsiniz. getElementById(), getElementsByClass() gibi. Fakat son verdiğim örnekteki nesnelere ulaşmak için birkaç döngü kurmanız gerekir, daha karışık nesene seçimlerinde de bizi uğraştırabilir. Mootools'u yine seveceksiniz, çünkü mootools'da seçici fonksiyonlar var ve bunlardan bir tanesi (muhtemelen en çok kullanılan) css adreslemelerine göre elemanlar seçiyor. **$ Fonksiyonu** elemanları kimliklerine göre seçer. getElementById(); ile aynı işi yapıyor aslında
+DOM'da seçici fonksiyonlar vardır bilirsiniz. getElementById(), getElementsByClass() gibi. Fakat son verdiğim örnekteki nesnelere ulaşmak için birkaç döngü kurmanız gerekir, daha karışık nesene seçimlerinde de bizi uğraştırabilir. Mootools'u yine seveceksiniz, çünkü mootools'da seçici fonksiyonlar var ve bunlardan bir tanesi (muhtemelen en çok kullanılan) css adreslemelerine göre elemanlar seçiyor.
+
+**$ Fonksiyonu** elemanları kimliklerine göre seçer. getElementById(); ile aynı işi yapıyor aslında
 ```
 eleman = document.getElementById('anasayfa\_butonu');
 // ile aşağıdaki tanım aynı işi görür
 eleman = $('anasayfa\_butonu');
 
 ```
-**$$ Fonksiyonu** az önce yazdığımız css adreslemesinde bulduğu elemanları nesne dizesi olarak verir. Örneğin ipucu sınıfındaki tüm linkleri seçtirelim
+**$$ Fonksiyonu** az önce yazdığımız css adreslemesinde bulduğu elemanları nesne dizesi olarak verir.
+
+Örneğin ipucu sınıfındaki tüm linkleri seçtirelim
 ```
 $$('a.ipucu')
 
@@ -59,7 +63,9 @@ ya da birden fazla sınıf adreslemesine ait elemanların hepsi :
 $$('a.ipucu, a.eposta, span.bilgi')
 
 ```
-Şimdilik pek oturmadı farkındayım ama birkaç örnek yapalım eminim daha iyi anlayacaksınız : Mesela elimizde 4-5 linkten oluşan bir menü olsun. Aynı zamanda sayfamızın içeriğinde de linkler, span'lar bold metinler vs bir sürü elemanımız var. Sadece css ile yerleştirilip düzenlenmiş durumda. Örnek HTML şöyle :
+Şimdilik pek oturmadı farkındayım ama birkaç örnek yapalım eminim daha iyi anlayacaksınız :
+
+Mesela elimizde 4-5 linkten oluşan bir menü olsun. Aynı zamanda sayfamızın içeriğinde de linkler, span'lar bold metinler vs bir sürü elemanımız var. Sadece css ile yerleştirilip düzenlenmiş durumda. Örnek HTML şöyle :
 ```
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
   "http://www.w3.org/TR/html4/loose.dtd">
@@ -121,14 +127,18 @@ $$('#menu a').each(function(link){
 });
 
 ```
-Linklerin üzerine geldiğinizde sayfa statusbar'ında linklerin url'leri yerine açıklamaları çıkar :) Bu kısımlar dökümanla ilgili değil, onun için geçiyorum. Mesela kullanılabilir bir örnek için de sayfada içerikten sonraki linkler kısmında birşeyler yapalım. O linkler site dışı linkler ve target'ları yok gördüğünüz gibi. Yani linkler doğrudan sayfa üzerinde açılacaklar. Bu linkleri yeni pencerede açtıralım.
+Linklerin üzerine geldiğinizde sayfa statusbar'ında linklerin url'leri yerine açıklamaları çıkar :) Bu kısımlar dökümanla ilgili değil, onun için geçiyorum.
+
+Mesela kullanılabilir bir örnek için de sayfada içerikten sonraki linkler kısmında birşeyler yapalım. O linkler site dışı linkler ve target'ları yok gördüğünüz gibi. Yani linkler doğrudan sayfa üzerinde açılacaklar. Bu linkleri yeni pencerede açtıralım.
 ```
 $$('#linklerim a').each(function(a){
   a.setProperty('target', '\_blank');
 });
 
 ```
-kodu işimizi görecektir. Bu kod işletildikten sonra o linkler yeni pencerede açılacaktır. Bu örnek css seçicileri anlamanızı sağlamıştır umarım.
+kodu işimizi görecektir. Bu kod işletildikten sonra o linkler yeni pencerede açılacaktır.
+
+Bu örnek css seçicileri anlamanızı sağlamıştır umarım.
 
 #### CSS seçiciler ile tek eleman seçtirmek
 

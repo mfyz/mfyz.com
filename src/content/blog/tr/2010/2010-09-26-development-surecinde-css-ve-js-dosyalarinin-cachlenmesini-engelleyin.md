@@ -9,10 +9,16 @@ migration: {"wpId":260,"wpPostDate":"2010-09-26T03:41:50.000Z"}
 lang: tr
 ---
 
-Projenizi geliştirirken en büyük problemlerden biri olan cache sorununu apache sunucularda kolayca çözebilirsiniz. Tüm geliştirme süresince projenizin root'undaki htaccess dosyanıza css ve js dosyalarının cachelenmemesi için gerekli header'ları tarayıcıya gönderebilirsiniz. Bu sayede tarayıcı bu dosyaları her aldığında expire olduklarını anlayacak ve her sayfa yenilendiğinde sunucudan tekrar isteyecektir. Bunun için proje root klasörünüzdeki htaccess dosyanıza (yoksa oluşturun)
+Projenizi geliştirirken en büyük problemlerden biri olan cache sorununu apache sunucularda kolayca çözebilirsiniz. Tüm geliştirme süresince projenizin root'undaki htaccess dosyanıza css ve js dosyalarının cachelenmemesi için gerekli header'ları tarayıcıya gönderebilirsiniz.
+
+Bu sayede tarayıcı bu dosyaları her aldığında expire olduklarını anlayacak ve her sayfa yenilendiğinde sunucudan tekrar isteyecektir.
+
+Bunun için proje root klasörünüzdeki htaccess dosyanıza (yoksa oluşturun)
+
 ```
 Header set Cache-Control "max-age=0, public"
 Header set Expires "Thu, 15 Jan 2000 20:00:00 GMT"
 
 ```
+
 satırlarını ekleyin.

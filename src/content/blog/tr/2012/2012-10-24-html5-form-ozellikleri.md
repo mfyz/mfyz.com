@@ -9,7 +9,13 @@ migration: {"wpId":321,"wpPostDate":"2012-10-24T00:26:57.000Z"}
 lang: tr
 ---
 
-HTML5 git gide daha popülerleşiyor ve eski html kodlarının yerini, daha sade html5 kodlarına bıraktığını, daha önce javascript eklentileriyle yaptığımız bazı şeyleri yeni html5 tanımlamasında yeni özellikler olarak görmeye başladık. Özellikle mobile web uyumlu sayfalar yaygınlaştıktan sonra html5 tanımlamaları sadece masaüstü bilgisayar tarayıcıları değil mobil tarayıcılar için de özel yetenekler içermeye başladı. Eğer birkaç yıldır güncellenmeyen bir tarayıcınız varsa HTML5 formların tüm özelliklerini desteklemeyebilir fakat güncel ve modern tüm tarayıcılar birçok html5 form özelliğini destekliyor. İşte yeni html5 form özelliklerinden bazıları...
+HTML5 git gide daha popülerleşiyor ve eski html kodlarının yerini, daha sade html5 kodlarına bıraktığını, daha önce javascript eklentileriyle yaptığımız bazı şeyleri yeni html5 tanımlamasında yeni özellikler olarak görmeye başladık.
+
+Özellikle mobile web uyumlu sayfalar yaygınlaştıktan sonra html5 tanımlamaları sadece masaüstü bilgisayar tarayıcıları değil mobil tarayıcılar için de özel yetenekler içermeye başladı.
+
+Eğer birkaç yıldır güncellenmeyen bir tarayıcınız varsa HTML5 formların tüm özelliklerini desteklemeyebilir fakat güncel ve modern tüm tarayıcılar birçok html5 form özelliğini destekliyor.
+
+İşte yeni html5 form özelliklerinden bazıları...
 
 #### Otomatik odaklanma
 
@@ -21,7 +27,9 @@ Bir form elementinin, sayfanın odağı olduğu sayfalarda, sayfa yüklenmesiyle
 
 #### Yer tutucu açıklamaları
 
-İyi bir kullanıcı deneyimi için, form elementlerinin yer tutucu metinlerini kullanıcı girdisinin içinde göstermek daha kullanılabilir bir form tasarımı olacaktır. Bunu da daha önce javascript yardımı ile birden fazla hareketi dinleyerek yapıyorduk. HTML5'de bunun yerini "placeholder" özniteliği aldı. Az önceki örnek üstünden devam edersem, arama kutunuzda "Örnek: Call of Duty MW3" yazarak örnek ile arama ipucu verebilirsiniz.
+İyi bir kullanıcı deneyimi için, form elementlerinin yer tutucu metinlerini kullanıcı girdisinin içinde göstermek daha kullanılabilir bir form tasarımı olacaktır. Bunu da daha önce javascript yardımı ile birden fazla hareketi dinleyerek yapıyorduk. HTML5'de bunun yerini "placeholder" özniteliği aldı.
+
+Az önceki örnek üstünden devam edersem, arama kutunuzda "Örnek: Call of Duty MW3" yazarak örnek ile arama ipucu verebilirsiniz.
 ```
 <input name=""search"" type="text" placeholder=""Kitap" />
 ```
@@ -32,7 +40,9 @@ HTML5 tanımında formları kullanıcı girdi türüne göre doğrulabilmesi iç
 ```
 <input required="" type=""email"" />
 ```
-Eski html tanımında, serbest metin girdisi olarak sadece 2 tür kullanıcı girdi alanı vardı. Bunlar input etiketi türü olarak "type" özniteliğiyle tanımlanıyor ve text ve password olarak iki tür olarak tanımlanmıştı. HTML5'de bu türler çoğaldı. Ana ihtiyaç aslında mobilden doğdu çünkü mobil arayüzde dokunmatik klavyeler girdi alanlarinin türlerine göre farklı klavye türleri gösterebiliyor ekranda. Örnegin bir telefon numarası girişi isteniyorsa "tel" adında yeni bir HTML5 girdi türüyle bunu sağlayabiliyorsunuz. Ya da tarih girdisi ise tarihin türüne göre ay girdisi için "month" gibi farklı türler kullanabiliyorsunuz. İşte o yeni türlerden bazıları:
+Eski html tanımında, serbest metin girdisi olarak sadece 2 tür kullanıcı girdi alanı vardı. Bunlar input etiketi türü olarak "type" özniteliğiyle tanımlanıyor ve text ve password olarak iki tür olarak tanımlanmıştı. HTML5'de bu türler çoğaldı.
+
+Ana ihtiyaç aslında mobilden doğdu çünkü mobil arayüzde dokunmatik klavyeler girdi alanlarinin türlerine göre farklı klavye türleri gösterebiliyor ekranda. Örnegin bir telefon numarası girişi isteniyorsa "tel" adında yeni bir HTML5 girdi türüyle bunu sağlayabiliyorsunuz. Ya da tarih girdisi ise tarihin türüne göre ay girdisi için "month" gibi farklı türler kullanabiliyorsunuz. İşte o yeni türlerden bazıları:
 
 ##### type="email"
 

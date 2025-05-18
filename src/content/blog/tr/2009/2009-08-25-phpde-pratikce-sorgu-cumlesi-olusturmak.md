@@ -9,13 +9,18 @@ migration: {"wpId":146,"wpPostDate":"2009-08-25T18:25:53.000Z"}
 lang: tr
 ---
 
-Daha önce SQL injection ve MDB2 hakkında birşeyler [yazmıştım](https://tr.mfyz.com/mdb2-kullanimi-ve-sql-injection). Bu döküman birkaç konuda size yardımcı olacak, pratikleştirecek sorunlar :
+Daha önce SQL injection ve MDB2 hakkında birşeyler [yazmıştım](https://tr.mfyz.com/mdb2-kullanimi-ve-sql-injection).
+
+Bu döküman birkaç konuda size yardımcı olacak, pratikleştirecek sorunlar :
 
 *   Çok alan (4-5+) kullanırken sorgu cümlesi oluşturmak zor
 *   Gözden kaçırıp alanları kontrol etmek bazen mümkün olmuyor.
 *   Yukarıdaki 2 maddeyi yapmak için satırlarca duplicate kod yazmak gerekebiliyor
 
-Kısaca 3-4 adımda kocaman bir sorgu cümlesini oluşturacağız. Genel olarak bu dökümandaki sorun insert ve update türü sorgularda çıkan kargaşayı kolaylaştıracaktır. Zira select sorguları hem çok veri içermiyor hem de özel cümleler olabiliyor. Bu methodolojide doğal olarak bir otomatizasyon var. Bunun için verinin düzenli olması gerekiyor. Bu noktada genelde bir dizi içinde verilerin tutulduğunu düşünelim.
+Kısaca 3-4 adımda kocaman bir sorgu cümlesini oluşturacağız. Genel olarak bu dökümandaki sorun insert ve update türü sorgularda çıkan kargaşayı kolaylaştıracaktır. Zira select sorguları hem çok veri içermiyor hem de özel cümleler olabiliyor.
+
+Bu methodolojide doğal olarak bir otomatizasyon var. Bunun için verinin düzenli olması gerekiyor. Bu noktada genelde bir dizi içinde verilerin tutulduğunu düşünelim.
+
 ```
 $data = array(
 'ref\_code' => $\_GET\[ref\],
@@ -26,19 +31,30 @@ $data = array(
 );
 
 ```
+
 Verinin anahtarları veritabanındaki alan adları ile aynı olmalı. Zaten bu veri dizisini oluştururken gerekli sql injection kontrolleri yapılıp kolayca kurtulabilinir fakat her değerde bir ton fonksiyon çağırmaya gerek yok. Kısaca :
+
 ```
 $data = array\_map('mysql\_real\_escape\_string', $data);
 ```
-kullanımıyla tüm diziye mysql\_real\_escape\_string() uygulayabiliriz. Sonra zaten cümleyi oluşturmak için genel method olan sprintf ile alanları ve değerleri basacağız. Ancak işin güzelliği burada bu alanlar ve değerler kısımlarını bir sürü döngü ile çözmeyeceğiz.
+
+kullanımıyla tüm diziye mysql\_real\_escape\_string() uygulayabiliriz.
+
+Sonra zaten cümleyi oluşturmak için genel method olan sprintf ile alanları ve değerleri basacağız. Ancak işin güzelliği burada bu alanlar ve değerler kısımlarını bir sürü döngü ile çözmeyeceğiz.
+
 ```
 $sql = sprintf('INSERT INTO comments (%s) VALUES ("%s")',
 implode(", ", array\_keys($data)),
 implode('", "', array\_values($data))
 );
 ```
-Gördüğünüz gibi array\_keys ve array\_values ile hızlıca alanlar ve değerleri alıp implode ile aralarına virgül ve tırnak ekleyebiliriz. Burada dikkat edeceğimiz şey implode sadece değerlerin aralarına tırnak ve virgül ekleyecektir. En dışda kalan tırnakları sprintf içinde tanımlayacağız. Sonuç olarak bu noktada $sql değişkeninde, değerler ve alanlar giydirilmiş, aşağıdaki gibi bir sql cümlesi elde etmiş olacağız.
+
+Gördüğünüz gibi array\_keys ve array\_values ile hızlıca alanlar ve değerleri alıp implode ile aralarına virgül ve tırnak ekleyebiliriz. Burada dikkat edeceğimiz şey implode sadece değerlerin aralarına tırnak ve virgül ekleyecektir. En dışda kalan tırnakları sprintf içinde tanımlayacağız.
+
+Sonuç olarak bu noktada $sql değişkeninde, değerler ve alanlar giydirilmiş, aşağıdaki gibi bir sql cümlesi elde etmiş olacağız.
+
 ```
 INSERT INTO comments (ref\_code, phone, text, date, ip) VALUES ("google", "1234567", "aisdfyisodaf qewrewrewqr 232fsfdsd", "2009-08-25 16:08:34", "127.0.0.1")
 ```
+
 Bu cümleyi de mysql\_query($sql) ile çalıştırıp sonucu işlemede bitiyor olay.

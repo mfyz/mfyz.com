@@ -188,4 +188,6 @@ eregi("^\[^a-eKLM\]+$","uzunincebiryoldayim");            // YANLIS
 
 ## 11\. \[\[. .\]\] karakterleri
 
-d -> \[0-9\] D -> \[^0-9\] t,f = s s S w -> \[a-zA-Z0-9\] : bütün harfler ve rakamlar W -> \[^a-zA-Z0-9\] Not: Bu dökümanı hazırlayan kim idi bilmiyorum. Fi tarihinde bilgisayarıma txt olarak geçirmişim. Yazan arkadaştan çok özür diliyorum/teşekkür ediyorum, eğer farkeder ve bildirirse hemen burada adını belirtmek isterim. Zira Hiper-faydalı bir yazı/kaynak olduğunu düşündüğüm için yayınlıyorum.
+d -> \[0-9\] D -> \[^0-9\] t,f = s s S w -> \[a-zA-Z0-9\] : bütün harfler ve rakamlar W -> \[^a-zA-Z0-9\]
+
+Not: Bu dökümanı hazırlayan kim idi bilmiyorum. Fi tarihinde bilgisayarıma txt olarak geçirmişim. Yazan arkadaştan çok özür diliyorum/teşekkür ediyorum, eğer farkeder ve bildirirse hemen burada adını belirtmek isterim. Zira Hiper-faydalı bir yazı/kaynak olduğunu düşündüğüm için yayınlıyorum.

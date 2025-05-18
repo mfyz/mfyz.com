@@ -9,11 +9,15 @@ migration: {"wpId":1444,"wpPostDate":"2018-04-02T22:00:34.000Z"}
 lang: tr
 ---
 
-![](/images/archive/tr/2018/04/no_screens_classic_round_sticker-r8b6167129588449f969019c8c377d9ae_v9waf_8byvr_324-300x300-150x150.jpg)Digital nesilin ekransiz zaman gecirmesinin gerekliligine derinden inanimyorum. Ekransizlik konsepti “sabbatical” denilen akademik “mola”ya benzeyen, teknolojiyle, ozellikle ekranlarla etkilesime gecmediginiz bir sure. Bu konuyu biraz parcalayarak inceleyelim.
+![](/images/archive/tr/2018/04/no_screens_classic_round_sticker-r8b6167129588449f969019c8c377d9ae_v9waf_8byvr_324-300x300-150x150.jpg)Digital nesilin ekransiz zaman gecirmesinin gerekliligine derinden inanimyorum. Ekransizlik konsepti “sabbatical” denilen akademik “mola”ya benzeyen, teknolojiyle, ozellikle ekranlarla etkilesime gecmediginiz bir sure.
+
+Bu konuyu biraz parcalayarak inceleyelim.
 
 ## Ekranlarla calisan insanlar
 
-Ben bir internet calisaniyim. Isim teknolji'yi uretmek. Gunluk tempomda, dusunme, arastirma, yazma, planlama, yonetme, uretme, kurallari degistirip teknolojiyi daha akilli hale getirmek icin gunumun 12 ila 15 saate yakinini ekran basinda geciriyorum bunun buyuk cogunlugunu bilgisayarda, ufa kbir kismini mobil cihazlarda yapiyorum. Benim gibi isinini cogunu bilgisayar basinda yapan, teknoloji uretmese de isini yapmak icin bilgisayar ve yazilimlari kullanan cok profesyonel var. Benim kadar veya daha fazla zamanini ekran basinda geciriyor bu kisiler.
+Ben bir internet calisaniyim. Isim teknolji'yi uretmek. Gunluk tempomda, dusunme, arastirma, yazma, planlama, yonetme, uretme, kurallari degistirip teknolojiyi daha akilli hale getirmek icin gunumun 12 ila 15 saate yakinini ekran basinda geciriyorum bunun buyuk cogunlugunu bilgisayarda, ufa kbir kismini mobil cihazlarda yapiyorum.
+
+Benim gibi isinini cogunu bilgisayar basinda yapan, teknoloji uretmese de isini yapmak icin bilgisayar ve yazilimlari kullanan cok profesyonel var. Benim kadar veya daha fazla zamanini ekran basinda geciriyor bu kisiler.
 
 ## Ekranli tembel
 
@@ -25,7 +29,11 @@ Sadece “bir” ekrana bakmak degil mesela, her yerde ekran var. Telefonlar, ta
 
 ## Herkesin dikkatinin daginik olmasi surpriz degil
 
-Uzun suredir teknolojinin etkisi uzerine farkli dallarda kitaplar, yazilar okuyorum. Yakin zamanda bir suredir kucuk cocuklarin gelisimini (iki ufak cocugum oldugu icin), konuyla daha ilgiliyim. Bir cok yazida tutarli olarak gordugum bir tekrar var bu da ekran basinda geciliren zamanin daha cok zararli oldugu yonde, ozellikle ilk birkac yaslarda. Beyinin nasil calistigini ve gelisimini dusununce mantikli da geliyor. Insan beyni, cevremizde seylerde yumusak hareketler gormemizi bekler. Doga'da birseyler aninda kaybolmaz veya aninda gozumuzun onunde belirmez. Birseyin aninda hareket etmesi demek, beyin icin “tehlike” demek. Cok da mantikli. Cunku cevremizde birseyler hizli hareket ediyorsa, dogada dusundugunuzde beynin tepkisi “tehlikeden kac, uzaklas” oluyor. Vahsi dogada, avci bir hayvandan kacmak veya ustunuze gelen birseyden kendinizi korumaniz demek, bunun icin de beyin, vucudumuzun ufak miktrarlarda da olsa stres hormonu, adrenalin gibi hormonlari salgilamasini saglar bu durumlarda. Yani aninda degisen goruntuler, hizli hareket eden imajlar genel olarak beyine ve vucuda zarar veren seyler. Cok tanidik degil mi? Herhangi bir tv programini dusunun :) Yeni nesilde, dikkat daginilikli bozuklugu (ADD) oraninin yukseldigi gozlemleniyor duzenli olarak.
+Uzun suredir teknolojinin etkisi uzerine farkli dallarda kitaplar, yazilar okuyorum. Yakin zamanda bir suredir kucuk cocuklarin gelisimini (iki ufak cocugum oldugu icin), konuyla daha ilgiliyim.
+
+Bir cok yazida tutarli olarak gordugum bir tekrar var bu da ekran basinda geciliren zamanin daha cok zararli oldugu yonde, ozellikle ilk birkac yaslarda. Beyinin nasil calistigini ve gelisimini dusununce mantikli da geliyor. Insan beyni, cevremizde seylerde yumusak hareketler gormemizi bekler. Doga'da birseyler aninda kaybolmaz veya aninda gozumuzun onunde belirmez. Birseyin aninda hareket etmesi demek, beyin icin “tehlike” demek. Cok da mantikli. Cunku cevremizde birseyler hizli hareket ediyorsa, dogada dusundugunuzde beynin tepkisi “tehlikeden kac, uzaklas” oluyor. Vahsi dogada, avci bir hayvandan kacmak veya ustunuze gelen birseyden kendinizi korumaniz demek, bunun icin de beyin, vucudumuzun ufak miktrarlarda da olsa stres hormonu, adrenalin gibi hormonlari salgilamasini saglar bu durumlarda. Yani aninda degisen goruntuler, hizli hareket eden imajlar genel olarak beyine ve vucuda zarar veren seyler. Cok tanidik degil mi? Herhangi bir tv programini dusunun :)
+
+Yeni nesilde, dikkat daginilikli bozuklugu (ADD) oraninin yukseldigi gozlemleniyor duzenli olarak.
 
 ## Biraz ara ver, beynini sogutmaya birak
 
@@ -33,7 +41,9 @@ Teknoloji ve ekranlara maruz oldugumuz kesintisiz bilgi akisini biraz durdurmani
 
 ## Teknolojiyle tembellesmek
 
-Sadece ekranlara bakmak da degil mesele. Genel olarak teknolojiye bagimliligi kirmak asil konu. Cunku farkinda degiliz ama cok temel bilgileri beynimizde saklama gereksinimini unutuyoruz. Mesela yon/harita bilgisi, alisveris listesi gibi. Hersey telefonda cunku... Ilk ekransiz gunumde, farkinda olmadan garip bir durumda buldum kendimi. Bir onceki gun yoga dersi ayarlamistim, ders saati yaklasinca evden ciktim ve studyo'nun yerini bilmedigimi farkettim. Cunku hep google maps'den bakiyordum ilk defa (hatta birkac kere gidene kadar). Birkac farkli sokagi deneyerek buldum neyseki ama bu kadar basit bir bilgiyi bile akilda tutmama tembelliginde oldugumu farkettim. Sonraki hafta gidecegim yerlerin kapi/sokak adreslerini not etmeye basladim.
+Sadece ekranlara bakmak da degil mesele. Genel olarak teknolojiye bagimliligi kirmak asil konu. Cunku farkinda degiliz ama cok temel bilgileri beynimizde saklama gereksinimini unutuyoruz. Mesela yon/harita bilgisi, alisveris listesi gibi. Hersey telefonda cunku...
+
+Ilk ekransiz gunumde, farkinda olmadan garip bir durumda buldum kendimi. Bir onceki gun yoga dersi ayarlamistim, ders saati yaklasinca evden ciktim ve studyo'nun yerini bilmedigimi farkettim. Cunku hep google maps'den bakiyordum ilk defa (hatta birkac kere gidene kadar). Birkac farkli sokagi deneyerek buldum neyseki ama bu kadar basit bir bilgiyi bile akilda tutmama tembelliginde oldugumu farkettim. Sonraki hafta gidecegim yerlerin kapi/sokak adreslerini not etmeye basladim.
 
 ## Bazi seyler teknolojisiz daha yaratici ve daha keyifli
 

@@ -9,18 +9,26 @@ migration: {"wpId":317,"wpPostDate":"2012-09-20T01:35:45.000Z"}
 lang: tr
 ---
 
-Javascript alert'in tarayıcılara göre farklı pencere şekillerinde çizdirildiğini biliyorsunuz. Sadece farklı pencere şekilleri değil aynı zamanda içinde sistem fontu kullanılması, pencere başlığına veya onay tuşunda yazan yazıya müdahale edilememesi veya sayfanın çalışmasını durdurması gibi engelleri olduğunu zaten biliyorsunuz. Şimdi gelelim çok basit bir kullanımıyla
+Javascript alert'in tarayıcılara göre farklı pencere şekillerinde çizdirildiğini biliyorsunuz. Sadece farklı pencere şekilleri değil aynı zamanda içinde sistem fontu kullanılması, pencere başlığına veya onay tuşunda yazan yazıya müdahale edilememesi veya sayfanın çalışmasını durdurması gibi engelleri olduğunu zaten biliyorsunuz.
+
+Şimdi gelelim çok basit bir kullanımıyla
 ```
 alert('Mesajınız başarıyla iletildi. En kısa sürede cevaplamaya çalışacağım.');
 ```
-şeklinde ürettiğiniz onay/hata/mesaj kutusunu ![](/images/archive/tr/2012/09/jsalert.gif) çok benzer kullanımla
+şeklinde ürettiğiniz onay/hata/mesaj kutusunu
+
+![](/images/archive/tr/2012/09/jsalert.gif)
+
+çok benzer kullanımla
 ```
 alertf('<h3>Mesajiniz başarıyla iletildi.</h3>
 En kısa sürede cevaplamaya çalışacağım.
 
 Bu sırada <a href=""/blog"">blogumu</a> inceleyebilirsiniz.');
 ```
-şeklinde kullanabileceğiniz daha zengin içeriğe sahip bir kutuya çevirmeye. ![](/images/archive/tr/2012/09/jsalertf.gif)
+şeklinde kullanabileceğiniz daha zengin içeriğe sahip bir kutuya çevirmeye.
+
+![](/images/archive/tr/2012/09/jsalertf.gif)
 
 #### Gereksinimler
 
@@ -37,16 +45,24 @@ function alertf(html){
 }
 
 ```
-Hem alert fonksiyonuna yakın olması hem de "alert fancy" yani süslü/havalı mesaj kutusu anlamına geldiği için de "alerf" adında bir fonksiyon yazarak, zorunlu tek parametre tanımlayacağız. Zorunlu olan tek ve ilk parametre mesajınızın içeriği olacaktır. Bu parametre HTML de olabilir düz metin de olabilir. Her lightbox kütüphanesinin, bir şekilde sadece javascript çağrısı yapılarak bir kullanımı vardır. fancybox'un bu şekildeki kullanımı için, basitçe $.fancybox fonksiyonu çağrılıp içeriği "content" parametresiyle belirtiyoruz.
+Hem alert fonksiyonuna yakın olması hem de "alert fancy" yani süslü/havalı mesaj kutusu anlamına geldiği için de "alerf" adında bir fonksiyon yazarak, zorunlu tek parametre tanımlayacağız. Zorunlu olan tek ve ilk parametre mesajınızın içeriği olacaktır. Bu parametre HTML de olabilir düz metin de olabilir.
+
+Her lightbox kütüphanesinin, bir şekilde sadece javascript çağrısı yapılarak bir kullanımı vardır. fancybox'un bu şekildeki kullanımı için, basitçe $.fancybox fonksiyonu çağrılıp içeriği "content" parametresiyle belirtiyoruz.
 ```
 $.fancybox({
     content:"Merhaba dostlar"
 });
 
 ```
-alertf fonksiyonunda aslında basitçe içinde mesaj ve buton olan bir lightbox kutusu çizdiriyoruz. "button" sınıfıyla da link olarak tanımlanan elementi buton görüntüsüne çeviriyoruz. Bunun için herhangi bir css buton stili yeterli olacaktır. Mesaji çevreleyen div'i, stillerini, butonu temsil eden linki ve onu çevreleyen div'i ve stillerini javascript fonksiyonumuzda string olarak kodluyoruz. Sonrasında zaten fancybox ile ekrana çizdirmek kalıyor. Fonksiyonun ilk satırlarında dikkatinizi çekeceği üzere, basit bir kontrolle, bu fonksiyon cağırıldığında ikinci bir parametre belirlenip belirlenmediğini kontrol ediyoruz. Bunun nedeni ise, tek buton olan "Tamam" butonuna basıldığında yapılacak aksiyonu değişitebilme kabiliyeti eklemek. Bir çok noktada ihtiyacınız olabilecek olan bu özellik, bir mesaj kutusu çizdirdiğinizde butona basıldığında başka bir sayfaya yönlendirme veya kutuyu kapatmak yerine başka bir javascript cağrısı yapmak gibi şeyler yapmanızı sağlayacak. Bunu da alertf fonksiyonunun ikinci parametresini kullanarak yapabileceksiniz. Örneğin
+alertf fonksiyonunda aslında basitçe içinde mesaj ve buton olan bir lightbox kutusu çizdiriyoruz. "button" sınıfıyla da link olarak tanımlanan elementi buton görüntüsüne çeviriyoruz. Bunun için herhangi bir css buton stili yeterli olacaktır. Mesaji çevreleyen div'i, stillerini, butonu temsil eden linki ve onu çevreleyen div'i ve stillerini javascript fonksiyonumuzda string olarak kodluyoruz. Sonrasında zaten fancybox ile ekrana çizdirmek kalıyor.
+
+Fonksiyonun ilk satırlarında dikkatinizi çekeceği üzere, basit bir kontrolle, bu fonksiyon cağırıldığında ikinci bir parametre belirlenip belirlenmediğini kontrol ediyoruz. Bunun nedeni ise, tek buton olan "Tamam" butonuna basıldığında yapılacak aksiyonu değişitebilme kabiliyeti eklemek. Bir çok noktada ihtiyacınız olabilecek olan bu özellik, bir mesaj kutusu çizdirdiğinizde butona basıldığında başka bir sayfaya yönlendirme veya kutuyu kapatmak yerine başka bir javascript cağrısı yapmak gibi şeyler yapmanızı sağlayacak. Bunu da alertf fonksiyonunun ikinci parametresini kullanarak yapabileceksiniz.
+
+Örneğin
 ```
 alertf('<h3>Mesajiniz başarıyla iletildi.</h3>', 'tesekkurler.html');
 
 ```
-kullanımı, "Tamam" butonuna basıldığında kullanıcıyı tesekkurler.html sayfasına yönlendirecektir. Bu methodla normal alert fonksiyonu yerine alertf fonksiyonunu kullanarak çok daha zengin bir mesaj kutusu çizdirebilirsiniz. Bu noktadan sonra projenizdeki tüm alert çağrılarınızda fonksiyon adına f eklemeniz, javascript kutularını havalı hale getirmeye yeterli olacaktır.
+kullanımı, "Tamam" butonuna basıldığında kullanıcıyı tesekkurler.html sayfasına yönlendirecektir.
+
+Bu methodla normal alert fonksiyonu yerine alertf fonksiyonunu kullanarak çok daha zengin bir mesaj kutusu çizdirebilirsiniz. Bu noktadan sonra projenizdeki tüm alert çağrılarınızda fonksiyon adına f eklemeniz, javascript kutularını havalı hale getirmeye yeterli olacaktır.

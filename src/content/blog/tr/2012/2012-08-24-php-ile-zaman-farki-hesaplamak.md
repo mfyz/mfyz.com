@@ -9,7 +9,14 @@ migration: {"wpId":316,"wpPostDate":"2012-08-24T01:14:40.000Z"}
 lang: tr
 ---
 
-Daha önce php'de iki tarihi karşılaştırmayı anlatmıştım [https://tr.mfyz.com/phpde-tarih-karsilastirma](https://tr.mfyz.com/phpde-tarih-karsilastirma), ancak iki tarih arasındaki ay, gün, yıl farkını kullanmanız gerektiğinde, php'nin tarih-zaman sınıfını kullanarak iki tarih arasındaki zaman farkını istediğiniz periyodda hesaplatabilirsiniz. Bu yönetmle hesaplayacağınız tarih farkının iki genel kullanımı vardır. Birincisi hesaplamalarınızda iki tarih arasındaki geçen zamana göre yaptığınız bir kuralınız vardır. Mesela bir blog yazınızın 1 aydan önce yazıldığını denetlemek ve buna göre "Bilgiler geçerliliğini yitirmiş olabilir" gibi bir not göstermek istiyorsunuz. Bunun için şu an ile yazının yazılma tarihi arasında 1 ay olup olmadığını sorgulayabilirsiniz. Bu hesaplama aslında basit bir matematiksel bir hesap gibi görünse de aslında ay uzunluğu, artık yıl hesabı gibi nedenlerden dolayı ve her zaman 1 ay = 30 gün olmaması nedeniyle biraz daha karışık olabiliyor. Dolayısıyla anlattığım yöntem gibi hazır yöntemleri kullanarak bu hesaplamaları doğru şekilde yapabilirsiniz. Şimdi basit bir kod ile örnekleyeceğim.
+Daha önce php'de iki tarihi karşılaştırmayı anlatmıştım [https://tr.mfyz.com/phpde-tarih-karsilastirma](https://tr.mfyz.com/phpde-tarih-karsilastirma), ancak iki tarih arasındaki ay, gün, yıl farkını kullanmanız gerektiğinde, php'nin tarih-zaman sınıfını kullanarak iki tarih arasındaki zaman farkını istediğiniz periyodda hesaplatabilirsiniz.
+
+Bu yönetmle hesaplayacağınız tarih farkının iki genel kullanımı vardır. Birincisi hesaplamalarınızda iki tarih arasındaki geçen zamana göre yaptığınız bir kuralınız vardır. Mesela bir blog yazınızın 1 aydan önce yazıldığını denetlemek ve buna göre "Bilgiler geçerliliğini yitirmiş olabilir" gibi bir not göstermek istiyorsunuz. Bunun için şu an ile yazının yazılma tarihi arasında 1 ay olup olmadığını sorgulayabilirsiniz.
+
+Bu hesaplama aslında basit bir matematiksel bir hesap gibi görünse de aslında ay uzunluğu, artık yıl hesabı gibi nedenlerden dolayı ve her zaman 1 ay = 30 gün olmaması nedeniyle biraz daha karışık olabiliyor. Dolayısıyla anlattığım yöntem gibi hazır yöntemleri kullanarak bu hesaplamaları doğru şekilde yapabilirsiniz.
+
+Şimdi basit bir kod ile örnekleyeceğim.
+
 ```
 $now = new DateTime();
 $created = new DateTime($\_entry\['created\_at'\]);
@@ -32,4 +39,5 @@ if ($mins > 0) {
 print $diffStr;
 
 ```
+
 Yukarıdaki kodda $diffStr değişkeni, yazınızın kaç dakika, saat, gün önce eklendiğini gösterecektir. Eğer isterseniz ayı, yılı da ekleyerek herhangi bir tarih formatını "3 gün 8 saat 3 dakika önce" şeklinde bir metine çevirebilirsiniz.

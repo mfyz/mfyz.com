@@ -12,4 +12,16 @@ Sometimes we need to take a screenshot of a long content mostly from scrolling a
 
 ### XNip Screen Capture Tool
 
-![](/images/archive/en/2020/05/xnip-1_nejmic.jpg?fit=525%2C157&ssl=1) We can use Xnip Screen Capture tool that has all of the common screen capture software features and a feature We can use for taking long content screenshots called “Scrolling screenshot” ![](/images/archive/en/2020/05/xnip-2_cenwpz.gif?fit=569%2C300&ssl=1) It's is a freeware with upgrade ($2/yr subscription) but works perfectly for this purpose without the upgrade (it leaves watermark that can be cropped easily if needed). [http://xnipapp.com/](http://xnipapp.com/) [http://xnipapp.com/scrolling-capture/](http://xnipapp.com/scrolling-capture/) [https://itunes.apple.com/us/app/xnip/id1221250572?mt=12](https://itunes.apple.com/us/app/xnip/id1221250572?mt=12)
+![](/images/archive/en/2020/05/xnip-1_nejmic.jpg?fit=525%2C157&ssl=1)
+
+We can use Xnip Screen Capture tool that has all of the common screen capture software features and a feature We can use for taking long content screenshots called “Scrolling screenshot”
+
+![](/images/archive/en/2020/05/xnip-2_cenwpz.gif?fit=569%2C300&ssl=1)
+
+It's is a freeware with upgrade ($2/yr subscription) but works perfectly for this purpose without the upgrade (it leaves watermark that can be cropped easily if needed).
+
+[http://xnipapp.com/](http://xnipapp.com/)
+
+[http://xnipapp.com/scrolling-capture/](http://xnipapp.com/scrolling-capture/)
+
+[https://itunes.apple.com/us/app/xnip/id1221250572?mt=12](https://itunes.apple.com/us/app/xnip/id1221250572?mt=12)

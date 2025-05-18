@@ -9,7 +9,9 @@ migration: {"wpId":1384,"wpPostDate":"2017-09-24T15:05:33.000Z"}
 lang: tr
 ---
 
-![](/images/archive/tr/2017/09/team-feature.png) Soyle bir kotu urun tasarimi gormeye basladim; kisisel ve takim hesaplarini ayni serviste kullanirken, birden fazla takima ait olamamak. Kesinlikle yanlis bakis acisi. Eger iyi planlanmadiysa "takim" deme!? The biggest limitation to be able to only have one team linked along with personal accounts. Ozellikle iki servis bir suredir kafayi yedirtti bana;
+![](/images/archive/tr/2017/09/team-feature.png)
+
+Soyle bir kotu urun tasarimi gormeye basladim; kisisel ve takim hesaplarini ayni serviste kullanirken, birden fazla takima ait olamamak. Kesinlikle yanlis bakis acisi. Eger iyi planlanmadiysa "takim" deme!? The biggest limitation to be able to only have one team linked along with personal accounts. Ozellikle iki servis bir suredir kafayi yedirtti bana;
 
 *   Dropbox
 *   Quip

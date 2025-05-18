@@ -10,6 +10,7 @@ lang: tr
 ---
 
 Html'deki button tagleri form elementler içinde kullanılan bir element. Kapanabilen ve içine span, img gibi elementler koyarak css ile butonları şekillendirmenizi kolaylaştırdığı için tercih edilebiliyor. Fakat eğer type'ını button olarak ayarlamazsanız default değeri olan submit şeklinde hareket edip, tıklandığında formu submit ediyor.
+
 ```
 $('form button').each(function(){
   if( !$(this).attr('type') ){
@@ -18,4 +19,5 @@ $('form button').each(function(){
 });
 
 ```
+
 ile type'ı belirlenmemiş tüm button elementlerine button type'ını atayabilirsiniz. Sonuç olarak artık butonlar fromlarınızı submit etmeyecektir.

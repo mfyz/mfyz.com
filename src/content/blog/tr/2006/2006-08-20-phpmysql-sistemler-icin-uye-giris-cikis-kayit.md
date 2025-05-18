@@ -16,6 +16,7 @@ Artık neredeyse her sitede olan üyelik, bazı web uygulamaları için vazgeçi
 #### Neye ihtiyacımız var?
 
 Tabiki bir veritabanına, mysql kullandığımızı varsayarak kod örnekleyeceğim. Ama postgresql fln kullanan arkadaşlar da var ise bu dökümandaki algoritmayı izleyerek kolayca kendileri de kod yazabilirler. Aşağıda veritabanında kullanacağımız üye tablosuna ait veri yapısını import ederek kolayca oluşturabileceğiniz SQL sorgusunu koyuyorum, bu sorgudan hangi alanlar ve özelliklerinin neler olduğunu da kolayca görebilirsiniz.
+
 ```
 CREATE TABLE \`uyeler\` (
 \`no\` int(10) NOT NULL auto\_increment,
@@ -28,11 +29,15 @@ PRIMARY KEY  (\`no\`)
 ) ENGINE=MyISAM AUTO\_INCREMENT=1 ;
 
 ```
-gördüğünüz gibi basitçe 6 alanım var, burada no, izin, adi ve eposta alanları sistemin düzgün çalışması için şart olan alanlar değiller fakat üyeniz hakkında küçük bir bilgi tutmanızı sağlar. Eğer isterseniz buradaki alan sayınızı artırarak yeni üye detayları ekleyebilirsiniz. Mesela MSN adresi, web sitesi, ev adresi, cep telefonu, kimlik bilgileri mesleği falan fişman. Şimdilik kayıtlı bir kullanıcının giriş yapmasını vae sayfalarda kullanının giriş yapıp yapmadığını yani oturumunu kontrol etmeyi göstereceğim. Bildiğiniz gibi kayıt işlemi basitçe bir formdan mysql'e veri kaydetme işlemi.. Buna dökümanın sonunda değineceğim.
+
+gördüğünüz gibi basitçe 6 alanım var, burada no, izin, adi ve eposta alanları sistemin düzgün çalışması için şart olan alanlar değiller fakat üyeniz hakkında küçük bir bilgi tutmanızı sağlar. Eğer isterseniz buradaki alan sayınızı artırarak yeni üye detayları ekleyebilirsiniz. Mesela MSN adresi, web sitesi, ev adresi, cep telefonu, kimlik bilgileri mesleği falan fişman.
+
+Şimdilik kayıtlı bir kullanıcının giriş yapmasını vae sayfalarda kullanının giriş yapıp yapmadığını yani oturumunu kontrol etmeyi göstereceğim. Bildiğiniz gibi kayıt işlemi basitçe bir formdan mysql'e veri kaydetme işlemi.. Buna dökümanın sonunda değineceğim.
 
 #### Giriş işlemi
 
 Giriş işlemini yapcağımız bir form hazırlayın. Kullanıcı adı ve şifre giriş alanları olacak olan 2 input'luk bir form. “kadi” ve “sifre” gibi pratik alan adları belirlerseniz işiniz kolaylaşır. Bu formu giris.php diye bir işlem sayfanıza post methodu ile göndereceğiz. Şuna benzer bir form olacaktır:
+
 ```
 <form name="giris" action="giris.php" method="post">
  <table cellpadding="8" cellspacing="0" align="center">
@@ -53,7 +58,9 @@ Giriş işlemini yapcağımız bir form hazırlayın. Kullanıcı adı ve şifre
 </form>
 
 ```
+
 Giriş işlemi sayfamızın (giris.php) koduna bakacak olursak:
+
 ```
 <?php
 # mysql baglantisi, sesion\_start yapilmis varsayiyoruz
@@ -85,11 +92,17 @@ Giriş işlemi sayfamızın (giris.php) koduna bakacak olursak:
 </script>
 
 ```
-gördüğünüz gibi kontrol kısmında çok karmaşık bir kod yok. MySQL'den kullanıcıya ait veri alıyoruz. Eğer gelen kayıt kümesinin boyutu 1 değilse üye adı yok demektir. Hata veriyoruz. Eğer 1 ise kayıt kümesini $bilgi dizisine alıyoruz. Alt kısımda da girilen şifrenin md5'ini veritabanındaki string ile karşılaştırıyoruz. Çünkü veritabanında şifrelerimizi md5'leyip saklıyoruz. Çünkü birisi veritabanımızı araklarsa md5'i çözemesin diye. Üye bilgilerinin güvenliğini sağlamış oluyoruz. En altta ise giriş kontrolü için oturuma 2 değişken attım birisi şifre ile oluşturulmuş karışık bir cümlenin md5'li hali. Bunu giriş kontrolünde oturumda olup olmadığını kontrol etmek için kullanacağız. Sadece kullanıcı adı kullanmamamın nedeni ise sunucu yönetimindeki birinin oturumları oynayıp giriş yapmış kullanıcı hakkını değiştirememesi için oldukça basit bir engel o kadar. İsterseniz daha karmaşık kriptografik anahtarlar da oluşturabilirsiniz. Bu sitede sadece anahtar tutulur mesela. Oturum bilgileri veritabanında saklanır.. Bu tarz gelişmiş şeyler için de beyin fırtınası yapıp güzel şeyler yazabilirsiniz. Şimdi giriş yapıldıktan sonra anasayfa'ya yönlendirildi üye, peki biz sayfalarımızda oturumu gezen misafirin üye olup olmadığını nasıl anlayacağız?
+
+gördüğünüz gibi kontrol kısmında çok karmaşık bir kod yok. MySQL'den kullanıcıya ait veri alıyoruz. Eğer gelen kayıt kümesinin boyutu 1 değilse üye adı yok demektir. Hata veriyoruz. Eğer 1 ise kayıt kümesini $bilgi dizisine alıyoruz. Alt kısımda da girilen şifrenin md5'ini veritabanındaki string ile karşılaştırıyoruz. Çünkü veritabanında şifrelerimizi md5'leyip saklıyoruz. Çünkü birisi veritabanımızı araklarsa md5'i çözemesin diye. Üye bilgilerinin güvenliğini sağlamış oluyoruz.
+
+En altta ise giriş kontrolü için oturuma 2 değişken attım birisi şifre ile oluşturulmuş karışık bir cümlenin md5'li hali. Bunu giriş kontrolünde oturumda olup olmadığını kontrol etmek için kullanacağız. Sadece kullanıcı adı kullanmamamın nedeni ise sunucu yönetimindeki birinin oturumları oynayıp giriş yapmış kullanıcı hakkını değiştirememesi için oldukça basit bir engel o kadar. İsterseniz daha karmaşık kriptografik anahtarlar da oluşturabilirsiniz. Bu sitede sadece anahtar tutulur mesela. Oturum bilgileri veritabanında saklanır.. Bu tarz gelişmiş şeyler için de beyin fırtınası yapıp güzel şeyler yazabilirsiniz.
+
+Şimdi giriş yapıldıktan sonra anasayfa'ya yönlendirildi üye, peki biz sayfalarımızda oturumu gezen misafirin üye olup olmadığını nasıl anlayacağız?
 
 #### Üye kontrolü, üye oturumu yönetimi
 
 Benim site geliştirme yoluma göre ilk önce sitenin statik sayfasını hazırlayıp parçalardık hatırlarsanız. Ve her işlem/modül dosyamızın başında mysql.php veya ayar.php gibi bir include edilen dosyamız vardır. İşte buna giris\_kontrol.php diye bir dosya daha ekleyin. Yani; üye'lere ait bilgileri alacağınız sayfalarda (üye kontrolü, üye alanları fln) giris\_kontrol.php diye bir php include ettirin. Her sayfanıza. giris\_kontrol.php dosyamızın kodunu verip açıklayayım :
+
 ```
 <?php
 # uye oturum degiskenleri
@@ -115,7 +128,11 @@ Benim site geliştirme yoluma göre ilk önce sitenin statik sayfasını hazırl
 ?>
 
 ```
-Tabiki bu sayfadan önce mysql ve ayar dosyanızın fln include edildiğini ve session\_start yapılmış olduğunu düşünüyoruz çünkü bu sayfayı her sayfanın başında include ediyoruz. Oturumdaki **kadi** değişkeni boş değilse veritabanından bilgileri alıyoruz. Eğer kullanıcı yoksa oturum açılmıyor zaten. Eğer şifre ile oluşturulan karışık cümlenin md5'i oturumdaki giris degişkeninin içeriğine eşitse bizim mantıksal koyduğumuz anahtar da doğrudur. Şimdi “giris\_yapilmis” değişkenini true yapıyoruz ve $uye dizisine mysql sonuç kümesini atıyoruz. Neden bunu yapıyoruz çünkü, sayfalarımızda doğrudan $giris\_yapilmis'i if yapılarımızda giriş yapılmış yapılmamış olduğunu hızlıca alabileceğiz. Mesela üyelere özel bir sayfanız var ise bu sayfanın başında;
+
+Tabiki bu sayfadan önce mysql ve ayar dosyanızın fln include edildiğini ve session\_start yapılmış olduğunu düşünüyoruz çünkü bu sayfayı her sayfanın başında include ediyoruz.
+
+Oturumdaki **kadi** değişkeni boş değilse veritabanından bilgileri alıyoruz. Eğer kullanıcı yoksa oturum açılmıyor zaten. Eğer şifre ile oluşturulan karışık cümlenin md5'i oturumdaki giris degişkeninin içeriğine eşitse bizim mantıksal koyduğumuz anahtar da doğrudur. Şimdi “giris\_yapilmis” değişkenini true yapıyoruz ve $uye dizisine mysql sonuç kümesini atıyoruz. Neden bunu yapıyoruz çünkü, sayfalarımızda doğrudan $giris\_yapilmis'i if yapılarımızda giriş yapılmış yapılmamış olduğunu hızlıca alabileceğiz. Mesela üyelere özel bir sayfanız var ise bu sayfanın başında;
+
 ```
 if( !$giris\_yapilmis ){
   print 'Bu sayfa üyelere özeldir! Lütfen giriş yapın!';
@@ -123,6 +140,7 @@ if( !$giris\_yapilmis ){
 }
 
 ```
+
 diyerek giriş yapmamış kullanıcıların o sayfaya erişimini engelleyebilirsiniz. Eğer üyeye ait bilgilere ihtiyacınız var ise zaten doğrudan $uye dizisinden alabilirsiniz. Mesela giriş formunun yerine Hoşgeldin X dedirtmek için ile X yerine kullanıcı adını basabilirsiniz.
 
 #### Kayıt işlemi
