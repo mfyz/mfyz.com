@@ -1,0 +1,11 @@
+---
+title: "Little more about me"
+slug: little-more-about-me
+date: 2012-12-02
+url: http://mfyz.com/little-more-about-me/
+tags: ["about","Life","mfyz","portfolio"]
+category: Life
+migration: {"wpId":50,"wpPostDate":"2012-12-02T23:38:55.000Z"}
+---
+
+Hey mfyz.com English readers, I recently started to write in English on my site which I usually write about web development (usually web projects, PHP MySQL based in the back-end, anything in front-end). Before I start to translate old articles or write new ones, I would like to talk about myself, about my background. Hey, who doesn't want to learn about who they read right? Anyway, I work in a startup called [Moonit](//moonit.com") as a Web Developer and we built Moonit iPhone App around 1,5 years ago. We also have a website basically mirrors the mobile experience. So we are a mobile-first company and app laboratory. We're proudly in New York City and we have this view from our office: ![](/images/archive/en/2020/05/7702598874_f328f0e8cc_h_mdfb5s.jpg?fit=300%2C300&ssl=1&cld_params=w_300) I'm from Istanbul, Turkey, I worked in couple different digital agencies most with shiny and well-known brands, which was fun and good challenges in a different way beside of working in big teams. I worked a long time as a freelancer on my own or with couple fellows as small teams for the total of over 10 years. I worked as back-end developer, front-end developer and some very light UI designer before. Now, I'm doing mostly product design and mobile UI design. You can check out my portfolio [http://mfyz.net](http://mfyz.net) for more on what I did before. Feel free to shoot an email to **fatih** at this domain to say hi.
