@@ -16,7 +16,7 @@ const { post } = Astro.props;
 
 const { Content } = await post.render();
 const { title, summary } = post.data;
-const { frontmatter } = post.rendered.metadata;
+const frontmatter = post.rendered && post.rendered.metadata ? post.rendered.metadata : {};
 
 export const prerender = true;
 ---
