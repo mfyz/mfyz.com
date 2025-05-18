@@ -10,12 +10,9 @@ migration: {"wpId":54,"wpPostDate":"2012-12-26T23:31:05.000Z"}
 
 If you're developing PHP based Facebook application, you might want to use (or already using) Facebook integration little more than just authentication and identification of your user. Even if you have the simplest Facebook app and using PHP SDK, you probably have regularly done API calls.
 
-You write your app and you start to see performance issues. You start to optimize your database interactions, PHP code optimization, after you done with your application optimization if you still have performance problems it's possibly from Facebook calls. Since you use SDK, you might not know what's happening with Facebook communication. So you want to do profiling between your app and Facebook API servers.
+You write your app and you start to see performance issues. You start to optimize your database interactions, PHP code optimization, after you done with your application optimization if you still have performance problems it's possibly from Facebook calls. Since you use SDK, you might not know what's happening with Facebook communication. So you want to do profiling between your app and Facebook API servers. You can add a basic timing profiling to your API calls to see how many calls you do, what kind of calls they are and how long they take to run. Let's dive in SDK, modify it a bit and start getting profiling information. Here is the actual method you need to modify in `base_facebook.php` file:
 
-You can add a basic timing profiling to your API calls to see how many calls you do, what kind of calls they are and how long they take to run.
-
-Let's dive in SDK, modify it a bit and start getting profiling information. Here is the actual method you need to modify in base_facebook.php file:
-```
+```php
 public function api(/* polymorphic */) {
 	$args = func_get_args();
 	if (is_array($args[0])) {
@@ -24,10 +21,11 @@ public function api(/* polymorphic */) {
 		return call_user_func_array(array($this, '_graph'), $args);
 	}
 }
+```
 
-```
 and we're modifying it like this:
-```
+
+```php
 $facebookApiCalls = array();
 public function api( /* polymorphic */)
 {
@@ -52,6 +50,7 @@ public function api( /* polymorphic */)
 	return $result;
 }
 ```
+
 It simply appends a global array named "facebookApiCalls" and adds the API call details as "args" and timing as "duration". So at the end of your page logic code, you can print this information after sorting it by duration and you can also filter to show only slow ones (for instance, the ones took over 200 milliseconds).
 
 After this profiling you can start to identify the slow calls, also if you do same calls multiple times because of recursing, recalls etc..., you can see and optimize, combine them.
