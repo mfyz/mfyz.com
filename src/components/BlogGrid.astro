@@ -95,7 +95,7 @@ function formatDatePreserveDay(dateStr, useTurkish = false) {
           transition:name={post.slug}
         >
           <time class="block mb-2 text-xs text-gray-500">
-            {formatDatePreserveDay(date)}
+            {formatDatePreserveDay(date, isTurkish)}
           </time>
           <a href={`/${post.slug}/`}>
             <h3 class="font-secondary text-6xl transition-colors hover:text-primary">

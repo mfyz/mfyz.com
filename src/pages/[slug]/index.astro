@@ -16,12 +16,13 @@ const { post } = Astro.props;
 
 const { Content } = await post.render();
 const { title, summary } = post.data;
+const { frontmatter } = post.rendered.metadata;
 
 export const prerender = true;
 ---
 
 <Layout title={title} description={summary} size="small">
-  <BlogPost {...post.data} slug={post.slug} content={post.body}>
+  <BlogPost {...post.data} slug={post.slug} content={post.body} frontmatter={frontmatter}>
     <Content />
   </BlogPost>
 </Layout>
