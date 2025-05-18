@@ -1,5 +1,6 @@
 ---
 import { format, parseISO } from "date-fns";
+import readingTime from "reading-time";
 
 // Turkish month names for localization
 const turkishMonths = {
@@ -111,14 +112,36 @@ const sortedYears = Object.keys(postsByYear).sort((a, b) => b - a);
         {postsByYear[year].map((post) => {
           const { title, date, tags } = post.data;
           const patternName = getPatternName(post.slug);
+          // Calculate reading time
+          const time = post.body ? readingTime(post.body) : { minutes: 0, text: '0 min read' };
           return (
             <li>
               <div 
                 class={`p-6 border-b border-gray-200 blog-bg-pattern blog-bg-pattern-${patternName}`}
                 transition:name={post.slug}
               >
-                <div class="flex items-center text-xs text-gray-500 whitespace-nowrap">
+                <div class="flex items-center text-xs text-gray-500 whitespace-nowrap gap-4">
                   <time>{formatDatePreserveDay(date, isTurkish)}</time>
+                  <span class="flex items-center gap-1">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="size-4"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                      ></path>
+                    </svg>
+                    {isTurkish 
+                      ? `${Math.ceil(time.minutes)} dk okuma` 
+                      : time.text
+                    }
+                  </span>
                   {/* <Tags list={tags} /> */}
                 </div>
                 <a href={`/${post.slug}/`}>

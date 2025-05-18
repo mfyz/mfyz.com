@@ -1,5 +1,6 @@
 ---
 import { format, parseISO } from "date-fns";
+import readingTime from "reading-time";
 
 // Turkish month names for localization
 const turkishMonths = {
@@ -89,14 +90,36 @@ function formatDatePreserveDay(dateStr, useTurkish = false) {
       const post = displayPosts[0];
       const { title, date, tags } = post.data;
       const patternName = getPatternName(post.slug);
+      // Calculate reading time
+      const time = post.body ? readingTime(post.body) : { minutes: 0, text: '0 min read' };
       return (
         <div 
           class={`p-10 pt-10 pb-24 blog-bg-pattern blog-bg-pattern-${patternName}`}
           transition:name={post.slug}
         >
-          <time class="block mb-2 text-xs text-gray-500">
-            {formatDatePreserveDay(date, isTurkish)}
-          </time>
+          <div class="flex items-center mb-2 text-xs text-gray-500 gap-4">
+            <time>{formatDatePreserveDay(date, isTurkish)}</time>
+            <span class="flex items-center gap-1">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-4"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                ></path>
+              </svg>
+              {isTurkish 
+                ? `${Math.ceil(time.minutes)} dk okuma` 
+                : time.text
+              }
+            </span>
+          </div>
           <a href={`/${post.slug}/`}>
             <h3 class="font-secondary text-6xl transition-colors hover:text-primary">
               {title}
@@ -111,6 +134,8 @@ function formatDatePreserveDay(dateStr, useTurkish = false) {
       {
         displayPosts.slice(1).map((post, index) => {
           const { title, date, imageURL, summary, tags } = post.data;
+          // Calculate reading time
+          const time = post.body ? readingTime(post.body) : { minutes: 0, text: '0 min read' };
           const rowIndex = Math.floor(index / 3);
           const colIndex = index % 3;
           
@@ -143,9 +168,29 @@ function formatDatePreserveDay(dateStr, useTurkish = false) {
               class={`relative transition-transform hover:scale-[1.02] ${bgColor} ${patternClass}`}
               transition:name={post.slug}
             >
-              <time class={`block mb-2 text-xs ${bgDark ? "text-gray-300" : "text-gray-500"}`}>
-                {formatDatePreserveDay(date, isTurkish)}
-              </time>
+              <div class={`flex items-center mb-2 text-xs ${bgDark ? "text-gray-300" : "text-gray-500"} gap-3 flex-wrap`}>
+                <time>{formatDatePreserveDay(date, isTurkish)}</time>
+                <span class="flex items-center gap-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="size-3.5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                    ></path>
+                  </svg>
+                  {isTurkish 
+                    ? `${Math.ceil(time.minutes)} dk okuma` 
+                    : time.text
+                  }
+                </span>
+              </div>
               <a href={`/${post.slug}/`}>
                 <h4 class={`font-secondary mb-2 transition-colors ${bgDark ? "hover:text-gray-300" : "hover:text-primary"}`}>
                   {title}
