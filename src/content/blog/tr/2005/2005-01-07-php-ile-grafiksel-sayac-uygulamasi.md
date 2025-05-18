@@ -37,20 +37,20 @@ $deger = 749;
 settype( $deger, "string" );
 
 // string parcalari
-print($deger\[0\]); // 7
-print($deger\[1\]); // 4
-print($deger\[2\]); // 9
+print($deger[0]); // 7
+print($deger[1]); // 4
+print($deger[2]); // 9
 
-$sayac = $\_COOKIE\["ziyaret"\]; // cookie'den degerimizi aliyoruz.
+$sayac = $_COOKIE["ziyaret"]; // cookie'den degerimizi aliyoruz.
 
 // eger daha once hic girilmemis ise otomatik olarak $sayac NULL degeri alacaktir.
 $sayac++; // sayacimizi artirdik. (NULL ise 0'dır, 1 artar ve 1 olur sonucta)
 
 // cookie olarak atalim.
-setcookie( "ziyaret" , $sayac , (time()+(365\*24\*60\*60)) );
+setcookie( "ziyaret" , $sayac , (time()+(365*24*60*60)) );
 
 ```
-"(time()+365\*24\*60\*60)" ifadesi, gönderdiğimiz cookienin 1 yıl süreyle saklanacağını belirtir. Eğer $\_COOKIE\["ziyaret"\] adında bir değişken zaten var ise, mevcut değeri daha önceki ziyaret sayısı olacaktır. Eğer yoksa değeri NULL olduğundan 1 artırıldığında son değer 1 olacaktır. $sayac değişkenini 1 artırıp tekrar cookie atarak sayacımızı güncellemiş olduk. sıra geldi ekrana yazdırma işinde.
+"(time()+365*24*60*60)" ifadesi, gönderdiğimiz cookienin 1 yıl süreyle saklanacağını belirtir. Eğer $_COOKIE["ziyaret"] adında bir değişken zaten var ise, mevcut değeri daha önceki ziyaret sayısı olacaktır. Eğer yoksa değeri NULL olduğundan 1 artırıldığında son değer 1 olacaktır. $sayac değişkenini 1 artırıp tekrar cookie atarak sayacımızı güncellemiş olduk. sıra geldi ekrana yazdırma işinde.
 ```
 // integer degiskeni stringe donusturelim
 settype($sayac,"string");
@@ -66,14 +66,14 @@ Kodu toparlamak gerekirse;
 <?
 
 // cookie'den degerimizi aliyoruz.
-$sayac = $\_COOKIE\["ziyaret"\];
+$sayac = $_COOKIE["ziyaret"];
 
 // eger daha once hic girilmemis ise otomatik olarak $sayac NULL degeri alacaktir.
 $sayac++;
 // sayacimizi artirdik. (NULL ise 0'dır, 1 artar ve 1 olur sonucta)
 
 // cookie olarak atalim.
-setcookie( "ziyaret" , $sayac , (time()+(365\*24\*60\*60)) );
+setcookie( "ziyaret" , $sayac , (time()+(365*24*60*60)) );
 
 // integer degiskeni stringe donusturelim
 settype($sayac,"string");

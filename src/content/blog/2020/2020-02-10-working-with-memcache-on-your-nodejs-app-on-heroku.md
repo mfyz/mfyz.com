@@ -40,9 +40,9 @@ This will add memcachier to Heroku config as an environment variable. Copy the v
 
 ```
 $ heroku config...
-MEMCACHIER\_SERVERS    => mcX.ec2.memcachier.com
-MEMCACHIER\_USERNAME   => bobslob
-MEMCACHIER\_PASSWORD   => l0nGr4ndoMstr1Ngo5strang3CHaR4cteRS...
+MEMCACHIER_SERVERS    => mcX.ec2.memcachier.com
+MEMCACHIER_USERNAME   => bobslob
+MEMCACHIER_PASSWORD   => l0nGr4ndoMstr1Ngo5strang3CHaR4cteRS...
 ```
 
 To use memcache, on a node.js app, we will use a npm package called “memjs”. To install, run:  
@@ -56,7 +56,7 @@ The usage of the package is pretty straightforward, here is the short example it
 ```
 var memjs = require('memjs')
 
-var mc = memjs.Client.create(process.env.MEMCACHIER\_SERVERS, {
+var mc = memjs.Client.create(process.env.MEMCACHIER_SERVERS, {
   failover: true,  // default: false
   timeout: 1,      // default: 0.5 (seconds)
   keepAlive: true  // default: false

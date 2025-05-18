@@ -67,7 +67,7 @@ Yani "a + span" css seçicisi
 ```
 şeklinde bir html yapısı işimizi görecektir. Bu yapı, standart html görünümünü değiştirmeyecektir. Şimdi css ile bu görünümü segmented control görüntüsüne sokalım:
 ```
-.segmented\_control .option span {
+.segmented_control .option span {
     display: inline-block;
     background-color: #efefef;
     padding: 8px 15px;
@@ -76,20 +76,20 @@ Yani "a + span" css seçicisi
     text-shadow: #fff 0 1px 0;
 }
 
-.segmented\_control .option span:hover {
+.segmented_control .option span:hover {
     background-color: #ccc;
 }
 
-.segmented\_control .option input {
+.segmented_control .option input {
     display: none;
 }
 
-.segmented\_control .option input:checked + span {
+.segmented_control .option input:checked + span {
     background-color: #7abcff;
 }
 
 ```
-Gördüğünüz gibi input elemanlarını gizledik ve span elemanlarını gri artalan rengi ile basitçe şekillendirdik. Seçili eleman stilini de kodun sonunda bulunan ".segmented\_control .option input:checked + span" seçicisiyle yakalayarak artalan rengini açık mavi rengi yapıyoruz. Böylece yan yana bulunan label elemanları içindeki span elemanları segmented control görüntüsüne kavuştu.
+Gördüğünüz gibi input elemanlarını gizledik ve span elemanlarını gri artalan rengi ile basitçe şekillendirdik. Seçili eleman stilini de kodun sonunda bulunan ".segmented_control .option input:checked + span" seçicisiyle yakalayarak artalan rengini açık mavi rengi yapıyoruz. Böylece yan yana bulunan label elemanları içindeki span elemanları segmented control görüntüsüne kavuştu.
 
 Fakat ufak bir problem var, elemanlar arasında boşluklar oluşuyor. Malesef inline-block level elemanlar float edilmedikleri sürece html kodundaki her satır ve boşluk karakteri bu elemanlar arasında kalacaktır. Bunu engellemenin yolu, label elemanları ve içindeki elemanlar arasında hiç boşluk karakteri kalmayacak şekilde tek satıra indirgemektir. Sonuçtaki kod çirkin görünecek fakat boşlukları kaldıracaktır.
 

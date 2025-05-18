@@ -61,7 +61,7 @@ anywhere will link the contents of zsh folder into the home directory.
 You can collect all apps configurations in different folders under your .dotfiles folder. Then run stow for each folder. Or instead automate it something like:
 
 ```
-for d in $(ls -d \*/ | cut -f1 -d '/' | grep -v '^\_');
+for d in $(ls -d */ | cut -f1 -d '/' | grep -v '^_');
 do
     ( stow "$d"  )
 done
@@ -81,9 +81,9 @@ The final installation script will look like this:
 ```
 #!/bin/bash
 
-if \[\[ -e /etc/debian\_version \]\]; then
+if [[ -e /etc/debian_version ]]; then
     OS=debian
-elif \[\[ "$OSTYPE" == "darwin"\* \]\]; then
+elif [[ "$OSTYPE" == "darwin"* ]]; then
     OS=macos
 elif  ! command -v stow >/dev/null 2>&1; then
     OS=notfound
@@ -91,15 +91,15 @@ else
     echo "Please install stow manually then try again."
     exit
 fi
-if \[\[ "$OS" = 'debian' \]\]; then
+if [[ "$OS" = 'debian' ]]; then
     sudo apt-get install -y stow
-elif \[\[ "$OS" = 'macos' \]\]; then
+elif [[ "$OS" = 'macos' ]]; then
     brew install stow
 fi
 
 git clone <https://github.com/mfyz/dotfiles.git> ~/.dotfiles
 cd ~/.dotfiles || exit
-for d in $(ls -d \*/ | cut -f1 -d '/' | grep -v '^\_');
+for d in $(ls -d */ | cut -f1 -d '/' | grep -v '^_');
 do
     ( stow "$d"  )
 done
@@ -147,9 +147,9 @@ file and executes if the file exists.
 
 ```
 \# secrets
-SECRETS\_FILE="$HOME/.dotfiles-secret/secrets.sh"
-if test -f "$SECRETS\_FILE"; then
-  source $SECRETS\_FILE
+SECRETS_FILE="$HOME/.dotfiles-secret/secrets.sh"
+if test -f "$SECRETS_FILE"; then
+  source $SECRETS_FILE
 fi
 
 ```

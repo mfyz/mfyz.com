@@ -43,7 +43,7 @@ $services = array(
 $mysitemapfile = 'http://mysite.com/sitemap.xml';
 
 foreach($services as $service){
-	$url = str\_replace('###', $mysitemapfile, $service);
+	$url = str_replace('###', $mysitemapfile, $service);
 	@file($url);
 }
 

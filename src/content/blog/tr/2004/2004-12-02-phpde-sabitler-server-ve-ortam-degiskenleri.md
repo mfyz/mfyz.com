@@ -11,19 +11,19 @@ lang: tr
 
 #### PHP Dışından Değişken Nasıl Gelir?
 
-PHP'de işlerimizi çok kolaylaştıran bazı özel değişkenler vardır. Bu özel değişkenler olmasa php'de yapılabilecekler çok sınırlandırılırdı. Mesela bir çerez kontrolü yaparken $\_COOKIE dizisini kullanırız. Ya da bir betik dosyamızda hata kontrolü yaparken dosya ismini değişimlere rağmen koruyabileceğimiz değişkenler, kodun hangi satırında hata olduğunu tutan başka bir değişken vardır.
+PHP'de işlerimizi çok kolaylaştıran bazı özel değişkenler vardır. Bu özel değişkenler olmasa php'de yapılabilecekler çok sınırlandırılırdı. Mesela bir çerez kontrolü yaparken $_COOKIE dizisini kullanırız. Ya da bir betik dosyamızda hata kontrolü yaparken dosya ismini değişimlere rağmen koruyabileceğimiz değişkenler, kodun hangi satırında hata olduğunu tutan başka bir değişken vardır.
 
 Şimdi bu değişkenleri; sabitler, php değişkenleri ve sunucu değişkenleri olarak üçe ayıracağız.
 
 #### Sabitler
 
 ```
-\_\_FILE\_\_      O esnada icra edilen scriptin bulunduğu php'nin dosya adıdır.
-\_\_LINE\_\_      İcra edilen scriptte o andaki satır numarasını verir.
-PHP\_VERSION   Kullanılan php scriptinin adını içerir.
-E\_ERROR       Düzeltilmesi mümkün olan bir hatayı bildirir.
-E\_WARNING     Scriptin icra edilmesi için gerekli olan hatayı bildirir.
-E\_PARSE       Scriptteki yazım hatasını bildirir.
+__FILE__      O esnada icra edilen scriptin bulunduğu php'nin dosya adıdır.
+__LINE__      İcra edilen scriptte o andaki satır numarasını verir.
+PHP_VERSION   Kullanılan php scriptinin adını içerir.
+E_ERROR       Düzeltilmesi mümkün olan bir hatayı bildirir.
+E_WARNING     Scriptin icra edilmesi için gerekli olan hatayı bildirir.
+E_PARSE       Scriptteki yazım hatasını bildirir.
 
 ```
 
@@ -31,8 +31,8 @@ $ gibi degişken işareti almadan doğrudan kullanılır. Örneğin:
 
 ```
 if( $hata ){
-  print \_\_FILE\_\_ . " dosyasında, " .
-  \_\_LINE\_\_ . " satırında hata var!";
+  print __FILE__ . " dosyasında, " .
+  __LINE__ . " satırında hata var!";
 }
 
 ```
@@ -40,33 +40,33 @@ if( $hata ){
 #### Sunucu Değişkenleri
 
 ```
-SERVER\_NAME            Server'ın adını içerir.
-QUERY\_STRING           Sayfaya erişmek için kullanılan sorgu stringini içerir.
-HTTP\_ACCEPT\_CHARSET    O andaki talebe ait karakter kümesini içerir.
-HTTP\_ACCEPT\_LANGUAGE   Dil hakkındaki bilgiyi içerir.
-HTTP\_REFERER           Web tarayıcı tarafından gönderilen referans adresi içerir.
-HTTP\_USER\_AGENT        Sayfayı görüntülemek için kullanılan web tarayıcı hakkında bilgi içerir.
-REMOTE\_ADDR            Kullanıcının IP numarasını içerir.
+SERVER_NAME            Server'ın adını içerir.
+QUERY_STRING           Sayfaya erişmek için kullanılan sorgu stringini içerir.
+HTTP_ACCEPT_CHARSET    O andaki talebe ait karakter kümesini içerir.
+HTTP_ACCEPT_LANGUAGE   Dil hakkındaki bilgiyi içerir.
+HTTP_REFERER           Web tarayıcı tarafından gönderilen referans adresi içerir.
+HTTP_USER_AGENT        Sayfayı görüntülemek için kullanılan web tarayıcı hakkında bilgi içerir.
+REMOTE_ADDR            Kullanıcının IP numarasını içerir.
 
 ```
 
-Sunucu değişkenlerini bir ortam değişkeni olan $\_SERVER dizisinin indisleri olarak düşünürsek örnek olarak şu şekilde kullanacağız:
+Sunucu değişkenlerini bir ortam değişkeni olan $_SERVER dizisinin indisleri olarak düşünürsek örnek olarak şu şekilde kullanacağız:
 
 ```
-print 'Merhaba arkadaşım, ip adresin: ' . $\_SERVER\["REMOTE\_ADDR"\] .
-' ve tarayıcı bilgilerin: ' . $\_SERVER\["HTT\_USER\_AGENT"\];
+print 'Merhaba arkadaşım, ip adresin: ' . $_SERVER["REMOTE_ADDR"] .
+' ve tarayıcı bilgilerin: ' . $_SERVER["HTT_USER_AGENT"];
 
 ```
 
 #### Ortam Değişkenleri
 
 ```
-$\_COOKIE    Cookie değişkenlerini tutan bir dizidir.
-$\_SESSION   Oturuma ait değişkenleri saklayan dizidir. Tarayıcı kapandığında sıfırlanır.
-$\_GET       Get methodu ile gelen değişkenleri tutan dizidir.
-$\_POST      Post methodu ile gelen değişkenleri tutan dizdir.
-$\_FILES     Post methodu ile gönderilen dosyaların temporary yollarını tutan dizidir.
-$\_SERVER    Server değişkenlerini kullanmamızı yarayan dizidir.
+$_COOKIE    Cookie değişkenlerini tutan bir dizidir.
+$_SESSION   Oturuma ait değişkenleri saklayan dizidir. Tarayıcı kapandığında sıfırlanır.
+$_GET       Get methodu ile gelen değişkenleri tutan dizidir.
+$_POST      Post methodu ile gelen değişkenleri tutan dizdir.
+$_FILES     Post methodu ile gönderilen dosyaların temporary yollarını tutan dizidir.
+$_SERVER    Server değişkenlerini kullanmamızı yarayan dizidir.
 
 ```
 

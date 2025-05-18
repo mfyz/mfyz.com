@@ -71,14 +71,14 @@ Bu oyun casino'larda bol bulunan şu 3 şeyi aynı tutturduğumuzda kazandığı
 var resimler = new Array('','1.gif','2.gif','3.gif','4.gif');
 function oyna(){
   oynat(10,0);
-  setTimeout('oyun\_kontrol()',2000);
+  setTimeout('oyun_kontrol()',2000);
 }
 
-function oyun\_kontrol(){
+function oyun_kontrol(){
   if((document.getElementById('r1').src == document.getElementById('r2').src) &&
       document.getElementById('r1').src == document.getElementById('r3').src){
       // üçüde aynı
-      alert(' $$$ KAZANDINNN $$$ ');
+      alert(' $$ KAZANDINNN $$ ');
     }else{
       alert('Kaybettin!');
     }
@@ -96,12 +96,12 @@ function oynat(ivme,i){
 
 function dondur(){
   //rastgele 3 sayi cekelim 1-4 arasında
-  s1 = Math.floor(Math.random()\*4)+1;
-  document.getElementById('r1').src = resimler\[s1\];
-  s2 = Math.floor(Math.random()\*4)+1;
-  document.getElementById('r2').src = resimler\[s2\];
-  s3 = Math.floor(Math.random()\*4)+1;
-  document.getElementById('r3').src = resimler\[s3\];
+  s1 = Math.floor(Math.random()*4)+1;
+  document.getElementById('r1').src = resimler[s1];
+  s2 = Math.floor(Math.random()*4)+1;
+  document.getElementById('r2').src = resimler[s2];
+  s3 = Math.floor(Math.random()*4)+1;
+  document.getElementById('r3').src = resimler[s3];
 }
 </script>
 

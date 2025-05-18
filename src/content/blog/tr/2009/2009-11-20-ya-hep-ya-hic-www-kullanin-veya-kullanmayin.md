@@ -21,8 +21,8 @@ PHP ile bu yönlendirmeyi yapmak için aşağıdaki kodu kullanabilirsiniz.
 
 ```
 // subdomain redirection
-if( substr($\_SERVER\[HTTP\_HOST\], 0, 3) != 'www' ){
-    die('<script type="text/javascript" charset="utf-8"> window.top.location = "http://www.mfyz.com'. $\_SERVER\[REQUEST\_URI\] .'"; </script>');
+if( substr($_SERVER[HTTP_HOST], 0, 3) != 'www' ){
+    die('<script type="text/javascript" charset="utf-8"> window.top.location = "http://www.mfyz.com'. $_SERVER[REQUEST_URI] .'"; </script>');
 }
 
 ```
@@ -31,8 +31,8 @@ Bu kod http://mfyz.com şeklinde gelen kullanıcıyı http://www.mfyz.com altın
 
 ```
 // subdomain redirection
-if( substr($\_SERVER\[HTTP\_HOST\], 0, 3) == 'www' ){
-    die('<script type="text/javascript" charset="utf-8"> window.top.location = "http://mfyz.com'. $\_SERVER\[REQUEST\_URI\] .'"; </script>');
+if( substr($_SERVER[HTTP_HOST], 0, 3) == 'www' ){
+    die('<script type="text/javascript" charset="utf-8"> window.top.location = "http://mfyz.com'. $_SERVER[REQUEST_URI] .'"; </script>');
 }
 
 ```

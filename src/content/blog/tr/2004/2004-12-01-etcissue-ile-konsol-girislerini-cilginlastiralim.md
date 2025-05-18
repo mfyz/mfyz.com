@@ -22,7 +22,7 @@ Makine Adi : mfyz
 login :
 
 ```
-şekline getirebilirsiniz. Statik çıktısını almak istediğiniz şeyleri öncelikle girin; daha sonra kuralları ekleyeceğiz. Bunlar o andaki tarih, bulunan konsol aygıtı, çekirdeğin versiyonu veya adı, makine adı gibi ayrıntılı kurallar ekleyebileceğiz; aşağıdaki kuralları tersbölü (backslash)(\\) ile kullanın;
+şekline getirebilirsiniz. Statik çıktısını almak istediğiniz şeyleri öncelikle girin; daha sonra kuralları ekleyeceğiz. Bunlar o andaki tarih, bulunan konsol aygıtı, çekirdeğin versiyonu veya adı, makine adı gibi ayrıntılı kurallar ekleyebileceğiz; aşağıdaki kuralları tersbölü (backslash)(\) ile kullanın;
 ```
 d     O andaki tarih                              Örnek : 01.12.2004
 t     Zaman

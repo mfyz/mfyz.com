@@ -42,7 +42,7 @@ Normalde kullandığımız xhtml yorum formu kalıbı üzerinden başlayacağım
 </head>
 <body>
 <div class="comment Form">
-<div id="user\_box">
+<div id="user_box">
 <label for="name">Name</label><br />
 <input type="text" name="name">
 </div>
@@ -79,7 +79,7 @@ Böylece az sonra ekleyeceğimiz facebook etiketlerini tarayıcınız yorumlayab
 
 Şimdi facebook connect javascript'ini yükleyelim. HTML'de meta etiketleri içerisine
 ```
-<script src="http://static.ak.connect.facebook.com/js/api\_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
+<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
 ```
 Şimdi yapacağınız işlem facebook üzerinde kendinize ait bir uygulama oluşturmak olacak. Facebook Connect kullanabilmek için bir uygulamanızın olması gerekiyor. Bunun için de önce Developers uygulamasını yüklemelisiniz. Sırayla aşağıdaki adımları izleyin:
 
@@ -107,17 +107,17 @@ Burada kırmızı ile işaretlediğim, uygulamanızın API Anahtarını facebook
 ```
 <script type="text/javascript">
 // facebook init
-FB.init("80ee1ac2834c79cde1b567afdd13bbb1", "xd\_receiver.html");
+FB.init("80ee1ac2834c79cde1b567afdd13bbb1", "xd_receiver.html");
 </script>
 
 ```
-kodunu eklemelisiniz. Burada ikinci parametrede belirtilen xd\_receiver.html dosyası facebook ile haberleşmek için kullanılacak olan aracı dosya. Bu dosyayı da aşağıdaki kodu az önce eklediğiniz javascript fonksiyonunda ikinci parametrede belirttiğiniz isimle (xd\_receiver.html) kaydedin.
+kodunu eklemelisiniz. Burada ikinci parametrede belirtilen xd_receiver.html dosyası facebook ile haberleşmek için kullanılacak olan aracı dosya. Bu dosyayı da aşağıdaki kodu az önce eklediğiniz javascript fonksiyonunda ikinci parametrede belirttiğiniz isimle (xd_receiver.html) kaydedin.
 ```
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <body>
-<script src="http://static.ak.connect.facebook.com/js/api\_lib/v0.4/XdCommReceiver.js" type="text/javascript"></script>
+<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/XdCommReceiver.js" type="text/javascript"></script>
 </body>
 </html>
 
@@ -159,15 +159,15 @@ olarak değiştirelim.
 Şimdi sayfanın sonundaki script içine fonksiyonumuzu tanımlayalım.
 ```
 function updateUserBox(){
-userBox = document.getElementById('user\_box');
+userBox = document.getElementById('user_box');
 userBox.innerHTML = '<fb:profile-pic uid="loggedinuser"></fb:profile-pic><br />'
 + '<fb:name uid="loggedinuser" useyou="false"></fb:name><br />'
-+ '<a href="#logout" onclick="FB.Connect.logoutAndRedirect(\\'./\\');">Logout</a>';
++ '<a href="#logout" onclick="FB.Connect.logoutAndRedirect(\'./\');">Logout</a>';
 FB.XFBML.Host.parseDomTree();
 }
 
 ```
-fonksiyonunu ekleyelim. Fonksiyon basitçe user\_box kimlikli nesne içine 3 element ekliyor. Elementler adından da anlaşılacağı gibi ilki prfil fotosu, ikincisi facebook'daki görünen adı, diğer element de çıkış bağlantısı.
+fonksiyonunu ekleyelim. Fonksiyon basitçe user_box kimlikli nesne içine 3 element ekliyor. Elementler adından da anlaşılacağı gibi ilki prfil fotosu, ikincisi facebook'daki görünen adı, diğer element de çıkış bağlantısı.
 
 Bu koddan sonra facebook connect butonuna basıp giriş yaptığınızda sayfa aşağıdaki gibi şekilleniyor:
 
@@ -177,7 +177,7 @@ Bu koddan sonra facebook connect butonuna basıp giriş yaptığınızda sayfa a
 
 Sonuçta facebook connect butonu ile giriş yapılınca kullanıcı bilgilerini alabilir olduk. Fakat sayfa her yenilendiğinde facebook connect butonuna basılması gerekecek. Her sayfa yüklendiğinde eğer giriş yapılmışsa updateUserBox fonksiyonunun yaptığı işi yaptırmak için facebook connect init fonksiyonuna bir parametre daha vereceğiz:
 ```
-FB.init("80ee1ac2834c79cde1b567afdd13bbb1", "xd\_receiver.html", {"ifUserConnected" : updateUserBox});
+FB.init("80ee1ac2834c79cde1b567afdd13bbb1", "xd_receiver.html", {"ifUserConnected" : updateUserBox});
 
 ```
 Son eklediğimiz parametrede login durumunda çalışacak fonksiyonu belirttik.
@@ -191,11 +191,11 @@ Sonuç olarak html dosyamız şu şekilde şekillendi :
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <title>Facebook Connect</title>
 <link rel="stylesheet" type="text/css" media="screen" href="form.css" />
-<script src="http://static.ak.connect.facebook.com/js/api\_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
+<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
 </head>
 <body style="padding: 40px; font-family: Arial;">
 <div class="comment Form">
-<div id="user\_box">
+<div id="user_box">
 <label for="name">Name</label><br />
 <input type="text" name="name" /><br />
 <br />
@@ -208,13 +208,13 @@ veya facebook ile baglanabilirsiniz <fb:login-button onlogin="updateUserBox();">
 </div>
 </div>
 <script type="text/javascript">
-FB.init("80ee1ac2834c79cde1b567afdd13bbb1", "xd\_receiver.html", {"ifUserConnected" : updateUserBox});
+FB.init("80ee1ac2834c79cde1b567afdd13bbb1", "xd_receiver.html", {"ifUserConnected" : updateUserBox});
 
 function updateUserBox(){
-userBox = document.getElementById('user\_box');
+userBox = document.getElementById('user_box');
 userBox.innerHTML = '<fb:profile-pic uid="loggedinuser"></fb:profile-pic><br />'
 + '<fb:name uid="loggedinuser" useyou="false"></fb:name><br />'
-+ '<a href="#logout" onclick="FB.Connect.logoutAndRedirect(\\'./\\');">Logout</a>';
++ '<a href="#logout" onclick="FB.Connect.logoutAndRedirect(\'./\');">Logout</a>';
 FB.XFBML.Host.parseDomTree();
 }
 </script>

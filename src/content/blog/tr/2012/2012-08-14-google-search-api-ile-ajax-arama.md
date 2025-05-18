@@ -23,11 +23,11 @@ Aramanızı bu URL'e gerekli parametreleri ekleyerek yaptığınızda Google en 
 
 Cevap olarak dönen JSON içeriği uzun olduğu için burada göstermeyeceğim. Ama birkaç parametreyle gelen sonuç kümesini kullanabilir, sayfalama ve sonuç boyutu gibi parametreler ile sayfalama yapabilirsiniz.
 
-Asıl kullanacağınız sonuç değeri, arama sonuçlarının bulunduğu \*\*response.responseData.results\*\* sonuç kümesi olacaktır. Basit bir nesne dizisi olan bu değeri javascript ile ekrana doğrudan basabilir veya sunucu taraflı bir kod ile işleyebilirsiniz.
+Asıl kullanacağınız sonuç değeri, arama sonuçlarının bulunduğu **response.responseData.results** sonuç kümesi olacaktır. Basit bir nesne dizisi olan bu değeri javascript ile ekrana doğrudan basabilir veya sunucu taraflı bir kod ile işleyebilirsiniz.
 
 Google bu API ile tek istekte en fazla 8 sonuç döndürüyor. Nedenini kesin bir şekilde bilmiyorum fakat güvenlik nedeniyle olduğunu tahmin ediyorum. Eğer 8'den fazla sonuç göstermek istiyorsanız birden fazla api çağrısı yapmak zorundasınız veya istemci tarafında sayfalama yaparak sonuçları sayfalama ile gösterebilirsiniz.
 
-Sayfalama için API çağırısında göndereceğiniz \*\*start\*\* parametresi, arama sonuçlarının başlangıç sırasını belirtiyor. Eğer belirtilmezse geçerli değeri 0 olacaktır. Bundan sonra 8, 16, 24... şeklinde ikinci, üçüncü sayfaya ait sonuçları, ek çağrı yaparak yükleyebilirsiniz.
+Sayfalama için API çağırısında göndereceğiniz **start** parametresi, arama sonuçlarının başlangıç sırasını belirtiyor. Eğer belirtilmezse geçerli değeri 0 olacaktır. Bundan sonra 8, 16, 24... şeklinde ikinci, üçüncü sayfaya ait sonuçları, ek çağrı yaparak yükleyebilirsiniz.
 
 Burada kontrol etmeniz gereken tek şey, toplam bulunan sonuç kümenizde yeterli sonuç olup olmamasıdır. Yani eğer kullanıcı son sayfada ise "Sonraki Sayfa" linkini göstermemeniz gerekir. Basit bir sayfalama için;
 
@@ -35,7 +35,7 @@ toplam sayfa sayısı = toplam sonuç sayısı / sayfa başına düşen sonuç s
 
 bölümünün üste yuvarlanması ile bulunur. Bunu Google size toplam bulunan sonuç sayısını tahmini şekilde söylüyor.
 
-Sonuç kümesindeki \*\*response.responseData.cursor.estimatedResultCount\*\* parametresi size sayısal olarak tahmini sonuç sayısını söyleyecektir. Sayfa sayısını hesaplayarak gerekli sayfalama navigasyonunu oluşturabilirsiniz.
+Sonuç kümesindeki **response.responseData.cursor.estimatedResultCount** parametresi size sayısal olarak tahmini sonuç sayısını söyleyecektir. Sayfa sayısını hesaplayarak gerekli sayfalama navigasyonunu oluşturabilirsiniz.
 
 ### Örneği kodlayalım
 
@@ -74,7 +74,7 @@ function search(){
 }
 
 ```
-Google'un arama APIsini basit bir HTTP isteği ile kullanacağımızı söylemiştim, sonuç bir json nesnesi olduğu için jQuery'nin http istek yardımcı methodlarından \*\*getJSON\*\* methodunu kullanarak hem isteği yönetebilir hem de cevabı işleyebiliriz.
+Google'un arama APIsini basit bir HTTP isteği ile kullanacağımızı söylemiştim, sonuç bir json nesnesi olduğu için jQuery'nin http istek yardımcı methodlarından **getJSON** methodunu kullanarak hem isteği yönetebilir hem de cevabı işleyebiliriz.
 ```
 function loadResults(query, start){
   var apiURL = 'http://ajax.googleapis.com/ajax/services/search/web?v=1.0&callback=?';
@@ -90,7 +90,7 @@ function loadResults(query, start){
   
     if(results.length){
       for(var i=0; i < results.length; i++){
-        r = results\[i\];
+        r = results[i];
   
         resultsHTML += '
 

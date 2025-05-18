@@ -11,28 +11,28 @@ lang: tr
 
 #### Giriş
 
-PHP'de MySQL'i nasıl kullanacağımızı daha önce görmüştük. Bu dökümanda mysql'de verileri nasıl çekip, listeleyip bu verileri iyi biçimde süzgeçleme, üzerinde arama yapma ve oluşan çıktıları nasıl işleyeceğimizden bahsedeceğim. Bu dökümanda da diğer dökümanda kullandığım örnek tabloyu kullanacağım. Hatırlatmak gerekirse "tablo" adında ve kullanici, kayit\_tarihi, eposta, ziyaret\_sayisi alanlarından oluşuyordu.
+PHP'de MySQL'i nasıl kullanacağımızı daha önce görmüştük. Bu dökümanda mysql'de verileri nasıl çekip, listeleyip bu verileri iyi biçimde süzgeçleme, üzerinde arama yapma ve oluşan çıktıları nasıl işleyeceğimizden bahsedeceğim. Bu dökümanda da diğer dökümanda kullandığım örnek tabloyu kullanacağım. Hatırlatmak gerekirse "tablo" adında ve kullanici, kayit_tarihi, eposta, ziyaret_sayisi alanlarından oluşuyordu.
 
-Öncelikle mysql bağlantımızı oluşturup tablomuzu seçelim. Bildiğimizi varsayıp geçiyorum bu kısmı.. Veri seçmek için genel bir kalıp vardır. **SELECT <alan adı belirteci> FROM \`tablo adı\`** Bu sorguda ilk kısımda seçimden sonra dönecek olan alan adlarını belirtmemiz gerekir. Alan adlarını teker teker de belirtebilir, \* ifadesi ile hepsini de ifade edebiliriz.
+Öncelikle mysql bağlantımızı oluşturup tablomuzu seçelim. Bildiğimizi varsayıp geçiyorum bu kısmı.. Veri seçmek için genel bir kalıp vardır. **SELECT <alan adı belirteci> FROM \`tablo adı\`** Bu sorguda ilk kısımda seçimden sonra dönecek olan alan adlarını belirtmemiz gerekir. Alan adlarını teker teker de belirtebilir, * ifadesi ile hepsini de ifade edebiliriz.
 
-Daha önce testlerini de yaptığım bir sonuç vardır ki genellikle söylenen birşeydir, MySQL'de ihtiyacımız olan şeyleri kullanarak daha hızlı işletilen sorgular yazabiliriz. Mantıksal olarak da doğru birşeydir. Diyelim ki 25 alanlık ve bunlardan 10 tanesi TEXT türünde olan, üzerinde 100.000 kayıt bulunan bir tablonuz var veya yazdığınız sistem ilerde bu derece büyüyebilecek bir potansiyele sahip, böyle bir durumda sadece 1-2 alana ihtiyaç varken \* ile tüm alanları seçmeye çalışmak arasında gözle görülür hız farkı yaşanacaktır. Tüm alanları seçerek bütün bilgilerin tekrar okunmasını istemiş oluruz, örnek verdiğim tablo gibi orta büyüklükte tablolardaki işlemlerde bile performans düşüşü kaçınılmazdır. Onun için sadece kullanacağımız alanları belirtmekte fayda var. Birinci kısımdan sonra FROM ile veri çekilecek tabloyu belirtiyoruz. Bu kullanımda bütün satırlar seçilecek ve dönülecektir. WHERE kalıbını kullanarak istediğimiz, koşullarımıza uyan kayıtları seçebiliriz.
+Daha önce testlerini de yaptığım bir sonuç vardır ki genellikle söylenen birşeydir, MySQL'de ihtiyacımız olan şeyleri kullanarak daha hızlı işletilen sorgular yazabiliriz. Mantıksal olarak da doğru birşeydir. Diyelim ki 25 alanlık ve bunlardan 10 tanesi TEXT türünde olan, üzerinde 100.000 kayıt bulunan bir tablonuz var veya yazdığınız sistem ilerde bu derece büyüyebilecek bir potansiyele sahip, böyle bir durumda sadece 1-2 alana ihtiyaç varken * ile tüm alanları seçmeye çalışmak arasında gözle görülür hız farkı yaşanacaktır. Tüm alanları seçerek bütün bilgilerin tekrar okunmasını istemiş oluruz, örnek verdiğim tablo gibi orta büyüklükte tablolardaki işlemlerde bile performans düşüşü kaçınılmazdır. Onun için sadece kullanacağımız alanları belirtmekte fayda var. Birinci kısımdan sonra FROM ile veri çekilecek tabloyu belirtiyoruz. Bu kullanımda bütün satırlar seçilecek ve dönülecektir. WHERE kalıbını kullanarak istediğimiz, koşullarımıza uyan kayıtları seçebiliriz.
 
 **LIMIT X,Y** kalıbı ile sonuçları parçalayabiliriz. LIMIT kalıbı sorgularda en sonda kullanılır. Bu kalıpta önce (X ile ifade edilen) hangi kayıttan başlanacağı, virgül ve sonra da (Y ile ifade edilen) kaç kayıdın sorgudan etkileneceğini belirtiriz. İşlem olarak her işlemde kullanılabilir ancak genellikle kayıt listelerken kullanırız. Sonuç olarak oluşan örnek bir listeleme sorgusu şöyle olabilir :
 
 ```
-SELECT kullanici, kayit\_tarihi, ziyaret\_sayisi FROM \`tablo\` WHERE ziyaret\_sayisi > 0 LIMIT 0,5
+SELECT kullanici, kayit_tarihi, ziyaret_sayisi FROM \`tablo\` WHERE ziyaret_sayisi > 0 LIMIT 0,5
 
 ```
 
-Bu sorguda tablo tablosundan, kullanici, kayit\_tarihi ve ziyaret\_sayisi alanlarını seçiyoruz. Koşul olarak da ziyaret\_sayisi 0'dan büyük olan kayıtları belirtiyoruz. Sonuç kümemiz ise bu listede oluşacak ilk 5 kayıdı tutuyor.
+Bu sorguda tablo tablosundan, kullanici, kayit_tarihi ve ziyaret_sayisi alanlarını seçiyoruz. Koşul olarak da ziyaret_sayisi 0'dan büyük olan kayıtları belirtiyoruz. Sonuç kümemiz ise bu listede oluşacak ilk 5 kayıdı tutuyor.
 
 #### Kayıtları seçtik ama sıralı değil?
 
 Evet kayıtlar bilgisayarın kontrol sırasına göre çekildi, belirli kriterlere göre bu kayırları sıralayarak çekmek isteyebiliriz. Örnek vermek gerekirse, önceki sorguda ziyaret sayısı 0'dan büyük kullanıcıları çekiyorduk ama sonuç olarak dönen kümede en çok ziyaret eden kullanıcı olmayabilir, bu sorguyu geliştirip ziyaret sayısına göre sıralatalım. Sıralama işlemi için de bir kalıp kullanıyoruz, Kullanımı, **ORDER BY <alan adı> <ASC/DESC>**. alan adı olarak tek alan adı belirtiyoruz, ondan sonra gelen kısımda ise ASC artan sırada, DESC, azalan sırada sıralamayı belirliyoruz. Bir sorguda birden fazla sıralama koşulu bulunmaz, ayrıca bu sıralama kalıbı, koşullardan sonra, LIMIT kalıbından önce yazılır. Sonuç olarak yukarıdakine göre geliştirdiğimiz sorgumuz şu şekilde olacaktır :
 
 ```
-SELECT kullanici, kayit\_tarihi, ziyaret\_sayisi FROM \`tablo\`
-WHERE ziyaret\_sayisi>0 ORDER BY ziyaret\_sayisi DESC LIMIT 0,5
+SELECT kullanici, kayit_tarihi, ziyaret_sayisi FROM \`tablo\`
+WHERE ziyaret_sayisi>0 ORDER BY ziyaret_sayisi DESC LIMIT 0,5
 
 ```
 
@@ -42,35 +42,35 @@ Bu dökümanda verileri sayfa sayfa listelere parçalamadan bahsetmiyorum çünk
 
 #### Verileri göstermek için işlemek
 
-PHP'de mysql işlemlerini mysql fonksiyonları ile yapıyorduk, sorgularımızı mysql\_query fonksiyonu ile işletiyorduk Ancak bu fonksiyonu bir değişkene atama şeklinde kullanıyoruz. Örneğin :
+PHP'de mysql işlemlerini mysql fonksiyonları ile yapıyorduk, sorgularımızı mysql_query fonksiyonu ile işletiyorduk Ancak bu fonksiyonu bir değişkene atama şeklinde kullanıyoruz. Örneğin :
 
 ```
-$sonuc = mysql\_query("...");
+$sonuc = mysql_query("...");
 
 ```
 
-Şeklindeki kullanımda, sorgudan çıkan sonuç kümesini $sorgu değişkeninde saklıyoruz. Bu sonuç kaynağını başka mysql fonksiyonlarına sokarak bazı şeyler elde edeceğiz : Sonuç kümesindeki kayıt sayısını mysql\_num\_rows() fonksiyonu ile öğrnebiliriz. **mysql\_fetch\_assoc()** ve **mysql\_fetch\_array()** fonkyisonları ile de sıradaki sonucu dizi şeklinde alabiliriz. Genel kullanım ile bir sorgunun çıktısını elde etmek için şu yöntem kullanılır :
+Şeklindeki kullanımda, sorgudan çıkan sonuç kümesini $sorgu değişkeninde saklıyoruz. Bu sonuç kaynağını başka mysql fonksiyonlarına sokarak bazı şeyler elde edeceğiz : Sonuç kümesindeki kayıt sayısını mysql_num_rows() fonksiyonu ile öğrnebiliriz. **mysql_fetch_assoc()** ve **mysql_fetch_array()** fonkyisonları ile de sıradaki sonucu dizi şeklinde alabiliriz. Genel kullanım ile bir sorgunun çıktısını elde etmek için şu yöntem kullanılır :
 
 ```
 // sql cümlesini olusturalim
-$sql = "SELECT kullanici, ziyaret\_sayisi FROM tablo ORDER BY ziyaret\_sayisi DESC LIMIT 0,10";
+$sql = "SELECT kullanici, ziyaret_sayisi FROM tablo ORDER BY ziyaret_sayisi DESC LIMIT 0,10";
 
 // isletelim
-$sonuc = mysql\_query($sql) or die("HATA : " . mysql\_error());
+$sonuc = mysql_query($sql) or die("HATA : " . mysql_error());
 
 // cikan sonuc kumesi bos degilse
-if( mysql\_num\_rows($sonuc) > 0 ){
+if( mysql_num_rows($sonuc) > 0 ){
   // sonuc kumesini donelim
-  while( $satir = mysql\_fetch\_assoc($sonuc) ){
+  while( $satir = mysql_fetch_assoc($sonuc) ){
     // bilgileri yazdiralim
-    print('kullanici = ' . $satir\["kullanici"\] . ', ');
-    print('ziyaret\_sayisi = ' . $satir\["ziyaret\_sayisi"\] . '<br>');
+    print('kullanici = ' . $satir["kullanici"] . ', ');
+    print('ziyaret_sayisi = ' . $satir["ziyaret_sayisi"] . '<br>');
   }
 }
 
 ```
 
-Burada sorgu cümlemizi önce $sql değişkenine atıyoruz. Bazen öyle bir gelişmiş sql yazmamız gerekiyor ki bu cümleyi döngülerle, eklemeli olarak uzun işlem ve kontrollere göre hazırlayabiliyoruz. PHP ile MySQL birlikte kullanıldığında gerçekten çok güçlü olabiliyor. $sql değişkenindeki string'i mysql\_query() fonksiyonu ile işletip $sonuc değişkenine atıyoruz sonuç kümesini. Ardından mysql\_num\_rows() fonksiyonu ile sonuç kümesinin boş olup olmadığını kontrol ediyoruz. Eğer tablo boş olsaydı sonuç kümemiz boş dönecekti, bu kontrol'e else ekleyip "Gösterilecek kayıt bulunamadı" gibi bir çıktı verdirmemiz de mümkün. Eğer sonuç kümesi boş değilse while ile satır satır bilgileri alıyoruz mysql\_fetch\_assoc fonksiyonu sayesinde. Burada atama işlemi yapıldığı için sonuç kümesindeki kayıtların hepsi bittiği zaman atama işlemi hep false değeri dönecektir. Bu yüzden while ile bu şekildeki kullanım oldukça sağlıklıdır. $satir değişkenine sorguda belirttiğimiz sıralamaya göre çıkan sonuç kümesinden sırayla kayıtlar çekilmektedir. Bu atama işleminde $satir değişkenine hangi alanları seçmişsek o alanları anahtar olarak tutan bir dizi atanır. Kullanırken de anahtar kelimelerle kolayca kullanabiliriz. Çıktıda istediğimiz şekilde bir html çıktısı oluşturabiliriz. Burada basit html çıktısı verdirdim, geliştirilerek tablo şeklinde de çıktı verdirilebilir. Çıktıların işlenişi genellikle bu şekildedir. Fazla denetimlerle ve html çıktısını iyi ayarlayarak daha opsiyonel sonuçlar elde edebilirsiniz.
+Burada sorgu cümlemizi önce $sql değişkenine atıyoruz. Bazen öyle bir gelişmiş sql yazmamız gerekiyor ki bu cümleyi döngülerle, eklemeli olarak uzun işlem ve kontrollere göre hazırlayabiliyoruz. PHP ile MySQL birlikte kullanıldığında gerçekten çok güçlü olabiliyor. $sql değişkenindeki string'i mysql_query() fonksiyonu ile işletip $sonuc değişkenine atıyoruz sonuç kümesini. Ardından mysql_num_rows() fonksiyonu ile sonuç kümesinin boş olup olmadığını kontrol ediyoruz. Eğer tablo boş olsaydı sonuç kümemiz boş dönecekti, bu kontrol'e else ekleyip "Gösterilecek kayıt bulunamadı" gibi bir çıktı verdirmemiz de mümkün. Eğer sonuç kümesi boş değilse while ile satır satır bilgileri alıyoruz mysql_fetch_assoc fonksiyonu sayesinde. Burada atama işlemi yapıldığı için sonuç kümesindeki kayıtların hepsi bittiği zaman atama işlemi hep false değeri dönecektir. Bu yüzden while ile bu şekildeki kullanım oldukça sağlıklıdır. $satir değişkenine sorguda belirttiğimiz sıralamaya göre çıkan sonuç kümesinden sırayla kayıtlar çekilmektedir. Bu atama işleminde $satir değişkenine hangi alanları seçmişsek o alanları anahtar olarak tutan bir dizi atanır. Kullanırken de anahtar kelimelerle kolayca kullanabiliriz. Çıktıda istediğimiz şekilde bir html çıktısı oluşturabiliriz. Burada basit html çıktısı verdirdim, geliştirilerek tablo şeklinde de çıktı verdirilebilir. Çıktıların işlenişi genellikle bu şekildedir. Fazla denetimlerle ve html çıktısını iyi ayarlayarak daha opsiyonel sonuçlar elde edebilirsiniz.
 
 #### Listeleme ve gösterme sistemlerinin basit mantığı
 
@@ -78,26 +78,26 @@ Aslında hiçbir farkı yoktur az önce yaptığımız işlemden, listelerken sa
 
 #### Basit olarak seçme/listeleme işlemlerinde benzerliği kullanmak ve birşeyler aramak
 
-Bu işlemlerde WHERE kalıbının bir özelliği olan LIKE'ı kullanacağız. WHERE'da belirttiğimiz koşullarda basit operatörleri kulanarak büyük, küçük, eşit, eşit değil koşullarını tanımlayabiliyorduk.. LIKE ile bir değere benzerliği de aratabiliyoruz. LIKE basit olarak 2 joker karakterden oluşur \_ (alt çizgi karakteri) ile tek bir karakteri % (yüzde karakteri) ile bir ve birden çok karakteri ifade edebilirsiniz.
+Bu işlemlerde WHERE kalıbının bir özelliği olan LIKE'ı kullanacağız. WHERE'da belirttiğimiz koşullarda basit operatörleri kulanarak büyük, küçük, eşit, eşit değil koşullarını tanımlayabiliyorduk.. LIKE ile bir değere benzerliği de aratabiliyoruz. LIKE basit olarak 2 joker karakterden oluşur _ (alt çizgi karakteri) ile tek bir karakteri % (yüzde karakteri) ile bir ve birden çok karakteri ifade edebilirsiniz.
 
 Mesela kullanıcılardan a harfi ile başlayanları seçmek istiyorsak;
 
 ```
-SELECT kullanici, kayit\_tarihi FROM tablo WHERE kullanici LIKE 'a%' ORDER BY kayit\_tarihi
+SELECT kullanici, kayit_tarihi FROM tablo WHERE kullanici LIKE 'a%' ORDER BY kayit_tarihi
 
 ```
 
 Farklı şekilde; sadece Ocak 2005'de kayıt olmuş kullanıcıları görmek için;
 
 ```
-SELECT kullanici, kayit\_tarihi FROM tablo WHERE kayit\_tarihi LIKE '2005-01%'
+SELECT kullanici, kayit_tarihi FROM tablo WHERE kayit_tarihi LIKE '2005-01%'
 
 ```
 
 Siteyi 10-20 arasında ziyaret etmiş olan kullanıcılları görmek için de;
 
 ```
-SELECT kullanici, ziyaret\_sayisi FROM tablo WHERE ziyaret\_sayisi LIKE '1\_'
+SELECT kullanici, ziyaret_sayisi FROM tablo WHERE ziyaret_sayisi LIKE '1_'
 
 ```
 

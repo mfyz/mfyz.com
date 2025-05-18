@@ -23,29 +23,29 @@ Bazen de disketlerden çok az büyük dosyalarla çalışıyor olabilirsiniz (Ta
 
 Dosyaları 2 biçimde parçalıyabiliyoruz. Birincisi dosyaları satır sayısına göre, diğeri de boyutuna göre. Dosyaları satır sayısına göre parçalarken -l parametresini, boyuta göre de -b parametresini kullanıyoruz.
 ```
-mfyz@tux \_ $ ls -l
+mfyz@tux _ $ ls -l
 total 4836
 -rwxrwxrwx  1 mfyz users 4939244 Sep 28 15:20 dosya.wav
 
-mfyz@tux \_ $ split -b 1400000 dosya.wav parca\_
+mfyz@tux _ $ split -b 1400000 dosya.wav parca_
 
-mfyz@tux \_ $ ls -l
+mfyz@tux _ $ ls -l
 total 9680
 -rwxrwxrwx 1 mfyz users 4939244 Sep 28 15:20 dosya.wav
--rw-r--r-- 1 mfyz users 1400000 Nov 9 19:02 parca\_aa
--rw-r--r-- 1 mfyz users 1400000 Nov 9 19:02 parca\_ab
--rw-r--r-- 1 mfyz users 1400000 Nov 9 19:02 parca\_ac
--rw-r--r-- 1 mfyz users 739244 Nov 9 19:02 parca\_ad
+-rw-r--r-- 1 mfyz users 1400000 Nov 9 19:02 parca_aa
+-rw-r--r-- 1 mfyz users 1400000 Nov 9 19:02 parca_ab
+-rw-r--r-- 1 mfyz users 1400000 Nov 9 19:02 parca_ac
+-rw-r--r-- 1 mfyz users 739244 Nov 9 19:02 parca_ad
 
 ```
-İlk önce dizinimizdeki dosyaları listeledik. Burada çalışmak için bir binary (dosya.wav) var. Şimdi ilk olarak dosya.wav dosyasını satır sayısına göre parçalayacağız.split -b 140000 dosya.wav parca\_ komutu ile parçaladık. Bu komutta 100 değeri parçalardaki satır sayısı yani dosya.wav'ın kaç byte'da bir parça oluşturacağını belirledik. dosya.wav parçalanacak dosyayı, parca\_ da parçaların anahtar kelimesini belirtiyor. Komut uygulandığında oluşan parçalar anahtar kelime + aa,ab,ac,ad....ba,bb,bc... şeklinde isimler alır. Gördüğünüz gibi listeleme sonucunda başlangıçtaki dosya sayısında epey fazla dosya var.
+İlk önce dizinimizdeki dosyaları listeledik. Burada çalışmak için bir binary (dosya.wav) var. Şimdi ilk olarak dosya.wav dosyasını satır sayısına göre parçalayacağız.split -b 140000 dosya.wav parca_ komutu ile parçaladık. Bu komutta 100 değeri parçalardaki satır sayısı yani dosya.wav'ın kaç byte'da bir parça oluşturacağını belirledik. dosya.wav parçalanacak dosyayı, parca_ da parçaların anahtar kelimesini belirtiyor. Komut uygulandığında oluşan parçalar anahtar kelime + aa,ab,ac,ad....ba,bb,bc... şeklinde isimler alır. Gördüğünüz gibi listeleme sonucunda başlangıçtaki dosya sayısında epey fazla dosya var.
 
 #### Dosyaları Birleştirmek
 
-Dosyaları birleştirirken cat komutu ile parçaları teker teker birbiri ardına ekliyoruz. Yukarıdaki örnekte dosya.txt'nin parçalarını birleştirirken sırayla cat dosya\_parca\_ag >> dosya\_parca\_af ardından, cat dosya\_parca\_af >> dosya\_parca\_ae... komutlarını aa parçasına kadar uygulayarak dosya.txt'yi dosya\_parca\_aa dosyasında oluşturmuş yani birleştirmiş olduk.
+Dosyaları birleştirirken cat komutu ile parçaları teker teker birbiri ardına ekliyoruz. Yukarıdaki örnekte dosya.txt'nin parçalarını birleştirirken sırayla cat dosya_parca_ag >> dosya_parca_af ardından, cat dosya_parca_af >> dosya_parca_ae... komutlarını aa parçasına kadar uygulayarak dosya.txt'yi dosya_parca_aa dosyasında oluşturmuş yani birleştirmiş olduk.
 
 Bu uzun işlemi yapmak yerine şu pratik yolu tercih ediniz (Zira sadece mantığını anlamamız için üstteki detayı verdim :) ).
 ```
-for i in \`ls parca\_\*\`; do cat $i >> dosya.wav; done
+for i in \`ls parca_*\`; do cat $i >> dosya.wav; done
 ```
 (Bu güzel detayı belirttiği için Eren Turkay arkadaşıma teşekkür ederim.)

@@ -85,12 +85,12 @@ var simpleEncoding = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz012345
 
 function simpleEncode(valueArray, maxValue) {
 
-    var chartData = \['s:'\];
+    var chartData = ['s:'];
 
-    for (var i = 0; i < valueArray.length; i++) { var currentValue = valueArray\[i\]; if (!isNaN(currentValue) && currentValue >= 0) {
-            chartData.push(simpleEncoding.charAt(Math.round((simpleEncoding.length - 1) \* currentValue / maxValue)));
+    for (var i = 0; i < valueArray.length; i++) { var currentValue = valueArray[i]; if (!isNaN(currentValue) && currentValue >= 0) {
+            chartData.push(simpleEncoding.charAt(Math.round((simpleEncoding.length - 1) * currentValue / maxValue)));
         } else {
-            chartData.push('\_');
+            chartData.push('_');
         }
     }
 
@@ -98,29 +98,29 @@ function simpleEncode(valueArray, maxValue) {
 }
 
 // Örnek sifreleme
-var veri\_dizisi = new Array(0, 1, 4, 4, 6, 11, 14, 17, 23, 28, 33, 36, 43, 59, 65);
-var max\_deger = 70;
-alert(simpleEncode(veri\_dizisi, max\_deger));
+var veri_dizisi = new Array(0, 1, 4, 4, 6, 11, 14, 17, 23, 28, 33, 36, 43, 59, 65);
+var max_deger = 70;
+alert(simpleEncode(veri_dizisi, max_deger));
 
 ```
 Alt kısımda kullanımını görüyorsunuz, oldukça basit.
 
 Bu kod javascript kodu ve biliyorsunuz ki web uygulamalarında verileri genelde böyle açıkca vermek istemeyiz. Ayrıca bu kadar basit kullanımlı bir api için verilerin kullanıcıda url'ye dönüştürülüp grafiğin api aracılığıyla istenmesi gibi karışık bir yol izlemek tercih edilmez. PHP için bu javascript kodunda yapılan işleri php ile yaptıran ufak bir fonksiyon yazdım :
 ```
-function encodeData($data, $max\_value) {
+function encodeData($data, $max_value) {
 
     $simpleEncoding = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-    $data\_string = "s:";
+    $data_string = "s:";
     foreach($data as $currentValue) {
-        if (is\_numeric($currentValue) & amp; & amp; $currentValue & gt; = 0) {
-            $data\_string. = substr($simpleEncoding, round((strlen($simpleEncoding) - 1) \* $currentValue / $max\_value), 1);
+        if (is_numeric($currentValue) & amp; & amp; $currentValue & gt; = 0) {
+            $data_string. = substr($simpleEncoding, round((strlen($simpleEncoding) - 1) * $currentValue / $max_value), 1);
         } else {
-            $data\_string. = '\_';
+            $data_string. = '_';
         }
     }
 
-    return $data\_string;
+    return $data_string;
 }
 
 print encodeData(array(60, 40, 20, 15, 50, 70, 20), 100);

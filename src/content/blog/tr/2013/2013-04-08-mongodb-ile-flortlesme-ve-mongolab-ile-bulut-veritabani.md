@@ -28,68 +28,68 @@ MongoLab ile tamamen php mongo eklentisi bağımlılığından da kurtularak do�
 Konumuz mongo iken, birkaç php-mongo interaksiyonunu denediğim bir php dosyasının kodunu doğrudan vermek istiyorum.
 ```
 <?php
-$mongo = new Mongo("mongodb://dbuser:dbpassword@\*\*\*\*\*\*.mongolab.com:45297/test\_database");
-$db = $mongo->selectDB("test\_database");
-$action = isset($\_GET\['action'\]) ? $\_GET\['action'\] : NULL;
+$mongo = new Mongo("mongodb://dbuser:dbpassword@******.mongolab.com:45297/test_database");
+$db = $mongo->selectDB("test_database");
+$action = isset($_GET['action']) ? $_GET['action'] : NULL;
 ?>
     <ul>
-        <li><a href="?action=create\_collection&name=test\_collection\_<?=rand(1,10000);?>">Create a test collection</a></li>
-        <li><a href="?action=list\_collections">List collections</a></li>
-        <li><a href="?action=add\_record\_to\_nonexistent\_collection">Add record to non existent collection (it creates the collection)</a></li>
-        <li><a href="?action=add\_user">Add a user</a></li>
-        <li><a href="?action=find\_fatih">Find Fatih</a></li>
-        <li><a href="?action=search\_user">Search user</a></li>
+        <li><a href="?action=create_collection&name=test_collection_<?=rand(1,10000);?>">Create a test collection</a></li>
+        <li><a href="?action=list_collections">List collections</a></li>
+        <li><a href="?action=add_record_to_nonexistent_collection">Add record to non existent collection (it creates the collection)</a></li>
+        <li><a href="?action=add_user">Add a user</a></li>
+        <li><a href="?action=find_fatih">Find Fatih</a></li>
+        <li><a href="?action=search_user">Search user</a></li>
     </ul>
 <?php
 switch ($action) {
-    case 'create\_collection':
-        $name = isset($\_GET\['name'\]) ? $\_GET\['name'\] : 'users';
-        var\_dump($db->createCollection($name, FALSE));
+    case 'create_collection':
+        $name = isset($_GET['name']) ? $_GET['name'] : 'users';
+        var_dump($db->createCollection($name, FALSE));
         exit;
         break;
-    case 'list\_collections':
-        $\_collections = $db->listCollections();
+    case 'list_collections':
+        $_collections = $db->listCollections();
         print '<h3>Collecitons</h3>';
-        foreach ($\_collections as $collection) {
+        foreach ($_collections as $collection) {
             print $collection . '<br />';
         }
         break;
-    case 'add\_user':
-        $name = isset($\_GET\['name'\]) ? $\_GET\['name'\] : 'test\_user\_' . rand(1, 100000);
+    case 'add_user':
+        $name = isset($_GET['name']) ? $_GET['name'] : 'test_user_' . rand(1, 100000);
         $users = $db->users;
         $result = $users->insert(array(
             'username'   => $name,
-            'created\_at' => date('Y-m-d H:i:s')
+            'created_at' => date('Y-m-d H:i:s')
         ));
         print '<h3>Result:</h3>';
-        var\_dump($result);
+        var_dump($result);
         exit;
         break;
-    case 'add\_record\_to\_nonexistent\_collection':
-        $collection = isset($\_GET\['name'\]) ? $\_GET\['name'\] : 'collection\_' . rand(1, 100000);
+    case 'add_record_to_nonexistent_collection':
+        $collection = isset($_GET['name']) ? $_GET['name'] : 'collection_' . rand(1, 100000);
         // it creates the collection even if not exists.
-        $collection\_obj = $db->$collection;
-        $result = $collection\_obj->insert(array(
+        $collection_obj = $db->$collection;
+        $result = $collection_obj->insert(array(
             'test' => 1,
             'time' => time()
         ));
         print '<h3>Result:</h3>';
-        var\_dump($result);
+        var_dump($result);
         exit;
         break;
-    case 'find\_fatih':
+    case 'find_fatih':
         $users = $db->users;
         $result = $users->findOne(array("username" => 'fatih'));
         print '<h3>Fatih?</h3>';
-        var\_dump($result);
+        var_dump($result);
         exit;
         break;
-    case 'search\_user':
+    case 'search_user':
         $users = $db->users;
-        $result = $users->find(array("username" => array('$regex' => 'test\_')));
+        $result = $users->find(array("username" => array('$regex' => 'test_')));
         print '<h3>Users:</h3>';
-        foreach ($result as $\_result) {
-            var\_dump($\_result);
+        foreach ($result as $_result) {
+            var_dump($_result);
         }
         exit;
         break;

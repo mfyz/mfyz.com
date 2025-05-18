@@ -15,7 +15,7 @@ Mesela aylar önce mfyz.com'daki textarea'ları elle büyütüp küçülttürmek
 
 İsmi itici, alakasız gelse de jquery için "mootools vs jquery" araması yaptığınızda çıkan neredeyse tüm tartışma konularında, blog girdilerinde yorumlar jquery dostları ile dolu. Mesela 274 saniye önce okuduğum bir yorumda şöyle diyordu :
 
-> _ben ve \*\*\*\* mootools ile çok çalıştık fakat birkaç ay kadar önce jquery'ye geçtik. (seçim yapmadık, ıkına sıkıla geçtik)._
+> _ben ve **** mootools ile çok çalıştık fakat birkaç ay kadar önce jquery'ye geçtik. (seçim yapmadık, ıkına sıkıla geçtik)._
 
 Hatta başka bir yerde de
 

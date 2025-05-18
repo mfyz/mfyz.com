@@ -143,6 +143,30 @@ async function processPost(post) {
     content = content
         // Replace our paragraph break markers with double newlines
         .replace(/\n*<p data-paragraph-break><\/p>\n*/g, '\n\n');
+        
+    // Fix issue #4: Remove unnecessary backslash escapes from markdown content
+    // This handles common characters that shouldn't be escaped in normal text
+    content = content
+        // Fix escaped underscores (common in code references)
+        .replace(/\\(_)/g, '$1')
+        // Fix escaped asterisks
+        .replace(/\\(\*)/g, '$1')
+        // Fix escaped square brackets
+        .replace(/\\(\[|\])/g, '$1')
+        // Fix escaped backslashes that aren't part of actual escape sequences
+        .replace(/\\(\\)([^\w])/g, '$1$2');
+        
+    // Extra step for code blocks: Make sure code content is not escaped
+    content = content.replace(/```[^\n]*\n([\s\S]*?)\n```/g, function(match, codeContent) {
+        // Unescape characters in code blocks
+        return match.replace(codeContent, 
+            codeContent
+                .replace(/\\(_)/g, '$1') 
+                .replace(/\\(\*)/g, '$1')
+                .replace(/\\(\[|\])/g, '$1')
+                .replace(/\\(\\)/g, '$1')
+        );
+    });
     
     // Replace WordPress image URLs with local paths
     content = replaceImageUrls(content, isTurkish);

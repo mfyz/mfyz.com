@@ -57,19 +57,19 @@ Burada iki ayrı işaretleme diline ait bir örnek vermek gerekirse;
 XML dokümanları ilişkisel veritabanlarından farklı olarak hiyerarşik bir yapısı vardır. Bu yapı kendine has kuralları da beraberinde getirmektedir. Şimdi örnek bir XML dokümanı oluşturalım ve buradaki birimleri teker teker tanıyalım.
 ```
 <Uyeler>
-  <Uye uye\_id=”1”>
+  <Uye uye_id=”1”>
     <adi>Yahya</adi>
     <soyadi>ÖZTÜRK</soyadi>
     <email>yahyaozturk@verivizyon.com</email>
     <yetkiDerece>1</yetkiDerece>
   </Uye>
-  <Uye uye\_id=”2”>
+  <Uye uye_id=”2”>
     <adi>Volkan</adi>
     <soyadi>VERİM</soyadi>
     <email>volkanverim@verivizyon.com</email>
     <yetkiDerece>1</yetkiDerece>
   </Uye>
-  <Uye uye\_id=”3”>
+  <Uye uye_id=”3”>
     <adi>Yaşar</adi>
     <soyadi>GÖZÜDELİ</soyadi>
     <email>ygozudeli@verivizyon.com</email>
@@ -82,7 +82,7 @@ XML dokümanları ilişkisel veritabanlarından farklı olarak hiyerarşik bir y
 
 **<Uyeler> </Uyeler>** etiketi ise kök (root) etikettir ve XLM dokümanın da en az bir tane bulunmak zorundadır. Bu etiket diğer bütün etiketleri içerisine almak zorundadır.
 
-**<Uye uye\_id="..."> </Uye>** etiketi çocuk (child) etiket olarak isimlendirilir ve element olarakta bilinir. Buradaki uye\_id bir özniteliktir ve öznitelik değerleri “” arasında verilmek zorundadır.
+**<Uye uye_id="..."> </Uye>** etiketi çocuk (child) etiket olarak isimlendirilir ve element olarakta bilinir. Buradaki uye_id bir özniteliktir ve öznitelik değerleri “” arasında verilmek zorundadır.
 
 **Genel kuralları belirtmek gerekirse;**
 
@@ -97,7 +97,7 @@ Tüm bu kurallara uyarak oluşturulmuş dokümanlara iyi yapılanmış anlamınd
 
 **XML hakkında daha detaylı bilgi için :**
 
-› [http://www.softwareag.com/turkiye/XML\_Kutuphanesi/](http://www.softwareag.com/turkiye/XML_Kutuphanesi/) › [http://www.w3.org/XML/](http://www.w3.org/XML/) › [http://www.w3schools.com/xml/](http://www.w3schools.com/xml/) › [http://xml.silmaril.ie/](http://xml.silmaril.ie/)
+› [http://www.softwareag.com/turkiye/XML_Kutuphanesi/](http://www.softwareag.com/turkiye/XML_Kutuphanesi/) › [http://www.w3.org/XML/](http://www.w3.org/XML/) › [http://www.w3schools.com/xml/](http://www.w3schools.com/xml/) › [http://xml.silmaril.ie/](http://xml.silmaril.ie/)
 
 kaynaklarını kurcalamanızı tavsiye ederim.
 

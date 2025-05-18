@@ -56,18 +56,18 @@ We use a simplified version of this scope set. A sample commitlinter config file
 ```
 module.exports = {
 	parserPreset: 'conventional-changelog-conventionalcommits',
-	extends: \["@commitlint/config-conventional"\],
+	extends: ["@commitlint/config-conventional"],
 	rules: {
-		"type-enum": \[
+		"type-enum": [
 			2,
 			"always",
-			\[
+			[
 				"feat",
 				"fix",
 				"cont",
 				"chore"
-			\]
-		\]
+			]
+		]
 	}
 };
 ```
@@ -86,7 +86,7 @@ Conventional changelog generators can translate each conventional commit spec to
 
 ```
 {
-    "types": \[
+    "types": [
       {"type": "feat", "section": "Features"},
       {"type": "fix", "section": "Bug Fixes"},
       {"type": "chore", "hidden": true},
@@ -95,7 +95,7 @@ Conventional changelog generators can translate each conventional commit spec to
       {"type": "refactor", "hidden": true},
       {"type": "perf", "hidden": true},
       {"type": "test", "hidden": true}
-    \],
+    ],
     "commitUrlFormat": "https://github.com/mokkapps/changelog-generator-demo/commits/{{hash}}",
     "compareUrlFormat": "https://github.com/mokkapps/changelog-generator-demo/compare/{{previousTag}}...{{currentTag}}"
   }

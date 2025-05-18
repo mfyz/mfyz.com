@@ -21,7 +21,7 @@ CLS
  END IF
 
 KALANBUL:
- C = N - INT(N / M) \* M
+ C = N - INT(N / M) * M
  IF C = 0 THEN
   PRINT "OBEB = ", M
   END

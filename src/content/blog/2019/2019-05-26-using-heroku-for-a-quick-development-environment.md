@@ -39,10 +39,10 @@ remote: -----> Node.js app detected
 remote:
 remote: -----> Creating runtime environment
 remote:
-remote: NPM\_CONFIG\_LOGLEVEL=error
-remote: NODE\_VERBOSE=false
-remote: NODE\_ENV=production
-remote: NODE\_MODULES\_CACHE=true
+remote: NPM_CONFIG_LOGLEVEL=error
+remote: NODE_VERBOSE=false
+remote: NODE_ENV=production
+remote: NODE_MODULES_CACHE=true
 remote:
 remote: -----> Installing binaries
 remote: engines.node (package.json): 10.13.0
@@ -64,7 +64,7 @@ remote: http://sharp-rain-871.herokuapp.com (http://sharp-rain-871.herokuapp.com
 remote:
 remote: Verifying deploy... done.
 To https://git.heroku.com/nameless-savannah-4829.git
-\* \[new branch\] master → master
+* [new branch] master → master
 ```
 
 I highly suggest all developers adapt Heroku in their workflow, at least for the sandbox & playground purposes.

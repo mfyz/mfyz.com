@@ -19,8 +19,8 @@ Bu hesaplama aslında basit bir matematiksel bir hesap gibi görünse de aslınd
 
 ```
 $now = new DateTime();
-$created = new DateTime($\_entry\['created\_at'\]);
-$diff = date\_diff($now, $created);
+$created = new DateTime($_entry['created_at']);
+$diff = date_diff($now, $created);
 $days = $diff->format('%d');
 $hours = $diff->format('%h');
 $mins = $diff->format('%i');

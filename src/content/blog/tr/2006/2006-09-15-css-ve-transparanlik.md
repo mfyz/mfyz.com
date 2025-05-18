@@ -40,8 +40,8 @@ Bu kodda “transparan” sınıflı nesneler 50% saydam görünecektir. Tabiki 
 
 Kodunuzda interval koyarak belirli sürede 1'er 1'er veya 5'er 5'er opacity düştüğünüzü varsayarsak
 ```
-document.getElementById("nesne\_id").style.opacity = '0.' + deger;
-document.getElementById("nesne\_id").style.filter = 'alpha(Opacity=' + deger + ')';
+document.getElementById("nesne_id").style.opacity = '0.' + deger;
+document.getElementById("nesne_id").style.filter = 'alpha(Opacity=' + deger + ')';
 
 ```
 nesne adreslemeleri ile obenin anlık transparanlığını değiştirebilirsiniz. Interval'in boyutuna göre nesne o hızda ya kaybolur ya da oluşur.
@@ -51,10 +51,10 @@ nesne adreslemeleri ile obenin anlık transparanlığını değiştirebilirsiniz
 Transparanlığı javascript ile yapabiliyoruz fakat mootools ile tabiki hepsinden daha kolay yapılıyor :)
 ```
 // dogrudan transparanlık ayarlayabilir
-$('nesne\_id').setOpacity(0.5);
+$('nesne_id').setOpacity(0.5);
 
 // veya geçiş efekti vererek yapabiliriz
-$('nesne\_id').effect('opacity').custom(0, 0.9);
+$('nesne_id').effect('opacity').custom(0, 0.9);
 
 ```
 Aynı zamanda Fx.Style ve çoğu Fx sınıfı fonksiyonlarında da rahatlıkla opacity tanımı kullanabilirsiniz.

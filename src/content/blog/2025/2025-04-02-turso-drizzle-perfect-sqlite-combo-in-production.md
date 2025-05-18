@@ -105,11 +105,11 @@ import sqlite3 from 'sqlite3';
 
 let db: ReturnType<typeof drizzle>;
 
-if (process.env.NODE\_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
   // Use Turso/libSQL
   const client = createClient({
-    url: process.env.TURSO\_DB\_URL!,
-    authToken: process.env.TURSO\_DB\_AUTH\_TOKEN, // optional if public
+    url: process.env.TURSO_DB_URL!,
+    authToken: process.env.TURSO_DB_AUTH_TOKEN, // optional if public
   });
 
   db = drizzle(client);
@@ -140,8 +140,8 @@ export const authors = sqliteTable('authors', {
 export const books = sqliteTable('books', {
   id: integer('id').primaryKey({ autoIncrement: true }),
   title: text('title').notNull(),
-  authorId: integer('author\_id').notNull().references(() => authors.id),
-  publishedYear: integer('published\_year'),
+  authorId: integer('author_id').notNull().references(() => authors.id),
+  publishedYear: integer('published_year'),
 });
 
 export const authorsRelations = relations(authors, ({ many }) => ({
@@ -150,8 +150,8 @@ export const authorsRelations = relations(authors, ({ many }) => ({
 
 export const booksRelations = relations(books, ({ one }) => ({
   author: one(authors, {
-    fields: \[books.authorId\],
-    references: \[authors.id\],
+    fields: [books.authorId],
+    references: [authors.id],
   }),
 }));
 ```

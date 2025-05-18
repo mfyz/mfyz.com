@@ -36,7 +36,7 @@ kaydetme ekranında;
 
 ![](/images/archive/tr/2004/10/qb_kullanimi_3.gif)
 
-File Name kısmı dosyanızın ismi olacaktır. Buraya Türkçe karakterler girmeyin! TAB tuşu ile alanlar arasında geçiş yapabilirsiniz. Dirs/Drivers kısmında dosyanızın hangi sürücü veya klasörler üzerine kaydolacağını seçebilirsiniz. Eğer programınızı diskete kaydetmek istiyorsanız, bu kısımda \[-A-\] sürücüsünü seçin. Format kısmı ise programın kaydedilme türüdür. Her zaman için Text olanı seçin. Diğeri kodlanmış dosyalardır. Text ise başka programlar (Notepad, edit) ile çalışabilmenizi de sağlar. TAB ile < OK >'e gelip ENTER ile iletişim kutusunu kapatalım. Böylece programımız belirttiğimiz sürücü ve klasöre belirttiğimiz ad ile belirttiğimiz türde kaydoldu.
+File Name kısmı dosyanızın ismi olacaktır. Buraya Türkçe karakterler girmeyin! TAB tuşu ile alanlar arasında geçiş yapabilirsiniz. Dirs/Drivers kısmında dosyanızın hangi sürücü veya klasörler üzerine kaydolacağını seçebilirsiniz. Eğer programınızı diskete kaydetmek istiyorsanız, bu kısımda [-A-] sürücüsünü seçin. Format kısmı ise programın kaydedilme türüdür. Her zaman için Text olanı seçin. Diğeri kodlanmış dosyalardır. Text ise başka programlar (Notepad, edit) ile çalışabilmenizi de sağlar. TAB ile < OK >'e gelip ENTER ile iletişim kutusunu kapatalım. Böylece programımız belirttiğimiz sürücü ve klasöre belirttiğimiz ad ile belirttiğimiz türde kaydoldu.
 
 #### Kayıtlı programı açmak
 
@@ -44,7 +44,7 @@ Daha önceden kaydettiğiniz bir programı açmak için, menüden "File » Open 
 
 ![](/images/archive/tr/2004/10/qb_kullanimi_4.gif)
 
-Öncelikle Dirs/Drives kısmından dosyanızın (programınızın) kayıtlı olduğu sürücü ve klasörü seçin. Mesela programınız diskette ise bu kısımda \[-A-\]'yı seçerek yan kısımdaki listeye seçilen sürücü ve klasördeki programları listeleyin. Ardından TAB tuşunu kullanarak Files kısımına yani listeye gelin. Örnekteki ekranda tek bir program görünüyor, ancak burada çok fazla dosya da bulunabilir. Bu listeden programınızı seçerek < OK > diyip programı açabilirsiniz.
+Öncelikle Dirs/Drives kısmından dosyanızın (programınızın) kayıtlı olduğu sürücü ve klasörü seçin. Mesela programınız diskette ise bu kısımda [-A-]'yı seçerek yan kısımdaki listeye seçilen sürücü ve klasördeki programları listeleyin. Ardından TAB tuşunu kullanarak Files kısımına yani listeye gelin. Örnekteki ekranda tek bir program görünüyor, ancak burada çok fazla dosya da bulunabilir. Bu listeden programınızı seçerek < OK > diyip programı açabilirsiniz.
 
 #### Programı çalıştırmak
 

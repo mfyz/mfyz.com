@@ -101,8 +101,8 @@ https://your-app-name.vercel.app/api/books
 Here’s how to add a book:
 
 ```
-curl -X POST <https://your-app-name.vercel.app/api/books> \\
-  -H "Content-Type: application/json" \\
+curl -X POST <https://your-app-name.vercel.app/api/books> \
+  -H "Content-Type: application/json" \
   -d '{"title": "The Pragmatic Programmer", "author": "Andy Hunt"}'
 
 ```

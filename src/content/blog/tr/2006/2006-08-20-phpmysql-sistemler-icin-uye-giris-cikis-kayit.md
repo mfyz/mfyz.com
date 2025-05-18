@@ -19,14 +19,14 @@ Tabiki bir veritabanına, mysql kullandığımızı varsayarak kod örnekleyece�
 
 ```
 CREATE TABLE \`uyeler\` (
-\`no\` int(10) NOT NULL auto\_increment,
+\`no\` int(10) NOT NULL auto_increment,
 \`kadi\` varchar(50) NOT NULL default '',
 \`sifre\` varchar(100) NOT NULL default '',
 \`izin\` varchar(20) NOT NULL default '',
 \`adi\` varchar(100) default NULL,
 \`eposta\` varchar(255) default NULL,
 PRIMARY KEY  (\`no\`)
-) ENGINE=MyISAM AUTO\_INCREMENT=1 ;
+) ENGINE=MyISAM AUTO_INCREMENT=1 ;
 
 ```
 
@@ -63,28 +63,28 @@ Giriş işlemi sayfamızın (giris.php) koduna bakacak olursak:
 
 ```
 <?php
-# mysql baglantisi, sesion\_start yapilmis varsayiyoruz
+# mysql baglantisi, sesion_start yapilmis varsayiyoruz
 # bilgiler
-  $kadi  = $\_POST\["kadi"\];
-  $sifre = $\_POST\["sifre"\];
+  $kadi  = $_POST["kadi"];
+  $sifre = $_POST["sifre"];
 # kullanici bilgisi alalim
-  $sorgu = mysql\_query("select sifre from uyeler where kadi = '".$kadi."'");
-  if( mysql\_num\_rows($sorgu) != 1 ){
+  $sorgu = mysql_query("select sifre from uyeler where kadi = '".$kadi."'");
+  if( mysql_num_rows($sorgu) != 1 ){
     print '<script>alert("Kullanıcı bulunamadı!");history.back(-1);</script>';
     exit;
   }else{
     # veriyi alıyoruz
-      $bilgi = mysql\_fetch\_assoc($sorgu);
+      $bilgi = mysql_fetch_assoc($sorgu);
   }
 # sifre eslestirmesi
-  if( md5( trim($sifre) ) != $bilgi\["sifre"\] ){
+  if( md5( trim($sifre) ) != $bilgi["sifre"] ){
     print '<script>alert("Yanlış şifre girdiniz!");history.back(-1);</script>';
     exit;
   }
 # başarılı giriş yapıldı
 # oturuma kaydedip anasayfaya gidelim
-  $\_SESSION\["giris"\] = md5( "kullanic\_oturum\_" . md5( $bilgi\["sifre"\] ) . "\_ds785667f5e67w423yjgty" );
-  $\_SESSION\["kadi"\]  = $kadi;
+  $_SESSION["giris"] = md5( "kullanic_oturum_" . md5( $bilgi["sifre"] ) . "_ds785667f5e67w423yjgty" );
+  $_SESSION["kadi"]  = $kadi;
 ?>
 <script>
   alert("Başarıyla giriş yaptınız! Şimdi anasayfaya yönlendiriliyorsunuz.");
@@ -101,24 +101,24 @@ En altta ise giriş kontrolü için oturuma 2 değişken attım birisi şifre il
 
 #### Üye kontrolü, üye oturumu yönetimi
 
-Benim site geliştirme yoluma göre ilk önce sitenin statik sayfasını hazırlayıp parçalardık hatırlarsanız. Ve her işlem/modül dosyamızın başında mysql.php veya ayar.php gibi bir include edilen dosyamız vardır. İşte buna giris\_kontrol.php diye bir dosya daha ekleyin. Yani; üye'lere ait bilgileri alacağınız sayfalarda (üye kontrolü, üye alanları fln) giris\_kontrol.php diye bir php include ettirin. Her sayfanıza. giris\_kontrol.php dosyamızın kodunu verip açıklayayım :
+Benim site geliştirme yoluma göre ilk önce sitenin statik sayfasını hazırlayıp parçalardık hatırlarsanız. Ve her işlem/modül dosyamızın başında mysql.php veya ayar.php gibi bir include edilen dosyamız vardır. İşte buna giris_kontrol.php diye bir dosya daha ekleyin. Yani; üye'lere ait bilgileri alacağınız sayfalarda (üye kontrolü, üye alanları fln) giris_kontrol.php diye bir php include ettirin. Her sayfanıza. giris_kontrol.php dosyamızın kodunu verip açıklayayım :
 
 ```
 <?php
 # uye oturum degiskenleri
-  $giris\_yapilmis = false;
+  $giris_yapilmis = false;
   $uye = false;
 # kontrol ederek bilgileri dogrulayalim
-  if( !empty($\_SESSION\["giris"\]) && !empty($\_SESSION\["kadi"\]) ){
+  if( !empty($_SESSION["giris"]) && !empty($_SESSION["kadi"]) ){
   
     # kulanici bilgisini alalim
-      $sorgu = mysql\_query("select \* from uyeler where kadi='".$\_SESSION\["kadi"\]."'");
-      if( mysql\_num\_rows($sorgu) == 1 ){
+      $sorgu = mysql_query("select * from uyeler where kadi='".$_SESSION["kadi"]."'");
+      if( mysql_num_rows($sorgu) == 1 ){
       
-        $uye = mysql\_fetch\_assoc($sorgu);
+        $uye = mysql_fetch_assoc($sorgu);
         # anahtar kontrol
-          if( $\_SESSION\["giris"\]  ==  md5( "kullanic\_oturum\_" . md5( $uye\["sifre"\] ) . "\_ds785667f5e67w423yjgty" ) ){
-            $giris\_yapilmis = true;
+          if( $_SESSION["giris"]  ==  md5( "kullanic_oturum_" . md5( $uye["sifre"] ) . "_ds785667f5e67w423yjgty" ) ){
+            $giris_yapilmis = true;
           }else{
             # giris yanlis. $uye'yi silelim
             $uye = false;
@@ -129,12 +129,12 @@ Benim site geliştirme yoluma göre ilk önce sitenin statik sayfasını hazırl
 
 ```
 
-Tabiki bu sayfadan önce mysql ve ayar dosyanızın fln include edildiğini ve session\_start yapılmış olduğunu düşünüyoruz çünkü bu sayfayı her sayfanın başında include ediyoruz.
+Tabiki bu sayfadan önce mysql ve ayar dosyanızın fln include edildiğini ve session_start yapılmış olduğunu düşünüyoruz çünkü bu sayfayı her sayfanın başında include ediyoruz.
 
-Oturumdaki **kadi** değişkeni boş değilse veritabanından bilgileri alıyoruz. Eğer kullanıcı yoksa oturum açılmıyor zaten. Eğer şifre ile oluşturulan karışık cümlenin md5'i oturumdaki giris degişkeninin içeriğine eşitse bizim mantıksal koyduğumuz anahtar da doğrudur. Şimdi “giris\_yapilmis” değişkenini true yapıyoruz ve $uye dizisine mysql sonuç kümesini atıyoruz. Neden bunu yapıyoruz çünkü, sayfalarımızda doğrudan $giris\_yapilmis'i if yapılarımızda giriş yapılmış yapılmamış olduğunu hızlıca alabileceğiz. Mesela üyelere özel bir sayfanız var ise bu sayfanın başında;
+Oturumdaki **kadi** değişkeni boş değilse veritabanından bilgileri alıyoruz. Eğer kullanıcı yoksa oturum açılmıyor zaten. Eğer şifre ile oluşturulan karışık cümlenin md5'i oturumdaki giris degişkeninin içeriğine eşitse bizim mantıksal koyduğumuz anahtar da doğrudur. Şimdi “giris_yapilmis” değişkenini true yapıyoruz ve $uye dizisine mysql sonuç kümesini atıyoruz. Neden bunu yapıyoruz çünkü, sayfalarımızda doğrudan $giris_yapilmis'i if yapılarımızda giriş yapılmış yapılmamış olduğunu hızlıca alabileceğiz. Mesela üyelere özel bir sayfanız var ise bu sayfanın başında;
 
 ```
-if( !$giris\_yapilmis ){
+if( !$giris_yapilmis ){
   print 'Bu sayfa üyelere özeldir! Lütfen giriş yapın!';
   exit;
 }

@@ -35,7 +35,7 @@ Zira ilk başta teorik olarak düşündüğünüz bazı şeyler tutarlı değil 
 
 Uygulamanızı geliştirirken abonelik paketlerinizi, farklı fiyatlarla farklı periyodlarda tasarladınız diyelim. Mesela paralı üyelikle bir hizmeti web sitenizden sunuyorsunuz. Üyelik paketlerinizi ufak indirimlerle 1 yıllık, 6 aylık, 3 aylık ve 1 aylık olarak ayarladınız (bunlar Apple'in sunduğu periyodlar, daha uzun veya özel bir periyodda üyelik belirleyemiyorsunuz fakat sadece, haftalık, aylık ve yıllık gibi bu seçeneklerden oluşturabileceğiniz üyelik modelleri geliştirebilirsiniz).
 
-Üyelik paketlerinizi farklı ürünler olarak iTunes connect'de tanımlamanız gerekiyor. Burada önemli nokta ürün kodlarını (bundle id) ilişkili biçimde tanımlamanız. Diyelim ki uyelik1, uyelik3, uyelik6 ve uyelik12 şeklinde tanımladınız ürün kodlarınızı. iTunes ile haberleştiğiniz bütün arabirimlerden ürün kodlarını şu şekilde alacaksınız: "com.gelistirici\_kimlik\_adiniz.uyelik6" burada com kısmı sabit, sonraki kısım geliştirici adınız (bizimki "moonit") sonra da ürün kodunuzu gelecek.
+Üyelik paketlerinizi farklı ürünler olarak iTunes connect'de tanımlamanız gerekiyor. Burada önemli nokta ürün kodlarını (bundle id) ilişkili biçimde tanımlamanız. Diyelim ki uyelik1, uyelik3, uyelik6 ve uyelik12 şeklinde tanımladınız ürün kodlarınızı. iTunes ile haberleştiğiniz bütün arabirimlerden ürün kodlarını şu şekilde alacaksınız: "com.gelistirici_kimlik_adiniz.uyelik6" burada com kısmı sabit, sonraki kısım geliştirici adınız (bizimki "moonit") sonra da ürün kodunuzu gelecek.
 
 iOS uygulamanızda bir UIView ekleyip ilgili bir view kodlayıp StoreKit entegrasyonunu yapmanız gerekiyor. Aşağıda üstünde çalıştığım uygulamadaki üyelik satın alma ekranını görebilirsiniz.
 
@@ -45,70 +45,70 @@ Bu butonlarla ilgili aksiyonlara da StoreKit'i entegre etmeniz gerekiyor. StoreK
 
 #### Abonelik doğrulama, normal doğrulamayla neredeyse aynı
 
-Doğrulama sunucularından gelen cevap, abonelik türündeki ürünler için bazı farklılıklar gösteriyor. Cevap (json) nesnesinde "receipt"a ek olarak "latest\_receipt\_info" adında bir nesne daha alacaksınız. Kullanıcının yaptığı ilk ödemenin doğrulama sonucunda bu iki nesne (receipt ve last\_receipt\_info nesneleri) denk olacaktır. Apple, kullanıcıdan yeni ödeme aldığı zaman, bu doğrulamayı yaptığınızda "latest\_receipt\_info" nesnesiyle size yeni bir fatura kopyası vermeye başlayacaktır. Bu yeni fatura kopyası tekrar eden aboneliğin yeni dönemine ait ödeme anlamına gelir ve yeni döneme ait detayları içerecektir.
+Doğrulama sunucularından gelen cevap, abonelik türündeki ürünler için bazı farklılıklar gösteriyor. Cevap (json) nesnesinde "receipt"a ek olarak "latest_receipt_info" adında bir nesne daha alacaksınız. Kullanıcının yaptığı ilk ödemenin doğrulama sonucunda bu iki nesne (receipt ve last_receipt_info nesneleri) denk olacaktır. Apple, kullanıcıdan yeni ödeme aldığı zaman, bu doğrulamayı yaptığınızda "latest_receipt_info" nesnesiyle size yeni bir fatura kopyası vermeye başlayacaktır. Bu yeni fatura kopyası tekrar eden aboneliğin yeni dönemine ait ödeme anlamına gelir ve yeni döneme ait detayları içerecektir.
 
-Ayrıca bu fatura kopyalarında expires\_date, expires\_date\_formatted ve expires\_date\_formatted\_pst adında ek alanlar göreceksiniz, bunlar satın alınan abonelik periyodunun bitimini gösterecektir. Şurada örnek fatura kopyasını görebilirsiniz:
+Ayrıca bu fatura kopyalarında expires_date, expires_date_formatted ve expires_date_formatted_pst adında ek alanlar göreceksiniz, bunlar satın alınan abonelik periyodunun bitimini gösterecektir. Şurada örnek fatura kopyasını görebilirsiniz:
 ```
 {
    "receipt":{
-      "expires\_date\_formatted":"2012-12-12 00:15:05 Etc\\/GMT",
-      "original\_purchase\_date\_pst":"2012-09-11 16:15:06 America\\/Los\_Angeles",
-      "unique\_identifier":"cd1995d3e5e354678d4c2e1b8ee96b",
-      "original\_transaction\_id":"45134563485",
-      "expires\_date":"1355271305612",
-      "app\_item\_id":"462345637",
-      "transaction\_id":"4500023456385",
+      "expires_date_formatted":"2012-12-12 00:15:05 Etc\/GMT",
+      "original_purchase_date_pst":"2012-09-11 16:15:06 America\/Los_Angeles",
+      "unique_identifier":"cd1995d3e5e354678d4c2e1b8ee96b",
+      "original_transaction_id":"45134563485",
+      "expires_date":"1355271305612",
+      "app_item_id":"462345637",
+      "transaction_id":"4500023456385",
       "quantity":"1",
-      "expires\_date\_formatted\_pst":"2012-12-11 16:15:05 America\\/Los\_Angeles",
-      "product\_id":"com.moonit.moonit.premium3",
+      "expires_date_formatted_pst":"2012-12-11 16:15:05 America\/Los_Angeles",
+      "product_id":"com.moonit.moonit.premium3",
       "bvrs":"1.6",
-      "web\_order\_line\_item\_id":"45002345422477",
-      "original\_purchase\_date\_ms":"134723435406809",
-      "version\_external\_identifier":"881234583",
+      "web_order_line_item_id":"45002345422477",
+      "original_purchase_date_ms":"134723435406809",
+      "version_external_identifier":"881234583",
       "bid":"com.moonit.moonit",
-      "purchase\_date\_ms":"1347405305612",
-      "purchase\_date":"2012-09-11 23:15:05 Etc\\/GMT",
-      "purchase\_date\_pst":"2012-09-11 16:15:05 America\\/Los\_Angeles",
-      "original\_purchase\_date":"2012-09-11 23:15:06 Etc\\/GMT",
-      "item\_id":"5471234234"
+      "purchase_date_ms":"1347405305612",
+      "purchase_date":"2012-09-11 23:15:05 Etc\/GMT",
+      "purchase_date_pst":"2012-09-11 16:15:05 America\/Los_Angeles",
+      "original_purchase_date":"2012-09-11 23:15:06 Etc\/GMT",
+      "item_id":"5471234234"
    },
-   "latest\_receipt\_info":{
-      "original\_purchase\_date\_pst":"2012-09-11 16:15:06 America\\/Los\_Angeles",
-      "unique\_identifier":"cd1995dae576afe567567afec67fd4c2e1b8ee96b",
-      "original\_transaction\_id":"450234343485",
-      "expires\_date":"1355271305000",
-      "app\_item\_id":"469123454637",
-      "transaction\_id":"452345345",
+   "latest_receipt_info":{
+      "original_purchase_date_pst":"2012-09-11 16:15:06 America\/Los_Angeles",
+      "unique_identifier":"cd1995dae576afe567567afec67fd4c2e1b8ee96b",
+      "original_transaction_id":"450234343485",
+      "expires_date":"1355271305000",
+      "app_item_id":"469123454637",
+      "transaction_id":"452345345",
       "quantity":"1",
-      "product\_id":"com.moonit.moonit.premium3",
+      "product_id":"com.moonit.moonit.premium3",
       "bvrs":"1.6",
       "bid":"com.moonit.moonit",
-      "web\_order\_line\_item\_id":"4234567642477",
-      "original\_purchase\_date\_ms":"1347405306000",
-      "expires\_date\_formatted":"2012-12-12 00:15:05 Etc\\/GMT",
-      "purchase\_date":"2012-09-11 23:15:05 Etc\\/GMT",
-      "purchase\_date\_ms":"1347405305000",
-      "expires\_date\_formatted\_pst":"2012-12-11 16:15:05 America\\/Los\_Angeles",
-      "purchase\_date\_pst":"2012-09-11 16:15:05 America\\/Los\_Angeles",
-      "original\_purchase\_date":"2012-09-11 23:15:06 Etc\\/GMT",
-      "item\_id":"54223456743624"
+      "web_order_line_item_id":"4234567642477",
+      "original_purchase_date_ms":"1347405306000",
+      "expires_date_formatted":"2012-12-12 00:15:05 Etc\/GMT",
+      "purchase_date":"2012-09-11 23:15:05 Etc\/GMT",
+      "purchase_date_ms":"1347405305000",
+      "expires_date_formatted_pst":"2012-12-11 16:15:05 America\/Los_Angeles",
+      "purchase_date_pst":"2012-09-11 16:15:05 America\/Los_Angeles",
+      "original_purchase_date":"2012-09-11 23:15:06 Etc\/GMT",
+      "item_id":"54223456743624"
    },
    "status":0,
-   "latest\_receipt":"<<< KODLANMIS FATURA VERISI >>>"
+   "latest_receipt":"<<< KODLANMIS FATURA VERISI >>>"
 }
 
 ```
-Her abonelik periyodu bitiminde eğer kullanıcınız aboneliğini iptal etmediyse (abonelik iptalini de sadece iTunes üstünden yapabilirler), bu dizide yeni bir fatura alacaksınız. Bunun için bu dogrulamayı her periyod bitiminde tekrarlamanız gerekiyor. Bunun için en doğru yol, bir cron scripti hazırlayıp bunu günlük olarak çalıştırıp her gün, periyodun sonuna gelmiş, geçerli faturaları doğrulatmalı ve latest\_receipt\_info yeni bir receipt alıp almadığınızı kontrol etmeniz gerekir.
+Her abonelik periyodu bitiminde eğer kullanıcınız aboneliğini iptal etmediyse (abonelik iptalini de sadece iTunes üstünden yapabilirler), bu dizide yeni bir fatura alacaksınız. Bunun için bu dogrulamayı her periyod bitiminde tekrarlamanız gerekiyor. Bunun için en doğru yol, bir cron scripti hazırlayıp bunu günlük olarak çalıştırıp her gün, periyodun sonuna gelmiş, geçerli faturaları doğrulatmalı ve latest_receipt_info yeni bir receipt alıp almadığınızı kontrol etmeniz gerekir.
 
-Bu noktada bir faturayı veya ödemeyi tekil olarak tespit etme probleminiz olacak, çünkü yukarıdaki json'da cevabındaki verilerin neredeyse hepsi iTunes ile ilgili veriler, hangisinin ne anlama geldiklerini çok kolayca anlayamayabiliriz. Daha önce transaction\_id'nin tekil olmadığını, bir ödeme için birden farklı transaction\_id'ye sahip fatura kopyası alabileceğinizi söylemiştim diğer yazıda. Burada da durum aynı. Onun için bir ödemeyi (finanasal açıdan bir fatura kopyasının gerçek bir ödemeyi ifade edip etmediğini) tespit etmek için transaction\_id'yi kullanmayacağız. Siz doğrulama sonucunda aldığınız her fatura kopyasını yine de veritabanınızda saklamayı unutmayın, geçerli olmasalar bile saklamanızı tavsiye ediyorum. En azından bu problemi ne sıklıkta yaşadığınızı farkedebilirsiniz.
+Bu noktada bir faturayı veya ödemeyi tekil olarak tespit etme probleminiz olacak, çünkü yukarıdaki json'da cevabındaki verilerin neredeyse hepsi iTunes ile ilgili veriler, hangisinin ne anlama geldiklerini çok kolayca anlayamayabiliriz. Daha önce transaction_id'nin tekil olmadığını, bir ödeme için birden farklı transaction_id'ye sahip fatura kopyası alabileceğinizi söylemiştim diğer yazıda. Burada da durum aynı. Onun için bir ödemeyi (finanasal açıdan bir fatura kopyasının gerçek bir ödemeyi ifade edip etmediğini) tespit etmek için transaction_id'yi kullanmayacağız. Siz doğrulama sonucunda aldığınız her fatura kopyasını yine de veritabanınızda saklamayı unutmayın, geçerli olmasalar bile saklamanızı tavsiye ediyorum. En azından bu problemi ne sıklıkta yaşadığınızı farkedebilirsiniz.
 
-Abonelik türündeki bu ödemeleri tekil olarak tespit etmek için fatura kopyalarında gelen expires\_at tarihi original\_transaction\_id ile beraber kullanacağız. Kullanıcınız bir abonelik satın aldığı zaman orijinal bir ödeme gerçekleştirir ve aboneliklerini iptal edene kadar ne kadar ödeme yapmış olurlarsa olsun original\_transaction\_id hep aynı kalacaktır. Zaten ilk ödemeden sonrasındaki ödemeler otomatik ödeme olacaktır.
+Abonelik türündeki bu ödemeleri tekil olarak tespit etmek için fatura kopyalarında gelen expires_at tarihi original_transaction_id ile beraber kullanacağız. Kullanıcınız bir abonelik satın aldığı zaman orijinal bir ödeme gerçekleştirir ve aboneliklerini iptal edene kadar ne kadar ödeme yapmış olurlarsa olsun original_transaction_id hep aynı kalacaktır. Zaten ilk ödemeden sonrasındaki ödemeler otomatik ödeme olacaktır.
 
 #### Aboneliğin iptal edildiğini nasıl tespit edeceksiniz?
 
-Hazırladığınız cron scripti her gün 1 kere çalışıyor diyelim. Veritabanınızdaki faturaların expires\_date'ine birkaç gün tolerans ekleyerek abonelik periyodu bitmeden birkaç gün önce dogrulamaya başlayabilirsiniz, Apple çoğu zaman yeni periyoda ait ödemeyi otomatik olarak periyod bitiminden bir veya birkaç gün önce işleme alacaktır. Bu durumda size de yeni fatura kopyası vermesi muhtemel.
+Hazırladığınız cron scripti her gün 1 kere çalışıyor diyelim. Veritabanınızdaki faturaların expires_date'ine birkaç gün tolerans ekleyerek abonelik periyodu bitmeden birkaç gün önce dogrulamaya başlayabilirsiniz, Apple çoğu zaman yeni periyoda ait ödemeyi otomatik olarak periyod bitiminden bir veya birkaç gün önce işleme alacaktır. Bu durumda size de yeni fatura kopyası vermesi muhtemel.
 
-Yukarıda söylediğim "latest\_receipt\_info" tutarlı şekilde bu adı almıyor. Eğer kullanıcınız aboneliğini iptal ettirmişse bu faturayı doğruladığınızda, doğrulama cevabının status kodu 21006 olacaktır. Bu durumda aynı nesne doğrulama cevabında "latest\_receipt\_info" yerine "latest\_expired\_receipt\_info" adıyla yer alacaktır. Zamanı dolmuş (expired) bir fatura kopyasının anlamı, üyeniz, son dönemde aboneliğini iptal etmiş demektir. Bu durumu yakaladığınızda sunduğunuz hizmetin, son dönemin bitiş tarihinde sona erecek şekilde ayarlamanız gerekir. Burada üyeliği hemen iptal etmemeniz ve hizmeti hemen durdurmamanız gerektiğini unutmayın. Çünkü faturayı doğruladığınızda kullanıcı aboneliğini iptal ettirmiş ancak son döneme ait ödeme yapıldığı için, kullanıcının servisini dönem sonuna kadar devam ettirmeniz gerekir.
+Yukarıda söylediğim "latest_receipt_info" tutarlı şekilde bu adı almıyor. Eğer kullanıcınız aboneliğini iptal ettirmişse bu faturayı doğruladığınızda, doğrulama cevabının status kodu 21006 olacaktır. Bu durumda aynı nesne doğrulama cevabında "latest_receipt_info" yerine "latest_expired_receipt_info" adıyla yer alacaktır. Zamanı dolmuş (expired) bir fatura kopyasının anlamı, üyeniz, son dönemde aboneliğini iptal etmiş demektir. Bu durumu yakaladığınızda sunduğunuz hizmetin, son dönemin bitiş tarihinde sona erecek şekilde ayarlamanız gerekir. Burada üyeliği hemen iptal etmemeniz ve hizmeti hemen durdurmamanız gerektiğini unutmayın. Çünkü faturayı doğruladığınızda kullanıcı aboneliğini iptal ettirmiş ancak son döneme ait ödeme yapıldığı için, kullanıcının servisini dönem sonuna kadar devam ettirmeniz gerekir.
 
 \## Yazdığınız doğrulama scriptini test etmek
 

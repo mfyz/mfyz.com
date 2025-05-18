@@ -10,7 +10,7 @@ migration: {"wpId":703,"wpPostDate":"2021-10-19T14:00:00.000Z"}
 
 ![by Remy_Loz](/images/archive/en/2021/10/3S0INpfREQc.jpg)
 
-by Remy\_Loz
+by Remy_Loz
 
 Before I upgraded to the new M1 machine, I was having a lot of speed issues with my previous Intel Macbook Pro. A month before giving up and buying a new M1 MacbookAir, I suspected that the macOS installation and apps/tools I installed over many years were perhaps the sources of the speed issues. I backed everything up and planned a clean re-install on the Intel Macbook Pro. End result is not seeing the speed lift I expected and finally giving in to buy a new M1 Macbook Air which has been amazing as far as the speed I wanted from my computer.
 
@@ -105,14 +105,14 @@ I also include a few cheatsheets of keyboard shortcuts or commands for tools lik
 
 Running install script doesn’t get everything 100% set up. Or for certain environments, I don’t want to install some of the tools. So for those tools, I have a few more scripts that does the setup work for me.
 
-*   Setup and configure zsh + oh-my-zsh: [https://github.com/mfyz/dotfiles/blob/master/\_bootstrap/zsh.sh](https://github.com/mfyz/dotfiles/blob/master/_bootstrap/zsh.sh)
-*   Set up Vim plugins: [https://github.com/mfyz/dotfiles/blob/master/\_bootstrap/vim.sh](https://github.com/mfyz/dotfiles/blob/master/_bootstrap/vim.sh) (after vim package manager is installed, you still need to open vim and run :PluginInstall command to install all the plugins used in my vimrc).
+*   Setup and configure zsh + oh-my-zsh: [https://github.com/mfyz/dotfiles/blob/master/_bootstrap/zsh.sh](https://github.com/mfyz/dotfiles/blob/master/_bootstrap/zsh.sh)
+*   Set up Vim plugins: [https://github.com/mfyz/dotfiles/blob/master/_bootstrap/vim.sh](https://github.com/mfyz/dotfiles/blob/master/_bootstrap/vim.sh) (after vim package manager is installed, you still need to open vim and run :PluginInstall command to install all the plugins used in my vimrc).
 
 ### SSH settings + Keys
 
 I always manually back up and restore my ~/.ssh folder where I have both ssh configurations as well as all the keys I store on my machine. Most of the keys are backed up to 1password (more than half of them are shared with the team).
 
-### \[/private\]/etc/hosts file content
+### [/private]/etc/hosts file content
 
 I use MAMP Pro to manage my LAMP stack apps and apache/mysql installation. So hosts file is generally automatically populated. But when moving to a new machine I always try to keep a copy of the hosts file so I can easily refer to the hostnames I was working on and the ones I want to restore manually.
 
@@ -176,11 +176,11 @@ Here is the help document for Table Plus for exporting and importing connection 
 ```
 const fs = require('fs')  
 const path = require('path')  
-const { execSync, spawnSync } = require('child\_process')  
+const { execSync, spawnSync } = require('child_process')  
   
 const runCmd = (cmd) => {  
     try {  
-        const res = spawnSync(cmd, \[\], { shell: true })  
+        const res = spawnSync(cmd, [], { shell: true })  
         return res.stdout.toString()  
     }  
     catch (err) {  
@@ -191,16 +191,16 @@ const runCmd = (cmd) => {
 const root = './'  
 const ls = fs.readdirSync(root)  
   
-const results = \[\]  
+const results = []  
 ls.forEach((dir) => {  
     if (fs.lstatSync(path.join(root, dir)).isDirectory()) {  
         const result = runCmd(\`cd ${path.join(root, dir)} && git remote -v && cd ..\`, { stdio: 'inherit' })  
-        const gitRemote = result && result.split('\\t')\[1\].split(' ')\[0\]  
+        const gitRemote = result && result.split('\t')[1].split(' ')[0]  
         // if (gitRemote && gitRemote.indexOf('ship.nomadinteractive.co') > 0) {  
-        results.push(\[  
+        results.push([  
             dir,  
             (gitRemote || '-')  
-        \])      
+        ])      
         // }  
     }  
 })  

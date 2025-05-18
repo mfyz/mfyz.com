@@ -41,26 +41,26 @@ DOM'da seçici fonksiyonlar vardır bilirsiniz. getElementById(), getElementsByC
 
 **$ Fonksiyonu** elemanları kimliklerine göre seçer. getElementById(); ile aynı işi yapıyor aslında
 ```
-eleman = document.getElementById('anasayfa\_butonu');
+eleman = document.getElementById('anasayfa_butonu');
 // ile aşağıdaki tanım aynı işi görür
-eleman = $('anasayfa\_butonu');
+eleman = $('anasayfa_butonu');
 
 ```
 **$$ Fonksiyonu** az önce yazdığımız css adreslemesinde bulduğu elemanları nesne dizesi olarak verir.
 
 Örneğin ipucu sınıfındaki tüm linkleri seçtirelim
 ```
-$$('a.ipucu')
+$('a.ipucu')
 
 ```
 icerik kimliği içindeki ipucu sınıflı tüm linker :
 ```
-$$('#ipucu a.ipucu')
+$('#ipucu a.ipucu')
 
 ```
 ya da birden fazla sınıf adreslemesine ait elemanların hepsi :
 ```
-$$('a.ipucu, a.eposta, span.bilgi')
+$('a.ipucu, a.eposta, span.bilgi')
 
 ```
 Şimdilik pek oturmadı farkındayım ama birkaç örnek yapalım eminim daha iyi anlayacaksınız :
@@ -108,14 +108,14 @@ Mesela elimizde 4-5 linkten oluşan bir menü olsun. Aynı zamanda sayfamızın 
 ```
 Gördüğünüz gibi basit bir html dosyası. Şimdi menudeki tüm linkleri seçip bir güzellik yapalım :)
 ```
-$$('#menu a').each(function(link){
+$('#menu a').each(function(link){
   alert( link.getProperty('title') );
 });
 
 ```
 $$ ile aldığımız nesneleri **each** ile dönüyoruz. içerideki fonksiyona verdiğimiz link parametresi dizi dönerken elemanın nesnesini ifade ediyor. Böylece o elemanlar üzerinde istediğimizi yapabiliyoruz. İçeride basitçe linklerdeki title argümanına atadığım açıklama metinlerini alert ettirdim. Ama bu sayfa yüklenirken yapılır be birşey anlamazsınız. Daha güzel bir örnek vermek gerekirse :
 ```
-$$('#menu a').each(function(link){
+$('#menu a').each(function(link){
   link.addEvents({
     'mouseover': function(){
       window.status = link.getProperty('title');
@@ -131,8 +131,8 @@ Linklerin üzerine geldiğinizde sayfa statusbar'ında linklerin url'leri yerine
 
 Mesela kullanılabilir bir örnek için de sayfada içerikten sonraki linkler kısmında birşeyler yapalım. O linkler site dışı linkler ve target'ları yok gördüğünüz gibi. Yani linkler doğrudan sayfa üzerinde açılacaklar. Bu linkleri yeni pencerede açtıralım.
 ```
-$$('#linklerim a').each(function(a){
-  a.setProperty('target', '\_blank');
+$('#linklerim a').each(function(a){
+  a.setProperty('target', '_blank');
 });
 
 ```
@@ -149,12 +149,12 @@ CSS seçiciler ile tek eleman seçtirmek istediğinizde, mesela bir sürü elema
 ```
 az önceki örnekte alttaki linklerin etiketinde hepsine sınıf eklediğimizi düşünelim. Google linkine de google sınıfı atadık. Fakat bu sınıfa tek eleman var. Sadece o link var. Ancak CSS seçiciler her zaman dizi döner.
 ```
-$$('#linklerim a.google')
+$('#linklerim a.google')
 
 ```
 olarak seçmek istediğinizde tek elemanlı bir dizi dönecektir.
 ```
-$$('#linklerim a.google')\[0\]
+$('#linklerim a.google')[0]
 
 ```
 ile kolayca elemanınıza ulaşabilir, üzerinde işlemler yapabilirsiniz.

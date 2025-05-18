@@ -37,7 +37,7 @@ echo "--> backing up mfyz.com"
 echo "files backup..."
 tar cpf backup-mfyz-$now-files.tar --exclude=Files --exclude=wp-content/uploads --exclude=wp-content/cache --exclude=tr/wp-content/uploads --exclude=tr/wp-content/cache --exclude=.git ../www/mfyz
 echo "database backup..."
-sudo mysqldump mfyz\_wp | gzip > backup-mfyz-$now-db.sql.gz
+sudo mysqldump mfyz_wp | gzip > backup-mfyz-$now-db.sql.gz
 echo "done"
 ```
 

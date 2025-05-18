@@ -14,9 +14,9 @@ Linuxta kablosuz ağ ayarları basit network konfigürasyonundan farksız aslın
 Module                  Size  Used by
 ...
 ipw2200                66156  0
-firmware\_class          9728  1 ipw2200
+firmware_class          9728  1 ipw2200
 ieee80211              21252  1 ipw2200
-ieee80211\_crypt         5832  2 ieee80211\_crypt\_wep,ieee80211
+ieee80211_crypt         5832  2 ieee80211_crypt_wep,ieee80211
 ...
 
 ```
@@ -118,7 +118,7 @@ Görüldüğü üzere 192.168.2.4 masası bize ayrıldı, yemeğe başlayalım..
 ```
 root@tux:/home/fatih # ping google.com
 PING google.com (216.239.57.99) 56(84) bytes of data.
-64 bytes from google.com (216.239.57.99): icmp\_seq=1 ttl=239 time=257 ms
+64 bytes from google.com (216.239.57.99): icmp_seq=1 ttl=239 time=257 ms
 
 --- google.com ping statistics ---
 1 packets transmitted, 1 received, 0% packet loss, time 0ms

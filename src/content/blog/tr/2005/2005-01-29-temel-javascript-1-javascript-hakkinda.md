@@ -36,12 +36,12 @@ Değişken tanımları Java ve c tabanlı dillerdeki gibi;
 var a = "deneme";
 // veya
 a = "deneme";
-/\* tanımlanmamış değişkenler kullanılırken hata verir. \*/
+/* tanımlanmamış değişkenler kullanılırken hata verir. */
 
 ```
 şeklinde tanımlanıyor.
 
-Görüğünüz gibi açıklama satırları da // ve /\* \*/ ile yapılıyor.
+Görüğünüz gibi açıklama satırları da // ve /* */ ile yapılıyor.
 
 Yazacağınız kodlara bol bol açıklama koymayı unutmayın, çünkü açıklamalar hata yakalamanızı kolaylaştırır, yapılan işlemleri daha rahat görmenizi sağlar. Zira aynı koda 2 ay sonra baktığınızda herşeyi unutmuş olabilirsiniz. Ya da aynı koda başka birisi müdahale etmek zorunda kalabilir.
 
@@ -54,12 +54,12 @@ Türkiye -> Ankara -> Kızılay -> Karanfil Sokak -> XX. Apartman -> YY. Numara
 ```
 gibi, benzer şekilde her nesne kendinden bir üstteki nesnenin içinde olduğundan adresleme de bir ağaç yapısına benzetilebilir.
 ```
-window.document.nesne\_adi
+window.document.nesne_adi
 
 ```
-window aynı penceredeki çerçeveler (frame) arasında iletişirken, document, aynı dökümandaki nesneler arasında geçerli oluyor. Mesela faklı bir çerçevedeki bir resim **window.frame\_adi.resim\_adi** şeklinde oluyor.
+window aynı penceredeki çerçeveler (frame) arasında iletişirken, document, aynı dökümandaki nesneler arasında geçerli oluyor. Mesela faklı bir çerçevedeki bir resim **window.frame_adi.resim_adi** şeklinde oluyor.
 
-JavaScript'de bu bölümde en önemli nokta formlarda. Formlar kendi kategorisi içerisinde değerlendiriliyor. Mesela bir formdaki ad şeklindeki bi textfield'ın adresi **document.form\_adi.text\_input\_adi** oluyor.
+JavaScript'de bu bölümde en önemli nokta formlarda. Formlar kendi kategorisi içerisinde değerlendiriliyor. Mesela bir formdaki ad şeklindeki bi textfield'ın adresi **document.form_adi.text_input_adi** oluyor.
 
 Sayfanızda kullandığınız nesneleri adreslemek için gereksiz formlar eklemenize gerek yoktur. Mesela, bir input'u sadece bir efektin taşıyıcısı olarak kullanacaksak bunun için bir form daha eklememiz gerekmez. Normalde form nesneleri bir formun içerisinde değilse doğrudan document'dan sonra belirterek erişilemez. Bir form bulunmadığında ise bu nesnemizin etikentinde id şeklinde belirttiğimiz prametreyi kullanarak adresini alabiliriz. Bu işi de document nesnesinin bir özelliği yardımı ile yapıyoruz.
 ```

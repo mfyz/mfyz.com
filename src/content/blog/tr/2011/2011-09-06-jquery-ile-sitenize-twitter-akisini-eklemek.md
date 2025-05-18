@@ -14,7 +14,7 @@ Twitter'in kendi widgetları sayesinde twitter hesabınızın public timeline ya
 Bu json nesnesinin adresi
 
 ```
-http://api.twitter.com/1/statuses/user\_timeline.json?screen\_name=mfyz&count=10&callback=?
+http://api.twitter.com/1/statuses/user_timeline.json?screen_name=mfyz&count=10&callback=?
 
 ```
 
@@ -26,19 +26,57 @@ Size bu işi yapan tüm kodu verip sonra kod üstünden açıklayacağım:
 
 ```
 var $tweetList;
-var $tweetUrl = 'http://api.twitter.com/1/statuses/user\_timeline.json?screen\_name=mfyz&&count=10&callback=?';
+var $tweetUrl = 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=mfyz&&count=10&callback=?';
 $.getJSON($tweetUrl, function (data) {
     $.each(data, function (i, item) {
         if (i == 0) {
             $tweetList = $('<ul class="tweetList">');
         }
         // handle @reply filtering
-        if (item.in\_reply\_to\_status\_id === null) {
-            $tweetList.append('<li class="tweet\_content\_' + i + '">' +
-                '<p class="tweet\_link\_' + i + '">' +
-                item.text.replace(/#(.\*?)(\\s|$)/g, '<span class="hash">#$1 </span>')
-                    .replace(/(\\b(https?|ftp|file):\\/\\/\[-A-Z0-9+&@#\\/%?=~\_|!:,.;\]\*\[-A-Z0-9+&@#\\/%=~\_|\])/ig, '<a href="$&">$&</a> ')
-                    .replace(/@(.\*?)(\\s|\\(|\\)|$)/g, '<a href="http://twitter.com/$1">@$1 </a>$2') +
+        if (item.in_reply_to_status_id === null) {
+            $tweetList.append('<li class="tweet_content_' + i + '">' +
+                '<p class="tweet_link_' + i + '">' +
+                item.text.replace(/#(.*?)(\s|$)/g, '<span class="hash">#$1 </span>')
+                    .replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig, '<a href="var $tweetList;
+var $tweetUrl = 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=mfyz&&count=10&callback=?';
+$.getJSON($tweetUrl, function (data) {
+    $.each(data, function (i, item) {
+        if (i == 0) {
+            $tweetList = $('<ul class="tweetList">');
+        }
+        // handle @reply filtering
+        if (item.in_reply_to_status_id === null) {
+            $tweetList.append('<li class="tweet_content_' + i + '">' +
+                '<p class="tweet_link_' + i + '">' +
+                item.text.replace(/#(.*?)(\\s|$)/g, '<span class="hash">#$1 </span>')
+                    .replace(/(\\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig, '<a href="$&">$&</a> ')
+                    .replace(/@(.*?)(\\s|\(|\)|$)/g, '<a href="http://twitter.com/$1">@$1 </a>$2') +
+                '</p></li>');
+        }
+    });
+    $('#tweetStream').html($tweetList);
+});
+">var $tweetList;
+var $tweetUrl = 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=mfyz&&count=10&callback=?';
+$.getJSON($tweetUrl, function (data) {
+    $.each(data, function (i, item) {
+        if (i == 0) {
+            $tweetList = $('<ul class="tweetList">');
+        }
+        // handle @reply filtering
+        if (item.in_reply_to_status_id === null) {
+            $tweetList.append('<li class="tweet_content_' + i + '">' +
+                '<p class="tweet_link_' + i + '">' +
+                item.text.replace(/#(.*?)(\\s|$)/g, '<span class="hash">#$1 </span>')
+                    .replace(/(\\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig, '<a href="$&">$&</a> ')
+                    .replace(/@(.*?)(\\s|\(|\)|$)/g, '<a href="http://twitter.com/$1">@$1 </a>$2') +
+                '</p></li>');
+        }
+    });
+    $('#tweetStream').html($tweetList);
+});
+</a> ')
+                    .replace(/@(.*?)(\s|\(|\)|$)/g, '<a href="http://twitter.com/$1">@$1 </a>$2') +
                 '</p></li>');
         }
     });

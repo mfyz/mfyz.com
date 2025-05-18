@@ -25,12 +25,12 @@ Dosyalarımız encode etmek için bir kod kullanacağız. Bu işlemi başka bir 
 <?php
 $dosya = 'resim.gif';
 // dosya icerigini okuyalim
-$dosya\_binary = fopen($dosya, "r");
-$icerik\_binary = fread($dosya\_binary, filesize($dosya));
-fclose($dosya\_binary);
+$dosya_binary = fopen($dosya, "r");
+$icerik_binary = fread($dosya_binary, filesize($dosya));
+fclose($dosya_binary);
 // binary icerigi ascii'ye base64 ile cevirelim
-$icerik\_ascii = base64\_encode($icerik\_binary);
-print $icerik\_ascii;
+$icerik_ascii = base64_encode($icerik_binary);
+print $icerik_ascii;
 ?>
 
 ```
@@ -39,7 +39,7 @@ Bu kod resim.gif dosyasını ekrana ascii karakterlerle şifrelenmiş şekilde u
 
 ```
 // dosyalar
-$dosyalar\["resim.gif"\] = "R0lGODlhEAAQAMQAAGZmZsbGxaSko4OEgxl4ueT//3G59ejo6Lu7u9zd3".
+$dosyalar["resim.gif"] = "R0lGODlhEAAQAMQAAGZmZsbGxaSko4OEgxl4ueT//3G59ejo6Lu7u9zd3".
                          "DOMxXp6eqjU/5mZmX+RmdPU1LKzsfb29v///3u75a2tpY6OjczMzDqPz6".
                          "ysq////wAAAAAAAAAAAAAAAAAAAAAAACH5BAUUABkALAAAAAAQABAAAAW".
                          "JYIaNJDlNWZpiUuu2U4GqrHPd+MTItHQZEoPQoNvNWISkkjBROBUpgQQT".
@@ -51,14 +51,14 @@ $dosyalar\["resim.gif"\] = "R0lGODlhEAAQAMQAAGZmZsbGxaSko4OEgxl4ueT//3G59ejo6Lu7
 
 Yukarıda gördüğünüz şey aslında çok uzun bir string. Yani o satırlar yan yana bitişik fakat ben bu dökümanda açıkca görülebilmesi için bu hale getirdim. Bu gördüğünüz string 258 byte'lık 16x16'lık bir ikonun base64 şifresidir. 258 byte'ın bu kadar sürdüğünü düşünürseniz 10-20kb'lık bir dosyanın ne kadar uzun süreceğini tahmin edebilirsiniz. Onun için büyük dosyalarınızı php dosyanıza gömmeyin.
 
-Yukarıdaki şekilde tüm dosyalarınızı base64\_encode'dan geçirip $dosyalar dizisine dosyanın adını taşıyan indiste yazın. Unutmayın bu dizi proje dosyanızın en üstünde tanımlanmalı. Yani proje dosyanızın içinde her türlü işlemi yapıyor olabilirsiniz ama bu teknikteki kodlar dosyanın en üstünde durmalı.
+Yukarıdaki şekilde tüm dosyalarınızı base64_encode'dan geçirip $dosyalar dizisine dosyanın adını taşıyan indiste yazın. Unutmayın bu dizi proje dosyanızın en üstünde tanımlanmalı. Yani proje dosyanızın içinde her türlü işlemi yapıyor olabilirsiniz ama bu teknikteki kodlar dosyanın en üstünde durmalı.
 
 Neyse, dosyalarınızı $dosyalar dizisine kendi adları indis olacak şekilde kaydettiniz. php dosyanızın boyutu kabardı farkındaysanız (kontrol ediniz). Şimdi bu tanımların ardına ufak bir kod ile işlemi bitireceğiz.
 
 ```
-if( $\_GET\["islem"\] == 'dosya' ){
-  if( array\_key\_exists($\_GET\["dosya"\], $dosyalar) ){
-    die( base64\_decode( $dosyalar\[ $\_GET\["dosya"\] \] ) );
+if( $_GET["islem"] == 'dosya' ){
+  if( array_key_exists($_GET["dosya"], $dosyalar) ){
+    die( base64_decode( $dosyalar[ $_GET["dosya"] ] ) );
   }else{
     die("Dosya bulunamadı!");
   }
@@ -68,7 +68,7 @@ if( $\_GET\["islem"\] == 'dosya' ){
 
 ```
 
-Eğer get methodu ile islem değişkeni dosya olarak gelmişse ve get methodu ile dosya değişkeninin içeriği bizim $dosyalar dizisinde indis olarak varsa $dosyalar dizisindeki o elemanın içeriğini base64\_decode edip ekrana basıyoruz. Yoksa dosya bulunamadı hatası verip duruyoruz.
+Eğer get methodu ile islem değişkeni dosya olarak gelmişse ve get methodu ile dosya değişkeninin içeriği bizim $dosyalar dizisinde indis olarak varsa $dosyalar dizisindeki o elemanın içeriğini base64_decode edip ekrana basıyoruz. Yoksa dosya bulunamadı hatası verip duruyoruz.
 
 #### Nasıl kullanacaksınız?
 
@@ -82,7 +82,7 @@ Projenin devamındaki bir kısımda
 şeklinde kullandığınızda dosyanız resim olarak görüntülenecektir. Aynı şeyi bir arşiv dosyası için de yapabilirsiniz.
 
 ```
-<a href="index.php?islem=dosya&dosya=kurulum\_dokumani.pdf">Dosyayı indirmek için tıklayın</a>
+<a href="index.php?islem=dosya&dosya=kurulum_dokumani.pdf">Dosyayı indirmek için tıklayın</a>
 
 ```
 
@@ -95,11 +95,11 @@ Yukarıdaki kodları ayrı bir dosya olarak kaydedip dosyalarınızı tek parça
 ```
 <?php
 // dosyalar
-$dosyalar\["..."\] = "....";
-$dosyalar\["..."\] = "....";
+$dosyalar["..."] = "....";
+$dosyalar["..."] = "....";
 // gosterelim
-if( array\_key\_exists($\_GET\["dosya"\], $dosyalar) ){
-  die( base64\_decode( $dosyalar\[ $\_GET\["dosya"\] \] ) );
+if( array_key_exists($_GET["dosya"], $dosyalar) ){
+  die( base64_decode( $dosyalar[ $_GET["dosya"] ] ) );
 }else{
   die("Dosya bulunamadı!");
 }

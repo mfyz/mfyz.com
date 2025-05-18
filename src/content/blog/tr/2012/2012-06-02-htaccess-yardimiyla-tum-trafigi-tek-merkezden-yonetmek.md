@@ -9,13 +9,13 @@ migration: {"wpId":163,"wpPostDate":"2012-06-02T00:23:54.000Z"}
 lang: tr
 ---
 
-URL şemaları, SEO amacıyla önem taşımakta. Bunun yanı sıra, her geliştirici ürettiği uygulamanın URL şemasının anlaşılır ve güzel görünmesinı ister. Eğer bir framework kullanıyorsanız muhtemelen bunu yönetebileceğiniz bir yer, yardımcı vs vardır. Fakat kendi kodunuzu yazıyorsanız htaccess ile mod\_rewrite yardımıyla her url şema tipine göre bir rewrite kuralı yazmanız gerekecektir.
+URL şemaları, SEO amacıyla önem taşımakta. Bunun yanı sıra, her geliştirici ürettiği uygulamanın URL şemasının anlaşılır ve güzel görünmesinı ister. Eğer bir framework kullanıyorsanız muhtemelen bunu yönetebileceğiniz bir yer, yardımcı vs vardır. Fakat kendi kodunuzu yazıyorsanız htaccess ile mod_rewrite yardımıyla her url şema tipine göre bir rewrite kuralı yazmanız gerekecektir.
 
 Basit bir proje örneği vereceğim, diyelim ki basit bir ürün katalogu hazırlıyorsunuz, katalog anasayfasında son ürünler ve kategoriler listeleniyor. Her her ürün de bir kategoride listeleniyor. Yani kategori sayfaları ve ürün detay sayfalarınız var. Basit bir php projesi ile bu uygulamayı 3 parçaya ayırdınız, anasayfa, kategori ve ürün detay. Her parçanın kendine ait kodu var. Normalde bu parçaları birer php dosyası olarak hazırladığınızı düşünürsek her parçayı birbirine
 
 *   anasayfa.php
-*   kategori.php?kategori\_id=21
-*   urun\_detay.php?urun\_id=2320
+*   kategori.php?kategori_id=21
+*   urun_detay.php?urun_id=2320
 
 gibi linklerle bağlıyorsunuz.
 
@@ -35,9 +35,9 @@ Kendiniz yazarak hazırlayacağınız kod ıle url şeması böyle ikili bir kur
 
 Şimdi size önce anlatmam gereken kısma geldik, bütün trafiği tek dosyaya yönlendirmek. İşte bunun için htaccess'a oldukça genel bir kod koyuyoruz:
 ```
-RewriteCond %{REQUEST\_FILENAME} !-f
-RewriteCond %{REQUEST\_FILENAME} !-d
-RewriteRule ^(.\*)$ index.php?path=$1 \[L,QSA\]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?path=$1 [L,QSA]
 
 ```
 Yukarıdaki kod sitenize gelen tüm istekleri index.php dosyasına yönlendirir.
@@ -48,15 +48,15 @@ Burada ilk problemin çözümü için, controller adlarınız projenizin kök di
 
 Bunun için, yani ikinci problemi çözmek için, projenizin asset dizinlerini (stiller, js, resimler, imges, files etc...) bu url ayrıştırma mekanizmasından ayırmak isteyebilirsiniz. Aşağıdaki satırları yukaridaki kodun üstüne yerleştirmeniz yeterli.
 ```
-RewriteCond %{REQUEST\_URI}  !^/resimler.\* \[NC\]
-RewriteCond %{REQUEST\_URI}  !^/proje.\* \[NC\]
+RewriteCond %{REQUEST_URI}  !^/resimler.* [NC]
+RewriteCond %{REQUEST_URI}  !^/proje.* [NC]
 
 ```
 Böylece bu dizinler ve altındaki isteklere dokunulmayacaktır. Ama yine de kök dizindeki her spesifik isteği ya htaccess'da ya da index.php dosyanızda işlemeniz gerekmektedir.
 
 #### index.php istekleri nasıl ayrıştıracak?
 
-Artık sitenize gelen tüm istekler index.php'nin elinin altında. "path" parametresini "/" karakterine göre parçalayarak ilk parçayı controller adı olarak rezerve edebilirsiniz. Dizinin geri kalan elemanlarını global bir dizide tutarak controller'larinizin içinde yakalayabilirsiniz. Unutmayın hala $\_GET dizisiyle soru işareti ve sonrasında kullanacağınız GET parametrelerini yakalayabilirsiniz. Yani /urun/67845?ref=facebook\_campaign gibi bir url hala doğru şekilde calışacaktır.
+Artık sitenize gelen tüm istekler index.php'nin elinin altında. "path" parametresini "/" karakterine göre parçalayarak ilk parçayı controller adı olarak rezerve edebilirsiniz. Dizinin geri kalan elemanlarını global bir dizide tutarak controller'larinizin içinde yakalayabilirsiniz. Unutmayın hala $_GET dizisiyle soru işareti ve sonrasında kullanacağınız GET parametrelerini yakalayabilirsiniz. Yani /urun/67845?ref=facebook_campaign gibi bir url hala doğru şekilde calışacaktır.
 
 Çok ilkel bir yapıda controller adını "Controllers" dizininde öyle bir dosya olup olmadığını kontrol ederek ve eğer dosya varsa o an include ederek basit bir yapı kurabilirsiniz.
 
@@ -73,4 +73,4 @@ $router = array(
 )
 
 ```
-Gördüğünüz gibi ürün için iki farklı adresleme kullanabilirsiniz. Daha dinamik bir yol haritasını veritabanınızda saklayabilir hatta otomatik güncelleyebilirsiniz. Bunun en güzel örneği kullanıcı adı ile adresleme yapabilmektir. Yani example.com/mfyz ve example.com/mfyz/links gibi kullanıcınıza domain.com/kullanici\_adi gibi bir sayfa adresleyebilmenizdir. Gelen isteğinizi, sitenizin ana yol haritası kontrollerinizi yaptıktan sonra, eğer istekte bulunulan adres yol haritanızda bir yeri işaret etmiyorsa kullanıcı dizininizde aratarak adresin bir kullanıcı profili veya kullanıcı sayfasını işaret ettiğini yakalatabilirsiniz.
+Gördüğünüz gibi ürün için iki farklı adresleme kullanabilirsiniz. Daha dinamik bir yol haritasını veritabanınızda saklayabilir hatta otomatik güncelleyebilirsiniz. Bunun en güzel örneği kullanıcı adı ile adresleme yapabilmektir. Yani example.com/mfyz ve example.com/mfyz/links gibi kullanıcınıza domain.com/kullanici_adi gibi bir sayfa adresleyebilmenizdir. Gelen isteğinizi, sitenizin ana yol haritası kontrollerinizi yaptıktan sonra, eğer istekte bulunulan adres yol haritanızda bir yeri işaret etmiyorsa kullanıcı dizininizde aratarak adresin bir kullanıcı profili veya kullanıcı sayfasını işaret ettiğini yakalatabilirsiniz.

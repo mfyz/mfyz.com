@@ -28,7 +28,7 @@ print($metin);
 
 Bu örneğimizde, bir önceki örnekteki ile aynı sonucu verecektir, yani ekrana "Selam Gençler" yazdıracaktır.
 
-PHP nin kendi içerisinde hazır olarak bulunan bu fonksiyon örneklerini çoğaltmak mümkündür (substr(), strlen(), mysql\_fetch\_array()...) Örnek olarak verdiğimiz bu fonksiyonlar parametre alarak çalışırlar. PHP nin parametre almadan çalışan fonksiyonları da vardır.
+PHP nin kendi içerisinde hazır olarak bulunan bu fonksiyon örneklerini çoğaltmak mümkündür (substr(), strlen(), mysql_fetch_array()...) Örnek olarak verdiğimiz bu fonksiyonlar parametre alarak çalışırlar. PHP nin parametre almadan çalışan fonksiyonları da vardır.
 
 ```
 exit();
@@ -39,7 +39,7 @@ PHP yorumlayıcısı bu satırı (fonksiyonu) gördüğünde sayfanın fonksiyon
 PHP nin kullanılmak üzere bizlere sunduğu bu fonksiyonlara yerleşik fonksiyonlar adını verebiliriz. Burada asıl amacımız, kendi fonksiyonlarımızı yazmak. Bu yüzden ilk olarak PHP nin yerleşik olan, kendi fonksiyonlarını yüzeysel olarak inceledik. Temel olarak bir fonksiyon yazarken kullanacağımız komut dizisi şöyledir;
 
 ```
-function fonksiyonum(parametre\_1, parametre\_2 ...) {
+function fonksiyonum(parametre_1, parametre_2 ...) {
   // yapılacak işlemler
 }
 
@@ -63,15 +63,15 @@ fonksiyonumx();
 Bu örneğimizde yazmış olduğumuz fonksiyonu parametre girmeden kullanıyoruz. Parametre alan fonksiyonumuzu ise şu şekilde çağırmalıyız;
 
 ```
-fonksiyonum("deger\_1","deger\_2" ...);
+fonksiyonum("deger_1","deger_2" ...);
 
 ```
 Fonksiyon yazım kurallarını gördükten sonra, konunun daha iyi anlaşılması için artık çalışır bir fonksiyon yazabiliriz. Örneğin PHP nin yerleşik fonksiyonlarından biri olan print() fonksiyonunu Türkçeleştirelim. (ama sakın bu örneği uyguladıktan sonra yerleşik fonksiyonları tümünü Türkçeleştirmeye kalkmayın) :)
 
 ```
-function yazdir( $girilen\_metin ) {
-  print($girilen\_metin);
-  // $girilen\_metin degiskenini ekrana yaz.
+function yazdir( $girilen_metin ) {
+  print($girilen_metin);
+  // $girilen_metin degiskenini ekrana yaz.
 }
 
 // fonksiyonu cagirmak icin;
@@ -79,7 +79,7 @@ yazdir("merhaba arkadaşlar");
 
 ```
 
-Bu fonksiyonu yazıp, yukarıdaki haliyle çağırdıktan sonra ekranda fonksiyona girmiş olduğumuz metini, yani "merhaba arkadaşlar" yazısını göreceğiz. **$girilen\_metin**, fonksiyonumuza ait parametremiz. Bu parametre, ekrana yazdırmak istediğimiz metini tutuyor. Parametre olarak yazdığımız metin $girilen\_metin değişkenine depolanıyor, böylece fonksiyonumuz kendi içerisinde kullanılmak üzere bir veriye sahip oluyor. Daha sonra bu veri fonksiyon içerisinde gerekli yerlerde kullanılıyor.
+Bu fonksiyonu yazıp, yukarıdaki haliyle çağırdıktan sonra ekranda fonksiyona girmiş olduğumuz metini, yani "merhaba arkadaşlar" yazısını göreceğiz. **$girilen_metin**, fonksiyonumuza ait parametremiz. Bu parametre, ekrana yazdırmak istediğimiz metini tutuyor. Parametre olarak yazdığımız metin $girilen_metin değişkenine depolanıyor, böylece fonksiyonumuz kendi içerisinde kullanılmak üzere bir veriye sahip oluyor. Daha sonra bu veri fonksiyon içerisinde gerekli yerlerde kullanılıyor.
 
 **Önemli NOT :** Fonksiyonlar içerisinde olan bütün olaylar içeride kalır. İçeride atanan değişkenler, İçerideki sorgulamalar ve diğerleri. Aynı şekilde bir fonksiyon dışarıdan verileri TEK yolla alır. Onlar da parametrelerdir. Bunun dışında bir fonksiyon içerisinde sabitler ve ortam değişkenleri dışında hiçbir şekilde dış değişkenler direk kullanılamaz. Bunun için $GLOBALS dizisi kullanılır. Dışarıda atanan bir değişkene bu dizi içerisinde atanmış bir eleman gibi erişebiliriz.
 
@@ -91,7 +91,7 @@ Bu fonksiyonu yazıp, yukarıdaki haliyle çağırdıktan sonra ekranda fonksiyo
 ```
 <html>
   <body>
-    <form action="uzunluk\_hesapla.php" method="post">
+    <form action="uzunluk_hesapla.php" method="post">
       <input type="text" name="metin" size="15"><br>
       <input type="submit" value="Gönder">
     </form>
@@ -100,12 +100,12 @@ Bu fonksiyonu yazıp, yukarıdaki haliyle çağırdıktan sonra ekranda fonksiyo
 
 ```
 
-\-- uzunluk\_hesapla.php --
+\-- uzunluk_hesapla.php --
 ```
 function uzunluk($deger){
-  $kac\_karakter = strlen($deger);
+  $kac_karakter = strlen($deger);
   echo 'Girilen Metin : '.$deger.'<br>';
-  echo 'Metin Uzunlugu : '.$kac\_karakter.'<br>';
+  echo 'Metin Uzunlugu : '.$kac_karakter.'<br>';
 }
 
 // fonksiyonu çagiriyoruz.
@@ -113,9 +113,9 @@ uzunluk($metin);
 
 ```
 
-Oldukça kolay değil mi? Uzunluk adında bir fonksiyon oluşturduk ve parametre olarak (girilen verileri depolaması için) $deger adında bir değişken belirledik. Daha sonra $deger değişkenimizin (bu değişkenin fonksiyonumuza ait parametremiz olduğunu söylemeye gerek yok sanırım) uzunluğunu bulabilmek için, PHP'nin yerleşik fonksiyonu olan strlen()'i kullandık. Bu değeri $kac\_karakter değişkenine atadık. Böylece kullanıcıdan alacağımız değerin ($deger değişkeninin) uzunluğu artık, $kac\_karakter değişkenimize depolanmış oldu.
+Oldukça kolay değil mi? Uzunluk adında bir fonksiyon oluşturduk ve parametre olarak (girilen verileri depolaması için) $deger adında bir değişken belirledik. Daha sonra $deger değişkenimizin (bu değişkenin fonksiyonumuza ait parametremiz olduğunu söylemeye gerek yok sanırım) uzunluğunu bulabilmek için, PHP'nin yerleşik fonksiyonu olan strlen()'i kullandık. Bu değeri $kac_karakter değişkenine atadık. Böylece kullanıcıdan alacağımız değerin ($deger değişkeninin) uzunluğu artık, $kac_karakter değişkenimize depolanmış oldu.
 
-Echo fonksiyonunu kullanarak bu verileri ekrana yazdırdık. İlk önce kullanıcıdan alarak $değer değişkeninde depoladığımız metini, ardında da metinimizin, $kac\_karakter değişkeninde tuttuğumuz uzunluğunu. Son olarak da "uzunluk($metin);" komutuyla fonksiyonumuzu çağırdık. buradaki $metin değişkeni (tahmin ettiğiniz gibi) uzunluk\_gonder.htm dosyamızdan PHP sayfamıza POST metoduyla göndermiş olduğumuz string i tutuyor)
+Echo fonksiyonunu kullanarak bu verileri ekrana yazdırdık. İlk önce kullanıcıdan alarak $değer değişkeninde depoladığımız metini, ardında da metinimizin, $kac_karakter değişkeninde tuttuğumuz uzunluğunu. Son olarak da "uzunluk($metin);" komutuyla fonksiyonumuzu çağırdık. buradaki $metin değişkeni (tahmin ettiğiniz gibi) uzunluk_gonder.htm dosyamızdan PHP sayfamıza POST metoduyla göndermiş olduğumuz string i tutuyor)
 
 ### Parametrelere değer verilmezse?
 

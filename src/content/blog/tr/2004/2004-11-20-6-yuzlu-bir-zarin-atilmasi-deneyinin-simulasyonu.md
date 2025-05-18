@@ -21,7 +21,7 @@ Z4 = 0
 Z5 = 0
 Z6 = 0
 FOR I = 1 TO N
-X = INT(6 \* RND) + 1
+X = INT(6 * RND) + 1
 IF X = 1 THEN Z1 = Z1 + 1
 IF X = 2 THEN Z2 = Z2 + 1
 IF X = 3 THEN Z3 = Z3 + 1

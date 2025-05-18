@@ -9,7 +9,7 @@ migration: {"wpId":359,"wpPostDate":"2014-01-10T16:22:12.000Z"}
 lang: tr
 ---
 
-CDN: \*\*Content Delivery Network\*\*'ün kısaltması ve \*\*İçerik Dağıtım Ağı\*\* olarak Türkçe'ye çevirebilecek bir kavram. CDN'ler, statik içeriklerinizin normalde daha hızlı tarayıcıya ulaştırılması için düşünülmüş bir dağıtım yapısıdır.
+CDN: **Content Delivery Network**'ün kısaltması ve **İçerik Dağıtım Ağı** olarak Türkçe'ye çevirebilecek bir kavram. CDN'ler, statik içeriklerinizin normalde daha hızlı tarayıcıya ulaştırılması için düşünülmüş bir dağıtım yapısıdır.
 
 \## Statik içerik nedir?
 
@@ -25,11 +25,11 @@ Bir websitesi hazırladınız; arayüzü twitter bootstrap ile şekillendirdiniz
 
 Sitenize giren kullanıcı, tarayıcıda bir sayfa bile ziyaret etse hem sayfanızı istiyor hem de bütün javascriptleri, kütüphaneleri, görselleri, css stil dosyalarını istiyor. Sayfanızı her halükarda sunmak zorundasınız ancak sayfanızda kullandığınız statik dosyaları bu CDN servislerinden adresleyerek tarayıcıların o kütüphaneleri o servislerin domainlerinden indirmesini sağlayabilirsiniz. Bu servisler bu statik dosyaları olabilecek en hızlı şekilde sunmak üzere tasarlandıkları için her zaman sizden daha iyi çalışacaklardır. Ayrıca fakrlı bir domainde oldukları için daha önce yüklenmeye başlayacaklar (parallel download) ve muhtemelen başka bir sitede kullanıcı o dosyayı daha önce indirdiği ve uzun cache periyodlarıyla kullanıcının bilgisayarında saklandıkları için de muhtemelen tekrar indirilmeden doğrudan tarayıcıya yükleneceklerdir. Sitenizde belirli bir kutuphane icin CDN kullanmak için:
 
-\[code=html\]\[/code\]
+[code=html][/code]
 
 yerine
 
-\[code=html\]\[/code\]
+[code=html][/code]
 
 kullanmanız yeterli olacak. Gördüğünüz gibi bu jquery'e özel tanımlanmış bir CDN adresi. Herkese açık ve birden fazla kütühane içeren ortak CDN servislerini tercih etmeniz daha iyi performans almanızı sağlayabilir.
 

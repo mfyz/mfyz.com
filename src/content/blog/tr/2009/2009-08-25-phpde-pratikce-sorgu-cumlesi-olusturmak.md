@@ -23,11 +23,11 @@ Bu methodolojide doğal olarak bir otomatizasyon var. Bunun için verinin düzen
 
 ```
 $data = array(
-'ref\_code' => $\_GET\[ref\],
-'phone'    => $\_GET\[tel\],
-'text'     => $\_GET\[yorum\],
+'ref_code' => $_GET[ref],
+'phone'    => $_GET[tel],
+'text'     => $_GET[yorum],
 'date'     => date('Y-m-d H:i:s'),
-'ip'       => $\_SERVER\[REMOTE\_ADDR\]
+'ip'       => $_SERVER[REMOTE_ADDR]
 );
 
 ```
@@ -35,26 +35,26 @@ $data = array(
 Verinin anahtarları veritabanındaki alan adları ile aynı olmalı. Zaten bu veri dizisini oluştururken gerekli sql injection kontrolleri yapılıp kolayca kurtulabilinir fakat her değerde bir ton fonksiyon çağırmaya gerek yok. Kısaca :
 
 ```
-$data = array\_map('mysql\_real\_escape\_string', $data);
+$data = array_map('mysql_real_escape_string', $data);
 ```
 
-kullanımıyla tüm diziye mysql\_real\_escape\_string() uygulayabiliriz.
+kullanımıyla tüm diziye mysql_real_escape_string() uygulayabiliriz.
 
 Sonra zaten cümleyi oluşturmak için genel method olan sprintf ile alanları ve değerleri basacağız. Ancak işin güzelliği burada bu alanlar ve değerler kısımlarını bir sürü döngü ile çözmeyeceğiz.
 
 ```
 $sql = sprintf('INSERT INTO comments (%s) VALUES ("%s")',
-implode(", ", array\_keys($data)),
-implode('", "', array\_values($data))
+implode(", ", array_keys($data)),
+implode('", "', array_values($data))
 );
 ```
 
-Gördüğünüz gibi array\_keys ve array\_values ile hızlıca alanlar ve değerleri alıp implode ile aralarına virgül ve tırnak ekleyebiliriz. Burada dikkat edeceğimiz şey implode sadece değerlerin aralarına tırnak ve virgül ekleyecektir. En dışda kalan tırnakları sprintf içinde tanımlayacağız.
+Gördüğünüz gibi array_keys ve array_values ile hızlıca alanlar ve değerleri alıp implode ile aralarına virgül ve tırnak ekleyebiliriz. Burada dikkat edeceğimiz şey implode sadece değerlerin aralarına tırnak ve virgül ekleyecektir. En dışda kalan tırnakları sprintf içinde tanımlayacağız.
 
 Sonuç olarak bu noktada $sql değişkeninde, değerler ve alanlar giydirilmiş, aşağıdaki gibi bir sql cümlesi elde etmiş olacağız.
 
 ```
-INSERT INTO comments (ref\_code, phone, text, date, ip) VALUES ("google", "1234567", "aisdfyisodaf qewrewrewqr 232fsfdsd", "2009-08-25 16:08:34", "127.0.0.1")
+INSERT INTO comments (ref_code, phone, text, date, ip) VALUES ("google", "1234567", "aisdfyisodaf qewrewrewqr 232fsfdsd", "2009-08-25 16:08:34", "127.0.0.1")
 ```
 
-Bu cümleyi de mysql\_query($sql) ile çalıştırıp sonucu işlemede bitiyor olay.
+Bu cümleyi de mysql_query($sql) ile çalıştırıp sonucu işlemede bitiyor olay.

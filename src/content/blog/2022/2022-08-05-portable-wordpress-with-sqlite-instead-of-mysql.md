@@ -26,14 +26,14 @@ curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.pha
 php wp-cli.phar core install
 		--url=http://localhost:8011
 		--title='Test Site'
-		--admin\_user=admin
-		--admin\_password=admin
-		--admin\_email=test@example.com
+		--admin_user=admin
+		--admin_password=admin
+		--admin_email=test@example.com
 		--skip-email
 
 # Tweaking wordpress settings
 php wp-cli.phar rewrite structure '/%postname%/' --hard
-php wp-cli.phar option update page\_for\_posts 10
+php wp-cli.phar option update page_for_posts 10
 
 # Installing and activating plugins
 php wp-cli.phar plugin install kirki --activate
@@ -42,7 +42,7 @@ php wp-cli.phar plugin install kirki --activate
 php wp-cli.phar theme activate mytheme
 
 # Creating sample content
-php wp-cli.phar post create --post\_type=post --post\_title='A sample post'
+php wp-cli.phar post create --post_type=post --post_title='A sample post'
 ```
 
 You can get the full installer and configuration script here: [https://github.com/mfyz/wp-sqlite-installer](https://github.com/mfyz/wp-sqlite-installer)

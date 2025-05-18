@@ -15,13 +15,13 @@ lang: tr
 
 #### Birşey Yazdırmak?
 
-Javascript'de ekrana (sayfaya) birşey yazdırmak için document.write(); kullanılır. document.write(degisken\_adi); veya document.write("Yazilacaklar"); seklinde kullanilir.
+Javascript'de ekrana (sayfaya) birşey yazdırmak için document.write(); kullanılır. document.write(degisken_adi); veya document.write("Yazilacaklar"); seklinde kullanilir.
 
 #### Hata Çıktısı, PopUp Açmak?
 
 Eğer bir hata çıktısı vermek istiyorsak genelde **alert();** fonksiyonu ile popup mesaj gösterebiliriz.
 ```
-alert(degisken\_adi);
+alert(degisken_adi);
 // veya
 alert("Hata Yaptınız!");
 
@@ -73,7 +73,7 @@ getSeconds()  0-59 saniye
 var zaman;
 zaman=new Date;
 var gunler=new Array('Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi');
-document.write('Bugün '+gunler\[zaman.getDay()\]+', saat '+zaman.getHours()+':'+zaman.getMinutes());
+document.write('Bugün '+gunler[zaman.getDay()]+', saat '+zaman.getHours()+':'+zaman.getMinutes());
 // örnek çıktı : "Bugün Çarşamba, saat 15:39" şeklinde olacaktır.
 
 ```
@@ -103,7 +103,7 @@ Math.sqrt(x)    x'in karekökünü verir.
 var sonuc,x;
 // f(x)=(x^tan(9x))+15/x fonksiyonu için f(5)'i hesaplatalım.
 x=5;
-sonuc=Math.pow(x,Math.tan(5\*x))+(15/x);
+sonuc=Math.pow(x,Math.tan(5*x))+(15/x);
 document.write(sonuc);
 // sonuc 8 olacaktır.
 

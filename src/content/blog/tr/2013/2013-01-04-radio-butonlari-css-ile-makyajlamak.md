@@ -21,19 +21,19 @@ Bunun için javascript çözümleri mevcut fakat birkaç css3 özelliği kullana
 <ul>
     <li>
         <label for="radio1">
-            <input type="radio" id="radio1" name="my\_options" class="tick\_or\_x" checked="checked" />
+            <input type="radio" id="radio1" name="my_options" class="tick_or_x" checked="checked" />
             <span>Strawberry Mojito</span>
         </label>
     </li>
     <li>
         <label for="radio2">
-            <input type="radio" id="radio2" name="my\_options" class="tick\_or\_x" />
+            <input type="radio" id="radio2" name="my_options" class="tick_or_x" />
             <span>Pina Colada</span>
         </label>
     </li>
     <li>
         <label for="radio3">
-            <input type="radio" id="radio3" name="my\_options" class="tick\_or\_x" />
+            <input type="radio" id="radio3" name="my_options" class="tick_or_x" />
             <span>Mint Liquor</span>
         </label>
     </li>
@@ -53,18 +53,18 @@ ul, li {
 }
 
 ```
-HTML kodunda farkettiğiniz gibi tüm radio elementleri tick\_or\_x sınıfıyla tanımlanmışlar, şimdi bu sınıfı hazırlayacağız.
+HTML kodunda farkettiğiniz gibi tüm radio elementleri tick_or_x sınıfıyla tanımlanmışlar, şimdi bu sınıfı hazırlayacağız.
 
 Aslında yaptığımız işlem radio elementini gizleyip onun yerine x veya tık işareti koymak. Yerine yerleştirdiğimiz elementi css ile oluşturacağız. Bunun için bir css özelliği olan ":before" pesudo elementi ile html kodunda gördüğünüz span elementlerini kullanacağız. Onun için input elementlerini hemen gizleyebiliriz (veya görünür bir şekilde bırakıp gerçekten görsel değişiklikleri form elementleri üstünde uygulanıp uygulanmadığını görebilirsiniz).
 
-Şimdi list elementlerin içinde sadece span'ler var, bunu da input elementini belirlediğimiz sınıf adını "+" operatörüyle kullanarak seçtirebiliriz, yani ".tick\_or\_x + span" css seçicisi tick\_or\_x sınıflı elementin hemen ardından gelen span'leri seçmemizi sağlayacaktır.
+Şimdi list elementlerin içinde sadece span'ler var, bunu da input elementini belirlediğimiz sınıf adını "+" operatörüyle kullanarak seçtirebiliriz, yani ".tick_or_x + span" css seçicisi tick_or_x sınıflı elementin hemen ardından gelen span'leri seçmemizi sağlayacaktır.
 
-Aşağıda tick\_or\_x sınıfına ait kodu veriyorum, hemen ardından açıklamaya çalışacağım:
+Aşağıda tick_or_x sınıfına ait kodu veriyorum, hemen ardından açıklamaya çalışacağım:
 ```
-.tick\_or\_x {
+.tick_or_x {
     display: none;
 }
-.tick\_or\_x + span {
+.tick_or_x + span {
     display: inline-block;
     position: relative;
     padding-left: 40px;
@@ -73,7 +73,7 @@ Aşağıda tick\_or\_x sınıfına ait kodu veriyorum, hemen ardından açıklam
     cursor: pointer;
     margin-bottom: 15px;
 }
-.tick\_or\_x + span:before {
+.tick_or_x + span:before {
     content: '✗';
     display: block;
     position: absolute;
@@ -85,18 +85,18 @@ Aşağıda tick\_or\_x sınıfına ait kodu veriyorum, hemen ardından açıklam
     text-align: center;
     border-radius: 15px;
 }
-.tick\_or\_x:checked + span:before {
+.tick_or_x:checked + span:before {
     content: '✔';
     background: green;
     color: white;
 }
 
 ```
-".tick\_or\_x + span" seçicisiyle seçtiğimiz elementleri block level elementlere çevirelim, sonrasında ".tick\_or\_x + span:before" seçicisiyle span elementimizin önüne bir element oluşturacağız. Bu kısım biraz kafa karıştırıcı gelebilir, css before ve after pesudo elementleri hakkında daha önce yazdığım "[CSS before ve after sözde elementleri]("http://mfyz.com/css3-before-ve-after-sozde-elementleri")" yazısını inceleyebilirsiniz.
+".tick_or_x + span" seçicisiyle seçtiğimiz elementleri block level elementlere çevirelim, sonrasında ".tick_or_x + span:before" seçicisiyle span elementimizin önüne bir element oluşturacağız. Bu kısım biraz kafa karıştırıcı gelebilir, css before ve after pesudo elementleri hakkında daha önce yazdığım "[CSS before ve after sözde elementleri]("http://mfyz.com/css3-before-ve-after-sozde-elementleri")" yazısını inceleyebilirsiniz.
 
-".tick\_or\_x + span:before" ile seçtiğimiz sözde elementi bir block level elemente çeviriyoruz ve position absolute ile havada asılı hale getirelim (floating element). Bu elementin ailesi (parent) olan ".tick\_or\_x + span" elementi daha önce block level ve relative duruma getirilip bulunduğu noktada asılı hale getirilmişti. Şimdi before sözde elementini istediğimiz noktaya pozisyonlayabiliriz. Bu sözde element ile görsel olarak, tick veya x işaretini oluşturacağız. Bir radio butonun doğal durumunun seçili olmadığı (unchecked) durumu olduğunu düşünürsek bu sözde elementin doğal görünümü "X" işaretçisi olacaktır. Bunu bir imajla da tasarlayıp tamamen özelleştirebilirsiniz. Ben basit bir örnekleme ile ascii karakterlerini doğrudan css içine yazdım, aslında bunu yapmamak gerek, çünkü IE gibi tarayıcılarda bu karakterler çalışmayacaktır.
+".tick_or_x + span:before" ile seçtiğimiz sözde elementi bir block level elemente çeviriyoruz ve position absolute ile havada asılı hale getirelim (floating element). Bu elementin ailesi (parent) olan ".tick_or_x + span" elementi daha önce block level ve relative duruma getirilip bulunduğu noktada asılı hale getirilmişti. Şimdi before sözde elementini istediğimiz noktaya pozisyonlayabiliriz. Bu sözde element ile görsel olarak, tick veya x işaretini oluşturacağız. Bir radio butonun doğal durumunun seçili olmadığı (unchecked) durumu olduğunu düşünürsek bu sözde elementin doğal görünümü "X" işaretçisi olacaktır. Bunu bir imajla da tasarlayıp tamamen özelleştirebilirsiniz. Ben basit bir örnekleme ile ascii karakterlerini doğrudan css içine yazdım, aslında bunu yapmamak gerek, çünkü IE gibi tarayıcılarda bu karakterler çalışmayacaktır.
 
-Elementimizi radio butonlarımızın bulunduğu konuma gelecek şekilde (örnekte solda etiketin yanında) pozisyonladıktan sonra seçim durumunu yakalamaya çalışacağız. Burada bir css3 seçicisi olan ":checked" seçicisini kullanacağız. Bu seçici sadece seçilmiş checkbox, radio gibi elementleri işaret eder. Seçili olan radio butonumuzu bu şekilde yakalayabiliriz. Görsel olarak ilgili elementleri yakalamak için bu seçici ile "+" operatörünü beraber kullanıyoruz ve ".tick\_or\_x:checked + span" seçicisi bize seçili olan radio butona ait etiket span'ini yakalamamızı sağlıyor. Bu elemente ait before sözde elementi de seçili olan elementin görsel olarak yerleştirdiğimiz işaretçisini adresleyecektir.
+Elementimizi radio butonlarımızın bulunduğu konuma gelecek şekilde (örnekte solda etiketin yanında) pozisyonladıktan sonra seçim durumunu yakalamaya çalışacağız. Burada bir css3 seçicisi olan ":checked" seçicisini kullanacağız. Bu seçici sadece seçilmiş checkbox, radio gibi elementleri işaret eder. Seçili olan radio butonumuzu bu şekilde yakalayabiliriz. Görsel olarak ilgili elementleri yakalamak için bu seçici ile "+" operatörünü beraber kullanıyoruz ve ".tick_or_x:checked + span" seçicisi bize seçili olan radio butona ait etiket span'ini yakalamamızı sağlıyor. Bu elemente ait before sözde elementi de seçili olan elementin görsel olarak yerleştirdiğimiz işaretçisini adresleyecektir.
 
 Doğal olarak seçimi ifade eden check ascii işareti ve bir artalan rengi farklılığı ile görsel olarak seçimi gösterebiliyorum. Bunun yerine bir imaj tasarlayarak istediğiniz şekilde özelleştirebilirsiniz.
 

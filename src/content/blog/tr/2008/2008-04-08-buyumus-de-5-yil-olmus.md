@@ -13,6 +13,6 @@ lang: tr
 
 Hepinize çok teşekkür ediyorum mfyz.com'un "Türk programcılığını geliştirme" gayesinde ilerlerken beni desteklediğiniz için. Bu sitenin şu andaki içeriğini aslında belirleyen en büyük etken kullanıcılar. Tabiki bu tek taraflı gibi görünse de tamamen isteklere göre ilerlemeye çalıştım. Yapının benim görüş alanımda sınırlanması genel olarak kötü ama çizginin bozulmaması için gerekliydi.
 
-http://web.archive.org/web/\*/http://www.mfyz.com bu adreste mfyz.com'un archive.org'un "web time back machine" aracını kullanarak eski versiyonlarını cache'den görebilirsiniz. ilk versiyonlar tabiki genellikle arızalı. Yani açılmıyor, yüklenemiyor, linkler bozuk vs. Ama yine de bazıları açılıyor.
+http://web.archive.org/web/*/http://www.mfyz.com bu adreste mfyz.com'un archive.org'un "web time back machine" aracını kullanarak eski versiyonlarını cache'den görebilirsiniz. ilk versiyonlar tabiki genellikle arızalı. Yani açılmıyor, yüklenemiyor, linkler bozuk vs. Ama yine de bazıları açılıyor.
 
 Mutluyum

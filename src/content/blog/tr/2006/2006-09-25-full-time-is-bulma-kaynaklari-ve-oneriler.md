@@ -42,7 +42,7 @@ lang: tr
 
 **Kaynaklar;**
 
-http://www.kariyer.net http://www.insankaynaklari.com http://www.yenibir.com http://www.mulakat.net http://www.tekadres.com http://www.personelonline.com http://www.secretcv.com http://www.loginit.com \[Sadece IT Sektörü\] http://www.btinsan.com \[Sadece IT Sektörü\] http://www.eleman.net http://www.cvtr.net http://www.akariyer.com
+http://www.kariyer.net http://www.insankaynaklari.com http://www.yenibir.com http://www.mulakat.net http://www.tekadres.com http://www.personelonline.com http://www.secretcv.com http://www.loginit.com [Sadece IT Sektörü] http://www.btinsan.com [Sadece IT Sektörü] http://www.eleman.net http://www.cvtr.net http://www.akariyer.com
 
  
 
@@ -56,7 +56,7 @@ Tembeller için özellikle bu siteler tavsiye edilir. Genelde daha efektif ve h�
 
 **Diğer Sistemler;**
 
-*   Haber Grupları; News://News.Anet.net.tr (Haber Grubu) Is\_Ilani kısmından da iş ilanlarına ulaşabilirsiniz.
+*   Haber Grupları; News://News.Anet.net.tr (Haber Grubu) Is_Ilani kısmından da iş ilanlarına ulaşabilirsiniz.
 *   Spesifik Siteler; Kendi sektörünüz ile ilgili spesifik sitelerde iş arayabilirsiniz. Bir çoğu bugün forumları üzerinden ya da ayrı özel bir şekilde bu hizmeti sağlıyorlar. Bunlarda çok faydalı olabilir. Bazıları; [http://www.programcilik.com](http://www.programcilik.com) [http://www.turk-php.com](http://www.turk-php.com)
 *   Firmalar Başvurma; İlgilendiğiniz bir firmanın varsa sitesindeki kariyer kısmına yoksa da herhangi bir ulaşım e-mail aracılığı ile başvurabilirsiniz. Sakın spam tarzında bir mail çekmeyin. O firmaya mailin özel olarak yazıldığı belli olsun.
 
@@ -66,7 +66,7 @@ Tembeller için özellikle bu siteler tavsiye edilir. Genelde daha efektif ve h�
 
 Bu siteler için özgeçmişlerinizin İngilizce olması gerektiğini belirtmek gereksiz sanırım. Bu sitelerde de aynı kurallar geçerli ek olarak eğer başvurduğunuz firmanın bulunduğu ülke için çalışma izniniz varsa vizeniz varsa, gittiyseniz vs. bunları belirtmeniz çok önemlidir;
 
-[http://www.dice.com/](http://www.dice.com/) [http://www.computerjobs.com/](http://www.computerjobs.com/) [http://www.surfstation.lu/10.asp](http://www.surfstation.lu/10.asp) (Tasarımcı) [http://www.evolt.org/category/Jobs/23/index.html](http://www.evolt.org/category/Jobs/23/index.html) (Web Sektörü Tasarım, Kodlama, Programlama) [http://www.planetsourcecode.com/vb/jobs/SearchJobs.asp?lngWId=4](http://www.planetsourcecode.com/vb/jobs/SearchJobs.asp?lngWId=4) (Programlama) [http://directory.google.com/Top/Business/Employment/Job\_Search/](http://directory.google.com/Top/Business/Employment/Job_Search/) (Diğer İngilizce iş arama siteleri)
+[http://www.dice.com/](http://www.dice.com/) [http://www.computerjobs.com/](http://www.computerjobs.com/) [http://www.surfstation.lu/10.asp](http://www.surfstation.lu/10.asp) (Tasarımcı) [http://www.evolt.org/category/Jobs/23/index.html](http://www.evolt.org/category/Jobs/23/index.html) (Web Sektörü Tasarım, Kodlama, Programlama) [http://www.planetsourcecode.com/vb/jobs/SearchJobs.asp?lngWId=4](http://www.planetsourcecode.com/vb/jobs/SearchJobs.asp?lngWId=4) (Programlama) [http://directory.google.com/Top/Business/Employment/Job_Search/](http://directory.google.com/Top/Business/Employment/Job_Search/) (Diğer İngilizce iş arama siteleri)
 
  
 

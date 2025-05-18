@@ -18,10 +18,10 @@ lang: tr
 Bu içerikleri listeleyerek sadece o içeriklere ait sayfaların URL'lerini oluşturan bir php dosyası düşünün. Basitçe örnekleyeceğim. Mesela forum adında bir tablonuz var ve bu forum'un site haritası için sadece URL'leri gerekli ve bunu oluşturan ufak bir kod vermek gerekirse :
 ```
 // forum konularini veritabanindan alalim
-$sorgu = mysql\_query("select id from forum\_konular order by tarih asc");
-$forum\_konu\_adresleri = array();
-while( $konu = mysql\_fetch\_assoc($sorgu) ){
-    $forum\_konu\_adresleri\[\] = 'http://mfyz.com/?/konu/'. $konu\[id\] .'/';
+$sorgu = mysql_query("select id from forum_konular order by tarih asc");
+$forum_konu_adresleri = array();
+while( $konu = mysql_fetch_assoc($sorgu) ){
+    $forum_konu_adresleri[] = 'http://mfyz.com/?/konu/'. $konu[id] .'/';
 }
 
 ```
@@ -55,38 +55,38 @@ Eğer veritabanınınzda bu sayfaların oluşturulma tarihleri gibi bir bilgi sa
 Şimdi bir URL dizisini sitemap.xml dosyasına çevirecek php koduna bakarsak:
 ```
 // begin xml content
-$XML\_Content = '<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.fem14.tr.gg/schemas/sitemap/0.9 '."\\\\n".
-'http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'."\\\\n";
+$XML_Content = '<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.fem14.tr.gg/schemas/sitemap/0.9 '."\\n".
+'http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'."\\n";
 foreach ($urllist as $url){
     // defaults
     $date     = date('Y-m-d');
     $freq     = 'monthly';
     $priority = '0.5';
     // setting values
-    if( is\_array($url) ){
+    if( is_array($url) ){
         // custom params
-        if( $url\[date\] )     $date     = $url\[date\];
-        if( $url\[freq\] )     $freq     = $url\[freq\];
-        if( $url\[priority\] ) $priority = $url\[priority\];
-        $url = $url\[url\];
+        if( $url[date] )     $date     = $url[date];
+        if( $url[freq] )     $freq     = $url[freq];
+        if( $url[priority] ) $priority = $url[priority];
+        $url = $url[url];
     }else{
         $url = $url;
     }
     // adding to xml content
-    $XML\_Content .= "\\\\t<url>\\\\n".
-    "\\\\t\\\\t<loc>$url</loc>\\\\n".
-    "\\\\t\\\\t<lastmod>$date</lastmod>\\\\n".
-    "\\\\t\\\\t<changefreq>$freq</changefreq>\\\\n".
-    "\\\\t\\\\t<priority>$priority</priority>\\\\n".
-    "\\\\t</url>\\n";
+    $XML_Content .= "\\t<url>\\n".
+    "\\t\\t<loc>$url</loc>\\n".
+    "\\t\\t<lastmod>$date</lastmod>\\n".
+    "\\t\\t<changefreq>$freq</changefreq>\\n".
+    "\\t\\t<priority>$priority</priority>\\n".
+    "\\t</url>\n";
 }
-$XML\_Content .= "</urlset>";
+$XML_Content .= "</urlset>";
 
 ```
-en son XML\_Content değişkeninde sakladığınız içeriği
+en son XML_Content değişkeninde sakladığınız içeriği
 ```
 $file = fopen('sitemap.xml', 'w') ){
-fwrite($file, $XML\_Content);
+fwrite($file, $XML_Content);
 fclose($file);
 
 ```

@@ -19,19 +19,19 @@ Seçenekler :
 
 Bulunduğum dizinden itibaren tüm alt-dizinlerdeki "mfyz" ile başlayan dosyaları bulmak için;
 ```
-find . -name "mfyz\*" -print
-./faq/mfyz\_dosyalar\_index.html
+find . -name "mfyz*" -print
+./faq/mfyz_dosyalar_index.html
 ./mfyz
-./mfyz/mfyz\_index.php
+./mfyz/mfyz_index.php
 ./we/mfyz.c
 
 ```
-**Not 1 :** Burada arayacağım dosyada wildcard kullandığım icin \* işaretini kullandım. Eğer dosyanın tam ismini biliyorsanız buna gerek yoktur.
+**Not 1 :** Burada arayacağım dosyada wildcard kullandığım icin * işaretini kullandım. Eğer dosyanın tam ismini biliyorsanız buna gerek yoktur.
 
 **Not 2 :** Eğer bir aramayi root'tan ( / ) başlatirsaniz çok buyuk olasilikla bazı dosyaları okumaya izininiz olmadıgı için size bunu belirten bir uyarı mesajı verilecektir, ve bu mesajlar arasında aradığınız şey ekrana yazılsa bile bunu gözden kaçırabilirsiniz. Bu sebeple çıktıyı bir dosyaya yöneltip, daha sonra o dosyayı okumanızda fayda vardır.
 
 Örnek :
 ```
-find / -name gzip -print > gzip\_sonuclari
+find / -name gzip -print > gzip_sonuclari
 
 ```

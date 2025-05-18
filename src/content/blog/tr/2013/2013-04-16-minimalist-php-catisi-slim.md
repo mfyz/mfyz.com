@@ -17,7 +17,7 @@ Bu yazıda Slim adında minimalist bir php çatısını kısa bir örnek kod ile
 
 Çok detaya girmeye gerek yok kod zaten kendini anlatıyor :)
 ```
-$app = new \\Slim\\Slim();
+$app = new \Slim\Slim();
 $app->get('/hello/:name', function ($name) {
     echo "Hello, $name";
 });

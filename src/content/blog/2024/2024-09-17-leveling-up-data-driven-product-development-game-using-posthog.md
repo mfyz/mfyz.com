@@ -19,15 +19,15 @@ I've been using **Posthog** for a while now, and it's quickly become my go-to to
 One of the things I appreciate most about Posthog is its **auto-capture** feature. It's like having a tiny detective following my users around, recording their every click and interaction. This has saved me countless hours of manually setting up tracking events. It also has pretty good customizations on what gets auto captured what not:
 
 ```
-posthog.init('phc\_.........................', {
-    api\_host: '<https://us.i.posthog.com>',
+posthog.init('phc_.........................', {
+    api_host: '<https://us.i.posthog.com>',
     autocapture: {
-        dom\_event\_allowlist: \['click'\],
-        url\_allowlist: \['posthog.com./docs/.\*'\],
-        url\_ignorelist: \['posthog.com./docs/.\*/secret-section/.\*'\],
-        element\_allowlist: \['button'\],
-        css\_selector\_allowlist: \['\[ph-autocapture\]'\],
-        element\_attribute\_ignorelist:\['data-attr-pii="email"'\],
+        dom_event_allowlist: ['click'],
+        url_allowlist: ['posthog.com./docs/.*'],
+        url_ignorelist: ['posthog.com./docs/.*/secret-section/.*'],
+        element_allowlist: ['button'],
+        css_selector_allowlist: ['[ph-autocapture]'],
+        element_attribute_ignorelist:['data-attr-pii="email"'],
     },
 })
 

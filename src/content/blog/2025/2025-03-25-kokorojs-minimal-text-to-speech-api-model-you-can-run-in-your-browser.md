@@ -48,13 +48,13 @@ Here's a simple example to convert text to speech using Kokoro.js:
 ```
 import { KokoroTTS } from "kokoro-js";
 
-const tts = await KokoroTTS.from\_pretrained(
+const tts = await KokoroTTS.from_pretrained(
   "onnx-community/Kokoro-82M-ONNX",
   { dtype: "q8" } // Data type options: fp32, fp16, q8, q4, q4f16
 );
 
 const text = "Life is like a box of chocolates. You never know what you're gonna get.";
-const audio = await tts.generate(text, { voice: "af\_sky" });
+const audio = await tts.generate(text, { voice: "af_sky" });
 audio.save("audio.wav");
 
 ```

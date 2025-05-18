@@ -11,7 +11,7 @@ lang: tr
 
 ![](/images/archive/tr/2017/04/swift_icon.png)Mobil uygulama geliştirmeye meraklıysanız ve iOS uygulama geliştirmeye başlamak için çok güzel bir kaynakla karşılaştım geçenlerde. Örnek kodları da github'dan indirebileceğiniz, hem video hem yazılı okuyabileceğiniz bir kaynak:
 
-Dersler: https://swifteducation.github.io/teaching\_app\_development\_with\_swift/
+Dersler: https://swifteducation.github.io/teaching_app_development_with_swift/
 
 iTunesU'dan mobil cihazınızdan dersleri takip edebileceğiniz: https://itunes.apple.com/us/course/app-development-teaching-swift/id1003406963
 

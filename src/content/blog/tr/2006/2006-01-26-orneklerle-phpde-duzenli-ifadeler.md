@@ -39,28 +39,28 @@ eregi("^oku.$","okuzu");  // YANLIS
 
 ```
 
-## 4\. "k\*" k'dan sıfır veya daha fazla
+## 4\. "k*" k'dan sıfır veya daha fazla
 
 ```
 // k'dan 1 tane 
-eregi("k\*","okul");      // DOGRU 
-eregi("^ok\*ul","okul");  // DOGRU 
+eregi("k*","okul");      // DOGRU 
+eregi("^ok*ul","okul");  // DOGRU 
 
 // k'dan 0 tane 
-eregi("k\*","oul");        // DOGRU 
-eregi("^okk\*ul","okul");  // DOGRU 
-eregi("^ok\*ul","oul");    // DOGRU 
+eregi("k*","oul");        // DOGRU 
+eregi("^okk*ul","okul");  // DOGRU 
+eregi("^ok*ul","oul");    // DOGRU 
 
 // k'dan 2 tane 
-eregi("k\*","okkul");        // DOGRU 
-eregi("k\*","koku");         // DOGRU 
-eregi("^ok\*ul","okkul");    // DOGRU 
-eregi("^okk\*ul","okkkul");  // DOGRU 
+eregi("k*","okkul");        // DOGRU 
+eregi("k*","koku");         // DOGRU 
+eregi("^ok*ul","okkul");    // DOGRU 
+eregi("^okk*ul","okkkul");  // DOGRU 
 
 // k'dan cok sayida 
-eregi("^ok\*ul","okkkul");     // DOGRU 
-eregi("^okk\*ul","okkkkul");   // DOGRU 
-eregi("^ok\*ul","okkkkkkul");  // DOGRU
+eregi("^ok*ul","okkkul");     // DOGRU 
+eregi("^okk*ul","okkkkul");   // DOGRU 
+eregi("^ok*ul","okkkkkkul");  // DOGRU
 
 ```
 
@@ -127,23 +127,23 @@ eregi("^(ak|kara)ve(ak|kara)$","akvekara");  // DOGRU
 eregi("^(ak|kara)..(ak|kara)$","akvekara");  // DOGRU 
 eregi("^(ak|kara).(ak|kara)$","akvekara");   // YANLIS 
 
-eregi("ak|kara","ak\_kara");      // DOGRU 
-eregi("^(ak|kara)","akk\_ara");   // DOGRU 
-eregi("ak|kara","ak\_k\_ara");     // YANLIS
+eregi("ak|kara","ak_kara");      // DOGRU 
+eregi("^(ak|kara)","akk_ara");   // DOGRU 
+eregi("ak|kara","ak_k_ara");     // YANLIS
 
 ```
 
-## 8\. "(oku)\*" oku'dan sıfır yada daha fazla
+## 8\. "(oku)*" oku'dan sıfır yada daha fazla
 
 ```
-eregi("^(oku)\*$","oku");   // DOGRU 
-eregi("^(oku)\*$","okul");  // YANLIS 
+eregi("^(oku)*$","oku");   // DOGRU 
+eregi("^(oku)*$","okul");  // YANLIS 
 eregi("^(oku)","okul");    // DOGRU 
 
 // oku 'dan en başta sıfır tane 
 eregi("^(oku)","doku");  // DOGRU 
-eregi("(agir)\*","cikacaksinagiragirbumerdivenlerden");      // DOGRU 
-eregi("(ağır)\*","Ağır ağır çıkacaksın bu merdivelerden");   // DOGRU
+eregi("(agir)*","cikacaksinagiragirbumerdivenlerden");      // DOGRU 
+eregi("(ağır)*","Ağır ağır çıkacaksın bu merdivelerden");   // DOGRU
 
 ```
 
@@ -160,34 +160,34 @@ eregi("^(agir){0,3}","agiragircikacaksinbumerdivenlerden");   // DOGRU
 eregi("^(agir){0,3}$","agiragircikacaksinbumerdivenlerden");  // YANLIS
 
 ```
-Daha önce gösterdiğimiz bazı diğer ifadelerin bu yapıya benzemesi şu şekildedir; k\* = k{0,} k+ = k{1,} k? = k{0,1}
+Daha önce gösterdiğimiz bazı diğer ifadelerin bu yapıya benzemesi şu şekildedir; k* = k{0,} k+ = k{1,} k? = k{0,1}
 
-## 10\. \[a-eKLM\] -> a' dan e' ye kadar veya K veya L veya M varsa \[^a-eKLM\] -> a' dan e' ye kadar veya K veya L veya M yoksa
-
-```
-eregi("\[a-eKLM\]","Kalem");       // DOGRU 
-eregi("\[^a-eKLM\]","Kalem");      // YANLIS 
-ereg("\[a-eKLM\]","kAlEm");        // YANLIS 
-eregi("\[a-eKLM\]","kAlEm");       // DOGRU 
-ereg("\[a-eKLM\]","KAlEm");        // DOGRU 
-eregi("\[a-eKLM\]","kalem");       // DOGRU 
-eregi("\[a-eKLM\]","kalemlik");    // DOGRU 
-eregi("\[^a-eKLM\]","kalemlik");   // YANLIS 
-eregi("\[^a-eKLM\]","uzun");       // DOGRU 
-eregi("\[a-eKLM\]","uzun");        // YANLIS 
-eregi("^\[^a-eKLM\]$","uzun");     // YANLIS 
-eregi("^\[^a-eKLM\]+$","uzun");    // DOGRU 
-eregi("^\[a-eKLM\]+$","uzunincebiryoldayim");             // YANLIS 
-eregi("^\[a-eiKLMnoruyz\]+$","uzunincebiryoldayim");      // DOGRU 
-eregi("^\[a-eiKLMnoruyz\]+$","uzun incebiryoldayim");     // YANLIS 
-eregi("^\[ a-eiKLMnoruyz\]+$","uzun incebiryoldayim");    // DOGRU 
-eregi("^\[\_a-eiKLMnoruyz\]+$","uzun\_ince\_bir\_yoldayim");  // DOGRU 
-eregi("^\[^a-eKLM\]+$","uzunincebiryoldayim");            // YANLIS
+## 10\. [a-eKLM] -> a' dan e' ye kadar veya K veya L veya M varsa [^a-eKLM] -> a' dan e' ye kadar veya K veya L veya M yoksa
 
 ```
+eregi("[a-eKLM]","Kalem");       // DOGRU 
+eregi("[^a-eKLM]","Kalem");      // YANLIS 
+ereg("[a-eKLM]","kAlEm");        // YANLIS 
+eregi("[a-eKLM]","kAlEm");       // DOGRU 
+ereg("[a-eKLM]","KAlEm");        // DOGRU 
+eregi("[a-eKLM]","kalem");       // DOGRU 
+eregi("[a-eKLM]","kalemlik");    // DOGRU 
+eregi("[^a-eKLM]","kalemlik");   // YANLIS 
+eregi("[^a-eKLM]","uzun");       // DOGRU 
+eregi("[a-eKLM]","uzun");        // YANLIS 
+eregi("^[^a-eKLM]$","uzun");     // YANLIS 
+eregi("^[^a-eKLM]+$","uzun");    // DOGRU 
+eregi("^[a-eKLM]+$","uzunincebiryoldayim");             // YANLIS 
+eregi("^[a-eiKLMnoruyz]+$","uzunincebiryoldayim");      // DOGRU 
+eregi("^[a-eiKLMnoruyz]+$","uzun incebiryoldayim");     // YANLIS 
+eregi("^[ a-eiKLMnoruyz]+$","uzun incebiryoldayim");    // DOGRU 
+eregi("^[_a-eiKLMnoruyz]+$","uzun_ince_bir_yoldayim");  // DOGRU 
+eregi("^[^a-eKLM]+$","uzunincebiryoldayim");            // YANLIS
 
-## 11\. \[\[. .\]\] karakterleri
+```
 
-d -> \[0-9\] D -> \[^0-9\] t,f = s s S w -> \[a-zA-Z0-9\] : bütün harfler ve rakamlar W -> \[^a-zA-Z0-9\]
+## 11\. [[. .]] karakterleri
+
+d -> [0-9] D -> [^0-9] t,f = s s S w -> [a-zA-Z0-9] : bütün harfler ve rakamlar W -> [^a-zA-Z0-9]
 
 Not: Bu dökümanı hazırlayan kim idi bilmiyorum. Fi tarihinde bilgisayarıma txt olarak geçirmişim. Yazan arkadaştan çok özür diliyorum/teşekkür ediyorum, eğer farkeder ve bildirirse hemen burada adını belirtmek isterim. Zira Hiper-faydalı bir yazı/kaynak olduğunu düşündüğüm için yayınlıyorum.

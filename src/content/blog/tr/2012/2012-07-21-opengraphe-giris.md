@@ -19,7 +19,7 @@ OpenGraph Facebook'un APIsi için oluşturduğu yeni bir API (Application Progra
 
 OpenGraph'ın çıkış noktası, internetteki herşeyi içerik olarak özetlemek. Yani adresi belli olan herşey bir içerik olarak kabul ediliyor. Bunu ise linkler ile adresliyor Facebook; mantıklı bir yaklaşım aynı zamanda. Yani her url'in bir içeriği sunduğu düşünülüyor, daha spesifik olarak bu içerikleri istediğiniz kadar parametre ile detaylandırabiliyorsunuz. Bu tanımlamaları yapaken html/xhtml içeriğinizde opengraph ön ekli parametreler kullanarak yapabiliyorsunuz. Facebook'un genel opengraph parametreleri sayfa yani içerik hakkında genel bir bilgi içeriyor.
 
-Bunlardan birkaçı; \[code=text\] og:title sayfa başlığı og:description sayfa tanımı og:image sayfayı temsil eden görsel og:media sayfa, bir medya sunuyorsa onun doğrudan adresi (video, ses vb) \[/code\]
+Bunlardan birkaçı; [code=text] og:title sayfa başlığı og:description sayfa tanımı og:image sayfayı temsil eden görsel og:media sayfa, bir medya sunuyorsa onun doğrudan adresi (video, ses vb) [/code]
 
 Bu etiketleri sayfanıza eklediğinizde, biri sayfanızın adresini facebook'da paylaştığı zaman o sayfaya ait içeriği temsil edecek görsel, medya içeriği, içerik tanımı gibi detayları facebook yakalayabiliyor.
 

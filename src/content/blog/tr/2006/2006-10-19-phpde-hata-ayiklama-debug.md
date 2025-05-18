@@ -25,8 +25,8 @@ Genelde sorunların yarısına yakını fonksiyonlarımıza gönderdiğimiz, vey
 
 ```
 <?php
-  $kategori = $\_GET\["kategori"\];
-  $sorgu = mysql\_query("select \* from tablo where kategori=" . $kategori);
+  $kategori = $_GET["kategori"];
+  $sorgu = mysql_query("select * from tablo where kategori=" . $kategori);
   // diğer mysql işlemleri
 ?>
 
@@ -36,10 +36,10 @@ Burada SQL hata veriyorsa veya boş dönüyorsa ilk olarak $kategori değişkeni
 
 ```
 <?php
-  $kategori = $\_GET\["kategori"\];
+  $kategori = $_GET["kategori"];
   print $kategori;
   exit;
-  $sorgu = mysql\_query("select \* from tablo where kategori=" . $kategori);
+  $sorgu = mysql_query("select * from tablo where kategori=" . $kategori);
   // diğer mysql işlemleri
 ?>
 
@@ -49,10 +49,10 @@ Burada basitçe $kategori değişkeninin içeriğini bastırıp exit ile kodu du
 
 ```
 <?php
-  $kategori = $\_GET\["kategori"\];
-  print\_r($GLOBALS);
+  $kategori = $_GET["kategori"];
+  print_r($GLOBALS);
   exit;
-  $sorgu = mysql\_query("select \* from tablo where kategori=" . $kategori);
+  $sorgu = mysql_query("select * from tablo where kategori=" . $kategori);
   // diğer mysql işlemleri
 ?>
 
@@ -84,11 +84,11 @@ Genellikle modern dillerin hepsinde debug'a yönelik kolaylıklar vardır, bunla
 
 **PHP'de debug için yapabileceğimiz ayarlamalardan:**
 
-**display\_errors = On** ile hataları gösterimini açıp kapayabilirsiniz. Açık tutmanız önerilir. **log\_errors = On** ile hataları günlüklere kaydettirebilir ve oradan inceleyebilirsiniz.
+**display_errors = On** ile hataları gösterimini açıp kapayabilirsiniz. Açık tutmanız önerilir. **log_errors = On** ile hataları günlüklere kaydettirebilir ve oradan inceleyebilirsiniz.
 
-Gelelim en önemli kısıma, hangi hataların çıktı verileceğini belirlemeye. error\_reporting = E\_ALL & ~E\_NOTICE E\_ALL : Tüm hata ve uyarılar. E\_ERROR : Sadece çalışma hataları. E\_WARNING : Sadece uyarılar. E\_PARSE : Yazım hataları. E\_NOTICE : Notlar, Bu uyarılar çalışmayı engelleyen sorunlar değildir. Sadece programsal yanlışları içerir. & işareti ayraç, ~ işareti de tersi anlamına gelir. Yukarıdaki "E\_ALL & ~E\_NOTICE" örneğe göre notlar dışındaki tüm hatalar görüntülenir.
+Gelelim en önemli kısıma, hangi hataların çıktı verileceğini belirlemeye. error_reporting = E_ALL & ~E_NOTICE E_ALL : Tüm hata ve uyarılar. E_ERROR : Sadece çalışma hataları. E_WARNING : Sadece uyarılar. E_PARSE : Yazım hataları. E_NOTICE : Notlar, Bu uyarılar çalışmayı engelleyen sorunlar değildir. Sadece programsal yanlışları içerir. & işareti ayraç, ~ işareti de tersi anlamına gelir. Yukarıdaki "E_ALL & ~E_NOTICE" örneğe göre notlar dışındaki tüm hatalar görüntülenir.
 
-Ayrıca hata çıktılarını kendi stilinizde yapabilirsiniz : error\_prepend\_string = "<font color=ff0000>" ile hata başlangcına belirtilen kodu, error\_append\_string = "</font>" ile de çıktının sonuna belirttiğiniz kodu ekleyebilirsiniz. Bu örnekte hata çıktısı kırmızıya boyanacaktır.
+Ayrıca hata çıktılarını kendi stilinizde yapabilirsiniz : error_prepend_string = "<font color=ff0000>" ile hata başlangcına belirtilen kodu, error_append_string = "</font>" ile de çıktının sonuna belirttiğiniz kodu ekleyebilirsiniz. Bu örnekte hata çıktısı kırmızıya boyanacaktır.
 
 Buna benzer çoğu dilin hata çıktıları ile oynayabilme, hata loglama gibi debug'a yardımcı özellikleri vardır.
 
@@ -103,14 +103,14 @@ Buna benzer çoğu dilin hata çıktıları ile oynayabilme, hata loglama gibi d
 ```
 <?php
 # bilgiler
-  $ad       = $\_GET\["ad"\];
-  $eposta   = $\_GET\["eposta"\];
-  $fotograf = $\_FILES\["resim"\];
+  $ad       = $_GET["ad"];
+  $eposta   = $_GET["eposta"];
+  $fotograf = $_FILES["resim"];
 # tanimlar
   $kaynak   = array('ad'   , 'eposta'   , 'fotograf');
   $bilgiler = array(' ... ', ' ...@... ', ' ... '   );
 # kayit
-  mysql\_query("update bilmemne falan fe$mekan ... ")
+  mysql_query("update bilmemne falan fe$mekan ... ")
        or die("Hata!");
 # son
   if( ... bilmemne ... ){
@@ -132,12 +132,12 @@ Diğeri ise şöyle:
 
 ```
 <?php
-$ad = $\_GET\["ad"\];
-$eposta = $\_GET\["eposta"\];
-$fotograf = $\_FILES\["resim"\];
+$ad = $_GET["ad"];
+$eposta = $_GET["eposta"];
+$fotograf = $_FILES["resim"];
 $kaynak= array('ad','eposta','fotograf');
 $bilgiler = array(' ... ',' ...@... ',' ... ');
-mysql\_query("update bilmemne falan fe$mekan ... ") or die("Hata!");
+mysql_query("update bilmemne falan fe$mekan ... ") or die("Hata!");
 if( ... bilmemne ... ){
   if( ... baska ... ){
     print '<script>alert("Hata!");bitti();son();</script>';exit;

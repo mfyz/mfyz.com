@@ -11,4 +11,4 @@ lang: tr
 
 [Fatih Hayrioğlu](http://www.fatihhayrioglu.com/) 2 gün önce güzel bir css kitabı bitirdi. Çok detaylı olmasada biraz inceledim. Kitap oldukça profesyonel hazırlanmış, gayet sade ve öz şekilde neredeyse tüm css özniteliklerinden bahsedilmiş. Akış şemaları ile görsel ve gerçek kitaplar kadar kaliteli ~250 sayfa civarında bir şey çıkmış ortaya.
 
-Kitabı indirmek için şu adresi izleyin : http://www.fatihhayrioglu.com/?page\_id=461
+Kitabı indirmek için şu adresi izleyin : http://www.fatihhayrioglu.com/?page_id=461

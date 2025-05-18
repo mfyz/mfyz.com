@@ -22,7 +22,7 @@ I know I lot of people use to track their activities, like walking, running but 
 
 Wearables are like demons in my head. Well, my phone is actually already like that. Wearables are mostly configured to notify you by default when you open them in the box. I know they are changeable, which I tried to make a silent apple watch. But then why am I wearing it, what’s the purpose of it now? I found only 2 passive notifications helped me when I was trying out different wearables:
 
-*   Inactivity alert, where if you sit and don’t move for an hour, you get a nudge that will remind you to move your a\*\* from the chair - which is great and impactful for sure. Instead, [I use screen timeout tools](https://mfyz.com/time-to-take-a-break-from-your-computer/) that do the same thing (mostly).  
+*   Inactivity alert, where if you sit and don’t move for an hour, you get a nudge that will remind you to move your a** from the chair - which is great and impactful for sure. Instead, [I use screen timeout tools](https://mfyz.com/time-to-take-a-break-from-your-computer/) that do the same thing (mostly).  
     
 *   Good old timer (wrist version of the kitchen timer). This is used for anything but in most cases my pomodoros (or focus blocks, way to [GTD](https://mfyz.com/best-gtd-method-geeks-todo-txt/)). I set the timer with Siri (in apple watch case) and get to work until I get the nudge. This was the only “real” use case I had - but for having a timer at $350+ cost is just dumb.
 

@@ -13,7 +13,7 @@ lang: tr
 
 Form öğerleri kullanabilmek için öncelikle bir form belirlemeniz gerekir. Form öğerlerini bu etiketler arasına yazmalısınız. name ile formun adını, method ile gönderi metodunu (get veya post), action ile formun belirtilen metodla gönderileceği sayfayı belirleriz.
 ```
-<form name="iletisim\_formu" method="post" action="iletisim\_formu\_isle.php">
+<form name="iletisim_formu" method="post" action="iletisim_formu_isle.php">
   <!-- FORM ELEMANLARI -->
 </form>
 
@@ -43,14 +43,14 @@ Her türlü bilgiyi input'lar sayesinde girdi aldırırız. **name** ile, formun
 ```
 **text** : Tek satırlık bilgi giriş alanı basar.
 ```
-<input type="text" name="bilgi\_giris\_alani" value="varsayılan değer">
+<input type="text" name="bilgi_giris_alani" value="varsayılan değer">
 
 ```
 Çıktı: 
 
-**password** : text ile aynıdır. Tek farkı yazılan bütün karakterlerin değerleri korunurken, gösterimde işletim sistemine göre bir şifreleme gösterimi basılır. Windows'da büyük nokta, bazı tarayıcılarda hala \*, bazılarında ise hiçbirşey görüntülenmez.
+**password** : text ile aynıdır. Tek farkı yazılan bütün karakterlerin değerleri korunurken, gösterimde işletim sistemine göre bir şifreleme gösterimi basılır. Windows'da büyük nokta, bazı tarayıcılarda hala *, bazılarında ise hiçbirşey görüntülenmez.
 ```
-<input type="password" name="sifre\_giris\_alani">
+<input type="password" name="sifre_giris_alani">
 
 ```
 Çıktı: 
@@ -69,10 +69,10 @@ Eğer "checked" argümanı verilirse ekrana varsayılan olarak seçili basılır
 **radio** : Seçim butonları koyar. Kullanıcıya birden çok seçenek ve bunlardan birinin seçilmesi istenirse bunları kullanırız. Bir seçim gurubunda her seçenek için bir tane radio türünde input öğesi eklenir, name yani isim parametrelerine aynı değer verilir ve value parametresine verilen değerlerden, form gönderilirken seçilmiş olanının değeri o isim yani değişken ile gönderilecek sayfaya gönderilir.
 ```
 Kaç tane bilgisayarın var?
-<input type="radio" name="bilgisayar\_sayisi" value="1"> 1 tane
-<input type="radio" name="bilgisayar\_sayisi" value="2" checked> 2 tane
-<input type="radio" name="bilgisayar\_sayisi" value="3"> 3 tane
-<input type="radio" name="bilgisayar\_sayisi" value="+"> 3'den fazla
+<input type="radio" name="bilgisayar_sayisi" value="1"> 1 tane
+<input type="radio" name="bilgisayar_sayisi" value="2" checked> 2 tane
+<input type="radio" name="bilgisayar_sayisi" value="3"> 3 tane
+<input type="radio" name="bilgisayar_sayisi" value="+"> 3'den fazla
 
 ```
 Çıktı: Kaç tane bilgisayarın var?  1 tane  2 tane  3 tane  3'den fazla
@@ -120,7 +120,7 @@ label etiketi aynı zamanda bir formu css ile şekillendirirken de işinize yara
 Seçim listesi basar. Geçerli olarak boş liste basılır. Açılış ve kapanış etiketleri arasındaki option etiketleri bu listeyi oluşturur. option etiketleri arasına yazılan şekilde görüntülenir ve seçilen seçenek, select'in name parametresinde belirlenen değişkene seçilen option etiketindeki value parametresinin değerini atar. option etiketleri selectsiz kullanıldığında bir işe yaramazlar.
 ```
 Hangi ildesiniz?:
-<select name="secilen\_il">
+<select name="secilen_il">
   <option value="ankara">Ankara</option>
   <option value="istanbul">İstanbul</option>
   <option value="izmir">İzmir</option>

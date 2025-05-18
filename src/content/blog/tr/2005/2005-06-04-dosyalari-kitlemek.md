@@ -21,7 +21,7 @@ Web sunucuları aynı anda çok fazla işlemi yapabilmeleri ile sunucu özelliğ
 
 Küçük bir dosya işlemi kodu örneği göz önüne getirelim.
 ```
-$yazilacak\_bilgi = 'dosya içerisine yazılacak şey
+$yazilacak_bilgi = 'dosya içerisine yazılacak şey
 2. satir,
 3. satir.';
 
@@ -32,7 +32,7 @@ $dosya = fopen("dosya.txt","r");
 flock($dosya,2);
 
 // yazalim
-fwrite($dosya,$yazilacak\_bilgi);
+fwrite($dosya,$yazilacak_bilgi);
 
 // kilidi acalim
 flock($dosya,3);

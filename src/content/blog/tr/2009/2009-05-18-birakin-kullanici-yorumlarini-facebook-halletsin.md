@@ -36,7 +36,7 @@ Bu adımlardan sonra yaptığımız şey FBML yardımı facebook connect butonu 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html ot;/>
 <title>Facebook Connect</title>
-<script src="http://static.ak.connect.facebook.com/js/api\_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
+<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
 </head>
 <body>
 <div>
@@ -50,7 +50,7 @@ Bu adımlardan sonra yaptığımız şey FBML yardımı facebook connect butonu 
 
 <script type="text/javascript">
 // facebook init
-FB.init("--API-KEY--", "xd\_receiver.htm");
+FB.init("--API-KEY--", "xd_receiver.htm");
 </script>
 </body>
 </html>

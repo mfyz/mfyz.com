@@ -13,50 +13,50 @@ lang: tr
 
 PHP'nin olmazsa olmazı nerdeyse her php ile kodlanan sayfada bulunan oturum (session) yönetimi hakkında sizlere bilgi vereceğim. PHP'de 5 tane oturum yönetimi fonksiyonu vardır. Bu oturum yönetim fonksiyonları ve dökümantasyon bağlantıları:
 
-*   [session\_start()](http://tr.php.net/session_start)
-*   [session\_register()](http://tr.php.net/session_register)
-*   [session\_is\_registered()](http://tr.php.net/session_is_registered)
-*   [session\_unregister()](http://tr.php.net/session_unregister)
-*   [session\_destroy()](http://tr.php.net/session_destroy)
+*   [session_start()](http://tr.php.net/session_start)
+*   [session_register()](http://tr.php.net/session_register)
+*   [session_is_registered()](http://tr.php.net/session_is_registered)
+*   [session_unregister()](http://tr.php.net/session_unregister)
+*   [session_destroy()](http://tr.php.net/session_destroy)
 
 Şimdi bunların anlatımına geçelim:
 
-#### session\_start()
+#### session_start()
 
 Bu fonksiyonu oturumları kullanıcağımız her sayfanın başında belirtmeliyiz. Bu fonksiyon kullanıcı ilk defa giriyorsa kullanıcı için serverda bir dosya yaratır ve kullanıma hazırlar. Eğer daha önce girmişse onu kullanmaya hazırlar sadece. Her kullanıcı için uzun bir kod üretir. Bu kod sayılardan ve harflerden oluşur.
 
 ```
-session\_start();
+session_start();
 
 ```
-Eğer php.ini dosyasında otomatik olarak oturum başlatma seçeneği aktif değilse bu işlemi yapmak zorundayız. Oturum fonksiyonları eğer bir oturum açılmamışsa (session\_start) hata verecektir. Her sayfanızın başında bu fonksiyonu çağırarak bu sorunu rahatlikla çözebilirsiniz. Öneri olarak, her sayfanızda çalıştırdığınız (include) sayfanız varsa bu sayfaya ekleyin.
+Eğer php.ini dosyasında otomatik olarak oturum başlatma seçeneği aktif değilse bu işlemi yapmak zorundayız. Oturum fonksiyonları eğer bir oturum açılmamışsa (session_start) hata verecektir. Her sayfanızın başında bu fonksiyonu çağırarak bu sorunu rahatlikla çözebilirsiniz. Öneri olarak, her sayfanızda çalıştırdığınız (include) sayfanız varsa bu sayfaya ekleyin.
 
-#### session\_register()
+#### session_register()
 
 Sunucuda sizin için açılmış olan dosyaya bir değer yazar. Aynı cookie gibi işler ancak dosyalar zamana göre silinmez, kullanıcı oturumunu kapatınca silinirler. Kullanıcının oturum kapatması ise, o andaki tarayıcı programının oturumu kapatması ile olur. Çoğu tarayıcı, oturumunu tüm pencereleri kapandığı zaman kapatmış olur.
 
 ```
 $isim = "nazim";
-session\_register("isim");
+session_register("isim");
 
 ```
 $isim değerini nazim olarak atayıp sonra da oturumumuza kaydettik.
 
-Oturum değişkenleri ve değerleri cookie'ler gibi bir dizide tutulur. $\_SESSION ($HTTP\_SESSION\_VARS) dizisidir. Bu dizinin normal bir diziden hiçbir farkı yoktur. Atamaları da buna benzer bir teknik ile yapabiliriz.
+Oturum değişkenleri ve değerleri cookie'ler gibi bir dizide tutulur. $_SESSION ($HTTP_SESSION_VARS) dizisidir. Bu dizinin normal bir diziden hiçbir farkı yoktur. Atamaları da buna benzer bir teknik ile yapabiliriz.
 
 ```
-session\_register("isim");
-$\_SESSION\["isim"\] = "mfyz";
+session_register("isim");
+$_SESSION["isim"] = "mfyz";
 
 ```
 Önce $isim diye bir oturum bilgisi yaratıp sonra bilgiyi güncelledik.
 
-#### session\_is\_registered()
+#### session_is_registered()
 
 Bir oturumun kayıtlı olup olmadığını veya bir oturum değişkeninin kaydedilip edilmediğini öğrenmemize yaran bir fonksiyondur.
 
 ```
-if( session\_is\_registered("isim") ){
+if( session_is_registered("isim") ){
   echo "isim oturumu kayıtlı";
 }
 else{
@@ -66,22 +66,22 @@ else{
 ```
 "isim" oturumunun kayıtlı olup olmadığına bakar.
 
-#### session\_unregister()
+#### session_unregister()
 
 Kaydettiğiniz bir oturum değişkenini silmek için kullanılır.
 
 ```
-session\_unregister("isim");
+session_unregister("isim");
 
 ```
 Daha önce oluşturduğumuz isim adlı oturum bilgisini siler.
 
-#### session\_destroy()
+#### session_destroy()
 
 Kayıtlı olan tüm oturum bilgilerini yok eder.
 
 ```
-session\_destroy();
+session_destroy();
 
 ```
 Geçerli olan tüm oturum verilerini yok eder.
@@ -106,17 +106,17 @@ Basit bir index sayfamız var. Burada giriş formu var. Bunu sitenizin istediği
 <?php
 
 // bilgiyi alalim
-$ad = $\_POST\["ad"\];
+$ad = $_POST["ad"];
 
 // oturum baslatalim
-session\_start();
+session_start();
 
 // giris kontorl degiskeni tanimlayalim
 $giris = true;
 
 // ve degiskenleri kaydedelim
-session\_register('ad');
-session\_register('giris');
+session_register('ad');
+session_register('giris');
 
 // giris tamamlandi, anasayfaya gonderelim
 header("location:index.php");
@@ -131,11 +131,11 @@ header("location:index.php");
 <?
 
 // oturumu baslatalim
-sesion\_start();
+sesion_start();
 
 // giris bilgilerini alalim.
-$giris = $\_SESSION\["giris"\];
-$ad    = $\_SESSION\["ad"\];
+$giris = $_SESSION["giris"];
+$ad    = $_SESSION["ad"];
 
 // giris kontorlu yapalim
 // giris yapilmis ise $giris true olmali
@@ -164,10 +164,10 @@ else{
 <? 
 
 // oturumu baslatalim 
-session\_start(); 
+session_start(); 
 
 // oturumu oldurelim 
-session\_destroy(); 
+session_destroy(); 
 
 // ansayfaya gidelim 
 header("location:index.php"); 

@@ -47,10 +47,10 @@ If you are developing a react-based application, you can actually embed excalidr
 ```
 import { useState, useEffect } from "react";
 export default function IndexPage() {
-  const \[Comp, setComp\] = useState(null);
+  const [Comp, setComp] = useState(null);
   useEffect(() => {
     import("@excalidraw/excalidraw").then((comp) => setComp(comp.default));
-  }, \[\]);
+  }, []);
   return <>{Comp && <Comp />}</>;
 }
 
@@ -80,13 +80,13 @@ The way I do this is by having a bash alias that is registered in my dotfiles/my
 
 ```
 function ned(){
-  OLD\_IFS="$IFS"
+  OLD_IFS="$IFS"
   IFS='-'
-  NED\_FILE="$HOME/Desktop/$\*.excalidraw.png"
-  IFS=$OLD\_IFS
-  echo "Created $NED\_FILE"
-  touch $NED\_FILE
-  code $NED\_FILE
+  NED_FILE="$HOME/Desktop/$*.excalidraw.png"
+  IFS=$OLD_IFS
+  echo "Created $NED_FILE"
+  touch $NED_FILE
+  code $NED_FILE
 }
 
 ```

@@ -33,13 +33,13 @@ kodunu basıyoruz sayfanın çıktı basılmamış bir kısmına.
       <title>MFYZ v0.6 Test Sürüşü</title>
       <link>http://www.mfyz.com/?takvim</link>
       <pubDate>Sat, 29 Jul 2006 21:00:00 GMT</pubDate>
-      <description><!\[CDATA\[ Bu etkinlige ait aciklama \]\]></description>
+      <description><![CDATA[ Bu etkinlige ait aciklama ]]></description>
     </item>
     <item>
       <title>Linux Şenliği 4.Gün</title>
       <link>http://www.mfyz.com/?takvim</link>
       <pubDate>Sat, 13 May 2006 21:00:00 GMT</pubDate>
-      <description><!\[CDATA\[ HTML etiketleri kullanabilirsiniz. RSS okuyucunuzun yorumlamasýna göre gosterilecektir. \]\]></description>
+      <description><![CDATA[ HTML etiketleri kullanabilirsiniz. RSS okuyucunuzun yorumlamasýna göre gosterilecektir. ]]></description>
     </item>
   </channel>
 </rss>
@@ -51,7 +51,7 @@ Bu gördüğünüz kod RSS işlem sayfanız tarafından çıktısı yapılmış 
   <title>MFYZ v0.6 Test Sürüşü</title>
   <link>http://www.mfyz.com/?takvim</link>
   <pubDate>Sat, 29 Jul 2006 21:00:00 GMT</pubDate>
-  <description><!\[CDATA\[ Bu etkinlige ait aciklama \]\]></description>
+  <description><![CDATA[ Bu etkinlige ait aciklama ]]></description>
 </item>
 
 ```
@@ -61,7 +61,7 @@ Burada dikkat edilmesi gereken nokta pubDate olarak çıktı vereceğiniz tarih 
 
 Bu tarih formatını "Y-m-d H:i:s" formatındaki genel kullanımdan bu formata;
 ```
-gmdate( 'D, d M Y H:i:s', $tarihinize\_ait\_degisken ) . " GMT"
+gmdate( 'D, d M Y H:i:s', $tarihinize_ait_degisken ) . " GMT"
 
 ```
 ile oluşturabilirsiniz.

@@ -18,7 +18,7 @@ CLS
 
 ISLEM:
  I = I + 1
- T = T \* I
+ T = T * I
  IF I = N THEN
   PRINT N, " FAKTORIYEL = ", T
   END

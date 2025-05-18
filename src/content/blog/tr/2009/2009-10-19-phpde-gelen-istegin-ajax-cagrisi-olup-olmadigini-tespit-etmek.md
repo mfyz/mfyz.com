@@ -15,7 +15,7 @@ Bir php kodunda genelde çıktı verirken normal html etiketleri kullanıp tüm 
 
 Artık az sonra bahsedeceğim method ile, dosyaları tasarlarken 2 türlü kullanımı için tasarlayacaksınız. Yani hem normal erişim ile hem de o sayfayı ajax ile kullanabilecek şekilde düşüneceksiniz. Burada ajax çağrısı olduğunu yakalamak için genel bir teknik olarak get methodu ile bir değişken gönderip onu izleyebilirsiniz. Mesela kayit.php?ajax=1
 
-Bu, işin ilkel noktası. Ajax çağrısı olup olmadığını yakalamak için artık sunucu ortam değişkenleri arasında **$\_SERVER\["HTTP\_X\_REQUESTED\_WITH"\]** değişkeni ile çağrı türünde değer xmlhttprequest ise yapan client'in kullandığı protokolu alabiliyorsunuz. Genellikle içindeki değer "xmlhttprequest" oluyor zaten. Yani bir çağrının ajax olup olmadığını bu şekilde kolayca kontrol edebilirsiniz.
+Bu, işin ilkel noktası. Ajax çağrısı olup olmadığını yakalamak için artık sunucu ortam değişkenleri arasında **$_SERVER["HTTP_X_REQUESTED_WITH"]** değişkeni ile çağrı türünde değer xmlhttprequest ise yapan client'in kullandığı protokolu alabiliyorsunuz. Genellikle içindeki değer "xmlhttprequest" oluyor zaten. Yani bir çağrının ajax olup olmadığını bu şekilde kolayca kontrol edebilirsiniz.
 
 Ufak şekilde örneklemek gerekirse:
 ```
@@ -32,8 +32,8 @@ Bu kodda isimleri liste çıktısı alırsınız. Eğer javascript ile bu veriye
 ```
 $kisiler = array('Fatih', 'Ahmet', 'Mehmet', 'Zeynep');
 // ajax cagrisi ise json donelim
-if( $\_SERVER\[HTTP\_X\_REQUESTED\_WITH\] ){
-    die( json\_encode($kisiler) );
+if( $_SERVER[HTTP_X_REQUESTED_WITH] ){
+    die( json_encode($kisiler) );
 }
 // ekrana basalim
 print "<ul>";
@@ -50,7 +50,7 @@ Bu kod eğer normal istek yapılırsa
 ```
 çıktısı; ajax ile istek yapıldığı zaman:
 ```
-\["Fatih","Ahmet","Mehmet","Zeynep"\]
+["Fatih","Ahmet","Mehmet","Zeynep"]
 ```
 çıktısı verecektir.
 

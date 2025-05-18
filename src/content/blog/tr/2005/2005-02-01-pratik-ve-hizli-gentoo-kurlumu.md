@@ -27,10 +27,10 @@ Elinizde gentoo live cd var ise bu kısım ile uğraşmanıza gerek yok, çünk�
 ```
 mfyz@tux ~ $ ping google.com
 PING google.com (216.239.37.99) 56(84) bytes of data.
-64 bytes from google.com (216.239.37.99): icmp\_seq=1 ttl=244 time=198 ms
-64 bytes from google.com (216.239.37.99): icmp\_seq=2 ttl=244 time=198 ms
-64 bytes from google.com (216.239.37.99): icmp\_seq=3 ttl=244 time=197 ms
-64 bytes from google.com (216.239.37.99): icmp\_seq=4 ttl=244 time=203 ms
+64 bytes from google.com (216.239.37.99): icmp_seq=1 ttl=244 time=198 ms
+64 bytes from google.com (216.239.37.99): icmp_seq=2 ttl=244 time=198 ms
+64 bytes from google.com (216.239.37.99): icmp_seq=3 ttl=244 time=197 ms
+64 bytes from google.com (216.239.37.99): icmp_seq=4 ttl=244 time=203 ms
 
 --- google.com ping statistics ---
 5 packets transmitted, 4 received, 20% packet loss, time 4003ms
@@ -55,11 +55,11 @@ Diskle ilgili işlemlerimiz bitti. Artık kurulum paketerini diske açabiliriz.
 
 Diske 2 paket açacağımızdan bahsetmiştim, stage ve portage. Bunları gentoo livecd'de stages ve snapshots dizinlerinde bulabilirsiniz. Stage 3 kurmanızı öneririm. Burada stage3'ten anlatacağım. stage 1 ve 2 için gentoo handbook'tan bilgi alabilirsiniz. Stage'i seçerken en önemli unsur işlemci türünüzdür. İşlemci türünüzü doğru seçtikten sonra;
 ```
-tar -xvjpf /mnt/cdrom/stages/stage3-\*.tar.bz2 -C /mnt/gentoo
+tar -xvjpf /mnt/cdrom/stages/stage3-*.tar.bz2 -C /mnt/gentoo
 ```
 komutu ile stage'i;
 ```
-tar -xvjpf /mnt/cdrom/snapshots/portage-\*.tar.bz2 -C /mnt/gentoo/usr
+tar -xvjpf /mnt/cdrom/snapshots/portage-*.tar.bz2 -C /mnt/gentoo/usr
 ```
 komutu ile de portage'i açalım.
 
@@ -76,7 +76,7 @@ Komut dizisi ile asıl çalışacağımız sisteme geçiş yaptık.
 
 #### 7\. Çekirdek (Kernel) Ayarları & Derlenmesi
 
-**ln -sf /usr/share/zoneinfo/Turkey /etc/localtime** ile zaman dilimini ayarlayalım. **emerge gentoo-dev-sources** ile kernel kaynak kodunu kuralım. **emerge genkernel** ile genkernel aracını kuralım. **genkernel all** komutu ile kernel ayarı sonra da derlenmesini sağlayalım. Derleme uzun sürecektir. Bittiğinde /boot dizinini inceliyoruz kernel\* ve initrd\* şeklinde iki dosya bulunması gerek.
+**ln -sf /usr/share/zoneinfo/Turkey /etc/localtime** ile zaman dilimini ayarlayalım. **emerge gentoo-dev-sources** ile kernel kaynak kodunu kuralım. **emerge genkernel** ile genkernel aracını kuralım. **genkernel all** komutu ile kernel ayarı sonra da derlenmesini sağlayalım. Derleme uzun sürecektir. Bittiğinde /boot dizinini inceliyoruz kernel* ve initrd* şeklinde iki dosya bulunması gerek.
 
 Şu anda bunlar çok anlamsız gelebilir ancak sistemin kurulumunu başarıyla tamamlayabilmek için bunları görmezden gelin sadece yazıp işletin. İleride anlayacağınız bol zamanınınz olacak :)
 
@@ -101,12 +101,12 @@ Bu yapıya benzer biçimde disk yapınızı oluşturun. Kaydedip çıkın.
 
 Ağ bilgilerini ayarlamamız gerekiyor. Kısa işlemlerle bunu da yapıyoruz;
 ```
-echo benim\_bilgisayarim > /etc/hostname
+echo benim_bilgisayarim > /etc/hostname
 echo mfyz.com > /etc/dnsdomainname
 rc-update add domainname default
 
 ```
-/etc/conf.d/net dosyasını açıyoruz. iface\_eth0 satırında statik veya dinamik olmasına göre ayarlarını yapıyoruz. DHCP için yani dinamik ip için iface\_eth0="dhcp" satırını aktif hale getiriyor, statik için de iface\_eth0="192.168.1.10 broadcast 192.168.0.255 netmask 255.255.255.0" şeklinde ayarlıyoruz. Diğer ethernet kartlarını da bu şekilde ayarlıyoruz. **rc-update add net.eth0 deafult** ile başlangıçta aktifleştiriyoruz ethernet ayarlarını..
+/etc/conf.d/net dosyasını açıyoruz. iface_eth0 satırında statik veya dinamik olmasına göre ayarlarını yapıyoruz. DHCP için yani dinamik ip için iface_eth0="dhcp" satırını aktif hale getiriyor, statik için de iface_eth0="192.168.1.10 broadcast 192.168.0.255 netmask 255.255.255.0" şeklinde ayarlıyoruz. Diğer ethernet kartlarını da bu şekilde ayarlıyoruz. **rc-update add net.eth0 deafult** ile başlangıçta aktifleştiriyoruz ethernet ayarlarını..
 
 /etc/rc.conf dosyası ile de sistem ayarları yapıyoruz. Konsolda Türkçe klavye kullanmak için keymap="trq" yapmanız yeterli diğer ayarları da kendinize göre değiştirebilirsiniz.
 
@@ -124,14 +124,14 @@ image=/boot/kernel-2.6.7-r12
 label=gentoo
 read-only
 root=/dev/ram0
-append="init=/linuxrc real\_root=/dev/hda2"
+append="init=/linuxrc real_root=/dev/hda2"
 initrd=/boot/initrd-2.6.7-r12
 
 other=/dev/hda3
 label=windows
 
 ```
-Şeklindeki ayarda kernel-2.6.7-r12 ve initrd-2.6.7-r12 dediğim dosyalar kernel derledikten sonra /boot dizininde kontrol ettiğimiz kernel ve initrd dosyasıdır. Bu dosyayı ayarladıktan sonra kaydedip çıkıyoruz. ve lilo komutunu veriyoruz Bir uyarı ve Added gentoo\* Added windows demesi gerekiyor. Böylece önyükleyiciyi de kurmuş olduk.
+Şeklindeki ayarda kernel-2.6.7-r12 ve initrd-2.6.7-r12 dediğim dosyalar kernel derledikten sonra /boot dizininde kontrol ettiğimiz kernel ve initrd dosyasıdır. Bu dosyayı ayarladıktan sonra kaydedip çıkıyoruz. ve lilo komutunu veriyoruz Bir uyarı ve Added gentoo* Added windows demesi gerekiyor. Böylece önyükleyiciyi de kurmuş olduk.
 
 **Güncelleme :** GRUB kurmanızı tavsiye ederim. Lilo çok geride kaldı!
 

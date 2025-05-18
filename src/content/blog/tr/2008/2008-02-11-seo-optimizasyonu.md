@@ -64,7 +64,7 @@ Sayfanızın yazarı ve içeriğin dili hakkındakı bilgileri de şöyle belirl
 ```
 Yerel aramalarda sayfanızı daha yukarlarda çıkarmanızı sağlayabilir. Fazla bilgi göz çıkarmaz ayrıca :)
 
-Meta etiketleri hakkında daha fazla bilgi için: [http://en.wikipedia.org/wiki/Meta\_tags](http://en.wikipedia.org/wiki/Meta_tags)
+Meta etiketleri hakkında daha fazla bilgi için: [http://en.wikipedia.org/wiki/Meta_tags](http://en.wikipedia.org/wiki/Meta_tags)
 
 #### Robots.txt kullanın
 
@@ -85,7 +85,7 @@ http://www.mfyz.com/?/dokuman/93/mootools-ile-ipucu-aciklamalari-tooltip/
 ```
 urlsine sahip bir sayfa gördüğünde başlığı veya sayfa içeriğini okumadan tıklayacaktır :) Sayfanız bu konu hakkında bilgi içeriyor olmasa da bu işe yarayacaktır. Sonuçta bu optimizasyonları insanları çekmek için de yapıyoruz. Ancak yeterli bilgiyi içeren sayfanız için böyle bir optimizasyon yaparsanız o zaman insanları doğru yönlendirerek sitenize çekmiş olursunuz. Bu da artı bir puandır sizin için.
 
-Bu yöntemi yapmak için izelyeceğiniz tekniği kısaca benim yaptığım şeyi özetleyerek anlatacağım. Döküman, günlük veya forumda konu kaydederken başlık olarak girilen string'de latin alfabesi ve boşluk karakteri dışındaki karakterleri atıyorum. Ardından birden fazla boşlukları tek boşluğa indirgeyip kelime olarak kırpıyorum başlığı. Mesela 100 karaktere kadar izin veriyorum. Ardından yaptığım iş boşluk karakterlerini "-" (tire) karakteriyle değiştirmek ve veritabanımdaki "url\_aciklamalari" tabloma yazmak. Bunu url'nin ham kısmını kimlik olarak kaydederek yapıyorum.
+Bu yöntemi yapmak için izelyeceğiniz tekniği kısaca benim yaptığım şeyi özetleyerek anlatacağım. Döküman, günlük veya forumda konu kaydederken başlık olarak girilen string'de latin alfabesi ve boşluk karakteri dışındaki karakterleri atıyorum. Ardından birden fazla boşlukları tek boşluğa indirgeyip kelime olarak kırpıyorum başlığı. Mesela 100 karaktere kadar izin veriyorum. Ardından yaptığım iş boşluk karakterlerini "-" (tire) karakteriyle değiştirmek ve veritabanımdaki "url_aciklamalari" tabloma yazmak. Bunu url'nin ham kısmını kimlik olarak kaydederek yapıyorum.
 
 Örneğin "SEO Optimizasyonu, Türkçe ve $%&?=(özel) karakterler" diye bir başlık girdiğimi düşünelim bu dönüştürüldüğünde "seo-optimizasyonu-turkce-ve-ozel-karakterler" halini alıyor. özel karakterler gidiyor, boşluklar tire olarak dönüştürülüyor ve bir url açıklaması oluşturulmuş oluyor. Bunu da veritabanında saklıyorum.
 
@@ -93,4 +93,4 @@ URL'leri ekrana basarken (döküman listesi sayfasında) url açıklamasını ha
 
 SEO optimizasyonu hakkında söyleyeceklerim bu kadar. Sadece arama motorlarında daha yukarıda çıkmak için çaba göstermeyin, yani gereksiz içerik, gereksiz anahtar kelimeler veya kalabalık sayfalar yapmaya çalışmayın. Artık botlar çok akıllı, çok moderatör çalıştıran popüler arama motorları sayfanızı yukarı almayı bırakın gerie düşürüyor hatta banlayabiliyor. Dürüst, içeriği zengin sayfalar hazırladığınız sürece arayan bulacaktır merak etmeyin ;)
 
-Kaynaklar: [http://en.wikipedia.org/wiki/Search\_engine\_optimization](http://en.wikipedia.org/wiki/Search_engine_optimization)
+Kaynaklar: [http://en.wikipedia.org/wiki/Search_engine_optimization](http://en.wikipedia.org/wiki/Search_engine_optimization)

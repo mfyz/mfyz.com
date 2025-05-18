@@ -18,15 +18,15 @@ PHP'de sayfa header'lari ile tarayicidan authentication bilgisi isteyebiliyoruz.
 Son birkac projemde daha duzenli kullandigim bir kodu paylasacagim. Bu kodu tek bir dosyaya (mesela auth.php) yazip bu dosyayi tum uygulamamda include ediyorum en basta. Boylece eger birisi authenticate edilmeden ulasmaya calisirsa http auth ile karsilaniyor.
 
 ```
-$password\_hash = '--MD5--SIFRE--';
+$password_hash = '--MD5--SIFRE--';
 function forceLogin(){
-    global $password\_hash;
+    global $password_hash;
     $loggedIn = FALSE;
-    if (isset($\_SERVER\['PHP\_AUTH\_USER'\]) AND $\_SERVER\['PHP\_AUTH\_PW'\]
-        AND $\_SERVER\['PHP\_AUTH\_USER'\] == 'admin'
-        AND md5($\_SERVER\['PHP\_AUTH\_PW'\]) == $password\_hash) {
+    if (isset($_SERVER['PHP_AUTH_USER']) AND $_SERVER['PHP_AUTH_PW']
+        AND $_SERVER['PHP_AUTH_USER'] == 'admin'
+        AND md5($_SERVER['PHP_AUTH_PW']) == $password_hash) {
         
-        $\_SESSION\['mfyz\_social\_auth'\] = 'giris\_yapildigina\_dair\_bir\_hash';
+        $_SESSION['mfyz_social_auth'] = 'giris_yapildigina_dair_bir_hash';
         $loggedIn = TRUE;
     }
     if (!$loggedIn) {
@@ -37,8 +37,8 @@ function forceLogin(){
         exit;
     }
 }
-if (!(isset($\_SESSION\['mfyz\_social\_auth'\])
-    AND $\_SESSION\['mfyz\_social\_auth'\] == 'giris\_yapildigina\_dair\_bir\_hash')) {
+if (!(isset($_SESSION['mfyz_social_auth'])
+    AND $_SESSION['mfyz_social_auth'] == 'giris_yapildigina_dair_bir_hash')) {
     forceLogin();
 }
 

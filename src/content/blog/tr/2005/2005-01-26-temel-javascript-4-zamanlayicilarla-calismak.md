@@ -15,14 +15,14 @@ Javascripte otomatik işler yaptırırken sürekli bişeyleri gözetlemek isteye
 
 Basit bir yüklenme efekti yapalım.
 
-  function isle(){ obje=document.getElementById('islem\_bar'); if(obje.value.length==40){ clearTimeout(zamanlayici); alert("Bitti"); }else{ obje.value+='+'; zamanlayici=setTimeout('isle()',100); } }
+  function isle(){ obje=document.getElementById('islem_bar'); if(obje.value.length==40){ clearTimeout(zamanlayici); alert("Bitti"); }else{ obje.value+='+'; zamanlayici=setTimeout('isle()',100); } }
 
 ```
 <input type="button" value="Başla ->" onClick="isle();">
-<input type="text" value="" id="islem\_bar" size="50"><br>
+<input type="text" value="" id="islem_bar" size="50"><br>
 <script>
 function isle(){
-  obje = document.getElementById('islem\_bar');
+  obje = document.getElementById('islem_bar');
   if(obje.value.length == 40){
     clearTimeout(zamanlayici);
     alert("Bitti");

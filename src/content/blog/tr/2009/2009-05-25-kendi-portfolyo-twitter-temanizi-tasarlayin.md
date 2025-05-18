@@ -61,7 +61,7 @@ Ayrıca yaratıcı Twitter artalan örneklerinden bazıları :
 
 [![](/images/archive/tr/2009/05/ornek1.jpg)](http://www.twitter.com/cpollittiu) [@cpollittiu](http://www.twitter.com/cpollittiu)
 
- [![](/images/archive/tr/2009/05/ornek2.jpg) @thinkBIG\_blog](http://www.twitter.com/thinkBIG_blog)
+ [![](/images/archive/tr/2009/05/ornek2.jpg) @thinkBIG_blog](http://www.twitter.com/thinkBIG_blog)
 
  [![](/images/archive/tr/2009/05/ornek3.jpg) @antoniocardoso](http://www.twitter.com/antoniocardoso)
 

@@ -20,9 +20,9 @@ DONGU:
  X = RND
  Y = RND
  N = N + 1
- IF X \* X + Y \* Y > 1 THEN GOTO DONGU
+ IF X * X + Y * Y > 1 THEN GOTO DONGU
  S = S + 1
- PRINT N, S, S / N \* 4
+ PRINT N, S, S / N * 4
  GOTO DONGU
 
 ```

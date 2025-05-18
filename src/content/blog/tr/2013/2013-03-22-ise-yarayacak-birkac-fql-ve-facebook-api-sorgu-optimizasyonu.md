@@ -19,23 +19,23 @@ FQL'in güzel kısmı, birkaç basit SQL yapısını destekliyor olması. Çok g
 
 En basit iki örnek olan kullanıcı bilgisi ve arkadaş listesi elde etmek için şu iki FQL'i kullanabilirsiniz.
 
-\[code=sql\]SELECT uid, username, email, name, sex, birthday\_date, verified FROM user WHERE uid = me()\[/code\]
+[code=sql]SELECT uid, username, email, name, sex, birthday_date, verified FROM user WHERE uid = me()[/code]
 
-FQL'de \* şeklinde tüm kolonları seçme veya herhangi bir alanı seçici olarak kullanama seçeneğiniz yok. İstediğiniz tüm alanları belirlemeniz gerek. Ayrıca "WHERE birthday\_date < '1980'" gibi bir seçici yazamazsınız. Dökümantasyonda da belirtilen ve sadece taranabilir (indexable) olarak tanımlanmış alanları kullabilirsiniz. Bunlar id, username gibi genel seçiciler.
+FQL'de * şeklinde tüm kolonları seçme veya herhangi bir alanı seçici olarak kullanama seçeneğiniz yok. İstediğiniz tüm alanları belirlemeniz gerek. Ayrıca "WHERE birthday_date < '1980'" gibi bir seçici yazamazsınız. Dökümantasyonda da belirtilen ve sadece taranabilir (indexable) olarak tanımlanmış alanları kullabilirsiniz. Bunlar id, username gibi genel seçiciler.
 
 Bu FQL size tek satırlık bir sonuç dizisinde, kullanıcı bilgisini istenen alanları verecektir. Gördüğünüz gibi secicide me() fonksiyonunu kullanarak giriş yapmış olan kullanıcıyı id'sini elde etmeye çalışmadan FQL'de kulanabiliyoruz. Ya da idsini bildiğiniz bir kullanıcı için bir veri isteginde bulunabilirsiniz. Ancak eğer istek yaptığınız kullanıcı, istenen tüm alanlara erişim için uygulamanıza izin vermediyse hata alacaksınız. Yani istek yaptığınız kullanıcının özel bilgilerini sorguluyorsanız, o facebook kullanıcısının, uygulamanızı kurarak gerekli izinleri vermiş olması şart.
 
 Arkadaş listesini almak için kullanacağımız FQL:
 
-\[code=sql\]SELECT uid, name, pic\_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me())\[/code\]
+[code=sql]SELECT uid, name, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me())[/code]
 
 Bu FQL aynı zamanda nasıl sub query kullanabileceğinizi gösteren bir örnek. İç sorguda giriş yapmış kullanıcının arkadaşlarının id listesini alıyoruz, sonra genel kullanıcı bilgisi sorgulayabildiğimiz tabloda (users) bu listeyi sorguluyoruz. Arkadaş listesinden alabileceğiniz veriler de sınırlı. Yani her bilgiyi sorgulayamıyoruz.
 
-Az önce bahsettiğim profil fotografının orijinal yanı büyük versiyonunu elde etme işi bir parça hack sayılabilir. Yani kabul edilen bir method değil, fakat işe yarayan ve kullanılan bir method. Kullanıcınızdan user\_photos iznini aldığınızda kullanıcınızın tüm albümlerini ve fotograflarını okuma hakkina sahip oluyorsunuz. Aşağıdaki FQL'i kullanarak profil fotografının orijinal boyutuna ulaşabilirsiniz:
+Az önce bahsettiğim profil fotografının orijinal yanı büyük versiyonunu elde etme işi bir parça hack sayılabilir. Yani kabul edilen bir method değil, fakat işe yarayan ve kullanılan bir method. Kullanıcınızdan user_photos iznini aldığınızda kullanıcınızın tüm albümlerini ve fotograflarını okuma hakkina sahip oluyorsunuz. Aşağıdaki FQL'i kullanarak profil fotografının orijinal boyutuna ulaşabilirsiniz:
 
-\[code=sql\]SELECT src\_big FROM photo WHERE pid IN (SELECT cover\_pid FROM albüm WHERE owner = me() AND type = 'profile')\[/code\]
+[code=sql]SELECT src_big FROM photo WHERE pid IN (SELECT cover_pid FROM albüm WHERE owner = me() AND type = 'profile')[/code]
 
-İç sorguda albüm tablosundan "profile" türündeki tekil ve özel olan albümün (bu albüm, profil fotografları albümü) cover\_pid yani cover fotografının id'sini sorguluyoruz. Bu bize son yüklenen profil fotografının idsini veriyor. Sonra da fotograflar tablosundan src\_big yani büyük boyut (genelde orijinal boyutu saklıyor facebook bu alanda) adresini istiyoruz.
+İç sorguda albüm tablosundan "profile" türündeki tekil ve özel olan albümün (bu albüm, profil fotografları albümü) cover_pid yani cover fotografının id'sini sorguluyoruz. Bu bize son yüklenen profil fotografının idsini veriyor. Sonra da fotograflar tablosundan src_big yani büyük boyut (genelde orijinal boyutu saklıyor facebook bu alanda) adresini istiyoruz.
 
 \## Optimizasyon demiştik
 

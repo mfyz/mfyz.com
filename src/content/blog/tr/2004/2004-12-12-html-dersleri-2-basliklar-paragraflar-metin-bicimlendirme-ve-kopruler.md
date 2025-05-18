@@ -13,7 +13,7 @@ lang: tr
 
 **p Paragraf Etiketi** Seçilen metini paragrafa dönüştürür, biraz içeri, alt ve üste de biraz boşluk ekler. Kapanış etiketi zorunludur.
 
-**h\* (Headings : Başlıklar)** H etiketi başlıkları belirler. h1, h2, ... h6 başlıklarından sayı büyüdükçe yazı küçülür.
+**h* (Headings : Başlıklar)** H etiketi başlıkları belirler. h1, h2, ... h6 başlıklarından sayı büyüdükçe yazı küçülür.
 
 **div ve span** Stil uygulamak için kullandığımız metin bloğudur. class, id, style parametrelerini kullanarak stil tanımlayabilirsiniz.
 
@@ -96,11 +96,11 @@ gördüğünüz bir preformatted text örneğin.)
 
 Başka bir sayfa, sayfa konumu veya dosyaya köprü kurmak için **a** etiketi kullanılır.
 
-Sayfa konumu belirlemek için sadece name parametresi belirleyin. Çağırırken **href**\="#konum\_adi" şeklinde kullanın.
+Sayfa konumu belirlemek için sadece name parametresi belirleyin. Çağırırken **href**\="#konum_adi" şeklinde kullanın.
 
-Dosya veya başka bir sayfaya köprü için href="sayfa\_dosyasi\_adresi" şeklindeki parametreyi belirleyin. Başka sitedeki linkler için kesin protokolü belirlemeniz gerekir. ("www..." yerine "http://www..." şeklinde)
+Dosya veya başka bir sayfaya köprü için href="sayfa_dosyasi_adresi" şeklindeki parametreyi belirleyin. Başka sitedeki linkler için kesin protokolü belirlemeniz gerekir. ("www..." yerine "http://www..." şeklinde)
 
-Köprülerin farklı çerçevelerde veya yeni bir pencerede açılmasını sağlamak için **target**\="cerceve\_adi" parametresini ayarlayın. Eğer belirtilen çerçeve mevcut değilse sayfa, yeni pencerede açılır. Yeni pencere de açmanın bir diğer (ve en genel) yolu parametreye \_blank değeri vermektir.
+Köprülerin farklı çerçevelerde veya yeni bir pencerede açılmasını sağlamak için **target**\="cerceve_adi" parametresini ayarlayın. Eğer belirtilen çerçeve mevcut değilse sayfa, yeni pencerede açılır. Yeni pencere de açmanın bir diğer (ve en genel) yolu parametreye _blank değeri vermektir.
 
 Epostalara doğrudan köprü vermek için href parametresine "**mailto:**gonderilecek@adres.com" şeklinde değer verin. İşletim sisteminizin geçerli eposta programına, belirtilen eposta adresine yeni ileti açmasını emreder.
 
@@ -108,9 +108,9 @@ Epostalara doğrudan köprü vermek için href parametresine "**mailto:**gonderi
 ```
 <a href="http://www.mfyz.com/">Normal link</a>
 
-<a href="http://www.mfyz.com/#sayfanin\_sonu">Sayfa içi link (http://www.mfyz.com/ sayfasındaki "sayfanin\_sonu" ile isimlendirilmis nenseye gider. Eğer isim yoksa id'ye de bakılır.)</a>
+<a href="http://www.mfyz.com/#sayfanin_sonu">Sayfa içi link (http://www.mfyz.com/ sayfasındaki "sayfanin_sonu" ile isimlendirilmis nenseye gider. Eğer isim yoksa id'ye de bakılır.)</a>
 
-<a href="http://www.mfyz.com/" target="\_blank">yeni pencerede açılan link</a>
+<a href="http://www.mfyz.com/" target="_blank">yeni pencerede açılan link</a>
 
 <a href="mailto:billgates@hotmail.com">Şikayet etmek için tıklayın.</a>
 

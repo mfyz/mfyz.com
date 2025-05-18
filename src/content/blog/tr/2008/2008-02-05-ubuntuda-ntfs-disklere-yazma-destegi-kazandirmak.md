@@ -25,4 +25,4 @@ ntfs-3g kurulduktan sonra mount komunutunun -t parametresi yani type parametresi
 
 ### NTFS-3G için yararlanabileceğiniz diğer kaynaklar
 
-[http://www.ntfs-3g.org/](http://www.ntfs-3g.org/) (Proje anasayfası, kaynak kodlar) [https://help.ubuntu.com/community/MountingWindowsPartitions/ThirdParty](https://help.ubuntu.com/community/MountingWindowsPartitions/ThirdParty)NTFS3G [http://gentoo-wiki.com/HOWTO\_NTFS\_write\_with\_ntfs-3g](http://gentoo-wiki.com/HOWTO_NTFS_write_with_ntfs-3g)
+[http://www.ntfs-3g.org/](http://www.ntfs-3g.org/) (Proje anasayfası, kaynak kodlar) [https://help.ubuntu.com/community/MountingWindowsPartitions/ThirdParty](https://help.ubuntu.com/community/MountingWindowsPartitions/ThirdParty)NTFS3G [http://gentoo-wiki.com/HOWTO_NTFS_write_with_ntfs-3g](http://gentoo-wiki.com/HOWTO_NTFS_write_with_ntfs-3g)

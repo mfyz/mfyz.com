@@ -23,37 +23,37 @@ Bir diğer avantaj da, herhangi bir ödeme yönetim sistemi, banka vs gibi bir e
 
 Apple, faturaları dogrulatmak için geliştiricilere bir protokol sunuyor. Özel bir adrese göndereceğiniz fatura kodunu, ödeme detaylarını alabileceğiniz şekilde cevap olarak dönen bir HTTP servisi var. Bu servise, iOS StoreKit'den aldığınız fatura kodunu gönderdiğinizde, ödeme detaylarını JSON nesnesi cevap olarak alıyorsunuz. Bunu PHP ile nasıl yapabileceğinizi anlatacağım. PHP ile HTTP isteği yapmak için CURL kullanacağım.
 ```
-function validate\_receipt($receipt\_data, $sandbox\_receipt = FALSE) {
-    if ($sandbox\_receipt) {
+function validate_receipt($receipt_data, $sandbox_receipt = FALSE) {
+    if ($sandbox_receipt) {
         $url = "https://sandbox.itunes.apple.com/verifyReceipt/";
     }
     else {
         $url = "https://buy.itunes.apple.com/verifyReceipt";
     }
-    $ch = curl\_init($url);
-    $data\_string = json\_encode(array(
-        'receipt-data' => $receipt\_data,
+    $ch = curl_init($url);
+    $data_string = json_encode(array(
+        'receipt-data' => $receipt_data,
         'password'     => '<>',
     ));
-    curl\_setopt($ch, CURLOPT\_CUSTOMREQUEST, "POST");
-    curl\_setopt($ch, CURLOPT\_POSTFIELDS, $data\_string);
-    curl\_setopt($ch, CURLOPT\_RETURNTRANSFER, TRUE);
-    curl\_setopt($ch, CURLOPT\_HTTPHEADER, array(
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
         'Content-Type: application/json',
-        'Content-Length: ' . strlen($data\_string))
+        'Content-Length: ' . strlen($data_string))
     );
-    $output   = curl\_exec($ch);
-    $httpCode = curl\_getinfo($ch, CURLINFO\_HTTP\_CODE);
-    curl\_close($ch);
+    $output   = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
     if (200 != $httpCode) {
         die("Error validating App Store transaction receipt. Response HTTP code $httpCode");
     }
-    $decoded = json\_decode($output, TRUE);
+    $decoded = json_decode($output, TRUE);
     return $decoded;
 }
 
 ```
-Bu fonksiyon, uygulamamızda, faturaları doğrulamak için kullandığımız method. StoreKit'den aldığınız fatura kodunu yanı "receipt\_data" parametresini doğrulayabilirsiniz.
+Bu fonksiyon, uygulamamızda, faturaları doğrulamak için kullandığımız method. StoreKit'den aldığınız fatura kodunu yanı "receipt_data" parametresini doğrulayabilirsiniz.
 
 Apple, uygulamanızın geliştiririci sürümlerinde (iOS Simulator'da veya XCode'dan doğrudan cihazınıza derlediğiniz sürümlerde), ödemeleri test edebilmek için Sandbox modunda yani test modunda çalışıyor, dolayısıyla sadece Sandbox kullanıcıları ile ödeme yapabiliyorsunuz. Sandbox Apple kimliği oluşturmak için iTunes Connect arayüzünü kullanmanız gerekiyor. Diyelim ki test kullanıcısıyla ödeme yaptınız, bu ödemeyi test sunucularında yani Sandbox sunucularında doğrulamanız gerekiyor. Bunu da, fonksiyonun ikinci parametresiyle belirtebilirsiniz.
 
@@ -61,23 +61,23 @@ Fonksiyon oldukça açık bir şekilde biz POST veri seti oluşturup Apple dogur
 ```
 {
    "receipt":{
-      "original\_purchase\_date\_pst":"2012-12-11 19:39:22 America\\/Los\_Angeles",
-      "unique\_identifier":"130f26a2d4f02b6ec66a44e6d0d1054a0c67b31d",
-      "original\_transaction\_id":"900010202504325481451",
+      "original_purchase_date_pst":"2012-12-11 19:39:22 America\/Los_Angeles",
+      "unique_identifier":"130f26a2d4f02b6ec66a44e6d0d1054a0c67b31d",
+      "original_transaction_id":"900010202504325481451",
       "bvrs":"2.0",
-      "app\_item\_id":"469944437",
-      "transaction\_id":"2390034200035752112451",
+      "app_item_id":"469944437",
+      "transaction_id":"2390034200035752112451",
       "quantity":"1",
-      "unique\_vendor\_identifier":"A6CF45BAC2347-E21D-4827-D14D52A43240",
-      "product\_id":"com.moonit.moonit.starpower800",
-      "item\_id":"5756897490",
-      "version\_external\_identifier":"11723464",
+      "unique_vendor_identifier":"A6CF45BAC2347-E21D-4827-D14D52A43240",
+      "product_id":"com.moonit.moonit.starpower800",
+      "item_id":"5756897490",
+      "version_external_identifier":"11723464",
       "bid":"com.moonit.moonit",
-      "purchase\_date\_ms":"1355283562408",
-      "purchase\_date":"2012-12-12 03:39:22 Etc\\/GMT",
-      "purchase\_date\_pst":"2012-12-11 19:39:22 America\\/Los\_Angeles",
-      "original\_purchase\_date":"2012-12-12 03:39:22 Etc\\/GMT",
-      "original\_purchase\_date\_ms":"1355283562408"
+      "purchase_date_ms":"1355283562408",
+      "purchase_date":"2012-12-12 03:39:22 Etc\/GMT",
+      "purchase_date_pst":"2012-12-11 19:39:22 America\/Los_Angeles",
+      "original_purchase_date":"2012-12-12 03:39:22 Etc\/GMT",
+      "original_purchase_date_ms":"1355283562408"
    },
    "status":0
 }
@@ -95,7 +95,7 @@ Burada kontrol etmeniz gereken ilk şey "status" parametresi. Bu kod "0" (sifir)
 21008   Bu gerçek bir fatura ancak test sunucusuna gönderildi.
 
 ```
-Yukarıdaki JSON nesnesine geri dönersek, teoride her ödeme için tekil bir transaction\_id alacağınızı düşünürsünüz fakat transaction\_id her isteğe karşılık yapılan operasyon numarası anlamına geliyor ve bazı durumlarda, tek gerçek ödeme için birden fazla fatura cevabı alabilirsiniz ve her biri farklı transaction\_id'ye sahip olacaktır. Bu durumda analitiklerinizde original\_transaction\_id'yi kullanarak birden fazla fatura kayıdının tekil olarak kaç tane ödemeye ait olduğunu anlayabilirsiniz.
+Yukarıdaki JSON nesnesine geri dönersek, teoride her ödeme için tekil bir transaction_id alacağınızı düşünürsünüz fakat transaction_id her isteğe karşılık yapılan operasyon numarası anlamına geliyor ve bazı durumlarda, tek gerçek ödeme için birden fazla fatura cevabı alabilirsiniz ve her biri farklı transaction_id'ye sahip olacaktır. Bu durumda analitiklerinizde original_transaction_id'yi kullanarak birden fazla fatura kayıdının tekil olarak kaç tane ödemeye ait olduğunu anlayabilirsiniz.
 
 Yukarıdaki JSON'da ayrıca satın alınan ürün kimliğini, satın almanın yapıldığı uygulama surumunu ödeme yapılma tarihi gibi bir çok ek bilgi alacaksınız. Bu doğrulama nesnesini veritabanınızda ham şekilde şaklamak ileride gününüzü kurtarabilir. Ayrıca fatura kodunu da ham bir şekilde saklayabilir ve ileride tekrar doğrulayabilirsiniz.
 

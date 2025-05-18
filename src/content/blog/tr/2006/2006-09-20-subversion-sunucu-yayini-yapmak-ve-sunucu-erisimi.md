@@ -26,24 +26,24 @@ Sunucunuzun init scriptlerine başlangıçta çalışması için svnserve'i ekle
 
 #### SVN yayını yapan sunucuya erişim
 
-SVN ile sunucuya erişmenin 2 farklı yolu var, ilki bir giriş denetim dosyası oluşturmaktır. Apache, Ssh veya \*NIX sistemlerin giriş denetim mekanizmasını az çok bilenler, bir şifre dosyasının varlığından haberdarlırlar. Zaten hepsi birbirine benzer, burada da aynı mantık ile bir şifre dosyası oluşturuyorsunuz. \*NIX crypt ile şifrelenmiş "kullanıcı:parola" satırlarından oluşan dosyadaki kullanıcılar giriş yapabilirler. Daha detaylı bilgiyi SVNBOOK'tan edinebilirsiniz (SVNBOOK'u bilgisayarınıza indirmek için [http://www.mfyz.com/Files/Dokumanlar/svn-book-html.tar.bz2](http://www.mfyz.com/Files/Dokumanlar/svn-book-html.tar.bz2) tıklayın). Ben pratik olmadığından geçiyorum.
+SVN ile sunucuya erişmenin 2 farklı yolu var, ilki bir giriş denetim dosyası oluşturmaktır. Apache, Ssh veya *NIX sistemlerin giriş denetim mekanizmasını az çok bilenler, bir şifre dosyasının varlığından haberdarlırlar. Zaten hepsi birbirine benzer, burada da aynı mantık ile bir şifre dosyası oluşturuyorsunuz. *NIX crypt ile şifrelenmiş "kullanıcı:parola" satırlarından oluşan dosyadaki kullanıcılar giriş yapabilirler. Daha detaylı bilgiyi SVNBOOK'tan edinebilirsiniz (SVNBOOK'u bilgisayarınıza indirmek için [http://www.mfyz.com/Files/Dokumanlar/svn-book-html.tar.bz2](http://www.mfyz.com/Files/Dokumanlar/svn-book-html.tar.bz2) tıklayın). Ben pratik olmadığından geçiyorum.
 
 Size önereceğim ve benim de kullandığım tekniği, yani ssh üzerinden giriş denetimi yaptırarak erişimi sağlamaktır. SSH, sistemde varolan gerçek kullanıcıları baz alarak denetim yaptığından ssh ile svn erişimi yaptırmak aynı zamanda bize sistemde (yani sunucuda) varolan GERÇEK kullanıcıların kendi giriş bilgileri ile erişmesini sağlar. Zaten proje geliştirmek için kullanılacak bir sunucuda ssh, ftp, http, gibi servisler çalıştığından ssh'ı yüklemek veya aktif olarak çalıştırmak çok da ters birşey değildir. Eğer güvenlik konusunda ssh izni vermiyorsanız ssh portunuzu kapatıp ssh servisini svn erişimi için kullanabilirsiniz.
 
 SVN kullanım komutlarımızı aynen burada da kullanacağız. Tek fark proje adreslemesi olacaktır.
 ```
-svn checkout file:///home/deneme/calisma\_dizini
+svn checkout file:///home/deneme/calisma_dizini
 
 ```
 şeklinde bağlantı kurmak yerine;
 ```
-svn checkout svn+ssh://127.0.0.1/home/deneme/proje\_calisma\_dizinim/
+svn checkout svn+ssh://127.0.0.1/home/deneme/proje_calisma_dizinim/
 mfyz@127.0.0.1's password:
 
 ```
 şeklinde kullanıyoruz. Burada localhost'a göre gösterdim fakat işe yarayacaktır. Sunucunuzun ip'sini girerek sunucu ile bağlantı kurabilirsiniz. Burada sizin local'deki kullanıcı adınızla giriş yapılmaya çalışılacaktır. Eğer sunucudaki kullanıcı adınız farklı ise;
 ```
-svn checkout svn+ssh://mfyz@127.0.0.1/home/deneme/proje\_calisma\_dizinim/
+svn checkout svn+ssh://mfyz@127.0.0.1/home/deneme/proje_calisma_dizinim/
 
 ```
 şeklinde kullanıcı belirterek giriş yapabilirsiniz.

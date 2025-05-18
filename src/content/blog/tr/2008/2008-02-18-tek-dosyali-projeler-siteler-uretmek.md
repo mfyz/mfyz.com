@@ -51,32 +51,32 @@ gördüğünüz gibi oldukça basit. Site başlığı, ufak bir menü iki HR ara
 <?php
 
 // bilgiler
-$bolum = $\_GET\["bolum"\];
-$islem = $\_GET\["islem"\];
+$bolum = $_GET["bolum"];
+$islem = $_GET["islem"];
 
 // ekrana basilani tamponlayalim
-ob\_start();
+ob_start();
 
 // sayfa icerikleri
 if( $bolum == 'hakkimda' ){
-echo <<<HTML\_SON
+echo <<<HTML_SON
 <h2>Hakkımda</h2>
 Ben buyum şunları bunları yaparım falan feşmekan.<br>
 <br>
 Şurada okudum, burada okuyorum büyüyünce X olacağım<br>
 <br>
 siteyi şöyle yaptım böyle ettim.
-HTML\_SON;
+HTML_SON;
 }
 else if( $bolum == 'projeler' ){
-echo <<<HTML\_SON
+echo <<<HTML_SON
 <h2>Projelerim</h2>
 PHP ile şu projelerin altyapısıyla uğraşıyorum.
 Hede hödö
-HTML\_SON;
+HTML_SON;
 }
 else if( $bolum == 'iletisim' ){
-echo <<<HTML\_SON
+echo <<<HTML_SON
 <h2>İletişim</h2>
 İletişim bilgilerim : asd@asd.com<br>
 <br>
@@ -89,19 +89,19 @@ echo <<<HTML\_SON
   <br>
   <input type="submit" value="Mesajı gönder">
 </form>
-HTML\_SON;
+HTML_SON;
 }
 else { // anasayfa
-echo <<<HTML\_SON
+echo <<<HTML_SON
 Siteme hoşgeldiniz
-HTML\_SON;
+HTML_SON;
 }
 
 // tamponlanan icerigi alalim
-$icerik = ob\_get\_contents();
+$icerik = ob_get_contents();
 
 // tamponu bosaltalim, ekrana basilmasin
-ob\_end\_clean();
+ob_end_clean();
 
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -109,15 +109,15 @@ ob\_end\_clean();
 ...
 ```
 
-Yukarıda gördüğünüz gibi sayfa içeriklerini kontrole göre ekrana bastık. Burada dikkatinizi 2 şey çekmiştir. ob\_start, ob\_get\_contents ve ob\_end\_clean fonksiyonlarını ekrana basılan şeyleri $icerik değişkenine aktarabilmek için yaptım.
+Yukarıda gördüğünüz gibi sayfa içeriklerini kontrole göre ekrana bastık. Burada dikkatinizi 2 şey çekmiştir. ob_start, ob_get_contents ve ob_end_clean fonksiyonlarını ekrana basılan şeyleri $icerik değişkenine aktarabilmek için yaptım.
 
 ```
-echo <<<HTML\_SON
+echo <<<HTML_SON
 ...
-HTML\_SON;
+HTML_SON;
 
 ```
-kullanımı ise "HTML\_SON" kelimesini bitirme kelimesi olarak görerek içeride tırnakları istediğimiz gibi kullanma özgürlüğü sunduğu için yaptım. Yani HTML\_SON'ların arasında özgürce istediğiniz her karakteri kullanabilirsiniz. Bu sayede html olarak hazırladığınız sayfa içeriklerini 1-1 kopyala yapıştırarak rahatça işinizi halledebilirsiniz.
+kullanımı ise "HTML_SON" kelimesini bitirme kelimesi olarak görerek içeride tırnakları istediğimiz gibi kullanma özgürlüğü sunduğu için yaptım. Yani HTML_SON'ların arasında özgürce istediğiniz her karakteri kullanabilirsiniz. Bu sayede html olarak hazırladığınız sayfa içeriklerini 1-1 kopyala yapıştırarak rahatça işinizi halledebilirsiniz.
 
 Gelelim neden çıktıyı tamponladığıma, bu işlemi hiç echo, tamponlama kullanmadan şöyle de yapabilirdiniz :
 ```
@@ -157,27 +157,27 @@ $icerik değişkenini basıyoruz. Böylece tek sayfada içerik basabiliyoruz.İ�
 ```
 <?php
 // bilgiler
-$bolum = $\_GET\["bolum"\];
-$islem = $\_GET\["islem"\];
+$bolum = $_GET["bolum"];
+$islem = $_GET["islem"];
 // once islemler kontrol edilmeli
 if( $islem == 'iletisim' ){
   // iletisim formunu eposta ile gonderen
   // veya veritabanina kaydeden kodu
   // buraya yerlesitiryorsunuz
   
-  /\* tabiki islemler bittikten sonra exit ile
+  /* tabiki islemler bittikten sonra exit ile
   betigin calismasini durdurmaniz lazim.
   zaten bundan once işleminizin sonucunu
   ekrana basmis olmaniz lazim.
-  "başarıyla gönderildi" veya gönderilemedi gibi \*/
+  "başarıyla gönderildi" veya gönderilemedi gibi */
   exit();
 }
-/\*
+/*
 Eğer birden fazla işleminiz varsa else if koyarak işlemlerinizi
 tanımlayıp buraya ekleyebilirsiniz.
 Fakat else koymayın. Çünkü işlem değişkeni olmak zorunda değil.
 mesela sadece içerik gösteriliyorsa islem parametresi yoktur.
-\*/
+*/
 ...
 ...
 
@@ -186,33 +186,33 @@ işlemleri de sayfaya gömdükten sonra son sayfa şuna benzer olacak:
 ```
 <?php
 // bilgiler
-$bolum = $\_GET\["bolum"\];
-$islem = $\_GET\["islem"\];
+$bolum = $_GET["bolum"];
+$islem = $_GET["islem"];
 // once islemler kontrol edilmeli
 if( $islem == 'iletisim' ){
   // iletisim islemleri
   exit();
 }
 // ekrana basilani tamponlayalim
-ob\_start();
+ob_start();
 // sayfa icerikleri
 if( $bolum == 'hakkimda' ){
-echo <<<HTML\_SON
+echo <<<HTML_SON
 <h2>Hakkımda</h2>
 Ben buyum şunları bunları yaparım falan feşmekan.<br>
 <br>
 Şurada okudum, burada okuyorum büyüyünce X olacağım<br>
 <br>
 siteyi şöyle yaptım böyle ettim.
-HTML\_SON;
+HTML_SON;
 }else if( $bolum == 'projeler' ){
-echo <<<HTML\_SON
+echo <<<HTML_SON
 <h2>Projelerim</h2>
 PHP ile şu projelerin altyapısıyla uğraşıyorum.
 Hede hödö
-HTML\_SON;
+HTML_SON;
 }else if( $bolum == 'iletisim' ){
-echo <<<HTML\_SON
+echo <<<HTML_SON
 <h2>İletişim</h2>
 İletişim bilgilerim : asd@asd.com<br>
 <br>
@@ -225,16 +225,16 @@ echo <<<HTML\_SON
   <br>
   <input type="submit" value="Mesajı gönder">
 </form>
-HTML\_SON;
+HTML_SON;
 }else{ // anasayfa
-echo <<<HTML\_SON
+echo <<<HTML_SON
 Siteme hoşgeldiniz
-HTML\_SON;
+HTML_SON;
 }
 // tamponlanan icerigi alalim
-$icerik = ob\_get\_contents();
+$icerik = ob_get_contents();
 // tamponu bosaltalim, ekrana basilmasin
-ob\_end\_clean();
+ob_end_clean();
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
   "http://www.w3.org/TR/html4/loose.dtd">

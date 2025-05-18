@@ -38,7 +38,7 @@ $user = (object) array(
 Nesne, dizi ve nesne şeklinde karışık kullanabilirsiniz. Mesela son arabanın markasına;
 
 ```
-print $user->cars\[0\]->brand;
+print $user->cars[0]->brand;
 
 ```
 

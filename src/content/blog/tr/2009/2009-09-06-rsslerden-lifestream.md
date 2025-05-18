@@ -51,19 +51,19 @@ Bu şekilde istediğiniz kadar rss kaynağı tanımlayabilirsiniz. Az sonra simp
 
 Şimdi index.php dosyasında kaynakları okumaya başlayalım.
 ```
-require\_once('config.php');
+require_once('config.php');
 // libs
-require\_once('lib/mypie.php');
+require_once('lib/mypie.php');
 // getting feed contents
 foreach ($feeds as $feedKey => $feed){
     // getting contents
-    $results = @readRSS($feed\[url\]);
-    foreach ($results\[items\] as $item){
+    $results = @readRSS($feed[url]);
+    foreach ($results[items] as $item){
         // adding item array to feed type
         $itemArray = $item;
-        $itemArray\[type\] = $feedKey;
+        $itemArray[type] = $feedKey;
         // adding all items
-        $allItems\[\] = $itemArray;
+        $allItems[] = $itemArray;
     }
 }
 
@@ -76,11 +76,11 @@ $feeds dizisini dönerek feed bilgilerini ve anahtar kelimesini alıyoruz. Döng
 ```
 Array
 (
-    \[title\] => Mario geldi
-    \[date\] => 2009-09-04 17:07:51
-    \[url\] => http://mfyz.tumblr.com/post/179630132
-    \[description\] => Mario geldi (HTML Content)
-    \[type\] => tumblr
+    [title] => Mario geldi
+    [date] => 2009-09-04 17:07:51
+    [url] => http://mfyz.tumblr.com/post/179630132
+    [description] => Mario geldi (HTML Content)
+    [type] => tumblr
 )
 
 ```
@@ -100,10 +100,10 @@ if( $itemCount > $limit ){
     // calculating page count
     $pageCount = ceil( $itemCount / $limit );
     // current page control
-    $page = intVal($\_GET\[page\]);
+    $page = intVal($_GET[page]);
     if( $page < 1 or $page > $pageCount ) $page = 1;
     // paged item array
-    $pagedItems = array\_slice($allItems, ($page-1) \* $limit, $limit);
+    $pagedItems = array_slice($allItems, ($page-1) * $limit, $limit);
 } else{
     $page       = 1;
     $pageCount  = 1;
@@ -111,7 +111,7 @@ if( $itemCount > $limit ){
 }
 
 ```
-config.php dosyasında $limit adında bir değişkende her sayfada kaç girdi gösterileceğini belirleyin. Bunu bu sayfa içinde de yapabilirsiniz ama config.php'de tüm tanımların durması daha mantıklı olacaktır. Yukarıda bilinen sayfalama algoritması kullanarak sayfa sayısı ve şu anki sayfa hesabı yapılıyor. array\_slice ile de o sayfada gösterilecek haberler $pagedItems dizisine parçalanıyor. Artık sayfada:
+config.php dosyasında $limit adında bir değişkende her sayfada kaç girdi gösterileceğini belirleyin. Bunu bu sayfa içinde de yapabilirsiniz ama config.php'de tüm tanımların durması daha mantıklı olacaktır. Yukarıda bilinen sayfalama algoritması kullanarak sayfa sayısı ve şu anki sayfa hesabı yapılıyor. array_slice ile de o sayfada gösterilecek haberler $pagedItems dizisine parçalanıyor. Artık sayfada:
 
 *   $page
 *   $pageCount
@@ -136,13 +136,13 @@ değişkenlerini kullanarak sayfalamayı ve haber içeriklerini basabiliriz. Ger
             <?php
             foreach ($pagedItems as $item){
                 // item's feed-service info
-                $feedinfo = $feeds\[ $item\[type\] \];
+                $feedinfo = $feeds[ $item[type] ];
                 // content
-                $content = $item\[description\];
+                $content = $item[description];
                 // adding to content
                 print '
-                <div class="item '. $display .' '. $item\[type\] .'">
-                    <h3 class="title"><a class="permalink" href="'. $item\[url\] .'" target="\_blank">'. $item\[title\] .'</a> '. ($item\[date\] ? '<span class="time">('. substr($item\[date\], 0, 16) .')</span>':'') .'</h3>
+                <div class="item '. $display .' '. $item[type] .'">
+                    <h3 class="title"><a class="permalink" href="'. $item[url] .'" target="_blank">'. $item[title] .'</a> '. ($item[date] ? '<span class="time">('. substr($item[date], 0, 16) .')</span>':'') .'</h3>
                     '. ($content ? '<div class="content-text">'. $content .'</div>':'') .'
                 </div>
                 ';

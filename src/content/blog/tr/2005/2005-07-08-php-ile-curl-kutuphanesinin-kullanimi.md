@@ -15,35 +15,35 @@ PHP 4.0.2 versiyonu ile yanında çok işe yarayacak bir kütüphane getirdi. Cu
 
 Bu makaleyi okumadan önce sunucunuzda curl yüklü olup olmadığından emin olun. Eğer yüklü değilse [http://curl.haxx.se/libcurl/php/install.html](http://curl.haxx.se/libcurl/php/install.html) adresinden nasıl yükleme & kurulum yapıldığına bakabilirsiniz. Curl oturumlarında sıkça kullanacağımız birkaç fonksiyon var.
 
-[curl\_init()]("http://php.net/curl_init") : Yeni bir curl oturumu başlatır. [curl\_setopt()]("http://php.net/curl_setopt") : Curl transferi için seçenekleri parametreler halinde kullanmaya yarar. [curl\_exec()]("http://php.net/curl_exec") : curl\_setopt() ile belirlenmiş seçenekleri işler ve transfer işlemini yapar. [curl\_close()]("http://php.net/curl_close") : Daha önceden curl\_init ile açılmış curl oturumunu kapatır. [curl\_getinfo()]("http://php.net/curl_getinfo") : Yapılan curl işlemi hakkında çeşitli bilgilere ulaşmak için kullanılır.
+[curl_init()]("http://php.net/curl_init") : Yeni bir curl oturumu başlatır. [curl_setopt()]("http://php.net/curl_setopt") : Curl transferi için seçenekleri parametreler halinde kullanmaya yarar. [curl_exec()]("http://php.net/curl_exec") : curl_setopt() ile belirlenmiş seçenekleri işler ve transfer işlemini yapar. [curl_close()]("http://php.net/curl_close") : Daha önceden curl_init ile açılmış curl oturumunu kapatır. [curl_getinfo()]("http://php.net/curl_getinfo") : Yapılan curl işlemi hakkında çeşitli bilgilere ulaşmak için kullanılır.
 
 Bu fonksiyonların hakkında daha ayrıntılı bilgiye tıklayarak (php manual) ulaşabilirsiniz. Curl ile bir sayfanın çıktısını alan örnek bir uygulama yapalım.
 
 ```
 // Curl oturum baslatiliyor.
-$ch = curl\_init();
+$ch = curl_init();
 
 // URL
-curl\_setopt($ch, CURLOPT\_URL, "http://www.xhandros.net/bl/index.php");
-curl\_setopt($ch, CURLOPT\_HEADER, 0);
+curl_setopt($ch, CURLOPT_URL, "http://www.xhandros.net/bl/index.php");
+curl_setopt($ch, CURLOPT_HEADER, 0);
 
-curl\_exec($ch); // ekrana basiliyor
-curl\_close($ch); // sunucu hafizasindan siliniyor
-
-```
-
-Bu kod URL içeriğini sayfaya basacaktır. curl\_init ile yeni bir oturum başlatıldı, setopt ile transfer seçenekleri tanımlandı, işlem yapıldı ve curl\_close ile hafızadan silindi. curl\_setopt içindeki header parametresi sayfa çıktısını almak için gerekli. Url parametresi ise çıktısı alınacak adresi temsil ediyor. curl\_init("$adres"); şeklinde yapılma imkanıda mevcut. Şimdide curl ile localde olmayan bir sunucuya POST olarak veri gönderelim.
+curl_exec($ch); // ekrana basiliyor
+curl_close($ch); // sunucu hafizasindan siliniyor
 
 ```
-$ch = curl\_init(); // oturum baslat
+
+Bu kod URL içeriğini sayfaya basacaktır. curl_init ile yeni bir oturum başlatıldı, setopt ile transfer seçenekleri tanımlandı, işlem yapıldı ve curl_close ile hafızadan silindi. curl_setopt içindeki header parametresi sayfa çıktısını almak için gerekli. Url parametresi ise çıktısı alınacak adresi temsil ediyor. curl_init("$adres"); şeklinde yapılma imkanıda mevcut. Şimdide curl ile localde olmayan bir sunucuya POST olarak veri gönderelim.
+
+```
+$ch = curl_init(); // oturum baslat
 // POST  adresi
-curl\_setopt($ch, CURLOPT\_URL,"http://www.site.com/test.php");
+curl_setopt($ch, CURLOPT_URL,"http://www.site.com/test.php");
 
-curl\_setopt($ch, CURLOPT\_POST, 1);
-curl\_setopt($ch, CURLOPT\_POSTFIELDS,"isim=ahmet&soyad=yilmaz");
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS,"isim=ahmet&soyad=yilmaz");
 
-curl\_exec ($ch);
-curl\_close ($ch);
+curl_exec ($ch);
+curl_close ($ch);
 
 ```
 
@@ -52,36 +52,36 @@ POSTFIELDS seçeneğinde, normalde nasıl GET ile browser üzerinden veri yolluy
 curl ile sockets kütüphanesinde olduğu gibi sahte isteklerde yollamak mümkündür. Örneğin; referer bilgisini istediğimiz şekilde değiştirip istek gönderebiliriz.
 
 ```
-$ch = curl\_init();
-curl\_setopt($ch, CURLOPT\_URL,"http://localhost/test.php");
-curl\_setopt($ch,CURLOPT\_REFERER,"ceviz.net");
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL,"http://localhost/test.php");
+curl_setopt($ch,CURLOPT_REFERER,"ceviz.net");
 
-curl\_exec ($ch);
-curl\_close ($ch);
+curl_exec ($ch);
+curl_close ($ch);
 
 ```
 
-CURLOPT\_REFERER parametresini istediğimiz şekilde değiştirdik :) Bu şekilde ".htaccess" ile yapılan korumalarda aşılabiliyor. Diğer sayfada öğrendiklerimizle birkaç CURLOPT parametresi ekleyip bir dosya indirme fonksiyonu yazalım.
+CURLOPT_REFERER parametresini istediğimiz şekilde değiştirdik :) Bu şekilde ".htaccess" ile yapılan korumalarda aşılabiliyor. Diğer sayfada öğrendiklerimizle birkaç CURLOPT parametresi ekleyip bir dosya indirme fonksiyonu yazalım.
 
 ```
 <?
-/\*
+/*
 - Yunus Emre Yilmaz / a.k.a yns
 - http://www.ceviz.net disinda kaynak gösterilmeden kullanilamaz.
-\*/
+*/
 
-function dosya\_indir($adres,$ad)
+function dosya_indir($adres,$ad)
 {
-    if (!extension\_loaded(curl)) {
+    if (!extension_loaded(curl)) {
         die("Extension yuklu  degil socket deneyebilirsin");
     }
-    $ch = curl\_init("$adres");
+    $ch = curl_init("$adres");
     if (!$ch) {
         die("Curl oturumu baslatamadim..");
     }
-    curl\_setopt($ch, CURLOPT\_RETURNTRANSFER, 1);
-    $data = curl\_exec($ch);
-    curl\_close($ch);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    $data = curl_exec($ch);
+    curl_close($ch);
     // baglantiyi kapa
     $islem = fopen("$ad", "a+");
     fwrite($islem, $data);
@@ -94,7 +94,7 @@ function dosya\_indir($adres,$ad)
 }
 
 // Örnek kullanim
-// dosya\_indir('http://www.ceviz.net/yns.rar','yns.rar');
+// dosya_indir('http://www.ceviz.net/yns.rar','yns.rar');
 // 1. kisim yuklenecek URL , 2. kisim server'a yuklendigi zamanki dosya adi
 
 ?>
@@ -103,16 +103,16 @@ function dosya\_indir($adres,$ad)
 
 Şimdi gelelim sistemin nasıl işlediğine;
 
-İlk once curl'un yüklü olup olmadığına bakılıyor, eğer yüklü değilse hata mesajı veriliyor. Curl işlemi başlatıldıktan sonra CURLOPT\_RETURNTRANSFER seçeneğiyle curl\_exec()'ten dönen dener sayfaya çıktı olarak verilmez, tanımlandığı değişkende, örnekte $data tutulur. $data değişkenine adres'in bilgileri alındıktan sonra dosya yazma işlemi fonksiyonları ile sunucuda yeni dosya oluşturulur. Sonra dosya indirme işlemi tamamlanır. Eğer bu işlemi local olmayan sunucunuzda yaparsanız çok büyük dosyaları çok az bir zamanda çekebileceğinizi görebilirsiniz.
+İlk once curl'un yüklü olup olmadığına bakılıyor, eğer yüklü değilse hata mesajı veriliyor. Curl işlemi başlatıldıktan sonra CURLOPT_RETURNTRANSFER seçeneğiyle curl_exec()'ten dönen dener sayfaya çıktı olarak verilmez, tanımlandığı değişkende, örnekte $data tutulur. $data değişkenine adres'in bilgileri alındıktan sonra dosya yazma işlemi fonksiyonları ile sunucuda yeni dosya oluşturulur. Sonra dosya indirme işlemi tamamlanır. Eğer bu işlemi local olmayan sunucunuzda yaparsanız çok büyük dosyaları çok az bir zamanda çekebileceğinizi görebilirsiniz.
 
-Ben yaptığım testlerde saniyede 400 kb civarı çekiyordum :) İşleme curl\_Getinfo altında CURLINFO\_SPEED\_DOWNLOAD parametresi eklerseniz download hızını ölçebilirsiniz.
-
-```
-$dlhizi = curl\_getInfo($ch,"CURLINFO\_SPEED\_DOWNLOAD");
+Ben yaptığım testlerde saniyede 400 kb civarı çekiyordum :) İşleme curl_Getinfo altında CURLINFO_SPEED_DOWNLOAD parametresi eklerseniz download hızını ölçebilirsiniz.
 
 ```
+$dlhizi = curl_getInfo($ch,"CURLINFO_SPEED_DOWNLOAD");
 
-Tüm bu fonksiyonun yaptığını \*nix curl'u ilede yapabilirsiniz. Örneğin;
+```
+
+Tüm bu fonksiyonun yaptığını *nix curl'u ilede yapabilirsiniz. Örneğin;
 
 ```
 system("curl -o dosyaadi.rar http://www.ceviz.net/dosyaadi.rar");

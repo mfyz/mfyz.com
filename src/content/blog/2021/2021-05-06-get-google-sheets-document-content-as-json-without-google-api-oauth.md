@@ -35,26 +35,26 @@ Now, as second step on the google sheet side, we have to publish the document to
 We’re done on the google sheet side. Now we’ll get the document id from the url we copied and reformat it for the JSON output.
 
 ```
-https://docs.google.com/spreadsheets/d/1yxaigtzh48EV8sJioJIZJz\_HovKQ6OJH6BLq1alA4GI/edit?usp=sharing
+https://docs.google.com/spreadsheets/d/1yxaigtzh48EV8sJioJIZJz_HovKQ6OJH6BLq1alA4GI/edit?usp=sharing
 ```
 
 Get the document id from the link. For the example sheet I created (the link above), the document id is:
 
 ```
-1yxaigtzh48EV8sJioJIZJz\_HovKQ6OJH6BLq1alA4GI
+1yxaigtzh48EV8sJioJIZJz_HovKQ6OJH6BLq1alA4GI
 ```
 
 Now, let’s construct our JSON url using the document id:
 
 ```
-https://spreadsheets.google.com/feeds/cells/\_YOUR\_SHEET\_ID\_/\_SHEET\_NUMBER\_/public/full?alt=json
+https://spreadsheets.google.com/feeds/cells/_YOUR_SHEET_ID_/_SHEET_NUMBER_/public/full?alt=json
 ```
 
 As you see, aside of the document id, you need to define the sheet index. It’s the sheet tab you want to get as JSON object needs to be entered as number in the url template above.
 
 My sample document had just one tab so the tab index will be “1”. The final url for this example will be:
 
-[https://spreadsheets.google.com/feeds/cells/1yxaigtzh48EV8sJioJIZJz\_HovKQ6OJH6BLq1alA4GI/1/public/full?alt=json](https://spreadsheets.google.com/feeds/cells/1yxaigtzh48EV8sJioJIZJz_HovKQ6OJH6BLq1alA4GI/1/public/full?alt=json)
+[https://spreadsheets.google.com/feeds/cells/1yxaigtzh48EV8sJioJIZJz_HovKQ6OJH6BLq1alA4GI/1/public/full?alt=json](https://spreadsheets.google.com/feeds/cells/1yxaigtzh48EV8sJioJIZJz_HovKQ6OJH6BLq1alA4GI/1/public/full?alt=json)
 
 Now you can access to the content of the sheet in a flattened object. 
 
@@ -68,49 +68,49 @@ Now you can access to the content of the sheet in a flattened object. 
     "xmlns$batch": "http://schemas.google.com/gdata/batch",
     "xmlns$gs": "http://schemas.google.com/spreadsheets/2006",
     "id": {
-      "$t": "https://spreadsheets.google.com/feeds/cells/1yxaigtzh48EV8sJioJIZJz\_HovKQ6OJH6BLq1alA4GI/1/public/full"
+      "$t": "https://spreadsheets.google.com/feeds/cells/1yxaigtzh48EV8sJioJIZJz_HovKQ6OJH6BLq1alA4GI/1/public/full"
     },
     "updated": {
       "$t": "2021-04-28T16:11:58.672Z"
     },
-    "category": \[
+    "category": [
       {
         "scheme": "http://schemas.google.com/spreadsheets/2006",
         "term": "http://schemas.google.com/spreadsheets/2006#cell"
       }
-    \],
+    ],
     "title": {
       "type": "text",
       "$t": "Sheet1"
     },
-    "link": \[
+    "link": [
       {
         "rel": "alternate",
         "type": "application/atom+xml",
-        "href": "https://docs.google.com/spreadsheets/d/1yxaigtzh48EV8sJioJIZJz\_HovKQ6OJH6BLq1alA4GI/pubhtml"
+        "href": "https://docs.google.com/spreadsheets/d/1yxaigtzh48EV8sJioJIZJz_HovKQ6OJH6BLq1alA4GI/pubhtml"
       },
       {
         "rel": "http://schemas.google.com/g/2005#feed",
         "type": "application/atom+xml",
-        "href": "https://spreadsheets.google.com/feeds/cells/1yxaigtzh48EV8sJioJIZJz\_HovKQ6OJH6BLq1alA4GI/1/public/full"
+        "href": "https://spreadsheets.google.com/feeds/cells/1yxaigtzh48EV8sJioJIZJz_HovKQ6OJH6BLq1alA4GI/1/public/full"
       },
       {
         "rel": "http://schemas.google.com/g/2005#post",
         "type": "application/atom+xml",
-        "href": "https://spreadsheets.google.com/feeds/cells/1yxaigtzh48EV8sJioJIZJz\_HovKQ6OJH6BLq1alA4GI/1/public/full"
+        "href": "https://spreadsheets.google.com/feeds/cells/1yxaigtzh48EV8sJioJIZJz_HovKQ6OJH6BLq1alA4GI/1/public/full"
       },
       {
         "rel": "http://schemas.google.com/g/2005#batch",
         "type": "application/atom+xml",
-        "href": "https://spreadsheets.google.com/feeds/cells/1yxaigtzh48EV8sJioJIZJz\_HovKQ6OJH6BLq1alA4GI/1/public/full/batch"
+        "href": "https://spreadsheets.google.com/feeds/cells/1yxaigtzh48EV8sJioJIZJz_HovKQ6OJH6BLq1alA4GI/1/public/full/batch"
       },
       {
         "rel": "self",
         "type": "application/atom+xml",
-        "href": "https://spreadsheets.google.com/feeds/cells/1yxaigtzh48EV8sJioJIZJz\_HovKQ6OJH6BLq1alA4GI/1/public/full?alt=json"
+        "href": "https://spreadsheets.google.com/feeds/cells/1yxaigtzh48EV8sJioJIZJz_HovKQ6OJH6BLq1alA4GI/1/public/full?alt=json"
       }
-    \],
-    "author": \[
+    ],
+    "author": [
       {
         "name": {
           "$t": "..."
@@ -119,7 +119,7 @@ Now you can access to the content of the sheet in a flattened object. 
           "$t": "..."
         }
       }
-    \],
+    ],
     "openSearch$totalResults": {
       "$t": "4"
     },
@@ -132,20 +132,20 @@ Now you can access to the content of the sheet in a flattened object. 
     "gs$colCount": {
       "$t": "26"
     },
-    "entry": \[
+    "entry": [
       {
         "id": {
-          "$t": "https://spreadsheets.google.com/feeds/cells/1yxaigtzh48EV8sJioJIZJz\_HovKQ6OJH6BLq1alA4GI/1/public/full/R1C1"
+          "$t": "https://spreadsheets.google.com/feeds/cells/1yxaigtzh48EV8sJioJIZJz_HovKQ6OJH6BLq1alA4GI/1/public/full/R1C1"
         },
         "updated": {
           "$t": "2021-04-28T16:11:58.672Z"
         },
-        "category": \[
+        "category": [
           {
             "scheme": "http://schemas.google.com/spreadsheets/2006",
             "term": "http://schemas.google.com/spreadsheets/2006#cell"
           }
-        \],
+        ],
         "title": {
           "type": "text",
           "$t": "A1"
@@ -154,13 +154,13 @@ Now you can access to the content of the sheet in a flattened object. 
           "type": "text",
           "$t": "A1-Test"
         },
-        "link": \[
+        "link": [
           {
             "rel": "self",
             "type": "application/atom+xml",
-            "href": "https://spreadsheets.google.com/feeds/cells/1yxaigtzh48EV8sJioJIZJz\_HovKQ6OJH6BLq1alA4GI/1/public/full/R1C1"
+            "href": "https://spreadsheets.google.com/feeds/cells/1yxaigtzh48EV8sJioJIZJz_HovKQ6OJH6BLq1alA4GI/1/public/full/R1C1"
           }
-        \],
+        ],
         "gs$cell": {
           "row": "1",
           "col": "1",
@@ -170,17 +170,17 @@ Now you can access to the content of the sheet in a flattened object. 
       },
       {
         "id": {
-          "$t": "https://spreadsheets.google.com/feeds/cells/1yxaigtzh48EV8sJioJIZJz\_HovKQ6OJH6BLq1alA4GI/1/public/full/R1C2"
+          "$t": "https://spreadsheets.google.com/feeds/cells/1yxaigtzh48EV8sJioJIZJz_HovKQ6OJH6BLq1alA4GI/1/public/full/R1C2"
         },
         "updated": {
           "$t": "2021-04-28T16:11:58.672Z"
         },
-        "category": \[
+        "category": [
           {
             "scheme": "http://schemas.google.com/spreadsheets/2006",
             "term": "http://schemas.google.com/spreadsheets/2006#cell"
           }
-        \],
+        ],
         "title": {
           "type": "text",
           "$t": "B1"
@@ -189,13 +189,13 @@ Now you can access to the content of the sheet in a flattened object. 
           "type": "text",
           "$t": "B1-Test"
         },
-        "link": \[
+        "link": [
           {
             "rel": "self",
             "type": "application/atom+xml",
-            "href": "https://spreadsheets.google.com/feeds/cells/1yxaigtzh48EV8sJioJIZJz\_HovKQ6OJH6BLq1alA4GI/1/public/full/R1C2"
+            "href": "https://spreadsheets.google.com/feeds/cells/1yxaigtzh48EV8sJioJIZJz_HovKQ6OJH6BLq1alA4GI/1/public/full/R1C2"
           }
-        \],
+        ],
         "gs$cell": {
           "row": "1",
           "col": "2",
@@ -205,17 +205,17 @@ Now you can access to the content of the sheet in a flattened object. 
       },
       {
         "id": {
-          "$t": "https://spreadsheets.google.com/feeds/cells/1yxaigtzh48EV8sJioJIZJz\_HovKQ6OJH6BLq1alA4GI/1/public/full/R2C1"
+          "$t": "https://spreadsheets.google.com/feeds/cells/1yxaigtzh48EV8sJioJIZJz_HovKQ6OJH6BLq1alA4GI/1/public/full/R2C1"
         },
         "updated": {
           "$t": "2021-04-28T16:11:58.672Z"
         },
-        "category": \[
+        "category": [
           {
             "scheme": "http://schemas.google.com/spreadsheets/2006",
             "term": "http://schemas.google.com/spreadsheets/2006#cell"
           }
-        \],
+        ],
         "title": {
           "type": "text",
           "$t": "A2"
@@ -224,13 +224,13 @@ Now you can access to the content of the sheet in a flattened object. 
           "type": "text",
           "$t": "A2-Test"
         },
-        "link": \[
+        "link": [
           {
             "rel": "self",
             "type": "application/atom+xml",
-            "href": "https://spreadsheets.google.com/feeds/cells/1yxaigtzh48EV8sJioJIZJz\_HovKQ6OJH6BLq1alA4GI/1/public/full/R2C1"
+            "href": "https://spreadsheets.google.com/feeds/cells/1yxaigtzh48EV8sJioJIZJz_HovKQ6OJH6BLq1alA4GI/1/public/full/R2C1"
           }
-        \],
+        ],
         "gs$cell": {
           "row": "2",
           "col": "1",
@@ -240,17 +240,17 @@ Now you can access to the content of the sheet in a flattened object. 
       },
       {
         "id": {
-          "$t": "https://spreadsheets.google.com/feeds/cells/1yxaigtzh48EV8sJioJIZJz\_HovKQ6OJH6BLq1alA4GI/1/public/full/R2C2"
+          "$t": "https://spreadsheets.google.com/feeds/cells/1yxaigtzh48EV8sJioJIZJz_HovKQ6OJH6BLq1alA4GI/1/public/full/R2C2"
         },
         "updated": {
           "$t": "2021-04-28T16:11:58.672Z"
         },
-        "category": \[
+        "category": [
           {
             "scheme": "http://schemas.google.com/spreadsheets/2006",
             "term": "http://schemas.google.com/spreadsheets/2006#cell"
           }
-        \],
+        ],
         "title": {
           "type": "text",
           "$t": "B2"
@@ -259,13 +259,13 @@ Now you can access to the content of the sheet in a flattened object. 
           "type": "text",
           "$t": "B2-Test"
         },
-        "link": \[
+        "link": [
           {
             "rel": "self",
             "type": "application/atom+xml",
-            "href": "https://spreadsheets.google.com/feeds/cells/1yxaigtzh48EV8sJioJIZJz\_HovKQ6OJH6BLq1alA4GI/1/public/full/R2C2"
+            "href": "https://spreadsheets.google.com/feeds/cells/1yxaigtzh48EV8sJioJIZJz_HovKQ6OJH6BLq1alA4GI/1/public/full/R2C2"
           }
-        \],
+        ],
         "gs$cell": {
           "row": "2",
           "col": "2",
@@ -273,7 +273,7 @@ Now you can access to the content of the sheet in a flattened object. 
           "$t": "B2-Test"
         }
       }
-    \]
+    ]
   }
 }
 ```
@@ -281,7 +281,7 @@ Now you can access to the content of the sheet in a flattened object. 
 You can construct a matrix on your integration using following javascript address in the large JSON response:
 
 ```
-feed.entry\[\].gs$cell
+feed.entry[].gs$cell
 ```
 
 this sub-object will contain the row, cell and the text value of the cell. If you have formulas, you can get the raw entry in the cell in this object as well.

@@ -35,23 +35,23 @@ services:
       - http.host=0.0.0.0
       - transport.host=localhost
       - network.host=0.0.0.0
-      - "ES\_JAVA\_OPTS=-Xms512m -Xmx512m"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       memlock:
         soft: -1
         hard: -1
-    mem\_limit: 1g
+    mem_limit: 1g
   graylog:
     image: graylog/graylog:3.0
     environment:
-      - GRAYLOG\_PASSWORD\_SECRET=mfyz11sanane22banane
+      - GRAYLOG_PASSWORD_SECRET=mfyz11sanane22banane
       # Password: admin
-      - GRAYLOG\_ROOT\_PASSWORD\_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
-      - GRAYLOG\_HTTP\_EXTERNAL\_URI=http://127.0.0.1:9000/
+      - GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
+      - GRAYLOG_HTTP_EXTERNAL_URI=http://127.0.0.1:9000/
     links:
       - mongodb:mongo
       - elasticsearch
-    depends\_on:
+    depends_on:
       - mongodb
       - elasticsearch
     ports:
@@ -69,9 +69,9 @@ app.js
 var graylog2 = require("graylog2");
 
 var logger = new graylog2.graylog({
-    servers: \[
+    servers: [
         { host: "127.0.0.1", port: 12201 },
-    \],
+    ],
     facility: "Test.js",
 });
 

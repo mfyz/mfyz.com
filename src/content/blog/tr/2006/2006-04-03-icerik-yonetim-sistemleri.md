@@ -60,12 +60,12 @@ Meslea bizim yüklemede kullanacağımız işlemler nelerdir?
 bunların işlemler ve kodları olduğunu düşünürsek şöyle bir betik dosyamız olduğunu kurgulayalım.
 
 ```
-1&admin\_dokuman\_kategorileri.php&admin/moduller/dokuman\_kategorileri.php
-1&admin\_dokumanlar.php&admin/moduller/dokumanlar.php
+1&admin_dokuman_kategorileri.php&admin/moduller/dokuman_kategorileri.php
+1&admin_dokumanlar.php&admin/moduller/dokumanlar.php
 1&dokumanlar.php&moduller/dokumanlar.php
-1&dokuman\_oku.php&moduller/dokuman\_oku.php
-1&dokuman\_sil.php&admin/islem/dokuman\_sil.php
-1&dokuman\_duzenle.php&admin/islem/dokuman\_duzenle.php
+1&dokuman_oku.php&moduller/dokuman_oku.php
+1&dokuman_sil.php&admin/islem/dokuman_sil.php
+1&dokuman_duzenle.php&admin/islem/dokuman_duzenle.php
 .
 .
 .
@@ -76,7 +76,7 @@ bunların işlemler ve kodları olduğunu düşünürsek şöyle bir betik dosya
 
 betik dosyamız yani islemler.txt dosyamız bu olsun. Her satırı sırayla işleteceğiz değil mi sırayla işlemleri yorumlarsak şöyle bir işlem sırası çıkar;
 
-1\. işlem : admin\_dokuman\_kategorileri.php dosyasını admin klasöründeki modüller klasörüne dokuman\_kategorileri.php olarka kopyala, 2. işlem : admin\_dokumanlar.php dosyasını admin klasöründeki modüller klasörüne dokumanlar.php olarka kopyala, ... 5. işlem : dokuman\_sil.php dosyasını admin klasöründeki islem klasörüne dokuman\_sil.php dosyası olarak kopyala ... Son 2 işlem ise tablolar.sql dosyasını sql olarak çalıştır ve ardından bu dosyayı sil olarak tanımlanıyor.
+1\. işlem : admin_dokuman_kategorileri.php dosyasını admin klasöründeki modüller klasörüne dokuman_kategorileri.php olarka kopyala, 2. işlem : admin_dokumanlar.php dosyasını admin klasöründeki modüller klasörüne dokumanlar.php olarka kopyala, ... 5. işlem : dokuman_sil.php dosyasını admin klasöründeki islem klasörüne dokuman_sil.php dosyası olarak kopyala ... Son 2 işlem ise tablolar.sql dosyasını sql olarak çalıştır ve ardından bu dosyayı sil olarak tanımlanıyor.
 
 İçerik yönetim sistemine CORE modül olarka yazacağımız bir modülümüz var, bu da modül yükleme modülü. adı biraz garip oldu, :) ama yaptığı iş, indirdiğimiz modülleri hiç dosya kopyalama, sql çalıştırma gibi işlemlerle uğraşmadan modülleri tek tık ile kurmamızı sağlıyor. Var olan CMS sistemlerde bunu yapan her modülün kendi install.php'si var, ben bunu kurallaştırdım sadece, tabiki siz de install.php'ler ile de halledebilirsiniz.
 

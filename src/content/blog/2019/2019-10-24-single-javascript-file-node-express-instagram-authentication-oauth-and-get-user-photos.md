@@ -39,18 +39,18 @@ const cookieParser = require('cookie-parser')
 
 // Set the config values below inline or from environment variables
 const PORT = process.env.PORT || 8110
-const IG\_CLIENT\_ID = process.env.IG\_CLIENT\_ID
-const IG\_CLIENT\_SECRET = process.env.IG\_CLIENT\_SECRET
+const IG_CLIENT_ID = process.env.IG_CLIENT_ID
+const IG_CLIENT_SECRET = process.env.IG_CLIENT_SECRET
 
 ig.use({
-  client\_id: IG\_CLIENT\_ID,
-  client\_secret: IG\_CLIENT\_SECRET
+  client_id: IG_CLIENT_ID,
+  client_secret: IG_CLIENT_SECRET
 })
 
-const igRedirecrUri = process.env.IG\_REDIRECT\_URI
+const igRedirecrUri = process.env.IG_REDIRECT_URI
 
 const app = express()
-app.use(express.static(path.join(\_\_dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'public')))
 app.use(cookieParser())
 
 app.get('/', (req, res) => {
@@ -58,19 +58,19 @@ app.get('/', (req, res) => {
 })
 
 app.get('/instagram/authorize', (req, res) => {
-  res.redirect(ig.get\_authorization\_url(igRedirecrUri, {
-    scope: \['public\_content', 'likes'\]
+  res.redirect(ig.get_authorization_url(igRedirecrUri, {
+    scope: ['public_content', 'likes']
   }))
 })
 
 app.get('/instagram/callback', (req, res) => {
-  ig.authorize\_user(req.query.code, igRedirecrUri, (err, result) => {
+  ig.authorize_user(req.query.code, igRedirecrUri, (err, result) => {
   if(err) return res.send(err)
     // ideally, store token in db and create a
     // browser session id to use the token from db
     // but for quick demo, we'll use cookie store
     // method below is not secure at all
-    res.cookie('igAccessToken', result.access\_token)
+    res.cookie('igAccessToken', result.access_token)
     res.redirect('/instagram/photos')
   })
 })
@@ -81,17 +81,17 @@ app.get('/instagram/photos', (req, res) => {
     // or for our demo version, get it from cookies
     const accessToken = req.cookies.igAccessToken
 
-    ig.use({ access\_token: accessToken })
+    ig.use({ access_token: accessToken })
 
-    const userId = accessToken.split('.')\[0\] // ig user id, like: 1633560409
-    ig.user\_media\_recent(userId, (err, result, pagination, remaining, limit) => {
+    const userId = accessToken.split('.')[0] // ig user id, like: 1633560409
+    ig.user_media_recent(userId, (err, result, pagination, remaining, limit) => {
       if(err) return res.render('error')
       // send photo array to a view or for our demo build html
       // (list of ig photos) and return to the browser
       let html = '';
       result.map((photo) => {
         html += '<a href="' + photo.link + '">' +
-          '<img src="' + photo.images.low\_resolution.url + '"/></a><br/>'
+          '<img src="' + photo.images.low_resolution.url + '"/></a><br/>'
       })
       res.send(html);
     })

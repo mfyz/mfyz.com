@@ -24,8 +24,8 @@ sifre       =
 veritabani  = mfyz
 
 # limitler
-haber\_limit = 5
-forum\_limit = 10
+haber_limit = 5
+forum_limit = 10
 
 ```
 Bu yapıda basit bir dosya yazıyoruz. # işaretinden sonraki kısımlar yorum anlamına gelmekte ve yorumlanırken gözardı edilmektedir. Bu dosyayı sitemizdeki tüm php dosyalarımızın başında işleteceğimiz küçük bir kod ile yorumlatacağız. Kod şu şekilde :
@@ -35,13 +35,13 @@ $dosya = @fopen( "ayar.conf", "r" );
 
 # ayarlari diziye aktarmak
 while( $satir = @fgets( $dosya, 1024 ) ){
-  $satir = ereg\_replace("#.\*$", "", $satir); // yorum satirlarini gecelim
+  $satir = ereg_replace("#.*$", "", $satir); // yorum satirlarini gecelim
   list ( $degisken, $deger ) = explode ('=', $satir);
 
   $degisken = trim ($degisken);
   $deger = trim ($deger);
   if( !empty($degisken) ){
-    $ayar\[$degisken\] = $deger;
+    $ayar[$degisken] = $deger;
   }
 }
 
@@ -53,12 +53,12 @@ Bu kodun kısa bir açıklamasını yapmak gerekirse; $dosya değişkeni ile aya
 ```
 Array
 (
-  \[host\] => localhost
-  \[kullanici\] => root
-  \[sifre\] =>
-  \[veritabani\] => mfyz
-  \[haber\_limit\] => 5
-  \[forum\_limit\] => 10
+  [host] => localhost
+  [kullanici] => root
+  [sifre] =>
+  [veritabani] => mfyz
+  [haber_limit] => 5
+  [forum_limit] => 10
 )
 
 ```

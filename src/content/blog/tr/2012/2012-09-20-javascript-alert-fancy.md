@@ -35,7 +35,7 @@ Bu sırada <a href=""/blog"">blogumu</a> inceleyebilirsiniz.');
 Projenizde jQuery kullandığınızı varsayıyorum. jQuery ile kullanabileceğiniz hatta belki halihazırda kullanmakta olduğunuz lightbox kütüphanesi olan fancybox'u kullanarak basit bir javascript alert fonksiyonu hazırlayacağız. fancybox yerine kendi lightbox kütüphanenizi veya jquery dışında kullandığınız framework'ü de kullanabilirsiniz. Aşağıda kodu doğrudan vererek açıklayacağım.
 ```
 function alertf(html){
-    if (arguments\[1\]) closehref = arguments\[1\];
+    if (arguments[1]) closehref = arguments[1];
     else closehref = 'javascript:$.fancybox.close();';
     contentHTML  = '<div style="text-align:center; font-size: 18px; min-width: 200px; margin: 20px 40px;">'+ html +'</div>';
     contentHTML += '<div style="text-align:center;"><a href="' + closehref + '" class="button">Tamam</a></div>';

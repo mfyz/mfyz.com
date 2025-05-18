@@ -27,27 +27,27 @@ sql kodunu kullanarak tablo yapısını öğrenebiliriz. Çıktı olarak her ala
 MySQL'deki Procedure Anlayse fonksiyonu ile bu alanların bazı betimsel istatistiklerini ve önerilen türünü öğrenebilirsiniz. Bunun için de
 
 ```
-SELECT \* FROM \`forum\` PROCEDURE ANALYSE ();
+SELECT * FROM \`forum\` PROCEDURE ANALYSE ();
 
 ```
 
 kodunu çalıştırmanız yeterlidir. Bu kod çıktı olarak kaç tane alanınız var ise o kadar kayıt dönecektir. Bu kayıtlar şu bilgilere sahip olur :
 
 ```
-Field\_name                 Alanın adı
-Min\_value                  Tablodaki değerler içinde kayıtlı olan minimum değer
-Max\_value                  Tablodaki değerler içinde kayıtlı olan maksimum değer
-Min\_length                 Veri boyutu olarak en küçük boyut
-Max\_length                 Veri boyutu olarak en büyük boyut
-Empties\_or\_zeros           Boş (null) veya 0 değerine sahip satır varsa sayısı
+Field_name                 Alanın adı
+Min_value                  Tablodaki değerler içinde kayıtlı olan minimum değer
+Max_value                  Tablodaki değerler içinde kayıtlı olan maksimum değer
+Min_length                 Veri boyutu olarak en küçük boyut
+Max_length                 Veri boyutu olarak en büyük boyut
+Empties_or_zeros           Boş (null) veya 0 değerine sahip satır varsa sayısı
 Nulls                      Null yani boş içeriğe sahip satır sayısı
-Avg\_value\_or\_avg\_length    Aldığı değerlerin ortalaması (nümerik alanlar için)
+Avg_value_or_avg_length    Aldığı değerlerin ortalaması (nümerik alanlar için)
 Std                        Değerlerin standart sapması
-Optimal\_fieldtype          Burada mysql'in bu alan için size önerdiği veri türü olur 
+Optimal_fieldtype          Burada mysql'in bu alan için size önerdiği veri türü olur 
 
 ```
 
-Burada dikkat edeceğiniz şey, alan boyutlarının alt ve üst değerleri. Yani mesela siz varchar(200) lük bir alan ürettiniz. Ve tablonuz verilerle doldu, bu analize bakınca o alan için Min\_length 10 Max da 50 diyorsa sizin alan boyutunuzu 70-80 gibi bir boyuta düşürmeniz daha az bellek harcamasını sağlar. Yani 200 olarak düşündüğünüz alan uygulamada, yani gerçekte o boyuta ulaşmamış ve daha ufak kalmış.
+Burada dikkat edeceğiniz şey, alan boyutlarının alt ve üst değerleri. Yani mesela siz varchar(200) lük bir alan ürettiniz. Ve tablonuz verilerle doldu, bu analize bakınca o alan için Min_length 10 Max da 50 diyorsa sizin alan boyutunuzu 70-80 gibi bir boyuta düşürmeniz daha az bellek harcamasını sağlar. Yani 200 olarak düşündüğünüz alan uygulamada, yani gerçekte o boyuta ulaşmamış ve daha ufak kalmış.
 
 Benzer konu nümerik alanlar için de geçerli. Yani sizin teorik/ideal olarak düşündüğünüz veri boyutu bazen büyük gelebilir. Bu noktada alan türü ve boyutunu değiştirerek select gibi sorguları daha hızlı hale getirebilirsiniz.
 

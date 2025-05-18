@@ -37,13 +37,13 @@ PHP'deki COM nesnesi sayesinde Word, Excel gibi programlarla bağlantı kurulup 
 
 ```
 \# Excel e bağlanmak için
-  $yeni\_excel = new COM("Excel.Application");
+  $yeni_excel = new COM("Excel.Application");
 
 # Yeni bir çalışma kitabı yaratmak için
-  $yeni\_excel->Workbooks->Add();
+  $yeni_excel->Workbooks->Add();
 
 # Çalışma kitabının class larını kullanarak yeni bir sheet oluşturmak için
-  $kitap=$yeni\_excel->Workbooks(1);
+  $kitap=$yeni_excel->Workbooks(1);
   $sheets=$kitap->Worksheets(1);
 
 # Sheets içerisindeki hücreleri kullanmak için
@@ -60,10 +60,10 @@ PHP'deki COM nesnesi sayesinde Word, Excel gibi programlarla bağlantı kurulup 
 
 # Çalışma kitabını kapatıyoruz
   $kitap->Close();
-  $yeni\_excel->Workbooks->Close();
+  $yeni_excel->Workbooks->Close();
 
 # Çıkıyoruz:
-  $yeni\_excel->Quit();
+  $yeni_excel->Quit();
 
 ```
 

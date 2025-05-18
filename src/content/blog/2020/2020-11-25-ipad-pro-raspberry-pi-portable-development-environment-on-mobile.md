@@ -64,7 +64,7 @@ Add `modules-load=dwc2,g_ether` to cmdline.txt after `rootwait`
 append `dtoverlay=dwc2` to config.txt, or run following that does it for you (on a mac after connecting the SD card):
 
 ```
-sed -i '' 's/rootwait/rootwait modules-load=dwc2,g\_ether/' /Volumes/boot/cmdline.txt<br>echo 'dtoverlay=dwc2' >> /Volumes/boot/config.txt
+sed -i '' 's/rootwait/rootwait modules-load=dwc2,g_ether/' /Volumes/boot/cmdline.txt<br>echo 'dtoverlay=dwc2' >> /Volumes/boot/config.txt
 ```
 
 It’s not the fastest but it’s the most comfortable solution that fills the gap that iOS can’t. With having your development environment on raspberry pi and run your applications, servers, use your favorite command-line tools on raspbian which is a debian based OS that pretty much opens its doors to ridiculous sizes packages of pretty much everything you need.

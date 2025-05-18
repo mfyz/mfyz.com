@@ -56,7 +56,7 @@ I use Cloudflare zero trust to expose my portainer (and other private apps). As 
 
 Let’s get to the juicy part, the magic factor for portainer: gitops integration. It’s not rocket science, but it’s the most important “need” when hosting your own apps.
 
-Certainly, if you are managing code, like templates, extensions, plugins, or basic stuff like your configuration files for an app’s server environments (like \*sql, redis, node, php, nginx).
+Certainly, if you are managing code, like templates, extensions, plugins, or basic stuff like your configuration files for an app’s server environments (like *sql, redis, node, php, nginx).
 
 This makes your simple projects also closer to “Infrastructure as Code” practices, without going through complex AWS, Azure, IaC models.
 

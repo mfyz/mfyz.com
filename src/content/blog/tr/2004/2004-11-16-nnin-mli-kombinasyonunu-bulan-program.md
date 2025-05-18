@@ -29,7 +29,7 @@ CLS
 
 HESAP:
  I = I + 1
- S = S \* I
+ S = S * I
  IF I = N THEN
   COLOR 15
   PRINT "N FAKTORIYEL = ", S
@@ -43,7 +43,7 @@ HESAP1:
 
 A1:
  K = K + 1
- L = L \* K
+ L = L * K
  IF K = M THEN
   COLOR 14
   PRINT "M FAKTORIYEL = ", L
@@ -57,7 +57,7 @@ A5:
 
 A2:
  H = H + 1
- F = F \* H
+ F = F * H
  IF H = (N - M) THEN
   COLOR 15
   PRINT "N-M FAKTORIYEL = ", S
@@ -66,7 +66,7 @@ A2:
  GOTO A2
 
 A8:
- W = S / (L \* F)
+ W = S / (L * F)
  COLOR 14
  PRINT "N'NIN M'LI KOMBINASYONU = ", W
  END

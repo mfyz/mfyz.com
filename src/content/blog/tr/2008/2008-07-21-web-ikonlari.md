@@ -11,7 +11,7 @@ lang: tr
 
 ![](/images/archive/tr/2008/07/web_ikonlar.jpg)
 
-v0.7'de sitenin alt kısmına yerleştirmek üzere tasarladığım, web 2.0 button görünümüne sahip ikonları Dosyalar bölümünde Grafik dizininde "rss\_xhtml\_icons.psd" ve "valid\_css\_xhtml\_icons.psd" dosyaları olarak bulabilirsiniz. (Her ne kadar sayfalar valid olmasa da :) )
+v0.7'de sitenin alt kısmına yerleştirmek üzere tasarladığım, web 2.0 button görünümüne sahip ikonları Dosyalar bölümünde Grafik dizininde "rss_xhtml_icons.psd" ve "valid_css_xhtml_icons.psd" dosyaları olarak bulabilirsiniz. (Her ne kadar sayfalar valid olmasa da :) )
 
 http://www.mfyz.com/Files/Grafik
 

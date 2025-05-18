@@ -103,18 +103,18 @@ div.user {
     line-height: 27px;
     color: #f00;
     padding: 10px;
-    margin: 5px; /\* normal ic genisligin yarisi \*/
+    margin: 5px; /* normal ic genisligin yarisi */
     background: #ccc;
-    border-radius: 5px; /\* normal ic genisligin yarisi \*/
+    border-radius: 5px; /* normal ic genisligin yarisi */
 }
 div.user span.info {
-    color: #f66; /\* acik kirmizi \*/
-    font-size: 12px /\* normal font boyutunun 2/3'u \*/
+    color: #f66; /* acik kirmizi */
+    font-size: 12px /* normal font boyutunun 2/3'u */
 }
 div.user div.avatar {
-    width: 300px; /\* user sinifinin 3/4 boyutu \*/
-    height: 75px; /\* user sinifinin 3/4 boyutu \*/
-    border: 1px /\* ic genisligin 1/10'u \*/
+    width: 300px; /* user sinifinin 3/4 boyutu */
+    height: 75px; /* user sinifinin 3/4 boyutu */
+    border: 1px /* ic genisligin 1/10'u */
 }
 
 ```
@@ -131,22 +131,22 @@ div.user {
     width: @width;
     height: @height;
     font-size: @font-size;
-    line-height: @font-size \* 1.5; /\* font boyutunun 1.5 kati \*/
+    line-height: @font-size * 1.5; /* font boyutunun 1.5 kati */
     color: #mainColor;
     padding: @padding;
-    margin: @padding / 2; /\* normal ic genisligin yarisi \*/
+    margin: @padding / 2; /* normal ic genisligin yarisi */
     background: #ccc;
     border-radius: @padding / 2;
     
     span.info {
-        color: lighten(@mainColor, 10%); /\* orjinal renging %10 acik rengi \*/
-        font-size: @fontSize \* 2 / 3
+        color: lighten(@mainColor, 10%); /* orjinal renging %10 acik rengi */
+        font-size: @fontSize * 2 / 3
     }
     
     div.avatar {
-        width: @width \* 3 / 4;    /\* user sinifinin 3/4 boyutu \*/
-        height: @height \* 3 / 4;  /\* user sinifinin 3/4 boyutu \*/
-        border: @padding / 10     /\* ic genisligin 1/10'u \*/
+        width: @width * 3 / 4;    /* user sinifinin 3/4 boyutu */
+        height: @height * 3 / 4;  /* user sinifinin 3/4 boyutu */
+        border: @padding / 10     /* ic genisligin 1/10'u */
     }
 }
 
@@ -159,7 +159,7 @@ Ya da CSS3 kurallarının farklı tarayiıcılarla çalışması için yazmanız
 
 Bunu açıklamak için CSS örnegi yazacağım son olarak.
 ```
-.kutu\_gri\_buyuk {
+.kutu_gri_buyuk {
     padding: 20px;
     border: 2px solid #666;
     font: 12px Georgia;
@@ -167,10 +167,10 @@ Bunu açıklamak için CSS örnegi yazacağım son olarak.
     -moz-border-radius: 5px;    
     border-radius: 5px;
 }
-.kutu\_gri\_buyuk h1 {
+.kutu_gri_buyuk h1 {
     font-size: 18px;
 }
-.kutu\_gri\_kucuk {
+.kutu_gri_kucuk {
     padding: 10px;
     border: 1px solid #666;
     font: 11px Georgia;
@@ -178,10 +178,10 @@ Bunu açıklamak için CSS örnegi yazacağım son olarak.
     -moz-border-radius: 3px;    
     border-radius: 3px;
 }
-.kutu\_gri\_kucuk h1 {
+.kutu_gri_kucuk h1 {
     font-size: 15px;
 }
-.kutu\_mavi\_buyuk {
+.kutu_mavi_buyuk {
     padding: 20px;
     border: 2px solid #00f;
     font: 12px Georgia;
@@ -189,10 +189,10 @@ Bunu açıklamak için CSS örnegi yazacağım son olarak.
     -moz-border-radius: 5px;    
     border-radius: 5px;
 }
-.kutu\_mavi\_buyuk h1 {
+.kutu_mavi_buyuk h1 {
     font-size: 18px;
 }
-.kutu\_mavi\_kucuk {
+.kutu_mavi_kucuk {
     padding: 10px;
     border: 1px solid #00f;
     font: 11px Georgia;
@@ -200,7 +200,7 @@ Bunu açıklamak için CSS örnegi yazacağım son olarak.
     -moz-border-radius: 3px;    
     border-radius: 3px;
 }
-.kutu\_mavi\_kucuk h1 {
+.kutu_mavi_kucuk h1 {
     font-size: 15px;
 }
 
@@ -225,10 +225,10 @@ Bu ornegin LESS ile hazirlayabileceginiz versiyonu.
         font-size: @headerFontSize;
     }
 }
-.kutu\_gri\_buyuk  { .kutu(12px, 18px, 2px, #666, 20px, 5px); }
-.kutu\_gri\_kucuk  { .kutu(11px, 15px, 1px, #666, 10px, 3px); }
-.kutu\_mavi\_buyuk { .kutu(12px, 18px, 2px, #00f, 20px, 5px); }
-.kutu\_mavi\_kucuk { .kutu(11px, 15px, 1px, #00f, 10px, 3px); }
+.kutu_gri_buyuk  { .kutu(12px, 18px, 2px, #666, 20px, 5px); }
+.kutu_gri_kucuk  { .kutu(11px, 15px, 1px, #666, 10px, 3px); }
+.kutu_mavi_buyuk { .kutu(12px, 18px, 2px, #00f, 20px, 5px); }
+.kutu_mavi_kucuk { .kutu(11px, 15px, 1px, #00f, 10px, 3px); }
 
 ```
 Bu örnek yukarıdaki CSS'i üretecektir. Gördüğünüz gibi borderRadius tanımlarını da bir fonsiyon olarak tanımlayıp kullandım. Bunu yapmadan doğrudan kutu tanımlaması içinde de kullanabilirdim. Fakat uygulamanız içindeki tüm border radius kullanımınızı bu fonksiyon üzerinden ürettirebilirsiniz.

@@ -29,7 +29,7 @@ Başlat » Çalıştır yolunun izleyerek "Çalıştır" penceresiniz açalım.
 
 #### Kullanımı geçmiş DLL'ler...
 
-Bir programı açtığınızda o program sistemin ön belleğine kullanacağı DLL dosyalarını yükler. Program kapatıldığında o DLL dosyaları silinmez. Çünkü aynı oturum boyunca o program bir daha kullanılacak olursa daha hızlı yüklemek ve daha hızlı çalışmak içindir. Ancak 10-15 program açmaya kalktığınızda sistemin önbelleği daha önce açtığınız ve kullanmadığınız programların DLL dosyaları bir de üstüne o anda açık olan programların DLL dosyaları ile dolmuş olacaktır. Böylece bilgisayarda çalışırken gözden kaçmayacak bir performans düşüşü olacaktır. Kayıt defterinde yapacağımız küçük bir değişiklik ile programlar kapanırken kullandığı DLL dosyalarını otomatik olarak sildireceğiz. Bunu yaptıktan sonra sistem uzun süre açık kalsa bile çok yorulmayacaktır. Ancak programlar her açılışta çok kısa bir süre de olsa geç açılacaktır. İşte bu noktada sizin için bir programı çabuk açmak mı? yoksa sistemi daha uzun süre mi kullanmak? soruları arasında bir seçimle karşılaşacaksınız. Herneyse kayıt defterinde "HKEY\_LOCAL\_MACHINESOFTWAREMicrosoftWindowsCurrentVersionExplorer" adresine gidin.
+Bir programı açtığınızda o program sistemin ön belleğine kullanacağı DLL dosyalarını yükler. Program kapatıldığında o DLL dosyaları silinmez. Çünkü aynı oturum boyunca o program bir daha kullanılacak olursa daha hızlı yüklemek ve daha hızlı çalışmak içindir. Ancak 10-15 program açmaya kalktığınızda sistemin önbelleği daha önce açtığınız ve kullanmadığınız programların DLL dosyaları bir de üstüne o anda açık olan programların DLL dosyaları ile dolmuş olacaktır. Böylece bilgisayarda çalışırken gözden kaçmayacak bir performans düşüşü olacaktır. Kayıt defterinde yapacağımız küçük bir değişiklik ile programlar kapanırken kullandığı DLL dosyalarını otomatik olarak sildireceğiz. Bunu yaptıktan sonra sistem uzun süre açık kalsa bile çok yorulmayacaktır. Ancak programlar her açılışta çok kısa bir süre de olsa geç açılacaktır. İşte bu noktada sizin için bir programı çabuk açmak mı? yoksa sistemi daha uzun süre mi kullanmak? soruları arasında bir seçimle karşılaşacaksınız. Herneyse kayıt defterinde "HKEY_LOCAL_MACHINESOFTWAREMicrosoftWindowsCurrentVersionExplorer" adresine gidin.
 
 ![](/images/archive/tr/2004/10/3.gif)
 
@@ -41,7 +41,7 @@ Daha sonra bu değere iki kez tıklayarak değerini 1 olarak girin. Bilgisayarı
 
 #### Yanıt vermeyen uygulamalara balyoz darbesi!
 
-Windowsta bir program yanıt vermediği zaman ekrana bir pencere çıkar ve Sonlandır butonu olan ve 20 saniye geri sayan bir trackbar çıkar. Sonlandır dediğinizde program kapanır. Siz Sonlandır demesenizde program artık sadece ölü bir ağırlıktır, Yüksek ihtimal ikinci pencerede kapatacaksınız :) İşte bu olayı otomatikleştirmek ve size sormadan yanıt vermeyen programları öldürmek için; "HKEY\_CURRENT\_USERControl PanelDesktop" adresine gidin. Listenin üst kısımlarında bulunan "AutoEndTasks" adlı anahtarı açın ve değerini 1 yapın.
+Windowsta bir program yanıt vermediği zaman ekrana bir pencere çıkar ve Sonlandır butonu olan ve 20 saniye geri sayan bir trackbar çıkar. Sonlandır dediğinizde program kapanır. Siz Sonlandır demesenizde program artık sadece ölü bir ağırlıktır, Yüksek ihtimal ikinci pencerede kapatacaksınız :) İşte bu olayı otomatikleştirmek ve size sormadan yanıt vermeyen programları öldürmek için; "HKEY_CURRENT_USERControl PanelDesktop" adresine gidin. Listenin üst kısımlarında bulunan "AutoEndTasks" adlı anahtarı açın ve değerini 1 yapın.
 
 ![](/images/archive/tr/2004/10/5.gif)
 
@@ -49,7 +49,7 @@ Bundan sonra o Sonlandır penceresini görmeyeceksiniz.
 
 #### Sonlandır penceresinin çıkmasını bile beklemeyin!
 
-Bir önceki ayarı yapmış olsanız bile bilgisayar programların sonlandırılma görevini verene kadar belli bir süre programın yanıt vermesini bekler yani bozuk bir oyunun setup'ında bir yerde takılıyorsa biz bu oyunun bozuk olduğunu o takıldığı yerde bayaaa bi bekledikten sonra anlarız :)) İşte bu anlama süremiz windowsta da bu olaya denk gelen şey geçerli olarak 20 saniyedir. Bu süreyi kısaltmak için; "HKEY\_LOCAL\_MACHINESYSTEMControlSet001Control" adresine gidin.
+Bir önceki ayarı yapmış olsanız bile bilgisayar programların sonlandırılma görevini verene kadar belli bir süre programın yanıt vermesini bekler yani bozuk bir oyunun setup'ında bir yerde takılıyorsa biz bu oyunun bozuk olduğunu o takıldığı yerde bayaaa bi bekledikten sonra anlarız :)) İşte bu anlama süremiz windowsta da bu olaya denk gelen şey geçerli olarak 20 saniyedir. Bu süreyi kısaltmak için; "HKEY_LOCAL_MACHINESYSTEMControlSet001Control" adresine gidin.
 
 ![](/images/archive/tr/2004/10/6.gif)
 
@@ -57,7 +57,7 @@ Bir önceki ayarı yapmış olsanız bile bilgisayar programların sonlandırıl
 
 #### Menülerin açılması için beklememek
 
-Başlat menüsünde programların içinde program grupları arasında dolaşırken bir grubun üstüne geldiğinizde açılması için 0,4 saniye beklemeniz gerekir. Bu bekleme süresini 0 yaparak menüleri açarken zbank zbank diye açılmasını sağlayabilirsiniz. Bunun için; "HKEY\_CURRENT\_USERControl PanelDesktop" adresine gidin.
+Başlat menüsünde programların içinde program grupları arasında dolaşırken bir grubun üstüne geldiğinizde açılması için 0,4 saniye beklemeniz gerekir. Bu bekleme süresini 0 yaparak menüleri açarken zbank zbank diye açılmasını sağlayabilirsiniz. Bunun için; "HKEY_CURRENT_USERControl PanelDesktop" adresine gidin.
 
 ![](/images/archive/tr/2004/10/7.gif)
 

@@ -38,11 +38,11 @@ Aşağıda örnek bir kullanım göreceksiniz :
 ```
 <meta name="title" content="Caretta Caretta'ları koruyalım" />
 <meta name="description" content="Yaklaşık 106 milyon yıldır yeryüzünde olduklarını düşünülmektedir. İnsanoğlunun yerleşme ve çoğalma kapasitesi sayesinde bugün sayıları giderek azalmaktadır. Nesli tükenme tehlikesi altında olduğu için koruma altındadır." />
-<link rel="image\_src" href="shareimg.jpg" />
+<link rel="image_src" href="shareimg.jpg" />
 
 ```
 
-title ve description'da sayfa başlığı ve sayfa özeti yer alacak, image\_src'de de yaptığınız görselin adresi yer alacaktır. Bu meta etiketlere sahip bir sayfayı facebook'da paylaşmak isterseniz yukarıda verdiğim önizlemedeki gibi bir sonuç elde edersiniz.
+title ve description'da sayfa başlığı ve sayfa özeti yer alacak, image_src'de de yaptığınız görselin adresi yer alacaktır. Bu meta etiketlere sahip bir sayfayı facebook'da paylaşmak isterseniz yukarıda verdiğim önizlemedeki gibi bir sonuç elde edersiniz.
 
 Sadece imaj değil, sayfa içerisindeki video ve ses dosyalarını da paylaşırken belirterek friendfeed gibi servislerde taranabilmesini sağlayabilirsiniz fakat yukarıdaki kullanım genel olarak tüm sayfalarda kullanılan çözümdür.
 
@@ -50,6 +50,6 @@ Eğer bu konuda bilgi edinmek isterseniz veya bu konuyu daha detaylı incelemek 
 
 #### Paylaşım
 
-Sayfanızın paylaşılması için facebook share butonları ekleyebilir (http://www.facebook.com/facebook-widgets/share.php) veya doğrudan kendiniz link ile http://www.facebook.com/sharer.php?u=YOUR\_URL şeklinde get methodu ile sayfa adresinizi bu adresin sonuna urlencode eidp eklerseniz facebook botu sayfanızı anlık tarayabilecektir.
+Sayfanızın paylaşılması için facebook share butonları ekleyebilir (http://www.facebook.com/facebook-widgets/share.php) veya doğrudan kendiniz link ile http://www.facebook.com/sharer.php?u=YOUR_URL şeklinde get methodu ile sayfa adresinizi bu adresin sonuna urlencode eidp eklerseniz facebook botu sayfanızı anlık tarayabilecektir.
 
 Ya da normal şekilde insanlar sayfa adresinizi kopyala yapıştır yaparak facebook mesajlarına, news feedlerine ekleyeceklerdir.

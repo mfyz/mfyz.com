@@ -37,46 +37,46 @@ stages:
   - deploy
 
 variables:
-  npm\_config\_cache: "$CI\_PROJECT\_DIR/.npm"
+  npm_config_cache: "$CI_PROJECT_DIR/.npm"
 
 cache:
-  key: ${CI\_COMMIT\_REF\_SLUG}
+  key: ${CI_COMMIT_REF_SLUG}
   paths:
     - .npm
 
-production\_deployment:
+production_deployment:
   stage: deploy
   image: alpine
   only:
     - master
-  before\_script:
+  before_script:
     - apk update
     - apk add openssh git curl rsync
-    - git checkout -B "$CI\_BUILD\_REF\_NAME" "$CI\_BUILD\_REF"
+    - git checkout -B "$CI_BUILD_REF_NAME" "$CI_BUILD_REF"
   variables:
-    DOCKER\_DRIVER: overlay
-    SERVER\_NAME: "my-server-name"
-    CONNECTION\_STR: "deployer@myproject.com"
+    DOCKER_DRIVER: overlay
+    SERVER_NAME: "my-server-name"
+    CONNECTION_STR: "deployer@myproject.com"
     ENVIRONMENT: "production"
-    PROJECT\_NAME: "myproject"
-    SLACK\_CI\_CHANNEL: "#ci-myproject"
-    RSYNC\_EXCLUDES: "--exclude 'storage' --exclude '.env' --exclude 'node\_modules' --exclude 'keys' --exclude '.git' --exclude '.yarn-cache'"
-    RSYNC\_BEFORE\_HOOK: "mkdir -p $DEPLOY\_PATH && rsync"
-    DEPLOY\_PATH: "/srv/data/deploy/${PROJECT\_NAME}/production"
-    SERVE\_PATH: "/srv/data/www/${PROJECT\_NAME}/production"
-    PRIVATE\_KEY: $SSH\_PRIVATE\_KEY\_DEPLOYER
+    PROJECT_NAME: "myproject"
+    SLACK_CI_CHANNEL: "#ci-myproject"
+    RSYNC_EXCLUDES: "--exclude 'storage' --exclude '.env' --exclude 'node_modules' --exclude 'keys' --exclude '.git' --exclude '.yarn-cache'"
+    RSYNC_BEFORE_HOOK: "mkdir -p $DEPLOY_PATH && rsync"
+    DEPLOY_PATH: "/srv/data/deploy/${PROJECT_NAME}/production"
+    SERVE_PATH: "/srv/data/www/${PROJECT_NAME}/production"
+    PRIVATE_KEY: $SSH_PRIVATE_KEY_DEPLOYER
   script:
     - mkdir -p ~/.ssh
     - 'which ssh-agent || ( apk add --update openssh )'
     - eval "$(ssh-agent -s)"
-    - echo "${PRIVATE\_KEY}" | tr -d ' ' | base64 -d | ssh-add -
-    - '\[\[ -f /.dockerenv \]\] && echo -e "Host \*\\\\n\\\\tStrictHostKeyChecking no\\\\n\\\\n" > ~/.ssh/config'
-    - ssh "$CONNECTION\_STR" "mkdir -p $SERVE\_PATH $DEPLOY\_PATH;";
-    - rsync -avzqR --rsync-path="$RSYNC\_BEFORE\_HOOK" $RSYNC\_EXCLUDES --delete -e 'ssh' ./ "$CONNECTION\_STR:$DEPLOY\_PATH";
-    - ssh "$CONNECTION\_STR" "cd $DEPLOY\_PATH; rsync -avqR --delete ${RSYNC\_EXCLUDES} ./ ${SERVE\_PATH}";
-    - ssh "$CONNECTION\_STR" "cd ${SERVE\_PATH}; npm install --production";
-    - ssh "$CONNECTION\_STR" "if forever list | grep 'production/server\_run.js'; then forever stop ${SERVE\_PATH}/server\_run.js; fi; forever start --workingDir ${SERVE\_PATH} ${SERVE\_PATH}/server\_run.js"
-    - 'cd $CI\_PROJECT\_DIR && sh ./scripts/notify\_slack.sh "${SLACK\_CI\_CHANNEL}" ":rocket: Build on \\\\\`$ENVIRONMENT\\\\\` \\\\\`$CI\_BUILD\_REF\_NAME\\\\\` deployed to $SERVER\_NAME! :white\_check\_mark: Commit \\\\\`$(git log -1 --oneline)\\\\\` See <https://gitlab.com/myproject/$(basename $PWD)/commit/$CI\_BUILD\_REF>"'
+    - echo "${PRIVATE_KEY}" | tr -d ' ' | base64 -d | ssh-add -
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\\n\\tStrictHostKeyChecking no\\n\\n" > ~/.ssh/config'
+    - ssh "$CONNECTION_STR" "mkdir -p $SERVE_PATH $DEPLOY_PATH;";
+    - rsync -avzqR --rsync-path="$RSYNC_BEFORE_HOOK" $RSYNC_EXCLUDES --delete -e 'ssh' ./ "$CONNECTION_STR:$DEPLOY_PATH";
+    - ssh "$CONNECTION_STR" "cd $DEPLOY_PATH; rsync -avqR --delete ${RSYNC_EXCLUDES} ./ ${SERVE_PATH}";
+    - ssh "$CONNECTION_STR" "cd ${SERVE_PATH}; npm install --production";
+    - ssh "$CONNECTION_STR" "if forever list | grep 'production/server_run.js'; then forever stop ${SERVE_PATH}/server_run.js; fi; forever start --workingDir ${SERVE_PATH} ${SERVE_PATH}/server_run.js"
+    - 'cd $CI_PROJECT_DIR && sh ./scripts/notify_slack.sh "${SLACK_CI_CHANNEL}" ":rocket: Build on \\`$ENVIRONMENT\\` \\`$CI_BUILD_REF_NAME\\` deployed to $SERVER_NAME! :white_check_mark: Commit \\`$(git log -1 --oneline)\\` See <https://gitlab.com/myproject/$(basename $PWD)/commit/$CI_BUILD_REF>"'
   environment:
     name: production
     url: <http://myproject.com>
@@ -94,34 +94,34 @@ You get a deployment log like this:
 ```
 Running with gitlab-runner 15.4.0~beta.5.gdefc7017 (defc7017)
   on green-4.shared.runners-manager.gitlab.com/default ntHFEtyX
-section\_start:1664673660:prepare\_executor
+section_start:1664673660:prepare_executor
 Preparing the "docker+machine" executor
 Using Docker executor with image alpine ...
 Pulling docker image alpine ...
 Using docker image sha256:9c6f0724472873bb50a2ae67a9e7adcb57673a183cea8b06eb778dca859181b5 for alpine with digest alpine@sha256:bc41182d7ef5ffc53a40b044e725193bc10142a1243f395ee852a8d9730fc2ad ...
-section\_end:1664673666:prepare\_executor
-section\_start:1664673666:prepare\_script
+section_end:1664673666:prepare_executor
+section_start:1664673666:prepare_script
 Preparing environment
 Running on runner-nthfetyx-project-17714851-concurrent-0 via runner-nthfetyx-shared-1664673617-f4952085...
-section\_end:1664673667:prepare\_script
-section\_start:1664673667:get\_sources
+section_end:1664673667:prepare_script
+section_start:1664673667:get_sources
 Getting source from Git repository
-$ eval "$CI\_PRE\_CLONE\_SCRIPT"
+$ eval "$CI_PRE_CLONE_SCRIPT"
 Fetching changes with git depth set to 50...
 Initialized empty Git repository in /builds/amazingproject/website/.git/
 Created fresh repository.
 Checking out 7ab562d5 as staging...
 
 Skipping Git submodules setup
-section\_end:1664673681:get\_sources
-section\_start:1664673681:step\_script
-Executing "step\_script" stage of the job script
+section_end:1664673681:get_sources
+section_start:1664673681:step_script
+Executing "step_script" stage of the job script
 Using docker image sha256:9c6f0724472873bb50a2ae67a9e7adcb57673a183cea8b06eb778dca859181b5 for alpine with digest alpine@sha256:bc41182d7ef5ffc53a40b044e725193bc10142a1243f395ee852a8d9730fc2ad ...
 $ apk update && apk add git curl rsync openssh openssh-client python3
-fetch https://dl-cdn.alpinelinux.org/alpine/v3.16/main/x86\_64/APKINDEX.tar.gz
-fetch https://dl-cdn.alpinelinux.org/alpine/v3.16/community/x86\_64/APKINDEX.tar.gz
-v3.16.2-221-ge7097e0782 \[https://dl-cdn.alpinelinux.org/alpine/v3.16/main\]
-v3.16.2-229-g1f881aca9b \[https://dl-cdn.alpinelinux.org/alpine/v3.16/community\]
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.16/main/x86_64/APKINDEX.tar.gz
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.16/community/x86_64/APKINDEX.tar.gz
+v3.16.2-221-ge7097e0782 [https://dl-cdn.alpinelinux.org/alpine/v3.16/main]
+v3.16.2-229-g1f881aca9b [https://dl-cdn.alpinelinux.org/alpine/v3.16/community]
 OK: 17033 distinct packages available
 (1/33) Installing ca-certificates (20220614-r0)
 .
@@ -144,27 +144,27 @@ $ which ssh-agent || ( apk add --update openssh )
 /usr/bin/ssh-agent
 $ eval "$(ssh-agent -s)"
 Agent pid 54
-$ echo "${PRIVATE\_KEY}" | tr -d ' ' | base64 -d | ssh-add -
+$ echo "${PRIVATE_KEY}" | tr -d ' ' | base64 -d | ssh-add -
 Identity added: (stdin) ((stdin))
 $ mkdir -p ~/.ssh
-$ \[\[ -f /.dockerenv \]\] && echo -e "Host \*\\n\\tStrictHostKeyChecking no\\n\\n" > ~/.ssh/config
-$ ssh "$CONNECTION\_STR" "mkdir -p $DEPLOY\_PATH;";
+$ [[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+$ ssh "$CONNECTION_STR" "mkdir -p $DEPLOY_PATH;";
 Warning: Permanently added '199.192.23.254' (ED25519) to the list of known hosts.
 $ echo "--------> Copy latest codebase to remote"
 --------> Copy latest codebase to remote
-$ eval "rsync -avzqR --rsync-path='$RSYNC\_BEFORE\_HOOK' $RSYNC\_EXCLUDES --delete -e 'ssh' ./ '$CONNECTION\_STR:$DEPLOY\_PATH'"
-$ ssh "$CONNECTION\_STR" "find $DEPLOY\_PATH -type d \\( -path $DEPLOY\_PATH/assets/uploads -o -path $DEPLOY\_PATH/application/logs \\) -prune -o -exec chmod og-w {} \\;"
+$ eval "rsync -avzqR --rsync-path='$RSYNC_BEFORE_HOOK' $RSYNC_EXCLUDES --delete -e 'ssh' ./ '$CONNECTION_STR:$DEPLOY_PATH'"
+$ ssh "$CONNECTION_STR" "find $DEPLOY_PATH -type d \( -path $DEPLOY_PATH/assets/uploads -o -path $DEPLOY_PATH/application/logs \) -prune -o -exec chmod og-w {} \;"
 
-$ cd $CI\_PROJECT\_DIR && sh ./scripts/notify\_slack.sh "${SLACK\_CI\_CHANNEL}" ":rocket: Build on \\\`$ENVIRONMENT\\\` \\\`$CI\_BUILD\_REF\_NAME\\\` deployed to $SERVER\_NAME! :white\_check\_mark: Commit \\\`$(git log -1 --oneline)\\\` See <https://gitlab.com/amazingproject/website/commit/$CI\_BUILD\_REF>"
+$ cd $CI_PROJECT_DIR && sh ./scripts/notify_slack.sh "${SLACK_CI_CHANNEL}" ":rocket: Build on \`$ENVIRONMENT\` \`$CI_BUILD_REF_NAME\` deployed to $SERVER_NAME! :white_check_mark: Commit \`$(git log -1 --oneline)\` See <https://gitlab.com/amazingproject/website/commit/$CI_BUILD_REF>"
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
 
   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
 100   427    0     2  100   425     15   3218 --:--:-- --:--:-- --:--:--  3259
-oksection\_end:1664673757:step\_script
-section\_start:1664673757:cleanup\_file\_variables
+oksection_end:1664673757:step_script
+section_start:1664673757:cleanup_file_variables
 Cleaning up project directory and file based variables
-section\_end:1664673758:cleanup\_file\_variables
+section_end:1664673758:cleanup_file_variables
 Job succeeded
 ```
 

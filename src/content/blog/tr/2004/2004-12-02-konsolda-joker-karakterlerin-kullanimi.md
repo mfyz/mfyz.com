@@ -15,11 +15,11 @@ Bu konuda kısa bir örnek uygulama söylemek gerekirse çok çeşitli dosyanın
 
 Gelelim joker karakterlere ve kullanımlarına;
 
-\* Bir veya daha fazla karakteri ifade eder. tty\* -> tty ile başlayan tüm dosyalar dosya0\*.x\* -> dosya0 ile başlayan, uzantısının ilk harfi x olan tüm dosyalar
+* Bir veya daha fazla karakteri ifade eder. tty* -> tty ile başlayan tüm dosyalar dosya0*.x* -> dosya0 ile başlayan, uzantısının ilk harfi x olan tüm dosyalar
 
 ? Tek bir karakteri ifade eder. program.? -> program ile başlayan ve uzantısı tek karakter olan tüm dosyalar.
 
-\[ \] Parantezin içerisinde kalan karakterler veya aralığı ifade eder. dosya\[0-9\] -> dosya0, dosya1, dosya2 ... dosya9 sozluk\_\[a-z\].txt -> sozluk\_a.txt, sozluk\_b.txt ... sozluk\_z.txt
+[ ] Parantezin içerisinde kalan karakterler veya aralığı ifade eder. dosya[0-9] -> dosya0, dosya1, dosya2 ... dosya9 sozluk_[a-z].txt -> sozluk_a.txt, sozluk_b.txt ... sozluk_z.txt
 
 Aşağıda bu konuda örnek kullanım bulacaksınız.
 ```
@@ -27,16 +27,16 @@ $ ls
 01t  02t  03t  04t    ayse  faik   fatma   mehmet
 01x  02x  03x  ahmet  emre  fatih  mahmut
 
-$ ls 0\*
+$ ls 0*
 01t 01x 02t 02x 03t 03x 04t
 
 $ ls 0?t
 01t 02t 03t 04t
 
-$ ls 0\[0-2\]?
+$ ls 0[0-2]?
 01t 01x 02t 02x
 
-$ ls \*met
+$ ls *met
 ahmet mehmet
 
 ```

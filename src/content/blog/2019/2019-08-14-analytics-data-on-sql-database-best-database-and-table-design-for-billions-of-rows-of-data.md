@@ -32,12 +32,12 @@ AS
     now() AS tsin,                   -- static timestmap
     97.5::numeric(5,2) AS temp,      -- static temp
     x::int AS usage                  -- usage the same as id not sure what we want here.
-  FROM generate\_series(1,1728000000) -- for 1.7 billion rows
+  FROM generate_series(1,1728000000) -- for 1.7 billion rows
     AS gs(x);
 
                              QUERY PLAN                              
 --------------------------------------------------------------------
- Function Scan on generate\_series gs  (cost=0.00..15.00 rows=1000 width=4) (actual time=173119.796..750391.668 rows=1728000000 loops=1)
+ Function Scan on generate_series gs  (cost=0.00..15.00 rows=1000 width=4) (actual time=173119.796..750391.668 rows=1728000000 loops=1)
  Planning time: 0.099 ms
  Execution time: 1343954.446 ms
 (3 rows)
@@ -68,7 +68,7 @@ WHERE id BETWEEN 1000000 AND 1001000;
          Recheck Cond: ((id >= 1000000) AND (id <= 1001000))
          Rows Removed by Index Recheck: 16407
          Heap Blocks: lossy=128
-         ->  Bitmap Index Scan on electrothingy\_id\_idx  (cost=0.00..1281.93 rows=993 width=0) (actual time=39.769..39.769 rows=1280 loops=1)
+         ->  Bitmap Index Scan on electrothingy_id_idx  (cost=0.00..1281.93 rows=993 width=0) (actual time=39.769..39.769 rows=1280 loops=1)
                Index Cond: ((id >= 1000000) AND (id <= 1001000))
  Planning time: 0.238 ms
  Execution time: 42.373 ms
@@ -86,17 +86,17 @@ AS
   SELECT
     x::int AS id,
     (x::int % 20000)::int AS locid,
-    -- here we use to\_timestamp rather than now(), we
+    -- here we use to_timestamp rather than now(), we
     -- this calculates seconds since epoch using the gs(x) as the offset
-    to\_timestamp(x::int) AS tsin,
+    to_timestamp(x::int) AS tsin,
     97.5::numeric(5,2) AS temp,
     x::int AS usage
-  FROM generate\_series(1,1728000000)
+  FROM generate_series(1,1728000000)
     AS gs(x);
 
                              QUERY PLAN                                                                
 --------------------------------------------------------------------
- Function Scan on generate\_series gs  (cost=0.00..17.50 rows=1000 width=4) (actual time=176163.107..5891430.759 rows=1728000000 loops=1)
+ Function Scan on generate_series gs  (cost=0.00..17.50 rows=1000 width=4) (actual time=176163.107..5891430.759 rows=1728000000 loops=1)
  Planning time: 0.607 ms
  Execution time: 7147449.908 ms
 (3 rows)
@@ -106,7 +106,7 @@ Now we can run a query on a timestamp value instead,,
 
 ```
 EXPLAIN ANALYZE
-SELECT count(\*), min(temp), max(temp)
+SELECT count(*), min(temp), max(temp)
 FROM electrothingy WHERE tsin BETWEEN '1974-01-01' AND '1974-01-02';
                                                                         
                               QUERY PLAN                                                                         
@@ -116,7 +116,7 @@ FROM electrothingy WHERE tsin BETWEEN '1974-01-01' AND '1974-01-02';
          Recheck Cond: ((tsin >= '1974-01-01 00:00:00-06'::timestamp with time zone) AND (tsin <= '1974-01-02 00:00:00-06'::timestamp with time zone))
          Rows Removed by Index Recheck: 18047
          Heap Blocks: lossy=768
-         ->  Bitmap Index Scan on electrothingy\_tsin\_idx  (cost=0.00..2441.43 rows=77743 width=0) (actual time=40.217..40.217 rows=7680 loops=1)
+         ->  Bitmap Index Scan on electrothingy_tsin_idx  (cost=0.00..2441.43 rows=77743 width=0) (actual time=40.217..40.217 rows=7680 loops=1)
                Index Cond: ((tsin >= '1974-01-01 00:00:00-06'::timestamp with time zone) AND (tsin <= '1974-01-02 00:00:00-06'::timestamp with time zone))
  Planning time: 0.140 ms
  Execution time: 83.321 ms
@@ -139,14 +139,14 @@ So in 83.321 ms we can aggregate 86,401 records in a table with 1.7 Billion rows
 Calculating the hour ending is pretty easy too, truncate the timestamps down and then simply add an hour.
 
 ```
-SELECT date\_trunc('hour', tsin) + '1 hour' AS tsin,
-  count(\*),
+SELECT date_trunc('hour', tsin) + '1 hour' AS tsin,
+  count(*),
   min(temp),
   max(temp)
 FROM electrothingy
 WHERE tsin >= '1974-01-01'
   AND tsin < '1974-01-02'
-GROUP BY date\_trunc('hour', tsin)
+GROUP BY date_trunc('hour', tsin)
 ORDER BY 1;
           tsin          | count |  min  |  max  
 ------------------------+-------+-------+-------
@@ -186,7 +186,7 @@ It's important to note, that it's not using an index on the aggregation, though 
 Another important point of information on PostgreSQL is that PG 10 bring [partitioning DDL](https://www.postgresql.org/docs/10/static/ddl-partitioning.html#ddl-partitioning-declarative). So you can, for instance, easily create partitions for every year. Breaking down your modest database into minor ones that are tiny. In doing so, you should be able to use and maintain btree indexes rather than BRIN which would be even faster.
 
 ```
-CREATE TABLE electrothingy\_y2016 PARTITION OF electrothingy
+CREATE TABLE electrothingy_y2016 PARTITION OF electrothingy
     FOR VALUES FROM ('2016-01-01') TO ('2017-01-01');
 ```
 

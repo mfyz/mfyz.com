@@ -33,7 +33,7 @@ veya "3 days ago" stringini matematiksel tarih değeri yani timestamp'e çevirer
 
 Mesela daha karışık bir örnek olarak:
 ```
-if (strtotime('last monday 1pm') < strtotime($post\_date)) print 'yayinda';
+if (strtotime('last monday 1pm') < strtotime($post_date)) print 'yayinda';
 
 ```
 Bu ufak kontrolle, bütün hafta yazdığınız yazıları bir sonraki hafta pazartesi öğlen 1'de herkese görünür hale getirir. Kontrol'de su anki tarihe göre bir önceki haftanın pazartesi saat öğlen 1'in zaman değeri ile yazıların tarihlerini kıyaslıyoruz. Örnek veriyorum Bugün salı ve siz bi yazı yazdınız, o tarih değeri o haftanın pazartesisinden küçük olmadığı için yukarıdaki kodda if'in içindeki ilk tarih bir sonraki pazartesiye kadar değişmeyecektir. Bir sonraki pazartesi saat 1'de o anın tarihine dönüşeceği için bu salı günü yazdığınız yazı görünür hale gelecektir.

@@ -15,15 +15,15 @@ Uygulamanızı gerekli kontrolleri yaparak hata vermeyecek şekilde hazırladın
 
 Bu noktada ufak bir değişiklikle sunucunuz ile facebook sunucuları arasındaki trafiği monitöre edebilirsiniz. Bu gözlem, aslında her cağrıda yapmak zorunda olmadığınız ama bilmeden yapıyor olduğunuz veya geçici şekillerde ön bellekte saklayabileceğiniz bilgileri, kontrolleri gösterecektir size.
 
-Şimdi ufak bir değişiklikle trafiği yakalayalım. Bunun için base\_facebook.php dosyasında olan api methodunu:
+Şimdi ufak bir değişiklikle trafiği yakalayalım. Bunun için base_facebook.php dosyasında olan api methodunu:
 
 ```
-public function api(/\* polymorphic \*/) {
-	$args = func\_get\_args();
-	if (is\_array($args\[0\])) {
-		return $this->\_restserver($args\[0\]);
+public function api(/* polymorphic */) {
+	$args = func_get_args();
+	if (is_array($args[0])) {
+		return $this->_restserver($args[0]);
 	} else {
-		return call\_user\_func\_array(array($this, '\_graph'), $args);
+		return call_user_func_array(array($this, '_graph'), $args);
 	}
 }
 
@@ -31,17 +31,17 @@ public function api(/\* polymorphic \*/) {
 
 aşağıdaki şekilde güncelliyoruz:
 
-$facebookApiCalls = array(); public function api( /\* polymorphic \*/) { $args = func\_get\_args();
+$facebookApiCalls = array(); public function api( /* polymorphic */) { $args = func_get_args();
 
-$time\_start = microtime(true);
+$time_start = microtime(true);
 
-if (is\_array($args\[0\])) { $result = $this->\_restserver($args\[0\]); } else { $result = call\_user\_func\_array(array($this, '\_graph'), $args); }
+if (is_array($args[0])) { $result = $this->_restserver($args[0]); } else { $result = call_user_func_array(array($this, '_graph'), $args); }
 
-$time\_end = microtime(true); $time\_elapsed = $time\_end - $time\_start; $time\_elapsed \*= 1000; //convert to millisecs
+$time_end = microtime(true); $time_elapsed = $time_end - $time_start; $time_elapsed *= 1000; //convert to millisecs
 
-if (isset($GLOBALS\['facebookApiCalls'\])) $GLOBALS\['facebookApiCalls'\]\[\] = array( 'duration' => $time\_elapsed, 'args' => $args, ); return $result; }
+if (isset($GLOBALS['facebookApiCalls'])) $GLOBALS['facebookApiCalls'][] = array( 'duration' => $time_elapsed, 'args' => $args, ); return $result; }
 
-Yukarıdaki kodda yaptığımız değişiklik basitçe api methodu her cağrılışında, facebook sunucularına yapılan http isteğinin ne kadar sürdüğünü ölçüp global bir dizide toplamak. Bu şekilde sayfanızın sonunda ekrana $facebookApiCalls dizisini bir tablo şeklinde veya basitçe var\_dump alarak kaç çağrı yapıldığını, yapılan cağrıların her sayfada tekrar edip etmediğini gözlemleyip eğer yapılabiliyorsa ön bellekte veya oturum değişkenlerinde tutularak sorgu tasarrufu yapılıp yapılamayacağına karar verebilirsiniz. Eğer sorgularınız çok zaman alıyorsa sunucu trafiğinizde optimizasyonlara gidebilirsiniz.
+Yukarıdaki kodda yaptığımız değişiklik basitçe api methodu her cağrılışında, facebook sunucularına yapılan http isteğinin ne kadar sürdüğünü ölçüp global bir dizide toplamak. Bu şekilde sayfanızın sonunda ekrana $facebookApiCalls dizisini bir tablo şeklinde veya basitçe var_dump alarak kaç çağrı yapıldığını, yapılan cağrıların her sayfada tekrar edip etmediğini gözlemleyip eğer yapılabiliyorsa ön bellekte veya oturum değişkenlerinde tutularak sorgu tasarrufu yapılıp yapılamayacağına karar verebilirsiniz. Eğer sorgularınız çok zaman alıyorsa sunucu trafiğinizde optimizasyonlara gidebilirsiniz.
 
 Bir çok amatör programcı, sdk methodlarını veya bilindik open graph methodlarını kullanarak sorgu yapıyor ve çoklu işlem yaparken ayrı ayrı sorgu yapıyorlar. Aslında facebook veri yapısını biraz anladıktan sonra FQL yazarak birden fazla sorguyu tek sorguda toplayıp önbellekleyebilir ve bu sayede çok büyük bir optimizasyon sağlayabilirsiniz.
 

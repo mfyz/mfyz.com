@@ -26,39 +26,39 @@ Apple provides a protocol to validate receipts. There is an HTTP service that yo
 
 Here is a helper method for PHP powered apps:
 ```
-function validate\_receipt($receipt\_data, $sandbox\_receipt = FALSE) {
-	if ($sandbox\_receipt) {
+function validate_receipt($receipt_data, $sandbox_receipt = FALSE) {
+	if ($sandbox_receipt) {
 		$url = "https://sandbox.itunes.apple.com/verifyReceipt/";
 	}
 	else {
 		$url = "https://buy.itunes.apple.com/verifyReceipt";
 	}
 
-	$ch = curl\_init($url);
+	$ch = curl_init($url);
 
-	$data\_string = json\_encode(array(
-		'receipt-data' => $receipt\_data,
+	$data_string = json_encode(array(
+		'receipt-data' => $receipt_data,
 		'password' => '<>',
 	));
 
-	curl\_setopt($ch, CURLOPT\_CUSTOMREQUEST, "POST");
-	curl\_setopt($ch, CURLOPT\_POSTFIELDS, $data\_string);
-	curl\_setopt($ch, CURLOPT\_RETURNTRANSFER, TRUE);
-	curl\_setopt($ch, CURLOPT\_HTTPHEADER, array(
+	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 		'Content-Type: application/json',
-		'Content-Length: ' . strlen($data\_string))
+		'Content-Length: ' . strlen($data_string))
 	);
 
-	$output = curl\_exec($ch);
-	$httpCode = curl\_getinfo($ch, CURLINFO\_HTTP\_CODE);
+	$output = curl_exec($ch);
+	$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
-	curl\_close($ch);
+	curl_close($ch);
 
 	if (200 != $httpCode) {
 		die("Error validating App Store transaction receipt. Response HTTP code $httpCode");
 	}
 
-	$decoded = json\_decode($output, TRUE);
+	$decoded = json_decode($output, TRUE);
 	return $decoded;
 }
 ```
@@ -70,23 +70,23 @@ Here is the response JSON object:
 ```
 {
 	"receipt":{
-		"original\_purchase\_date\_pst":"2012-12-11 19:39:22 America/Los\_Angeles",
-		"unique\_identifier":"130f26a2d4f02b6ec66a44e6d0d1054a0c67b31d",
-		"original\_transaction\_id":"900010202504325481451",
+		"original_purchase_date_pst":"2012-12-11 19:39:22 America/Los_Angeles",
+		"unique_identifier":"130f26a2d4f02b6ec66a44e6d0d1054a0c67b31d",
+		"original_transaction_id":"900010202504325481451",
 		"bvrs":"2.0",
-		"app\_item\_id":"469944437",
-		"transaction\_id":"2390034200035752112451",
+		"app_item_id":"469944437",
+		"transaction_id":"2390034200035752112451",
 		"quantity":"1",
-		"unique\_vendor\_identifier":"A6CF45BAC2347-E21D-4827-D14D52A43240",
-		"product\_id":"com.moonit.moonit.starpower800",
-		"item\_id":"5756897490",
-		"version\_external\_identifier":"11723464",
+		"unique_vendor_identifier":"A6CF45BAC2347-E21D-4827-D14D52A43240",
+		"product_id":"com.moonit.moonit.starpower800",
+		"item_id":"5756897490",
+		"version_external_identifier":"11723464",
 		"bid":"com.moonit.moonit",
-		"purchase\_date\_ms":"1355283562408",
-		"purchase\_date":"2012-12-12 03:39:22 Etc/GMT",
-		"purchase\_date\_pst":"2012-12-11 19:39:22 America/Los\_Angeles",
-		"original\_purchase\_date":"2012-12-12 03:39:22 Etc/GMT",
-		"original\_purchase\_date\_ms":"1355283562408"
+		"purchase_date_ms":"1355283562408",
+		"purchase_date":"2012-12-12 03:39:22 Etc/GMT",
+		"purchase_date_pst":"2012-12-11 19:39:22 America/Los_Angeles",
+		"original_purchase_date":"2012-12-12 03:39:22 Etc/GMT",
+		"original_purchase_date_ms":"1355283562408"
 	},
 	"status":0
 }
@@ -101,7 +101,7 @@ The first thing you need to check is "status" code. This is the return code is t
 21007 This receipt is a sandbox receipt, but it was sent to the production server.
 21008 This receipt is a production receipt, but it was sent to the sandbox server
 ```
-Back to JSON response object above. You may think you will get one unique transaction\_id value for each payment. But in practice, it doesn't necessarily one transaction for one payment. In some cases, StoreKit triggers its callback method multiple times (sometimes even more than 5 times) and all of them will have different receipt-data and different transaction ids. So you need to use original\_transaction\_id to understand all of them stands for one payment. I recommend you to keep the record of other transactions as well. Save the receipt-data in your database, in that case, you can re-validate whenever you want. But if you have problems to capture receipt-data form client (which is your app) that will be a problem on user's end.
+Back to JSON response object above. You may think you will get one unique transaction_id value for each payment. But in practice, it doesn't necessarily one transaction for one payment. In some cases, StoreKit triggers its callback method multiple times (sometimes even more than 5 times) and all of them will have different receipt-data and different transaction ids. So you need to use original_transaction_id to understand all of them stands for one payment. I recommend you to keep the record of other transactions as well. Save the receipt-data in your database, in that case, you can re-validate whenever you want. But if you have problems to capture receipt-data form client (which is your app) that will be a problem on user's end.
 
 Response object also contains some information about, the product identifier that user purchased (you may have multiple products in your app, or same product with different price points, but in iTunes Connect all of them will be treated as different products), purchase time, purchased app version etc... I also recommend you to store this response object as it is in your database as of verification result. You might want to use it for your analytics or revenue calculation.
 

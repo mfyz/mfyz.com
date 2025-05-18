@@ -9,7 +9,7 @@ migration: {"wpId":310,"wpPostDate":"2012-07-27T04:11:56.000Z"}
 lang: tr
 ---
 
-mod\_rewrite sayesinde sayfalarımızın adreslerini istediğimiz formda gösterebiliyoruz (İlgili makale için: [https://tr.mfyz.com/htaccess-yardimiyla-tum-trafigi-tek-merkezden-yonetmek](https://tr.mfyz.com/htaccess-yardimiyla-tum-trafigi-tek-merkezden-yonetmek)). Kullanımı çok yaygınlaşsa da bu kullanımın bazı ufak problemleri beraberinde getirdiği göz önünde bulundurulmalı.
+mod_rewrite sayesinde sayfalarımızın adreslerini istediğimiz formda gösterebiliyoruz (İlgili makale için: [https://tr.mfyz.com/htaccess-yardimiyla-tum-trafigi-tek-merkezden-yonetmek](https://tr.mfyz.com/htaccess-yardimiyla-tum-trafigi-tek-merkezden-yonetmek)). Kullanımı çok yaygınlaşsa da bu kullanımın bazı ufak problemleri beraberinde getirdiği göz önünde bulundurulmalı.
 
 Bu yazıda iki çok açık problemden ve basit çözümlerinden bahsedeceğim.
 

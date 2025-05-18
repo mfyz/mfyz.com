@@ -53,13 +53,13 @@ Bu imzayı oluşturan html kodu şöyle :
 <div style="border-top: 1px dotted #ccc; height: 15px; font-size: 1px;"></div>
 <table border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td valign="top"><img src="mail\_logo.gif" alt="Logo" width="52" height="43" border="0" /></td>
+    <td valign="top"><img src="mail_logo.gif" alt="Logo" width="52" height="43" border="0" /></td>
     <td width="15">&nbsp;</td>
     <td valign="top">
       <span style="font: 20px Lucida Grande, Arial; font-weight:bold;">Mehmet Fatih YILDIZ</span>
       <span style="font: 15px Lucida Grande, Arial; color:#999; margin-bottom:5px;">// UI Designer and Web Developer</span><br />
-      <a style="font: 12px Lucida Grande, Arial; color:#F63; text-decoration:none; border-bottom:1px solid #06F;" href="http://mfyz.com" target="\_blank">mfyz.com</a>
-      <a style="font: 12px Lucida Grande, Arial; color:#666; text-decoration:none; border-bottom:1px solid #F00;" href="http://mfyz.net" target="\_blank">mfyz.net (Portfolyo)</a>
+      <a style="font: 12px Lucida Grande, Arial; color:#F63; text-decoration:none; border-bottom:1px solid #06F;" href="http://mfyz.com" target="_blank">mfyz.com</a>
+      <a style="font: 12px Lucida Grande, Arial; color:#666; text-decoration:none; border-bottom:1px solid #F00;" href="http://mfyz.net" target="_blank">mfyz.net (Portfolyo)</a>
     </td>
   </tr>
 </table>
@@ -67,7 +67,7 @@ Bu imzayı oluşturan html kodu şöyle :
 ```
 gördüğünüz gibi tüm css'ler satır içinde kullanılmış durumda. Artalan imajı yok ve yerleşim tablo ile sağlanmış. İşte bu ilkellikte olması gerekiyor.
 
-Bu noktada hazırladığınız sayfayı body, html etiketlerinden arındırarak kaydedin. Yani mesela benim imzam için yukarıda verdiğim kodu kaydettim bir dosyaya. Bu noktaya geldiyseniz şimdi yapacağınız şey, imzada kullandığınız imajları external bir yere almak. Bu örnekte tek imaj var mail\_logo.gif bu imajı kendi sitem altında bir yerlere koyup adresini değiştirdim. Yani `http://mfyz.com/mail_logo.gif` adresinde mesela. Çünkü bu düzeltmeyi yapmazsanız tüm mesajlarınızda bu dosya ekli (attach) olarak gitmeye başlayacaktır. Bu da karşı tarafı rahatsız edebilir (ben rahatsız olurum açıkcası). Tabiki ekli de gönderseniz, dış bağlatı ile de gönderseniz eposta okuyucu programlar, karşıdaki kişi kabul edene kadar sizin imajlarınızı göstermeyecektir. Bu noktada imajlarınız içinde bilgi olmamasına dikkat edin. Yani bu örnekteki gibi logo, ikon gibi materyalleri imaj olarak kullanın.
+Bu noktada hazırladığınız sayfayı body, html etiketlerinden arındırarak kaydedin. Yani mesela benim imzam için yukarıda verdiğim kodu kaydettim bir dosyaya. Bu noktaya geldiyseniz şimdi yapacağınız şey, imzada kullandığınız imajları external bir yere almak. Bu örnekte tek imaj var mail_logo.gif bu imajı kendi sitem altında bir yerlere koyup adresini değiştirdim. Yani `http://mfyz.com/mail_logo.gif` adresinde mesela. Çünkü bu düzeltmeyi yapmazsanız tüm mesajlarınızda bu dosya ekli (attach) olarak gitmeye başlayacaktır. Bu da karşı tarafı rahatsız edebilir (ben rahatsız olurum açıkcası). Tabiki ekli de gönderseniz, dış bağlatı ile de gönderseniz eposta okuyucu programlar, karşıdaki kişi kabul edene kadar sizin imajlarınızı göstermeyecektir. Bu noktada imajlarınız içinde bilgi olmamasına dikkat edin. Yani bu örnekteki gibi logo, ikon gibi materyalleri imaj olarak kullanın.
 
 #### E-posta istemcilerinin ayarlanması
 

@@ -29,7 +29,7 @@ CLS
 
 ISLEM:
  A = A + 1
- IF (INT(N / A)) \* A = N THEN
+ IF (INT(N / A)) * A = N THEN
   PRINT "ASAL DEGIL"
   END
  END IF

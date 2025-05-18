@@ -24,9 +24,9 @@ XMLHttpRequest hakkında bilgi için [buraya tıklayın](https://tr.mfyz.com/xml
 http://mootools.net/ adresinden mootools'u ajax seçeneği ile derleyerek indirmelisiniz. Sayfa başında mootools.js dosyasını include edin. Basitçe ajax isteği için kod bloğu şöyle :
 
 ```
-new Ajax('icerik\_alinacak\_dosya.php', {
+new Ajax('icerik_alinacak_dosya.php', {
   method: 'get',
-  update: $('icerik\_basilacak\_element\_id')
+  update: $('icerik_basilacak_element_id')
 }).request();
 
 ```
@@ -54,18 +54,18 @@ evalScripts     XMLHttpRequest ve çoğu diğer ajax kütüphanelerindeki ana so
 
 ```
 ...
-<a href="#" onClick="ajax\_istek('hakkinda.html');">Hakkında</a>
-<a href="#" onClick="ajax\_istek('iletisim.html');">iletişim</a>
+<a href="#" onClick="ajax_istek('hakkinda.html');">Hakkında</a>
+<a href="#" onClick="ajax_istek('iletisim.html');">iletişim</a>
 ...
 <div id="icerik"></div>
 ...
 
 ```
 
-Bu sayfamız olsun. Linke tıklantığında ajax\_istek fonksiyonunu url parametresiyle çağırıyor görüldüğü gibi. Ayrıca icerik kimlikli bir div var. İçeriği buraya basacağız.
+Bu sayfamız olsun. Linke tıklantığında ajax_istek fonksiyonunu url parametresiyle çağırıyor görüldüğü gibi. Ayrıca icerik kimlikli bir div var. İçeriği buraya basacağız.
 
 ```
-function ajax\_istek(hedef){
+function ajax_istek(hedef){
   new Ajax(hedef, {
     update: $('icerik')
   }).request();
@@ -76,7 +76,7 @@ function ajax\_istek(hedef){
 Basit bir ajax isteği gördüğünüz gibi. Şimdi bunu biraz geliştirelim ve linke tıklandığında sayfa içeriği "Yükleniyor" olsun, içerik geldiğinde de zaten yükleniyor kalkacak.
 
 ```
-function ajax\_istek(hedef){
+function ajax_istek(hedef){
   $('icerik').setHTML('Yükleniyor');
   new Ajax(hedef, {
     update: $('icerik')
@@ -88,7 +88,7 @@ function ajax\_istek(hedef){
 Biraz daha geliştirip yüklenme işlemi bittiğinde birşeyler yaptıralım.
 
 ```
-function ajax\_istek(hedef){
+function ajax_istek(hedef){
   $('icerik').setHTML('Yükleniyor');
   new Ajax(hedef, {
     update: $('icerik'),
@@ -110,10 +110,10 @@ function ajax\_istek(hedef){
 şeklinde bir inputum var ve onBlur olayına yani kutudan odak gittiğinde bir fonksiyon çağırıyorum.
 
 ```
-function kullanici\_adi\_kontrol\_et(kadi){
+function kullanici_adi_kontrol_et(kadi){
   // kullanici adini veritabanindan kontrol
   // edecek php dosyasina sorgulatiyorum
-  new Ajax('kullanici\_adi\_kontrol.php', {
+  new Ajax('kullanici_adi_kontrol.php', {
     method : 'get',
     data: 'kadi = ' + kadi,
     onComplete: function(cevap){
@@ -138,7 +138,7 @@ function kullanici\_adi\_kontrol\_et(kadi){
 
 Bakın burada 2 parametreyi örnekledim. Birisi data parametresi diğeri de update kullanmak zorunda olmadığımız. Ayrıca onComplete'de tanımladığımız fonksiyonun ilk parametresi yani cevap değişkeni ajax ile dönen içeriği alıyor.
 
-Yukarıda yaptırdığım işlem özetle şöyle: kullanici\_adi\_kontrol.php dosyası get methodu ile gelen kadi değişkenindeki string'i veritabanında aratıyor. Eğer yoksa ekrana sadece "OK" basıyor. Eğer başka bir hata varsa hatayı basıyor. Mesela kullanıcı adında geçersiz karakterler var veya veritabanında o kullanıcı mevcut. Yani hata varsa "OK" dışında birşeyler oluyor. PHP hatası da olabilir.
+Yukarıda yaptırdığım işlem özetle şöyle: kullanici_adi_kontrol.php dosyası get methodu ile gelen kadi değişkenindeki string'i veritabanında aratıyor. Eğer yoksa ekrana sadece "OK" basıyor. Eğer başka bir hata varsa hatayı basıyor. Mesela kullanıcı adında geçersiz karakterler var veya veritabanında o kullanıcı mevcut. Yani hata varsa "OK" dışında birşeyler oluyor. PHP hatası da olabilir.
 
 onComplete'da cevap değişkenini kontrol ettiriyorum. Eğer "OK" string'i ise kullanıcı adı yok yani ekrana başarı sinyali vermem gerek. Ben de etkileşimli olması için bilgi giriş kutusunun çerçevesini yeşil yapıyorum. Mootools ile css özniteliklerini değiştiriyorum. Eğer OK değilse bir hata vardır. Çerçeveyi kırmızı yapıp cevap değişkenini yani dönen hatayı ekrana yazdırıyorum alert ile.
 
@@ -149,7 +149,7 @@ Bu istekleri ve cevap işleme tekniklerini uygulamanıza göre geliştireceksini
 Mootools'da çok güzel bir özellik daha var. Formunuzu çok pratik bir şekilde ajax ile göndermek.
 
 ```
-<form id="bilgi\_formu" action="kayit.php" method="post">
+<form id="bilgi_formu" action="kayit.php" method="post">
   Ad : <input type="text" name="ad"><br>
   Soyad : <input type="text" name="soyad"><br>
   <input type="submit" value="Gönder">
@@ -160,21 +160,21 @@ Mootools'da çok güzel bir özellik daha var. Formunuzu çok pratik bir şekild
 böyle bir formunuz olduğunu varsayalım. Oldukça basit yani. Gönder butonuna basıldığında normal şekilde kayit.php dosyasina post methodu ile 2 değişken gidiyor biliyorsunuz. kayit.php'de de bu değişkenleri işliyorsunuz.
 
 ```
-$('bilgi\_formu').send();
+$('bilgi_formu').send();
 
 ```
 
 kodu sayesinde formu ajax ile gönderebilirsiniz. Gideceği url, methodu ve datası otomatik olarak bulunup gönderiliyor. Örnek kullanımını da şu kodlar özetleyebilirim :
 
 ```
-<form id="bilgi\_formu" action="kayit.php" method="post">
+<form id="bilgi_formu" action="kayit.php" method="post">
   Ad : <input type="text" name="ad"><br>
   Soyad : <input type="text" name="soyad"><br>
   <input type="button" onClick="gonder()" value="Gönder">
 </form>
 <script>
 function gonder(){
-  $('bilgi\_formu').send({
+  $('bilgi_formu').send({
     onComplete: function(){
       alert("Başarıyla gönderildi");
     }

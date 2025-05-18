@@ -11,7 +11,7 @@ lang: tr
 
 MacOSX'de php geliştirme ortamı kurmak, diğer işletim sistemlerine göre çok daha kolay. MAMP ile neredeyse tek drag & drop ile apache, php, mysql üçlüsünü çalışır hale getirmek mümkün.
 
-Eğer \*AMP kullanan bir web geliştiricisi iseniz muhtemelen tüm veritabanı yönetiminizi phpmyadmin ile yapıyorsunuzdur. PHPMyAdmin kuşkusuz taşınabilir ve esnek yapısıyla istediğiniz gibi özelleştirebileceğiniz bir yönetimsel araç. Fakat bazı noktalarda bazen bir masaüstü aracının sunacağı özellikleri sunamayabiliyor.
+Eğer *AMP kullanan bir web geliştiricisi iseniz muhtemelen tüm veritabanı yönetiminizi phpmyadmin ile yapıyorsunuzdur. PHPMyAdmin kuşkusuz taşınabilir ve esnek yapısıyla istediğiniz gibi özelleştirebileceğiniz bir yönetimsel araç. Fakat bazı noktalarda bazen bir masaüstü aracının sunacağı özellikleri sunamayabiliyor.
 
 Sequel Pro, adından paralı bir yazılım gibi bir çağrışım yapsa da ücretsiz bir yazılım. Basit ve minimalist bir arayüze sahip Sequel Pro'nun kullanımı oldukça kolay.
 

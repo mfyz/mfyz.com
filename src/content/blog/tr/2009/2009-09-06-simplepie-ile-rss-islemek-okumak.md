@@ -34,27 +34,27 @@ Bir örnek uygulama ile anlatacağım. İnidirdiğiniz simplepie paketi içindek
 Örnek olarak bir uygulama yapsak da ben burada yardımcı bir fonksiyon kullanacağım. Bu fonksiyon ile basitçe url'sini verdiğimiz feed'i geniş bir dizi olarak döndürecek.
 
 ```
-handle\_content\_type();
+handle_content_type();
     // params
-    if($params\[expire\]) $feed->set\_cache\_duration($params\[expire\]);
+    if($params[expire]) $feed->set_cache_duration($params[expire]);
     // feed info
-    $result\[feed\]\[title\]       = $feed->get\_title();
-    $result\[feed\]\[url\]         = $feed->get\_permalink();
-    $result\[feed\]\[description\] = $feed->get\_description();
+    $result[feed][title]       = $feed->get_title();
+    $result[feed][url]         = $feed->get_permalink();
+    $result[feed][description] = $feed->get_description();
     // items
     $i = 1;
-    foreach ($feed->get\_items() as $item){
-        $items\[\] = array(
-            'title'       => $item->get\_title(),
-            'date'        => $item->get\_date('Y-m-d H:i:s'),
-            'url'         => $item->get\_permalink(),
-            'description' => $item->get\_description(),
+    foreach ($feed->get_items() as $item){
+        $items[] = array(
+            'title'       => $item->get_title(),
+            'date'        => $item->get_date('Y-m-d H:i:s'),
+            'url'         => $item->get_permalink(),
+            'description' => $item->get_description(),
         );
         $i++;
         if( $size and $i > $size ) break;
     }
     // adding items to result
-    $result\[items\] = $items;
+    $result[items] = $items;
     // result
     return $result;
 }
@@ -80,14 +80,14 @@ $feed = new SimplePie($url);
 ile yeni bir nesne oluşturup feed adresini ayarlıyoruz.
 
 ```
-$feed->handle\_content\_type();
+$feed->handle_content_type();
 
 ```
 
 ile de rss kaynağını alıp okuma işlemini yapıyoruz.
 
 ```
-$feed->set\_cache\_duration(3600); // 1 saat = 3600 saniye
+$feed->set_cache_duration(3600); // 1 saat = 3600 saniye
 
 ```
 
@@ -98,26 +98,26 @@ Ben her fonksiyonda genel olarak sonuç dizisi oluşturur ve onu dönerim. Burad
 Bunun için sonuç dizimi "feed" ve "items" olarak 2 alt diziye ayırıyorum ve "feed" dizisine o rss kaynağı için xml içinde belirtilen feed adı, adresi, açıklamasını kaydediyorum. Bunu da sırayla :
 
 ```
-$feed->get\_title();       // feed başlığı/adı
-$feed->get\_permalink();   // feed ana içerik bağlantısı
-$feed->get\_description(); // kaynak açıklaması
+$feed->get_title();       // feed başlığı/adı
+$feed->get_permalink();   // feed ana içerik bağlantısı
+$feed->get_description(); // kaynak açıklaması
 
 ```
 
 methodları ile alabiliyoruz. Bu konuda daha derin açıklama yazmaya gerek yok.
 
-feed içindeki konuları da $feed->get\_items() methodu ile aslında dizi olarak alabiliyoruz. Ben de bu diziyi foreach ile dönerek içindeki nesnelerin alt methodlarını kullanarak her konu için gerekli bilgileri alıp sonuç dizisine "items" alt dizisi içine ekliyorum. Bu foreach içinde bazı methodlarla sıradaki konuya ait bilgileri alıyorum. Bu methodlar :
+feed içindeki konuları da $feed->get_items() methodu ile aslında dizi olarak alabiliyoruz. Ben de bu diziyi foreach ile dönerek içindeki nesnelerin alt methodlarını kullanarak her konu için gerekli bilgileri alıp sonuç dizisine "items" alt dizisi içine ekliyorum. Bu foreach içinde bazı methodlarla sıradaki konuya ait bilgileri alıyorum. Bu methodlar :
 
 ```
-$item->get\_title();                 // konu başlığı
+$item->get_title();                 // konu başlığı
 
-$item->get\_date('Y-m-d H:i:s') ;    // konunun tarihi, burada php'nin date
+$item->get_date('Y-m-d H:i:s') ;    // konunun tarihi, burada php'nin date
                                     // parametreleri ile istediğiniz
                                     // formatta alabilirsiniz.
 
-$item->get\_permalink();             // konuya ait bağlantı
+$item->get_permalink();             // konuya ait bağlantı
 
-$item->get\_description();           // konu açıklaması
+$item->get_description();           // konu açıklaması
                                     // hatta bu kısım genelde html olarak
                                     // konu içeriğini ifade eder.
 
@@ -130,7 +130,7 @@ Fonksiyon sonunda da sonuç dizisini dönüyorum.
 Bu fonksiyonun kullanımı için bir örnek vermek gerekirse :
 
 ```
-print\_r( readRSS('http://mfyz.tumblr.com/rss') );
+print_r( readRSS('http://mfyz.tumblr.com/rss') );
 
 ```
 
@@ -139,34 +139,34 @@ print\_r( readRSS('http://mfyz.tumblr.com/rss') );
 ```
 Array
 (
-    \[feed\] => Array
+    [feed] => Array
         (
-            \[title\] => mfyznin sosyal akışı
-            \[url\] => http://mfyz.tumblr.com/
-            \[description\] => Bu günlük özellikle, izlediğim filmler...
+            [title] => mfyznin sosyal akışı
+            [url] => http://mfyz.tumblr.com/
+            [description] => Bu günlük özellikle, izlediğim filmler...
         )
-    \[items\] => Array
+    [items] => Array
         (
-            \[0\] => Array
+            [0] => Array
                 (
-                    \[title\] => Daha yavaşı varsa gelsin…
-                    \[date\] => 2009-07-29 18:43:23
-                    \[url\] => http://mfyz.tumblr.com/post/151632394
-                    \[description\] => <img src="http://17.media.tumblr.com/3YGTMGQuLqhrtmy6gdzjebuNo1\_500.png" /><br/><br/>Daha yavaşı varsa gelsin…
+                    [title] => Daha yavaşı varsa gelsin…
+                    [date] => 2009-07-29 18:43:23
+                    [url] => http://mfyz.tumblr.com/post/151632394
+                    [description] => <img src="http://17.media.tumblr.com/3YGTMGQuLqhrtmy6gdzjebuNo1_500.png" /><br/><br/>Daha yavaşı varsa gelsin…
                 )
-            \[1\] => Array
+            [1] => Array
                 (
-                    \[title\] => Photo
-                    \[date\] => 2009-07-21 11:48:00
-                    \[url\] => http://mfyz.tumblr.com/post/145949772
-                    \[description\] => <img src="http://23.media.tumblr.com/3YGTMGQuLq5xgnk8LjdWyEcxo1\_500.jpg" />
+                    [title] => Photo
+                    [date] => 2009-07-21 11:48:00
+                    [url] => http://mfyz.tumblr.com/post/145949772
+                    [description] => <img src="http://23.media.tumblr.com/3YGTMGQuLq5xgnk8LjdWyEcxo1_500.jpg" />
                 )
-            \[2\] => Array
+            [2] => Array
                 (
-                    \[title\] => Photo
-                    \[date\] => 2009-07-19 19:54:48
-                    \[url\] => http://mfyz.tumblr.com/post/144797738
-                    \[description\] => <img src="http://4.media.tumblr.com/3YGTMGQuLq3jz02mZYNk5E5Eo1\_500.jpg" />
+                    [title] => Photo
+                    [date] => 2009-07-19 19:54:48
+                    [url] => http://mfyz.tumblr.com/post/144797738
+                    [description] => <img src="http://4.media.tumblr.com/3YGTMGQuLq3jz02mZYNk5E5Eo1_500.jpg" />
                 )
         )
 )

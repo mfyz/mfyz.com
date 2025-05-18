@@ -17,10 +17,10 @@ Sonuç olarak güvenlik, daha taşınabilir kod, kolaylık gibi özelliklerinden
 
 #### Örneklerle Genel Kullanımı
 
-PEAR'ı sisteminize kurmanız gerekiyor. Ya da PEAR'ı kendi projenize gömerek de kullanabilirsiniz. http://pear.php.net/package/MDB2 adresinden MDB2'yi indirebilirsiniz. PEAR dizininizi include\_path'a tanıtırsanız şu şekilde sayfa başında MDB2'yi çalıştırabilirsiniz :
+PEAR'ı sisteminize kurmanız gerekiyor. Ya da PEAR'ı kendi projenize gömerek de kullanabilirsiniz. http://pear.php.net/package/MDB2 adresinden MDB2'yi indirebilirsiniz. PEAR dizininizi include_path'a tanıtırsanız şu şekilde sayfa başında MDB2'yi çalıştırabilirsiniz :
 
 ```
-require\_once('MDB2.php');
+require_once('MDB2.php');
 ```
 
 #### Bağlantı
@@ -48,7 +48,7 @@ Neyse, bağlantı kısmı işin başlangıcı. Asıl sık sık kullanacağımız
 
 ```
 // sorguyu isletirken query fonksiyonunu kullanıyoruz
-$sorgu = $db->query("select \* from haberler");
+$sorgu = $db->query("select * from haberler");
 
 // numRows ile donen sonuc kumesinin boyutunu alabiliriz
 if( $sorgu->numRows() > 0 ){
@@ -64,7 +64,7 @@ if( $sorgu->numRows() > 0 ){
 
   // sonuclari normal dizi islemleri ile isleyebiliriz
   foreach($sonuclar as $sonuc){
-    print $sonuc\[baslik\] . '  
+    print $sonuc[baslik] . '  
 ';
   }
 }
@@ -78,9 +78,9 @@ if( $sorgu->numRows() > 0 ){
 En sevdiğim kısmı ise sizi verilerinizin türünü kontrol etme işini üstünüzden alması. Bunun için iki yol var. Birincisi query kullanarak quote yapmak. Yani Türkçesi, yukarıdaki methodu kullanarak sorgu işletmek, ama işletirken de değişkenleri tek tek bir fonksiyondan geçirmek. Örnekle anlatırsam :
 
 ```
-// elimizde $ad, $ziyaret\_sayisi degiskenleri olsun
+// elimizde $ad, $ziyaret_sayisi degiskenleri olsun
 
-$sorgu = $db->query('insert into uyeler (ad, ziyaret) values ('. $db->quote($ad, 'text') .', '. $db->quote($ziyaret\_sayisi, 'integer') .')');
+$sorgu = $db->query('insert into uyeler (ad, ziyaret) values ('. $db->quote($ad, 'text') .', '. $db->quote($ziyaret_sayisi, 'integer') .')');
 
 ```
 
@@ -96,7 +96,7 @@ Gelelim kullanıma, bunu da örnekleyerek anlatacağım :
 
 ```
 // prepare ile ilk parametrede sorgunuzu yazıyorsunuz. Değişken olan her yere tırnak fln koymadan sadece soru işareti koyuyorsunuz. prepare fonksiyonunun ikinci parametresinde de dizi olarak sırasıyla o soru işaretlerinin veri türlerini belirtiyorsunuz.
-$sorgu = $db->prepare("select \* from uyeler where adi like ?", array('text'));
+$sorgu = $db->prepare("select * from uyeler where adi like ?", array('text'));
 
 // execute ile dizi şeklinde soru işaretlerine sırasıyla gelecek verinizi veriyorsunuz.
 $sonuc = $sorgu->execute("fatih");
@@ -112,7 +112,7 @@ Bu örnekte tek değişken gösterdiğim için pek anlaşılmamış olabilir. An
 ```
 // elimizde çok değişken olsun
 
-$sorgu = $db->prepare("insert into uyeler (no, adi, eposta, yorum\_sayisi, uyelik\_tarihi, aktif, www) values (?, ?, ?, ?, now(), ?, ?)", array('integer', 'text', 'text', 'integer', 'integer', 'text'));
+$sorgu = $db->prepare("insert into uyeler (no, adi, eposta, yorum_sayisi, uyelik_tarihi, aktif, www) values (?, ?, ?, ?, now(), ?, ?)", array('integer', 'text', 'text', 'integer', 'integer', 'text'));
 // verilerinizi bir diziye koyuyorsunuz, tabiki soru işaretleri hangi sırada ise o sırada koyuyorsunuz
 $veri = array($no, $adi, $eposta, $yorum, $aktif, $www);
 // basitçe sorgunuzu işletiyorsunuz
@@ -125,9 +125,9 @@ $sorgu->execute(array(5, 'başka üye', 'deneme@deneme.com', 10, 1, "http://www.
 
 // hatta eğer sisteminizi daha efektif hale getirmek isterseniz
 // bütün SQL'lerinizi fonksiyonlara çevirin. Mesela :
-function uye\_kaydet($veri){
+function uye_kaydet($veri){
   // sql hazirlaniyor
-  $sorgu = $GLOBALS\[db\]->prepare("insert into uyeler (no, adi, eposta, yorum\_sayisi, uyelik\_tarihi, aktif, www) values (?, ?, ?, ?, now(), ?, ?)", array('integer', 'text', 'text', 'integer', 'integer', 'text'));
+  $sorgu = $GLOBALS[db]->prepare("insert into uyeler (no, adi, eposta, yorum_sayisi, uyelik_tarihi, aktif, www) values (?, ?, ?, ?, now(), ?, ?)", array('integer', 'text', 'text', 'integer', 'integer', 'text'));
 
   // gelen veri isletiliyor
   if( $sorgu->execute($veri) ) return true;

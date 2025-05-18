@@ -15,7 +15,7 @@ Birincisi IE'nin dom ağacında html5 etiketlerine ait hiçbir initialization yo
 ```
 <script type="text/javascript">
 	elements = "article footer header nav sidebar section".split(' ');
-	for (i in elements) { document.createElement(elements\[i\]); }
+	for (i in elements) { document.createElement(elements[i]); }
 </script>
 ```
 Tamam etiketler tanınır hale geldi ama daha büyük problem ise IE görsel olarak bu etiketlerle ne yapacağını bilemediği için default stillerini uyguluyor. Anlam veremeyeceğiniz marginler, değişik element türleri olarak bütün etiketler birbirine girmiş oluyor arayüzde. CSS ile tüm html5 etiketlerini blok element ayarlayıp basitçe resetlemek için:

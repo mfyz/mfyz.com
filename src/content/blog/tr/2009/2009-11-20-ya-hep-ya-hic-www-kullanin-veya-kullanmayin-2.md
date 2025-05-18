@@ -14,8 +14,8 @@ Sitenizde http://www.mfyz.com veya http://mfyz.com şeklinde giren kullanıcıla
 PHP geliştiricileri için : ufak bir kod ile bu yönlendirmeyi yapabileceğinizi biliyor muydunuz?
 ```
 // subdomain redirection
-if( substr($\_SERVER\[HTTP\_HOST\], 0, 3) != 'www' ){
-	die(' window.top.location = &quot;http://www.mfyz.com'. $\_SERVER\[REQUEST\_URI\] .'&quot;; ');
+if( substr($_SERVER[HTTP_HOST], 0, 3) != 'www' ){
+	die(' window.top.location = &quot;http://www.mfyz.com'. $_SERVER[REQUEST_URI] .'&quot;; ');
 }
 
 ```

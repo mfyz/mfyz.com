@@ -14,14 +14,14 @@ You write your app and you start to see performance issues. You start to optimiz
 
 You can add a basic timing profiling to your API calls to see how many calls you do, what kind of calls they are and how long they take to run.
 
-Let's dive in SDK, modify it a bit and start getting profiling information. Here is the actual method you need to modify in base\_facebook.php file:
+Let's dive in SDK, modify it a bit and start getting profiling information. Here is the actual method you need to modify in base_facebook.php file:
 ```
-public function api(/\* polymorphic \*/) {
-	$args = func\_get\_args();
-	if (is\_array($args\[0\])) {
-		return $this->\_restserver($args\[0\]);
+public function api(/* polymorphic */) {
+	$args = func_get_args();
+	if (is_array($args[0])) {
+		return $this->_restserver($args[0]);
 	} else {
-		return call\_user\_func\_array(array($this, '\_graph'), $args);
+		return call_user_func_array(array($this, '_graph'), $args);
 	}
 }
 
@@ -29,24 +29,24 @@ public function api(/\* polymorphic \*/) {
 and we're modifying it like this:
 ```
 $facebookApiCalls = array();
-public function api( /\* polymorphic \*/)
+public function api( /* polymorphic */)
 {
-	$args = func\_get\_args();
+	$args = func_get_args();
 
-	$time\_start = microtime(true);
+	$time_start = microtime(true);
 
-	if (is\_array($args\[0\])) {
-		$result = $this->\_restserver($args\[0\]);
+	if (is_array($args[0])) {
+		$result = $this->_restserver($args[0]);
 	} else {
-		$result = call\_user\_func\_array(array($this, '\_graph'), $args);
+		$result = call_user_func_array(array($this, '_graph'), $args);
 	}
 
-	$time\_end = microtime(true);
-	$time\_elapsed = $time\_end - $time\_start;
-	$time\_elapsed \*= 1000; //convert to millisecs
+	$time_end = microtime(true);
+	$time_elapsed = $time_end - $time_start;
+	$time_elapsed *= 1000; //convert to millisecs
 
-	if (isset($GLOBALS\['facebookApiCalls'\])) $GLOBALS\['facebookApiCalls'\]\[\] = array(
-		'duration' => $time\_elapsed,
+	if (isset($GLOBALS['facebookApiCalls'])) $GLOBALS['facebookApiCalls'][] = array(
+		'duration' => $time_elapsed,
 		'args' => $args,
 	);
 	return $result;

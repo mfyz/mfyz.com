@@ -25,17 +25,17 @@ version: '3.9'
 services:
   duplicati:
     image: lscr.io/linuxserver/duplicati:latest
-    container\_name: duplicati
+    container_name: duplicati
     restart: unless-stopped
     environment:
-      - TZ=America/New\_York
+      - TZ=America/New_York
       # - PUID=1000 #the user
       # - PGID=1000 #the group
-      # - CLI\_ARGS= #optional
+      # - CLI_ARGS= #optional
     volumes:
       - config:/config
-      - ${BACKUP\_FOLDER}:/backups
-      - ${SOURCE\_ROOT\_FOLDER}:/source/data
+      - ${BACKUP_FOLDER}:/backups
+      - ${SOURCE_ROOT_FOLDER}:/source/data
     ports:
       - 8200:8200
 volumes:

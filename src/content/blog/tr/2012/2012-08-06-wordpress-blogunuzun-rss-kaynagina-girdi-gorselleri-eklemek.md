@@ -16,37 +16,37 @@ Wordpress'in kanca mimarisi sayesinde tema klasörünüzdeki fonksiyon tanımlam
 Bunun için, tema klasörünüzde (muhtemelen var olan) functions.php'ye
 
 ```
-function add\_thumbnails\_to\_rss($content, $sec = false, $third = false, $fourth = false) {
-    $post\_id = get\_the\_ID();
+function add_thumbnails_to_rss($content, $sec = false, $third = false, $fourth = false) {
+    $post_id = get_the_ID();
 
     $args = array(
-        'post\_type'      => 'attachment',
-        'post\_mime\_type' => 'image',
+        'post_type'      => 'attachment',
+        'post_mime_type' => 'image',
         'numberposts'    => 1,
-        'post\_parent'    => $post\_id
+        'post_parent'    => $post_id
     );
-    $attachments = get\_children($args);
+    $attachments = get_children($args);
 
-    $attachment\_code = "";
+    $attachment_code = "";
     if( $attachments ){
         foreach($attachments as $attachment){
-            $attachment\_code .= '
+            $attachment_code .= '
 
-'. wp\_get\_attachment\_image( $attachment->ID, 'medium' ) .'
+'. wp_get_attachment_image( $attachment->ID, 'medium' ) .'
 
 ';
         }
     }
 
     // adding attachments to entry body
-    return $attachment\_code . $content;
+    return $attachment_code . $content;
 }
 
-add\_filter('the\_excerpt\_rss', 'add\_thumbnails\_to\_rss');
-add\_filter('the\_content\_rss', 'add\_thumbnails\_to\_rss');
+add_filter('the_excerpt_rss', 'add_thumbnails_to_rss');
+add_filter('the_content_rss', 'add_thumbnails_to_rss');
 
 ```
 
 kodunu ekleyelim. Rss girdilerini manipule edecek bir fonksiyon tanımladıktan sonra iki rss'i oluşturan methodların kancalarını kullanarak tanımladığımız fonksiyonu çağırtıyoruz. Wordpress, fonksiyona, manipule edilecek girdiye ait bazı bilgileri parametre olarak gönderiyor. İlk parametre, işimize yarıyacak tek parametre aslında. Basitçe; girdiye ait eklentileri sorgulayıp eğer girdi görseli varsa, ilk parametreyle aldığımız girdi içeriğine html kodu olarak ekliyor ve fonksiyon cevabı olarak geri dönüyoruz. Wordpress gerisini hallediyor zaten.
 
-Yukarıda kodun son 2 satırında gördüğünüz rss kaynakları, yorumlar ve girdilere ait rss'ler. İsterseniz sadece girdilere ait rss kaynağına (the\_content\_rss) thumbnail eklemeyi tercih edebilirsiniz.
+Yukarıda kodun son 2 satırında gördüğünüz rss kaynakları, yorumlar ve girdilere ait rss'ler. İsterseniz sadece girdilere ait rss kaynağına (the_content_rss) thumbnail eklemeyi tercih edebilirsiniz.

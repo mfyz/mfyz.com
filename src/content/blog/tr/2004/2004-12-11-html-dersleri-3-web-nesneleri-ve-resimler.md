@@ -18,7 +18,7 @@ Gif, jpeg veya png resmi görüntülemek için kullanılır.
 Örneğin;
 
 ```
-<img src="http://www.google.com.tr/intl/en\_com/images/logo\_plain.png"
+<img src="http://www.google.com.tr/intl/en_com/images/logo_plain.png"
 alt="Google Logosu" border="0">
 
 ```

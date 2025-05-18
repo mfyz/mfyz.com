@@ -30,20 +30,20 @@ Eski kütüphaneyi (ipucu) hatırlayanlar bilir, bir nesneye ipucu eklemek için
 Örneğin :
 
 ```
-<a href="http://www.mfyz.com" target="\_blank">www.mfyz.com</a>
+<a href="http://www.mfyz.com" target="_blank">www.mfyz.com</a>
 
 ```
 olan nesneyi
 
 ```
-<a href="http://www.mfyz.com" target="\_blank" class="ipucu" title="MFYZ.Com">www.mfyz.com</a>
+<a href="http://www.mfyz.com" target="_blank" class="ipucu" title="MFYZ.Com">www.mfyz.com</a>
 
 ```
 
 şeklinde ipucu sınıfına dahil edip "<b>title</b>" argümanı olarak bir açıklama ekledik. Hatta bu açıklama içerisinde html etiketleri bile kullanabiliriz. (Tırnak kurallarına uygun olduğu sürece sorun çıkarmaz)
 
 ```
-<a href="http://www.mfyz.com" target="\_blank" class="ipucu"
+<a href="http://www.mfyz.com" target="_blank" class="ipucu"
    title="<b>MFYZ.Com</b> <br>Yeni pencerede açılır">www.mfyz.com</a>
 
 ```
@@ -53,14 +53,14 @@ Bu işlemi sadece bağlantılarda değil tüm html nesnelerinde uygulayabiliriz.
 Şimdi mootools Tips kütüphanesiyle ipucu tanımlayalım. (Bu tanımları mootools'u include ettikten sonrak bir javascript dosyanızda veya html dosyanızdaki bir javascript bloğuna koyarak yapın.)
 
 ```
-var Ipuclari = new Tips( $$('.ipucu') );
+var Ipuclari = new Tips( $('.ipucu') );
 
 ```
 
 new Tips tanımı içerisinde ilk parametre (zorunlu) ipucu uygulanacak nesneleri belirliyor. Mootools'un nesne seçicilerini kullanarak CSS adresine göre yani .ipucu belirteci ile ipucu sınıfındaki tüm nesneleri gösteriyoruz.
 
 ```
-var Ipuclari = new Tips($$('.ipucu'), {
+var Ipuclari = new Tips($('.ipucu'), {
   showDelay: 400,
   hideDelay: 400
 });
@@ -72,7 +72,7 @@ ikinci parametre ile de bir ayar dizesi (nesne olarak) belirtiyoruz. Parametrele
 Ya da geçiş efekti uygulatarak gösterip-gizlemek isterseniz :
 
 ```
-var Ipuclari = new Tips($$('.ipucu'), {
+var Ipuclari = new Tips($('.ipucu'), {
   initialize:function(){
     this.fx = new Fx.Style(this.toolTip, 'opacity', {duration: 500, wait: false}).set(0);
   },
@@ -101,7 +101,7 @@ Bu sitede kullandığım stile göre örnek vermek istiyorum, ben className kull
   z-index: 10000;
 }
 
-.tool-text, .tool-text \* {
+.tool-text, .tool-text * {
   font-size: 11px;
   color: white;
 }

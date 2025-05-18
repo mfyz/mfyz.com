@@ -44,18 +44,18 @@ Bir php projesi için ayar dosyasında her türlü site detayları mevcuttur. Ha
 
 Sitemizde farklı bölümlerde farklı php görevlerimiz olacaktır değil mi?, şimdi şöyle düşünün, bütün sayfalar sitenin değişken bir noktasına uygun HTML kod üretir. Bütün projelerde sistem böyle çalışır. Genellikle benim anlattığım sistemin tersi uygulanır ve her php sayfasında menu.php footer.php'ler yüklenir. Boylece değişken kısım farklılığa göre yüklenmez, her sayfa kendi işini yapar ve statik kısımları çağırır. Benim bahsettiğim sistemde ise şöyledir. Bütün site index.php üzerinde oynar. get methodu ile module adlı bir değişken alalım her linkte. bu değişkenin içeriğine ait modulu seçen bir dosyamız vardır. Ya da bu kısım index.php'nin içinde de mevcut olabilir. Örneğime göre dosyalar, galeri, dokumanlar diye 3 bölümümüz olsun. Bir de anasayfaya ait kodu üreten bir modülümüz olacak tabiki. index.php'de şu kısım olmalı mesela;
 ```
-$modul = $\_GET\["modul"\];
+$modul = $_GET["modul"];
 # modul secme mekanizmasi
   if( $modul == 'dosyalar' ){
-    $modul\_dosyasi = 'dosyalar.php';
+    $modul_dosyasi = 'dosyalar.php';
   }else if( $modul == 'galeri' ){
-    $modul\_dosyasi = 'galeri.php';
+    $modul_dosyasi = 'galeri.php';
   }else if( $modul == 'dokumanlar' ){
-    $modul\_dosyasi = 'dokumanlar.php';
+    $modul_dosyasi = 'dokumanlar.php';
   }else{
     // eger modul belirtilmemisse veya
     // gecersizse anasayfa modulu yuklensin.
-    $modul\_dosyasi = 'anasayfa.php';
+    $modul_dosyasi = 'anasayfa.php';
   }
 
 ```
@@ -63,7 +63,7 @@ $modul = $\_GET\["modul"\];
 
 Dosyalar: index.php?modul=dosyalar Galeri: index.php?modul=galeri Dökümanlar: index.php?modul=dokumanlar
 
-Artık modul\_dosyasi değişkeni seçili modülü belirlemektedir. Şimdi şöyle düşünelim. mfyz.com'da sadece şu anda okuduğunuz yazının bulunduğu orta kısım değişmektedir. Diğer kısımlardaki küçük değişimlere geleceğim. Bu orta kısımda sadece 1 adet değişken print ettiriliyor. $icerik diye bir değişken. Bu değişkeni ise modul dosyaları oluşturuyor. Diyelim ki BASİT bir tablo içeriyor bir bölümünüz. Mesela örneğe göre olan dosyalar bölümünde basit bir liste var. Şimdi burada dosyalar.php modülü sadece bu basit olan tabloyu print ettiriyor. biz index.php'de print ettirilen bu tabloyu ortaya yerleştiriyoruz. Sistem bu şekilde işliyor. Siz statik bir sayfa yapmışsanız bile bunu modül dosyası olarak tanıtıyorsunuz ve modül seçildiğinde basılması gereken yere statik içerik basılıyor.
+Artık modul_dosyasi değişkeni seçili modülü belirlemektedir. Şimdi şöyle düşünelim. mfyz.com'da sadece şu anda okuduğunuz yazının bulunduğu orta kısım değişmektedir. Diğer kısımlardaki küçük değişimlere geleceğim. Bu orta kısımda sadece 1 adet değişken print ettiriliyor. $icerik diye bir değişken. Bu değişkeni ise modul dosyaları oluşturuyor. Diyelim ki BASİT bir tablo içeriyor bir bölümünüz. Mesela örneğe göre olan dosyalar bölümünde basit bir liste var. Şimdi burada dosyalar.php modülü sadece bu basit olan tabloyu print ettiriyor. biz index.php'de print ettirilen bu tabloyu ortaya yerleştiriyoruz. Sistem bu şekilde işliyor. Siz statik bir sayfa yapmışsanız bile bunu modül dosyası olarak tanıtıyorsunuz ve modül seçildiğinde basılması gereken yere statik içerik basılıyor.
 
 #### Bunun avantajları neler?
 

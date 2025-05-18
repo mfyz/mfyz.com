@@ -65,17 +65,17 @@ sudo vim /etc/php4/apache2/php.ini
 ```
 komutu ile php.ini dosyamızı açıyoruz. Burada önerdiğim birkaç ayarı yapalım :
 ```
-upload\_max\_filesize = 2M
+upload_max_filesize = 2M
 
 ```
 satırını 20M şeklinde düzenleyerek en fazla 20mb upload yapılabilir hale getirelim. Bu değişim, büyük veritabanlarını phpmyadmin'e import ederken işimize yarayacak.
 ```
-;default\_charset = "iso-8859-1"
+;default_charset = "iso-8859-1"
 
 ```
 satırını buluyoruz ve başındaki ; işaretini kaldırıyoruz (uncomment). Daha sonra utf-8 olarak ayarlıyoruz.
 
-**\[Extensions\]** kısmında varolan ;
+**[Extensions]** kısmında varolan ;
 ```
 ;extension=mysql.so
 ;extension=gd.so
@@ -83,7 +83,7 @@ satırını buluyoruz ve başındaki ; işaretini kaldırıyoruz (uncomment). Da
 ```
 satırlarının başındaki ; işaretlerini kaldırdıktan sonra kaydedip çıkıyoruz. Böylece Türkçe sorunu yaşamadan en fazla 20mb upload edebilir ve mysql/gd destekli bir php desteğine sahip apache edinmiş oluyoruz.
 
-Eğer register\_globals kullanıyorsanız bunu açmanız gerekecektir. Varsayılan olarak Off ayarlı olacaktır.
+Eğer register_globals kullanıyorsanız bunu açmanız gerekecektir. Varsayılan olarak Off ayarlı olacaktır.
 
 **Not :** Yukarıdaki ayarlar dışındakilere dokunmayın, hepsi varsayılan olarak gayet ideal ayarlanmıştır.
 
