@@ -12,11 +12,4 @@ If you have an app and you might want to show an app banner when you user visit 
 
 #### How To Implement To Your Website
 
-Add this meta tag to your web page:
-```html
-<meta name="apple-itunes-app" content="app-id=your_app_id" />
-```
-
-You need your app's id (a numeric identifier) which you can get it from iTunesConnect interface. 
-
-When you add this meta tag to you page, safari handles the rest and shows the banner. In iPad, it also shows some of the screenshots of your app.
+Add this meta tag to your web page: `<meta name="apple-itunes-app" content="app-id=your_app_id" />` You need your app's id (a numeric identifier) which you can get it from iTunesConnect interface. When you add this meta tag to you page, safari handles the rest and shows the banner. In iPad, it also shows some of the screenshots of your app.

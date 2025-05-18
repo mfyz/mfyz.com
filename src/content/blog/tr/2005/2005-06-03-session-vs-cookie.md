@@ -1,5 +1,5 @@
 ---
-title: "&quot;Session&quot; v.s. &quot;Cookie&quot;"
+title: '"Session" v.s. "Cookie"'
 slug: session-vs-cookie
 date: 2005-06-03
 url: http://mfyz.com/tr/session-vs-cookie/

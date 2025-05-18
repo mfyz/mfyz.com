@@ -3,6 +3,7 @@ const fs = require('fs/promises');
 const path = require('path');
 const mysql = require('mysql2/promise');
 const TurndownService = require('turndown');
+const he = require('he'); // HTML entity decoder for fixing &amp; in titles
 
 // Check if --tr flag is passed
 const isTurkish = process.argv.includes('--tr');
@@ -91,8 +92,15 @@ async function processPost(post) {
     // Use the year as both the directory and part of the filename
     const yearFolder = year.toString();
     
+    // Decode HTML entities in title (like &amp; to &)
+    const decodedTitle = post.post_title
+        .replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&quot;/g, '"');
+        
     const frontMatter = {
-        title: post.post_title,
+        title: decodedTitle,
         slug: post.post_name,
         date: date.toISOString().substring(0, 10),
         url: post.guid.replace('mfyz.wp', 'mfyz.com'),
@@ -118,7 +126,14 @@ async function processPost(post) {
         year: yearFolder,
         fileName: fileName,
         content: `---
-${Object.entries(frontMatter).map(([k, v]) => k === 'title' ? `${k}: "${v}"` : `${k}: ${typeof v === 'object' ? JSON.stringify(v) : v}`).join('\n')}
+${Object.entries(frontMatter).map(([k, v]) => {
+            if (k === 'title') {
+                // Use single quotes for titles containing double quotes
+                return v.includes('"') ? `${k}: '${v}'` : `${k}: "${v}"`;
+            } else {
+                return `${k}: ${typeof v === 'object' ? JSON.stringify(v) : v}`;
+            }
+        }).join('\n')}
 ---
 
 ${content}`
