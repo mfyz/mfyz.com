@@ -25,7 +25,7 @@ Some amateur developers don't feel the necessity of verifying the receipts they 
 Apple provides a protocol to validate receipts. There is an HTTP service that you can send your receipts data and it returns the payment details in JSON format. You have to have a developer key in order to use this HTTP service. You can grab your developer key from iTunes Connect interface.
 
 Here is a helper method for PHP powered apps:
-```
+```php
 function validate_receipt($receipt_data, $sandbox_receipt = FALSE) {
 	if ($sandbox_receipt) {
 		$url = "https://sandbox.itunes.apple.com/verifyReceipt/";
@@ -67,7 +67,7 @@ This method used to send and receive the receipt details to Apple validation ser
 Anyway, if you're trying to validate a sandbox receipt, you can define it as a boolean in the second parameter of that function. This function simply will create an HTTP request and it will return the JSON result as an array if the HTTP response code is 200.
 
 Here is the response JSON object:
-```
+```json
 {
 	"receipt":{
 		"original_purchase_date_pst":"2012-12-11 19:39:22 America/Los_Angeles",
