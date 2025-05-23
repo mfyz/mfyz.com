@@ -40,9 +40,11 @@ import { getPatternName } from "@utils/get-pattern-name";
 interface Props {
   posts: any[];
   limit?: number;
+  useTurkish?: boolean;
+  simpleGrid?: boolean;
 }
 
-const { posts, limit } = Astro.props;
+const { posts, limit, useTurkish = false, simpleGrid = false } = Astro.props;
 
 // Get the current page path to determine language
 const pathname = Astro.url.pathname;
@@ -86,7 +88,7 @@ function formatDatePreserveDay(dateStr, useTurkish = false) {
 <div>
   <div class="blog-grid">
     {/* First post - full width */}
-    {displayPosts.length > 0 && (() => {
+    {!simpleGrid && displayPosts.length > 0 && (() => {
       const post = displayPosts[0];
       const { title, date, tags } = post.data;
       const patternName = getPatternName(post.slug);
@@ -132,7 +134,7 @@ function formatDatePreserveDay(dateStr, useTurkish = false) {
     {/* Rest of the posts in checker pattern */}
     <ul class="grid gap-0 sm:grid-cols-3">
       {
-        displayPosts.slice(1).map((post, index) => {
+        (simpleGrid ? displayPosts : displayPosts.slice(1)).map((post, index) => {
           const { title, date, imageURL, summary, tags } = post.data;
           // Calculate reading time
           const time = post.body ? readingTime(post.body) : { minutes: 0, text: '0 min read' };

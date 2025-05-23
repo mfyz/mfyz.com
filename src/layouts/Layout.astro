@@ -10,13 +10,14 @@ interface Props {
   title?: string;
   description?: string;
   size?: "small" | "large";
+  noContentWrapperClass?: boolean;
 }
 
 // Get properties from Astro.props and handle frontmatter data
 const pageFrontmatter = Astro.props.frontmatter || {};
 
 // Merge frontmatter and props, giving props priority
-const { title, description, size } = { ...pageFrontmatter, ...Astro.props };
+const { title, description, size, noContentWrapperClass } = { ...pageFrontmatter, ...Astro.props };
 
 const pathname = Astro.url.pathname;
 const {
@@ -93,6 +94,9 @@ const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}og.png`;
       </>
     )}
 
+    <!-- ShareThis -->
+    <script is:inline type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=682f177d98608700128c9fa4&product=inline-share-buttons&source=platform" async="async"></script>
+
     <ViewTransitions />
   </head>
 
@@ -102,7 +106,7 @@ const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}og.png`;
   >
     <Header size={size} />
     <main class="container mt-24 pb-4" style="scrollbar-gutter: stable">
-      <div class={`main-content-wrapper mx-auto max-w-${size === "small" ? "3xl" : "5xl"}`}>
+      <div class={`${noContentWrapperClass ? "" : "main-content-wrapper"} mx-auto max-w-${size === "small" ? "3xl" : "5xl"}`}>
         <slot />
       </div>
     </main>

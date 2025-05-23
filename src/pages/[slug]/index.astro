@@ -2,6 +2,9 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import BlogPost from "@layouts/BlogPost.astro";
 import Layout from "@layouts/Layout.astro";
+import BlogGrid from "@components/BlogGrid.astro";
+import BlogSharingAndReactions from "@components/BlogSharingAndReactions.astro";
+import "@styles/blog-grid.css";
 
 // astro takes care of filtering the blog posts
 export async function getStaticPaths() {
@@ -16,13 +19,51 @@ const { post } = Astro.props;
 
 const { Content } = await post.render();
 const { title, summary } = post.data;
-const frontmatter = post.rendered && post.rendered.metadata ? post.rendered.metadata : {};
+const metadata = post.rendered && post.rendered.metadata ? post.rendered.metadata : {};
+
+const isTurkish = metadata?.frontmatter?.lang === 'tr' || Astro.url.pathname.startsWith('/tr/');
 
 export const prerender = true;
 ---
 
-<Layout title={title} description={summary} size="small">
-  <BlogPost {...post.data} slug={post.slug} content={post.body} frontmatter={frontmatter}>
-    <Content />
+<Layout title={title} description={summary} size="small" noContentWrapperClass>
+  <BlogPost {...post.data} slug={post.slug} content={post.body} frontmatter={metadata.frontmatter}>
+    <div class="main-content-wrapper">
+      <Content />
+    </div>
+    <div class="mt-12">
+      <BlogSharingAndReactions post={post} />
+  
+      {/* Related Posts Block */}
+      {post.data.tags && post.data.tags.length > 0 && (
+        await (async () => {
+          const postFrontmatterLang = post.rendered?.metadata?.frontmatter?.lang;
+          // Fetch all posts except the current one
+          const relatedPosts = (await getCollection("blog"))
+            .filter(p => !p.hidden)
+            .filter(p => p.slug !== post.slug)
+            .filter(p => (
+              typeof postFrontmatterLang !== 'undefined' ?
+                p.rendered?.metadata?.frontmatter?.lang === postFrontmatterLang :
+                typeof p.rendered?.metadata?.frontmatter?.lang === 'undefined'
+            ))
+            // Find related posts by matching any tag
+            .filter(p =>
+              p.data.tags && p.data.tags.some(tag => post.data.tags.includes(tag))
+            )
+            .sort(() => 0.5 - Math.random()) // Shuffle
+            .slice(0, 6);
+          if (relatedPosts.length === 0) return null;
+          return (
+            <div class="mt-16">
+              <h2 class="font-secondary text-3xl mb-6">
+                {isTurkish ? "İlgili Yazılar" : "Related Posts"}
+              </h2>
+              <BlogGrid posts={relatedPosts} limit={6} simpleGrid={true} useTurkish={isTurkish} />
+            </div>
+          );
+        })()
+      )}
+    </div>
   </BlogPost>
 </Layout>

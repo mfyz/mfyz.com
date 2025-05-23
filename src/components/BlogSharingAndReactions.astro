@@ -1,0 +1,71 @@
+---
+const { post } = Astro.props;
+console.log('--> post captured in share widget', post)
+---
+
+<div
+	class="border-t border-b border-gray-200 py-10 mt-16"
+	data-sharethis-post-title={post.data.title}
+	data-sharethis-post-url={post.slug}
+>
+	<div>
+		<div id="my-inline-reaction-buttons"></div>
+	</div>
+	<div>
+		<div id="my-inline-sharing-buttons"></div>
+	</div>
+</div>
+
+<script is:inline data-astro-rerun>
+	setTimeout(() => {
+		const postTitle = document.querySelector('[data-sharethis-post-title]')?.dataset.sharethisPostTitle;
+		const postUrl = document.querySelector('[data-sharethis-post-url]')?.dataset.sharethisPostUrl;
+
+		// 
+
+		// inline-reaction-buttons
+		window.__sharethis__.load('inline-reaction-buttons', {
+			alignment: 'center',
+			id: 'my-inline-reaction-buttons',
+			enabled: true,
+			url: `https://mfyz.com/${postUrl}`
+		});
+
+		window.__sharethis__.load('inline-share-buttons', {
+			alignment: 'center',
+			id: 'my-inline-sharing-buttons',
+			enabled: true,
+			font_size: 12,
+			padding: 10,
+			radius: 5,
+			color: 'white',
+			networks: ['twitter', 'linkedin', 'facebook', 'email', 'sharethis'],
+			size: 40,
+			show_mobile_buttons: true,
+			spacing: 4,
+			url: `https://mfyz.com/${postUrl}`, // custom url
+			title: postTitle,
+			// description: "My Custom Description",
+			// language: "en",
+			// image: "https://....png", // useful for pinterest sharing buttons
+			username: "mfyz" // custom @username for twitter sharing
+		});
+
+		// Make zero reaction values grayed out
+		setTimeout(() => {
+			document.querySelectorAll('.st-count').forEach(el => {
+				if (el.textContent.trim() === '0') {
+					el.classList.add('reaction-count-is-zero');
+				} else {
+					el.classList.remove('reaction-count-is-zero');
+				}
+			});
+		}, 1000);
+	}, 100);
+</script>
+
+<style is:inline>
+	.reaction-count-is-zero {
+		color: #fff !important;
+	}
+</style>
