@@ -25,13 +25,13 @@ Let’s set up the plain node.js and express the application.
   
 First, install the required packages:
 
-```
+```sh
 npm install --save express path instagram-node cookie-parser
 ```
 
 **index.js (or server.js)**
 
-```
+```js
 const express = require('express')
 const path = require('path')
 const ig = require('instagram-node').instagram()
@@ -108,16 +108,16 @@ app.listen(PORT, () => console.log(\`App listening on port ${PORT}!\`))
 
 Either locally or after you place it on your server, run:
 
-```
+```sh
 node index.js
 ```
 
 Tip 1: use “forever” on your server to run this application permanently.  
-  
+
 Tip 2: For experimental purposes, you can run this app on your local and have a tunneling tool like “ngrok" to open your local port to the public with a quick domain assignment. Ngrok will provide a URL (random subdomain on their domain), you have to update the IG developer app’s settings to add this domain as a valid redirect URL, otherwise, after this app redirects user for authentication to Instagram, it will give an error.
 
 ### Get the real thing
 
 The code above in this article was a quick and dirty version. I put the little bit more proper express application version on Github. It uses pug for its views and has proper layout/content block separation as well.  
-  
+
 [https://github.com/mfyz/express-passport-instagram-example](https://github.com/mfyz/express-passport-instagram-example)

@@ -22,7 +22,7 @@ Then I stumbled upon this stack overflow thread with a brilliant answer that con
 
 To create a sample table with 1.7 billion rows of a sample sensor data (temperature read from the sensor with timestamps in the logs):
 
-```
+```sql
 EXPLAIN ANALYZE
 CREATE TABLE electrothingy
 AS
@@ -45,7 +45,7 @@ AS
 
 So it took 22min to create the table. Largely, because the table is a modest 97GB. Next, we create the indexes,
 
-```
+```sql
 CREATE INDEX ON electrothingy USING brin (tsin);
 CREATE INDEX ON electrothingy USING brin (id);    
 VACUUM ANALYZE electrothingy;
@@ -55,7 +55,7 @@ It took a good long while to create the indexes too. Though because they're BRIN
 
 Now we query it.
 
-```
+```sql
 EXPLAIN ANALYZE
 SELECT max(temp)
 FROM electrothingy
@@ -79,7 +79,7 @@ WHERE id BETWEEN 1000000 AND 1001000;
 
 Here we generate a table with different timestamps in order to satisfy the request to index and search on a timestamp column, creation takes a bit longer because `to_timestamp(int)` is substantially more slow than `now()` (which is cached for the transaction)
 
-```
+```sql
 EXPLAIN ANALYZE
 CREATE TABLE electrothingy
 AS
@@ -104,7 +104,7 @@ AS
 
 Now we can run a query on a timestamp value instead,,
 
-```
+```sql
 EXPLAIN ANALYZE
 SELECT count(*), min(temp), max(temp)
 FROM electrothingy WHERE tsin BETWEEN '1974-01-01' AND '1974-01-02';
@@ -138,7 +138,7 @@ So in 83.321 ms we can aggregate 86,401 records in a table with 1.7 Billion rows
 
 Calculating the hour ending is pretty easy too, truncate the timestamps down and then simply add an hour.
 
-```
+```sql
 SELECT date_trunc('hour', tsin) + '1 hour' AS tsin,
   count(*),
   min(temp),
@@ -183,9 +183,9 @@ It's important to note, that it's not using an index on the aggregation, though 
 
 # Partitioning
 
-Another important point of information on PostgreSQL is that PG 10 bring [partitioning DDL](https://www.postgresql.org/docs/10/static/ddl-partitioning.html#ddl-partitioning-declarative). So you can, for instance, easily create partitions for every year. Breaking down your modest database into minor ones that are tiny. In doing so, you should be able to use and maintain btree indexes rather than BRIN which would be even faster.
+Another important point of information on PostgreSQL is that PG 10 bring [partitioning DDL](https://www.postgresql.org/docs/10/static/ddl-partitioning.html#ddl-partitioning-declarative). So you can, for instance, easily create partitions for every year. Breaking down your modest database into minor ones that are tiny. In doing so, you should be able to use and maintain btree indexes rather than BRIN which would be even faster.
 
-```
+```sql
 CREATE TABLE electrothingy_y2016 PARTITION OF electrothingy
     FOR VALUES FROM ('2016-01-01') TO ('2017-01-01');
 ```

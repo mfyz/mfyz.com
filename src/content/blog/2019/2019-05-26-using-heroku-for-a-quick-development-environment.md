@@ -14,7 +14,7 @@ Heroku supports many modern development languages that are actively used with bi
 
 Essentially, Heroku runs on a command line interface and an internal git repository to manage versions of your code. When you set up a new project folder, Heroku CLI tool registers your app and assigns a git repository. Heroku CLI doesn't initiate git repository on your folder, so if it's a non-git folder, you need to git init on your project folder first.
 
-```
+```sh
 $ mkdir hello-world && cd hello-world
 $ echo "{}" > composer.json
 $ echo "<!--? print 'hello';" --> index.php

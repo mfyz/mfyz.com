@@ -11,7 +11,7 @@ migration: {"wpId":254,"wpPostDate":"2019-04-09T15:29:18.000Z"}
 Docker made things super easy if you are curious about a new open source tool to try and even use it with isolated installations on your machine. In this article, I'll show quick steps to install and give graylog a try with a simple nodejs application to send logical errors to graylog instance.
 
 1) Copy the docker-compose.yml file content below to a file then run:
-```
+```sh
 docker-compose -f docker-compose.yml up
 ```
 2) Login to graylog with opening http://127.0.0.1:9000/ in the browser Username: admin Password: admin
@@ -19,11 +19,11 @@ docker-compose -f docker-compose.yml up
 3) Configure inputs: Go to System > Inputs Add new "GELF UDP" configuration as global input using port 12201
 
 4) Run the simple nodejs application below to send logs to graylog. First init npm and install graylog2 package from npm with:
-```
+```sh
 npm install -s graylog2
 ```
 docker-compose.yml
-```
+```yml
 version: '2'
 services:
   mongodb:
@@ -62,7 +62,7 @@ services:
       - 12201:12201/udp # GELF UDP
 ```
 app.js
-```
+```js
 var graylog2 = require("graylog2");
 
 var logger = new graylog2.graylog({

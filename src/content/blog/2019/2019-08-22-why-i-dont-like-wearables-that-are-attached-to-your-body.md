@@ -22,9 +22,9 @@ I know I lot of people use to track their activities, like walking, running but 
 
 Wearables are like demons in my head. Well, my phone is actually already like that. Wearables are mostly configured to notify you by default when you open them in the box. I know they are changeable, which I tried to make a silent apple watch. But then why am I wearing it, what’s the purpose of it now? I found only 2 passive notifications helped me when I was trying out different wearables:
 
-*   Inactivity alert, where if you sit and don’t move for an hour, you get a nudge that will remind you to move your a** from the chair - which is great and impactful for sure. Instead, [I use screen timeout tools](https://mfyz.com/time-to-take-a-break-from-your-computer/) that do the same thing (mostly).  
-    
-*   Good old timer (wrist version of the kitchen timer). This is used for anything but in most cases my pomodoros (or focus blocks, way to [GTD](https://mfyz.com/best-gtd-method-geeks-todo-txt/)). I set the timer with Siri (in apple watch case) and get to work until I get the nudge. This was the only “real” use case I had - but for having a timer at $350+ cost is just dumb.
+*   Inactivity alert, where if you sit and don’t move for an hour, you get a nudge that will remind you to move your a** from the chair - which is great and impactful for sure. Instead, [I use screen timeout tools](/time-to-take-a-break-from-your-computer/) that do the same thing (mostly).  
+
+*   Good old timer (wrist version of the kitchen timer). This is used for anything but in most cases my pomodoros (or focus blocks, way to [GTD](/best-gtd-method-geeks-todo-txt/)). I set the timer with Siri (in apple watch case) and get to work until I get the nudge. This was the only “real” use case I had - but for having a timer at $350+ cost is just dumb.
 
 ## Health - Yes!
 
@@ -33,7 +33,7 @@ For seniors, wearables that do consistent hearth monitoring throughout the day i
 ## Sleep? Hell yes but no 😞!
 
 What I loved on body-attached-wearables from the beginning was sleep tracking. But unfortunately “in theory”. Nobody got this right. Jawbone Up was my first and beloved sleep tracker worked “the best” but had a lot of room to improve. Then Jawbone stopped improving this feature (maybe nothing left to improve). Even though the hardware was fragile and gets broken after few months, I was happy to keep buying same hardware many times (I swear I had 10+ of same and different versions of Jawbone Up - I actually still have unopened box ones). But then Jawbone discontinues to sell them (well, I have 3 unopened ones, so I thought I was good for couple years), then they shut down the servers which made the mobile app to not work at all (because it’s a cloud/API based app) which basically made all Jawbone wearables garbage.  
-  
+
 Then every single wearable copied but copied the shittiest version of sleep tracking including Apple. Even if Apple was nailed it, it’s just moronic that you have to charge your apple watch pretty much every day - and any real opportunity you have is when you sleep which you are (in practice) forced to not wear it. Please, someone, get this right...
 
 ## If you really have to...

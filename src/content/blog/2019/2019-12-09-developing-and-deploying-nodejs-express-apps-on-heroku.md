@@ -10,7 +10,7 @@ migration: {"wpId":396,"wpPostDate":"2019-12-09T14:00:08.000Z"}
 
 ![](/images/archive/en/2019/12/spacex-OHOU-5UVIYQ-unsplash.jpg)
 
-Heroku is an amazing platform for getting quick development up and running in a smart virtual instances. There is no hussle to get additional services you may need for a quick and dirty app to ground up. I’ve already wrote about how to use heroku for quick development environment before: [https://mfyz.com/using-heroku-for-a-quick-development-environment/](https://mfyz.com/using-heroku-for-a-quick-development-environment/)
+Heroku is an amazing platform for getting quick development up and running in a smart virtual instances. There is no hussle to get additional services you may need for a quick and dirty app to ground up. I’ve already wrote about how to use heroku for quick development environment before: [using-heroku-for-a-quick-development-environment](/using-heroku-for-a-quick-development-environment/)
 
 This short article will be about specifically developing and deploying node.js and express apps on heroku. There is actually not much difference for deploying a node.js app than a php application or in another language. Heroku CLI tool automatically detects the application type from the package.json file for a node.js application and it’s entry point from there.
 
@@ -30,7 +30,7 @@ Using environment variables is the best way to set configuration details for you
 
 As simple as adding “engines” object in package.json and having your node.js version defined in “node” property inside engines object like:  
 
-```
+```json
 "engines": {"node": "12.13.0"}
 ```
 
@@ -44,7 +44,7 @@ By default, heroku will build your application on every deployment. This is not 
 
 Remember, Heroku comes with tons of 3rd party services which a lot of them have free packages that will be enough to try things out and start coding stuff up quickly. One of my favorite is heroku’s internal database service providing postgresql database with single command line command:  
 
-```
+```sh
 heroku addons:create heroku-postgresql
 ```
 

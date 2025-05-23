@@ -30,6 +30,45 @@ People do. Whether consumers or developers, the end-users of software are human 
 
 ### An example Changelog (from Stretchly)
 
-[https://gist.github.com/mfyz/da277a38ba7d11bf1c6258a63d12dce6.js](https://gist.github.com/mfyz/da277a38ba7d11bf1c6258a63d12dce6.js)
+```markdown
+## [Unreleased]
+### Changed
+- tray menu link for update to website, instead of github
+- Chinese (Taiwan) translations updated
+- German translations updated
+- no notification is shown after system resume/unlock
+- no notification is shown after manual resume of pause from tray menu
+
+### Added
+- pause breaks when screen is locked (Windows, macOS)
+
+## [0.20.1] - 2019-07-14
+### Added
+- clicking on settings file location will open it
+- ability to copy debug info to clipboard
+- Added Lithuanian language
+
+### Fixed
+- auto hide menu bar in app's windows
+- break window not always shown on top of other windows (for Windows OS)
+
+## [0.20.0] - 2019-07-02
+### Fixed
+- workaround multiple screens and fullscreen (macOS)
+- tray icon size on Linux
+- problem with Window missing when resetting settings to defaults
+
+### Changed
+- update icons and graphic materials
+- Turkish translations updated
+- Hindi translations updated
+
+### Added
+- Korean translations
+- more break and microbreak ideas
+- more settings in Contributor's settings
+- Polish translation
+- start a break/microbreak with a sound (set via config file or Contributor's settings)
+```
 
 Github renders this markdown changelog beautifully: [https://github.com/hovancik/stretchly/blob/master/CHANGELOG.md](https://github.com/hovancik/stretchly/blob/master/CHANGELOG.md)

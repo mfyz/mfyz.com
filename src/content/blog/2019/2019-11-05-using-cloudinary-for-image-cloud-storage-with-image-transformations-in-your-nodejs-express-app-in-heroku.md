@@ -10,7 +10,7 @@ migration: {"wpId":376,"wpPostDate":"2019-11-05T20:57:29.000Z"}
 
 ![](/images/archive/en/2019/11/guillaume-bolduc-uBe2mknURG4-unsplash.jpg)
 
-Here we are with another article about the development aspect of photo/image management (storage, serving, retrieval). I’ve previously (right before this article) wrote about [Authenticating and Getting Instagram Photos in NodeJS/Express application](https://mfyz.com/single-javascript-file-node-express-instagram-authentication-oauth-and-get-user-photos/). This story is about manually storing, handling upload, download and serving static photo/image using a CDN service called Cloudinary.  
+Here we are with another article about the development aspect of photo/image management (storage, serving, retrieval). I’ve previously (right before this article) wrote about [Authenticating and Getting Instagram Photos in NodeJS/Express application](/single-javascript-file-node-express-instagram-authentication-oauth-and-get-user-photos/). This story is about manually storing, handling upload, download and serving static photo/image using a CDN service called Cloudinary.  
 
 ## Content should be separate than the application
 
@@ -24,28 +24,26 @@ We’ll not get into the techniques of how to separate these different things in
 ## Images need a big brother
 
 This was a novelty in the past where we wanted to have multiple sizes of an image/photo so we can economically request the right size in different pages - example: get 100px width thumbnail in the page where we show photos in a grid, show the 500px width version on the lightbox, and link out to the original photo in the “download” button. This makes total sense right? Strategizing how to have the different versions ready on your server (or CDN) is another thing. So many self-solutions you can use or code it up. But from user experience (admin/editor) standpoint, nobody wants to do this manually or even automatically but wait for the server to resize and prepare these versions when uploading a single photo to your CMS/app/back-end. To me, that is a one-way road. I only want to upload an image and only wait the time takes the file transfer from my device to the server. Done!  
-  
 
 ## What is Cloudinary and should I use it?
 
 Cloudinary is that big brother and storage and server together. Smart CDN for images and videos. It has a pretty decent free package that will be enough for almost all personal, experimental and small projects. If you have decent size traffic, you may think to pay or optimize your solution with Cloudinary.  
-  
+
 Cloudinary hosts and serves images for you. It’ll be your storage bucket that also has many out of box solutions for known CMSs like WordPress. I like the API/SDK route which they have SDKs and well-designed API for almost all platforms. We’ll play with NodeJS below.  
-  
+
 The magic cloudinary has that is compelling that it can do so many varieties of transformations on your images on the fly (and caches them). Basic things like color filters, crop, resize, rotate etc... But the real thing is where they have face recognization that you can create square avatars with intelligently telling cloudinary to give you the face focused position in the center on your circle avatar with transparent png background and have 2px border around circle cropped avatar. All of it happens over URL parameters. True magic. I haven’t digg the video side of this but I read bunch of smart stuff on the streaming site which is also worth considering cloudinary as one-stop-shop for visual static assets.  
-  
 
 ## Add Cloudinary service on your heroku application
 
 Adding a service to heroku application is very easy and mostly done in command line. In order to create a new cloduinary service as add-on to your application, in your application folder run:
 
-```
+```sh
 heroku addons:create cloudinary:starter
 ```
 
 This command will create a new cloudinary account linked to your heroku account and add cloduinary credentials to your heroku config - environment variables. You can see and copy the variables to your local .env file with
 
-```
+```sh
 heroku config
 ```
 
@@ -53,13 +51,59 @@ heroku config
 
 Install first:
 
-```
+```sh
 npm install --save express body-parser path multer cloudinary
 ```
 
 #### server.js
 
-[https://gist.github.com/mfyz/1f3628acde30375b7b7fed04ed4a904e.js](https://gist.github.com/mfyz/1f3628acde30375b7b7fed04ed4a904e.js)
+```js
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
+const multer = require('multer');
+const cloudinary = require('cloudinary');
+const PORT = process.env.PORT || 4004;
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/')
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname);
+    }
+})
+const upload = multer({ storage: storage });
+
+const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.get('/', (req, res) => {
+    cloudinary.v2.api.resources((error, result) => {
+        let html = '<form method="post" enctype="multipart/form-data">'
+          + 'File: <input type="file" name="fileupload" />'
+          + '<input type="submit" value="Upload" />'
+          + '</form><br><br>'
+          + '<h1>Files</h1><ul>';
+        for (let i = 0; i < result.resources.length; i += 1) {
+            html += '<li><a href="'
+              + result.resources[i].secure_url + '">' 
+              + result.resources[i].public_id + '</a></li>';
+        }
+        html += '</ul>';
+        res.send(html);
+    })
+})
+
+app.post('/', upload.single('fileupload'), (req, res) => {
+    cloudinary.uploader.upload(req.file.path, (result) => {
+        res.send('<h1>Success</h1><a href="/">Home</a>');
+    })
+})
+
+app.listen(PORT, () => console.log(`App listening on port ${PORT}!`));
+```
 
 See this example on github: [https://github.com/mfyz/heroku-cloudinary-uploads-example](https://github.com/mfyz/heroku-cloudinary-uploads-example)  
   
