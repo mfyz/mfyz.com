@@ -1,6 +1,10 @@
 import PropTypes from 'prop-types';
 
-export default function Image({ src, alt, width, height, class: className }) {
+export default function Image({ src, alt, width, height, class: className, center }) {
+  if (center) {
+    className += " mx-auto";
+  }
+  
   return (
       <div className="img-wrapper">
         <img 
@@ -19,5 +23,6 @@ Image.propTypes = {
   alt: PropTypes.string.isRequired,
   width: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
-  class: PropTypes.string
+  class: PropTypes.string,
+  center: PropTypes.bool
 }
