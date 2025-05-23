@@ -9,7 +9,7 @@ migration: {"wpId":316,"wpPostDate":"2012-08-24T01:14:40.000Z"}
 lang: tr
 ---
 
-Daha önce php'de iki tarihi karşılaştırmayı anlatmıştım [https://tr.mfyz.com/phpde-tarih-karsilastirma](https://tr.mfyz.com/phpde-tarih-karsilastirma), ancak iki tarih arasındaki ay, gün, yıl farkını kullanmanız gerektiğinde, php'nin tarih-zaman sınıfını kullanarak iki tarih arasındaki zaman farkını istediğiniz periyodda hesaplatabilirsiniz.
+Daha önce php'de iki tarihi karşılaştırmayı anlatmıştım [/phpde-tarih-karsilastirma](/phpde-tarih-karsilastirma), ancak iki tarih arasındaki ay, gün, yıl farkını kullanmanız gerektiğinde, php'nin tarih-zaman sınıfını kullanarak iki tarih arasındaki zaman farkını istediğiniz periyodda hesaplatabilirsiniz.
 
 Bu yönetmle hesaplayacağınız tarih farkının iki genel kullanımı vardır. Birincisi hesaplamalarınızda iki tarih arasındaki geçen zamana göre yaptığınız bir kuralınız vardır. Mesela bir blog yazınızın 1 aydan önce yazıldığını denetlemek ve buna göre "Bilgiler geçerliliğini yitirmiş olabilir" gibi bir not göstermek istiyorsunuz. Bunun için şu an ile yazının yazılma tarihi arasında 1 ay olup olmadığını sorgulayabilirsiniz.
 

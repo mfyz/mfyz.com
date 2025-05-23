@@ -15,5 +15,5 @@ Hiç vakit ayıramasam da içimde hala bir enerji var siteye arada sırada içer
 
 Genel olarak düz metin ile kısa bir şekilde adınız, ünvanınız ve iletişim bilgileriniz olur. Zaten daha fazlası da gereksiz, fakat ufak manevralarla imzalarınızı daha çekici, takip edilebilir ve sizi promote eder hale getirebilirsiniz. Bu konuyla ilgili bir yazı hazırladım. Yazının içinde son kısımda hazırladığınız html imzanızı thunbderbird'de nasıl kullanacağınıza kısaca değindim. Zaten oldukça kolay. Buna ek olarak da macosx kullanıcıları için apple'ın mail.app uygulamasında html imzayı nasıl kullanacağınızı anlatan bir döküman daha yazdım. Buyrun şuradan devam edin :
 
-*   [E-postalarınıza HTML imza ile daha ilgi çekici olun](https://tr.mfyz.com/e-postalariniza-html-imza-ile-daha-ilgi-cekici-olun/)
-*   [MacOSX'de Mail.app (Apple Mail) istemcisinde html imza ayarlamak](https://tr.mfyz.com/macosxde-mailapp-apple-mail-istemcisinde-html-imza-ayarlamak/)
+*   [E-postalarınıza HTML imza ile daha ilgi çekici olun](/e-postalariniza-html-imza-ile-daha-ilgi-cekici-olun/)
+*   [MacOSX'de Mail.app (Apple Mail) istemcisinde html imza ayarlamak](/macosxde-mailapp-apple-mail-istemcisinde-html-imza-ayarlamak/)

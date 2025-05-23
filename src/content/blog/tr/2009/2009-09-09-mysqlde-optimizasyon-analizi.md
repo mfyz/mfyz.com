@@ -17,4 +17,4 @@ Sonuçta nümerik alanlarda ortalama, standart sapma, minimum maksimim değerler
 
 MySQL'de Procedure Analyse hakkında bilgi almak için taze yazdığım şu dökümanı inceleyebilirsiniz :
 
-[MySQL'de Procedure Analyse ile optimizasyon analizi](https://tr.mfyz.com/mysqlde-procedure-analyse-ile-optimizasyon-analizi/)
+[MySQL'de Procedure Analyse ile optimizasyon analizi](/mysqlde-procedure-analyse-ile-optimizasyon-analizi/)

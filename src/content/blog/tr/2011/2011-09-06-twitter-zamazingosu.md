@@ -11,4 +11,4 @@ lang: tr
 
 Her yerde twitter naneleri gormeye alistik. Twitter da sitenize public timeline'inizi ekleyebilmeniz icin widget sunuyor ama benim gibi begenmeyip kendiniz tasarlamak istiyorsaniz twitter timeline'inizi api ile jquery'ye isletip kendi tasariminiza gomebilirsiniz.
 
-Bunun icin su dokumani takip edin: [https://tr.mfyz.com/jquery-ile-sitenize-twitter-akisini-eklemek](https://tr.mfyz.com/jquery-ile-sitenize-twitter-akisini-eklemek)
+Bunun icin su dokumani takip edin: [/jquery-ile-sitenize-twitter-akisini-eklemek](/jquery-ile-sitenize-twitter-akisini-eklemek)

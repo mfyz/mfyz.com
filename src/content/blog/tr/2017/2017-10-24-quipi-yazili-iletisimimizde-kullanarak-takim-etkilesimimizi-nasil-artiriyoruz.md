@@ -11,7 +11,7 @@ lang: tr
 
 ![](/images/archive/tr/2017/10/quip-rocket.png)
 
-Bu yazida, is icin, takim iletisiminde kullandigimiz bir aractan, Quip'den soz etmek istiyorum. Daha once yazili iletisimin onemi uzerine yazmistim: [https://tr.mfyz.com/yazili-iletisimden-iyisi-yok/](https://tr.mfyz.com/yazili-iletisimden-iyisi-yok/). Eger okumadiysaniz, once o yazidan baslamanizi tavsiye ederim.
+Bu yazida, is icin, takim iletisiminde kullandigimiz bir aractan, Quip'den soz etmek istiyorum. Daha once yazili iletisimin onemi uzerine yazmistim: [/yazili-iletisimden-iyisi-yok/](/yazili-iletisimden-iyisi-yok/). Eger okumadiysaniz, once o yazidan baslamanizi tavsiye ederim.
 
 Biz Quip'i kullanarak takim etkilesimimizi oldukca artirdik ve yazili, kalici iletisimimizin cogunu Quip'e tasidik. Ben kisisel olarak Quip'i ilk ciktigindan beridir kullaniyorum. Basitligi ve sadeliginin yani sira, mobil uyumu, en onemli kullanma nedenlerimden. Gercek zamanli guncellemelerle birden fazla kisi guzel bir etkilesimle dokumanlar ortaya cikarabiliyor. Google docs gibi alternatiflere kiyasla da cok daha rahat, kolay hissediliyor kullanilmasi.
 

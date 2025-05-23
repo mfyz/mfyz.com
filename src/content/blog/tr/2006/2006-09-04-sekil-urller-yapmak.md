@@ -60,4 +60,4 @@ Bu kod, daha doğrusu array_shift fonksiyonu bir dizinin başındaki elemanı at
 
 Bundan sonra da modül işlemimi $modul değişkeni ile yapıyor, modüller içerisindeki parametreleri de doğrudan $parametreler dizisi ile kullanabiliyorum.
 
-Eğer modüler sistemi bu şekilde nasıl kullanacağınızı bilmiyorsanız [https://tr.mfyz.com/bir-sitenin-kod-duzeni-nasil-olmali/](https://tr.mfyz.com/bir-sitenin-kod-duzeni-nasil-olmali/) dökümanından öğrenebilirsiniz. Yapacağınız tek şey var, orada index.php?module=bilmemne şeklinde aldığınız ve direk _GET ile kullandığınız modul kontrolu ve çalıştırma mantığını buradaki değişken alımını yapıp uygulayacaksınız 🙂
+Eğer modüler sistemi bu şekilde nasıl kullanacağınızı bilmiyorsanız [/bir-sitenin-kod-duzeni-nasil-olmali/](/bir-sitenin-kod-duzeni-nasil-olmali/) dökümanından öğrenebilirsiniz. Yapacağınız tek şey var, orada index.php?module=bilmemne şeklinde aldığınız ve direk _GET ile kullandığınız modul kontrolu ve çalıştırma mantığını buradaki değişken alımını yapıp uygulayacaksınız 🙂

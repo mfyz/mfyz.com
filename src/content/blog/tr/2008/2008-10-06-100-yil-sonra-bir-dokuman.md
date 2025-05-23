@@ -13,6 +13,6 @@ En son geçen asırda döküman yazmıştım. Ancak uykusuzluk, bir de bu aralar
 
 PEAR'da MDB2 kullanarak veritabanı işlemlerinizi nasıl daha rahat, hızlı ve esnek yapabileceğinizi, hatta sql injection saldırılarına karşı da otomatik olarak önlem alıyor olmanızı anlattım. Örneklerle anlatmaya çalıştım. Umarım iyi bir şey olmuştur.
 
-[https://tr.mfyz.com/mdb2-kullanimi-ve-sql-injection/](https://tr.mfyz.com/mdb2-kullanimi-ve-sql-injection/)
+[/mdb2-kullanimi-ve-sql-injection/](/mdb2-kullanimi-ve-sql-injection/)
 
 Bon Apetit

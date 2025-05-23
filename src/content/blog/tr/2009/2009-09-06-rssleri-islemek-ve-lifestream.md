@@ -11,5 +11,5 @@ lang: tr
 
 Geçen haftalarda Lifestream diye bir proje yayınlamıştım. O projeyi yapmadan önce yazdığım bir döküman olan simplepie ile rss işleme; bu döküman ve lifestream projesiyle ilintili olarak da "rsslerden lifestream" hakkında yazdığım dökümanı yayınlayabildim.
 
-*   **Simplepie ile rss işlemek (okumak)** dökümanına [buradan](https://tr.mfyz.com/simplepie-ile-rss-islemek-okumak/),
-*   **RSS'lerden Lifestream** dökümanına [buradan](https://tr.mfyz.com/rsslerden-lifestream/) ulaşabilirsiniz.
+*   **Simplepie ile rss işlemek (okumak)** dökümanına [buradan](/simplepie-ile-rss-islemek-okumak/),
+*   **RSS'lerden Lifestream** dökümanına [buradan](/rsslerden-lifestream/) ulaşabilirsiniz.

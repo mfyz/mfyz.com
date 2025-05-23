@@ -11,9 +11,9 @@ lang: tr
 
 v0.7'yi açtığımdan beri 15-20 tane yeni döküman yazdım gayet de güzel oldu. Yazmak isteyip aylardır yazamadığım konuları her gün birkaç tane döküman şeklinde yazdım. Bunlardan 5-6 tanesi anlık istek ve soru üzerine geldiğinden yazdım. Şu ikisi de az önce çıktı :
 
-Tek dosyalı projeler (siteler) üretmek http://www.mfyz.com/?/dokuman/101/tek-dosyali-projeler-siteler-uretmek/
+Tek dosyalı projeler (siteler) üretmek [tek-dosyali-projeler-siteler-uretmek](/tek-dosyali-projeler-siteler-uretmek)
 
-PHP dosyanıza resim (dosya) gömmek http://www.mfyz.com/?/dokuman/102/php-dosyaniza-resim-dosya-gommek/
+PHP dosyanıza resim (dosya) gömmek [php-dosyaniza-resim-dosya-gommek](/php-dosyaniza-resim-dosya-gommek)
 
 ### Ama?
 

@@ -13,7 +13,7 @@ lang: tr
 
 Ajax aslında modern tarayıcıların desteklediği XMLHttpRequest özelliğini kullanarak sayfa yenilemeden istek yapıp cevap almamızı sağlayan birşeydir.
 
-XMLHttpRequest hakkında bilgi için [buraya tıklayın](https://tr.mfyz.com/xmlhttprequest-nedir/).
+XMLHttpRequest hakkında bilgi için [buraya tıklayın](/xmlhttprequest-nedir/).
 
 Çoğu sitede görmeye alışık olduğumuz birşey haline gelmeye başladı aslında ajax. Çünkü web 2.0 uygulamalarının neredeyse ana çatısını oluşturuyor. Web 2.0 yazılımları 2.0 yapan şey aslında kullanıcı etkileşimi ve bu etkileşimden kastımız aslında bir web uygulamasının sanki masaüstü uygulaması gibi çalışması. Bu da aslında Sunucu-Kullanıcı istek-cevap ilişkisini sayfa yenilemeden yani kullanıcı için hazırladığınız ARAYÜZü yenilemeden birçok işi yapmaktan geçiyor. Tabiki bunu da XMLHttpRequest'i kolay hale getirip kullanmamızı sağlayan ajax kütüphaneleri yapıyor.
 

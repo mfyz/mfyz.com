@@ -27,7 +27,7 @@ Bu işin güzel yanı, hazırladığınız sayfa tamamen organik bir yapıda sü
 
 #### Simple pie
 
-Bunu yapmak için bu sosyal medya servislerindeki rss kaynaklarınızı işleyerek yapacağız. Bunun için php'de simple pie kütüphanesini kullanacağız ve bu kütüphanenin kullanımı ve rss okumak için yardımcı fonksiyon açılımı için önce [Simplepie ile rss işlemek (okumak)](https://tr.mfyz.com/simplepie-ile-rss-islemek-okumak) dökümanını inceleyin.
+Bunu yapmak için bu sosyal medya servislerindeki rss kaynaklarınızı işleyerek yapacağız. Bunun için php'de simple pie kütüphanesini kullanacağız ve bu kütüphanenin kullanımı ve rss okumak için yardımcı fonksiyon açılımı için önce [Simplepie ile rss işlemek (okumak)](/simplepie-ile-rss-islemek-okumak) dökümanını inceleyin.
 
 Simple pie ile rss okuma konusunda bilgi sahibi olduğunuzu varsayarak dökümana devam ediyorum (eğer yoksa öncelikle verdiğim dökümanı uygulayın).
 

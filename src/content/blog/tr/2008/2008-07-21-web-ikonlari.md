@@ -15,4 +15,4 @@ v0.7'de sitenin alt kısmına yerleştirmek üzere tasarladığım, web 2.0 butt
 
 http://www.mfyz.com/Files/Grafik
 
-Kullanımı Creative Commons 4.0 lisansına uygun olmalıdır. Lisans hakkında bilgi almak için de [http://www.mfyz.com/lisans/](https://tr.mfyz.com/lisans/) adresini ziyaret edebilirsiniz.
+Kullanımı Creative Commons 4.0 lisansına uygun olmalıdır. Lisans hakkında bilgi almak için de [http://www.mfyz.com/lisans/](/lisans/) adresini ziyaret edebilirsiniz.

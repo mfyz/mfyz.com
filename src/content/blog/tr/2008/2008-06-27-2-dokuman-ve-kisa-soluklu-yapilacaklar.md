@@ -11,8 +11,8 @@ lang: tr
 
 Uzun süredir hiçbirşey yapmıyordum, sanırım yavaş yavaş kafam rahatlamaya, boş vakit bulmaya başladım. Forumdaki bazı ufak problemleri düzelttim. Şimdi tekrar kolları sıvadım ve kısa sürede birçok yenilik ve döküman görmenizi istiyorum açıkcası.
 
-⭐️Neredeyse 3-4 günümü alan google chart api'nin kullanımıyla ilgili özenle hazırladığım döküman şurada : [Goog**l**e Chart API ile grafik çizdirmek](https://tr.mfyz.com/google-chart-api-ile-grafik-cizdirmek/) ⭐️⭐️⭐️⭐️ ⭐️
+⭐️Neredeyse 3-4 günümü alan google chart api'nin kullanımıyla ilgili özenle hazırladığım döküman şurada : [Goog**l**e Chart API ile grafik çizdirmek](/google-chart-api-ile-grafik-cizdirmek/) ⭐️⭐️⭐️⭐️ ⭐️
 
-Ayrıca macosx için ücretsiz yazılımlar hakkında da bir şeyler karaladım : [Mac OSX için ücretsiz yazılımlar](https://tr.mfyz.com/osx-icin-ucretsiz-yazilimlar/)
+Ayrıca macosx için ücretsiz yazılımlar hakkında da bir şeyler karaladım : [Mac OSX için ücretsiz yazılımlar](/osx-icin-ucretsiz-yazilimlar/)
 
 Sıradaki yapılacak iş : WebBlog için sayfalama, listeleme Anasayfa'da gördüğünüz yazıların eskilerine ulaşamıyorsunuz, yakında ulaşacaksınız.

@@ -37,4 +37,4 @@ function isle(){
 
 Aslında oldukça basit. **setTimeout** fonksiyonu çift parametreli, birincisi tırnaklar içerisinde yapılacak işi diğeri ise milisaniye cinsinden gecikmeyi belirtiyor. Yukarıda bu fonksiyon sürekli içerisinde bulunduğu fonksiyonu çağırttığı için durdurulmadığı sürece teorik olarak sonsuza kadar dönecektir. Ancak biz işlem olarak sürekli bir text inputa "+" işareti yazdırıyoruz, ve kontrol olarak da o text inputtaki karakter uzunlugunu kontrol ediyoruz. bir progress bar şekli için input'un dolması yeterli, input'un görünür karakter uzunluğunu 50 olarak ayarlamıştık. Bu sahayı 40 karakter tamamiyle doldurmaya yetiyor. Onun için inputun karakter uzunluğu 50 olduğu zaman ayarladığımız zamanlayıcı objesini **clearTimeout** fonksiyonu ile sıfırlıyoruz. Böylece bitmiş oluyor.
 
-[Temel JavaScript (5) - Küçük uygulamalar]("http://www.mfyz.com/?/dokuman/88/temel-javascript-5---kucuk-uygulamalar/") dökümanından devam edin.
+[Temel JavaScript (5) - Küçük uygulamalar](/temel-javascript-5-kucuk-uygulamalar/) dökümanından devam edin.

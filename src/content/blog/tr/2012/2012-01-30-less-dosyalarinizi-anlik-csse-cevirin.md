@@ -9,7 +9,7 @@ migration: {"wpId":160,"wpPostDate":"2012-01-30T02:48:06.000Z"}
 lang: tr
 ---
 
-Css yazmayı bırakıp Less ile çalışmaya başlamadınız mı? O zaman [şu bökümandan](https://tr.mfyz.com/less-ile-hiyerarsik-ve-fonksiyonel-css-yazmak) devam edin ve less'in avantajlarına göz atıp size ne fayda sağlayabileceğiniz basitçe anlayabilirsiniz.
+Css yazmayı bırakıp Less ile çalışmaya başlamadınız mı? O zaman [şu bökümandan](/less-ile-hiyerarsik-ve-fonksiyonel-css-yazmak) devam edin ve less'in avantajlarına göz atıp size ne fayda sağlayabileceğiniz basitçe anlayabilirsiniz.
 
 Less dosyalarıyla çalışıyorsanız ve eğer arayüz geliştiriyorsanız yazdığınız kodu tarayıcıda anlık olarak görmek isteyeceksiniz. Less dosyalarını kaydettiğiniz gibi derleyen aşağıdaki araçlarla hangi platformda çalışıyor olursanız olun otomatik olarak derletebilirsiniz. Hatta bazıları, açık olan tarayıcılarda, lokal geliştirme ortamınıza ait bir URL açıksa onu da otomatik yeniliyorlar. Dolayısıyla sadece tarayıcınızı kontrol etmeniz yetebiliyor değişiklikleri görmek için.
 

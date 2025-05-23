@@ -53,4 +53,4 @@ onChange     Bir nesnenin parametrelerinin (değerlerinin) değişmesi olayıdı
 ```
 http://www.w3schools.com/jsref/jsref_events.asp adresinden hangi olayların hangi html nesneleri tarafından desteklenip desteklenmediğini öğrenebilirsiniz.
 
-[Temel Javascript (3) - Çıktılar ve Nesneler](https://tr.mfyz.com/temel-javascript-3---ciktilar-ve-nesneler) dökümanından devam edin.
+[Temel Javascript (3) - Çıktılar ve Nesneler](/temel-javascript-3-ciktilar-ve-nesneler) dökümanından devam edin.

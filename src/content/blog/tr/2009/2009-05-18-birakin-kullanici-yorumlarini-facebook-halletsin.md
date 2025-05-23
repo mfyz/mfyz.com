@@ -17,7 +17,7 @@ Son dönemde connect aracılığı ile bazı kaynaklarını dış sitelere de a�
 
 #### Facebook Connect'e giriş
 
-Facebook connect ile ilgili ana sistematiği [Facebook connect ile kullanıcı giriş çıkış](https://tr.mfyz.com/facebook-connect-ile-kullanici-giris-cikis) dökümanında anlatmıştım. Comment box kullanabilmek için facebook connect kurulumunu sayfanıza yapmanız gerekiyor. Tabiki bunun için de bir uygulama oluşturmak zorundasınız. Basitçe özetlersem :
+Facebook connect ile ilgili ana sistematiği [Facebook connect ile kullanıcı giriş çıkış](/facebook-connect-ile-kullanici-giris-cikis) dökümanında anlatmıştım. Comment box kullanabilmek için facebook connect kurulumunu sayfanıza yapmanız gerekiyor. Tabiki bunun için de bir uygulama oluşturmak zorundasınız. Basitçe özetlersem :
 
 *   "Developers" uygulamasını ekleyin
 *   Kendinize yeni bir uygulama oluşturun ve bir api anahtarı edinmiş olun

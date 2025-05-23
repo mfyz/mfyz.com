@@ -11,7 +11,7 @@ lang: tr
 
 #### Böyle birşeye neden ihtiyaç duyarsınız?
 
-En büyük nedeni, tek dosyadan oluşan bir script yazıyor olabilirsiniz (konuyla ilgili olarak [PHP ile tek dosyadan oluşan proje üretmek](https://tr.mfyz.com/tek-dosyali-projeler-siteler-uretmek/) dökümanını okuyabilirsiniz). Ya da yazdığınız projede kullandığınız ufacık ikonların bir sürü dosya şeklinde durmasını istemiyor olabilirsiniz. Başka bir tercih de dosyalarınızı bir veritabanında tutuyormuşcasına tek dosyada depolamak isteyebilirsiniz. Çok küçük boyutlu resimler için bahsettiğim konu daha yaygın kullanılır.
+En büyük nedeni, tek dosyadan oluşan bir script yazıyor olabilirsiniz (konuyla ilgili olarak [PHP ile tek dosyadan oluşan proje üretmek](/tek-dosyali-projeler-siteler-uretmek/) dökümanını okuyabilirsiniz). Ya da yazdığınız projede kullandığınız ufacık ikonların bir sürü dosya şeklinde durmasını istemiyor olabilirsiniz. Başka bir tercih de dosyalarınızı bir veritabanında tutuyormuşcasına tek dosyada depolamak isteyebilirsiniz. Çok küçük boyutlu resimler için bahsettiğim konu daha yaygın kullanılır.
 
 Yani yazdığınız betik kendi içindeki css kuralları ile şekillendirilmiş, ikonlarla da güçlendilirmişse ve ikonlar için ek dosyalar koymak istemiyorsanız bu yöntemi kullanabilirsiniz.
 

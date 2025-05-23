@@ -9,7 +9,7 @@ migration: {"wpId":134,"wpPostDate":"2008-02-17T04:34:05.000Z"}
 lang: tr
 ---
 
-PEAR'da MDB2 ile veritabanı işlemleri hakkında daha önce döküman yazmıştım (aynı anda yayınladım gerçi). MDB2 ile veritabanı işlemleri ile ilgili bilgi edinmek için [https://tr.mfyz.com/pear-da-mdb2-ile-veritabani-islemleri/](https://tr.mfyz.com/pear-da-mdb2-ile-veritabani-islemleri/) dökümanını okuyun. Bu dökümanda veri işleme ile ilgili kısımlardan bahsetmeyeceğim.
+PEAR'da MDB2 ile veritabanı işlemleri hakkında daha önce döküman yazmıştım (aynı anda yayınladım gerçi). MDB2 ile veritabanı işlemleri ile ilgili bilgi edinmek için [/pear-da-mdb2-ile-veritabani-islemleri/](/pear-da-mdb2-ile-veritabani-islemleri/) dökümanını okuyun. Bu dökümanda veri işleme ile ilgili kısımlardan bahsetmeyeceğim.
 
 #### SQL injection, başımızın belası :)
 

@@ -110,4 +110,4 @@ document.write(sonuc);
 ```
  
 
-[Temel JavaScript (4) - Zamanlayıcılarla çalışmak]("http://www.mfyz.com/?/dokuman/87/temel-javascript-4---zamanlayicilarla-calismak/") dökümanından devam edin.
+[Temel JavaScript (4) - Zamanlayıcılarla çalışmak](/temel-javascript-4-zamanlayicilarla-calismak) dökümanından devam edin.

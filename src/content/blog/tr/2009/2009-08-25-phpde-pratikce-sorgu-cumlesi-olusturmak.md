@@ -9,7 +9,7 @@ migration: {"wpId":146,"wpPostDate":"2009-08-25T18:25:53.000Z"}
 lang: tr
 ---
 
-Daha önce SQL injection ve MDB2 hakkında birşeyler [yazmıştım](https://tr.mfyz.com/mdb2-kullanimi-ve-sql-injection).
+Daha önce SQL injection ve MDB2 hakkında birşeyler [yazmıştım](/mdb2-kullanimi-ve-sql-injection).
 
 Bu döküman birkaç konuda size yardımcı olacak, pratikleştirecek sorunlar :
 

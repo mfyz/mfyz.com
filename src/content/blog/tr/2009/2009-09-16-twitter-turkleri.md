@@ -11,4 +11,4 @@ lang: tr
 
 Sosyal medya'nın Türkiye'de kullanımı ile ilgili araştırmalarımız devam ediyor. Son olarak Twitter'ın Türkiye'deki kullanımı ile ilgili bazı istatistikleri yazmıştım, şimdi de Twitter aktivitesini oluşturan Türkleri ve Lokal gruplar/hesapları inceledim,
 
-[Twitter insanlarına genel bakış ve Twitter Türkleri](https://tr.mfyz.com/twitter-insanlarina-genel-bakis-ve-twitter-turkleri/)
+[Twitter insanlarına genel bakış ve Twitter Türkleri](/twitter-insanlarina-genel-bakis-ve-twitter-turkleri/)

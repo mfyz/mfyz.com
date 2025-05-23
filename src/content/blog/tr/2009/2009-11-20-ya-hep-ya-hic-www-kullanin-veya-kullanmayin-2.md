@@ -21,4 +21,4 @@ if( substr($_SERVER[HTTP_HOST], 0, 3) != 'www' ){
 ```
 Bu kod, mfyz.com'a www'suz giren yani http://mfyz.com şeklinde giren kullanıcıları http://www.mfyz.com şeklinde gitmek istedikleri URL'e yönlendirecektir.
 
-"Bu ayrımdan dolayı oluşan problemler ve ikisinin ayrımı" konusunda daha detaylı bilgi için [döküman'dan devam ediniz](https://tr.mfyz.com/ya-hep-ya-hic--www-kullanin-veya-kullanmayin/).
+"Bu ayrımdan dolayı oluşan problemler ve ikisinin ayrımı" konusunda daha detaylı bilgi için [döküman'dan devam ediniz](/ya-hep-ya-hic--www-kullanin-veya-kullanmayin/).

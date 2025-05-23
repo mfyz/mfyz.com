@@ -9,7 +9,7 @@ migration: {"wpId":97,"wpPostDate":"2006-09-20T21:05:49.000Z"}
 lang: tr
 ---
 
-Bu dökümanda sunucumuza svn kurup yayına açmak ve geliştirici grubumuzun erişimine açmayı göstereceğim. (SVN kullanımı ile ilgili bilgiyi [https://tr.mfyz.com/subversion-ile-proje-gelistirmek/](https://tr.mfyz.com/subversion-ile-proje-gelistirmek/) dökümanından edinebilirsiniz)
+Bu dökümanda sunucumuza svn kurup yayına açmak ve geliştirici grubumuzun erişimine açmayı göstereceğim. (SVN kullanımı ile ilgili bilgiyi [/subversion-ile-proje-gelistirmek/](/subversion-ile-proje-gelistirmek/) dökümanından edinebilirsiniz)
 
 #### SNV yayını yapmak (snvserve)
 
@@ -52,6 +52,6 @@ Eğer 2-3 kez şifre istenmesi ile karşılaşırsanız şaşırmayın benden 3 
 
 Bu noktadan itibaren zaten svn kullanımı için kullandığımız komutları uygulayarak projemizi svn üstünden geliştirebiliriz.
 
-SVN kullanımı ile ilgili bilgiyi [https://tr.mfyz.com/subversion-ile-proje-gelistirmek/](https://tr.mfyz.com/subversion-ile-proje-gelistirmek/) dökümanından edinebilirsiniz.
+SVN kullanımı ile ilgili bilgiyi [/subversion-ile-proje-gelistirmek/](/subversion-ile-proje-gelistirmek/) dökümanından edinebilirsiniz.
 
 SVN hakkında çok geniş bilgi edinmek için Dosyalar bölümündeki dökümanlar klasöründeki [http://www.mfyz.com/Files/Dokumanlar/svn-book-html.tar.bz2](http://www.mfyz.com/Files/Dokumanlar/svn-book-html.tar.bz2) dosyasını indirerek edinebilirsiniz. (SVNBOOK, İngilizce)

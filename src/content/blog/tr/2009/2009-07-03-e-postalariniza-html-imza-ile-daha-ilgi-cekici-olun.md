@@ -27,7 +27,7 @@ Hazırlayacağınız imzada az sayıda ikon ve kullandığınız bir sembol, şi
 
 #### Başlayalım
 
-İmzanızı hazırlarken html etikerleri bile bulunmayan bir html bloğu oluşturacağız. Burada kesinlikle ilkel düşünmeniz gerekiyor çünkü neredeyse tüm mail client'lar oldukça ilkel motorlarla ve spam gibi engellerden dolayı da sade kodlamada bulunmasını şart koşuyor. Bu kurallar ve öneriler hakkında daha önce birşeyler yazmıştım ([Başarılı bülten (newsletter) mesajı oluşturmanın 5 kuralı](https://tr.mfyz.com/basarili-bulten-newsletter-mesaji-olusturmanin-5-kurali/)). Bu kurallardan hatırlatmam gerekenler :
+İmzanızı hazırlarken html etikerleri bile bulunmayan bir html bloğu oluşturacağız. Burada kesinlikle ilkel düşünmeniz gerekiyor çünkü neredeyse tüm mail client'lar oldukça ilkel motorlarla ve spam gibi engellerden dolayı da sade kodlamada bulunmasını şart koşuyor. Bu kurallar ve öneriler hakkında daha önce birşeyler yazmıştım ([Başarılı bülten (newsletter) mesajı oluşturmanın 5 kuralı](/basarili-bulten-newsletter-mesaji-olusturmanin-5-kurali/)). Bu kurallardan hatırlatmam gerekenler :
 
 *   External css kullanamazsınız
 *   Kompleks ve css 3 gibi yeni öznitelikleri kullanamazsınız
@@ -73,7 +73,7 @@ Bu noktada hazırladığınız sayfayı body, html etiketlerinden arındırarak 
 
 Bu dökümanda html ve css ile eposta imzanızı nasıl şekillendireceğinizi ve etkileyici hale getirebileceğinizi anlatmaya çalıştım. Thunderbird universal bir yazılım olduğu için ve html imza ayarlaması kolay olduğu için kısaca anlatacağım fakat diğer eposta okuyucularda ayarlamayı başka dökümanlarda değineceğim.
 
-MacOSX'de Mail.app (Apple Mail) istemcisinde html imza ayarlamayla iligili yazdığım diğer dökümana ulaşmak için [buraya tıklayın](https://tr.mfyz.com/macosxde-mailapp-apple-mail-istemcisinde-html-imza-ayarlamak/).
+MacOSX'de Mail.app (Apple Mail) istemcisinde html imza ayarlamayla iligili yazdığım diğer dökümana ulaşmak için [buraya tıklayın](/macosxde-mailapp-apple-mail-istemcisinde-html-imza-ayarlamak/).
 
 Thunderbird'de html imza ayarlamak gerçekten oldukça kolay. Hesap bilgilerinizi ayarladıktan sonra Tools / Account Settings menüsünden ulaşabileeğiniz hesap bilgileri penceresini açın.
 

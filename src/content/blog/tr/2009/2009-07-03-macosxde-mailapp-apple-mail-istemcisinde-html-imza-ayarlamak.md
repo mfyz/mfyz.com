@@ -11,7 +11,7 @@ lang: tr
 
 #### Neden HTML İmza Kullanmalısınız
 
-HTML imza kullanarak gönderdiğiniz mesajlardaki imzalarınıza etkileşim ve referans katabilirsiniz. Ünvanınız ve insanları yönlendirebileceğiniz blog, portfolyo gibi sayfalarınıza bağlantı verebilir, ikonlar veya logonuzu kullanarak daha görsel bir imza oluşturabilirsiniz. Bu dökümana başlamadan önce bu konuda daha önce neden ve nasıl yapacağınızı anlattığım "[E-postalarınıza HTML imza ile daha ilgi çekici olun](https://tr.mfyz.com/e-postalariniza-html-imza-ile-daha-ilgi-cekici-olun/)" dökümanını okuyun.
+HTML imza kullanarak gönderdiğiniz mesajlardaki imzalarınıza etkileşim ve referans katabilirsiniz. Ünvanınız ve insanları yönlendirebileceğiniz blog, portfolyo gibi sayfalarınıza bağlantı verebilir, ikonlar veya logonuzu kullanarak daha görsel bir imza oluşturabilirsiniz. Bu dökümana başlamadan önce bu konuda daha önce neden ve nasıl yapacağınızı anlattığım "[E-postalarınıza HTML imza ile daha ilgi çekici olun](/e-postalariniza-html-imza-ile-daha-ilgi-cekici-olun/)" dökümanını okuyun.
 
 #### Adım adım
 

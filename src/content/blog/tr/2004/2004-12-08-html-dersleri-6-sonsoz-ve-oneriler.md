@@ -21,7 +21,7 @@ HTML geleceğin teknolojilerine karşın yapısal olarak değişmeyecek dillerde
 
 3\. Eğer sayfanızda bir html işareti kullanacaksanız (mesela çift tırnak veya html etiketleri için başlangıç karakteri yani sola doğru ok işareti.. vb), bu karakterlerin ascii'ye göre html encode edilmiş değerlerini kullanın. Bu değerleri şöyle açabiliriz; "&" işareti + "#" işareti + "o karakterin ASCII değeri" + ";" işareti Örneğin tire karakteri (-) = &#150; (kırmızı olan tire karakterinin ASCII değeridir.)
 
-**NOT :** Klavye karakterlerinin ASCII değerlerini https://tr.mfyz.com/ascii-karakter-kodlari/ dökümanında bulabilirsiniz. (Ayrıca bakınız : http://www.asciitable.com)
+**NOT :** Klavye karakterlerinin ASCII değerlerini /ascii-karakter-kodlari/ dökümanında bulabilirsiniz. (Ayrıca bakınız : http://www.asciitable.com)
 
 4\. HTML'de tabloları arayüz çizdirmek için kullanmayın, arayüzlerinizi css ile çizdirin. Tablolar "Tablosal Veriler" içindir (Mesela hesap cetveli).
 

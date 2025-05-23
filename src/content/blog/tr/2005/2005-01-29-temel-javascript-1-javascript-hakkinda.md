@@ -103,4 +103,4 @@ function fonksiyonum( parametrem1, parametrem2, ... , parametremn ){
 
 > Mozilla Firefox'da JavaScript konsolu ile takip edebilir, hatta firebug eklentisi ile çok daha iyi hata yakalama teknikleri uygulayabilirsiniz. Firebug ile aynı zamanda css ve html hatalarınızı da ölçebilir, sayfanızın yüklenme hızı optimizasyonunu yapabilirsiniz. http://www.getfirebug.com/
 
-[Temel JavaScript (2) - JavaScript'e Girelim](https://tr.mfyz.com/temel-javascript-2---javascripte-girelim/) dökümanından devam edin.
+[Temel JavaScript (2) - JavaScript'e Girelim](/temel-javascript-2-javascripte-girelim/) dökümanından devam edin.

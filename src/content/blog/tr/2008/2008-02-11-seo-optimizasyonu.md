@@ -81,7 +81,7 @@ meta etiketi ile ayarlanan robot kuralları [http://www.seoconsultants.com/meta-
 
 Sayfalarınızın adresleriyle oynayın. Olmayan şeyler ekleyerek sayfanızı url'leriniz ile açıklayın. v0.7'de döküman, blog, forum konularının adreslerine bakacak olursanız dokuman/-NO-/-ACIKLAMA-/ şeklindedir. Aslında -ACIKLAMA- kısmı hiçbir yerde kullanılmıyor. -NO- dökmana ulaşabilmeniz için yeterli bir parametre. Ancak birileri o sayfayı bağlantı olarak bir yerlerde verdiğinde insanlar sayfaya girmeden url'den sayfa başlığını az çok anlayabileceklerdir. Aynı şey arama motorlarını kullanan insanların piskolojilerinde yatar. "Mootools tooltip" araması yapan birisi arama sonuçları içerisinde
 ```
-http://www.mfyz.com/?/dokuman/93/mootools-ile-ipucu-aciklamalari-tooltip/
+https://www.mfyz.com/mootools-ile-ipucu-aciklamalari-tooltip/
 ```
 urlsine sahip bir sayfa gördüğünde başlığı veya sayfa içeriğini okumadan tıklayacaktır :) Sayfanız bu konu hakkında bilgi içeriyor olmasa da bu işe yarayacaktır. Sonuçta bu optimizasyonları insanları çekmek için de yapıyoruz. Ancak yeterli bilgiyi içeren sayfanız için böyle bir optimizasyon yaparsanız o zaman insanları doğru yönlendirerek sitenize çekmiş olursunuz. Bu da artı bir puandır sizin için.
 

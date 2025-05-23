@@ -9,7 +9,7 @@ migration: {"wpId":154,"wpPostDate":"2010-03-25T15:22:16.000Z"}
 lang: tr
 ---
 
-Sitemap'ın öneminden ve nasıl üreteceğinizden daha önce bahsetmiştim ([Dinamik sitemap.xml oluşturmak](https://tr.mfyz.com/dinamik-sitemapxml-olusturmak)).
+Sitemap'ın öneminden ve nasıl üreteceğinizden daha önce bahsetmiştim ([Dinamik sitemap.xml oluşturmak](/dinamik-sitemapxml-olusturmak)).
 
 ### Sitemap.xml dosyanızı oluşturdunuz peki sonra?
 

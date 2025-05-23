@@ -15,4 +15,4 @@ Sitede kullandığım ve zamanında yaptığım bazı ikonlar. PHP logosunun web
 
 Dosyalar bölümünde Grafik dizininde psd dosyalarını bulabilirsiniz. http://www.mfyz.com/Files/Grafik
 
-Kullanımı Creative Commons 4.0 lisansına uygun olmalıdır. Lisans hakkında bilgi almak için de [https://tr.mfyz.com/lisans/](https://tr.mfyz.com/lisans/) adresini ziyaret edebilirsiniz.
+Kullanımı Creative Commons 4.0 lisansına uygun olmalıdır. Lisans hakkında bilgi almak için de [/lisans/](/lisans/) adresini ziyaret edebilirsiniz.

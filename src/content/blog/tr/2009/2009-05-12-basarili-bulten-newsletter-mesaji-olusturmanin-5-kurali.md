@@ -66,7 +66,7 @@ Paragraf yerine <br> kullanın.
 
 #### 4\. Türkçe ve ASCII dışı karakterler
 
-ASCII dışı tüm karakterleri html entity olarak kullanın mesela © yerine &copy; Bununla ilgili dosyalar bölümündeki [https://tr.mfyz.com/ascii-karakter-kodlari/](https://tr.mfyz.com/ascii-karakter-kodlari/) dönüşüm tablosunu kullanabilirsiniz.
+ASCII dışı tüm karakterleri html entity olarak kullanın mesela © yerine &copy; Bununla ilgili dosyalar bölümündeki [/ascii-karakter-kodlari/](/ascii-karakter-kodlari/) dönüşüm tablosunu kullanabilirsiniz.
 
 #### 5\. Metin sürümü (Plain text version)
 

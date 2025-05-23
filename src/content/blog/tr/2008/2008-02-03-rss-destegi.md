@@ -13,6 +13,6 @@ RSS desteği ekledim. Sitenni alt kısmında hiçbir işe yaramadan, çalışmay
 
 http://www.mfyz.com/rss/ adresinden kaynakların listesine ulaşabilirsiniz. Nasıl ekleyeceğinizi sormuyorum :)
 
-RSS'in ne olduğunu bilmiyor ve RSS hakkında bilgi edinmek istiyorsanız [RSS nedir, ne işe yarar, ne yapmalıyız?](https://tr.mfyz.com/rss-nedir-ne-ise-yarar-ne-yapmaliyiz/) dökümanını okuyabilirsiniz.
+RSS'in ne olduğunu bilmiyor ve RSS hakkında bilgi edinmek istiyorsanız [RSS nedir, ne işe yarar, ne yapmalıyız?](/rss-nedir-ne-ise-yarar-ne-yapmaliyiz/) dökümanını okuyabilirsiniz.
 
 Forum konuları, döküman yorumlarını rss olarak dağıtmak şu an mantıklı gelmiyor. Bu özelliği kullanan var mı diğer sitelerde? Yani rss okuyucusu ile forum konusu veya yorum takip eden?
