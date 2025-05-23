@@ -8,7 +8,7 @@ category: Other
 migration: {"wpId":499,"wpPostDate":"2020-06-15T12:00:00.000Z"}
 ---
 
-I’ve recently talked about different cloud documentation services [Smart(Er) Documents – Quip, Notion, Airtable, Coda Or Good Old GDocs & GSheets](https://mfyz.com/smarter-documents-quip-notion-airtable-coda-or-good-old-gdocsgsheets/) and the my take on [Smarting up Google Docs](https://mfyz.com/smarting-up-google-docs-and-sheets/).
+I’ve recently talked about different cloud documentation services [Smart(Er) Documents – Quip, Notion, Airtable, Coda Or Good Old GDocs & GSheets](/smarter-documents-quip-notion-airtable-coda-or-good-old-gdocsgsheets/) and the my take on [Smarting up Google Docs](/smarting-up-google-docs-and-sheets/).
 
 Let’s dive right in the few key reasons why every developer should know google apps script and get familiar to work with GAS in google sheets and docs.
 

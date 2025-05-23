@@ -12,7 +12,7 @@ I used windows from it’s 3.1 version to pre-vista years - early 2000s. Then sw
 
 ### iPad Pro experiments
 
-Years after living comfortably in apple ecosystem, after starting to experiment with extreme portability of a powerful device like ipad pro (see [https://mfyz.com/digital-nomads](https://mfyz.com/digital-nomads/)). Seeing its limitations, there was always a geeky desire to own/create a super-portable work environment with me at all times. I achieved this to a degree in my experiments with various devices in last decade. Closest I got was with ipad pro with some outside help.
+Years after living comfortably in apple ecosystem, after starting to experiment with extreme portability of a powerful device like ipad pro (see [mfyz.com/digital-nomads](/digital-nomads/)). Seeing its limitations, there was always a geeky desire to own/create a super-portable work environment with me at all times. I achieved this to a degree in my experiments with various devices in last decade. Closest I got was with ipad pro with some outside help.
 
 At the end of the day, it’s still not fully fledged operating system that responds to what I need. I talked about this in my recent articles and me trying to find alternative solutions that will work with iPad.
 

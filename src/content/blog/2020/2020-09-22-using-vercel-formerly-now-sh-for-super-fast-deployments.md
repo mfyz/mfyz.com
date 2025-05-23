@@ -18,13 +18,13 @@ I want to another service that brings me joy when I see I’m cutting a lot of a
 
 Now.sh allows single command line to be live on my web apps. Now.sh is actually name of the CLI tool for the parent service “Vercel”. To install their comamdn line tool, simply install “now” package globally from npm:
 
-```
+```sh
 npm i -g vercel
 ```
 
 Then first create your account on vercel and run 
 
-```
+```sh
 vercel login
 ```
 
@@ -34,7 +34,7 @@ to login to your account. Now you are good to go.
 
 In your project folder. Simply run
 
-```
+```sh
 vercel
 ```
 
@@ -46,7 +46,7 @@ Vercel/Now.sh also provides AWS-Lambda style “serverless” architecture. What
 
 Here is an “echo” endpoint that returns what’s sent to it:
 
-```
+```js
 module.exports = (req, res) => {
   res.json({
     body: req.body,

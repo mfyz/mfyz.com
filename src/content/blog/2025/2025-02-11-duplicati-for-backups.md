@@ -16,7 +16,7 @@ Duplicati is a versatile, open-source backup solution that’s packed with featu
 
 Duplicati is open source and it can be deployed almost anywhere. I run it as a docker container that does NOT require much resources to run. They also have hosted version that centralizes multiple machine backups, but I never used it.
 
-I use a pretty simple single-container compose file that I deploy using portainer and its gitops integration (related article: [Portainer + gitops ❤️: A simple way to deploy and manage your self-hosted applications](https://mfyz.com/portainer-gitops-a-simple-way-to-deploy-and-manage-your-self-hosted-applications/)). I mount my sources (they are all in the same machine, stuff running in different containers) into duplicati’s container. Then duplicati treats it as simple folders to monitor, take incremental backups and send backups to whatever remote I set up.
+I use a pretty simple single-container compose file that I deploy using portainer and its gitops integration (related article: [Portainer + gitops ❤️: A simple way to deploy and manage your self-hosted applications](/portainer-gitops-a-simple-way-to-deploy-and-manage-your-self-hosted-applications/)). I mount my sources (they are all in the same machine, stuff running in different containers) into duplicati’s container. Then duplicati treats it as simple folders to monitor, take incremental backups and send backups to whatever remote I set up.
 
 Here is my `docker-compose.yml` for my duplicati setup:
 
@@ -69,6 +69,6 @@ While duplicati has some ways to check jobs statuses, and logs. I don’t trust 
 
 I have a separate healthcheck script that checks the duplicati backup folders if duplicati failed to write. It’s a simple node.js script that reads the google drive folder contents and queries files create timestamps then checks if there is at least one in the last X hours. If it find any file, it pings my healthcheck system.
 
-I’ve covered this recently: [Monitor everything with Healthchecks.io](https://mfyz.com/monitor-everything-with-healthchecks-io/). Healthchecks takes care of sending slack and email alerts to me.
+I’ve covered this recently: [Monitor everything with Healthchecks.io](/monitor-everything-with-healthchecks-io/). Healthchecks takes care of sending slack and email alerts to me.
 
 Check duplicati out from their website: [](https://duplicati.com/)[https://duplicati.com](https://duplicati.com)

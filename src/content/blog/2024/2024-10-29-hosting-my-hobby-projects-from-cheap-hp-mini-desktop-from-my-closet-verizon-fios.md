@@ -90,4 +90,4 @@ All things considered, I’m sure there are still holes and paranoia in this pla
 
 I use Portainer to both setup deployments and manage my containers. Portainer is essentially a nice UI version of your docker command line tools. But where it shines is the gitops integration that integrates with github via webhooks, so when I push any change to any of my app repos (which all have docker-compose.yml that includes their infra and application configurations), my apps get re-deployed by portainer. This makes spinning up a new app, or an open-source tool in my server, a breeze.
 
-I covered portainer and its gitops integration in this article: [Portainer + gitops ❤️: A simple way to deploy and manage your self-hosted applications](https://mfyz.com/portainer-gitops-a-simple-way-to-deploy-and-manage-your-self-hosted-applications/)
+I covered portainer and its gitops integration in this article: [Portainer + gitops ❤️: A simple way to deploy and manage your self-hosted applications](/portainer-gitops-a-simple-way-to-deploy-and-manage-your-self-hosted-applications/)

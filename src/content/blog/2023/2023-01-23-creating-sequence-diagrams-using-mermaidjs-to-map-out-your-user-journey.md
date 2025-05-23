@@ -108,6 +108,6 @@ Renders to a nice sequence diagram:
 
 ### Mermaid Tooling
 
-I’ve covered how to edit and manage mermaid diagrams in your favorite tools in [a past article](https://mfyz.com/editing-and-previewing-mermaid-diagrams-on-your-docs-markdown-github-notion-confluence/).
+I’ve covered how to edit and manage mermaid diagrams in your favorite tools in [a past article](/editing-and-previewing-mermaid-diagrams-on-your-docs-markdown-github-notion-confluence/).
 
-You can also alternatively create similar diagrams in free-form mode with excalidraw which I also like. I’ve talked about excalidraw in [my previous posts](https://mfyz.com/create-quick-diagrams-and-wireframes-using-excalidraw-vscode/). It will give you way more control to make your diagrams look exactly like you want but obviously it will take much more time to create one compared to mermaid.js diagrams.
+You can also alternatively create similar diagrams in free-form mode with excalidraw which I also like. I’ve talked about excalidraw in [my previous posts](/create-quick-diagrams-and-wireframes-using-excalidraw-vscode/). It will give you way more control to make your diagrams look exactly like you want but obviously it will take much more time to create one compared to mermaid.js diagrams.

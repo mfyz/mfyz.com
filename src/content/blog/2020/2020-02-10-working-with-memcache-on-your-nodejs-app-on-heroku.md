@@ -32,13 +32,13 @@ The memcachier instance free and can be added without any further account detail
   
 To add this add-on to your application, in your project folder, run following command:  
 
-```
+```sh
 $ heroku addons:create memcachier:dev
 ```
 
 This will add memcachier to Heroku config as an environment variable. Copy the variable to your local .env file to be able to connect from your local development application.  
 
-```
+```sh
 $ heroku config...
 MEMCACHIER_SERVERS    => mcX.ec2.memcachier.com
 MEMCACHIER_USERNAME   => bobslob
@@ -47,13 +47,13 @@ MEMCACHIER_PASSWORD   => l0nGr4ndoMstr1Ngo5strang3CHaR4cteRS...
 
 To use memcache, on a node.js app, we will use a npm package called “memjs”. To install, run:  
 
-```
+```sh
 npm install memjs
 ```
 
 The usage of the package is pretty straightforward, here is the short example it’s quoted from memcachier’s Heroku get started guide:  
 
-```
+```js
 var memjs = require('memjs')
 
 var mc = memjs.Client.create(process.env.MEMCACHIER_SERVERS, {

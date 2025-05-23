@@ -43,4 +43,4 @@ echo "done"
 
 ### Monitoring
 
-In my daily cron tasks, after running rclone, I also have a health check to make sure my backups are taken correctly. So a ping service monitors my daily tasks run successfully. I’ve written about open-source health check/ping service you can use or self-host yourself here: [https://mfyz.com/monitoring-your-microservice-stack-with-simple-ping-health-checks-using-helathchecks-io-for-free/](https://mfyz.com/monitoring-your-microservice-stack-with-simple-ping-health-checks-using-helathchecks-io-for-free/)
+In my daily cron tasks, after running rclone, I also have a health check to make sure my backups are taken correctly. So a ping service monitors my daily tasks run successfully. I’ve written about open-source health check/ping service you can use or self-host yourself here: [https://mfyz.com/monitoring-your-microservice-stack-with-simple-ping-health-checks-using-helathchecks-io-for-free/](/monitoring-your-microservice-stack-with-simple-ping-health-checks-using-helathchecks-io-for-free/)

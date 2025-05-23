@@ -10,7 +10,7 @@ migration: {"wpId":674,"wpPostDate":"2021-06-09T11:59:14.000Z"}
 
 ![home.png](/images/archive/en/2021/06/image.png)
 
-You guys know how much I love thinking, talking, and geeking about ways to smartly preserve our knowledge in form of written communication. I [talked](https://mfyz.com/written-communication-king/) [a lot](https://mfyz.com/use-quip-leverage-collaborative-writing-tool-team-communication/) about written communication and making our digital documents [smarter](https://mfyz.com/smarting-up-google-docs-and-sheets/) [before](https://mfyz.com/smarter-documents-quip-notion-airtable-coda-or-good-old-gdocsgsheets/).
+You guys know how much I love thinking, talking, and geeking about ways to smartly preserve our knowledge in form of written communication. I [talked](/written-communication-king/) [a lot](/use-quip-leverage-collaborative-writing-tool-team-communication/) about written communication and making our digital documents [smarter](/smarting-up-google-docs-and-sheets/) [before](/smarter-documents-quip-notion-airtable-coda-or-good-old-gdocsgsheets/).
 
 Although Notion is not my primary knowledge base, note-taking tool, I really love certain aspects of how Notion functions. Probably the best feature of it among other tools is how you can publish any document publicly. The output it creates is very minimal and clean. The second best thing about Notion is to support almost any type of web-embed code. With this, you can practically embed any interactive widgets or content pieces to your documents. Very much like a web page, Notion makes the documents you publish online as — pretty much a fully-fledged web page. 
 

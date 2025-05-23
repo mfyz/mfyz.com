@@ -8,11 +8,11 @@ category: Geekin'
 migration: {"wpId":412,"wpPostDate":"2020-01-29T18:43:11.000Z"}
 ---
 
-I’ve talked about [the importance of written communication](https://mfyz.com/written-communication-king/) before. I highly believe that written communication is the best and purest way to accumulate and share knowledge. Most importantly, it allows all of us to communicate on our own terms/time/speed, enabled asynchronous communication.
+I’ve talked about [the importance of written communication](/written-communication-king/) before. I highly believe that written communication is the best and purest way to accumulate and share knowledge. Most importantly, it allows all of us to communicate on our own terms/time/speed, enabled asynchronous communication.
 
 This is a key concept to eliminate unnecessary meetings, or making everybody’s time is utilized well. Also a key requirement for scalability for whatever the knowledge transfer needed between peers at work.
 
-I also mentioned multiple times that I use Quip personally and for [my team communication and management](https://mfyz.com/use-quip-leverage-collaborative-writing-tool-team-communication/). There are a lot of great tools came before or after Quip, namely a new up and the coming tool is Notion. Regardless of the tool itself, we grew our need to “document” beyond just writing.
+I also mentioned multiple times that I use Quip personally and for [my team communication and management](/use-quip-leverage-collaborative-writing-tool-team-communication/). There are a lot of great tools came before or after Quip, namely a new up and the coming tool is Notion. Regardless of the tool itself, we grew our need to “document” beyond just writing.
 
 Writing is the storytelling part of the documentation and it’s necessary. Any tool helping us writing better, faster and with fewer errors (i.e: Grammarly) is good. But I have a hunger for more, as an engineer. I have been thinking a lot of displaying information in different ways, making it interactive due to my education background (Statistics). I also operate highly in data filled environments where there is always a need to “simplify” information to readable, easier to digest formats. So I always look out for making data, or a plain timeline of events in a more creative and fun way.
 

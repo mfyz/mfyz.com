@@ -63,7 +63,7 @@ There are few other more detailed ways of doing this, but here is the shortest w
 Add `modules-load=dwc2,g_ether` to cmdline.txt after `rootwait`  
 append `dtoverlay=dwc2` to config.txt, or run following that does it for you (on a mac after connecting the SD card):
 
-```
+```sh
 sed -i '' 's/rootwait/rootwait modules-load=dwc2,g_ether/' /Volumes/boot/cmdline.txt<br>echo 'dtoverlay=dwc2' >> /Volumes/boot/config.txt
 ```
 
@@ -75,7 +75,6 @@ Here is a minimal setup with iPad and Raspberry Pi looks like:
 
 ![](/images/archive/en/2020/11/1_u_gtS4JhjExtIIRxZYKQ4g.jpg)
 
-  
 This is not my set-up but mine is also very similar. I use raspberry pi zero w with a single cable to the usb-c directly to the iPad.
 
 For further reading, this [medium article](https://medium.com/sausheong/setting-up-a-raspberry-pi-4-as-an-development-machine-for-your-ipad-pro-3813f872fccc) covers pretty much everything aside from my experience and more on this topic.

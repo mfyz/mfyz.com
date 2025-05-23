@@ -48,6 +48,15 @@
     @apply leading-7 md:leading-8 text-base md:text-lg tracking-normal;
   }
 
+  .main-content-wrapper h1 code,
+  .main-content-wrapper h2 code,
+  .main-content-wrapper h3 code,
+  .main-content-wrapper h4 code,
+  .main-content-wrapper h5 code,
+  .main-content-wrapper h6 code {
+    font-size: inherit;
+  }
+
   /* Headings - preserve Georgia font as required */
   .main-content-wrapper h1 {
     @apply font-secondary font-normal text-4xl md:text-5xl mt-14 mb-10 text-slate-800 dark:text-gray-100;
@@ -167,7 +176,10 @@
 
   /* Inline code styles */
   .main-content-wrapper :not(pre) > code {
-    @apply bg-primary/20 dark:bg-primary/30 px-2 py-0.5 rounded text-xs md:text-sm;
+    @apply bg-primary/20 dark:bg-primary/30 px-2 py-0.5 rounded;
+  }
+  .main-content-wrapper :not(pre):not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) > code {
+    @apply text-xs md:text-sm;
   }
 
   /* Tables */

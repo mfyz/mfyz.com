@@ -53,7 +53,7 @@ At a high level, defining "scope" for your commit messages is the most critical 
 
 We use a simplified version of this scope set. A sample commitlinter config file:
 
-```
+```js
 module.exports = {
 	parserPreset: 'conventional-changelog-conventionalcommits',
 	extends: ["@commitlint/config-conventional"],
@@ -84,7 +84,7 @@ Conventional commit and commitlinter gets juicer when combined with an auto-gene
 
 Conventional changelog generators can translate each conventional commit spec to nicely categorized changelog in a simple configuration file like:
 
-```
+```json
 {
     "types": [
       {"type": "feat", "section": "Features"},

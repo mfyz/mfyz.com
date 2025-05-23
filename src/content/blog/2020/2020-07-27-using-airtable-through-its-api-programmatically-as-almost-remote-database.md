@@ -8,7 +8,7 @@ category: Other
 migration: {"wpId":503,"wpPostDate":"2020-07-27T12:00:00.000Z"}
 ---
 
-I recently talked [a](https://mfyz.com/smarter-documents-quip-notion-airtable-coda-or-good-old-gdocsgsheets/) [lot](https://mfyz.com/smarting-up-google-docs-and-sheets/) [about](https://mfyz.com/why-every-developer-needs-to-know-google-sheets-excel-programming/) the importance of collaborative and smarter documentation that will improve your personal and professional workflow. Certainly, it will be different than other competitors in an interesting use case I found myself in one of the hobby projects that I used Airtable as a remote database tool all of the sudden.
+I recently talked [a](/smarter-documents-quip-notion-airtable-coda-or-good-old-gdocsgsheets/) [lot](/smarting-up-google-docs-and-sheets/) [about](/why-every-developer-needs-to-know-google-sheets-excel-programming/) the importance of collaborative and smarter documentation that will improve your personal and professional workflow. Certainly, it will be different than other competitors in an interesting use case I found myself in one of the hobby projects that I used Airtable as a remote database tool all of the sudden.
 
 Airtable is a very nice mobile-friendly document management in a “spreadsheet” style base. You can create your data structure in any data table model. You can create different views for your data (in calendar view, or filtered table view, or kanban view...).
 

@@ -24,7 +24,7 @@ Speaking of communication, communication is not exclusive to humans in our scena
 
 Slack can be a great “monitoring” platform for keeping eye on things (everything) from a single point of view. This makes slack different than a just chatting app. You can set up pretty much any “notification sending” tool/app to send these notifications on slack. Things like your website’s uptime status, order tracking, new tweets/IG photos/daily news, new blog posts from your favorite blogger... Anything that can be received as email can be set up be redirected to a slack notification in your own categorization skills.  
   
-Even “[Track Who Goes To Space With IFTTT](https://mfyz.com/track-goes-space-ifttt/)“ which I talked about it before. The way I was tracking on a slack channel too.
+Even “[Track Who Goes To Space With IFTTT](/track-goes-space-ifttt/)“ which I talked about it before. The way I was tracking on a slack channel too.
 
 There is also a great article written in Smashing Magazine about using [using slack to monitor your app](https://www.smashingmagazine.com/2019/02/using-slack-monitor-app/) that exhibits this use case well.
 

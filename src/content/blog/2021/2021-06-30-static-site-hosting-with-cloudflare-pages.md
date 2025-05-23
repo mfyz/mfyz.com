@@ -10,7 +10,7 @@ migration: {"wpId":681,"wpPostDate":"2021-06-30T18:17:57.000Z"}
 
 ![Cloudflare Pages](/images/archive/en/2021/06/A1F44916-C24F-4B29-BD84-8A799EE8C2BB.jpeg)
 
-I wrote about my fascination and falling in love more with other [Cloudflare services](https://mfyz.com/intro-to-cloudflare-workers/) recently. Cloudflare started as a DNS proxy service with caching and security features but then expanded into more capabilities like workers, domains and static website hosting with the Cloudflare Pages service.
+I wrote about my fascination and falling in love more with other [Cloudflare services](/intro-to-cloudflare-workers/) recently. Cloudflare started as a DNS proxy service with caching and security features but then expanded into more capabilities like workers, domains and static website hosting with the Cloudflare Pages service.
 
 There are thousands of hosting solutions out there, some free as well. But I really liked playing with Cloudflare Pages because of a few key features. Non of these features are unique or exclusive to Cloudflare but combination of them makes perfect candidate if you are already using other cloudflare services or if you currently don’t have a go-to solution when you want to bootstrap something and put it out there quickly.
 
