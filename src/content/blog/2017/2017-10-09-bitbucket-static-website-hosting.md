@@ -12,4 +12,4 @@ migration: {"wpId":185,"wpPostDate":"2017-10-09T15:07:27.000Z"}
 
 It doesn't support anything back-end but you can use grunt, gulp like automators to create a content management system that compiles whole site to static files then serve it up with this trick.
 
-Very simple steps to do this. My username is “mfyz” in bitbucket and bitbucket allows 1 static website hosting per account. If you create a new repository called: “mfyz.bitbucket.io” and throw an index.html file, you can access the static website from “http://mfyz.bitbucket.io” address. Bitbucket will serve anything static including css, javascript files as well as binaries like images.
+Very simple steps to do this. My username is “mfyz” in bitbucket and bitbucket allows 1 static website hosting per account. If you create a new repository called: “mfyz.bitbucket.io” and throw an index.html file, you can access the static website from http://mfyz.bitbucket.io address. Bitbucket will serve anything static including css, javascript files as well as binaries like images.

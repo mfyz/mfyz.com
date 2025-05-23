@@ -10,7 +10,7 @@ migration: {"wpId":196,"wpPostDate":"2017-10-25T02:05:38.000Z"}
 
 ![](/images/archive/en/2020/05/quip-rocket_owq43o.png?fit=1499%2C650&ssl=1)
 
-I want to talk about a tool we use and how to leverage it for better collaboration on pretty much anything involves multiple people. But first, I encourage to read my thoughts on writing and reading at [//mfyz.com/written-communication-king](//mfyz.com/written-communication-king/) if you haven't done so.
+I want to talk about a tool we use and how to leverage it for better collaboration on pretty much anything involves multiple people. But first, I encourage to read my thoughts on writing and reading at [mfyz.com/written-communication-king](/written-communication-king/) if you haven't done so.
 
 I started using Quip pretty early on when they came out and loved it from start. Love the simplicity and giving real-time collaboration features and mostly mobile-friendliness of it. Compared to Google Docs, it feels much more lightweight.
 

@@ -194,7 +194,7 @@ function formatDatePreserveDay(dateStr, useTurkish = false) {
                 </span>
               </div>
               <a href={`/${post.slug}/`}>
-                <h4 class={`font-secondary mb-2 transition-colors ${bgDark ? "hover:text-gray-300" : "hover:text-primary"}`}>
+                <h4 class={`font-secondary ${title.length > 60 ? "text-base" : (title.length > 30 ? "text-lg" : "text-xl")} mb-2 transition-colors ${bgDark ? "hover:text-gray-300" : "hover:text-primary"}`}>
                   {title}
                 </h4>
               </a>
