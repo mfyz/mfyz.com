@@ -24,12 +24,14 @@ PHP'de Windows sunucuda odbc kütüphanesi için herhangi bir ekstra extension k
 #### Nasıl Olacak Bu İş?
 
 Şimdi mysql'deki bağlantı yapısına yakın bir yapı kullanacağız.
-```
-$baglanti = odbc_connect('DRIVER={SQL Server};SERVER=host;DATABASE=veritabani','kadi','sifre');
 
+```php
+$baglanti = odbc_connect('DRIVER={SQL Server};SERVER=host;DATABASE=veritabani','kadi','sifre');
 ```
+
 $baglanti değişkenine $baglanti = mysql_connect'de atadağımız gibi bir bağlantı kaynağı atıyoruz. Ancak bu fonksiyonda CONN String olarak tanımlanan cümlecik ile veritabanını doğrudan bildiriyoruz. Geriye SQL'leri işletmek kalıyor.
-```
+
+```php
 // sorguyu isletelim
 $sorgu = odbc_exec($baglanti,"select * from tablo");
 
@@ -37,8 +39,8 @@ $sorgu = odbc_exec($baglanti,"select * from tablo");
 while( $bilgi = odbc_fetch_array($sorgu) ){
   print_r($bilgi);
 }
-
 ```
+
 İşte bu kadar kolay. Genel olarak fonksiyonlar aynı, başına mysql yerine odbc geliyor o kadar. Sorguarımızı ise odbc_exec($baglanti_degiskeni,"sorgu"); şeklinde veriyoruz. Geri kalan kısımları mysql'de bildiğiniz tekniklerle halledebiliyoruz. ODBC fonksiyonları bazı fonksiyonlarda aynı bazılarında da oldukça farklı.
 
 [http://php.net/odbc](http://php.net/odbc) adresinden php'nin odbc fonksiyonları hakkında bilgi edinebilir.

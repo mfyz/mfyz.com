@@ -14,7 +14,8 @@ Bu kadar teorik bilgi yeterli olacaktır. Tabiki sadece buradaki bilgilerle yeti
 #### 1\. Eposta kontrolü
 
 Sayfamızda kullandığımız iletişim formu gibi yapılar için için e-posta kontrolü yapalım. Bir eposta'yı kontrol etmenin en basit tekniği içerisinde @ ve . işaretleri aramaktır. Daha gelişmiş aramaları düzenli ifadeler ile yapabiliriz. Javascript'de de düzenli ifade kullnımı vardır. Burada basit olan tekniğe göre bişeyler yapacağım.
-```
+
+```php
 <input type="text" id="eposta">
 <input type="button" value="Kontrol Et" onClick="kontrol();">
 <script>
@@ -37,7 +38,6 @@ Sayfamızda kullandığımız iletişim formu gibi yapılar için için e-posta 
    }
  }
 </script>
-
 ```
 
 #### 2\. Basit Rollover efekti
@@ -51,9 +51,9 @@ Grafikler şöyle olsun :
 ![Yazı](/images/archive/tr/2005/01/yazi_over-1.gif) 2.gif
 
 Bu grafiklerin imaj boyutları aynı. Sayfa yüklendiğinde 1.gif yüklenecek biz imaj'ın onMouseOver ve Out olaylarında kendisinin src'lerini kontrol etmesini sağlayacağız.
-```
-<img src="1.gif" border="0" onMouseOver="this.src='2.gif';" onMouseOut="this.src='1.gif';">
 
+```html
+<img src="1.gif" border="0" onMouseOver="this.src='2.gif';" onMouseOut="this.src='1.gif';">
 ```
 
 #### 3\. Basit bir oyun yazalım
@@ -61,7 +61,8 @@ Bu grafiklerin imaj boyutları aynı. Sayfa yüklendiğinde 1.gif yüklenecek bi
 Bu oyun casino'larda bol bulunan şu 3 şeyi aynı tutturduğumuzda kazandığımız şey (adını ben de bilmiyorum :) ). Bunun için öncelikle 3 tane imaj basıp altına bir buton koymalıyız. Buton bir fonksiyonu çağırmalı ve oyunu ilerletmeli. Sonra farklı olan şeyleri (sayı veya herhangi birşey olabilir) sayısını belirlemeliyiz. Ben bu oyunda 4 tane yapacağım. İşte seçtiğim 4 farklı grafik.
 
 ![](/images/archive/tr/2005/01/1.gif)![](/images/archive/tr/2005/01/2.gif)![](/images/archive/tr/2005/01/3.gif)![](/images/archive/tr/2005/01/4.gif)
-```
+
+```html
 <img src="0.gif" border="1" id="r1">
 <img src="0.gif" border="1" id="r2">
 <img src="0.gif" border="1" id="r3">
@@ -104,6 +105,6 @@ function dondur(){
   document.getElementById('r3').src = resimler[s3];
 }
 </script>
-
 ```
+
 Temel Javascript Bilgisi şimdilik bu kadar. İleride gelişmiş javascript örneklerine dair dökümanlar bulacaksınız.

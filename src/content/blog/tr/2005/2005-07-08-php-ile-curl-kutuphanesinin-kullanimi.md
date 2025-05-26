@@ -19,7 +19,7 @@ Bu makaleyi okumadan önce sunucunuzda curl yüklü olup olmadığından emin ol
 
 Bu fonksiyonların hakkında daha ayrıntılı bilgiye tıklayarak (php manual) ulaşabilirsiniz. Curl ile bir sayfanın çıktısını alan örnek bir uygulama yapalım.
 
-```
+```php
 // Curl oturum baslatiliyor.
 $ch = curl_init();
 
@@ -29,12 +29,11 @@ curl_setopt($ch, CURLOPT_HEADER, 0);
 
 curl_exec($ch); // ekrana basiliyor
 curl_close($ch); // sunucu hafizasindan siliniyor
-
 ```
 
 Bu kod URL içeriğini sayfaya basacaktır. curl_init ile yeni bir oturum başlatıldı, setopt ile transfer seçenekleri tanımlandı, işlem yapıldı ve curl_close ile hafızadan silindi. curl_setopt içindeki header parametresi sayfa çıktısını almak için gerekli. Url parametresi ise çıktısı alınacak adresi temsil ediyor. curl_init("$adres"); şeklinde yapılma imkanıda mevcut. Şimdide curl ile localde olmayan bir sunucuya POST olarak veri gönderelim.
 
-```
+```php
 $ch = curl_init(); // oturum baslat
 // POST  adresi
 curl_setopt($ch, CURLOPT_URL,"http://www.site.com/test.php");
@@ -44,26 +43,24 @@ curl_setopt($ch, CURLOPT_POSTFIELDS,"isim=ahmet&soyad=yilmaz");
 
 curl_exec ($ch);
 curl_close ($ch);
-
 ```
 
 POSTFIELDS seçeneğinde, normalde nasıl GET ile browser üzerinden veri yolluyorsak aynı şekilde yolluyoruz. Bu şekilde üyelik isteyen sitelere otomatik olarak üyelikler açılabilir. (foreach yardımıyla).çeşitli log sistemlerinde kullanılabilir. Mesela yazıp, sattığınız sistemlerin nerelerde kullanıldığını loglamak için kendi sunucunuza nerede kullanıldığına ait çeşitli bilgiler yollayabilirsiniz.
 
 curl ile sockets kütüphanesinde olduğu gibi sahte isteklerde yollamak mümkündür. Örneğin; referer bilgisini istediğimiz şekilde değiştirip istek gönderebiliriz.
 
-```
+```php
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL,"http://localhost/test.php");
 curl_setopt($ch,CURLOPT_REFERER,"ceviz.net");
 
 curl_exec ($ch);
 curl_close ($ch);
-
 ```
 
 CURLOPT_REFERER parametresini istediğimiz şekilde değiştirdik :) Bu şekilde ".htaccess" ile yapılan korumalarda aşılabiliyor. Diğer sayfada öğrendiklerimizle birkaç CURLOPT parametresi ekleyip bir dosya indirme fonksiyonu yazalım.
 
-```
+```php
 <?
 /*
 - Yunus Emre Yilmaz / a.k.a yns
@@ -96,9 +93,6 @@ function dosya_indir($adres,$ad)
 // Örnek kullanim
 // dosya_indir('http://www.ceviz.net/yns.rar','yns.rar');
 // 1. kisim yuklenecek URL , 2. kisim server'a yuklendigi zamanki dosya adi
-
-?>
-
 ```
 
 Şimdi gelelim sistemin nasıl işlediğine;
@@ -107,16 +101,14 @@ function dosya_indir($adres,$ad)
 
 Ben yaptığım testlerde saniyede 400 kb civarı çekiyordum :) İşleme curl_Getinfo altında CURLINFO_SPEED_DOWNLOAD parametresi eklerseniz download hızını ölçebilirsiniz.
 
-```
+```php
 $dlhizi = curl_getInfo($ch,"CURLINFO_SPEED_DOWNLOAD");
-
 ```
 
 Tüm bu fonksiyonun yaptığını *nix curl'u ilede yapabilirsiniz. Örneğin;
 
-```
+```php
 system("curl -o dosyaadi.rar http://www.ceviz.net/dosyaadi.rar");
-
 ```
 aynı işi görecektir. Ama system, passthru gibi komutlar güvenlik nedeniyle genelde yasaklıdır.
 

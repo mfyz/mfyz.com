@@ -24,7 +24,8 @@ Kurulum sırasında kesinlikle bir döküman açık bulunsun, gentoo handbook'u 
 #### 3\. Internet Ayarları
 
 Elinizde gentoo live cd var ise bu kısım ile uğraşmanıza gerek yok, çünkü gentoo live cd'de gerekli bütün dosyalar geliyor. Ancak yardım veya araştırma için internetinizin olması her zaman faydalı olacaktır. Eğer gentoo livecd'deki kernel modülleri arasında ethernet kartınızınki varsa otomatik olarak yüklenip tanınacaktır. Ancak sadece tanınması yetmez, aynı zamanda bir ağ kablosu ile bağlı olmanız gerekir. **net-setup** komutu ile ayarlarını halledebilirsiniz. Ayarlama bitince **ping 216.239.39.99** ile google'ı direk ip ile pinglemeyi deneyin.
-```
+
+```sh
 mfyz@tux ~ $ ping google.com
 PING google.com (216.239.37.99) 56(84) bytes of data.
 64 bytes from google.com (216.239.37.99): icmp_seq=1 ttl=244 time=198 ms
@@ -35,8 +36,8 @@ PING google.com (216.239.37.99) 56(84) bytes of data.
 --- google.com ping statistics ---
 5 packets transmitted, 4 received, 20% packet loss, time 4003ms
 rtt min/avg/max/mdev = 197.568/199.478/203.709/2.506 ms
-
 ```
+
 Buna benzer bir çıktı alacaksınız eğer internette bir yer edinememişseniz "64 bytes from google.com ..." şeklindeki satırlar gelmeyecektir.. Ethernet ayarınızı gözden geçirerek tekrar deneyin. Eğer pingliyorsa bir de ping google.com'u deneyin. eğer pinglemiyorsa dns'leriniz yanlıştır net-setup komutunda belirttiğiniz dns'leri değiştirin. Eğer sorun yoksa network ayarları bitti, bir sonraki kısımdan devam ediniz...
 
 #### 4\. Diskin Hazırlanması
@@ -54,11 +55,14 @@ Diskle ilgili işlemlerimiz bitti. Artık kurulum paketerini diske açabiliriz.
 #### 5\. Kurulum Paketlerinin Diske Açılması
 
 Diske 2 paket açacağımızdan bahsetmiştim, stage ve portage. Bunları gentoo livecd'de stages ve snapshots dizinlerinde bulabilirsiniz. Stage 3 kurmanızı öneririm. Burada stage3'ten anlatacağım. stage 1 ve 2 için gentoo handbook'tan bilgi alabilirsiniz. Stage'i seçerken en önemli unsur işlemci türünüzdür. İşlemci türünüzü doğru seçtikten sonra;
-```
+
+```sh
 tar -xvjpf /mnt/cdrom/stages/stage3-*.tar.bz2 -C /mnt/gentoo
 ```
+
 komutu ile stage'i;
-```
+
+```sh
 tar -xvjpf /mnt/cdrom/snapshots/portage-*.tar.bz2 -C /mnt/gentoo/usr
 ```
 komutu ile de portage'i açalım.
@@ -66,11 +70,11 @@ komutu ile de portage'i açalım.
 #### 6\. Ayarlar ve Asıl Sisteme Geçiş
 
 /etc/make.conf'u nano ile açın (nano /etc/make.conf). CFLAGS'da "-march=işlemci türü" şeklinde belirtin (CFLAGS="-march=i686"), kaydedip çıkın. Şimdi dosyalarını açtığımız sisteme geçiş yapacağız;
-```
+
+```sh
 chroot /mnt/gentoo /bin/bash
 env-update
 source /etc/profile
-
 ```
 Komut dizisi ile asıl çalışacağımız sisteme geçiş yaptık.
 
@@ -83,8 +87,9 @@ Komut dizisi ile asıl çalışacağımız sisteme geçiş yaptık.
 #### 8\. Sistemin Ayarlanması
 
 Dosya sistemini bağlamayı yapacağız öncelikle.. Diyelimki başka bir partition'da windows partition'larınız var. hda3'de de tek windows partiton olduğunu varsayalım. Dosya sistemleri boot edilirken dizinlere bağlanır bunun bilgileri ise /etc/fstab dosyasında barınrılır. nano /etc/fstab ile fstab'ı açıyoruz.
-```
-\# fs                 mountpoint type      opts           dump/pass
+
+```sh
+# fs                 mountpoint type      opts           dump/pass
 #-----------------------------------------------------------------
 /dev/hda2            /          ext3      noatime           0 1
 /dev/hda3            /windoze   vfat      noatime,umask=0   0 0
@@ -95,17 +100,18 @@ Dosya sistemini bağlamayı yapacağız öncelikle.. Diyelimki başka bir partit
 #-----------------------------------------------------------------
 none                 /proc      proc      defaults          0 0
 none                 /dev/shm   tmpfs     defaults          0 0
-
 ```
+
 Bu yapıya benzer biçimde disk yapınızı oluşturun. Kaydedip çıkın.
 
 Ağ bilgilerini ayarlamamız gerekiyor. Kısa işlemlerle bunu da yapıyoruz;
-```
+
+```sh
 echo benim_bilgisayarim > /etc/hostname
 echo mfyz.com > /etc/dnsdomainname
 rc-update add domainname default
-
 ```
+
 /etc/conf.d/net dosyasını açıyoruz. iface_eth0 satırında statik veya dinamik olmasına göre ayarlarını yapıyoruz. DHCP için yani dinamik ip için iface_eth0="dhcp" satırını aktif hale getiriyor, statik için de iface_eth0="192.168.1.10 broadcast 192.168.0.255 netmask 255.255.255.0" şeklinde ayarlıyoruz. Diğer ethernet kartlarını da bu şekilde ayarlıyoruz. **rc-update add net.eth0 deafult** ile başlangıçta aktifleştiriyoruz ethernet ayarlarını..
 
 /etc/rc.conf dosyası ile de sistem ayarları yapıyoruz. Konsolda Türkçe klavye kullanmak için keymap="trq" yapmanız yeterli diğer ayarları da kendinize göre değiştirebilirsiniz.
@@ -113,7 +119,8 @@ rc-update add domainname default
 #### 9\. Önyükleyiciyi Ayarlayalım
 
 Önyükleyici için lilo'yu anlatacağım, basit ve kolaydır. Grub'da kullanabilirsiniz. emerge lilo ile lilo'yu kuruyoruz. /etc/lilo.conf dosyasını açarak aşağıdaki ayarları yapalım;
-```
+
+```sh
 boot=/dev/hda
 prompt
 timeout=30 # 3 saniye
@@ -129,8 +136,8 @@ initrd=/boot/initrd-2.6.7-r12
 
 other=/dev/hda3
 label=windows
-
 ```
+
 Şeklindeki ayarda kernel-2.6.7-r12 ve initrd-2.6.7-r12 dediğim dosyalar kernel derledikten sonra /boot dizininde kontrol ettiğimiz kernel ve initrd dosyasıdır. Bu dosyayı ayarladıktan sonra kaydedip çıkıyoruz. ve lilo komutunu veriyoruz Bir uyarı ve Added gentoo* Added windows demesi gerekiyor. Böylece önyükleyiciyi de kurmuş olduk.
 
 **Güncelleme :** GRUB kurmanızı tavsiye ederim. Lilo çok geride kaldı!
@@ -144,13 +151,14 @@ Syslog'da sistem loglarını tutan bir araçtır. Sisteminizde bir arıza olduğ
 Gerekli araçları kurduktan sonra sistemden çıkmadan önce root şifresini ayarlayıp, bir kullanıcı ekleyelim. passwd komutu ile root şifresini ayarlayın. **useradd mfyz -G wheel,users -m -s /bin/bash** ile de mfyz kullanıcımızı ekliyoruz. passwd mfyz ile mfyz kullanıcısının şifresini ayarlayalım. root'un seri konsola erişebilmesi için : **echo "tts/0" >> /etc/securetty** komutun veriyoruz.
 
 Ve sistemi terk edip ilk bootumuzu yapıyoruz...
-```
+
+```sh
 exit
 cd /
 umount /mnt/gentoo /mnt/gentoo/proc
 reboot
-
 ```
+
 Gentoo'nun düzgünce konsola düşmemesi veya lilo konfigürasyonundan dolayı sistemin açılmaması durumunda live cd veya knoppix ile açıp, /dev/hda2'yi bir yere bağlayıp sisteme geçiş yapabilir, lilo'yu tekrar ayarlayabilir, kernel eksiklerini giderebilir, gentoo'nun boot'daki sorunlarını giderebilirsiniz.
 
 Sistem sorunsuz boot ettikten sonra yapmanız gereken X ortamı ve kde/gnome gibi bir masaüstü yöneticisini kurmak olacaktır. Bir programı kurmak için yapmanız gereken tek şey emerge komutunu kullanmak olmalıdır. **emerge xfree, emerge mozilla-firefox-bin, emerge gnome**

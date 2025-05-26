@@ -13,8 +13,8 @@ lang: tr
 
 PHP'deki COM nesnesi sayesinde Word, Excel gibi programlarla bağlantı kurulup onları kolayca yönetebiliriz. Tabiki kullanılacak olan bu programlar çalışılan sunucuda yüklü olması gerekmektedir. İşte buna ait kısa bir kodla rahatça anlayabileceğiniz 1-2 örnek. Basitçe bir metini bir word dosyasına (.doc) kaydetmeyi aşağıdaki örnekte görelim :
 
-```
-\# Word programını çalıştırıyoruz
+```php
+# Word programını çalıştırıyoruz
   $Word = new COM("Word.Application") or die("Word Başlatılamıyor!");
 
 # işlemler
@@ -28,15 +28,14 @@ PHP'deki COM nesnesi sayesinde Word, Excel gibi programlarla bağlantı kurulup 
   $Word->SaveAs("C:Deneme.doc");
   // kapatıyoruz
   $Word->Quit();
-
 ```
 
 "Bu metin php tarafından dinamik olarak yazdırılmıştır." yazısı içerikli bir dosya C:\\Deneme.doc konumuna kaydedilecektir.
 
 Şimdi de Excel ile bir veriyi kaydetmeyi göreceğimiz bir bir örneğe bakalım:
 
-```
-\# Excel e bağlanmak için
+```php
+# Excel e bağlanmak için
   $yeni_excel = new COM("Excel.Application");
 
 # Yeni bir çalışma kitabı yaratmak için
@@ -64,7 +63,6 @@ PHP'deki COM nesnesi sayesinde Word, Excel gibi programlarla bağlantı kurulup 
 
 # Çıkıyoruz:
   $yeni_excel->Quit();
-
 ```
 
 Örnekler zaten yeterince açıklamalı ve basit. Kendinize kolayca uyarlayabilirsiniz. Excel örneği için forumdaki bir konudan faydalandım, soruyu soran ve kendi yanıtını bulan Sezgin Bilketay'a teşekkürler :)

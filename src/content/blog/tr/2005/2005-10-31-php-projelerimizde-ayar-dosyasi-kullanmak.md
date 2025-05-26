@@ -16,8 +16,9 @@ Ayar dosyaları yazdığımız projedeki tüm küçük-büyük detayları ayarla
 #### Nasıl yapacağız?
 
 Bunun için 2 şeye ihtiyacımız var. Öncelikle bir ayar dosyası düzenine, Bu ayar dosyası "ayar.conf" adında ve şuna benzer bir yapıda olacak :
-```
-\# mysql ayarlari
+
+```php
+# mysql ayarlari
 host        = localhost
 kullanici   = root
 sifre       =
@@ -26,11 +27,12 @@ veritabani  = mfyz
 # limitler
 haber_limit = 5
 forum_limit = 10
+```
 
-```
 Bu yapıda basit bir dosya yazıyoruz. # işaretinden sonraki kısımlar yorum anlamına gelmekte ve yorumlanırken gözardı edilmektedir. Bu dosyayı sitemizdeki tüm php dosyalarımızın başında işleteceğimiz küçük bir kod ile yorumlatacağız. Kod şu şekilde :
-```
-\# ayar dosyasi baglantisi
+
+```php
+# ayar dosyasi baglantisi
 $dosya = @fopen( "ayar.conf", "r" );
 
 # ayarlari diziye aktarmak
@@ -47,10 +49,11 @@ while( $satir = @fgets( $dosya, 1024 ) ){
 
 # baglantiyi kapatalim
 fclose($dosya);
+```
 
-```
 Bu kodun kısa bir açıklamasını yapmak gerekirse; $dosya değişkeni ile ayar.conf dosyamızı okutuyor ve bir değişkene aktarıyoruz. while ile dosyayı satır satır dönerek $satir değişkenine o andaki satıdaki yazıyı aktarıyoruz. İlk önce satırdaki # işaretinden sonraki kısmı sildirmek için küçük bir düzenli ifade kullanıyoruz. Böylece yorumları gözardı etmiş oluyoruz. Ayar dosyasında da istediğimiz kadar açıklama yazabiliriz. Daha sonra "=" işaretine göre parçalayıp ilk kısmı $degisken değişkenine, değeri de $deger değişkenine atıyoruz. Eğer = işaretinin öncesinde bulunana kısım boş ise bir değişken ve değer belirtmediği için küçük bir kontrolle bunu da atladıktan sonra $ayar dizisine $degisken indisli $deger değerli bir satır ekletiyoruz. Sonuçta ayar dosyasındaki düzgün formdaki satırlardaki değişken ve değerler $ayar dizisine aktarılmış oluyor. Şimdi $ayar dizimize bir göz atalım:
-```
+
+```php
 Array
 (
   [host] => localhost
@@ -60,8 +63,8 @@ Array
   [haber_limit] => 5
   [forum_limit] => 10
 )
-
 ```
+
 Zaten bundan sonraki kodlarımızda ayar dosyamıza değerler ekleyip $ayar dizisi ile o değerleri edinip kodumuzu geliştireceğiz.
 
 #### Fakat, güvenlik!

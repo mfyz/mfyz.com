@@ -23,28 +23,40 @@ Haber ve haber kaynaklı çoğu alanda kullanılabilir. Yenilikleri duyurmak ad�
 
 #### RSS teknik olarak nasıldır?
 
-RSS kaynakları XML tabanlı bir etiketleme dili ile yazılır. Tam teknik detayları şu adreslerde bulabilirsiniz : http://blogs.law.harvard.edu/tech/rss (****) http://www.mnot.net/rss/tutorial/ (*****) http://searchenginewatch.com/sereport/article.php/2175271
+RSS kaynakları XML tabanlı bir etiketleme dili ile yazılır. Tam teknik detayları şu adreslerde bulabilirsiniz:
+- [http://www.mnot.net/rss/tutorial/](http://www.mnot.net/rss/tutorial/)
+- [http://searchenginewatch.com/sereport/article.php/2175271](http://searchenginewatch.com/sereport/article.php/2175271)
 
 #### RSS okumak için hangi programları kullanabilirim?
 
 ##### **Online (Web tabanlı) :**
 
-http://www.pluck.com/ (****) http://reader.rocketinfo.com/desktop/ (****)
+- [http://www.pluck.com/](http://www.pluck.com/)
+- [http://reader.rocketinfo.com/desktop/](http://reader.rocketinfo.com/desktop/)
 
 ##### **Windows için :**
 
-http://www.pluck.com/ (*****) http://www.sharpreader.net/ (****) http://www.rssbandit.org/ http://www.rssreader.com/ http://www.feedreader.com/
+- [http://www.sharpreader.net/](http://www.sharpreader.net/)
+- [http://www.rssbandit.org/](http://www.rssbandit.org/)
+- [http://www.rssreader.com/](http://www.rssreader.com/)
+- [http://www.feedreader.com/](http://www.feedreader.com/)
 
 ##### **Linux için :**
 
-http://www.nongnu.org/straw/ (*****) http://liferea.sourceforge.net/ (*****) http://akregator.sourceforge.net/ (****) http://developer.imendio.com/wiki/Blam
+- [http://www.nongnu.org/straw/](http://www.nongnu.org/straw/)
+- [http://liferea.sourceforge.net/](http://liferea.sourceforge.net/)
+- [http://akregator.sourceforge.net/](http://akregator.sourceforge.net/)
+- [http://developer.imendio.com/wiki/Blam](http://developer.imendio.com/wiki/Blam)
 
 ##### **MacOSX için :**
 
-http://www.newsgator.com/Individuals/NetNewsWire/ (*****) http://www.utsire.com/shrook/ (***) http://www.newsfirerss.com/ (*****) http://www.opencommunity.co.uk/vienna2.php (***)
+- [http://www.newsgator.com/Individuals/NetNewsWire/](http://www.newsgator.com/Individuals/NetNewsWire/)
+- [http://www.utsire.com/shrook/](http://www.utsire.com/shrook/)
+- [http://www.newsfirerss.com/](http://www.newsfirerss.com/)
+- [http://www.opencommunity.co.uk/vienna2.php](http://www.opencommunity.co.uk/vienna2.php)
 
 #### RSS Kaynkalarını nereden bulabilirim?
 
-http://turkce.blogspot.com/ adresinden çok büyük bir arşiv bulabilirsiniz. Ayrıca : http://www.syndic8.com/feedlist.php (alt kısımda language'den Turkish seçilerek sadece türkçe rss kaynakları listelenebilir)
+[http://turkce.blogspot.com/](http://turkce.blogspot.com/) adresinden çok büyük bir arşiv bulabilirsiniz. Ayrıca: [http://www.syndic8.com/feedlist.php](http://www.syndic8.com/feedlist.php) (alt kısımda language'den Turkish seçilerek sadece türkçe rss kaynakları listelenebilir)
 
 > Aynı zamanda mfyz.com'daki son yazılanlar, günlük gelişmeleri, yeni dökümanları rss ile takip edebilirsiniz. Bunun için sitenin alt bölümünde bulunan RSS butonuna tıklayarak ilgili rss'in url'sini rss okuyucunuza ekleyin.

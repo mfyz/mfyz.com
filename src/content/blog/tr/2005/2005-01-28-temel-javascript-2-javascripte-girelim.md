@@ -26,16 +26,18 @@ HTML nesneleri üzerinde bazı olaylar tanımlayarak o olaylarda javascript fonk
 Olayları html etiketlerine doğrudan argüman olarak yazabiliriz ya da betiğimiz içinde nesne olarak ulaştıktan sonra tarayıcı türüne göre o nesneye bir olay (event) ekleyerek tepki oluşturabiliriz.
 
 Örneğin bir input butona tıklandığında tepki olarak ekrana birşeyler yazdıralım.
-```
-<input type="button" value="Tıkla" />
 
+```html
+<input type="button" value="Tıkla" />
 ```
-Çıktı : 
+
+Çıktı:
 
 Her nesneye ait belirli olan bu olayları araştırarak bulabilirsiniz. Sabit birşey yok çünkü, bu olayları web tarayıcı programı yakaladığı için bazı olaylar her tarayıcı tarafından yakalanmıyor ya da farklı algılanıyor.
 
 Burada bütün olası olayları ve anlamlarını açıklayarak yazacağım;
-```
+
+```js
 onLoad       Yüklenme olayıdır. Nesnenin yüklenmesi tamamlandığı zaman gerçekleşmiş demektir.
 onAbort      Sayfa veya bir nesnenin yüklenmesinin kullanıcı tarafından durdurulması olayıdır.
 onError      Sayfa veya bir nesnenin yüklenmesinde bir hata oluşması olayıdır.
@@ -49,8 +51,8 @@ onBlur       Odaklanmış olan nesneden ayrılma durumudur.
 onSumbit     Bir formun gönderim işleminin başlaması olayıdır.
 onReset      Bir formun verilerinin sıfırlanması olayıdır.
 onChange     Bir nesnenin parametrelerinin (değerlerinin) değişmesi olayıdır.
-
 ```
+
 http://www.w3schools.com/jsref/jsref_events.asp adresinden hangi olayların hangi html nesneleri tarafından desteklenip desteklenmediğini öğrenebilirsiniz.
 
 [Temel Javascript (3) - Çıktılar ve Nesneler](/temel-javascript-3-ciktilar-ve-nesneler) dökümanından devam edin.

@@ -19,7 +19,7 @@ Her protokolde olduğu gibi mysql'de de öncelikle bir bağlantı sağlayıp bu 
 
 MySQL'e bağlanabilmek için 3 kritere sahip olmamız gerekir. Birincisi bağlanacağımız host'dur. Üzerinde çalıştığımız bilgisayar olduğundna dolayı genellikle localhosttur. İkinci parametre kullanıcı, son parametre de bu kullanıcının şifresidir. İster php'den ister başka bir client'dan bağlanmaya çalışın; ancak bu bilgiler doğrultusunda bir mysql bağlantısı edinebilirsiniz. PHP'de bağlantı işlemini mysql_connect() fonksiyonu yapıyor. Bu fonksyiona sırasıyla host, k.adi, şifre parametrelerini belirtmemiz gerekiyor. Örnek bir bağlantı sayfası :
 
-```
+```php
 // ayarlar
 $host      = "localhost";
 $kullanici = "root";
@@ -27,15 +27,13 @@ $sifre     = "";
 
 // baglanti
 $baglanti = mysql_connect( $host, $kullanici, $sifre ) or die("HATA : " . mysql_error());
-
 ```
 
 Görüldüğü gibi önce bağnatı ayarlarımızı yaptık, ardından bu değişkenleri kullanarak $baglanti adlı değişkene bir mysql bağlantısı atadık. or die kalıbı her komutta kullanabileceğimiz bir kalıptır. or die'dan önceki fonksiyonda işletim hatası olursa die()'da belirttiğimiz ifade ekrana basılır ve script çalışması durdurulur. mysql_error() fonksiyonu ise bir önceki mysql işleminde oluşan hatayı verir. Şimdi bu bağlantıyı kullanarak bir veritabanı seçeceğiz. Çünkü sorguları çalıştırabilmek için öncelikle bir bağlantı sağlamış ve bir veritabanı üzerinde bulunuyor olmamız gerek. Veritabanı seçimini de **mysql_select_db()** fonksiyonu ile yapacağız.
 
-```
+```php
 // veritabani secimi
 mysql_select_db( 'veritabanim', $baglanti ) or die("HATA : " . mysql_error());
-
 ```
 
 Böylece "veritabanim" adlı veritabanını seçtik. Artık sorgularımızı bu veritabanı üzerinde işletebiliriz. Sorguları işletmek için ise **mysql_query()** foksiyonunu kullanacağız. Bu fonksiyon tek parametre ile çalışıyor. Daha önce yapılmış bağlantıyı ve seçilmiş veritabanını kullanıyor. Bu tek parametre de işleteceğimiz sql sorgusunu içeren stringdir. Şimdi temel mysql işlemlerinde kullandığımız sql sorgularını görelim..
@@ -44,14 +42,13 @@ Böylece "veritabanim" adlı veritabanını seçtik. Artık sorgularımızı bu 
 
 MySQL'de temel (ve genel) olarak yaptığımız işlemler bir tabloya veri eklemek, bu verileri çekmek, güncellemek ve silmektir. Bu işlemler için ayrı ayrı sql yapıları kullanacağız. Bazı işler daha sistem kurulurken kullanılır. Mesela bir veritabanı yaratmak, ya da yeni tablo oluşturmak.. Bu işlemleri sistemlerde her zaman yapılan işler arasına alamayız.. Onun için bu işlemleri bilgisayarınızda sistemi geliştirirken yaparız. Bunları phpMyAdmin programı ([http://www.phpmyadmin.net]("http://www.phpmyadmin.net")) ile yapmanızı öneririm. Basit bir arabirimi ve Türkçe desteği var. phpMyAdmin ile başlangıç işlerini hatta rutin işleri yapacak olan sorguları da yazarken/geliştirirken bile kullanabilirsiniz. Aşağıda bazı anlatımlar göreceksiniz, bu anlatımları tablo adlı bir tablo üzerinde yapacağım. Basitçe tabloda; kullanici, kayit_tarihi, eposta ve ziyaret_sayisi alanları var olsun. Birlikte çalışmak için şu sql'i çalıştırıp siz de deneme tablosu oluşturabilirsiniz :
 
-```
-CREATE TABLE \`tablo\` (
-  \`kullanici\` VARCHAR( 20 ) ,
-  \`kayit_tarihi\` DATETIME,
-  \`eposta\` VARCHAR( 255 ) ,
-  \`ziyaret_sayisi\` INT( 12 )
+```sql
+CREATE TABLE `tablo` (
+  `kullanici` VARCHAR( 20 ) ,
+  `kayit_tarihi` DATETIME,
+  `eposta` VARCHAR( 255 ) ,
+  `ziyaret_sayisi` INT( 12 )
 );
-
 ```
 
 Şimdi rutin işleri yapan sorgularımızı geliştirip, nasıl işleneceğini görelim.
@@ -60,15 +57,15 @@ CREATE TABLE \`tablo\` (
 
 Veri eklemek için kullanacağımız sql cümlesi yapısı şöyledir :
 
-```
-INSERT INTO \`tablo\` ( \`kullanici\` , \`kayit_tarihi\` , \`eposta\` , \`ziyaret_sayisi\` )
+```sql
+INSERT INTO `tablo` ( `kullanici` , `kayit_tarihi` , `eposta` , `ziyaret_sayisi` )
 VALUES ('fatih', NOW( ) , 'eposta@adresi.com', '0');
 
 ```
 
 Yapı olarak, önce INSERT INTO 'tablo adı' ile başlar burada hangi tabloya veri ekleme işlemi yapılacağı belirtilir. Bu kısımdan sonra parantez içerisinde hangi sıra ile veri alanları için verilerin belirtilmesi gerekiyorsa o sırada alanlar yazılması gerekiyor. Boş bırakılması durumunda geçerli sırada veri girilecektir. Bu kısımdan sonra VALUE kalıbı ve tekrar parantez içerisinde az önce belirtilmiş sırada gerekli veri türlerine göre verilerin belirtilmesi gerekir. Bizim sorgumuzda veriler, meta'ları değerlere eşleyerek göstemek gerekirse;
 
-```
+```php
 kullanici      = 'fatih'
 kayit_tarihi   = < verinin eklendiği andaki tarih >
 eposta         = 'eposta@adresim.com'
@@ -83,9 +80,8 @@ Sorguda görüldüğü gibi o andaki zamanı belirtmek için **NOW()** şeklinde
 
 SQL sorguları genelde bazı kalıplardan oluşur. Belirli bir sorguyu filtrelemek için WHERE kalıbını kullanırız. Aynı if gibidir. Belirli bir sorgudan etkilenecek olan kayıtlardan bazılarını seçeriz. Mesela silmek için kullandığımız sorguda ilk başta tüm tablo etkilenir; ama biz belirli kayıtları/kayıdı silebilmek için o kayıt hakkında bazı referanslar verip tüm tabloyu o veri çıkana kadar filtrelemiş oluruz. AND kalıbı ekleyerek birden fazla koşulda filtreleme yapılabilir. Tablomuzda birden fazla aynı kullanıcı adına sahip veri olmayacağı için kullanıcı adlı alan bizim için iyi bir referans olabilir. Silmek için DELETE FROM 'tablo adı' kalıbını kulalnırız. Bu kullanımda tüm tablo etkilenir ve tablo boşaltılmış olur. WHERE kalıbını sorgumuza ekleyerek bir veya daha fazla belirli kayıdı sileceğiz. Örnek olarak az önce eklediğimiz kayıdı silelim..
 
-```
-DELETE FROM \`tablo\` WHERE kullanici = 'fatih'
-
+```sql
+DELETE FROM `tablo` WHERE kullanici = 'fatih'
 ```
 
 Bu sorgu ile tek satır (fatih kullanıcısına ait) silinmiş olacaktır.
@@ -94,8 +90,8 @@ Bu sorgu ile tek satır (fatih kullanıcısına ait) silinmiş olacaktır.
 
 Veri güncellemek de silmek gibidir. Yani süzgeçlenerek kayıtlar ifade edilir. Süzgeçlenmediği takdirde tüm tablo etkilenecektir. SQL yapısı UPDATE 'tablo adı' SET şeklindedir. Az önceki verinin silinmemiş olduğunu varsayarak güncelleyelim.
 
-```
-UPDATE \`tablo\` SET ziyaret_sayisi = ziyaret_sayisi + 1 WHERE kullanici = 'fatih'
+```sql
+UPDATE `tablo` SET ziyaret_sayisi = ziyaret_sayisi + 1 WHERE kullanici = 'fatih'
 
 ```
 

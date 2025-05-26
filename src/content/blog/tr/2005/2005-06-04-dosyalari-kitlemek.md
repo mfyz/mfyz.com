@@ -20,7 +20,7 @@ Web sunucuları aynı anda çok fazla işlemi yapabilmeleri ile sunucu özelliğ
 #### Nasıl?
 
 Küçük bir dosya işlemi kodu örneği göz önüne getirelim.
-```
+```php
 $yazilacak_bilgi = 'dosya içerisine yazılacak şey
 2. satir,
 3. satir.';
@@ -39,9 +39,9 @@ flock($dosya,3);
 
 // dosya baglantisini kapatalim
 fclose($dosya);
-
 ```
-flock() fonksiyonu ile bu işlemi yapabiliyoruz.
+
+`flock()` fonksiyonu ile bu işlemi yapabiliyoruz.
 
 **flock fonksiyonunda kullanabileceğimiz parametreler şunlar :** 1. Paylaşım, Diğer proseslerin dosyayı paylaşmalarına imkan verir. 2. Tam, Diğer işlemlerin dosya ile işlem yapmasına engel olur . 3. Serbest, Dosyanın 1 veya 2 olan kilidini kaldırır.
 

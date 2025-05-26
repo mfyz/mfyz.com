@@ -26,7 +26,8 @@ Başta da söylediğim gibi XML verinin taşıma ve saklama işini yapar. Fakat 
 Burada iki ayrı işaretleme diline ait bir örnek vermek gerekirse;
 
 1\. Örnek: HTML
-```
+
+```xml
 <html>
   <head>
     <title> HTML </title>
@@ -35,10 +36,11 @@ Burada iki ayrı işaretleme diline ait bir örnek vermek gerekirse;
     <h1>Başlık</h1>
   </body>
 </html>
+```
 
-```
 2\. Örnek: XML
-```
+
+```xml
 <uye>
 	<adi>Yahya</adi>
 	<soyadi>ÖZTÜRK</soyadi>
@@ -48,14 +50,15 @@ Burada iki ayrı işaretleme diline ait bir örnek vermek gerekirse;
 		<kilo>75</kilo>
 	</ozellikler>
 </uye>
-
 ```
+
 İlk örnekte metinimizin görünümünü ayarladık. Ne nerede çıkacak nasıl olacak diye. İşte bunu HTML kullanarak yaptık fakat ikinci örnekte verimizin görünümünden çok biçimi ile ilgiledik.
 
 ### XML Dokümanı
 
 XML dokümanları ilişkisel veritabanlarından farklı olarak hiyerarşik bir yapısı vardır. Bu yapı kendine has kuralları da beraberinde getirmektedir. Şimdi örnek bir XML dokümanı oluşturalım ve buradaki birimleri teker teker tanıyalım.
-```
+
+```xml
 <Uyeler>
   <Uye uye_id=”1”>
     <adi>Yahya</adi>
@@ -76,8 +79,8 @@ XML dokümanları ilişkisel veritabanlarından farklı olarak hiyerarşik bir y
     <yetkiDerece>1</yetkiDerece>
   </Uye>
 </Uyeler>
-
 ```
+
 **<?xml version="1.0" encoding="ISO-8859-9" ?>** bu satır başlangıç etiketidir ve kapanış etiketi yoktur. Üç adet özniteliği vardır ve “version” özniteliği verilmek zorundadır. “version” özniteliği XML dosyasının versiyonunu belirtir ve bu bilgi dokümanı parse(okuma) edecek uygulama için gereklidir. “encoding” özniteliği doküman içerisindeki dil seçeneğini belirtmek için kullanılır. Ben burada Türkçe dil setini kullandım.
 
 **<Uyeler> </Uyeler>** etiketi ise kök (root) etikettir ve XLM dokümanın da en az bir tane bulunmak zorundadır. Bu etiket diğer bütün etiketleri içerisine almak zorundadır.
@@ -86,18 +89,21 @@ XML dokümanları ilişkisel veritabanlarından farklı olarak hiyerarşik bir y
 
 **Genel kuralları belirtmek gerekirse;**
 
-*   *   *   XML dokümanında her alan bir etiket çifti arasında belirtilir ve açılan her etiket kapatılmak zorundadır.
-        *   Etiketler büyük küçük harf (case sensitivity) duyarlıdır.
-        *   Bir element içerisinde başka bir element açılmış ise o element kapanmadan diğeri kapatılamaz, yani hiyerarşi bozulamaz.
-        *   XML'de boşluk karakteri (white space) göz önüne alınır.
-        *   <, >, ", ', & bu karakterler XML içerisinde kullanılamaz. Bunların yarine sırasıyla < yerine **&lt;**, > yerine **&gt;**, " yerine **"**, ' yerine **&apos;**, & yerine **&amp;** kullanılmalıdır.
-        *   Doküman içerisinde en az bir element olmalıdır.
+* XML dokümanında her alan bir etiket çifti arasında belirtilir ve açılan her etiket kapatılmak zorundadır.
+    *   Etiketler büyük küçük harf (case sensitivity) duyarlıdır.
+    *   Bir element içerisinde başka bir element açılmış ise o element kapanmadan diğeri kapatılamaz, yani hiyerarşi bozulamaz.
+    *   XML'de boşluk karakteri (white space) göz önüne alınır.
+    *   `<`, `>`, `"`, `'`, & bu karakterler XML içerisinde kullanılamaz. Bunların yarine sırasıyla < yerine **&lt;**, > yerine **&gt;**, " yerine **"**, ' yerine **&apos;**, & yerine **&amp;** kullanılmalıdır.
+    *   Doküman içerisinde en az bir element olmalıdır.
 
 Tüm bu kurallara uyarak oluşturulmuş dokümanlara iyi yapılanmış anlamında, “well-formed” adı verilir.
 
 **XML hakkında daha detaylı bilgi için :**
 
-› [http://www.softwareag.com/turkiye/XML_Kutuphanesi/](http://www.softwareag.com/turkiye/XML_Kutuphanesi/) › [http://www.w3.org/XML/](http://www.w3.org/XML/) › [http://www.w3schools.com/xml/](http://www.w3schools.com/xml/) › [http://xml.silmaril.ie/](http://xml.silmaril.ie/)
+- [http://www.softwareag.com/turkiye/XML_Kutuphanesi/](http://www.softwareag.com/turkiye/XML_Kutuphanesi/)
+- [http://www.w3.org/XML/](http://www.w3.org/XML/)
+- [http://www.w3schools.com/xml/](http://www.w3schools.com/xml/)
+- [http://xml.silmaril.ie/](http://xml.silmaril.ie/)
 
 kaynaklarını kurcalamanızı tavsiye ederim.
 

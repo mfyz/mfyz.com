@@ -32,12 +32,12 @@ Bir web programcısının neden javascript kullanması gerektiğini anlattığı
 > Bu döküman serisinde anlatılan neredeyse her şeyi kendiniz de deneyip html'ler şeklinde ayrı ayrı kaydedip yapabilirliğinizi artırın ve pratik yaparak öğrenmiş olun.
 
 Değişken tanımları Java ve c tabanlı dillerdeki gibi;
-```
+
+```js
 var a = "deneme";
 // veya
 a = "deneme";
 /* tanımlanmamış değişkenler kullanılırken hata verir. */
-
 ```
 şeklinde tanımlanıyor.
 
@@ -62,14 +62,15 @@ window aynı penceredeki çerçeveler (frame) arasında iletişirken, document, 
 JavaScript'de bu bölümde en önemli nokta formlarda. Formlar kendi kategorisi içerisinde değerlendiriliyor. Mesela bir formdaki ad şeklindeki bi textfield'ın adresi **document.form_adi.text_input_adi** oluyor.
 
 Sayfanızda kullandığınız nesneleri adreslemek için gereksiz formlar eklemenize gerek yoktur. Mesela, bir input'u sadece bir efektin taşıyıcısı olarak kullanacaksak bunun için bir form daha eklememiz gerekmez. Normalde form nesneleri bir formun içerisinde değilse doğrudan document'dan sonra belirterek erişilemez. Bir form bulunmadığında ise bu nesnemizin etikentinde id şeklinde belirttiğimiz prametreyi kullanarak adresini alabiliriz. Bu işi de document nesnesinin bir özelliği yardımı ile yapıyoruz.
-```
-document.getElementById('eleman')
 
+```js
+document.getElementById('eleman')
 ```
 dediğimiz zaman document nesnesi üzerindeki bütün alt nesneler taranır ve "eleman" kimliğine uyan elemanın adresi nesne şeklinde döner. Bir değişkene atayıp "eleman" kimlikli nesneyi kullanabiliriz.
 
 **Örnek:**
-```
+
+```html
 <input id=""efekt"" type=""button"" value=""X"" />
 <script>
  function degistir(){
@@ -81,17 +82,16 @@ dediğimiz zaman document nesnesi üzerindeki bütün alt nesneler taranır ve "
   }
  }
 </script>
-
 ```
 
 ### Fonksiyonlar
 
 Fonksiyonlar basitçe;
-```
+
+```js
 function fonksiyonum( parametrem1, parametrem2, ... , parametremn ){
   // kodlar
 }
-
 ```
 şeklinde tanımlanıyor. Aynı php, flash ve çogu c, java dillerindeki gibi.
 

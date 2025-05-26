@@ -25,64 +25,63 @@ PHP'nin olmazsa olmazı nerdeyse her php ile kodlanan sayfada bulunan oturum (se
 
 Bu fonksiyonu oturumları kullanıcağımız her sayfanın başında belirtmeliyiz. Bu fonksiyon kullanıcı ilk defa giriyorsa kullanıcı için serverda bir dosya yaratır ve kullanıma hazırlar. Eğer daha önce girmişse onu kullanmaya hazırlar sadece. Her kullanıcı için uzun bir kod üretir. Bu kod sayılardan ve harflerden oluşur.
 
-```
+```php
 session_start();
-
 ```
+
 Eğer php.ini dosyasında otomatik olarak oturum başlatma seçeneği aktif değilse bu işlemi yapmak zorundayız. Oturum fonksiyonları eğer bir oturum açılmamışsa (session_start) hata verecektir. Her sayfanızın başında bu fonksiyonu çağırarak bu sorunu rahatlikla çözebilirsiniz. Öneri olarak, her sayfanızda çalıştırdığınız (include) sayfanız varsa bu sayfaya ekleyin.
 
 #### session_register()
 
 Sunucuda sizin için açılmış olan dosyaya bir değer yazar. Aynı cookie gibi işler ancak dosyalar zamana göre silinmez, kullanıcı oturumunu kapatınca silinirler. Kullanıcının oturum kapatması ise, o andaki tarayıcı programının oturumu kapatması ile olur. Çoğu tarayıcı, oturumunu tüm pencereleri kapandığı zaman kapatmış olur.
 
-```
+```php
 $isim = "nazim";
 session_register("isim");
-
 ```
+
 $isim değerini nazim olarak atayıp sonra da oturumumuza kaydettik.
 
 Oturum değişkenleri ve değerleri cookie'ler gibi bir dizide tutulur. $_SESSION ($HTTP_SESSION_VARS) dizisidir. Bu dizinin normal bir diziden hiçbir farkı yoktur. Atamaları da buna benzer bir teknik ile yapabiliriz.
 
-```
+```php
 session_register("isim");
 $_SESSION["isim"] = "mfyz";
-
 ```
+
 Önce $isim diye bir oturum bilgisi yaratıp sonra bilgiyi güncelledik.
 
 #### session_is_registered()
 
 Bir oturumun kayıtlı olup olmadığını veya bir oturum değişkeninin kaydedilip edilmediğini öğrenmemize yaran bir fonksiyondur.
 
-```
+```php
 if( session_is_registered("isim") ){
   echo "isim oturumu kayıtlı";
 }
 else{
   echo "isim oturumu kayıtlı degil";
 }
-
 ```
+
 "isim" oturumunun kayıtlı olup olmadığına bakar.
 
 #### session_unregister()
 
 Kaydettiğiniz bir oturum değişkenini silmek için kullanılır.
 
-```
+```php
 session_unregister("isim");
-
 ```
+
 Daha önce oluşturduğumuz isim adlı oturum bilgisini siler.
 
 #### session_destroy()
 
 Kayıtlı olan tüm oturum bilgilerini yok eder.
 
-```
+```php
 session_destroy();
-
 ```
 Geçerli olan tüm oturum verilerini yok eder.
 
@@ -92,17 +91,16 @@ Geçerli olan tüm oturum verilerini yok eder.
 
 Günümüzde neredeyse her sitede bi üyelik sistemi var (forumu veya interaktif hizmeti olmamasina rağmen), bence çoğu site için gereksiz. Basitçe bir giriş/çıkış sistemi yapalım. Bu iş için giris.php, cikis.php, index.php dosyalarimiz olacak.
 
-```
+```html
 <form action="giris.php" method="post">
   <input type="text" name="ad">
   <input type="submit" value="Giris">
 </form>
-
 ```
 
 Basit bir index sayfamız var. Burada giriş formu var. Bunu sitenizin istediğiniz köşesine koyabilirsiniz. Ziyaretçi adını girip Giris'e tıkladığı zaman giris.php dosyasına post edilecek.
 
-```
+```php
 <?php
 
 // bilgiyi alalim
@@ -120,14 +118,11 @@ session_register('giris');
 
 // giris tamamlandi, anasayfaya gonderelim
 header("location:index.php");
-
-?>
-
 ```
 
 Şimdi ansayfamizi gelistirmemiz gerek. Giriş yapmış ziyaretçilere hitap eden kısımları küçük bir sargı ile çevreleyeceğiz.
 
-```
+```php
 <?
 
 // oturumu baslatalim
@@ -151,16 +146,13 @@ else{
     <input type="submit" value="Giris">
   </form>';
 }
-
-?>
-
 ```
 
 İşte oldu, anasayfamız giriş kontorlu yaparak kullanıcı daha önce giriş yapmışsa tanıyor.
 
 Çıkış dosyamız ise çok basit. oturumu öldürecek.
 
-```
+```php
 <? 
 
 // oturumu baslatalim 
@@ -171,9 +163,6 @@ session_destroy();
 
 // ansayfaya gidelim 
 header("location:index.php"); 
-
-?>
-
 ```
 
 Hepsi bu kadar :)

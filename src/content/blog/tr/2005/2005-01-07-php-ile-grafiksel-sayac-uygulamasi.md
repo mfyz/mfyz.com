@@ -30,7 +30,8 @@ Gelelim bizim hazırlayacağımız sayaca; biz de yukarıda sırladığımız y�
 Göründüğü gibi her resim bir rakamı temsil ediyor. Rakamları temsil eden grafiklerimizi de hazırladıktan sonra artık kodlamaya geçebiliriz. Yapmamız gerekenleri kabaca sıralamıştık, bunun yanında yapacağımız tek işlem cookie den her defasında gelen rakamları okuyarak, bunların hazırladığımız grafiklerdeki karşılığını ekrana yazdırmak olacak. Örneğin ziyaretçimiz sitemizi daha önce "749" defa girmiş olsun. Biz bu ifadeyi karşılaştırma yapabilmek için "7", "4", "9" şeklinde ayırmamız gerekiyor. Parçalama fonksiyonu kulanarak bunu yapabiliriz.
 
 Unutmadan grafiklerin adları "<rakam>.gif" şeklinde, böylece kolayca istediğimiz rakamı basabileceğiz.
-```
+
+```php
 $deger = 749;
 
 // integer degiskeni stringe donusturelim
@@ -48,10 +49,11 @@ $sayac++; // sayacimizi artirdik. (NULL ise 0'dır, 1 artar ve 1 olur sonucta)
 
 // cookie olarak atalim.
 setcookie( "ziyaret" , $sayac , (time()+(365*24*60*60)) );
+```
 
-```
-"(time()+365*24*60*60)" ifadesi, gönderdiğimiz cookienin 1 yıl süreyle saklanacağını belirtir. Eğer $_COOKIE["ziyaret"] adında bir değişken zaten var ise, mevcut değeri daha önceki ziyaret sayısı olacaktır. Eğer yoksa değeri NULL olduğundan 1 artırıldığında son değer 1 olacaktır. $sayac değişkenini 1 artırıp tekrar cookie atarak sayacımızı güncellemiş olduk. sıra geldi ekrana yazdırma işinde.
-```
+`(time()+365*24*60*60)` ifadesi, gönderdiğimiz cookienin 1 yıl süreyle saklanacağını belirtir. Eğer `$_COOKIE["ziyaret"]` adında bir değişken zaten var ise, mevcut değeri daha önceki ziyaret sayısı olacaktır. Eğer yoksa değeri NULL olduğundan 1 artırıldığında son değer 1 olacaktır. $sayac değişkenini 1 artırıp tekrar cookie atarak sayacımızı güncellemiş olduk. sıra geldi ekrana yazdırma işinde.
+
+```php
 // integer degiskeni stringe donusturelim
 settype($sayac,"string");
 
@@ -59,10 +61,11 @@ settype($sayac,"string");
 for( $i=0 ; $i<strlen($sayac) ; $i++ ){
   print '<img src=""resimler/sayac/'" /> ';
 }
+```
 
-```
 Kodu toparlamak gerekirse;
-```
+
+```php
 <?
 
 // cookie'den degerimizi aliyoruz.
@@ -83,10 +86,8 @@ for( $i=0 ; $i<strlen($sayac) ; $i++ ){
   // her karakteri sırayla yazdırıyoruz.
   print '<img src=""resimler/sayac/'" /> ';
 }
-
-?>
-
 ```
+
 Örnek çıktı:
 
 ![](/images/archive/tr/2005/01/Screen-Shot-2017-09-14-at-2.24.59-AM.png)

@@ -15,9 +15,19 @@ Javascripte otomatik işler yaptırırken sürekli bişeyleri gözetlemek isteye
 
 Basit bir yüklenme efekti yapalım.
 
-  function isle(){ obje=document.getElementById('islem_bar'); if(obje.value.length==40){ clearTimeout(zamanlayici); alert("Bitti"); }else{ obje.value+='+'; zamanlayici=setTimeout('isle()',100); } }
-
+```js
+function isle(){
+  obje=document.getElementById('islem_bar');
+  if(obje.value.length==40){
+      clearTimeout(zamanlayici);
+      alert("Bitti");
+  }else{
+    obje.value+='+'; zamanlayici=setTimeout('isle()',100);
+  }
+}
 ```
+
+```html
 <input type="button" value="Başla ->" onClick="isle();">
 <input type="text" value="" id="islem_bar" size="50"><br>
 <script>
@@ -32,7 +42,6 @@ function isle(){
   }
 }
 </script>
-
 ```
 
 Aslında oldukça basit. **setTimeout** fonksiyonu çift parametreli, birincisi tırnaklar içerisinde yapılacak işi diğeri ise milisaniye cinsinden gecikmeyi belirtiyor. Yukarıda bu fonksiyon sürekli içerisinde bulunduğu fonksiyonu çağırttığı için durdurulmadığı sürece teorik olarak sonsuza kadar dönecektir. Ancak biz işlem olarak sürekli bir text inputa "+" işareti yazdırıyoruz, ve kontrol olarak da o text inputtaki karakter uzunlugunu kontrol ediyoruz. bir progress bar şekli için input'un dolması yeterli, input'un görünür karakter uzunluğunu 50 olarak ayarlamıştık. Bu sahayı 40 karakter tamamiyle doldurmaya yetiyor. Onun için inputun karakter uzunluğu 50 olduğu zaman ayarladığımız zamanlayıcı objesini **clearTimeout** fonksiyonu ile sıfırlıyoruz. Böylece bitmiş oluyor.

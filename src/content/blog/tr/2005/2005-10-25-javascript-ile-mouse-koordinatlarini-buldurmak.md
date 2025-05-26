@@ -9,31 +9,24 @@ migration: {"wpId":113,"wpPostDate":"2005-10-25T14:14:41.000Z"}
 lang: tr
 ---
 
-var IE = (document.all?true:false); if (!IE){ document.captureEvents(Event.MOUSEMOVE) } document.onmousemove = getMouseXY; var tempX = 0; var tempY = 0; function getMouseXY(e) { if (IE) { tempX = event.clientX + document.body.scrollLeft; tempY = event.clientY + document.body.scrollTop; } else { tempX = e.pageX; tempY = e.pageY; }; if (tempX < 0){tempX = 0;} if (tempY < 0){tempY = 0;} document.Show.MouseX.value = tempX; document.Show.MouseY.value = tempY; return true; }
-
- **X** 
-
- 
-
 Bu dökümanda javascript ile sayfanızda mouse koordinatlarını tespit eden kısa bir koda değineceğim. Örneği yukarıdaki gibidir.
 
-```
+```js
 var IE = document.all ? true : false;
 if (!IE) document.captureEvents( Event.MOUSEMOVE )
 document.onmousemove = getMouseXY;
-
 ```
 
 Bu kısımda browser'a göre mouse hareketini getMouseXY fonksiyonu çalıştırmaya yönlendiriyoruz.
 
-```
+```js
 var tempX = 0;
 var tempY = 0;
-
 ```
+
 Geçici mouse X, Y değerlerini saklayan değişkenler.
 
-```
+```js
 function getMouseXY(e) {
 
   // browser'a mouse koordinatlari yakalaniyor ve degiskenlere aktariliyor..
@@ -55,7 +48,6 @@ function getMouseXY(e) {
 
   return true;
 }
-
 ```
 
 Mouse koordinatlarını bulduran ve Show formundaki MouseX ve MouseY inputlarına değerleri yazdıran fonksiyon.
