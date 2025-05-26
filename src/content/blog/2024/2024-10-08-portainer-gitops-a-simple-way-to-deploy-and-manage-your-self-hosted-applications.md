@@ -18,7 +18,7 @@ I’m going to give you my personal go-to way of how I host my applications like
 
 Portainer acts as my central command center for all things containerized. This handy tool lets me build, deploy, and manage both individual containers and entire stacks. Did I mention it runs as a lightweight container itself? Here's a peek at my streamlined docker-compose.yml for Portainer:
 
-```
+```yml
 version: "3"
 services:
   portainer:

@@ -38,7 +38,7 @@ Here’s a side-by-side:
 
 **XMLHttpRequest Example:**
 
-```
+```js
 const xhr = new XMLHttpRequest();
 xhr.open('GET', '/api/data');
 xhr.onload = () => {
@@ -52,7 +52,7 @@ xhr.send();
 
 **Fetch Equivalent:**
 
-```
+```js
 fetch('/api/data')
   .then(res => res.text())
   .then(data => console.log(data));
@@ -97,7 +97,7 @@ But now that fetch is native in almost all major environments (including Node 18
 
 *   `fetch` doesn’t reject on HTTP error statuses (like 404 or 500). You still need to check `res.ok` manually and handle those cases accordingly.
 
-```
+```js
 fetch('/api/missing')
   .then(res => {
     if (!res.ok) throw new Error('Request failed');

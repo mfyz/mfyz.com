@@ -15,8 +15,8 @@ lang: tr
 
 Bir koşul sağlanana kadar ya da bir koşulun sağlanmamasına kadar (while'a göre False verene kadar.) içeride belirtilen işlemlerin dönülmesini sağlar.
 
-```
-while( koşullar ){
+```php
+while ( koşullar ) {
   // işlemler
   print 'dünya dönüyor';
 }
@@ -28,8 +28,8 @@ koşullar False olduğu zaman döngü biter. (0 = False)
 
 Koşullar dışında bir koşulun başlama kriteri ve döngü ilerledikçe yapılacak değişimi de beltirmemizi sağlayan döngüdür.
 
-```
-for($i=0;$i<10;$i++){
+```php
+for( $i=0; $i<10; $i++ ) {
   // işlemler
   print 'Şimdiki sayı : ' . $i;
 }
@@ -42,9 +42,9 @@ Döngü dönerken bir sayaç tutulur. Bu sayaç değeri bu örneğe göre $i de�
 
 break bir döngünün bitmesini beklemeden döngüyü terketmektir.
 
-```
-for($i=0;$i<10;$i++){
-  if($i==5) break;
+```php
+for( $i=0; $i<10; $i++ ) {
+  if( $i == 5 ) break;
 }
 
 ```
@@ -54,9 +54,9 @@ Bu kodda döngü 0'dan 9'a kadar sayacaktır. Ancak aradaki kontrolde $i 5'e eş
 
 continue ise bir döngüde döngünün bir sonraki adıma geçmesini sağlarız.
 
-```
-for($i=0;$i<100;$i++){
-  if(($i%3) != 0) continue;
+```php
+for( $i=0; $i < 100; $i++ ) {
+  if( ( $i % 3 ) != 0 ) continue;
   print $i;
 }
 

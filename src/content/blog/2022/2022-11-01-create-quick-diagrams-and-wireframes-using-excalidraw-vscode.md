@@ -44,7 +44,7 @@ The easiest way to do this without any option is to name your file with `.excali
 
 If you are developing a react-based application, you can actually embed excalidraw as part of your app and provide diagramming support.
 
-```
+```js
 import { useState, useEffect } from "react";
 export default function IndexPage() {
   const [Comp, setComp] = useState(null);
@@ -78,7 +78,7 @@ A final trick I do that makes my day-to-day very convenient is, having a shortcu
 
 The way I do this is by having a bash alias that is registered in my dotfiles/my-aliases: `ned` abbreviation of “New Excalidraw file on Desktop”.
 
-```
+```sh
 function ned(){
   OLD_IFS="$IFS"
   IFS='-'

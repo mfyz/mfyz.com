@@ -20,7 +20,8 @@ lang: tr
 **br ve nobr** Yeni satırla ilgili etiketler; **br** etiketi yeni etikete geçişi sağlar. HTML yazarken yazdığınız metinde satır sonlarında br etiketi yoksa, yeni satırlar kelime ayracı yani boşluk olarak algılanır. Eğer yazdığınız metin bloğunu tek bir satırda görüntülemek istiyorsanız **nobr** kullanırsınız. Normalde metinler tarayıcı penceresine sığdırılır. nobr etiketini kullanarak bunu engelleyebilirsiniz.
 
 Örnekler:
-```
+
+```html
 <!-- BAŞLIKLAR -->
 <h1>En büyük başlık bu başlık</h1>
 <h2>2. numara</h2>
@@ -47,7 +48,6 @@ yana
 bitisik
 cikacaktir
 </nobr>
-
 ```
 
 ## Metin biçimlendirmek
@@ -59,7 +59,8 @@ cikacaktir
 **pre** (preformatted : formatlanmamış) : Eşaralıklı (daktilo) metin biçimini ifade eder. Genellikle kod çıktılarını verirken, konsol, komut çıktısı veya ascii çalışmaları görüntülerken kullanırız. Bu etiketler arasına yazılan metinlerde, boşluk sayıları, yeni satırlar olduğu gibi korunur.
 
 Örnekler:
-```
+
+```html
 <!-- METİN STİLLERİ -->
 <b>Koyu yazı</b>
 <strong>Bu da koyu</strong>
@@ -88,9 +89,7 @@ veya kod bastığınızda çok iyi gider :)
 Gibi bir ascii tablo. (Şu anda kod bölümünde
 gördüğünüz bir preformatted text örneğin.)
 </pre>
-
 ```
- 
 
 ## Köprüler
 
@@ -105,7 +104,8 @@ Köprülerin farklı çerçevelerde veya yeni bir pencerede açılmasını sağl
 Epostalara doğrudan köprü vermek için href parametresine "**mailto:**gonderilecek@adres.com" şeklinde değer verin. İşletim sisteminizin geçerli eposta programına, belirtilen eposta adresine yeni ileti açmasını emreder.
 
 Örnekler:
-```
+
+```html
 <a href="http://www.mfyz.com/">Normal link</a>
 
 <a href="http://www.mfyz.com/#sayfanin_sonu">Sayfa içi link (http://www.mfyz.com/ sayfasındaki "sayfanin_sonu" ile isimlendirilmis nenseye gider. Eğer isim yoksa id'ye de bakılır.)</a>
@@ -113,5 +113,4 @@ Epostalara doğrudan köprü vermek için href parametresine "**mailto:**gonderi
 <a href="http://www.mfyz.com/" target="_blank">yeni pencerede açılan link</a>
 
 <a href="mailto:billgates@hotmail.com">Şikayet etmek için tıklayın.</a>
-
 ```

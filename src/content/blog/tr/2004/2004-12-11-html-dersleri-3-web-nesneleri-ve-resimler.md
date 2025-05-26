@@ -17,10 +17,9 @@ Gif, jpeg veya png resmi görüntülemek için kullanılır.
 
 Örneğin;
 
-```
+```html
 <img src="http://www.google.com.tr/intl/en_com/images/logo_plain.png"
-alt="Google Logosu" border="0">
-
+  alt="Google Logosu" border="0" />
 ```
 
 Çıktı :
@@ -37,20 +36,18 @@ Ortam yüklemek ya da bilgi görüntülemek için eklenti nesnesi kullanır. src
 
 Örnek ;
 
-```
-<embed src="baslangic.wav" hidden="true" autostart="true" volume="50" loop="false">
-
+```html
+<embed src="baslangic.wav" hidden="true" autostart="true" volume="50" loop="false" />
 ```
 
 Sayfa açıldığında otomatik olarak baslangic.wav dosyasını 1 kerelik 50% ses düzeyinde çalar.
 
 veya
 
-```
+```html
 <embed src="intro.mov" width="500" height="300" autoplay="true"
-controller="false" type="video/quicktime"
-pluginspage="http://www.apple.com/quicktime/">
-
+  controller="false" type="video/quicktime"
+  pluginspage="http://www.apple.com/quicktime/" />
 ```
 
 intro.mov adlı quicktime filmini kontroller olmadan 500x300 boyutunda otomarik olarak oynatır. Eğer quicktime yoksa yeni pencerede belirtilen eklenti sayfasını açar.

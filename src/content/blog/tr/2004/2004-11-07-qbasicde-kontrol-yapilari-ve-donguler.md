@@ -11,7 +11,7 @@ lang: tr
 
 ## Kontrol Yapıları
 
-#### IF ... THEN ... END IF Komut Kümesi
+#### `IF ... THEN ... END IF` Komut Kümesi
 
 Bir koşul sağlanması halinde belirtilen bazı işlemler kümesinin gerçekleştirilmesini sağlar. Kullanımı;
 ```
@@ -27,7 +27,7 @@ IF A=B THEN 'Yapılacak İşlem
 ```
 şeklinde de kullanabilirsiniz.
 
-#### IF ... THEN ... ELSE .... END IF Komut Kümesi
+#### `IF ... THEN ... ELSE .... END IF` Komut Kümesi
 
 Bir koşul sağlandığında bir işleri sağlanmadığında diger işlemleri gerçekleştirir. Kullanımı;
 ```
@@ -46,7 +46,7 @@ ELSE  'Yanlışsa Yapılacak İşlem
 ```
 şeklinde de kullanabiliriz.
 
-#### IF ... THEN ... ELSE IF ... THEN ... ELSE IF ... END IF Komut Kümesi
+#### `IF ... THEN ... ELSE IF ... THEN ... ELSE IF ... END IF` Komut Kümesi
 
 Bir koşul sağlanırsa belirtilen işlemler yapılır ve devam edilir. Eğer değilse bir sonraki koşul sorgulanır. Bir sonraki koşul da bu koşul gibi çalışır yani doğruysa işlemler yapılır değilse bir sonraki koşula geçilir. Kullanımı;
 ```
@@ -63,7 +63,7 @@ Burada A, B'ye eşitse 1. işlemler yapılır ve programa devam edilir. Diğer k
 
 ## Döngüler
 
-#### FOR Döngüsü
+#### `FOR` Döngüsü
 
 Bu döngü ile bir başlangıç sayısından son sayıya kadar belirlenen artış veya azalışa göre sayılıp aradaki işlemler yapılır. Kullanımı;
 ```
@@ -74,7 +74,7 @@ NEXT X
 ```
 Burada X bizim döngüde sayısını sürekli artırdığımız veya azalttığımız değişken oluyor. 1 başlangıç sayımız ve 5 de son sayımız olacaktır. STEP ile belirlediğimiz de değişkenimizin her dönüşte ne kadar ve nasıl değişceğini belirlememizi sağlar. Mesela 0'dan -10'a kadar 1 er 1er geriye doğru sayacaksak FOR X=0 TO -10 STEP -1 dememiz yeterlidir. Eğer STEP'i belirtmezsek bunu +1 olarak algılayacaktır(FOR X=1 TO 10 gibi).
 
-#### DO WHILE Döngüsü
+#### `DO WHILE` Döngüsü
 
 Bu döngü ile bir koşul sağlanana kadar işlemleri döndürebiliriz. Kullanımı;
 ```

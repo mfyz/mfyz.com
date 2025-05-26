@@ -14,13 +14,13 @@ We want to have a code base and development process with best practices that ref
 
 ## Continuous Integration Requirements (Pipelines)
 
-**Clean Code, Unified Developer Language  
-**  
+**Clean Code, Unified Developer Language**
+
 Development shouldn't be built around a lot of rules or “musts”. Allowing developers to define their own style is important, but understandable code is one of the most important elements of an effective development team. It's famously known that big teams (Google, Facebook, Airbnb...) utilizes a large set of rules under a good practice definition that allows every developer to speak the same language and be able to adapt to each other's code and process very easily.
 
 In order to do that, we will follow similar practices to have our javascript code to be unified in a single style. Few tools we will start utilizing to achieve this.
 
-### REQUIREMENT #1: WRITE JS in ES6
+### REQUIREMENT #1: Write JS in ES6
 
 We will have a good practice of writing modern ES6 and in this case, we have to, use transpilers (babel, webpack) to compile our code to VanillaJS for plain javascript rendering.
 

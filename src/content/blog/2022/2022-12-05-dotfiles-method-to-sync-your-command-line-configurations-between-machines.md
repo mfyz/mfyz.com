@@ -51,7 +51,7 @@ We’ll be using a utility called GNU Stow. Stow is a simple command that simply
 
 file, you put it in a folder (can be any name) like “zsh”. Then running the command
 
-```
+```sh
 stow zsh
 
 ```
@@ -60,7 +60,7 @@ anywhere will link the contents of zsh folder into the home directory.
 
 You can collect all apps configurations in different folders under your .dotfiles folder. Then run stow for each folder. Or instead automate it something like:
 
-```
+```sh
 for d in $(ls -d */ | cut -f1 -d '/' | grep -v '^_');
 do
     ( stow "$d"  )
@@ -78,7 +78,7 @@ Further more, you can automate the whole installation steps:
 
 The final installation script will look like this:
 
-```
+```sh
 #!/bin/bash
 
 if [[ -e /etc/debian_version ]]; then
@@ -145,8 +145,8 @@ file for me), we have the following block that checks the
 
 file and executes if the file exists.
 
-```
-\# secrets
+```sh
+# secrets
 SECRETS_FILE="$HOME/.dotfiles-secret/secrets.sh"
 if test -f "$SECRETS_FILE"; then
   source $SECRETS_FILE

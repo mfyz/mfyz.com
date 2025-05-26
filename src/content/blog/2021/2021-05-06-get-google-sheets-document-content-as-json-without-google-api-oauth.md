@@ -58,7 +58,7 @@ My sample document had just one tab so the tab index will be “1”. The final 
 
 Now you can access to the content of the sheet in a flattened object. 
 
-```
+```json
 {
   "version": "1.0",
   "encoding": "UTF-8",

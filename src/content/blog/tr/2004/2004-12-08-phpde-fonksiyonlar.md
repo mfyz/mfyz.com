@@ -13,14 +13,14 @@ Fonksiyonlar, matematikteki gibi bazı işlem gruplarını sık sık kullandığ
 
 Örneğin, **print()** ya da **echo()**, php içerisinde en sık kullandığımız fonksiyonlardandır. "print();" yazarak bu fonksiyonu çağırmış oluyoruz ve bize bir sonuç veriyor. Fonksiyonlar parametre alarak çalışırlar.
 
-```
+```php
 print("Selam Gençler");
 
 ```
 
 Buradaki "Selam Gençler" metini, print(); fonksiyonunun almış olduğu parametredir. Tabi fonksiyonların aldığı parametreler sadece string türünde olmayabilir. Bu parametre değer, değişken, dizi, sabit veya başka bir fonksiyonun sonuç kümesi olabilir.
 
-```
+```php
 $metin = "Selam Gençler";
 print($metin);
 
@@ -30,7 +30,7 @@ Bu örneğimizde, bir önceki örnekteki ile aynı sonucu verecektir, yani ekran
 
 PHP nin kendi içerisinde hazır olarak bulunan bu fonksiyon örneklerini çoğaltmak mümkündür (substr(), strlen(), mysql_fetch_array()...) Örnek olarak verdiğimiz bu fonksiyonlar parametre alarak çalışırlar. PHP nin parametre almadan çalışan fonksiyonları da vardır.
 
-```
+```php
 exit();
 
 ```
@@ -38,8 +38,8 @@ PHP yorumlayıcısı bu satırı (fonksiyonu) gördüğünde sayfanın fonksiyon
 
 PHP nin kullanılmak üzere bizlere sunduğu bu fonksiyonlara yerleşik fonksiyonlar adını verebiliriz. Burada asıl amacımız, kendi fonksiyonlarımızı yazmak. Bu yüzden ilk olarak PHP nin yerleşik olan, kendi fonksiyonlarını yüzeysel olarak inceledik. Temel olarak bir fonksiyon yazarken kullanacağımız komut dizisi şöyledir;
 
-```
-function fonksiyonum(parametre_1, parametre_2 ...) {
+```php
+function fonksiyonum ( parametre_1, parametre_2 ... ) {
   // yapılacak işlemler
 }
 
@@ -47,28 +47,28 @@ function fonksiyonum(parametre_1, parametre_2 ...) {
 
 Vermiş olduğumuz bu fonksiyon örneği, parametreler kullanarak işlem yapmaktadır. Yerleşik fonksiyonlarda olduğu gibi, kendi yazdığımız fonksiyonlar da parametre almadan işlem yapabilirler.
 
-```
-function fonksiyonumx() {
+```php
+function fonksiyonumx () {
   // yapılacak işlemler;
 }
 
 ```
 Fonksiyonumuzu yazdıktan sonra artık kullanıma hazır hale gelmiş olur. Sıra yazmış olduğumuz fonksiyonu çağırmaya geldi.
 
-```
+```php
 fonksiyonumx();
 
 ```
 
 Bu örneğimizde yazmış olduğumuz fonksiyonu parametre girmeden kullanıyoruz. Parametre alan fonksiyonumuzu ise şu şekilde çağırmalıyız;
 
-```
+```php
 fonksiyonum("deger_1","deger_2" ...);
 
 ```
 Fonksiyon yazım kurallarını gördükten sonra, konunun daha iyi anlaşılması için artık çalışır bir fonksiyon yazabiliriz. Örneğin PHP nin yerleşik fonksiyonlarından biri olan print() fonksiyonunu Türkçeleştirelim. (ama sakın bu örneği uyguladıktan sonra yerleşik fonksiyonları tümünü Türkçeleştirmeye kalkmayın) :)
 
-```
+```php
 function yazdir( $girilen_metin ) {
   print($girilen_metin);
   // $girilen_metin degiskenini ekrana yaz.
@@ -87,8 +87,8 @@ Bu fonksiyonu yazıp, yukarıdaki haliyle çağırdıktan sonra ekranda fonksiyo
 
 Öyle bir fonksiyon yazalım ki kullanıcıdan aldığımız metnin karakter sayısını bulsun ve ekrana hem bu metni, hem de bu metnin kaç karakterden oluştuğunu yazdırsın. İlk olarak kullanıcıdan alacağımız bilgi giriş sayfasını yazalım;
 
-\-- uzunluk.html --
-```
+-- uzunluk.html --
+```html
 <html>
   <body>
     <form action="uzunluk_hesapla.php" method="post">
@@ -100,8 +100,8 @@ Bu fonksiyonu yazıp, yukarıdaki haliyle çağırdıktan sonra ekranda fonksiyo
 
 ```
 
-\-- uzunluk_hesapla.php --
-```
+-- uzunluk_hesapla.php --
+```php
 function uzunluk($deger){
   $kac_karakter = strlen($deger);
   echo 'Girilen Metin : '.$deger.'<br>';
@@ -110,7 +110,6 @@ function uzunluk($deger){
 
 // fonksiyonu çagiriyoruz.
 uzunluk($metin);
-
 ```
 
 Oldukça kolay değil mi? Uzunluk adında bir fonksiyon oluşturduk ve parametre olarak (girilen verileri depolaması için) $deger adında bir değişken belirledik. Daha sonra $deger değişkenimizin (bu değişkenin fonksiyonumuza ait parametremiz olduğunu söylemeye gerek yok sanırım) uzunluğunu bulabilmek için, PHP'nin yerleşik fonksiyonu olan strlen()'i kullandık. Bu değeri $kac_karakter değişkenine atadık. Böylece kullanıcıdan alacağımız değerin ($deger değişkeninin) uzunluğu artık, $kac_karakter değişkenimize depolanmış oldu.
@@ -121,20 +120,19 @@ Echo fonksiyonunu kullanarak bu verileri ekrana yazdırdık. İlk önce kullanı
 
 Fonksiyonlar her sayfada kullanılacağı için fonksiyonlarımızı seçeneklere bağlı hale getirebiliriz. Eğer kullanıcı fonksiyona bir parametre göndermemişse fonksiyon sapıtabilir. Örneğin print() fonksiyonu kullanırken herhangi bir şekilde parametre kullanılmadan çağırılırsa fonksiyon boş değer döndürür (false değil NULL). Eğer fonksiyonunuz işlerinizde ölümcül bir işi yapıyorsa fonksiyonu kullanırken bunu denetleyebilirsiniz. Mesela;
 
-```
-function hesap( $deger = false ){
+```php
+function hesap ( $deger = false ) {
   return $deger;
 }
 
 ```
 Eğer bir parametre verilmezse fonksiyon programsal yanlış dönecektir. Kontrolle işlerimize devam ederiz. Başka bir kullanımda; uygulamanın herhangi bir noktasında bir fonksiyon kullanılıyor ve işletilememesi uygulamanın hatalar getirmesine yol açıyorsa;
 
-```
-if( $sonuc = fonksiyon($deger) ){
+```php
+if ( $sonuc = fonksiyon($deger) ) {
   print("Hata oluştu. Uygulama durduruldu!");
   exit;
 }
-
 ```
 Şeklindeki kullanımla bu hataları önleyebilir veya uygulamanın başka yollarda devam etmesini sağlayabiliriz. Gördüğünüz gibi parametrelere gelen değerleri geçerli olarak belirleyebiliyoruz. Bunun farklı bir kullanım alanı da şöyledir; fonksiyona gönderilen birden çok parametre sürekli farklı ayarlamalar yapıyor ve çok değişik kombinasyonlar çıkabiliyorsa, bu opsiyonların belirlenmemesi durumunda (yani parametrelerin boş olması durumunda) fonksiyonun kendimizce belirlediğimiz standart opsiyonlarda gitmesini sağlamak için fonksiyonu tanımlarken geçerli değerleri belirleyerek bu isteğimizi gerçekleştirmiş oluruz.
 

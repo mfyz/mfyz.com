@@ -18,7 +18,7 @@ This makes it the perfect and simplest backup solution on your personal server t
 
 I do have the following cron runs once a day along with a few other scripts that prepare the backups.
 
-```
+```sh
 rclone sync -v /data/backups mfyz-gdrive:mfyz-server-backups-rclone
 ```
 
@@ -30,7 +30,7 @@ The way you take your backups will be up to you. You could even directly sync yo
 
 I have the following, simple backup script on my server takes my wordpress site’s snapshot daily, then rclone syncs it up to my google drive.
 
-```
+```sh
 cd /data/backups
 now=$(date +"%Y%m%d")
 echo "--> backing up mfyz.com"
@@ -43,4 +43,4 @@ echo "done"
 
 ### Monitoring
 
-In my daily cron tasks, after running rclone, I also have a health check to make sure my backups are taken correctly. So a ping service monitors my daily tasks run successfully. I’ve written about open-source health check/ping service you can use or self-host yourself here: [https://mfyz.com/monitoring-your-microservice-stack-with-simple-ping-health-checks-using-helathchecks-io-for-free/](/monitoring-your-microservice-stack-with-simple-ping-health-checks-using-helathchecks-io-for-free/)
+In my daily cron tasks, after running rclone, I also have a health check to make sure my backups are taken correctly. So a ping service monitors my daily tasks run successfully. I’ve written about open-source health check/ping service you can use or self-host yourself here: [monitoring-your-microservice-stack-with-simple-ping-health-checks-using-helathchecks-io-for-free](/monitoring-your-microservice-stack-with-simple-ping-health-checks-using-helathchecks-io-for-free/)

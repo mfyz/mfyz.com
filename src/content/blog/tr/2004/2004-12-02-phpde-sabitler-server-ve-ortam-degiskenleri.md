@@ -29,7 +29,7 @@ E_PARSE       Scriptteki yazım hatasını bildirir.
 
 $ gibi degişken işareti almadan doğrudan kullanılır. Örneğin:
 
-```
+```php
 if( $hata ){
   print __FILE__ . " dosyasında, " .
   __LINE__ . " satırında hata var!";
@@ -52,7 +52,7 @@ REMOTE_ADDR            Kullanıcının IP numarasını içerir.
 
 Sunucu değişkenlerini bir ortam değişkeni olan $_SERVER dizisinin indisleri olarak düşünürsek örnek olarak şu şekilde kullanacağız:
 
-```
+```php
 print 'Merhaba arkadaşım, ip adresin: ' . $_SERVER["REMOTE_ADDR"] .
 ' ve tarayıcı bilgilerin: ' . $_SERVER["HTT_USER_AGENT"];
 

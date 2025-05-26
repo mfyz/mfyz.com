@@ -56,7 +56,7 @@ Before installing any new app. This is actually a great opportunity to re-evalua
 
 Using homebrew + using cask to install usual tools. Here is the partial list of the apps I installed with just running the following command:
 
-```
+```sh
 brew install --cask zoom  
 brew install --cask android-studio  
 brew install --cask charles  
@@ -112,7 +112,7 @@ Running install script doesn’t get everything 100% set up. Or for certain envi
 
 I always manually back up and restore my ~/.ssh folder where I have both ssh configurations as well as all the keys I store on my machine. Most of the keys are backed up to 1password (more than half of them are shared with the team).
 
-### [/private]/etc/hosts file content
+### `[/private]/etc/hosts` file content
 
 I use MAMP Pro to manage my LAMP stack apps and apache/mysql installation. So hosts file is generally automatically populated. But when moving to a new machine I always try to keep a copy of the hosts file so I can easily refer to the hostnames I was working on and the ones I want to restore manually.
 
@@ -173,7 +173,7 @@ Here is the help document for Table Plus for exporting and importing connection 
 
 ### Restoring/re-pulling local working copies of the projects
 
-```
+```js
 const fs = require('fs')  
 const path = require('path')  
 const { execSync, spawnSync } = require('child_process')  
@@ -187,28 +187,26 @@ const runCmd = (cmd) => {
         return false  
     }  
 }  
-  
+
 const root = './'  
 const ls = fs.readdirSync(root)  
-  
+
 const results = []  
 ls.forEach((dir) => {  
     if (fs.lstatSync(path.join(root, dir)).isDirectory()) {  
-        const result = runCmd(\`cd ${path.join(root, dir)} && git remote -v && cd ..\`, { stdio: 'inherit' })  
+        const result = runCmd(`cd ${path.join(root, dir)} && git remote -v && cd ..`, { stdio: 'inherit' })  
         const gitRemote = result && result.split('\t')[1].split(' ')[0]  
-        // if (gitRemote && gitRemote.indexOf('ship.nomadinteractive.co') > 0) {  
-        results.push([  
-            dir,  
-            (gitRemote || '-')  
-        ])      
-        // }  
+        results.push([
+            dir,
+            (gitRemote || '-')
+        ])
     }  
-})  
-  
+})
+
 console.table(results)
 ```
 
-### .env files
+### `.env` files
 
 Making sure you backup all of your .env files while you take backup of your old mac. This is probably the most important when you need to restore your local development environment. Documenting and pulling your code from the CVS is the easy part. You will need to re-create from scratch or use the .env files you backed up. Constructing the right credentials again would take extra effort if you are not organizing your credentials in tools like 1password.
 

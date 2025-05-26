@@ -38,7 +38,7 @@ In this example, we’ll build a RESTful CRUD endpoint for managing books. We’
 
 ### File: `api/books.ts`
 
-```
+```ts
 import { drizzle } from 'drizzle-orm/vercel-postgres';
 import { sql } from '@vercel/postgres';
 import { FastifyRequest, FastifyReply } from 'fastify';
@@ -80,7 +80,7 @@ This file is all you need. Put it under the `api/` folder in a Vercel project. V
 
 ### Deploy it
 
-```
+```sh
 npm install -g vercel
 vercel login
 vercel
@@ -100,7 +100,7 @@ https://your-app-name.vercel.app/api/books
 
 Here’s how to add a book:
 
-```
+```sh
 curl -X POST <https://your-app-name.vercel.app/api/books> \
   -H "Content-Type: application/json" \
   -d '{"title": "The Pragmatic Programmer", "author": "Andy Hunt"}'

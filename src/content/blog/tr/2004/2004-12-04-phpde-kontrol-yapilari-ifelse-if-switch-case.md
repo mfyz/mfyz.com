@@ -17,8 +17,8 @@ Kontrol yapıları programların neredeyse her 5 kodundan birinde vardır. Çün
 
 Basit bir yapıdır. Basitçe kullanımı:
 
-```
-if( koşullar ){
+```php
+if ( koşullar ) {
   print 'koşul sağlandı';
 }
 
@@ -30,11 +30,11 @@ if( koşullar ){
 
 if kontrolüne koşulun olmadığı zaman da görev verilenidir.
 
-```
-if( koşullar ){
+```php
+if ( koşullar ) {
   print 'koşul sağlanıyor';
 }
-else{
+else {
   print 'koşul sağlanmıyor';
 }
 
@@ -44,20 +44,20 @@ else{
 
 Bir if else kontrolünde else yani ilk koşulun sağlanmaması halindeki duruma bir if eklenirse yani üsttekilerin sağlanmaması ve burada tanımlanan koşulun sağlanması halidir.
 
-```
-if( ilk koşullar ){
+```php
+if ( ilk koşullar ) {
   // ilk koşular sağlanıyorsa yapılacaklar
   print 'bir';
 }
-else if( ikinci koşullar ){
+else if ( ikinci koşullar ) {
   // ilk koşullar sağlanmıyor ve ikinci koşullar sağlanıyorsa yapılacaklar
   print 'iki';
 }
-else if( üçüncü koşullar ){
+else if ( üçüncü koşullar ) {
   print 'üç';
   // ilk ve ikinci koşullar sağlanmıyor ve üçüncü koşullar sağlanıyorsa yapılacaklar
 }
-else{
+else {
   // hiçbiri sağlanmıyorsa yapılacaklar
   print 'bir, iki ve üç DEĞİL!';
 }
@@ -68,8 +68,8 @@ else{
 
 switch / case yapısını çok sonuçlu olayları kontrol ederken kullanırız. Mesela bir olay sonucu $deg değişkeni 3 değer alabilsin ("1x","2x","3x"). Burada if'leri kullanmaktansa switch / case yapılarını kullanmak daha kısadır.
 
-```
-switch($deg){
+```php
+switch ( $deg ) {
   case '1x': 
     print "deg'in içi 1x"; 
     break;

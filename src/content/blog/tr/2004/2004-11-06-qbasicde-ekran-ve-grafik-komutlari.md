@@ -9,7 +9,7 @@ migration: {"wpId":46,"wpPostDate":"2004-11-06T07:57:57.000Z"}
 lang: tr
 ---
 
-## Ekran Komutları ([PRINT](#print), [INPUT](#input), [SPACE](#space), [PRINT USING](#printusing), [LOCATE](#locate), [TAB](#tab))
+## Ekran Komutları (`PRINT`, `INPUT`, `SPACE`, `PRINT USING`, `LOCATE`, `TAB`)
 
 #### PRINT Komutu
 
@@ -84,7 +84,7 @@ PRINT "A";TAB(35);"B"
 ```
 Burada ilk olarak A yazıp aynı satırın 35. sütununa atlayıp B yazdırıyoruz.
 
-## Grafik Komutları ([SCREEN](#screen), [LINE](#line), [COLOR](#color), [VIEW](#view), [PSET](#pset), [CRICLE](#circle))
+## Grafik Komutları (SCREEN, LINE, COLOR, VIEW, PSET, CRICLE)
 
 #### SCREEN Komutu
 

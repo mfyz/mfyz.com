@@ -38,8 +38,8 @@ But we are human, and we also want to talk about who we are. A recruiter will no
 
 ### To make it more human:
 
-```
-\### Hi there 👋
+```md
+### Hi there 👋
 * 👂 My name is ...
 * 👩 Pronouns: ...
 * 🔭 I’m currently working on ...
@@ -57,7 +57,7 @@ Here are a few other tricks that may help you to convey what I talked about.
 
 ### Make it collapsible
 
-```
+```xml
 <details>
     <summary><b>✨About Me</b></summary><br/>
     Laboris id veniam velit sint exercitation ut amet aliquip sit.
@@ -81,7 +81,7 @@ A beautiful project to visually communicate your github activity like your stats
 
 ![](https://github-readme-stats.vercel.app/api?username=mfyz&show_icons=true)
 
-```
+```html
 <img src="https://github-readme-stats.vercel.app/api?username=mfyz&show_icons=true" />
 
 ```
@@ -90,7 +90,7 @@ A beautiful project to visually communicate your github activity like your stats
 
 ![](https://github-readme-stats.vercel.app/api/top-langs?username=mfyz&layout=compact)
 
-```
+```html
 <img src="https://github-readme-stats.vercel.app/api/top-langs?username=zluvsand&layout=compact"/>
 
 ```

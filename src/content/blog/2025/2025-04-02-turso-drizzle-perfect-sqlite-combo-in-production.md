@@ -60,13 +60,13 @@ To get started with this powerful duo, you’ll first need to set up Drizzle to 
 
 You can easily add Drizzle to your project using npm or yarn:
 
-```
+```sh
 npm install drizzle-orm
 ```
 
 or
 
-```
+```sh
 yarn add drizzle-orm
 ```
 
@@ -74,7 +74,7 @@ yarn add drizzle-orm
 
 You’ll want to create a configuration file to set up your connection:
 
-```
+```js
 import { drizzle } from 'drizzle-orm/sqlite';
 import { SqliteDialect } from 'drizzle-orm/sqlite';
 import sqlite3 from 'sqlite3';
@@ -88,7 +88,7 @@ const db = drizzle(new sqlite3.Database('path-to-your-database.db'), {
 
 When you’re ready to use Turso, you need to adjust your connection. Turso provides a unique connection string that you can find in your dashboard. Just replace the database connection in the code above:
 
-```
+```js
 const db = drizzle(new sqlite3.Database('your-turso-db-url'), {
   dialect: new SqliteDialect(),
 });
@@ -98,7 +98,7 @@ const db = drizzle(new sqlite3.Database('your-turso-db-url'), {
 
 Two code snippets above are independent from each other, either local sqlite db, or remote turso db. Here is what I use in combined database wrapper that handles both local sqlite when I run my app in my development machine, and uses turso in production when I deploy my app on my servers.
 
-```
+```js
 import { drizzle } from 'drizzle-orm/libsql';
 import { createClient } from '@libsql/client';
 import sqlite3 from 'sqlite3';
@@ -127,7 +127,7 @@ export { db };
 
 Example books, authors in a schema:
 
-```
+```js
 import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
 import { relations } from 'drizzle-orm';
 
@@ -160,7 +160,7 @@ Here is what some Drizzle usage examples looks like
 
 Insert an author and a book:
 
-```
+```js
 await db.insert(authors).values({ name: 'Jane Austen', bio: 'English novelist' });
 
 await db.insert(books).values({
@@ -172,7 +172,7 @@ await db.insert(books).values({
 
 Query books with their authors:
 
-```
+```js
 const allBooks = await db.query.books.findMany({
   with: {
     author: true,

@@ -36,7 +36,7 @@ Here are some great reasons to use Kokoro.js in your projects:
 
 To install Kokoro.js, simply run:
 
-```
+```sh
 npm install kokoro-js
 
 ```
@@ -45,7 +45,7 @@ npm install kokoro-js
 
 Here's a simple example to convert text to speech using Kokoro.js:
 
-```
+```js
 import { KokoroTTS } from "kokoro-js";
 
 const tts = await KokoroTTS.from_pretrained(

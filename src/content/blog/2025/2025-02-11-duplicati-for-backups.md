@@ -20,7 +20,7 @@ I use a pretty simple single-container compose file that I deploy using portaine
 
 Here is my `docker-compose.yml` for my duplicati setup:
 
-```
+```yml
 version: '3.9'
 services:
   duplicati:

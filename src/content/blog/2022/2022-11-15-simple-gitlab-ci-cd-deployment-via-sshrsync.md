@@ -30,7 +30,7 @@ If you are deploying a NodeJS (or similar) app that needs to be re-started, then
 
 Let’s jump right in the `.gitlab-ci.yml` example and I will point out the key areas in this template.
 
-```
+```yml
 image: node
 
 stages:

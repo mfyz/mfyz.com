@@ -22,7 +22,7 @@ Gelelim joker karakterlere ve kullanımlarına;
 [ ] Parantezin içerisinde kalan karakterler veya aralığı ifade eder. dosya[0-9] -> dosya0, dosya1, dosya2 ... dosya9 sozluk_[a-z].txt -> sozluk_a.txt, sozluk_b.txt ... sozluk_z.txt
 
 Aşağıda bu konuda örnek kullanım bulacaksınız.
-```
+```sh
 $ ls
 01t  02t  03t  04t    ayse  faik   fatma   mehmet
 01x  02x  03x  ahmet  emre  fatih  mahmut

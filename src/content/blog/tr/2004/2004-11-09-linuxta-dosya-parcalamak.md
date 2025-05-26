@@ -22,7 +22,7 @@ Bazen de disketlerden çok az büyük dosyalarla çalışıyor olabilirsiniz (Ta
 #### Linux'ta Dosyaları Parçalamak!
 
 Dosyaları 2 biçimde parçalıyabiliyoruz. Birincisi dosyaları satır sayısına göre, diğeri de boyutuna göre. Dosyaları satır sayısına göre parçalarken -l parametresini, boyuta göre de -b parametresini kullanıyoruz.
-```
+```sh
 mfyz@tux _ $ ls -l
 total 4836
 -rwxrwxrwx  1 mfyz users 4939244 Sep 28 15:20 dosya.wav
@@ -45,7 +45,7 @@ total 9680
 Dosyaları birleştirirken cat komutu ile parçaları teker teker birbiri ardına ekliyoruz. Yukarıdaki örnekte dosya.txt'nin parçalarını birleştirirken sırayla cat dosya_parca_ag >> dosya_parca_af ardından, cat dosya_parca_af >> dosya_parca_ae... komutlarını aa parçasına kadar uygulayarak dosya.txt'yi dosya_parca_aa dosyasında oluşturmuş yani birleştirmiş olduk.
 
 Bu uzun işlemi yapmak yerine şu pratik yolu tercih ediniz (Zira sadece mantığını anlamamız için üstteki detayı verdim :) ).
-```
-for i in \`ls parca_*\`; do cat $i >> dosya.wav; done
+```sh
+for i in `ls parca_*`; do cat $i >> dosya.wav; done
 ```
 (Bu güzel detayı belirttiği için Eren Turkay arkadaşıma teşekkür ederim.)

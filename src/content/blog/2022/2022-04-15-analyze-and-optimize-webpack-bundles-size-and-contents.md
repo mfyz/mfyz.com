@@ -25,21 +25,21 @@ There are a few popular tools we can use with minimal effort to analyze our bund
 
 Install:
 
-```
+```sh
 npm install --save-dev webpack-bundle-analyzer
 
 ```
 
 Run your webpack to create stats.json:
 
-```
+```sh
 webpack --json > stats.json
 
 ```
 
 Start bundle analyzer:
 
-```
+```sh
 npx webpack-bundle-analyzer stats.json
 
 ```

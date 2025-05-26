@@ -10,7 +10,7 @@ lang: tr
 ---
 
 Konsollarda kullanıcı giriş alanı gelmeden önce **/etc/issue** dosyasından bazı kurallara göre çıktı yaratılır. Salt metin olarak da çıktı verebileceğimiz gibi bu çıktıyı özelleştirebiliriz. Normalde;
-```
+```sh
 login:
 ```
 şeklinde görünen kısmı;

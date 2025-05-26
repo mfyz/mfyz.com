@@ -18,8 +18,8 @@ I’ve been using this setup for testing plugins, and themes and trash the setup
 
 The magic here is mostly automating the installation and configuration of the WordPress instance using wp-cli. It’s very easy to install and run wp-cli from a phar package.
 
-```
-\# Install wp-cli
+```sh
+# Install wp-cli
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 
 # Set up wordpress site

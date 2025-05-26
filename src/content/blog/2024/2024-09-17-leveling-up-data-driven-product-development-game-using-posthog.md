@@ -18,7 +18,7 @@ I've been using **Posthog** for a while now, and it's quickly become my go-to to
 
 One of the things I appreciate most about Posthog is its **auto-capture** feature. It's like having a tiny detective following my users around, recording their every click and interaction. This has saved me countless hours of manually setting up tracking events. It also has pretty good customizations on what gets auto captured what not:
 
-```
+```js
 posthog.init('phc_.........................', {
     api_host: '<https://us.i.posthog.com>',
     autocapture: {

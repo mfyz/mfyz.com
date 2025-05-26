@@ -16,7 +16,7 @@ Today, I want to talk about a very effective method to optimize your bundle size
 
 Traditionally, we install a module and import the methods we use from a module. In many modules, the methods in them are not separately exported and are part of a single default export that we object deconstruct from the default import. The most common example of this is:
 
-```
+```js
 import { Box } from "@material-ui/core"
 
 ```
@@ -31,28 +31,28 @@ Another method is the tree shaking where we still install the full library but w
 
 Instead of:
 
-```
+```js
 import { Box } from "@material-ui/core"
 
 ```
 
 Do this:
 
-```
+```js
 import Box from "@material-ui/core/Box";
 
 ```
 
 Similarly, a lodash example: instead of:
 
-```
+```js
 import { groupBy } from "lodash";
 
 ```
 
 Do this:
 
-```
+```js
 import groupBy from "lodash/groupBy";
 
 ```

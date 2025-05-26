@@ -28,7 +28,8 @@ Tabloda satırlar eklemeden sütun ekleyemezsiniz. Her sütun bulunması gereken
 Tablodaki hücreler için tanımlanması gereken son etikettir. İçinde bulunduğu satırda bir sütunu ifade eder.
 
 Örnek tablo yapısı;
-```
+
+```html
 <table border="1" cellpadding="5">
   <tr bgcolor="#CCCCCC">
     <td bgcolor="#FFFFFF">
@@ -38,8 +39,8 @@ Tablodaki hücreler için tanımlanması gereken son etikettir. İçinde bulundu
     <td>3.Sütun</td>
   </tr>
 </table>
-
 ```
+
 Öncelikle çerçevesi geçerli renk ve stilde 1 piksellik boş tablo tanımlanıyor. 1 satır, artalan gri olarak tanımlanıyor. 1. Sütunda artalan sadece o hücre için beyaz belirleniyor. Diğer sütunlarda ise tr etiketinde tanımlanan gri renk artalan olarak belirlenmiş oluyor. Yukarıdaki kodun çıktısı ;
 
 1.Sütun
@@ -55,7 +56,7 @@ Bir hücre kendi dengindeki hücrelerden kapsaması gereken kadar hücreyi td et
 ## Çerçeveler
 
 Çerçeveler konusunda tek önerim, iç çerçeveler dışında çerçeve tekniği kullanmamanız doğrultusunda olacaktır. İç çerçeveler sayfalarda resim gibi belirli bir alan kaplayan ve o alan içerisinde sanki tarayıcı penceresi oraya sığdırılmış gibi görüntülenir. Eğer çok kolonlu veya çok satırlı sayfalar yapmak istiyorsanız tablo yapısını kullanarak öncelikle iç çerçeveleri sığdıracağımız alanı belirler, stillerle destekli iç çerçeve ekleyerek o çerçeveler içerisinde sayfalarımızı görüntüleriz. Bu işin normal methodunda ise neredeyse aynı mantığa sahip bir yapıyla, birden çok sayfa kullanırız. kod olarak aynı hatta daha fazla alan kaplayan dosyalar hazırlamış oluruz. Bana güvenin ve sadece bunu öğrenin. Örnek kod vermek gerekirse;
-```
-<iframe src="menu.htm" frameborder="0" width="100%" height="200">
 
+```html
+<iframe src="menu.htm" frameborder="0" width="100%" height="200">
 ```

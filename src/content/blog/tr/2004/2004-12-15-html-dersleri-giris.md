@@ -17,9 +17,9 @@ Bu döküman serisinde özetle html dilinin genel hatlarını anlatacağım. Aş
 
 #### İçerik
 
-1.  [Yapı ve sayfa üstbilgi etiketleri](/tr/html-dersleri-1--yapi-ve-sayfa-ustbilgi-etiketleri/)
-2.  [Başlıklar, paragraflar, metin biçimlendirme ve köprüler](/tr/html-dersleri-2--basliklar-paragraflar-metin-bicimlendirme-ve-kopruler/)
-3.  [Web objeleri ve resimler](/tr/html-dersleri-3--web-nesneleri-ve-resimler/)
-4.  [Tablolar ve çerçeveler](/tr/html-dersleri-4--tablolar-ve-cerceveler/)
-5.  [Form ve form öğeleri](/tr/html-dersleri-5--form-ve-form-ogeleri/)
-6.  [Sonsöz ve öneriler](/tr/html-dersleri-6--sonsoz-ve-oneriler/)
+1.  [Yapı ve sayfa üstbilgi etiketleri](/html-dersleri-1-yapi-ve-sayfa-ustbilgi-etiketleri/)
+2.  [Başlıklar, paragraflar, metin biçimlendirme ve köprüler](/html-dersleri-2-basliklar-paragraflar-metin-bicimlendirme-ve-kopruler/)
+3.  [Web objeleri ve resimler](/html-dersleri-3-web-nesneleri-ve-resimler/)
+4.  [Tablolar ve çerçeveler](/html-dersleri-4-tablolar-ve-cerceveler/)
+5.  [Form ve form öğeleri](/html-dersleri-5-form-ve-form-ogeleri/)
+6.  [Sonsöz ve öneriler](/html-dersleri-6-sonsoz-ve-oneriler/)

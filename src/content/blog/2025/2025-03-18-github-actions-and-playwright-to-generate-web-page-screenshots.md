@@ -71,7 +71,7 @@ npm install playwright
 
 Create a new file called `screenshot.js` and add the following code:
 
-```
+```js
 const { chromium } = require('playwright');
 
 (async () => {
@@ -91,7 +91,7 @@ const { chromium } = require('playwright');
 
 Run the script to test it locally:
 
-```
+```sh
 node screenshot.js
 
 ```
@@ -106,7 +106,7 @@ Now, let’s set up a GitHub Actions workflow that will run automatically whenev
 
 Inside your project, create `.github/workflows/screenshot.yml` and add the following:
 
-```
+```yml
 name: Generate Screenshot
 
 on:
@@ -145,7 +145,7 @@ jobs:
 
 Commit and push everything to GitHub:
 
-```
+```sh
 git add .
 git commit -m "Set up Playwright screenshot automation"
 git push origin main
@@ -171,7 +171,7 @@ Then, modify your script to use only the installed browser.
 
 Since downloading and installing Playwright browsers happens on every workflow run, caching them can significantly speed up execution. Modify your workflow to cache the Playwright binaries:
 
-```
+```yml
       - name: Cache Playwright Browsers
         uses: actions/cache@v2
         with:

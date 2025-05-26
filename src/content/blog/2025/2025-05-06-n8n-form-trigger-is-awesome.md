@@ -44,7 +44,7 @@ n8n has a cloud-hosted version if you want a managed solution.
 
 But I self-host mine. If you're like me and want to run it locally or on your server, here's the quickest way using Docker:
 
-```
+```sh
 docker run -it --rm \
   -p 5678:5678 \
   -v ~/.n8n:/home/node/.n8n \

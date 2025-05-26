@@ -12,10 +12,10 @@ lang: tr
 #### Doctype (Döküman kodlama türü)
 
 Döküman türü, tarayıcıların, kodladığınız sayfanın ne olduğunu anlamasına yardımcı olur. Doctype, web standartlarına göre (w3c) zorunludur. Yani bir sayfanın türü belirtilmek zorundadır. Bu derslerde HTML kodlama üzerine yoğunlaştığımızdan "Geleneksel html türü" bizim işimizi görecektir. İleride doctype hakkında başka bir makalede bahsedeceğim.
-```
+
+```html
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
-
 ```
 
 #### html etiketi
@@ -33,19 +33,21 @@ Tarayıcı penceresinin başlığında görüntülenen sayfa başlığını beli
 #### meta etiketi
 
 Sayfa bilgi değişkenlerini belirler. Sayfa hakkında birçok bilgiyi bu etiketle ayarlarız. Sayfa oluşturan programın adı, sitenin yazarı, sayfa hakkında anahtar kelimeler, sayfanın kısa tanımı, tarayıcı için özel ayarlar (sayfanın son kullanım tarihi vs) gibi çok fazla özellik ayarlanabilir. Bu ayarlamalardan bazıları;
-```
+
+```html
 <meta http-equiv="Content-Type" content="text/html;charset=utf8">
-
 ```
+
 Sayfanın karakter kodlamasını Türkçe olarak ayarlamamızı sağlar. UTF-8 kullanmanızı öneririm, tüm yazı karakteri ailelerini içerir.
-```
+
+```html
 <meta http-equiv="Refresh" content="X" URL="http://">
-
 ```
+
 Bulunulan sayfayı yönlendirir. Eğer URL="..." kısmı girilmezse bulunduğu sayfayı, yüklendikten X saniye sonra yeniden yükler. Eğer girilirse sayfa yüklendikten X saniye sonra belirtilen adrese yönlenir.
-```
-<meta http-equiv="keywords" content="kelime1, kelime2, kelime3 ...">
 
+```html
+<meta http-equiv="keywords" content="kelime1, kelime2, kelime3 ...">
 ```
 Sayfanın içeriğine ait anahtar kelimeleri belirler. Arama motorlarında bu anahtr kelimelere göre sayfa incelenir.
 
@@ -64,17 +66,17 @@ Sayfadaki linklerle ilgili geçerli çalışma tabanını belirler. href="http:/
 #### link etiketi
 
 Dış bir dosya ile ilişki yaratır. Genel 2 özellik için kullanılır. Bunlar;
-```
-<link rel="stylesheet" type="text/css" href="stil_dosyasi.css">
 
+```html
+<link rel="stylesheet" type="text/css" href="stil_dosyasi.css" />
 ```
 
 şeklinde kullanıldığında stil.css stil dosyası ile sayfayı ilişkilendirir. Yani stil.css'deki stilleri sayfaya uygular.
 
+```html
+<link rel="shortcut icon" href="favicon.ico" />
 ```
-<link rel="shortcut icon" href="favicon.ico">
 
-```
 Favori (bookmark) listenizde, masaüstü kısayolları gibi dosyalanmış sayfa kısayollarında sayfa hakkında simge belirlemenizi sağlar.
 
 #### style, script ve noscript etiketleri
@@ -82,3 +84,4 @@ Favori (bookmark) listenizde, masaüstü kısayolları gibi dosyalanmış sayfa 
 Sayfa için javascript kodu çalıştırabilmemizi sağlar. Günümzde javascript desteklemeyen browser programı neredeyse bulunmuyor. Ancak desteklemeyen veya desteği kapalı olan programlar için noscript etiketi kullanarak anlanılmayan kısımları geçmiş olursunuz.
 
 > Bu sayfanın kodlarını incelemenizi öneririm. Kaynak kodu açıp sayfa yapısı etiketlerinde verdiğim değerleri gözden geçirin, Stil ve javascript tanımlarıma bakmaya çalışın. Çok daha fazla fikir verecektir.
+> 
