@@ -23,7 +23,7 @@ XMLHttpRequest hakkında bilgi için [buraya tıklayın](/xmlhttprequest-nedir/)
 
 http://mootools.net/ adresinden mootools'u ajax seçeneği ile derleyerek indirmelisiniz. Sayfa başında mootools.js dosyasını include edin. Basitçe ajax isteği için kod bloğu şöyle :
 
-```
+```js
 new Ajax('icerik_alinacak_dosya.php', {
   method: 'get',
   update: $('icerik_basilacak_element_id')
@@ -52,7 +52,7 @@ evalScripts     XMLHttpRequest ve çoğu diğer ajax kütüphanelerindeki ana so
 
 Şimdi bu parametreleri örneklerle açıklama çalışacağım. Önce bir bağlantıyı (link) ajax ile çağırıp dönen içeriği ekranda bir bölüme yazdıralım.
 
-```
+```html
 ...
 <a href="#" onClick="ajax_istek('hakkinda.html');">Hakkında</a>
 <a href="#" onClick="ajax_istek('iletisim.html');">iletişim</a>
@@ -64,7 +64,7 @@ evalScripts     XMLHttpRequest ve çoğu diğer ajax kütüphanelerindeki ana so
 
 Bu sayfamız olsun. Linke tıklantığında ajax_istek fonksiyonunu url parametresiyle çağırıyor görüldüğü gibi. Ayrıca icerik kimlikli bir div var. İçeriği buraya basacağız.
 
-```
+```js
 function ajax_istek(hedef){
   new Ajax(hedef, {
     update: $('icerik')
@@ -75,7 +75,7 @@ function ajax_istek(hedef){
 
 Basit bir ajax isteği gördüğünüz gibi. Şimdi bunu biraz geliştirelim ve linke tıklandığında sayfa içeriği "Yükleniyor" olsun, içerik geldiğinde de zaten yükleniyor kalkacak.
 
-```
+```js
 function ajax_istek(hedef){
   $('icerik').setHTML('Yükleniyor');
   new Ajax(hedef, {
@@ -87,7 +87,7 @@ function ajax_istek(hedef){
 
 Biraz daha geliştirip yüklenme işlemi bittiğinde birşeyler yaptıralım.
 
-```
+```js
 function ajax_istek(hedef){
   $('icerik').setHTML('Yükleniyor');
   new Ajax(hedef, {
@@ -102,14 +102,14 @@ function ajax_istek(hedef){
 
 Örneğin burada alert yerine sayfanın bir köşesinde bu uyarıyı gösterip gizletebilirsiniz, Ya da içeriği basmayıp bir işlem yaptırabilirsiniz. Bunu örneklemek için işe biraz form katacağım. mfyz.com'da üye kayıt sayfasında kullanıcı adı kontrol mekanizmasını anlatacağım. Kayıt formuna girdiğinizde kullanıcı adı seçip yazdıktan sonra bilgi giriş kutusundan çıktığınızda (yani başka bir nesenye odaklandığınızda) otomatik olarak kullanıcı adının veritabanında olup olmadığını sorgulayıp cevabı geliyor ve ona göre kutu yeşil veya kırmızı oluyor farkında iseniz.
 
-```
-<input id=""kadi"" type=""text"" />
+```html
+<input id="kadi" type="text" />
 
 ```
 
 şeklinde bir inputum var ve onBlur olayına yani kutudan odak gittiğinde bir fonksiyon çağırıyorum.
 
-```
+```js
 function kullanici_adi_kontrol_et(kadi){
   // kullanici adini veritabanindan kontrol
   // edecek php dosyasina sorgulatiyorum
@@ -148,7 +148,7 @@ Bu istekleri ve cevap işleme tekniklerini uygulamanıza göre geliştireceksini
 
 Mootools'da çok güzel bir özellik daha var. Formunuzu çok pratik bir şekilde ajax ile göndermek.
 
-```
+```html
 <form id="bilgi_formu" action="kayit.php" method="post">
   Ad : <input type="text" name="ad"><br>
   Soyad : <input type="text" name="soyad"><br>
@@ -159,14 +159,14 @@ Mootools'da çok güzel bir özellik daha var. Formunuzu çok pratik bir şekild
 
 böyle bir formunuz olduğunu varsayalım. Oldukça basit yani. Gönder butonuna basıldığında normal şekilde kayit.php dosyasina post methodu ile 2 değişken gidiyor biliyorsunuz. kayit.php'de de bu değişkenleri işliyorsunuz.
 
-```
+```js
 $('bilgi_formu').send();
 
 ```
 
 kodu sayesinde formu ajax ile gönderebilirsiniz. Gideceği url, methodu ve datası otomatik olarak bulunup gönderiliyor. Örnek kullanımını da şu kodlar özetleyebilirim :
 
-```
+```html
 <form id="bilgi_formu" action="kayit.php" method="post">
   Ad : <input type="text" name="ad"><br>
   Soyad : <input type="text" name="soyad"><br>
@@ -186,6 +186,9 @@ function gonder(){
 
 Gördüğünüz gibi submit yerine buton kullanarak bir fonksiyon çağırıyorum. ajax için kullandığımız send fonksiyonunun ilk parametresi ajax için kullandığımız ayar dizesi oluyor. Yani update ile gelen içeriği biryere yazdırabilir veya ajax için uyguladığımız taklaları burada da attırabilirsiniz.
 
-Mootools ajax dökümantasyonu : [http://docs.mootools.net/Remote/Ajax.js](http://docs.mootools.net/Remote/Ajax.js) Ajax Demoları : [http://demos.mootools.net/Ajax](http://demos.mootools.net/Ajax) [http://demos.mootools.net/Ajax.Form](http://demos.mootools.net/Ajax.Form)
+Mootools ajax dökümantasyonu:
+- [http://docs.mootools.net/Remote/Ajax.js](http://docs.mootools.net/Remote/Ajax.js)
+- Ajax Demoları : [http://demos.mootools.net/Ajax](http://demos.mootools.net/Ajax) 
+- [http://demos.mootools.net/Ajax.Form](http://demos.mootools.net/Ajax.Form)
 
 > Not : Nesnelere olay ekleyip bu işleri yaptırmak daha kolaydır. Mesela form ajax ile post etmek için submiti butona çevirmek ilkel bir mantıktır. Forma doğrudan onSubmit olayı ile kural belirleyerek yaparız aslında bu işlemleri. Fakat dökümanda daha fazla kafa karışıklığı yaratmaması için doğrudan fonksiyon çağırtıp işlem yaptırdım.

@@ -19,7 +19,7 @@ Sonuç olarak güvenlik, daha taşınabilir kod, kolaylık gibi özelliklerinden
 
 PEAR'ı sisteminize kurmanız gerekiyor. Ya da PEAR'ı kendi projenize gömerek de kullanabilirsiniz. http://pear.php.net/package/MDB2 adresinden MDB2'yi indirebilirsiniz. PEAR dizininizi include_path'a tanıtırsanız şu şekilde sayfa başında MDB2'yi çalıştırabilirsiniz :
 
-```
+```php
 require_once('MDB2.php');
 ```
 
@@ -29,7 +29,7 @@ MDB2'yi bağlamak çok kolay. Bağlantı fonksiyonunda DSN (Data Source Name) de
 
 Aşağıdaki örnekten rahatça anlayacaksınız zaten DSN'nin nasıl birşey olduğunu :
 
-```
+```php
 $db = MDB2::connect("mysql://kullanici:sifre@localhost/veritabani");
 if(PEAR::isError($db)){
   die( 'Veritabani baglantisi yapilamadi!   
@@ -46,7 +46,7 @@ Neyse, bağlantı kısmı işin başlangıcı. Asıl sık sık kullanacağımız
 
 #### Sorgu işletmek
 
-```
+```php
 // sorguyu isletirken query fonksiyonunu kullanıyoruz
 $sorgu = $db->query("select * from haberler");
 
@@ -77,7 +77,7 @@ if( $sorgu->numRows() > 0 ){
 
 En sevdiğim kısmı ise sizi verilerinizin türünü kontrol etme işini üstünüzden alması. Bunun için iki yol var. Birincisi query kullanarak quote yapmak. Yani Türkçesi, yukarıdaki methodu kullanarak sorgu işletmek, ama işletirken de değişkenleri tek tek bir fonksiyondan geçirmek. Örnekle anlatırsam :
 
-```
+```php
 // elimizde $ad, $ziyaret_sayisi degiskenleri olsun
 
 $sorgu = $db->query('insert into uyeler (ad, ziyaret) values ('. $db->quote($ad, 'text') .', '. $db->quote($ziyaret_sayisi, 'integer') .')');
@@ -94,7 +94,7 @@ quote kullanımından biraz daha uzun. Ancak eğer sorgunuzda kullanıcıdan gel
 
 Gelelim kullanıma, bunu da örnekleyerek anlatacağım :
 
-```
+```php
 // prepare ile ilk parametrede sorgunuzu yazıyorsunuz. Değişken olan her yere tırnak fln koymadan sadece soru işareti koyuyorsunuz. prepare fonksiyonunun ikinci parametresinde de dizi olarak sırasıyla o soru işaretlerinin veri türlerini belirtiyorsunuz.
 $sorgu = $db->prepare("select * from uyeler where adi like ?", array('text'));
 
@@ -109,7 +109,7 @@ if($sonuc->numRows() < 1) die("sonuc bulunamadi"); $uyeler = $sonuc->fetchAll();
 
 Bu örnekte tek değişken gösterdiğim için pek anlaşılmamış olabilir. Ancak alttaki örnekte prepare & execute yapısının önemini kavrayacaksınız.
 
-```
+```php
 // elimizde çok değişken olsun
 
 $sorgu = $db->prepare("insert into uyeler (no, adi, eposta, yorum_sayisi, uyelik_tarihi, aktif, www) values (?, ?, ?, ?, now(), ?, ?)", array('integer', 'text', 'text', 'integer', 'integer', 'text'));

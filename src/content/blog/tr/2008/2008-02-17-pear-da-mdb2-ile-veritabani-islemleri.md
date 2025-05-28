@@ -14,14 +14,14 @@ lang: tr
 MDB2 pear'da eskiden DB adıyla geliştirilen ve bir süre önce gelişimi durdurulup projeyi mdb2 olarak devam ettirdikleri bir veritabanı yönetim kütüphanesidir. Aslında sırayla girdiğimiz mysql_connect, mysql_select_db, mysql_query ... gibi işlemleri biraz daha ortak yapıda kullanmamızı sağlayan, çeşitli yetenekleri olan güvenli bir kütüphane.
 
 Normalde veritabanımıza (mysql, mssql veya pgsql farketmez) bağlanırken bağlantı kaynak değşkeni oluştururuz. Örneğin :
-```
+```php
 $db = mysql_connect(...);
 
 ```
 sonra da bu değişkeni kullanarak fonksiyonlarımızı işletiriz. Bu noktadan sonra veritabanı seçeriz ve sorgular üretip sonuçlarını işleriz.
 
 MDB2'de veritabanı bağlantı cümleleri vardır. Tek hamlede hem bağlantı değişkenimizi oluşturur hem de veritabanı seçeriz.
-```
+```php
 $db = MDB2::connect("bağlantı cümlesi");
 
 ```
@@ -37,19 +37,19 @@ yeterince açık ama yine de üstünden geçeyim. Gördüğünüz gibi cümle bi
 Biliyorsunuz mysql mssql sqlite pgsql arasında çok fazla kural farkı yok. Yani aynı sorgularla veri ekleyebiliyor, güncelleyebiliyor, silebiliyor ve listeletebiliyoruz. Böylece aynı veritabanı yapısına sahip mysql ile çalışan bir projeyi mssql'e geçirmek çok da zor olmuyor :)
 
 Şimdi basitçe bir sorgu işletmeyi göstereyim. MySQL'de bir sorgu işletmek için:
-```
+```php
 $sorgu = mysql_query("select ...");
 // veya
 mysql_query("delete from ...") or die("silinemedi");
 
 ```
 şeklinde kullanıyorduk. MDB2'de de çok farklı değil:
-```
+```php
 $sorgu = $db->query("select ...");
 
 ```
 sorgu sonucunu işlerken
-```
+```php
 print 'Gösterilen kayıt sayısı: ' . mysql_num_rows($sorgu) . '<br/>';
 
 while($bilgi = mysql_fetch_assoc($sorgu)){
@@ -58,25 +58,25 @@ while($bilgi = mysql_fetch_assoc($sorgu)){
 
 ```
 şeklinde kullanırdık. İşte bu noktada MDB2 bize birçok kolaylık sağlıyor. MDB2'de sürü sepet sonuç işleme fonksiyonu var fakat biz 2 tanesini kullanacağız.
-```
+```php
 $sorgu = $db->query("select no, adi, eposta from uyeler where uye_no = 5");
 $uye_bilgisi = $sorgu->fetchRow();
 
 ```
 Bu kodda $uye_bilgisi değikeni dizi olarak indisleri normal numara olmak üzere $uye_bilgisi[0]'da no, $uye_bilgisi[1]'da adi, $uye_bilgisi[2]'da eposta, alanlarını tutar. fetchRow fonksiyonunun parametresiyle "İşleme Türü"nü ayarlarız. Eğer ayarlamazsak, veri az önceki gibi gelecektir.
-```
+```php
 $uye_bilgisi = $sorgu->fetchRow(MDB2_FETCHMODE_ASSOC);
 
 ```
 olarak kullanırsak taboldaki indis adlarına göre doğrudan seçebiliriz verimizi ($uye_bilgisi[no], $uye_bilgisi[adi] $uye_bilgisi[epsta]). Bunu her seferinde yapmak yerine, veritabanı bağlantısı yaptıktan hemen sonra
-```
+```php
 $db->setFetchMode(MDB2_FETCHMODE_ASSOC);
 
 ```
 ile "İşleme Türü"nü tüm betik için ayarlamış oluruz. Bundan sonra ilk verdiğim örnek koda göre işleminizi kolayca yapabilirsiniz.
 
 Genellikle 2 tür veri çekeriz, tek satırlık sonuçlar veya listeler. Mesela yukarıdaki sql cümlesi bize tek kayıt döner yani 5 nolu üyenin bilgilerini. Bunun için doğrudan fetchRow() kullanarak bilgileri aldık. Çok satırlı bir sql sorgusu işletiyor olsaydık :
-```
+```php
 $sorgu = $db->query("select no, adi, eposta from uyeler");  // tum uyeler
 while( $uye_bilgisi = $sorgu->fetchRow() ){
   print $uye_bilgisi[adi];
@@ -84,7 +84,7 @@ while( $uye_bilgisi = $sorgu->fetchRow() ){
 
 ```
 şeklinde fetchRow()'u while içinde değişkene atama olayı olarak tanımlayacaktık. Böylece kayıtlar bittiğinde atama gerçekleşmeyecek ve döngü duracaktı. Fakat bu noktada kolaylık olsun diye tüm kayıtları çok boyutlu diziye doğrudan almak için **fetchAll()** fonksiyonunu kullanıyoruz.
-```
+```php
 $sorgu = $db->query("select no, adi, eposta from uyeler");  // tum uyeler
 $tum_uyeler = $sorgu->fetchAll(); // tüm üyeleri çok boyutlu dizi olarak aldık.
 
@@ -101,7 +101,7 @@ Tabi $tum_uyeler dizisi bizim listeledigimiz sql sonucunu dizi olarak donuyor bi
 Bu iki yol da neredeyse aynı. while, foreach veya verinizin dizi olarak olup olmaması alışkanlıklarınız ve programlama anlayışınız ile ilgili birşey.
 
 Daha da hızlı dizi olarak almak istiyorsanız
-```
+```php
 $uyeler = $db->queryAll("select * from uyeler");
 
 ```
@@ -120,7 +120,7 @@ size tüm üyleri çok boyutlu dizi olarak $uyeler değişkenine atayacaktır. q
 #### Hata yakalamak
 
 Sorgunuzu çalıştırırken birçok nedenden dolayı çalışmayabilir.
-```
+```php
 $sorgu = $db->query("...");
 
 if(PEAR::isError($sorgu)) {

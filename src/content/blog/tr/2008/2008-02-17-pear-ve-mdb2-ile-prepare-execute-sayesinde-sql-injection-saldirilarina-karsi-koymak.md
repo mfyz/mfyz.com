@@ -22,14 +22,14 @@ SQL injection için eğer pear ve mdb2 kullanmıyorsanız, kullanıcıdan gelen 
 Aslında tek görevi güvenlik değil bu fonksiyonların. Asıl amaç veritabanına doğru türde veri göndermek. Aynı zamanda tek sql'i tekrar tekrar yazmadan birden fazla çalıştırmanızı da sağlıyor. Güzelliklerine az sonra değineceğim :)
 
 MDB2'de bir sorguyu işletmek için
-```
+```php
 $sorgu = $db->query("insert into tablom (no, yazi) values (34, 'Metin degeri')");
 
 ```
 query fonksiyonunu kullanıyorduk. Diyelim ki 15 tane alanınız var ve hepsini "insert" sql cümlenizde kullanıyorsunuz. query fonksiyonu ile bir sürü tırnak ve değişkeni cümleye dönüştürmek için karışık bir kod yazacaksınız. tek satır görünümünde ama 4-5 satır uzunluğunda birşey olacak :)
 
 Prepare ve execute fonksiyonlarını aşağıdaki örnekle açıklayayım.
-```
+```php
 $sorgu = $db->prepare("insert into tablom (no, yazi) values (?, ?)", array('integer', 'text') );
 $sonuc = $sorgu->execute(array( 34, 'Yazı yazı yazı' ));
 
@@ -41,7 +41,7 @@ $sorgu değişkenine bir sql hazırlıyoruz. Yapılan şey cümle olarak sql cü
 İkinci satırdaysa hazırlanmış sql'i işletiyoruz. Tabiki dizi olarak VERİ'lerimizi veriyoruz execute fonksiyonuna. execute fonksiyonu da $sorgu nesnesinin bir özelliği tabiki. Yani prepare olmamış bir sql execute edilemez. Hata verir. Hatta böyle bir fonksiyon yok der :)
 
 İşin güzelliğini örnekle açıklayayım :
-```
+```php
 $sorgu = $db->prepare("insert into tablom (no, yazi) values (?, ?)", array('integer', 'text') );
 // birden fazla veriyi ayni sql ile ekleyelim
 $sonuc = $sorgu->execute(array( 34, 'Yazı yazı yazı' ));

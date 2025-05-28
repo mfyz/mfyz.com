@@ -21,7 +21,7 @@ Aslında yapılan iş oldukça basit. Öncelikle dosyalarımızı php dosyamız�
 
 Dosyalarımız encode etmek için bir kod kullanacağız. Bu işlemi başka bir php dosyası oluşturarak yapın.
 
-```
+```php
 <?php
 $dosya = 'resim.gif';
 // dosya icerigini okuyalim
@@ -37,7 +37,7 @@ print $icerik_ascii;
 
 Bu kod resim.gif dosyasını ekrana ascii karakterlerle şifrelenmiş şekilde uzun bir metin şeklinde basacaktır. Bu metini kopyalayarak kullanacağız ve orjinal proje dosyamız şöyle olacak
 
-```
+```php
 // dosyalar
 $dosyalar["resim.gif"] = "R0lGODlhEAAQAMQAAGZmZsbGxaSko4OEgxl4ueT//3G59ejo6Lu7u9zd3".
                          "DOMxXp6eqjU/5mZmX+RmdPU1LKzsfb29v///3u75a2tpY6OjczMzDqPz6".
@@ -55,7 +55,7 @@ Yukarıdaki şekilde tüm dosyalarınızı base64_encode'dan geçirip $dosyalar 
 
 Neyse, dosyalarınızı $dosyalar dizisine kendi adları indis olacak şekilde kaydettiniz. php dosyanızın boyutu kabardı farkındaysanız (kontrol ediniz). Şimdi bu tanımların ardına ufak bir kod ile işlemi bitireceğiz.
 
-```
+```php
 if( $_GET["islem"] == 'dosya' ){
   if( array_key_exists($_GET["dosya"], $dosyalar) ){
     die( base64_decode( $dosyalar[ $_GET["dosya"] ] ) );
@@ -74,14 +74,14 @@ Eğer get methodu ile islem değişkeni dosya olarak gelmişse ve get methodu il
 
 Projenin devamındaki bir kısımda
 
-```
+```html
 <img src="index.php?islem=dosya&dosya=resim.gif" ...>
 
 ```
 
 şeklinde kullandığınızda dosyanız resim olarak görüntülenecektir. Aynı şeyi bir arşiv dosyası için de yapabilirsiniz.
 
-```
+```html
 <a href="index.php?islem=dosya&dosya=kurulum_dokumani.pdf">Dosyayı indirmek için tıklayın</a>
 
 ```
@@ -92,7 +92,7 @@ gibi.
 
 Yukarıdaki kodları ayrı bir dosya olarak kaydedip dosyalarınızı tek parça hale getirdiğiniz bir veritabanı gibi düşünebiliriz. Yani
 
-```
+```php
 <?php
 // dosyalar
 $dosyalar["..."] = "....";

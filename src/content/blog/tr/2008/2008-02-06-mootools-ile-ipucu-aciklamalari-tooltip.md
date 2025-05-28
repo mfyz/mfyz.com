@@ -29,20 +29,20 @@ Eski kütüphaneyi (ipucu) hatırlayanlar bilir, bir nesneye ipucu eklemek için
 
 Örneğin :
 
-```
+```html
 <a href="http://www.mfyz.com" target="_blank">www.mfyz.com</a>
 
 ```
 olan nesneyi
 
-```
+```html
 <a href="http://www.mfyz.com" target="_blank" class="ipucu" title="MFYZ.Com">www.mfyz.com</a>
 
 ```
 
 şeklinde ipucu sınıfına dahil edip "<b>title</b>" argümanı olarak bir açıklama ekledik. Hatta bu açıklama içerisinde html etiketleri bile kullanabiliriz. (Tırnak kurallarına uygun olduğu sürece sorun çıkarmaz)
 
-```
+```html
 <a href="http://www.mfyz.com" target="_blank" class="ipucu"
    title="<b>MFYZ.Com</b> <br>Yeni pencerede açılır">www.mfyz.com</a>
 
@@ -52,14 +52,14 @@ Bu işlemi sadece bağlantılarda değil tüm html nesnelerinde uygulayabiliriz.
 
 Şimdi mootools Tips kütüphanesiyle ipucu tanımlayalım. (Bu tanımları mootools'u include ettikten sonrak bir javascript dosyanızda veya html dosyanızdaki bir javascript bloğuna koyarak yapın.)
 
-```
+```js
 var Ipuclari = new Tips( $('.ipucu') );
 
 ```
 
 new Tips tanımı içerisinde ilk parametre (zorunlu) ipucu uygulanacak nesneleri belirliyor. Mootools'un nesne seçicilerini kullanarak CSS adresine göre yani .ipucu belirteci ile ipucu sınıfındaki tüm nesneleri gösteriyoruz.
 
-```
+```js
 var Ipuclari = new Tips($('.ipucu'), {
   showDelay: 400,
   hideDelay: 400
@@ -71,7 +71,7 @@ ikinci parametre ile de bir ayar dizesi (nesne olarak) belirtiyoruz. Parametrele
 
 Ya da geçiş efekti uygulatarak gösterip-gizlemek isterseniz :
 
-```
+```js
 var Ipuclari = new Tips($('.ipucu'), {
   initialize:function(){
     this.fx = new Fx.Style(this.toolTip, 'opacity', {duration: 500, wait: false}).set(0);
@@ -94,7 +94,7 @@ Tabiki css ile yapacağız. Ayar parametrelerinden **className** parametresi ile
 
 Bu sitede kullandığım stile göre örnek vermek istiyorum, ben className kullanmadım. Yani varsayılan olarak "tool" ile başlıyor.
 
-```
+```css
 .tool-tip {
   background-color: black;
   padding: 5px 8px;
@@ -114,7 +114,7 @@ Bu sitede kullandığım stile göre örnek vermek istiyorum, ben className kull
 
 Bu stilde değiştirmeye çalışılan html kodu aslında şöyle, yani Tips eklentisi html'e şu kısmı sonradan dinamik olarak ekleyip ekranda gösteriyor.
 
-```
+```html
 <div style="position: absolute; top: 96px; left: 810px; visibility: hidden; opacity: 0;" class="tool-tip">
   <div>
     <div class="tool-title">

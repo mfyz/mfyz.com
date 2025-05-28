@@ -18,7 +18,7 @@ Ufak işlemler içeren sayfalara bir sürü dosya oluşturup dosya kalabalığı
 #### Başlıyoruz
 
 Önce basit html yapınızı modüler yapıdaki gibi hazırlayalım.
-```
+```html
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
   "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -47,7 +47,7 @@ Ufak işlemler içeren sayfalara bir sürü dosya oluşturup dosya kalabalığı
 gördüğünüz gibi oldukça basit. Site başlığı, ufak bir menü iki HR arasında sayfa içeriği ve sayfa sonu notu. Sayfa içeriği kısmına modüler yapıdaki gibi içerğimizi basacağız.
 
 Şimdi 4-5 tane sayfamız var bunların içeriklerini gömeceğiz dosyamızın içine. Aslında hepsi basit bir kontrol mekanizması ile hallolacak.
-```
+```php
 <?php
 
 // bilgiler
@@ -111,7 +111,7 @@ ob_end_clean();
 
 Yukarıda gördüğünüz gibi sayfa içeriklerini kontrole göre ekrana bastık. Burada dikkatinizi 2 şey çekmiştir. ob_start, ob_get_contents ve ob_end_clean fonksiyonlarını ekrana basılan şeyleri $icerik değişkenine aktarabilmek için yaptım.
 
-```
+```sh
 echo <<<HTML_SON
 ...
 HTML_SON;
@@ -120,7 +120,7 @@ HTML_SON;
 kullanımı ise "HTML_SON" kelimesini bitirme kelimesi olarak görerek içeride tırnakları istediğimiz gibi kullanma özgürlüğü sunduğu için yaptım. Yani HTML_SON'ların arasında özgürce istediğiniz her karakteri kullanabilirsiniz. Bu sayede html olarak hazırladığınız sayfa içeriklerini 1-1 kopyala yapıştırarak rahatça işinizi halledebilirsiniz.
 
 Gelelim neden çıktıyı tamponladığıma, bu işlemi hiç echo, tamponlama kullanmadan şöyle de yapabilirdiniz :
-```
+```php
 if( $bolum == 'hakkimda' ){
 $icerik = "<h2>Hakkımda</h2>
 Ben buyum şunları bunları yaparım falan feşmekan.<br>
@@ -141,7 +141,7 @@ else if( $bolum == 'iletisim' ){
 Ama bir sürü tırnak sorunu ile uğraşmanız gerekebilirdi.
 
 Neyse içeriklerimizi get ile gelen bolum parametresine göre belirlediğimize göre htlm'imizde konumlandırabiliriz. Sayfanızdaki "içerik kısmı" yazan yere
-```
+```html
 ...
   <hr>
   <div>
@@ -154,7 +154,7 @@ Neyse içeriklerimizi get ile gelen bolum parametresine göre belirlediğimize g
 $icerik değişkenini basıyoruz. Böylece tek sayfada içerik basabiliyoruz.İşin bir de işlem kısmı var. Yani tek dosyada toplamaya çalıştığınız site/sayfa sadece içerikten oluşmak zorunda değil. Aynı zamanda php'ye bazı işler yaptırmanız gerekebilir. Hatta modül için bu tek dosya mantığını düşünürseniz işlem modüllerinde içerik değil sadece işlemler vardır. Aynı mantıkla bunu da yapabilirsiniz.
 
 Örnekte gördüğünüz gibi iletişim bölümünde bir iletişim formu var. Bunu işleyen kısmı buraya gömmek için sayfa içeriklerini seçtirmeden önce işlemler için de bir kontrol bloüu koyuyoruz.
-```
+```php
 <?php
 // bilgiler
 $bolum = $_GET["bolum"];
@@ -183,7 +183,7 @@ mesela sadece içerik gösteriliyorsa islem parametresi yoktur.
 
 ```
 işlemleri de sayfaya gömdükten sonra son sayfa şuna benzer olacak:
-```
+```php
 <?php
 // bilgiler
 $bolum = $_GET["bolum"];

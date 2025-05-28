@@ -16,7 +16,7 @@ v0.7'de gördüğünüz gibi her sayfanın altında bu sitelerin ikonları var v
 Neredeyse bütün sosyal link siteleri url kaydetme formlarını GET methodu ile gelen verilerle otomatik doldurabiliyor. Böylece hiçbir API veya benzeri zorlukla uğraşmadan dışarıdan istek kabul edebiliyorlar. Bu sayede buton haline dönüştürmek çok kolay.
 
 Ben bu servislerin bağlantılarını
-```
+```html
 Bu sayfayı "Sosyal Bağlantı" (Social Bookmarking) sitelerine kaydedin
 <ul>
 	<li><a href="#">del.icio.us</a></li>
@@ -29,8 +29,8 @@ Bu sayfayı "Sosyal Bağlantı" (Social Bookmarking) sitelerine kaydedin
 </ul>
 
 ```
-htlm kodu ile sayfamın altına yerleştirdim. Gördüğünüz gibi sadece kendi kimlikleri ile **sayfayiImle** fonksiyonunu cagiriyorlar. Javascript kodum da şu:
-```
+html kodu ile sayfamın altına yerleştirdim. Gördüğünüz gibi sadece kendi kimlikleri ile **sayfayiImle** fonksiyonunu cagiriyorlar. Javascript kodum da şu:
+```js
 function sayfayiImle(servis){
 	var servis, url;
 	// sosyal link imleme url'leri (dinamik)
