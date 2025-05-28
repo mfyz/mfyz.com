@@ -37,19 +37,20 @@ Bir javascript eventi ile sayfa kaydırma hareketinizi izleyerek imajlari göste
 
 Sayfanızdaki tüm görsel adreslerini bu imajı yükleyecek şekilde ayarlayın. İmajlarin gerçek adreslerini de "data-original" özelliğine alıyorsunuz.
 
-```
+```html
 <img data-original="img/example.jpg" src="img/grey.gif">
 
 ```
 
 Sonra jquery ve lazyload'ı sayfanıza ekledikten sonra bu imajları bir seçiciyle seçip lazyload'ı çalıştırıyoruz.
 
-```
+```html
 <script src="jquery.js" type="text/javascript"></script>
 <script src="jquery.lazyload.js" type="text/javascript"></script>
+```
 
+```js
 $("img.lazy").lazyload();
-
 ```
 
 Yukarıdaki kod "lazy" sınıfındaki resimleri yükleyecektir. Daha genel bir kullanım istiyorsanız sadece img etiketlerini belirterek sayfanızdaki tüm görsellerin lazyload ile yüklenmesini sağlayabilirsiniz.

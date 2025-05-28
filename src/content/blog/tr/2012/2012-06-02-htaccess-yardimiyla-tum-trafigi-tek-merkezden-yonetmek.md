@@ -13,17 +13,17 @@ URL şemaları, SEO amacıyla önem taşımakta. Bunun yanı sıra, her gelişti
 
 Basit bir proje örneği vereceğim, diyelim ki basit bir ürün katalogu hazırlıyorsunuz, katalog anasayfasında son ürünler ve kategoriler listeleniyor. Her her ürün de bir kategoride listeleniyor. Yani kategori sayfaları ve ürün detay sayfalarınız var. Basit bir php projesi ile bu uygulamayı 3 parçaya ayırdınız, anasayfa, kategori ve ürün detay. Her parçanın kendine ait kodu var. Normalde bu parçaları birer php dosyası olarak hazırladığınızı düşünürsek her parçayı birbirine
 
-*   anasayfa.php
-*   kategori.php?kategori_id=21
-*   urun_detay.php?urun_id=2320
+*   `anasayfa.php`
+*   `kategori.php?kategori_id=21`
+*   `urun_detay.php?urun_id=2320`
 
 gibi linklerle bağlıyorsunuz.
 
 URL şemasını su şekilde kurgulamak istediğinizi düşünelim:
 
-*   /
-*   /kategori/21
-*   /urun/2320
+*   `/`
+*   `/kategori/21`
+*   `/urun/2320`
 
 Bunun için klasik yöntemlere göre htaccess dosyanıza her link şeması için bir kural yazıp gerekli yönlendirmeyi yapmanız gerekir. Fakat her kural için düzenli ifade (regex) yazmak hem yorucu olabilir hem de her yeni url şeması için yeni regex hazırlamanız ve htaccess dosyanızı güncellemek durumunda kalırsınız. Eğer url şemalarınız belirli bir mantığa göre hazırlıyorsanız -ki MVC frameworkleri genelde buna benzer kurallara sahiptir- bu kuralı algoritmaya çevirmeniz çok kolay.
 
@@ -42,7 +42,12 @@ RewriteRule ^(.*)$ index.php?path=$1 [L,QSA]
 ```
 Yukarıdaki kod sitenize gelen tüm istekleri index.php dosyasına yönlendirir.
 
-Örnek olarak: http://example.com/ http://example.com/kategori/123 http://example.com/urun/8765 gibi istekleri index.php?path=/kategori/123 şeklinde tek parametre olarak index.php dosyasına iletilecektir. Ama yukaridaki kod teknik olarak eğer url'de geçerli bir dizin adresi veya dosya adresi yoksa istekleri index.php'ye yönlendirecektir. Yani "kategori" adında bir dizininiz varsa istek index.php'ye gitmez. Bunda da bir detay daha var. Eğer "kategori" adında bir dizininiz var ve url /kategori/sdjfhsdkfjshd ise bu URL'de aranan dosya orada olmadığı için istek yine index.php dosyasına aktarılır.
+Örnek olarak:
+*   `http://example.com/`
+*   `http://example.com/kategori/123`
+*   `http://example.com/urun/8765`
+
+gibi istekleri `index.php?path=/kategori/123` şeklinde tek parametre olarak index.php dosyasına iletilecektir. Ama yukaridaki kod teknik olarak eğer url'de geçerli bir dizin adresi veya dosya adresi yoksa istekleri index.php'ye yönlendirecektir. Yani "kategori" adında bir dizininiz varsa istek index.php'ye gitmez. Bunda da bir detay daha var. Eğer "kategori" adında bir dizininiz var ve url /kategori/sdjfhsdkfjshd ise bu URL'de aranan dosya orada olmadığı için istek yine index.php dosyasına aktarılır.
 
 Burada ilk problemin çözümü için, controller adlarınız projenizin kök dizininde varolmayan bir klasör adı olmalıdır. İkinci problem ise, siz kullanmıyor olsanız bile herhangi bir dizin içinde bulunamayan istek index.php dosyasına yönlenecek ve siz bunu kontrol etmek zorunda kalırsınız. Olmayan dosyalara yapılan istekler web'in doğasında olan bir şeydir. En basit örneği, sitenizi tarayan botlar (google bot etc...) sitenize robots.txt, favicon.ico, sitemap.xml veya crossdomain.xml gibi sorgular yapacaktır. Olmadığı için 404 hatası almaları gerekir yaptıkları şeyi doğru yapmak için. Bunun yanı sıra siz de bu gereksiz istekleri işlemenize gerek kalmazsınız.
 
@@ -65,7 +70,7 @@ Artık sitenize gelen tüm istekler index.php'nin elinin altında. "path" parame
 mfyz.com'un kodu çok eski sürümlerde Türkçe idi, sonrasında ilkel bir modüler yapıya evrimleşti, sonrasında dil değiştirdi, sonrasında ilkel bir MVC modeline evrimleşti, ve şu an oldukça gelişmiş bir MVC modeline sahip. Kod 95% İngilizce, çünkü hala Türkçe yazılmış ve refactor edilmeyi bekleyen eski kodlar duruyor hala derinlerde :) Neyse, bu örneği çoklu dile sahip bir projede çalışma ihtimali için veriyorum. Kod, controller'lar ve method adlarınız hep ingilizce (veya başka bir dilde) olmak zorunda olabilir veya ölyle olmasını isteyebilirsiniz. Böyle bir durumda Türkçe bir domain altında yoresel-organik-sabun.com/product/detail/1231231 gibi bir url şemasından çok yoresel-organik-sabun.com/urun/1231231 gibi bir URL tercih edersiniz değil mi? Şimdi bunun için kuralsal bir yaklaşımdan çok bir yol haritasının yolu gösterdiği bir mekanizmayı anlatacağım. Bu mekanizmanin bir diğer avantajı da aynı controller ve method'lara birden fazla farklı url şemaları oluşturabilmenizdir. Yani örneğin bir iletişim formuna sahipsiniz ve example.com/contact ve example.com/callus gibi iki url hatta aynı zamanda example.com/iletisim gibi farklı dildeki adresleri oluşturabilirsiniz. Sonra otomatik dil değişimi yapıp yapmamak sizin controller'da yaptığınız hünerli kodlara kalmış.
 
 Bir yol haritası oluşturmak aslında bu url şemalarını htaccess'da her şema için ayrı ayrı kural yazmaya benziyor, ama çok daha dinamik olabilir ve düzenli ifade yerine basit dizilerde tutulabilir. İlkel bir yol haritası dizisi yazacağım yukaridaki örnek proje için.
-```
+```php
 $router = array(
   'kategori' => array('controller'=>'kategori', 'method'=>'index'),
   'ürün' => array('controller'=>'ürün', 'method'=>'detail'),

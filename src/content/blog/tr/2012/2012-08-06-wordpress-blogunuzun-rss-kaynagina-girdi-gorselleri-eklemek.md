@@ -15,7 +15,7 @@ Wordpress'in kanca mimarisi sayesinde tema klasörünüzdeki fonksiyon tanımlam
 
 Bunun için, tema klasörünüzde (muhtemelen var olan) functions.php'ye
 
-```
+```php
 function add_thumbnails_to_rss($content, $sec = false, $third = false, $fourth = false) {
     $post_id = get_the_ID();
 

@@ -34,7 +34,7 @@ Sitenizi sayfaları kontrol ederek pharma hack olup olmadığını anlayamazsın
 Benim gördüğüm örnekleri popüler php hostinglerde ya sunucu kontrolünü ele geçirdikten sonra tüm hesaplara ya da sadece sizin hesabınızı ele geçirdilerse sizin hesabınızda yapılan birkaç ufak php numarasıyla sayfalarınızı arama motoru botlarında farklı render etme üzerine kuruludur. Eğer bir wordpress bloguna veya joomla, drupal gibi bir CMS kullanıyorsanız muhtemel olarak tehlike altındasınız demektir çünkü ele geçirilmesi, gizlenmesi en kolay ve hackerların hedef kitlesidir.
 
 Örnek bir pharma hack kodu göstermem gerekirse:
-```
+```php
 $check_tmg_password_reset_key = 'QN9Mrh7F=4?C!N^NP.NJ16YH6K66G=+BOeHeQ7D?A!"
 CMD$JT,UTP@#3kSZ=j8;>?=B5$(v+}k~)tKkwz6puT|_P{-[11):V;Hblc<eyfau+Z4r29[dID2ThIY.E^A|AHcN@E-
 woZPd'^'48X!Z(P<TZY/@:;f6G"/nQ<<i(YX3XE6<MjJ9X)ZnLD:7kE.9E;z=&ZIE05PEHZ

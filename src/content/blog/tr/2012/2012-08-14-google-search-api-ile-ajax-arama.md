@@ -40,7 +40,7 @@ Sonuç kümesindeki **response.responseData.cursor.estimatedResultCount** parame
 ### Örneği kodlayalım
 
 Yazının başlarında verdiğim site içi arama örneğini javascript ile kodlayalım. Doğrudan tüm kodu verip açıklayacağım.
-```
+```html
 <title>Page</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 
@@ -54,7 +54,7 @@ HTML tarafında ihtiyacınız olan iki ana parça, arama formu ve sonuçları li
 Javascript tarafını jQuery kullanarak yazarak HTTP çağrısını, JSON sonucunu işleme, html elemanlarını yönetme gibi birçok kısmı kolayca halledebilirsiniz.
 
 İlk yapmamız gereken şey arama formundan arama sorgusunu yakalamak ve arama butonundaki tıklama hareketini yakalamak olacak. Bunun için butonun tıklama olayını yakalayıp text alanının içeriğini alıyoruz.
-```
+```js
 $(function(){
   $('#searchButton').click(function(){
     search();
@@ -75,7 +75,7 @@ function search(){
 
 ```
 Google'un arama APIsini basit bir HTTP isteği ile kullanacağımızı söylemiştim, sonuç bir json nesnesi olduğu için jQuery'nin http istek yardımcı methodlarından **getJSON** methodunu kullanarak hem isteği yönetebilir hem de cevabı işleyebiliriz.
-```
+```js
 function loadResults(query, start){
   var apiURL = 'http://ajax.googleapis.com/ajax/services/search/web?v=1.0&callback=?';
   $.getJSON(apiURL, {

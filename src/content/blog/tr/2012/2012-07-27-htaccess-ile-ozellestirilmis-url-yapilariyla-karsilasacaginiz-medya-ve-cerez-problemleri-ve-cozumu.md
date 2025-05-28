@@ -16,7 +16,7 @@ Bu yazıda iki çok açık problemden ve basit çözümlerinden bahsedeceğim.
 İlk problemlerden birisi sayfanızda kullandığınız tüm medya veya eklentilerin yollarını domain seviyesinden belirtmek durumunda olmanızdır. Eğer htmlinizi yazarken sayfanızdaki görselleri, stilleri, scriptleri bu şekilde tanımlamadıysanız tüm sayfalarınızdaki yolları güncellemeniz gerekiyor.
 
 Basit bir örnekle, ana dizinde duran bir index.php veya html dosyanızın olduğunuz varsayalım ve images, css ve js olarak 3 medya dizininiz olsun. html'inizi kodlarken yolları su şekilde belirtmeniz dogal:
-```
+```html
 <html>
     <head>
         <title>Blah blah</title>
@@ -46,7 +46,7 @@ Bir diğer problem ise çerez (cookie) problemidir. Çerezlerin tarayıcıda kay
 Bu durumda url'lerinizi klasör şeklinde ayarladıktan sonra uygulamanızda nerelerde çerez kaydediyor, siliyor veya güncelliyor olduğunuzu hatırlamanız ve güncellemeniz gerekiyor. Bu güncellemeyi hem javascript'deki cookie kullanımınız için hem de sunucu tarafındaki çerez kullanımınız için güncellemeniz gerekiyor. Sunucu tarafında bütün dillerde çok bilinen bir problem olduğu için yazdığınız sunucu taraflı dile ilişkin çerez methodlarını inceleyin. Ben kısaca php'de nasıl yapacağınızı anlatacağım.
 
 Önce javascript ile çerez işlemlerinizi güncellemek için, normalde kullandığınız:
-```
+```js
 document.cookie = "";
 ```
 koduna ek olarak "path=/" eklemeniz gerekecektir (tabi ki ; ayracını kullanarak diğer çerez cümlenize ekleyebilirsiniz.

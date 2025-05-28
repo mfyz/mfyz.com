@@ -12,7 +12,7 @@ lang: tr
 CSS2 ile gelen en faydalı özelliklerden biri de yeni sözde seçiciler, bunlardan ikisi "before" ve "after" seçicileri birçok minimal yaklaşıma olanak sağladı.
 
 Özelliğin çıkış noktası bir elementin öncesi veya sonrasına noktalama gibi işaretçiler yerleşitrebilmekti. Yani en sade kullanımıyla:
-```
+```css
 .my_quote:before {
     content: '"';
 }
@@ -26,7 +26,7 @@ Bu kod ile bir alıntı yazısının başına ve sonuna çift tırnak ekleyebili
 ![](/images/archive/tr/2012/12/css3_pseudo_quote.png)
 
 Kırmızı ile işaretlediğim karakterler css ile eklendi. Ya da devamı olan bir yazı basarken ekrana:
-```
+```css
 .read_more_link:after {
     content: '...';
 }
@@ -41,7 +41,7 @@ Fakat bu yeni sözde seçicileri akıllıca kullanarak bir element üretebilirsi
 Çok yaygınlaşan bir kullanımla, bir elementin başına veya sonuna eklemek istediğiniz ufak simgeleri, resimleri veya işaretçileri bu sözde seçicilerle yaratabilirsiniz.
 
 Basit örnekle size linklerinize simgeler koyabilmeyi anlatacağım. Biliyorsunuz HTML öznitelik seçicileri var css'de ve "target" özniteliği "_blank" olan bir linki diğerlerinden ayrı bir şekilde seçebilirsiniz. **a[target="_blank"]** seçicisi dış bağlantıları seçecektir.
-```
+```css
 a[target="_blank"]:after {
     content: '';
     display: inline-block;

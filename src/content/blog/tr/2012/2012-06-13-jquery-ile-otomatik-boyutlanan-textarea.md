@@ -18,7 +18,7 @@ Birkaç farklı jquery plugini bulabilirsiniz bunun için, ben şu an mfyz.com'u
 [http://www.jacklmoore.com/autosize](http://www.jacklmoore.com/autosize) adresinden jquery autosize plugin'ini test edebilirsiniz, sayfayı ziyaret edin ve güncel sürümü indirin.
 
 **jquery.autosize-min.js** dosyasını projenizin assetlerine kopyaladıktan sonra sayfanıza include edin. Örnegin sayfanızda "comment" kimliğine sahip bir textarea olduğunu varsayalım.
-```
+```html
 <textarea id="comment"></textarea>
 <script type="text/javascript">
 $(function(){
@@ -30,7 +30,7 @@ $(function(){
 Bu kod comment kimlikli textarea'nizi otomatik genişleyen bir textarea'ya dönüştürecektir. Hepsi bu kadar...
 
 Daha pratik ve genelleştirerek bir sınıf tanımlayıp o sınıftaki tüm textarea'lari otomatik olarak bu plugin ile otomatik-yukseklik-ayarlanan textarea'lara dönüştürebilirsiniz:
-```
+```html
 <textarea id="txt1" class="autosize"></textarea>
 <textarea id="txt2" class="autosize"></textarea>
 <script type="text/javascript">

@@ -15,7 +15,9 @@ Eğer bir iOS mobil uygulamanız var ise web sayfanıza ekleyeceğiniz basit bir
 
 Görsel şekilde müdahale edemeyeceğiniz bu bannerı basit bir meta etiketi ile oluşturmak mümkün.
 
-[code=html][/code]
+```html
+<meta name="apple-itunes-app" content="app-id=your_app_id">
+```
 
 iTunesConnect'den edineceğiniz nümerik uygulama kimliğini your_app_id ile değiştirerek sitenizin anasayfasına ekleyebilirsiniz. Gerisini safari hallediyor.
 

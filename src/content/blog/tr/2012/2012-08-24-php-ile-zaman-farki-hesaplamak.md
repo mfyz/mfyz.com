@@ -17,7 +17,7 @@ Bu hesaplama aslında basit bir matematiksel bir hesap gibi görünse de aslınd
 
 Şimdi basit bir kod ile örnekleyeceğim.
 
-```
+```php
 $now = new DateTime();
 $created = new DateTime($_entry['created_at']);
 $diff = date_diff($now, $created);

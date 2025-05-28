@@ -12,14 +12,14 @@ lang: tr
 "Yil 20XX olmuş hala IE ile uğraşıyoruz" diyeceğiz herhalde yıllar sonra da. Bu süreçte ie'ye tekmeyle de olsa html5'i en azından etiketleri tanıması için en basit çözüm olarak iki şey yapmanız gerekiyor.
 
 Birincisi IE'nin dom ağacında html5 etiketlerine ait hiçbir initialization yok. Bunu tetiklemek için kullandığınız her html5 etiketi için en az bir tane element üretmeniz yetiyor. Sonrasında IE dökümandaki tüm elementleri dom ağacınızda tanımaya başlıyor. Bunun için:
-```
+```html
 <script type="text/javascript">
 	elements = "article footer header nav sidebar section".split(' ');
 	for (i in elements) { document.createElement(elements[i]); }
 </script>
 ```
 Tamam etiketler tanınır hale geldi ama daha büyük problem ise IE görsel olarak bu etiketlerle ne yapacağını bilemediği için default stillerini uyguluyor. Anlam veremeyeceğiniz marginler, değişik element türleri olarak bütün etiketler birbirine girmiş oluyor arayüzde. CSS ile tüm html5 etiketlerini blok element ayarlayıp basitçe resetlemek için:
-```
+```css
 section, header, nav, footer, article {
   display: block;
   padding: 0;

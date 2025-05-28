@@ -22,7 +22,7 @@ Bir diğer avantaj da, herhangi bir ödeme yönetim sistemi, banka vs gibi bir e
 #### Sunucuda fatura (receipt) doğrulamak
 
 Apple, faturaları dogrulatmak için geliştiricilere bir protokol sunuyor. Özel bir adrese göndereceğiniz fatura kodunu, ödeme detaylarını alabileceğiniz şekilde cevap olarak dönen bir HTTP servisi var. Bu servise, iOS StoreKit'den aldığınız fatura kodunu gönderdiğinizde, ödeme detaylarını JSON nesnesi cevap olarak alıyorsunuz. Bunu PHP ile nasıl yapabileceğinizi anlatacağım. PHP ile HTTP isteği yapmak için CURL kullanacağım.
-```
+```php
 function validate_receipt($receipt_data, $sandbox_receipt = FALSE) {
     if ($sandbox_receipt) {
         $url = "https://sandbox.itunes.apple.com/verifyReceipt/";
@@ -58,7 +58,7 @@ Bu fonksiyon, uygulamamızda, faturaları doğrulamak için kullandığımız me
 Apple, uygulamanızın geliştiririci sürümlerinde (iOS Simulator'da veya XCode'dan doğrudan cihazınıza derlediğiniz sürümlerde), ödemeleri test edebilmek için Sandbox modunda yani test modunda çalışıyor, dolayısıyla sadece Sandbox kullanıcıları ile ödeme yapabiliyorsunuz. Sandbox Apple kimliği oluşturmak için iTunes Connect arayüzünü kullanmanız gerekiyor. Diyelim ki test kullanıcısıyla ödeme yaptınız, bu ödemeyi test sunucularında yani Sandbox sunucularında doğrulamanız gerekiyor. Bunu da, fonksiyonun ikinci parametresiyle belirtebilirsiniz.
 
 Fonksiyon oldukça açık bir şekilde biz POST veri seti oluşturup Apple dogurlama sunucularına gönderiyor. Tabi ki uygulamanıza ait şifrenizi de burada belirtmeniz gerek. Bunu da iTunesConnect'den alabilirsiniz. Fonksiyon gelen cevabın HTTP cevap kodunun 200 olması isteğinize ait bir cevap olduğu anlamına gelir. Bu durumda cevap olarak bir json nesnesi alacaksınız. JSON nesneniz şöyle birşey olmalı:
-```
+```json
 {
    "receipt":{
       "original_purchase_date_pst":"2012-12-11 19:39:22 America\/Los_Angeles",

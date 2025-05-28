@@ -16,7 +16,7 @@ Her kodu tamamen elde hazırlamanın en büyük dezavantajı, kararlılıgını 
 Şimdi gelelim arayüz dillerindeki çatılara. Birkaç yıl öncesine kadar CSS için çok yaygın kullanılan veya birçok geliştiricinin ürettiği bir arayüz çatısı yoktu. Nedeni ise hem css3'den önceki versiyonlarda bir çatı gerektirecek genel ihtiyaçlar yoktu bir diğer nedeni de farklı çözünürlüklerdeki ekranlar bu kadar farklı varyasyonlara sahip değildi.
 
 Bir CSS çatısına ihtiyaç duymanızı gerektirecek en büyük bir başka neden ise özellikle standartlara kabul edilmemiş css3 özelliklerinin (animasyonlar vs) hala tarayıcı spesifik on ekler istemesi olabilir. Örneğin, standartlara kabul edilmesi çok eskilere dayanmayan border-radius özelliğini kullanmak ve bütün tarayıcılarda çalışmasını sağlamak için aynı satırı -moz -webkit -o ve -ms gibi on eklerde kullanmak zorunda kalıyorduk. border-radius çok basit bir özellik ve tek parametre gerektirdiği için bunu örneklemem, bu problemin gözünüzde çok canlanmasını sağlamayabilir ama başka bir örnek olarak, bir elemanınızın arka plan rengini doğrusal geçiş (linear gradient) ile şekillendirmek isterseniz uzun bir satır yazmanız ve bunu 4-5 tekrarda css dosyanızın içine koymanız gerekecektir.
-```
+```css
 background-image: linear-gradient(top, rgba(0, 0, 0, 1.00), rgba(0, 0, 0, 0.00));
 background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 1.00)), to(rgba(0, 0, 0, 0.00)));
 background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 1.00), rgba(0, 0, 0, 0.00));
@@ -46,7 +46,7 @@ Hayır, çatılar birçok işinizi kolaylaştırsa da temeldeki css dilinin geti
 
 CSS'i dil olarak daha öteye taşıyan ve birbirine benzeyen birkaç yapıdan bir tanesini kısaca anlatarak bahsedeceğim.
 
-Ben, kişisel olarak projelerimde LESS kullanıyorum. Less, css dökümanlarınızda iç içe tanımlamalar yapabilmenizi, fonksiyonlar tanımlayıp fonksiyonları kullanarak renk değişimleri, matematiksel işlemler yapabilmeyi ve benzer programatik şeyler yapabilmenizi sağlıyor, yabnı kısaca css'e bazı programsal özellikler ekliyor. Birkaç farklı method ile kullanılabiliyor. En yaygın kullanımı bir javascript dosyası ile css'inizi tarayıcıda derleyebiliyorsunuz. En pratik kullanımı bu. Fakat tarayıcıdaki ön bellek, geliştirme esnasında baş ağrısı yapabildiği için kodunuzu yazdığınız gibi css dosyalarına derleyerek kullanmanızı tavsiye ediyorum. LESS hakkında biraz daha detaylı yazdığım su yazıyı inceleyebilirsiniz: [http://mfyz.com/less-ile-hiyerarsik-ve-fonksiyonel-css-yazmak](http://mfyz.com/less-ile-hiyerarsik-ve-fonksiyonel-css-yazmak)
+Ben, kişisel olarak projelerimde LESS kullanıyorum. Less, css dökümanlarınızda iç içe tanımlamalar yapabilmenizi, fonksiyonlar tanımlayıp fonksiyonları kullanarak renk değişimleri, matematiksel işlemler yapabilmeyi ve benzer programatik şeyler yapabilmenizi sağlıyor, yabnı kısaca css'e bazı programsal özellikler ekliyor. Birkaç farklı method ile kullanılabiliyor. En yaygın kullanımı bir javascript dosyası ile css'inizi tarayıcıda derleyebiliyorsunuz. En pratik kullanımı bu. Fakat tarayıcıdaki ön bellek, geliştirme esnasında baş ağrısı yapabildiği için kodunuzu yazdığınız gibi css dosyalarına derleyerek kullanmanızı tavsiye ediyorum. LESS hakkında biraz daha detaylı yazdığım su yazıyı inceleyebilirsiniz: [http://mfyz.com/less-ile-hiyerarsik-ve-fonksiyonel-css-yazmak](/less-ile-hiyerarsik-ve-fonksiyonel-css-yazmak)
 
 Benzer şeyleri yapan ve çok derinlerine inmediğim SASS'i da deneyebilirisiniz. [http://sass-lang.com/](http://sass-lang.com/)
 

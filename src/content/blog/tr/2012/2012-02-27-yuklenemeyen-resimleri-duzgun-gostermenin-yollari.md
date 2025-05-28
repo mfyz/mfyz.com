@@ -18,19 +18,19 @@ Bir resim yükleyemediğinizde yapabileceğiniz birkaç şey var, birincisi yük
 Eğer kaldırmak istiyorsanız img etiketi içindeki onerror özelliğinde resminizi kaldırabilirsiniz.
 
 Not: Sayfanızda jQuery kullanıldığını varsayıyorum.
-```
+```html
 <img src=""..."" alt="""" />
 ```
 Böylece resminiz yüklenmede başarısız olursa ortadan kaldırılacaktır.
 
 Eğer jenerik bir resime çevirmek istiyorsanız:
-```
+```html
 <img src=""..."" alt="""" />
 ```
 Bu örnekler sadece tek imaj için yazılmış örnekler,
 
 Eğer tüm sayfanıza etki edecek daha jenerik bir uygulama yapmak için;
-```
+```js
 $(function(){
   $('img').bind('error', function(){
     //$(this).remove();

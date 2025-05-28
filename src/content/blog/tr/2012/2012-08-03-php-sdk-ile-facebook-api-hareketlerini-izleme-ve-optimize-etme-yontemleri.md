@@ -17,7 +17,7 @@ Bu noktada ufak bir değişiklikle sunucunuz ile facebook sunucuları arasındak
 
 Şimdi ufak bir değişiklikle trafiği yakalayalım. Bunun için base_facebook.php dosyasında olan api methodunu:
 
-```
+```php
 public function api(/* polymorphic */) {
 	$args = func_get_args();
 	if (is_array($args[0])) {
@@ -31,15 +31,31 @@ public function api(/* polymorphic */) {
 
 aşağıdaki şekilde güncelliyoruz:
 
-$facebookApiCalls = array(); public function api( /* polymorphic */) { $args = func_get_args();
+```php
+$facebookApiCalls = array();
+public function api( /* polymorphic */)
+{
+	$args = func_get_args();
 
-$time_start = microtime(true);
+	$time_start = microtime(true);
 
-if (is_array($args[0])) { $result = $this->_restserver($args[0]); } else { $result = call_user_func_array(array($this, '_graph'), $args); }
+	if (is_array($args[0])) {
+		$result = $this->_restserver($args[0]);
+	} else {
+		$result = call_user_func_array(array($this, '_graph'), $args);
+	}
 
-$time_end = microtime(true); $time_elapsed = $time_end - $time_start; $time_elapsed *= 1000; //convert to millisecs
+	$time_end = microtime(true);
+	$time_elapsed = $time_end - $time_start;
+	$time_elapsed *= 1000; //convert to millisecs
 
-if (isset($GLOBALS['facebookApiCalls'])) $GLOBALS['facebookApiCalls'][] = array( 'duration' => $time_elapsed, 'args' => $args, ); return $result; }
+	if (isset($GLOBALS['facebookApiCalls'])) $GLOBALS['facebookApiCalls'][] = array(
+		'duration' => $time_elapsed,
+		'args' => $args,
+	);
+	return $result;
+}
+```
 
 Yukarıdaki kodda yaptığımız değişiklik basitçe api methodu her cağrılışında, facebook sunucularına yapılan http isteğinin ne kadar sürdüğünü ölçüp global bir dizide toplamak. Bu şekilde sayfanızın sonunda ekrana $facebookApiCalls dizisini bir tablo şeklinde veya basitçe var_dump alarak kaç çağrı yapıldığını, yapılan cağrıların her sayfada tekrar edip etmediğini gözlemleyip eğer yapılabiliyorsa ön bellekte veya oturum değişkenlerinde tutularak sorgu tasarrufu yapılıp yapılamayacağına karar verebilirsiniz. Eğer sorgularınız çok zaman alıyorsa sunucu trafiğinizde optimizasyonlara gidebilirsiniz.
 

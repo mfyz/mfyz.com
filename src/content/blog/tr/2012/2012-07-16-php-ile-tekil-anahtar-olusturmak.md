@@ -19,7 +19,7 @@ Bu noktada rastgele bir anahtar üretebilirsiniz, bunu yapmak çok zor değil. P
 
 Bunu daha pratik bir şekilde tek satırda bile yapabilirsiniz:
 
-```
+```php
 $anahtar = substr(str_shuffle('abcdefghklmnoprstuvyzqxw1234567890'), 0, 6);
 ```
 
@@ -29,7 +29,7 @@ Bu satır size 6 karakterlik bir kelime üretecektir. Basitçe str_shuffle fonks
 
 Veritabanındaki veriyi test ederek bir anahtar oluşturmanın en kısa ve basit kodu şöyle:
 
-```
+```php
 do {
     $anahtar = substr(str_shuffle('abcdefghklmnoprstuvyzqxw1234567890'), 0, 6);
 
