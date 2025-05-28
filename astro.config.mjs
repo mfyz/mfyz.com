@@ -7,12 +7,14 @@ import tailwind from "@astrojs/tailwind";
 import { transformerNotationHighlight } from "@shikijs/transformers";
 import vercel from "@astrojs/vercel";
 import remarkToc from 'remark-toc'
+import { remarkEmoticons } from './src/remark-plugins/remark-emoticons.mjs'
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://mfyz.com",
-  integrations: [mdx({remarkPlugins: [remarkToc]}), sitemap(), react(), tailwind()],
+  integrations: [mdx({remarkPlugins: [remarkToc, remarkEmoticons]}), sitemap(), react(), tailwind()],
   markdown: {
+    remarkPlugins: [remarkToc, remarkEmoticons],
     shikiConfig: {
       themes: {
         light: "dracula",

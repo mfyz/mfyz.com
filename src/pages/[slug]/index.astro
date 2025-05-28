@@ -1,6 +1,5 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
-import EmoticonProcessor from "@components/EmoticonProcessor.astro";
 import BlogPost from "@layouts/BlogPost.astro";
 import Layout from "@layouts/Layout.astro";
 import BlogGrid from "@components/BlogGrid.astro";
@@ -22,7 +21,7 @@ const { Content } = await post.render();
 const { title, summary } = post.data;
 const metadata = post.rendered && post.rendered.metadata ? post.rendered.metadata : {};
 
-// We'll use the EmoticonProcessor component to handle emoticon replacement
+// Emoticon to emoji conversion is now handled by the remark-emoticons plugin during build
 
 const isTurkish = metadata?.frontmatter?.lang === 'tr' || Astro.url.pathname.startsWith('/tr/');
 
@@ -32,9 +31,7 @@ export const prerender = true;
 <Layout title={title} description={summary} size="small" noContentWrapperClass>
   <BlogPost {...post.data} slug={post.slug} content={post.body} frontmatter={metadata.frontmatter}>
     <div class="main-content-wrapper">
-      <EmoticonProcessor>
-        <Content />
-      </EmoticonProcessor>
+      <Content />
     </div>
     <div class="mt-12">
       <BlogSharingAndReactions post={post} />
