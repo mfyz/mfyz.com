@@ -17,8 +17,8 @@ Optimizasyon konusunda çeşitli teknikler var tabiki. Bu dökümanda basitçe t
 
 Bir tablonun yapısını öğrenmek için
 
-```
-DESCRIBE \`forum\`
+```sql
+DESCRIBE `forum`
 
 ```
 
@@ -26,8 +26,8 @@ sql kodunu kullanarak tablo yapısını öğrenebiliriz. Çıktı olarak her ala
 
 MySQL'deki Procedure Anlayse fonksiyonu ile bu alanların bazı betimsel istatistiklerini ve önerilen türünü öğrenebilirsiniz. Bunun için de
 
-```
-SELECT * FROM \`forum\` PROCEDURE ANALYSE ();
+```sql
+SELECT * FROM `forum` PROCEDURE ANALYSE ();
 
 ```
 

@@ -19,7 +19,7 @@ Bir başka sorun da flash ve ajax istekler için eğer domain uyuşmaz ise taray
 
 PHP ile bu yönlendirmeyi yapmak için aşağıdaki kodu kullanabilirsiniz.
 
-```
+```php
 // subdomain redirection
 if( substr($_SERVER[HTTP_HOST], 0, 3) != 'www' ){
     die('<script type="text/javascript" charset="utf-8"> window.top.location = "http://www.mfyz.com'. $_SERVER[REQUEST_URI] .'"; </script>');
@@ -29,7 +29,7 @@ if( substr($_SERVER[HTTP_HOST], 0, 3) != 'www' ){
 
 Bu kod http://mfyz.com şeklinde gelen kullanıcıyı http://www.mfyz.com altındaki gideceği yere yönlendirir. Yani site her zaman www'lu çalışır. Bunun tersini yani www'suz çalışmak istiyorsanız (mfyz.com'da olduğu gibi) aşağıdaki versiyonu kullanabilirsiniz.
 
-```
+```php
 // subdomain redirection
 if( substr($_SERVER[HTTP_HOST], 0, 3) == 'www' ){
     die('<script type="text/javascript" charset="utf-8"> window.top.location = "http://mfyz.com'. $_SERVER[REQUEST_URI] .'"; </script>');

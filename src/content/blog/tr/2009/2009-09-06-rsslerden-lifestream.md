@@ -34,7 +34,7 @@ Simple pie ile rss okuma konusunda bilgi sahibi olduğunuzu varsayarak döküman
 #### Hazırlık ve Başlangıç
 
 Öncelikle içerik kaynaklarınızı (rss) bir dosyada çıkartın. Bu kaynakları bir dizi şeklinde tanımları tutacağımız dosyaya yazalım. Bunun için config.php diye bir dosyada $feeds adında bir dizi içerisinde kaynak url'i ve adı olarak saklayacağım. Örnek kaynak dizisi şöyle olacaktır :
-```
+```php
 $feeds = array(
     'zamazing' => array(
         'name'    => 'Zamazing.org',
@@ -50,7 +50,7 @@ $feeds = array(
 Bu şekilde istediğiniz kadar rss kaynağı tanımlayabilirsiniz. Az sonra simplepie kullanarak bu kaynakları okuyacak, kronolojik sıralayıp çıktısı sayfalar halinde oluşturacağız.
 
 Şimdi index.php dosyasında kaynakları okumaya başlayalım.
-```
+```php
 require_once('config.php');
 // libs
 require_once('lib/mypie.php');
@@ -73,7 +73,7 @@ Yukarıda config ve mypie dosyalarını include ettik. Config'de rss kaynakları
 $feeds dizisini dönerek feed bilgilerini ve anahtar kelimesini alıyoruz. Döngü içinde ise feed url'deki kaynağı okuyoruz. Eğer hata olursa o feed ingore edilip bir sonrakine geçiliyor. Eğer okundu ise $allItems adlı bir diziye okunan veri ekleniyor. Tabi haber eklenirken tür olarak da o feed'in anahtar kelimesi ekleniyor. Bu sayede ekrana basarken, farklı haber kaynakları için farklı çıktı verebileceğiz.
 
 Şimdi elimizde tüm kaynaklardaki tüm haberler $allItems adlı dizide tutulmakta. Bu dizideki veri yapısın daha iyi anlamanız için dizideki ilk elemanı verelim :
-```
+```php
 Array
 (
     [title] => Mario geldi
@@ -85,7 +85,7 @@ Array
 
 ```
 Gördüğünüz gibi tarih, başlık, url, kaynağı ve içerik olarak basit anahtarlarla ihtiyacımız olan tüm bilgiler mevcut. Şimdi bu diziyi tarihsel sıraya sokalım. Bunun için multi-dimmension dizilerde kolona göre sıralama yapan yardımcı bir fonksiyon kullanacağız.
-```
+```php
 // sorting all entries
 $allItems = @arrayMultiSort($allItems, 'date');
 
@@ -93,7 +93,7 @@ $allItems = @arrayMultiSort($allItems, 'date');
 Bu fonksiyonu çağıdrıktan sonra $allItems dizisindeki haberler artık kronolojik sıraya girmiş oldu. Tam istediğimiz kıvama geldi fakat elimizdeki dizide yüzlerce haber olabilir isterseniz bu diziyi belirli bir tarihe kadar kırpabilirsiniz. Mesela son 2 haftaki haberleri listelemek isterseniz $allItems'i dönerek date alanını timestamp'a çevirip 2 haftadan eski haberleri tespit edebilirsiniz. Doğal olarak onları temizleme şansınız da olur.
 
 Ben herhangi bir kırpma işlemi yapmadan tüm haberleri sayfalayarak göstereceğim.
-```
+```php
 // pagination
 $itemCount = count($allItems);
 if( $itemCount > $limit ){
@@ -118,7 +118,7 @@ config.php dosyasında $limit adında bir değişkende her sayfada kaç girdi g�
 *   $pagedItems
 
 değişkenlerini kullanarak sayfalamayı ve haber içeriklerini basabiliriz. Gerekli basit html yapısını da kullanarak haberleri ekrana basacak html kodu da şöyle olacak (yani index.php dosyasının devamı)
-```
+```php
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">

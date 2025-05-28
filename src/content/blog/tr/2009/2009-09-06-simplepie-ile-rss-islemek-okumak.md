@@ -33,7 +33,7 @@ Bir örnek uygulama ile anlatacağım. İnidirdiğiniz simplepie paketi içindek
 
 Örnek olarak bir uygulama yapsak da ben burada yardımcı bir fonksiyon kullanacağım. Bu fonksiyon ile basitçe url'sini verdiğimiz feed'i geniş bir dizi olarak döndürecek.
 
-```
+```php
 handle_content_type();
     // params
     if($params[expire]) $feed->set_cache_duration($params[expire]);
@@ -72,21 +72,21 @@ expire, bellekte ne kadar sürede çürüyeceğini ifade eder. Oraya 300 saniye 
 
 Neyse, şimdi sırayla simplepie kullanarak bir rss feed'i nasıl parse ettiğimi anlatayım :
 
-```
+```php
 $feed = new SimplePie($url);
 
 ```
 
 ile yeni bir nesne oluşturup feed adresini ayarlıyoruz.
 
-```
+```php
 $feed->handle_content_type();
 
 ```
 
 ile de rss kaynağını alıp okuma işlemini yapıyoruz.
 
-```
+```php
 $feed->set_cache_duration(3600); // 1 saat = 3600 saniye
 
 ```
@@ -97,7 +97,7 @@ Ben her fonksiyonda genel olarak sonuç dizisi oluşturur ve onu dönerim. Burad
 
 Bunun için sonuç dizimi "feed" ve "items" olarak 2 alt diziye ayırıyorum ve "feed" dizisine o rss kaynağı için xml içinde belirtilen feed adı, adresi, açıklamasını kaydediyorum. Bunu da sırayla :
 
-```
+```php
 $feed->get_title();       // feed başlığı/adı
 $feed->get_permalink();   // feed ana içerik bağlantısı
 $feed->get_description(); // kaynak açıklaması
@@ -108,7 +108,7 @@ methodları ile alabiliyoruz. Bu konuda daha derin açıklama yazmaya gerek yok.
 
 feed içindeki konuları da $feed->get_items() methodu ile aslında dizi olarak alabiliyoruz. Ben de bu diziyi foreach ile dönerek içindeki nesnelerin alt methodlarını kullanarak her konu için gerekli bilgileri alıp sonuç dizisine "items" alt dizisi içine ekliyorum. Bu foreach içinde bazı methodlarla sıradaki konuya ait bilgileri alıyorum. Bu methodlar :
 
-```
+```php
 $item->get_title();                 // konu başlığı
 
 $item->get_date('Y-m-d H:i:s') ;    // konunun tarihi, burada php'nin date
@@ -129,14 +129,14 @@ Fonksiyon sonunda da sonuç dizisini dönüyorum.
 
 Bu fonksiyonun kullanımı için bir örnek vermek gerekirse :
 
-```
+```php
 print_r( readRSS('http://mfyz.tumblr.com/rss') );
 
 ```
 
 Çıktısı şöyle olacaktır :
 
-```
+```php
 Array
 (
     [feed] => Array

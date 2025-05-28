@@ -31,7 +31,7 @@ Facebook connect aslında javascript üzerinden haberleşiyor fakat facebook, g�
 #### Başlayalım
 
 Normalde kullandığımız xhtml yorum formu kalıbı üzerinden başlayacağım.
-```
+```html
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -65,11 +65,11 @@ Bu kodun çıktısı :
 Facebook connect'i kullanabilmek için 3 işlem yapacağız. Birincisi FBML için XML sözlüğü belirtmek, ikincisi javascipt api'sini yükletmek, üçüncü adımda da facebook uygulama anahtarlarınız ile facebook connect'i başlatmak.
 
 Facebook nesneleri çizdirmek için FBML etiketleri kullanacağız. FBML etiketlerini tarayıcılar yorumlayabilmesi için html etiketine FBML sözlüğünü belirtmemiz gerekecek. Bunun için
-```
+```html
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 ```
 satırını
-```
+```html
 <html xmlns="http://www.w3.org/1999/xhtml"
 xmlns:fb="http://www.facebook.com/2008/fbml" xml:lang="en" lang="en">
 ```
@@ -78,7 +78,7 @@ olarak değiştireceğiz
 Böylece az sonra ekleyeceğimiz facebook etiketlerini tarayıcınız yorumlayabilecek.
 
 Şimdi facebook connect javascript'ini yükleyelim. HTML'de meta etiketleri içerisine
-```
+```html
 <script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
 ```
 Şimdi yapacağınız işlem facebook üzerinde kendinize ait bir uygulama oluşturmak olacak. Facebook Connect kullanabilmek için bir uygulamanızın olması gerekiyor. Bunun için de önce Developers uygulamasını yüklemelisiniz. Sırayla aşağıdaki adımları izleyin:
@@ -104,7 +104,7 @@ Connect ile ilgili bilgilerden Connect URL'i belirtmek zorundasınız. Bu url, f
 ![](/images/archive/tr/2009/05/fbconnect_6.gif)
 
 Burada kırmızı ile işaretlediğim, uygulamanızın API Anahtarını facebook connect javascript başlatıcısında kullanacağız. Bunun için de html'inizin sonuna body etiketinizin içine
-```
+```html
 <script type="text/javascript">
 // facebook init
 FB.init("80ee1ac2834c79cde1b567afdd13bbb1", "xd_receiver.html");
@@ -112,7 +112,7 @@ FB.init("80ee1ac2834c79cde1b567afdd13bbb1", "xd_receiver.html");
 
 ```
 kodunu eklemelisiniz. Burada ikinci parametrede belirtilen xd_receiver.html dosyası facebook ile haberleşmek için kullanılacak olan aracı dosya. Bu dosyayı da aşağıdaki kodu az önce eklediğiniz javascript fonksiyonunda ikinci parametrede belirttiğiniz isimle (xd_receiver.html) kaydedin.
-```
+```html
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -125,7 +125,7 @@ kodunu eklemelisiniz. Burada ikinci parametrede belirtilen xd_receiver.html dosy
 
 Son olarak formumuza facebook connect butonu ekleyelim. Bunun için formda ilk div içinde yer alan input'un altına
 
-```
+```html
 <br />
 veya facebook ile baglanabilirsiniz <fb:login-button></fb:login-button>
 
@@ -149,7 +149,7 @@ veya facebook ile baglanabilirsiniz <fb:login-button></fb:login-button>
 
 ```
 kodunu
-```
+```html
 <br />
 veya facebook ile baglanabilirsiniz <fb:login-button onlogin="updateUserBox();"></fb:login-button>
 
@@ -157,7 +157,7 @@ veya facebook ile baglanabilirsiniz <fb:login-button onlogin="updateUserBox();">
 olarak değiştirelim.
 
 Şimdi sayfanın sonundaki script içine fonksiyonumuzu tanımlayalım.
-```
+```html
 function updateUserBox(){
 userBox = document.getElementById('user_box');
 userBox.innerHTML = '<fb:profile-pic uid="loggedinuser"></fb:profile-pic><br />'
@@ -183,7 +183,7 @@ FB.init("80ee1ac2834c79cde1b567afdd13bbb1", "xd_receiver.html", {"ifUserConnecte
 Son eklediğimiz parametrede login durumunda çalışacak fonksiyonu belirttik.
 
 Sonuç olarak html dosyamız şu şekilde şekillendi :
-```
+```html
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" xml:lang="en" lang="en">

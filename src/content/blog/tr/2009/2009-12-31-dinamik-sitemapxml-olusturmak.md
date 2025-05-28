@@ -16,7 +16,7 @@ lang: tr
 Çoğu web uygulamasında sayfaların içerikleri veritabanında tutulan bilgilerin listelenmesi ve detay sayfalarından oluşmaktadır. Yazılar, Arşiv sayfaları, Fotograf sayfaları, Forumlar, forum konularının bulunduğu sayfalar vs. Bu sayfaları listeleyen/gösteren php dosyaları olduğunu düşünürsek sitemap.xml'i oluşturacak kodun bu içerikleri sadece adresleyerek listelemesini yapacak bir kod olduğunu söyleyebiliriz.
 
 Bu içerikleri listeleyerek sadece o içeriklere ait sayfaların URL'lerini oluşturan bir php dosyası düşünün. Basitçe örnekleyeceğim. Mesela forum adında bir tablonuz var ve bu forum'un site haritası için sadece URL'leri gerekli ve bunu oluşturan ufak bir kod vermek gerekirse :
-```
+```php
 // forum konularini veritabanindan alalim
 $sorgu = mysql_query("select id from forum_konular order by tarih asc");
 $forum_konu_adresleri = array();
@@ -30,7 +30,7 @@ bu kod, forum konularının sayfalarını URL dizisi olarak oluşturur. Yani 156
 Şimdi sitenizin diğer bölümlerini de bu URL listenize ekleyin. Bu liste 50.000 URL'e kadar olabilir, çünkü sitemap.xml dosyalarında en fazla 50.000 url indeksleyebilirsiniz.
 
 Bütün url listenizi oluşturduğunuzda aşağıdaki yapıda bir XML oluşturmak için gerekli ufak php kodunu vereceğim. Önce örnek bir sitemap.xml dosyasına bakacak olursak:
-```
+```xml
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.fem14.tr.gg/schemas/sitemap/0.9 
 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
@@ -53,7 +53,7 @@ Burada urlset nodu içinde url elementini ve loc, lastmod, changefreq, priority 
 Eğer veritabanınınzda bu sayfaların oluşturulma tarihleri gibi bir bilgi saklıyorsanız XML'de bunu belirtmeniz iyi olacaktır. Bundan önemlisi changefreq ve priority'dir. changefreq belirttiğiniz url'deki sayfanızın değişme sıklığını arama motoruna söyler. Arama motoru da o değişiklik sürecine göre o sayfayı o periyodda tarayacaktır. Priority de o sayfanın sitenizdeki içerik etkisini ifade edebilir. Mesela forum sitenizin asıl içeriği olmayabilir, ya da fotograflar sitenizin içeriğine çok etkisi olabilir ve 0-1 arasında yüzdelik belirtir gibi öncelik belirtebilirsiniz.
 
 Şimdi bir URL dizisini sitemap.xml dosyasına çevirecek php koduna bakarsak:
-```
+```php
 // begin xml content
 $XML_Content = '<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.fem14.tr.gg/schemas/sitemap/0.9 '."\\n".
 'http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'."\\n";
@@ -84,7 +84,7 @@ $XML_Content .= "</urlset>";
 
 ```
 en son XML_Content değişkeninde sakladığınız içeriği
-```
+```php
 $file = fopen('sitemap.xml', 'w') ){
 fwrite($file, $XML_Content);
 fclose($file);

@@ -15,10 +15,10 @@ Bir php kodunda genelde çıktı verirken normal html etiketleri kullanıp tüm 
 
 Artık az sonra bahsedeceğim method ile, dosyaları tasarlarken 2 türlü kullanımı için tasarlayacaksınız. Yani hem normal erişim ile hem de o sayfayı ajax ile kullanabilecek şekilde düşüneceksiniz. Burada ajax çağrısı olduğunu yakalamak için genel bir teknik olarak get methodu ile bir değişken gönderip onu izleyebilirsiniz. Mesela kayit.php?ajax=1
 
-Bu, işin ilkel noktası. Ajax çağrısı olup olmadığını yakalamak için artık sunucu ortam değişkenleri arasında **$_SERVER["HTTP_X_REQUESTED_WITH"]** değişkeni ile çağrı türünde değer xmlhttprequest ise yapan client'in kullandığı protokolu alabiliyorsunuz. Genellikle içindeki değer "xmlhttprequest" oluyor zaten. Yani bir çağrının ajax olup olmadığını bu şekilde kolayca kontrol edebilirsiniz.
+Bu, işin ilkel noktası. Ajax çağrısı olup olmadığını yakalamak için artık sunucu ortam değişkenleri arasında `$_SERVER["HTTP_X_REQUESTED_WITH"]` değişkeni ile çağrı türünde değer xmlhttprequest ise yapan client'in kullandığı protokolu alabiliyorsunuz. Genellikle içindeki değer "xmlhttprequest" oluyor zaten. Yani bir çağrının ajax olup olmadığını bu şekilde kolayca kontrol edebilirsiniz.
 
 Ufak şekilde örneklemek gerekirse:
-```
+```php
 $kisiler = array('Fatih', 'Ahmet', 'Mehmet', 'Zeynep');
 // ekrana basalim
 print "<ul>";
@@ -29,7 +29,7 @@ print "</ul>";
 
 ```
 Bu kodda isimleri liste çıktısı alırsınız. Eğer javascript ile bu veriye erişmek istersek ajax çağrısı ile bu sayfayı çağırabiliriz ama işlenmiş html kodundan o isimleri almak zor olur. Ya da sadece belirli bir kısmını almak isteyebiliriz. Bunun için basitçe:
-```
+```php
 $kisiler = array('Fatih', 'Ahmet', 'Mehmet', 'Zeynep');
 // ajax cagrisi ise json donelim
 if( $_SERVER[HTTP_X_REQUESTED_WITH] ){
@@ -44,12 +44,12 @@ print "</ul>";
 
 ```
 Bu kod eğer normal istek yapılırsa
-```
+```php
 <ul><li>Fatih</li><li>Ahmet</li><li>Mehmet</li><li>Zeynep</li></ul>
 
 ```
 çıktısı; ajax ile istek yapıldığı zaman:
-```
+```php
 ["Fatih","Ahmet","Mehmet","Zeynep"]
 ```
 çıktısı verecektir.

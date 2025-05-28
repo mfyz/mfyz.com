@@ -49,7 +49,7 @@ Bunları basit bir tablo ile yerleştirdiğimde şu şekilde bir imza oluşturdu
 Farkettiyseniz oldukça sade, zaten buradaki amaç sizin epostanızı okuyan birisi, gönderen kişi hakkında fikir edinebilmesi için vereceğiniz şey olmalı. Tabiki bu kısımda karışık veya uzun metinler kullanarak bunu sağlayamazsınız.
 
 Bu imzayı oluşturan html kodu şöyle :
-```
+```html
 <div style="border-top: 1px dotted #ccc; height: 15px; font-size: 1px;"></div>
 <table border="0" cellspacing="0" cellpadding="0">
   <tr>
