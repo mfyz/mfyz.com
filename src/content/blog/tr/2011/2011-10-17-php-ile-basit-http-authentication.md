@@ -17,7 +17,7 @@ PHP'de sayfa header'lari ile tarayicidan authentication bilgisi isteyebiliyoruz.
 
 Son birkac projemde daha duzenli kullandigim bir kodu paylasacagim. Bu kodu tek bir dosyaya (mesela auth.php) yazip bu dosyayi tum uygulamamda include ediyorum en basta. Boylece eger birisi authenticate edilmeden ulasmaya calisirsa http auth ile karsilaniyor.
 
-```
+```php
 $password_hash = '--MD5--SIFRE--';
 function forceLogin(){
     global $password_hash;

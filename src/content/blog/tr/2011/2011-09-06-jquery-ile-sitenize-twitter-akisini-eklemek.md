@@ -24,7 +24,7 @@ Yukaridaki adresi tarayıcınıza yapıştırırsanız json nesnesi alırsınız
 
 Size bu işi yapan tüm kodu verip sonra kod üstünden açıklayacağım:
 
-```
+```js
 var $tweetList;
 var $tweetUrl = 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=mfyz&&count=10&callback=?';
 $.getJSON($tweetUrl, function (data) {

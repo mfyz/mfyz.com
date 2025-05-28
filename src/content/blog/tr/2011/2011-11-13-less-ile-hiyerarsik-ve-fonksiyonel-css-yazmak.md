@@ -18,7 +18,7 @@ Aslında LESS kullanmak için genel ve çok önemli ihtiyaç yok bana kalırsa. 
 Dosyanızın uzunluğundan çok iç içe tanımlı grup tanımlaları arasında kaybolmak çok kolay. Dolayısıyla css dosyanızı hiyerarşik bir şekilde organize edecek bir araca sahip olmak her zaman bir artı. Sadece bu ihtiyacınızı kullandığınız gelişitirici uygulamayı degiştirerek sağlamak da mümkün.
 
 Örneğin çok basit bir css dosyanızda
-```
+```css
 ul.menu {
     margin: 0;
 }
@@ -50,7 +50,7 @@ ul.menu li.item a:hover span.icon {
 
 ```
 Böyle bir CSS yapısı sık sık yazdığınız bir navigasyon kodu olabilir. Böyle bir yapı, tipik hiyerarşik modele uygun bir örnek. Böyle bir yapıyı LESS ile daha anlaşılır yazmak mümkün:
-```
+```css
 ul.menu {
     margin: 0;
     
@@ -95,7 +95,7 @@ Mesela font boyutunuz 16px iken satır aralığınız bunun 1.5 katı, padding'l
 Kuralların bu kadar net belirlenebildiği bir ortamda CSS'de statik renk kodlarına, sürekli hesaplama yaparak font boyutu, padding, margin, border radius hesaplamak zorunda kalıyor olabilirsiniz. LESS size bu matematiği LESS dosyanız içinde yapmanızı sağlıyor. Bir rengi belli bir contrast değeriyle daha açık veya daha koyu bir renge dönüştürebilir, matematiksel değerleri formülasyona sokabilir veya başka sınıfları kendi sınıfınıza dahil edebilirsiniz.
 
 Örnek vermek gerekirse siteniz için genel bir oran ve başlangıç rakamı belirleyebilirsiniz, veya 3-4 renkten oluşan bir renk paletiniz var olabilir. Düz CSS'de her varyasyonu hesaplayarak yazmak zorunda kalabilirisiniz:
-```
+```css
 div.user {
     width: 400px;
     height: 100px;
@@ -121,7 +121,7 @@ div.user div.avatar {
 Yorumlarda kurallari yazmaya çalıştım ve normalde bir arayüz tasarımcısı böyle arayüzler geliştirirken bu tarz kurallara sahiptir, en büyük örnegini Apple arayüzlerinde görebilirsiniz. Mimari bir ürün gibidir.
 
 Böyle kurallarla donatılmış bir arayüzün css'lerini yazarken her değeri hesaplamak zorunda kalabilirsiniz fakat LESS ile bu işlemlerin hepsini matematiksel olarak hesaplatmanız mümkün. Yukarıdaki örnek çok küçük bir örnek ama büyük bir css dosyasını düşünürseniz başa çıkılamaz bir iş haline gelebilir. Ayrıca kuralları matematiksel yazmanın ikinci avantajı, bütün parametreleri birkaç değişken ile yönetip değiştirebilme olanağına sahip olmanızdır. Yukarıdaki örneğin LESS ile yazılmış hali:
-```
+```css
 @fontSize: 18px;
 @mainColor: #f00;
 @padding: 10px;
@@ -158,7 +158,7 @@ Bu özellikleri çok kullanabilirsiniz fakat daha hiyerarşik bir yapıda ortak 
 Ya da CSS3 kurallarının farklı tarayiıcılarla çalışması için yazmanız gereken 4 farklı kuralı farklı değerlerle sürekli tekrarlamak yerine fonksiyon şeklinde tanımlayıp LESS'e ürettirebilirsiniz.
 
 Bunu açıklamak için CSS örnegi yazacağım son olarak.
-```
+```css
 .kutu_gri_buyuk {
     padding: 20px;
     border: 2px solid #666;
@@ -206,7 +206,7 @@ Bunu açıklamak için CSS örnegi yazacağım son olarak.
 
 ```
 Bu ornegin LESS ile hazirlayabileceginiz versiyonu.
-```
+```less
 .borderRadius(@radius: 5px){
     -webkit-border-radius: @radius;
     -moz-border-radius: @radius;    
