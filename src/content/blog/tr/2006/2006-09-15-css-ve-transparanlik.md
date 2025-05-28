@@ -20,7 +20,7 @@ Fakat tarayıcılar kendi filtre erişimlerine göre farklılık göstrerir. Fak
 Bu nitelik tabiki CSS ile yönetiliyor ve biz de kullanırken CSS ile yapacağız. Fakat biliyorsunuz ki javascript ile css stilleri ile oynayabilirsiniz, dökümanın ilerleyen kısımlarında JavaScriptlerinizde transparanlığı yöneterek nasıl geçiş efektleri uygulayacaksınız onu göstereceğim.
 
 CSS ile class atanmış bir objenin saydamlığını değiştirelim :
-```
+```css
 .transparan {
   opacity : 0.5;
   filter : alpha( Opacity=50 );
@@ -39,7 +39,7 @@ Bu kodda “transparan” sınıflı nesneler 50% saydam görünecektir. Tabiki 
 #### JavaScript ile nasıl?
 
 Kodunuzda interval koyarak belirli sürede 1'er 1'er veya 5'er 5'er opacity düştüğünüzü varsayarsak
-```
+```js
 document.getElementById("nesne_id").style.opacity = '0.' + deger;
 document.getElementById("nesne_id").style.filter = 'alpha(Opacity=' + deger + ')';
 
@@ -49,7 +49,7 @@ nesne adreslemeleri ile obenin anlık transparanlığını değiştirebilirsiniz
 #### Mootools?
 
 Transparanlığı javascript ile yapabiliyoruz fakat mootools ile tabiki hepsinden daha kolay yapılıyor :)
-```
+```js
 // dogrudan transparanlık ayarlayabilir
 $('nesne_id').setOpacity(0.5);
 

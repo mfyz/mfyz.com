@@ -9,16 +9,24 @@ migration: {"wpId":95,"wpPostDate":"2006-03-18T06:06:36.000Z"}
 lang: tr
 ---
 
-Komut : find (yol tanımı) (seçenekler)
+Komut: find (yol tanımı) (seçenekler)
 
-Seçenekler :
+Seçenekler:
 
-**\-name isim** : aranılacak dosyanın ismi. **\-perm izin** : Izinleri oktal olarak belirlenmiş dosyaların aranılması. **\-links n** : linke sahip dosyalar. **\-user kullanıcı** : Belirli bir kullanıcıya ait dosyaların aranması. **\-group isim** : Belirli bir gruba dahil dosyaların aranması. **\-atime n** : n gün içinde erişilen dosyalar. **\-mtime n** : n gun içinde işlem gören dosyalar. **\-ctime n** : n gun içinde değiştirilen dosyalar. **\-print** : bulunan dosyaların ekranda görüntülenmesini sağlar.
+- `-name isim` : aranılacak dosyanın ismi.
+- `-perm izin` : Izinleri oktal olarak belirlenmiş dosyaların aranılması.
+- `-links n` : linke sahip dosyalar.
+- `-user kullanıcı` : Belirli bir kullanıcıya ait dosyaların aranması.
+- `-group isim` : Belirli bir gruba dahil dosyaların aranması.
+- `-atime n` : n gün içinde erişilen dosyalar.
+- `-mtime n` : n gun içinde işlem gören dosyalar.
+- `-ctime n` : n gun içinde değiştirilen dosyalar.
+- `-print` bulunan dosyaların ekranda görüntülenmesini sağlar.
 
 Örnek :
 
 Bulunduğum dizinden itibaren tüm alt-dizinlerdeki "mfyz" ile başlayan dosyaları bulmak için;
-```
+```sh
 find . -name "mfyz*" -print
 ./faq/mfyz_dosyalar_index.html
 ./mfyz

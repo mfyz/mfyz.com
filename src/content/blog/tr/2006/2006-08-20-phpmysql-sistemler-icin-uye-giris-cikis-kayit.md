@@ -17,15 +17,15 @@ Artık neredeyse her sitede olan üyelik, bazı web uygulamaları için vazgeçi
 
 Tabiki bir veritabanına, mysql kullandığımızı varsayarak kod örnekleyeceğim. Ama postgresql fln kullanan arkadaşlar da var ise bu dökümandaki algoritmayı izleyerek kolayca kendileri de kod yazabilirler. Aşağıda veritabanında kullanacağımız üye tablosuna ait veri yapısını import ederek kolayca oluşturabileceğiniz SQL sorgusunu koyuyorum, bu sorgudan hangi alanlar ve özelliklerinin neler olduğunu da kolayca görebilirsiniz.
 
-```
-CREATE TABLE \`uyeler\` (
-\`no\` int(10) NOT NULL auto_increment,
-\`kadi\` varchar(50) NOT NULL default '',
-\`sifre\` varchar(100) NOT NULL default '',
-\`izin\` varchar(20) NOT NULL default '',
-\`adi\` varchar(100) default NULL,
-\`eposta\` varchar(255) default NULL,
-PRIMARY KEY  (\`no\`)
+```sql
+CREATE TABLE `uyeler` (
+  `no` int(10) NOT NULL auto_increment,
+  `kadi` varchar(50) NOT NULL default '',
+  `sifre` varchar(100) NOT NULL default '',
+  `izin` varchar(20) NOT NULL default '',
+  `adi` varchar(100) default NULL,
+  `eposta` varchar(255) default NULL,
+  PRIMARY KEY  (`no`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 ;
 
 ```
@@ -38,7 +38,7 @@ gördüğünüz gibi basitçe 6 alanım var, burada no, izin, adi ve eposta alan
 
 Giriş işlemini yapcağımız bir form hazırlayın. Kullanıcı adı ve şifre giriş alanları olacak olan 2 input'luk bir form. “kadi” ve “sifre” gibi pratik alan adları belirlerseniz işiniz kolaylaşır. Bu formu giris.php diye bir işlem sayfanıza post methodu ile göndereceğiz. Şuna benzer bir form olacaktır:
 
-```
+```html
 <form name="giris" action="giris.php" method="post">
  <table cellpadding="8" cellspacing="0" align="center">
    <tr>
@@ -61,7 +61,7 @@ Giriş işlemini yapcağımız bir form hazırlayın. Kullanıcı adı ve şifre
 
 Giriş işlemi sayfamızın (giris.php) koduna bakacak olursak:
 
-```
+```php
 <?php
 # mysql baglantisi, sesion_start yapilmis varsayiyoruz
 # bilgiler
@@ -103,7 +103,7 @@ En altta ise giriş kontrolü için oturuma 2 değişken attım birisi şifre il
 
 Benim site geliştirme yoluma göre ilk önce sitenin statik sayfasını hazırlayıp parçalardık hatırlarsanız. Ve her işlem/modül dosyamızın başında mysql.php veya ayar.php gibi bir include edilen dosyamız vardır. İşte buna giris_kontrol.php diye bir dosya daha ekleyin. Yani; üye'lere ait bilgileri alacağınız sayfalarda (üye kontrolü, üye alanları fln) giris_kontrol.php diye bir php include ettirin. Her sayfanıza. giris_kontrol.php dosyamızın kodunu verip açıklayayım :
 
-```
+```php
 <?php
 # uye oturum degiskenleri
   $giris_yapilmis = false;
@@ -133,7 +133,7 @@ Tabiki bu sayfadan önce mysql ve ayar dosyanızın fln include edildiğini ve s
 
 Oturumdaki **kadi** değişkeni boş değilse veritabanından bilgileri alıyoruz. Eğer kullanıcı yoksa oturum açılmıyor zaten. Eğer şifre ile oluşturulan karışık cümlenin md5'i oturumdaki giris degişkeninin içeriğine eşitse bizim mantıksal koyduğumuz anahtar da doğrudur. Şimdi “giris_yapilmis” değişkenini true yapıyoruz ve $uye dizisine mysql sonuç kümesini atıyoruz. Neden bunu yapıyoruz çünkü, sayfalarımızda doğrudan $giris_yapilmis'i if yapılarımızda giriş yapılmış yapılmamış olduğunu hızlıca alabileceğiz. Mesela üyelere özel bir sayfanız var ise bu sayfanın başında;
 
-```
+```php
 if( !$giris_yapilmis ){
   print 'Bu sayfa üyelere özeldir! Lütfen giriş yapın!';
   exit;

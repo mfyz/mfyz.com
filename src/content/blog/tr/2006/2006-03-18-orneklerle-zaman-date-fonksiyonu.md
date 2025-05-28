@@ -9,7 +9,7 @@ migration: {"wpId":88,"wpPostDate":"2006-03-18T06:21:34.000Z"}
 lang: tr
 ---
 
-```
+```php
 <?php
   
   // bu makalede date fonksiyonu ile neler yapabilecegimizi görecegiz.

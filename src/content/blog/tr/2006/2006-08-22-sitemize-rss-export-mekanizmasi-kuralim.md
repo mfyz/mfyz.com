@@ -12,14 +12,14 @@ lang: tr
 #### Sitemize neden RSS hizmeti koymalıyız, Ne işimize yarar?
 
 RSS günümüz teknolojileri arasında en yaygın takip standardı haline geldi. Şu an insanlar RSS okuyucu programları veya web uygulamalarına takip ettikleri siteler/forumlar/haber kaynaklarına ilişkin kayıtları tek standart'da okumak için ekliyor ve her gün binlerce insan bu sistem sayesinde birçok siteye girmeden tek merkezden çoğu haberi takip edip çoğu gelişmeden haberdar olabiliyor.
-```
+```php
 header('Content-type: text/xml');
 
 ```
 kodunu basıyoruz sayfanın çıktı basılmamış bir kısmına.
 
 Şimdi size 2 kayıtlık bir XML çıktısı örneği verip açıklayayım:
-```
+```xml
 <?xml version="1.0" encoding="iso-8859-9"?>
 <rss version="2.0">
   <channel>
@@ -46,7 +46,7 @@ kodunu basıyoruz sayfanın çıktı basılmamış bir kısmına.
 
 ```
 Bu gördüğünüz kod RSS işlem sayfanız tarafından çıktısı yapılmış TÜM RSS örneğini ifade ediyor.
-```
+```xml
 <item>
   <title>MFYZ v0.6 Test Sürüşü</title>
   <link>http://www.mfyz.com/?takvim</link>
@@ -60,7 +60,7 @@ kod bloğu ise sizin for veya while gibi bir döngü mekanizması ile kayıtlar�
 Burada dikkat edilmesi gereken nokta pubDate olarak çıktı vereceğiniz tarih yukarıda gödrüğünüz formatta olmak zorundadır.
 
 Bu tarih formatını "Y-m-d H:i:s" formatındaki genel kullanımdan bu formata;
-```
+```php
 gmdate( 'D, d M Y H:i:s', $tarihinize_ait_degisken ) . " GMT"
 
 ```

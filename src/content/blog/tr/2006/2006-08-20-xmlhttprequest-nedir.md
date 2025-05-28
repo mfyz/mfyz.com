@@ -30,15 +30,15 @@ En önemli artısı, sayfa yenilenmediği için değişken olmayan diğer kısı
 #### Sorunlar neler? (Eksiler/Dezavantajlar)
 
 Böyle bir nesneyle yazılmış kütüphane kullanmak çyle çok daha rahat bişey değil. Tabiki bazı sorunlar var. Türkçe karakter sorunu, eğer içerik aldığınız sayfa içinde hangi karakter seti ayarlıysa ona göre gelir. Bunun çözümü için içeriği aldığınız sayfa'ya ya HTML etiketi ile karakter seti ayarlaması belirtmeniz gerek. Ya da herhangi bir web programlama dili kullanıyorsanız onun sayfa başlık bilgisi fonksiyonlarını/methodlarını kullanarak karakter seti ayarlamanız gerekecektir. Mesela php için;
-```
+```php
 <?php header("Content-Type:text-html;charset:utf-8"); ?>
 
 ```
 ile sayfa başlık bilgisini (header) ayarlayabilirsiniz. Böylece Türkçe karakter problemini çözmüş olursunuz. (Eğer iso kullanıyorsanız ona göre ayarlayın)
 
 İkinci sorun ise iç sayfalara koyduğunuz javascript kod bloklarıdır.
-```
-\-- İÇERİK --
+```html
+-- İÇERİK --
 
 <script>
   document.write('Selam');

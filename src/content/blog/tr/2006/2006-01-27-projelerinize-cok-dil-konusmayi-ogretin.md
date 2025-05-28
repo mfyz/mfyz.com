@@ -54,7 +54,7 @@ Bu şekilde bir dizin yapımız olsun.. (buradaki örnek sadece :) )(sadece dil 
 
 Sayfalarımızda basitçe metinleri yazdık ve siteyi bitirmiştik değil mi? Mesela Menümüz şöyle idi;
 
-```
+```html
 <!-- MENU -->
 <a href="index.php">Anasayfa</a>
 <a href="dosyalar.php">Dosyalar</a>
@@ -64,8 +64,7 @@ Sayfalarımızda basitçe metinleri yazdık ve siteyi bitirmiştik değil mi? Me
 
 Yani kullanıcılar doğrudan bir yazıyı statik olarak görüyorlardı. Tek yapmamız gereken şey, çevirilerimizi değişkenlerde tutmak, Zaten tercüman dosyamız dile göre bu değişkenleri değiştirecektir. Sizin kodda oynama yapmanıza gerek kalmaz. Tercüman otomatik olarak seçer ve bu değişkenleri ayarlar. Ekrana seçili dil basılır. Yani yukarıdaki kodumuz şu şekilde olmalıdır;
 
-```
-
+```html
 <a href="index.php"><?=$dil["menu_anasayfa"];?></a>
 <a href="dosyalar.php"><?=$dil["menu_dosyalar"];?></a>
 <a href="#..."><?=$dil["menu_linkler"];?></a>
@@ -80,7 +79,7 @@ Bu değişkenleştirme işlemini yaparken kendi dilimizdeki çeviri dosyamızı 
 
 Türkçe çeviri dosyamız;
 
-```
+```php
 <?php
 
 /*
@@ -123,7 +122,7 @@ unset($dil);
 
 İngilizçe çeviri dosyamız;
 
-```
+```php
 <?php
 
 /*
@@ -174,7 +173,7 @@ Gördüğünüz gibi içerikleri oldukça basit. Tek yaptığımız metinlerimiz
 
 Şimdi gelelim çeviri dosyalarını seçecek ve siteye uygulayacak olan tercümanımızı kodlamaya :) Önce kodu vereyim, sonra açıklayalım.
 
-```
+```php
 <?php
 
 session_start();
@@ -204,13 +203,13 @@ include("dil/".$secili_dil.".php");
 
 ```
 
-Kodu açıklayalım; ilk önce $secili_dil degiskenine oturumda kayitli olan dili aliyoruz, eğer oturuma kaydedip onu seçtirmezsek, kullanıcı, browser'in geçerli dilinden başka bir dil seçtiğinde her sayfada bu değer sıfırlanacak ve browser'in geçerli dili ile görüntülenecektir. Bunu yaparak oturum boyunca aynı dilde kalmayı sağlıyoruz. Cookie desteği koyup da hangi bilgisayarda hangi dilde gösterilecek bunu da rahatlıkla kontrol ettirebiliriz. Devam edelim; eğer dil değişkeni boş ise, demektir ki, kullanıcı ilk sayfasında ve dil seçilmedi. Site için uygun olan geçerli dili seçtirmeliyiz. Öncelikle kullanıcının tarayıcı bilgisinden tarayıcısını hangi dilde kullanıyor bunu bulduralım. Mesela Türkçe işletim sistemi, ve Türkçe tarayıcı kullanıyorsa sayfasyı Türkçe göstermemiz muhtemel olacaktır. İspanyol girdiğinde siteye, tarayıcısı ispanyolca olduğundan otomatik olarak site ispanyolda açılacaktır böylece.. :) $secili_dil = $_SERVER["HTTP_ACCEP_LANGUAGE"]; ile bunu sağlamış olduk. Çeviri dosyalarımız dil klasöründe idi. Şimdi çeviri dosyamızı yüklememiz gerek. Ancak eğer tarayıcıda bulunan dil'e ait çeviri dosyamız yok ise sistem hata verecektir, çeviri görünmeyecektir. Bunun için dosya varmı kontrol ettiriyoruz. Eğer yoksa bize göre, yani projenin ana diline göre $secili_dil'e istediğimiz çeviri dosyasının adını giriyoruz. Bu örnekte Türkçe olmasını istediğimiz için "tr" girdik. Daha sonra oturuma daha sonraki sayfalarda bu dil görünmesi için dil değişkenini kaydettik ve son olarak çeviri dosyamızı yükledik. Böylece dosyanın devamında basılacak değişkenler seçili olan dile göre yer alacaktır.
+Kodu açıklayalım; ilk önce $secili_dil degiskenine oturumda kayitli olan dili aliyoruz, eğer oturuma kaydedip onu seçtirmezsek, kullanıcı, browser'in geçerli dilinden başka bir dil seçtiğinde her sayfada bu değer sıfırlanacak ve browser'in geçerli dili ile görüntülenecektir. Bunu yaparak oturum boyunca aynı dilde kalmayı sağlıyoruz. Cookie desteği koyup da hangi bilgisayarda hangi dilde gösterilecek bunu da rahatlıkla kontrol ettirebiliriz. Devam edelim; eğer dil değişkeni boş ise, demektir ki, kullanıcı ilk sayfasında ve dil seçilmedi. Site için uygun olan geçerli dili seçtirmeliyiz. Öncelikle kullanıcının tarayıcı bilgisinden tarayıcısını hangi dilde kullanıyor bunu bulduralım. Mesela Türkçe işletim sistemi, ve Türkçe tarayıcı kullanıyorsa sayfasyı Türkçe göstermemiz muhtemel olacaktır. İspanyol girdiğinde siteye, tarayıcısı ispanyolca olduğundan otomatik olarak site ispanyolda açılacaktır böylece.. :) `$secili_dil = $_SERVER["HTTP_ACCEP_LANGUAGE"];` ile bunu sağlamış olduk. Çeviri dosyalarımız dil klasöründe idi. Şimdi çeviri dosyamızı yüklememiz gerek. Ancak eğer tarayıcıda bulunan dil'e ait çeviri dosyamız yok ise sistem hata verecektir, çeviri görünmeyecektir. Bunun için dosya varmı kontrol ettiriyoruz. Eğer yoksa bize göre, yani projenin ana diline göre $secili_dil'e istediğimiz çeviri dosyasının adını giriyoruz. Bu örnekte Türkçe olmasını istediğimiz için "tr" girdik. Daha sonra oturuma daha sonraki sayfalarda bu dil görünmesi için dil değişkenini kaydettik ve son olarak çeviri dosyamızı yükledik. Böylece dosyanın devamında basılacak değişkenler seçili olan dile göre yer alacaktır.
 
 #### Dil seçimi
 
 Şimdi index dosyamıza dil seçici bir seçim kutusu koyuyoruz. Kodu şuna benzer olacaktır;
 
-```
+```html
 <select onChange="window.top.location='dilsec.php?dil='+this.value;">
   <option value="tr">Türkçe</option>
   <option value="en">English</option>
@@ -225,7 +224,7 @@ Kodu açıklayalım; ilk önce $secili_dil degiskenine oturumda kayitli olan dil
 
 Görüldüğü gibi seçildiği anda dilsec.php dosyasına dil değişkenini GET methodu yöntemi ile gönderiyoruz. dilsec.php dosyamız da, aktif bulunan oturumda kullanıcının sitenin dilini değiştirmesini sağlayacaktır. Kodu şu şekilde;
 
-```
+```php
 <?php
 
 session_start();
@@ -249,9 +248,9 @@ exit;
 
 Yapılan işlem çok basit. GET methodu ile gelen değişkene ait çeviri dosyası VAR ise oturuma o dili kaydedip anasayfa'ya geri dönüyoruz. Böylece projemiz çok dilli olmuş olacaktır. Aşağıdaki index ve dosyalar.php'nin içeriklerini yukarıdaki anlatımla birleştirirseniz daha rahat alnayabilirsiniz.
 
-index.php
+`index.php`
 
-```
+```php
 <?php
 // dili sectiriyoruz.
 include("dil.php");
@@ -292,9 +291,9 @@ include("dil.php");
 
 ```
 
-dosyalar.php
+`dosyalar.php`
 
-```
+```php
 <?php
 // dili sectiriyoruz.
 include("dil.php");

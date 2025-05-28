@@ -43,6 +43,9 @@ fclose($dosya);
 
 `flock()` fonksiyonu ile bu işlemi yapabiliyoruz.
 
-**flock fonksiyonunda kullanabileceğimiz parametreler şunlar :** 1. Paylaşım, Diğer proseslerin dosyayı paylaşmalarına imkan verir. 2. Tam, Diğer işlemlerin dosya ile işlem yapmasına engel olur . 3. Serbest, Dosyanın 1 veya 2 olan kilidini kaldırır.
+**flock fonksiyonunda kullanabileceğimiz parametreler şunlar :** 
+1. Paylaşım, Diğer proseslerin dosyayı paylaşmalarına imkan verir. 
+2. Tam, Diğer işlemlerin dosya ile işlem yapmasına engel olur . 
+3. Serbest, Dosyanın 1 veya 2 olan kilidini kaldırır.
 
 Kitlenmiş bir dosya üzerinde başka bir işlemci, daha önceki kilide öncelik tanır ve işlemi engeller.

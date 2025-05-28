@@ -36,14 +36,14 @@ Statik olarak "://" ibaresi arandıktan sonra 2. grup parantezde tüm linkimizi 
 
 Sonuç olarak biz metinimizi şu aşağıdaki kod ile otomatk link haline çevirebileceğiz :
 
-```
+```php
 $yazi = preg_replace("#([\n ])([a-z]+?)://([a-z0-9\-\.,\?!%*_\#:;~\\&$@\/=\+]+)#ie",
   "'\\1<a href=\"\\2://\\3\">\\2://\\3</a>'", $yazi);
 
 ```
 Bu sitede kullandığım otomatik link dönüşüm fonksiyonu ise şu şekilde:
 
-```
+```php
 function linkler( $yazi ) {
     // http seklindekiler
     $yazi = preg_replace("#([\n ])([a-z]+?)://([a-z0-9\-\.,\?!%*_\#:;~\\&$@\/=\+]+)#ie",

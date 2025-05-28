@@ -23,7 +23,7 @@ Bu dökümanda size web pogramlama üzerinde php ve mysql ile oluşan örneklerl
 
 Genelde sorunların yarısına yakını fonksiyonlarımıza gönderdiğimiz, veya kullandığımız birleşik yapılardaki değişkenlerin bir şekilde boş gelmesi ile oluşan sorunlardır. Bunları birkaç farklı yöntemle tespit edebiliriz. Mesela bir SQL sorgusu hata veriyor veya boş dönüyorsa bunun nedenlerinden ilk bakmamız gereken SQL'e soktuğumuz değişkenlerin değerlerinin doğru iletiliyor olmasıdır. Genellikle değişken adlarında (o programlama dili küçük büyük harf duyarlılığına sahip ise) büyük - küçük harflerin yanlış yazımı ile ortaya çıkan sorunlar teşkil ediyor. Örneğin:
 
-```
+```php
 <?php
   $kategori = $_GET["kategori"];
   $sorgu = mysql_query("select * from tablo where kategori=" . $kategori);
@@ -34,7 +34,7 @@ Genelde sorunların yarısına yakını fonksiyonlarımıza gönderdiğimiz, vey
 
 Burada SQL hata veriyorsa veya boş dönüyorsa ilk olarak $kategori değişkeninin düzgün iletilip iletilmediğini kontrol etmemiz gerekir. Eğer $kategori değişkeni boş ise SQL doğal olarak parse hatasi verecektir.
 
-```
+```php
 <?php
   $kategori = $_GET["kategori"];
   print $kategori;
@@ -47,7 +47,7 @@ Burada SQL hata veriyorsa veya boş dönüyorsa ilk olarak $kategori değişkeni
 
 Burada basitçe $kategori değişkeninin içeriğini bastırıp exit ile kodu durdurabilir, deneyerek içeriğinin doğruluğunu/yanlışlığını görebiliriz. Diyelim ki birden çok değişkeni kontrol etmemiz gerek, hızlı debug edebilmek için tüm değişkenleri tek tek print ettirmektense;
 
-```
+```php
 <?php
   $kategori = $_GET["kategori"];
   print_r($GLOBALS);
@@ -60,14 +60,14 @@ Burada basitçe $kategori değişkeninin içeriğini bastırıp exit ile kodu du
 
 Dizi olarak tüm değişkenlerin listesini alarak hızlıca kontrol edebiliriz. Tabiki hatalarınızı kendinize uyarlayarak kullanıcının altyapısal olarak hata görmesini engelleyebilirsiniz. Hataları fonksiyonların başına @ işareti koyarak gizleyebilirsiniz. Mesela bir bölme işlemi ve
 
-```
+```php
 $deger = $d1 / $d2;
 
 ```
 
 iken $d2 eğer 0 ise "devision by zero" hatası alırsınız. Bunu koalyca gizlemek için;
 
-```
+```php
 $değer = @($d1 / $d2 );
 
 ```
@@ -100,7 +100,7 @@ Buna benzer çoğu dilin hata çıktıları ile oynayabilme, hata loglama gibi d
 
 Önünüze çıkacak hataları düşünerek kod yazmak her zaman en hızlı çözüme ulaşmaya çook yardımcı olur. Mesela çalıştığınız kod fazlasıyla uzun ise daha bol açıklama koyun. Kesinlikle auto ident'a dikkat edin. Kodunuzda boşluklara ve boş satırlara çok yer verin. Sık kod yerine birbirinden ayrıştırılmış gruplu kod yazmaya çalışın. Sadece 2 örnek vereceğim size ve aradaki okunabilirlik farkını görün :
 
-```
+```php
 <?php
 # bilgiler
   $ad       = $_GET["ad"];
@@ -130,7 +130,7 @@ Buna benzer çoğu dilin hata çıktıları ile oynayabilme, hata loglama gibi d
 
 Diğeri ise şöyle:
 
-```
+```php
 <?php
 $ad = $_GET["ad"];
 $eposta = $_GET["eposta"];

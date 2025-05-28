@@ -10,7 +10,7 @@ lang: tr
 ---
 
 Php ile dosya gönderimi işlemleri oldukça kolaydır. Burada dosya gönderiminin nasıl yapılabileceği hakkında bilgi vermeye çalışacağım. Gönderilen dosyaları veritabanında saklamak vs gibi işlemlere değinmeyeceğim. Öncelikle formumuzu tanımlarken enctype="multipart/form-data" yüklemini eklemeniz gerektiğini hatırlatmak istiyorum. Örnek bir dosya gönderme formu aşağıdaki gibi olabilir.
-```
+```html
 <form action="yukle.php" method="post" enctype="multipart/form-data">
   Gönderilecek dosya: <input name="dosya_yukle" type="file">
   <input type="submit" value="Gönder">
@@ -33,7 +33,7 @@ post_max_size         Aslında post ile gönderilebilecek en yüksek veri
 PHP, gönderilen dosyaları php.ini deki ayarlar doğrultusunda geçici klasöre geçici bir isimle kaydeder ve gerekli bilgileri $_FILES adlı özel bir değişkende aşağıdaki şekilde kaydeder. ( PHP'nin 4.1.0 sürümü öncesi $_FILES değişkeni yerine $HTTP_POST_FILES kullanılıyordu )
 
 Örneğimizdeki form yoluyla herhangi bir dosya gönderildiğinde yukle.php dosyamızda $_FILES değişkeninin içeriği aşağıdaki gibi olacaktır.
-```
+```php
 $_FILES['dosya_yukle']['name']       Gönderilen dosyanın orjinal adı.
 $_FILES['dosya_yukle']['type']       Eğer tarayıcı tarafından sağlanmışsa dosyanın mime türü. ( örneğin: image/gif )
 $_FILES['dosya_yukle']['size']       Byte cinsinden gönderilen dosyanın boyutu.
@@ -68,13 +68,13 @@ Ayrıca PHP 4.3.0. sürümünden sonra aşağıdaki gibi hata sabitleride tanım
 Eğer kullanıcının tarayıcısı bir şekilde bize ['type'] alanını sağlamıyorsa; bunu mime_content_type() fonksiyonunu kullanarak bulabiliriz. Ancak bildiğim kadarıyla bu fonksiyon sadece Linux ortamında çalışacaktır.
 
 **Hata 2 :** Eğer istersek formumuzda
-```
+```html
 <input name="MAX_FILE_SIZE" type="hidden" value="30000" />
 ```
 şeklinde bir alan daha tanımlayarak kullanabiliriz. Avantajı, dosya daha sunucuya gönderilmeden önce boyut kontrolünden geçirildiği ve işleme buna göre devam edildiğinden boyutu limiti aşacak olan dosya sunucuya gönderilmeden önce işlem iptal edilmiş olur. Ayrıca, herhangi bir ayarı tamamiyle kullanıcının denetimindeki bir ortama göndererek ondan gizlemeye çalışmak mantıklı olmayacağından tavsiye edilmez. Çünkü hidden özelliği sadece html ile ilgili bir durumdur. Kullanıcı, "gizli olsa dahi" bu değeri değiştirebilir. Eğer herhangi bir şekilde dosya boyutu kontrolü yapmak istiyorsak bunun yanısıra php içerisinde ['size'] değişkeniyle gelen değeri kontrol ederek yapabiliriz ki bu şekilde daha güvenli olacaktır.
 
 Sanırım artık bir örnek ile sonlandırmalıyım. Yukarıdaki formumuza basit bir php programı entegre edeyim.
-```
+```php
 <?php
 // sayfanin ilk açilisinda herhangi bir islem yapmamak için böyle bir degisken
 // varmi diye bakiyoruz

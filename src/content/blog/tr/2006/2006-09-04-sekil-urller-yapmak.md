@@ -38,12 +38,12 @@ http://www.mfyz.com/?forum/php/5
 gibi şekillere sokmanız da mümkün. Değişen tek şey diziyi parçaladığınız ayraçtır..
 
 Yavaş yavaş koda girelim:
-```
+```php
 $parametreler = $_SERVER["QUERY_STRING"];
 
 ```
 ilk önce $parametreler değişkenine alalım bu kısmı. Ardından $parametreler değişkenini dizi olarak &'lere göre parçalayalım.
-```
+```php
 $parametreler = explode("&", $parametreler);
 
 ```
@@ -52,7 +52,7 @@ $parametreler = explode("&", $parametreler);
 Her modüle bir mantıksal sıra koyarak url'de parametrelerin sırasını belirli şeyler olarak algılatabilirim (ki öyle yapıyorum). Şimdi her sayfada modül adı şart olduğuna göre ?'den sonraki ilk parametreyi HER ZAMAN modül adı olarak alıyorum. Geri kalan kısımı da $parametreler adında bir dizi içinde saklıyorum.
 
 Gelelim ilk elemanı nasıl alıp diğer kısmı dizide tutuyorum.
-```
+```php
 $modul = array_shift($parametreler);
 
 ```

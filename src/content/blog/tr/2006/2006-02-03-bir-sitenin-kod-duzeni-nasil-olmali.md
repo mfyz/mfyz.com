@@ -43,7 +43,7 @@ Bir php projesi için ayar dosyasında her türlü site detayları mevcuttur. Ha
 #### Modül mantığı nedir?
 
 Sitemizde farklı bölümlerde farklı php görevlerimiz olacaktır değil mi?, şimdi şöyle düşünün, bütün sayfalar sitenin değişken bir noktasına uygun HTML kod üretir. Bütün projelerde sistem böyle çalışır. Genellikle benim anlattığım sistemin tersi uygulanır ve her php sayfasında menu.php footer.php'ler yüklenir. Boylece değişken kısım farklılığa göre yüklenmez, her sayfa kendi işini yapar ve statik kısımları çağırır. Benim bahsettiğim sistemde ise şöyledir. Bütün site index.php üzerinde oynar. get methodu ile module adlı bir değişken alalım her linkte. bu değişkenin içeriğine ait modulu seçen bir dosyamız vardır. Ya da bu kısım index.php'nin içinde de mevcut olabilir. Örneğime göre dosyalar, galeri, dokumanlar diye 3 bölümümüz olsun. Bir de anasayfaya ait kodu üreten bir modülümüz olacak tabiki. index.php'de şu kısım olmalı mesela;
-```
+```php
 $modul = $_GET["modul"];
 # modul secme mekanizmasi
   if( $modul == 'dosyalar' ){
