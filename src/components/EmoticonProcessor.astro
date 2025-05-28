@@ -1,0 +1,71 @@
+---
+// Component that wraps Content and processes emoticons
+// Since Astro components are compiled ahead of time,
+// we'll use the slot system to process the content
+
+// Props
+const { as: Element = 'div' } = Astro.props;
+
+// A function to process the HTML content from the slot and replace emoticons
+function processHtml(html) {
+  return html
+    .replace(/:\)/g, '😊')
+    .replace(/:D/g, '😁')
+    .replace(/;\)/g, '😉');
+}
+---
+
+<Element>
+  <slot />
+</Element>
+
+<script>
+  // Client-side processing of text nodes to replace emoticons
+  function replaceEmoticons() {
+    // Define emoticon to emoji mapping
+    const emoticonMap = {
+      ':)': '😊',
+      ':D': '😁',
+      ';)': '😉'
+    };
+    
+    // Process all text nodes in the document
+    const walker = document.createTreeWalker(
+      document.body,
+      NodeFilter.SHOW_TEXT,
+      null,
+      false
+    );
+    
+    const textNodes = [];
+    let node;
+    while (node = walker.nextNode()) {
+      // Skip script and style elements
+      if (!['SCRIPT', 'STYLE'].includes(node.parentNode.tagName)) {
+        textNodes.push(node);
+      }
+    }
+    
+    // Replace emoticons in each text node
+    textNodes.forEach(textNode => {
+      let content = textNode.nodeValue;
+      let modified = false;
+      
+      // Replace each emoticon with its emoji
+      Object.entries(emoticonMap).forEach(([emoticon, emoji]) => {
+        if (content.includes(emoticon)) {
+          content = content.replace(new RegExp(emoticon.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, '\\$1'), 'g'), emoji);
+          modified = true;
+        }
+      });
+      
+      // Only update if we made changes
+      if (modified) {
+        textNode.nodeValue = content;
+      }
+    });
+  }
+  
+  // Run the replacement when the page loads
+  document.addEventListener('DOMContentLoaded', replaceEmoticons);
+</script>
