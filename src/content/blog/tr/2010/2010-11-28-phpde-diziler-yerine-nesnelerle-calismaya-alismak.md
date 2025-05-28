@@ -15,7 +15,7 @@ Belki JSON ile back-end'de uğraşıyor olmak biraz daha nesnelerle çalışmay�
 
 Neyse, 2 satır kod ile diziler yerine anlık yaptığınız basit işleri nesneler üzerinde yapabileceğinizi gösterebilirim.
 
-```
+```php
 $user = (object) array(
   "name" => "Fatih",
   "surname => "YILDIZ",
@@ -37,7 +37,7 @@ $user = (object) array(
 
 Nesne, dizi ve nesne şeklinde karışık kullanabilirsiniz. Mesela son arabanın markasına;
 
-```
+```php
 print $user->cars[0]->brand;
 
 ```

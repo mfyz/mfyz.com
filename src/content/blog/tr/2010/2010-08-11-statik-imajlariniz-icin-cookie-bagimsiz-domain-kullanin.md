@@ -18,12 +18,12 @@ Eğer o domainde çalıştırdığınız uygulamanız çok cookie set etmemişse
 Özellikle .NET'deki authentication cookie'leri gibi büyük boyutlu cookie saklayan uygulamalarda, eğer http request sayınız çok ise bu yavaşlama hissedilir derecede olabilir.
 
 Bunu engellemek için uygulamanızı sunduğunuz domain ile bu statik dosyaları sunduğunuz sunucuyu ayırmalısınız. Sunucuyu ayırmaktan kastım fiziksel olarak ayırmak değil. Mesela mfyz.com domaini için konuşursam, uygulama mfyz.com üzerinde çalışıyor ve kullanıcı bu domainden girip burada kalıyor. Ama bununla beraber gelen birçok statik dosya cookie disabled bir subdomainden sunulabilir. Mesela statik.mfyz.com gibi bir subdomainden sunulurken, uygulamada header'da include ettiğim bir js dosyası için
-```
+```html
 <script type="text/javascript" src="http://mfyz.com/js/main.js"></script>
 
 ```
 yerine
-```
+```html
 <script type="text/javascript" src="http://statik.mfyz.com/js/main.js"></script>
 
 ```

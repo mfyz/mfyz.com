@@ -174,6 +174,26 @@
   .main-content-wrapper pre {
     @apply my-6 p-4 rounded-md overflow-auto bg-slate-100 dark:bg-slate-800 text-sm md:text-base;
   }
+  
+  /* Word wrap for code blocks when enabled */
+  .main-content-wrapper pre.word-wrap-enabled {
+    @apply whitespace-pre-wrap break-words;
+  }
+  
+  /* Style for the code block button group */
+  .code-buttons-group {
+    @apply shadow-sm transition-transform duration-200 transform hover:scale-105;
+  }
+  
+  /* Style for individual code block buttons */
+  .copy-code, .wrap-code {
+    @apply transition-colors duration-200 hover:bg-slate-600 dark:hover:bg-slate-600;
+  }
+  
+  /* Add subtle shadow to make button group stand out more */
+  .code-buttons-group {
+    @apply shadow;
+  }
 
   /* Inline code styles */
   .main-content-wrapper :not(pre) > code {

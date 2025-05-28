@@ -31,7 +31,7 @@ http://www.google.com/webmasters/sitemaps/ping?sitemap=
 
 Şimdi kod üzerinde bir dizide popüler arama motorlarının ping servisleri ve yapılarını göreceksiniz. Zaten kodun yaptığı işi hemen anlayabilirsiniz. Basitçe sitemap.xml dosyanızı belirten urlleri "file" fonksiyonu ile almaya çalışıyoruz. Zaten bu url'ler ziyaret edildiği ve cevapları geldiği için bu servisler pinglenmiş olacak.
 
-```
+```php
 $services = array(
 	'http://www.google.com/webmasters/sitemaps/ping?sitemap=###',
 	'http://search.yahooapis.com/SiteExplorerService/V1/ping?sitemap=###',

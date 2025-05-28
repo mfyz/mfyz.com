@@ -35,7 +35,7 @@ Facebook sayfasında çıkan görsel eğer siz meta tagler ile belirlemediyseniz
 
 Aşağıda örnek bir kullanım göreceksiniz :
 
-```
+```html
 <meta name="title" content="Caretta Caretta'ları koruyalım" />
 <meta name="description" content="Yaklaşık 106 milyon yıldır yeryüzünde olduklarını düşünülmektedir. İnsanoğlunun yerleşme ve çoğalma kapasitesi sayesinde bugün sayıları giderek azalmaktadır. Nesli tükenme tehlikesi altında olduğu için koruma altındadır." />
 <link rel="image_src" href="shareimg.jpg" />
