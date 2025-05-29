@@ -12,7 +12,7 @@ lang: tr
 Docker, acik kaynak kodlu bir uygulamayi deneme ve gelistirme icin gelistirme bilgisayariniza kurulum surecini inanilmaz kolaylastirdi. Bu kisa yazida size docker kullanarak bir graylog kurulumu yapip basit bir nodejs uygulamasindan mantiksal log gonderme ornegi verecegim.
 
 1) Asagida kaynagi verilen docker-compose.yml dosyasini kopyalayip kaydedin ve asagidaki komutla docker instance kurulumu yapin:
-```
+```sh
 docker-compose -f docker-compose.yml up
 ```
 2) Kurulan graylog'a http://127.0.0.1:9000/ adresini kullanarak giris yapin Kullanici: admin Sifre: admin
@@ -24,7 +24,7 @@ docker-compose -f docker-compose.yml up
  
 
 docker-compose.yml
-```
+```yml
 version: '2'
 services:
   mongodb:
@@ -65,7 +65,7 @@ services:
  
 
 app.js
-```
+```js
 var graylog2 = require("graylog2");
 
 var logger = new graylog2.graylog({
