@@ -16,7 +16,7 @@ Basit bir web uygulaması hazırlıyor ve topu topu 3-5 farklı varış noktası
 Bu yazıda Slim adında minimalist bir php çatısını kısa bir örnek kod ile tanıtacağım. Slim, altı üstü, hata ayıklama, oturum yönetimi ve çok basit bir şablon mekanizmasından oluşuyor. Şablon motoru bile değil, sadece yardımcı. Aşağıdaki kodda ikinci varış noktası tanımlamasında görebilirsiniz şablon kullanımını.
 
 Çok detaya girmeye gerek yok kod zaten kendini anlatıyor :)
-```
+```php
 $app = new \Slim\Slim();
 $app->get('/hello/:name', function ($name) {
     echo "Hello, $name";

@@ -48,7 +48,7 @@ Bu butonlarla ilgili aksiyonlara da StoreKit'i entegre etmeniz gerekiyor. StoreK
 Doğrulama sunucularından gelen cevap, abonelik türündeki ürünler için bazı farklılıklar gösteriyor. Cevap (json) nesnesinde "receipt"a ek olarak "latest_receipt_info" adında bir nesne daha alacaksınız. Kullanıcının yaptığı ilk ödemenin doğrulama sonucunda bu iki nesne (receipt ve last_receipt_info nesneleri) denk olacaktır. Apple, kullanıcıdan yeni ödeme aldığı zaman, bu doğrulamayı yaptığınızda "latest_receipt_info" nesnesiyle size yeni bir fatura kopyası vermeye başlayacaktır. Bu yeni fatura kopyası tekrar eden aboneliğin yeni dönemine ait ödeme anlamına gelir ve yeni döneme ait detayları içerecektir.
 
 Ayrıca bu fatura kopyalarında expires_date, expires_date_formatted ve expires_date_formatted_pst adında ek alanlar göreceksiniz, bunlar satın alınan abonelik periyodunun bitimini gösterecektir. Şurada örnek fatura kopyasını görebilirsiniz:
-```
+```json
 {
    "receipt":{
       "expires_date_formatted":"2012-12-12 00:15:05 Etc\/GMT",

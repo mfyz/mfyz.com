@@ -31,7 +31,7 @@ Twitter Card'ınızı hazırlamak için önce içeriğinizi özetleyecek 3 eleme
 *   İçerik görseli (görselin tam url'i)
 
 Bu öğeleri hazırladıktan sonra bu sayfalarda aşağıdaki meta etiketi grubunu head etiketi içine eklemeniz, sayfanızın twitter card'a sahip olmasına yetecektir.
-```
+```html
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:url" content="http://mfyz.com/cozunurluge-gore-tasarlamayin"/>
 <meta name="twitter:title" content="Çözünürlüğe göre tasarlamayın"/>

@@ -18,7 +18,7 @@ Ama görsel olarak neyden bahsettiğimi göstermem gerekirse:
 ![](/images/archive/tr/2013/04/segmented_controls.png)
 
 Gördüğünüz gibi aslında standart bir çoktan seçmeli tek cevap sorularından bahsediyorum. Bunun için standart form elementlerinden radio butonu kullanarak cevapları tek grup altında label ve input elementleriyle bir formda toplayalım.
-```
+```html
 <label for="radio11">
 	<input type="radio" id="radio11" name="answer" checked="checked" />
 	Yes
@@ -40,7 +40,7 @@ Bahsettiğimiz gruplanmış seçim nesnesi aslında görsel olarak seçili gör�
 Bu etkileşimi, yani bir radio elemanının seçili durumda olup olmadığını css ile yakalayabildiğimiz bir sözde özellik var (pseudo) ":checked". Ancak input:checked elemanı bize hala input elemanini kendisini verecektir. Başka bir elemanı bu seçiciyle yakalayabilmemizin tek yolu bu gerçek elemanı takip eden bir sonraki eleman seçicisi. Bunu da "+" seçicisiyle yapabiliyoruz biliyorsunuz.
 
 Yani "a + span" css seçicisi
-```
+```html
 <a href="#">Link</a>
 <span class="description">Link description</span>
 
@@ -50,7 +50,7 @@ Yani "a + span" css seçicisi
 Şimdi bu teoriyi bizim asıl örneğimize yani input'larin seçili olduğu durumda görünür başka bir elemanı seçmek için kullanırken inputu takip eden bir span elementini seçtirerek sağlayabiliriz. Böylece span elementini radio butonun seçili durumunda istediğimiz şekilde özelleştirerek herhangi bir görünüme sokabiliriz.
 
 Şimdi bu yapıyı uygun gruplama ve isimlendirme ile html kodunda yapmak gerekirse:
-```
+```html
 <label for="radio11" class="option">
 	<input type="radio" id="radio11" name="answer" checked="checked" />
 	<span>Yes</span>
@@ -66,7 +66,7 @@ Yani "a + span" css seçicisi
 
 ```
 şeklinde bir html yapısı işimizi görecektir. Bu yapı, standart html görünümünü değiştirmeyecektir. Şimdi css ile bu görünümü segmented control görüntüsüne sokalım:
-```
+```css
 .segmented_control .option span {
     display: inline-block;
     background-color: #efefef;
@@ -95,8 +95,4 @@ Fakat ufak bir problem var, elemanlar arasında boşluklar oluşuyor. Malesef in
 
 Demo'nun kodunda görebileceğiniz gibi ilk ve son elemanları ayrıca seçerek border radius ekleyerek bu elemanları daha gruplanmış bir görüntüye sokabilirsiniz. Ya da tamamen tasarlanmış bir dizayni artalan resimleri olarak bu elemanlara yerleştirebilir böylece istediğiniz görüntüyü elde edebilirsiniz.
 
-Doğru sınıflama ile özel elemanları yakalayıp onların seçili durumlarında onlara özel stilleme yapabilirsiniz. Demo'nun kodunda görebileceğiniz gibi on/off switchini bu şekilde şekillendiriyoruz.
-
-[Çalışan Örnek Kod](http://mfyz.com/Files/Article_Examples/segmented_controls_from_radio.html)
-
-Nihai kodu da çalışan demo'dan inceleyebilirsiniz.
+Doğru sınıflama ile özel elemanları yakalayıp onların seçili durumlarında onlara özel stilleme yapabilirsiniz.

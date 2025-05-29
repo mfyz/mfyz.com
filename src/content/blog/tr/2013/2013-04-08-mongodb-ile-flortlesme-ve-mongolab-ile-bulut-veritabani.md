@@ -26,7 +26,7 @@ MongoLab 500mblık bir alanı ücretsiz sağlıyor. Diğer sınırlamalarını b
 MongoLab ile tamamen php mongo eklentisi bağımlılığından da kurtularak doğrudan servisin basit REST apisini kullanabilir ve tek başına çalışan bir uygulama yazmanız da mümkün.
 
 Konumuz mongo iken, birkaç php-mongo interaksiyonunu denediğim bir php dosyasının kodunu doğrudan vermek istiyorum.
-```
+```php
 <?php
 $mongo = new Mongo("mongodb://dbuser:dbpassword@******.mongolab.com:45297/test_database");
 $db = $mongo->selectDB("test_database");
