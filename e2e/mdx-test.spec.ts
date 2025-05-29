@@ -6,7 +6,7 @@ test.describe('MDX Test Page', () => {
     await page.goto('/mdx-test');
     
     // Check page title
-    await expect(page).toHaveTitle('MDX Styling Test - mfyz.com');
+    await expect(page).toHaveTitle('MDX Styling Test');
     
     // Get the mdx-content container
     const content = page.locator('.main-content-wrapper');

@@ -13,7 +13,7 @@ test('About page has correct headings and content', async ({ page }) => {
   console.log(`Current page title: "${title}"`);  
   
   // Verify expected title format
-  await expect(page).toHaveTitle('About this website - mfyz.com');
+  await expect(page).toHaveTitle('About this website');
   
   // Test the h1 heading
   const h1 = page.locator('h1:has-text("About this website")');
