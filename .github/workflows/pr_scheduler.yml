@@ -9,8 +9,8 @@ on:
       - edited
       - synchronize
   schedule:
-    # Check every hour.
-    - cron: 0 * * * *
+    # Check twice a day.
+    - cron: 0 6,18 * * *
 
 jobs:
   merge_schedule:
