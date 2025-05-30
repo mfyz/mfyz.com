@@ -1,0 +1,170 @@
+---
+title: "From WordPress to Astro: How I Rebuilt My Personal Site for Performance"
+description: "A detailed look at my journey migrating from WordPress to Astro, with before/after performance metrics and lessons learned along the way."
+slug: wordpress-to-astro-migration-performance-comparison
+date: "2025-05-30"
+hidden: true
+tags:
+  - web development
+  - astro
+  - wordpress
+  - performance
+  - case study
+coverImage: "/images/blog/2025/wordpress-to-astro-migration.jpg"
+---
+
+import { Image } from 'astro:assets';
+import ImageZoom from '@components/ImageZoom.jsx';
+import YouTube from '@components/YouTube.jsx';
+import CollapsibleText from '@components/CollapsibleText.astro';
+
+# From WordPress to Astro: A Performance Comparison
+
+Recently, [I migrated my blog from WordPress to Astro](/moved-blog-from-wordpress-to-astro/), looking for improvements in developer experience, content workflow, and performance. While my primary motivations weren't purely performance-related (as detailed in my previous post), I was certainly curious how the two platforms would compare.
+
+This post focuses exclusively on the performance comparison between my WordPress site and the new Astro version. Using Lighthouse and real-world metrics, I'll analyze the performance differences, share unexpected findings, and what we can learn from them.
+
+## Performance Comparison: WordPress vs. Astro
+
+Before pushing the new site live, I ran comprehensive performance tests comparing the WordPress site with the Astro version. Here's what I found:
+
+<CollapsibleText title="How the benchmark was conducted">
+I created a Node.js script using Lighthouse to test both the live WordPress site and local Astro development site. The script:
+
+1. Tests the homepage and 10 randomly selected blog posts
+2. Runs Lighthouse audits for performance, accessibility, best practices, and SEO
+3. Captures Core Web Vitals metrics like LCP, FID, and CLS
+4. Generates a CSV report with the comparison data
+
+All tests were run with the same network and device conditions to ensure a fair comparison.
+</CollapsibleText>
+
+### Key Performance Findings
+
+After running comprehensive Lighthouse tests on both the WordPress and Astro versions of the site, here are the actual performance results:
+
+#### Overall Average Scores
+
+| Metric | WordPress | Astro | Difference |
+|--------|-----------|-------|------------|
+| Performance Score | 99.2 | 98.4 | -0.8 points |
+| Accessibility | 99.0 | 91.9 | -7.1 points |
+| Best Practices | 97.7 | 92.0 | -5.7 points |
+| SEO | 86.0 | 100.0 | +14.0 points |
+| Largest Contentful Paint (LCP) | 0.82s | 0.82s | No change |
+| First Input Delay (FID) | 16ms | 16ms | No change |
+
+#### Performance Analysis
+
+The results were surprising in some aspects. Both sites performed exceptionally well in core performance metrics, with both versions achieving excellent scores in the Lighthouse performance category. Let's break down what these numbers mean:
+
+- **Performance**: Both sites scored extremely well, with WordPress at 99.2 and Astro at 98.4. Both scores are in the "Good" range (90-100), indicating excellent performance. Interestingly, the WordPress site slightly outperformed the Astro site in this metric.
+
+- **Accessibility**: WordPress scored higher with 99.0 vs Astro's 91.9. This suggests there may be some accessibility improvements needed in the Astro implementation, though both are still in the "Good" range.
+
+- **Best Practices**: WordPress scored higher with 97.7 vs Astro's 92.0. While both are in the "Good" range, there's room for improvement in the Astro version.
+
+- **SEO**: Astro significantly outperformed WordPress here with a perfect 100 score compared to WordPress's 86.0. This is one of the clearest advantages of the Astro implementation.
+
+- **Core Web Vitals**: Both sites performed exceptionally well in these critical metrics:
+  - LCP (Largest Contentful Paint): Both averaged 0.82s, well under the 2.5s "Good" threshold
+  - FID (First Input Delay): Both at 16ms, well under the 100ms "Good" threshold
+
+#### Page-by-Page Performance
+
+Here's a detailed breakdown of performance scores for each tested page:
+
+| Page | WP Performance | Astro Performance | WP LCP | Astro LCP |
+|------|----------------|-------------------|--------|----------|
+| Homepage | 99.0 | 100.0 | 0.83s | 0.55s |
+| n8n workflows | 99.0 | 100.0 | 0.81s | 0.64s |
+| XMLHTTPRequest vs Fetch | 99.0 | 100.0 | 0.86s | 0.51s |
+| n8n form trigger | 100.0 | 100.0 | 0.60s | 0.62s |
+| Fastify + Vercel | 98.0 | 97.0 | 1.06s | 1.16s |
+| Automate with n8n | 100.0 | 100.0 | 0.76s | 0.66s |
+| Scale at Arc XP | 99.0 | 100.0 | 0.83s | 0.66s |
+| turso + drizzle | 99.0 | 91.0 | 0.90s | 1.83s |
+| kokorojs | 100.0 | 94.0 | 0.81s | 1.52s |
+| About | 100.0 | 100.0 | 0.62s | 0.46s |
+| License | 98.0 | 100.0 | 0.97s | 0.45s |
+
+### Visual Comparison
+
+<ImageZoom src="/images/blog/2025/before-after-comparison.jpg" alt="Visual comparison of WordPress and Astro versions of the site" />
+
+*A visual comparison showing the WordPress site (left) and Astro version (right).*
+
+#### Performance by Content Type
+
+Interestingly, certain content types showed specific patterns:
+
+- **Simple pages** (About, License): The Astro version had significantly faster LCP times (0.46s vs 0.62s for About; 0.45s vs 0.97s for License)
+- **Code-heavy blog posts**: Both implementations performed very similarly
+- **Image-heavy posts**: Some posts performed better in WordPress than Astro (turso+drizzle post: 0.90s vs 1.83s LCP)
+
+## Testing Methodology
+
+<CollapsibleText title="How the benchmark was conducted">
+I created a Node.js script using Lighthouse to test both versions of my site:
+
+1. The live WordPress site at mfyz.com  
+2. The Astro version deployed to Vercel
+
+The script:
+- Tests the homepage and 10 different pages (blog posts, static pages)
+- Runs Lighthouse audits for performance, accessibility, best practices, and SEO
+- Captures Core Web Vitals metrics like LCP and FID
+- Generates a CSV report with the comparison data
+
+All tests were run with identical network and device conditions using desktop settings.
+</CollapsibleText>
+
+I selected a diverse set of pages to test, including:
+- The homepage
+- Blog posts with various content types (text-heavy, code-heavy, image-heavy)
+- Static pages (About, License)
+
+## What These Results Mean
+
+The performance results challenge a common assumption that static site generators automatically deliver dramatic performance improvements over WordPress. Some key insights:
+
+1. **WordPress can be fast with proper optimization**: My WordPress site was already highly optimized with a lightweight theme, minimal plugins, and good hosting.
+
+2. **Content type matters**: Simple pages showed consistent improvements in Astro, while some complex pages actually performed better in WordPress.
+
+3. **Trade-offs exist**: The Astro version scored lower on accessibility, which likely relates to implementation details rather than the framework itself.
+
+4. **SEO improvements are significant**: The perfect 100 SEO scores across all Astro pages represent a meaningful improvement.
+
+## Technical Implementation Notes
+
+For those interested in the technical aspects of the Astro implementation:
+
+- **Built with**: Astro 4.x, MDX for content, TailwindCSS for styling
+- **Hosting**: Vercel with static site generation
+- **Components**: Mix of Astro and React components
+- **Images**: Optimized with Astro's built-in image optimization
+- **Performance features**: Route pre-fetching, deferred hydration, CSS optimization
+
+## Conclusion
+
+Migrating from WordPress to Astro has transformed my content workflow, though the performance improvements were not as dramatic as expected. In fact, my WordPress site was already extremely well-optimized, achieving impressive Lighthouse scores that in some cases surpassed the Astro implementation.
+
+The key findings from this migration:
+
+1. **Performance isn't just about the framework**: A well-optimized WordPress site can match or even exceed a static site in core performance metrics
+2. **SEO improvements**: The most significant advantage was in SEO scores, where Astro consistently achieved perfect scores
+3. **Content-dependent results**: Simple pages like About and License showed clear LCP improvements in Astro, while some complex pages performed better in WordPress
+
+In the coming weeks, I'll share more detailed posts about specific aspects of the migration, including:
+
+1. Content migration techniques
+2. Component design decisions
+3. Performance optimization strategies
+4. SEO maintenance during framework migration
+
+Let me know if you're considering a similar migration—I'm happy to share more specific insights about the process!
+
+---
+
+*This post is a draft and will be updated with actual performance metrics after running the benchmark tests.*

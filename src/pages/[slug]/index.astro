@@ -8,7 +8,7 @@ import "@styles/blog-grid.css";
 
 // astro takes care of filtering the blog posts
 export async function getStaticPaths() {
-  const posts = await getCollection("blog", ({ data }) => !data.hidden);
+  const posts = await getCollection("blog");
   return posts.map(post => ({
     params: { slug: post.slug },
     props: { post },
@@ -16,6 +16,8 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
+
+// We'll handle hidden post checking on the client side
 
 const { Content } = await post.render();
 const { title, summary } = post.data;
@@ -28,7 +30,18 @@ const isTurkish = metadata?.frontmatter?.lang === 'tr' || Astro.url.pathname.sta
 export const prerender = true;
 ---
 
-<Layout title={title} description={summary} size="small" noContentWrapperClass>
+<script define:vars={{ isHidden: post.data.hidden }}>
+  // Client-side check for hidden posts and preview parameter
+  if (isHidden) {
+    const params = new URLSearchParams(window.location.search);
+    if (!params.has('preview')) {
+      // Redirect to 404 page if post is hidden and no preview parameter
+      window.location.href = '/404';
+    }
+  }
+</script>
+
+  <Layout title={title} description={summary} size="small" noContentWrapperClass>
   <BlogPost {...post.data} slug={post.slug} content={post.body} frontmatter={metadata.frontmatter}>
     <div class="main-content-wrapper">
       <Content />

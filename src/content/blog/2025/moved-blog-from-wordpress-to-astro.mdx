@@ -1,0 +1,115 @@
+---
+title: "I moved my blog from WordPress to Astro"
+description: "My journey migrating from WordPress to Astro, the decision process, challenges faced, and lessons learned along the way."
+slug: moved-blog-from-wordpress-to-astro
+date: "2025-05-28"
+hidden: true
+tags:
+  - web development
+  - astro
+  - wordpress
+  - case study
+coverImage: "/images/blog/2025/wordpress-to-astro-migration.jpg"
+---
+
+import { Image } from 'astro:assets';
+import ImageZoom from '@components/ImageZoom.jsx';
+import YouTube from '@components/YouTube.jsx';
+import CollapsibleText from '@components/CollapsibleText.astro';
+
+# I moved my blog from WordPress to Astro
+
+After years of running my personal site on WordPress, I decided it was time for a change. WordPress served me well, but as a developer focused on modern web technologies, I wanted something that better aligned with my values and workflow.
+
+This post documents my journey migrating from WordPress to Astro - the decision process, challenges, and lessons learned. For a detailed analysis of the performance comparison between the two versions, check out my follow-up post: [From WordPress to Astro: A Performance Comparison](/wordpress-to-astro-migration-performance-comparison/).
+
+## Why I Decided to Move Away from WordPress
+
+WordPress powers over 40% of the web for good reasons: it's flexible, has a massive ecosystem, and lets non-technical users publish content easily. For my personal site, however, I started feeling constrained by:
+
+- **Development workflow**: As a developer, I wanted a more code-centric workflow with version control
+- **Modern tech stack**: I was eager to use modern JavaScript, component-driven development, and a more flexible rendering approach
+- **Control and customization**: WordPress's plugin ecosystem is great but often leads to bloat and maintenance overhead
+- **Content authoring**: I wanted to write in Markdown/MDX and handle content as files rather than database entries
+
+After evaluating several modern frameworks, I landed on [Astro](https://astro.build) for its focus on content-first websites, component flexibility, and emphasis on shipping minimal JavaScript.
+
+## Migration Strategy
+
+My migration approach involved:
+
+1. Exporting all WordPress content to Markdown
+2. Setting up an Astro project with similar design and information architecture
+3. Carefully migrating key functionality (comments, search, etc.)
+4. Building a CI/CD pipeline for easy updates
+5. Setting up redirects to maintain SEO
+
+While time-consuming, this methodical approach helped ensure a smooth transition.
+
+## Key Benefits Beyond Performance
+
+The migration brought numerous benefits beyond just performance:
+
+- **Better developer experience**: Git-based workflow, component-driven architecture
+- **Lower hosting costs**: Static hosting is significantly cheaper than WordPress hosting
+- **Improved security**: Smaller attack surface with no PHP or database
+- **Content ownership**: All content as Markdown in a Git repository
+- **Customization freedom**: Full control over the codebase without plugin limitations
+
+## Challenges and Solutions
+
+The migration wasn't without challenges:
+
+<CollapsibleText title="WordPress plugin functionality">
+Replacing WordPress plugins required finding alternative solutions:
+- **Comments**: Replaced with GitHub Discussions
+- **Forms**: Implemented with a serverless function
+- **Search**: Added static search with Pagefind
+</CollapsibleText>
+
+<CollapsibleText title="Content migration issues">
+Some content required manual fixing:
+- Custom shortcodes needed conversion to Astro components
+- Embedded content needed special handling
+- Image paths and metadata needed updating
+</CollapsibleText>
+
+<CollapsibleText title="SEO considerations">
+Ensuring SEO continuity required:
+- Mapping all old URLs to new ones
+- Setting up proper redirects
+- Verifying structured data implementation
+- Resubmitting sitemaps
+</CollapsibleText>
+
+## Technical Implementation Details
+
+The new stack includes:
+
+- **Astro**: Core framework
+- **MDX**: For rich content with components
+- **TailwindCSS**: For styling
+- **Vercel**: For hosting and serverless functions
+- **GitHub Actions**: For CI/CD
+
+The repository is structured as a monorepo, making it easy to manage both the site and supporting tools in one place.
+
+## Lessons Learned
+
+Some key lessons from this migration:
+
+1. **Start with content export**: Getting clean content from WordPress first makes everything easier
+2. **Tackle one section at a time**: Breaking the migration into smaller chunks keeps it manageable
+3. **Plan for redirects early**: Map out your URL strategy before finalizing the new site structure
+4. **Automate what you can**: Scripts for content migration save countless hours of manual work
+5. **Test extensively**: Check the site on multiple devices and browsers before switching over
+
+## Was It Worth It?
+
+Absolutely. While WordPress is an excellent platform for many use cases, this more developer-centric approach has significantly improved my content workflow, site maintainability, and overall development satisfaction.
+
+The ability to use modern web development practices, version control my entire site (content and code), and deploy with confidence has transformed my relationship with my personal website.
+
+In the coming weeks, I'll share more detailed posts about specific aspects of the migration, including a thorough [performance comparison](/wordpress-to-astro-migration-performance-comparison/) between the WordPress and Astro versions.
+
+Let me know if you're considering a similar migration—I'm happy to share more specific insights about the process!
