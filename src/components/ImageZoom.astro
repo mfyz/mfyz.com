@@ -1,9 +1,115 @@
 ---
-// ImageZoom.astro - A wrapper for the React ImageZoom component
-import ImageZoomReact from './ImageZoom.jsx';
+// ImageZoom.astro - Pure vanilla JavaScript implementation with zero dependencies
 
-// Forward all props to the React component
-const props = Astro.props;
+// Get props from the component invocation
+const { src, alt, width, height, class: className, maxZoomWidth } = Astro.props;
+
+// Create a unique ID for this image to help with targeting
+const uniqueId = `image-${Math.random().toString(36).substring(2, 9)}`;
+const dialogId = `${uniqueId}-dialog`;
+
+// Calculate maximum width for zoomed image
+const zoomedMaxWidth = maxZoomWidth ? `${maxZoomWidth}px` : '95vw';
+
+// Calculate aspect ratio if both width and height are provided
+// const aspectRatio = width && height ? width / height : null;
+// const aspectRatioStyle = aspectRatio ? `aspect-ratio: ${aspectRatio};` : '';
 ---
 
-<ImageZoomReact {...props} client:load />
+<!-- Thumbnail image that triggers the zoom dialog -->
+<button 
+  id={uniqueId} 
+  class="w-full cursor-zoom-in block p-0 m-0"
+  aria-label="Click to zoom image"
+>
+  <img 
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    class={`transition-transform hover:scale-105 block ${className || ''}`}
+  />
+</button>
+
+<!-- Dialog for the zoomed image -->
+<dialog 
+  id={dialogId}
+  class="fixed inset-0 z-50 bg-transparent p-4 backdrop:bg-black/80 overflow-hidden"
+  aria-labelledby={`${uniqueId}-title`}
+>
+  <div class="flex h-full w-full items-center justify-center">
+    <div class="relative">
+      <!-- Close button -->
+      <button 
+        id={`${dialogId}-close`}
+        class="absolute -right-4 -top-4 rounded-full bg-gray-800 p-2 text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 z-10"
+        aria-label="Close zoomed image"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </button>
+      
+      <!-- Zoomed image -->
+      <img 
+        id={`${dialogId}-image`}
+        src={src}
+        alt={alt}
+        style={`max-width: ${zoomedMaxWidth}; max-height: 95vh;`}
+        class="bg-white object-contain block m-0 p-0"
+        tabindex="0"
+      />
+      
+      <!-- Image caption/alt text -->
+      <div id={`${uniqueId}-title`} class="sr-only">{alt}</div>
+    </div>
+  </div>
+</dialog>
+
+<script define:vars={{ uniqueId, dialogId }}>
+  document.addEventListener('astro:page-load', () => {
+    const imageButton = document.getElementById(uniqueId);
+    const dialog = document.getElementById(dialogId);
+    const closeButton = document.getElementById(`${dialogId}-close`);
+    const zoomedImage = document.getElementById(`${dialogId}-image`);
+    
+    if (!imageButton || !dialog || !closeButton || !zoomedImage) {
+      console.error('ImageZoom: Required elements not found');
+      return;
+    }
+    
+    // Show dialog when thumbnail is clicked
+    imageButton.addEventListener('click', () => {
+      dialog.showModal();
+      // Focus on the image for keyboard accessibility
+      zoomedImage.focus();
+    });
+    
+    // Close dialog when close button is clicked
+    closeButton.addEventListener('click', () => {
+      dialog.close();
+    });
+    
+    // Close dialog when clicking outside the image
+    dialog.addEventListener('click', (event) => {
+      const rect = zoomedImage.getBoundingClientRect();
+      const isInDialog = (
+        rect.top <= event.clientY &&
+        event.clientY <= rect.top + rect.height &&
+        rect.left <= event.clientX &&
+        event.clientX <= rect.left + rect.width
+      );
+      
+      if (!isInDialog && event.target === dialog) {
+        dialog.close();
+      }
+    });
+    
+    // Support keyboard navigation
+    dialog.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        dialog.close();
+      }
+    });
+  });
+</script>
