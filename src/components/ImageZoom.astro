@@ -1,0 +1,9 @@
+---
+// ImageZoom.astro - A wrapper for the React ImageZoom component
+import ImageZoomReact from './ImageZoom.jsx';
+
+// Forward all props to the React component
+const props = Astro.props;
+---
+
+<ImageZoomReact {...props} client:load />
