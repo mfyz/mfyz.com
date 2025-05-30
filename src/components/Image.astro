@@ -1,0 +1,20 @@
+---
+// Image.astro - Image component for consistent image styling (converted from React)
+
+// Get props from the component invocation
+const { src, alt, width, height, class: className = "", center = false } = Astro.props;
+
+// Add center class if needed
+const combinedClassName = center ? `${className} mx-auto` : className;
+---
+
+<div class="img-wrapper">
+  <img 
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    class={combinedClassName}
+    transition:name={src}
+  />
+</div>

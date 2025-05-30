@@ -1,0 +1,17 @@
+---
+// Tags.astro - Tag list component (converted from React)
+
+// Get props from the component invocation
+const { list, className = "" } = Astro.props;
+
+// Check if we need to use light tags on dark background
+const isLightTags = className.includes("tags-light");
+---
+
+<div class={`flex w-full flex-wrap gap-2 ${className}`}>
+  {list.map(tag => (
+    <span class={isLightTags ? "tag-light" : "tag"}>
+      # {tag}
+    </span>
+  ))}
+</div>
