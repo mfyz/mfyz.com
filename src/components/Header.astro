@@ -1,7 +1,7 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
 import { SITE, CATEGORIES } from "../consts";
-import DarkModeToggle from "./DarkModeToggle";
+import DarkModeToggle from "./DarkModeToggle.astro";
 
 interface Props {
   size?: "small" | "large";
@@ -22,7 +22,7 @@ const { size } = Astro.props;
       <!-- <HeaderLink href="/code">Code</HeaderLink> -->
       <HeaderLink href="/about">About</HeaderLink>
       <HeaderLink href="/tr">🇹🇷 Türkçe Yazılar</HeaderLink>
-      <DarkModeToggle client:load />
+      <DarkModeToggle />
     </div>
   </nav>
 </header>
