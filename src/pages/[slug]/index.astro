@@ -10,14 +10,12 @@ import "@styles/blog-grid.css";
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
   return posts.map(post => ({
-    params: { slug: post.slug },
-    props: { post },
+      params: { slug: post.slug },
+      props: { post },
   }));
 }
 
 const { post } = Astro.props;
-
-// We'll handle hidden post checking on the client side
 
 const { Content } = await post.render();
 const { title, summary } = post.data;
