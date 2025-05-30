@@ -73,7 +73,7 @@ const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}/og.png`;
     <meta name="twitter:image:width" content="800" />
     <meta name="twitter:image:height" content="600" />
 
-    {import.meta.env.PUBLIC_VERCEL_ENV === 'production' && (
+    <!-- {import.meta.env.PUBLIC_VERCEL_ENV === 'production' && (
       <>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-MP2JXY39CE"></script>
         <script is:inline>
@@ -86,7 +86,7 @@ const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}/og.png`;
           }
         </script>
       </>
-    )}
+    )} -->
 
     <ViewTransitions />
   </head>
