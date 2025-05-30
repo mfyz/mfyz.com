@@ -35,7 +35,7 @@ const pageDescription = pageFrontmatter.description || description || defaultDes
 // Format title consistently: "Page Title - mfyz.com" for pages with custom titles
 const formattedTitle = rawTitle !== defaultTitle ? rawTitle : `${SITE.title} - ${SITE.description}`;
 
-const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}og.png`;
+const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}/og.png`;
 
 ---
 

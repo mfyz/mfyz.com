@@ -1,5 +1,5 @@
 import { getCollection } from "astro:content";
-import { generateOgImageForPost } from "../../utils/generateOgImage";
+import { generateOgImageForPost } from "../../utils/generateOgImage.js";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog", ({ data }) => !data.hidden);
@@ -18,4 +18,5 @@ export async function GET({ props }) {
   });
 }
 
+// Set to true to ensure static generation at build time
 export const prerender = true;
