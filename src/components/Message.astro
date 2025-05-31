@@ -27,7 +27,7 @@ const { imageURL, name } = characterDetails[character];
 <div
   data-direction={direction}
   class={`flex w-full gap-2 data-[direction=right]:flex-row-reverse ${
-    compact ? 'mt-4' : 'mt-10'
+    compact ? 'mt-2 mb-2' : 'mt-5 mb-5'
   }`}
 >
   <img
@@ -39,16 +39,16 @@ const { imageURL, name } = characterDetails[character];
     loading="lazy"
   />
 
-  <div class="overflow-hidden">
+  <div>
     <p
       data-direction={direction}
-      class="m-1 text-sm text-gray-500 data-[direction=right]:text-right"
+      class="m-1 mb-0 text-sm text-gray-500 data-[direction=right]:text-right"
     >
       {name}
     </p>
     <div
       data-direction={direction}
-      class="w-full max-w-2xl rounded-2xl bg-gray-400/20 data-[direction=right]:bg-blue-400/20 p-6 [&>*]:!mt-0"
+      class="w-full max-w-2xl rounded-2xl bg-gray-400/20 data-[direction=right]:bg-blue-400/20 p-6 [&>*]:!my-0 shadow-lg shadow-gray-50"
     >
       <slot />
     </div>

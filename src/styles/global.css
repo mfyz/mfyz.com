@@ -88,7 +88,8 @@
   }
 
   /* Paragraphs */
-  .main-content-wrapper p, .main-content-wrapper li {
+  .main-content-wrapper p:not([class*="mb-"]),
+  .main-content-wrapper li {
     @apply mb-5;
   }
 
@@ -171,7 +172,11 @@
 
   /* Blockquotes */
   .main-content-wrapper blockquote {
-    @apply border-l-4 border-primary bg-primary/10 dark:bg-primary/20 pl-4 py-1 my-6 italic;
+    @apply border-l-4 border-primary bg-primary/10 dark:bg-primary/20 pl-4 py-4 my-6 italic;
+  }
+
+  .main-content-wrapper blockquote p:last-child {
+    @apply mb-0;
   }
 
   /* Code blocks */
