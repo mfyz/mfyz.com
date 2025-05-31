@@ -39,7 +39,13 @@ export const prerender = true;
   }
 </script>
 
-  <Layout title={title} description={summary} size="small" noContentWrapperClass>
+  <Layout
+    title={title}
+    description={summary}
+    lang={isTurkish ? 'tr' : 'en'}
+    size="small"
+    noContentWrapperClass
+  >
   <BlogPost {...post.data} slug={post.slug} content={post.body} frontmatter={metadata.frontmatter}>
     <div class="main-content-wrapper">
       <Content />

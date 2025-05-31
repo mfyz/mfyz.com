@@ -11,13 +11,14 @@ interface Props {
   description?: string;
   size?: "small" | "large";
   noContentWrapperClass?: boolean;
+  lang?: string;
 }
 
 // Get properties from Astro.props and handle frontmatter data
 const pageFrontmatter = Astro.props.frontmatter || {};
 
 // Merge frontmatter and props, giving props priority
-const { title, description, size, noContentWrapperClass } = { ...pageFrontmatter, ...Astro.props };
+const { title, description, size, noContentWrapperClass, lang } = { ...pageFrontmatter, ...Astro.props };
 
 const pathname = Astro.url.pathname;
 const {
@@ -35,12 +36,15 @@ const pageDescription = pageFrontmatter.description || description || defaultDes
 // Format title consistently: "Page Title - mfyz.com" for pages with custom titles
 const formattedTitle = rawTitle !== defaultTitle ? rawTitle : `${SITE.title} - ${SITE.description}`;
 
+// Set language based on frontmatter
+const pageLang = lang || "en";
+
 const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}/og.png`;
 
 ---
 
 <!doctype html>
-<html>
+<html lang={pageLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

@@ -19,6 +19,8 @@
 @layer base {
   :root {
     --primary: 209 91 53; /* #D15B35 */
+    --primary-dark: 184 69 28; /* #B8451C - brighter but still with good contrast */
+    --primary-bright: 255 118 84; /* #FF7654 - brighter for dark mode */
     --background: 255 255 255;
     --text: 20 14 4;
     --shopify: 150 191 72; /* Shopify green #96bf48 */
@@ -27,6 +29,8 @@
   :root.dark {
     --primary: 209 91 53; /* #D15B35 */
     --primary-light: 227 110 72; /* #e36e48 - lighter version for dark mode */
+    --primary-dark: 184 69 28; /* #B8451C - brighter but still with good contrast */
+    --primary-bright: 255 136 84; /* #FF8854 - even brighter for dark mode */
     --background: 17 24 39;
     --text: 229 231 235;
   }
@@ -90,7 +94,7 @@
 
   /* Links with arrow */
   .main-content-wrapper a {
-    @apply text-primary dark:text-primary-light underline;
+    @apply text-primary-dark dark:text-primary-bright font-bold underline decoration-1 underline-offset-2 transition-all;
   }
 
   .main-content-wrapper a[href^="http"]:not(:has(img))::after {

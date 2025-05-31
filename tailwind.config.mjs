@@ -18,6 +18,8 @@ export default {
         text: "rgb(var(--text) / <alpha-value>)",
         background: "rgb(var(--background) / <alpha-value>)",
         "primary-light": "rgb(var(--primary-light) / <alpha-value>)",
+        "primary-dark": "rgb(var(--primary-dark) / <alpha-value>)",
+        "primary-bright": "rgb(var(--primary-bright) / <alpha-value>)",
       },
       fontFamily: {
         primary: ["Rubik", "sans-serif"],
