@@ -30,6 +30,7 @@ export async function generateRssFeed(context, languageFilter) {
   const items = blogPosts.map(post => ({
     ...post.data,
     link: `/${post.slug}/`,
+    pubDate: new Date(post.data.date),
     category: 'blog'
   })).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 

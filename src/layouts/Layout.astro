@@ -58,6 +58,13 @@ const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}/og.png`;
     <meta name="author" content={author} />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="200x200" />
+    
+    <!-- RSS Feed Discovery -->
+    {pageLang === "tr" ? (
+      <link rel="alternate" type="application/rss+xml" title="mfyz (Türkçe)" href="/tr/rss.xml" />
+    ) : (
+      <link rel="alternate" type="application/rss+xml" title="mfyz" href="/rss.xml" />
+    )}
 
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content={formattedTitle} />
@@ -99,7 +106,7 @@ const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}/og.png`;
     class="grid min-h-screen grid-rows-[1fr_auto] bg-white text-text dark:bg-gray-900 dark:text-gray-200"
     style="scrollbar-gutter: stable"
   >
-    <Header size={size} />
+    <Header size={size} lang={pageLang} />
     <main class="container mt-24 pb-4" style="scrollbar-gutter: stable">
       <div class={`${noContentWrapperClass ? "" : "main-content-wrapper"} mx-auto max-w-${size === "small" ? "3xl" : "5xl"}`}>
         <slot />
@@ -227,6 +234,6 @@ const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}/og.png`;
       setTimeout(initCodeBlocks, 500);
     </script>
 
-    <Footer />
+    <Footer lang={pageLang} />
   </body>
 </html>
