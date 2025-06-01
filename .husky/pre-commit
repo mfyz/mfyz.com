@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Run lint-staged to process only staged files
+npm run lint-staged
+
+# Run a subset of tests that are fast
+echo "Running critical tests..."
+npm run test -- src/utils/getPosts.test.js --reporter=verbose
+
+# Ensure there are no TypeScript errors
+echo "Checking TypeScript..."
+npm run typecheck
