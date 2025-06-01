@@ -14,25 +14,34 @@ const isTurkish = lang === "tr";
 // const categoriesInNav = ["programming", "geekin", "life"];
 ---
 
-<header class="fixed left-0 top-0 z-50 w-full backdrop-blur-sm bg-white/80 dark:bg-gray-900/80 supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-gray-900/60">
+<header
+  class="fixed left-0 top-0 z-50 w-full bg-white/80 backdrop-blur-sm supports-[backdrop-filter]:bg-white/60 dark:bg-gray-900/80 dark:supports-[backdrop-filter]:bg-gray-900/60"
+>
   <nav class={`mx-auto max-w-${size === "small" ? "3xl" : "5xl"}`}>
-    <h2><a href={isTurkish ? "/tr" : "/"} class="mfyz-logo font-secondary text-xl dark:text-white">{SITE.title}</a></h2>
+    <h2>
+      <a
+        href={isTurkish ? "/tr" : "/"}
+        class="mfyz-logo font-secondary text-xl dark:text-white">{SITE.title}</a
+      >
+    </h2>
     <div class="flex items-center gap-4">
       <!-- {categoriesInNav.map((category) => (
         <HeaderLink href={`/category/${category}`}>{CATEGORIES[category]}</HeaderLink>
       ))} -->
       <!-- <HeaderLink href="/code">Code</HeaderLink> -->
-      {isTurkish ? (
-        <>
-          <HeaderLink href="/hakkinda">Hakkında</HeaderLink>
-          <HeaderLink href="/">🇺🇸 English</HeaderLink>
-        </>
-      ) : (
-        <>
-          <HeaderLink href="/about">About</HeaderLink>
-          <HeaderLink href="/tr">🇹🇷 Türkçe Yazılar</HeaderLink>
-        </>
-      )}
+      {
+        isTurkish ? (
+          <>
+            <HeaderLink href="/hakkinda">Hakkında</HeaderLink>
+            <HeaderLink href="/">🇺🇸 English</HeaderLink>
+          </>
+        ) : (
+          <>
+            <HeaderLink href="/about">About</HeaderLink>
+            <HeaderLink href="/tr">🇹🇷 Türkçe Yazılar</HeaderLink>
+          </>
+        )
+      }
       <DarkModeToggle />
     </div>
   </nav>

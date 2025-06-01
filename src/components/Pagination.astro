@@ -5,10 +5,10 @@ interface Props {
   baseUrl?: string;
 }
 
-const { currentPage, totalPages, baseUrl = '/page' } = Astro.props;
+const { currentPage, totalPages, baseUrl = "/page" } = Astro.props;
 
-const prevUrl = currentPage > 1 ? `${baseUrl}/${currentPage - 1}` : '';
-const nextUrl = currentPage < totalPages ? `${baseUrl}/${currentPage + 1}` : '';
+const prevUrl = currentPage > 1 ? `${baseUrl}/${currentPage - 1}` : "";
+const nextUrl = currentPage < totalPages ? `${baseUrl}/${currentPage + 1}` : "";
 
 // Show at most 5 page links - current, 2 before, 2 after when possible
 const pageLinks = [];
@@ -19,57 +19,63 @@ for (let i = startPage; i <= endPage; i++) {
   pageLinks.push({
     page: i,
     url: `${baseUrl}/${i}`,
-    isCurrent: i === currentPage
+    isCurrent: i === currentPage,
   });
 }
 ---
 
-<nav aria-label="Pagination" class="flex items-center justify-between my-10">
+<nav aria-label="Pagination" class="my-10 flex items-center justify-between">
   <div class="flex items-center gap-2">
-    {prevUrl ? (
-      <a 
-        href={prevUrl} 
-        class="px-4 py-2 rounded-md border border-gray-300 hover:bg-gray-100 text-sm dark:border-gray-700 dark:hover:bg-gray-800"
-      >
-        Previous
-      </a>
-    ) : (
-      <span class="px-4 py-2 rounded-md border border-gray-300 text-gray-400 cursor-not-allowed text-sm dark:border-gray-700 dark:text-gray-600">
-        Previous
-      </span>
-    )}
-    
+    {
+      prevUrl ? (
+        <a
+          href={prevUrl}
+          class="rounded-md border border-gray-300 px-4 py-2 text-sm hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-800"
+        >
+          Previous
+        </a>
+      ) : (
+        <span class="cursor-not-allowed rounded-md border border-gray-300 px-4 py-2 text-sm text-gray-400 dark:border-gray-700 dark:text-gray-600">
+          Previous
+        </span>
+      )
+    }
+
     <div class="flex items-center gap-1">
-      {pageLinks.map(link => (
-        link.isCurrent ? (
-          <span class="px-3 py-2 rounded-md bg-primary text-white text-sm">
-            {link.page}
-          </span>
-        ) : (
-          <a 
-            href={link.url} 
-            class="px-3 py-2 rounded-md hover:bg-gray-100 text-sm dark:hover:bg-gray-800"
-          >
-            {link.page}
-          </a>
+      {
+        pageLinks.map(link =>
+          link.isCurrent ? (
+            <span class="rounded-md bg-primary px-3 py-2 text-sm text-white">
+              {link.page}
+            </span>
+          ) : (
+            <a
+              href={link.url}
+              class="rounded-md px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-800"
+            >
+              {link.page}
+            </a>
+          )
         )
-      ))}
+      }
     </div>
-    
-    {nextUrl ? (
-      <a 
-        href={nextUrl} 
-        class="px-4 py-2 rounded-md border border-gray-300 hover:bg-gray-100 text-sm dark:border-gray-700 dark:hover:bg-gray-800"
-      >
-        Next
-      </a>
-    ) : (
-      <span class="px-4 py-2 rounded-md border border-gray-300 text-gray-400 cursor-not-allowed text-sm dark:border-gray-700 dark:text-gray-600">
-        Next
-      </span>
-    )}
+
+    {
+      nextUrl ? (
+        <a
+          href={nextUrl}
+          class="rounded-md border border-gray-300 px-4 py-2 text-sm hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-800"
+        >
+          Next
+        </a>
+      ) : (
+        <span class="cursor-not-allowed rounded-md border border-gray-300 px-4 py-2 text-sm text-gray-400 dark:border-gray-700 dark:text-gray-600">
+          Next
+        </span>
+      )
+    }
   </div>
-  
+
   <div class="text-sm text-gray-500">
     Page {currentPage} of {totalPages}
   </div>

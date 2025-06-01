@@ -6,8 +6,11 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<div class="collapsible border-b border-gray-200 last:border-none mb-6">
-  <button class="collapsible-toggle flex w-full items-center gap-3 py-4 text-left" type="button">
+<div class="collapsible mb-6 border-b border-gray-200 last:border-none">
+  <button
+    class="collapsible-toggle flex w-full items-center gap-3 py-4 text-left"
+    type="button"
+  >
     <svg
       class="collapsible-arrow h-4 w-4 flex-shrink-0 transition-transform duration-200"
       viewBox="0 0 20 20"
@@ -17,13 +20,12 @@ const { title } = Astro.props;
       <path
         fill-rule="evenodd"
         d="M7.293 4.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L10.586 9 7.293 5.707a1 1 0 010-1.414z"
-        clip-rule="evenodd"
-      />
+        clip-rule="evenodd"></path>
     </svg>
     <span class="font-medium">{title}</span>
   </button>
   <div class="collapsible-content hidden overflow-hidden">
-    <div class="pl-7 pb-6">
+    <div class="pb-6 pl-7">
       <slot />
     </div>
   </div>
@@ -31,26 +33,26 @@ const { title } = Astro.props;
 
 <script>
   // This script runs on the client automatically
-  document.addEventListener('astro:page-load', () => {
+  document.addEventListener("astro:page-load", () => {
     // Get all collapsible elements
-    const collapsibles = document.querySelectorAll('.collapsible');
-    
+    const collapsibles = document.querySelectorAll(".collapsible");
+
     collapsibles.forEach(collapsible => {
-      const toggle = collapsible.querySelector('.collapsible-toggle');
-      const content = collapsible.querySelector('.collapsible-content');
-      const arrow = collapsible.querySelector('.collapsible-arrow');
-      
+      const toggle = collapsible.querySelector(".collapsible-toggle");
+      const content = collapsible.querySelector(".collapsible-content");
+      const arrow = collapsible.querySelector(".collapsible-arrow");
+
       if (toggle && content && arrow) {
-        toggle.addEventListener('click', () => {
+        toggle.addEventListener("click", () => {
           // Toggle content visibility
-          content.classList.toggle('hidden');
-          
+          content.classList.toggle("hidden");
+
           // Toggle arrow rotation
-          arrow.classList.toggle('rotate-90');
-          
+          arrow.classList.toggle("rotate-90");
+
           // Update aria-expanded attribute
-          const isExpanded = !content.classList.contains('hidden');
-          toggle.setAttribute('aria-expanded', isExpanded.toString());
+          const isExpanded = !content.classList.contains("hidden");
+          toggle.setAttribute("aria-expanded", isExpanded.toString());
         });
       }
     });

@@ -10,14 +10,14 @@ const characterDetails = {
   bender: {
     imageURL: "/characters/bender.jpg",
     name: "Bender",
-  }
+  },
 };
 
 // Get props from the component invocation
-const { 
-  character = "felix", 
-  direction = "left", 
-  compact = false 
+const {
+  character = "felix",
+  direction = "left",
+  compact = false,
 } = Astro.props;
 
 // Get character info
@@ -27,11 +27,11 @@ const { imageURL, name } = characterDetails[character];
 <div
   data-direction={direction}
   class={`flex w-full gap-2 data-[direction=right]:flex-row-reverse ${
-    compact ? 'mt-2 mb-2' : 'mt-5 mb-5'
+    compact ? "mt-2 mb-2" : "mt-5 mb-5"
   }`}
 >
   <img
-    class="size-12 flex-shrink-0 rounded-full bg-slate-300 object-cover mt-8"
+    class="mt-8 size-12 flex-shrink-0 rounded-full bg-slate-300 object-cover"
     src={imageURL}
     alt={`${name} profile-pic`}
     height={50}
@@ -48,7 +48,7 @@ const { imageURL, name } = characterDetails[character];
     </p>
     <div
       data-direction={direction}
-      class="w-full max-w-2xl rounded-2xl bg-gray-400/20 data-[direction=right]:bg-blue-400/20 p-6 [&>*]:!my-0 shadow-lg shadow-gray-50"
+      class="w-full max-w-2xl rounded-2xl bg-gray-400/20 p-6 shadow-lg shadow-gray-50 data-[direction=right]:bg-blue-400/20 [&>*]:!my-0"
     >
       <slot />
     </div>

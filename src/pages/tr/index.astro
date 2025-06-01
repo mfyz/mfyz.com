@@ -16,12 +16,10 @@ const listPosts = posts.slice(25);
   <div>
     <section class="-mt-10 mb-16">
       <BlogGrid posts={gridPosts} limit={25} />
-      
+
       <div class="blog-archive mt-24">
         <h2>Arşiv</h2>
-        {listPosts.length > 0 && (
-          <BlogList posts={listPosts} />
-        )}
+        {listPosts.length > 0 && <BlogList posts={listPosts} />}
       </div>
     </section>
   </div>

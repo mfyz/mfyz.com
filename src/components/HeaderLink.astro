@@ -13,7 +13,7 @@ const isActive = href === pathname || href === "/" + subpath?.[0];
 <a
   href={href}
   data-link-active={`${isActive}`}
-  class="inline-block border-primary dark:text-gray-300 hover:text-primary dark:hover:text-primary-light data-[link-active=true]:border-b-4 data-[link-active=true]:font-bold data-[link-active=true]:text-primary dark:data-[link-active=true]:text-primary-light no-underline"
+  class="inline-block border-primary no-underline hover:text-primary data-[link-active=true]:border-b-4 data-[link-active=true]:font-bold data-[link-active=true]:text-primary dark:text-gray-300 dark:hover:text-primary-light dark:data-[link-active=true]:text-primary-light"
   {...props}
 >
   <slot />
