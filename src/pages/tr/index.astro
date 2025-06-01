@@ -7,6 +7,7 @@ import "../../styles/blog-grid.css";
 
 // Get only Turkish posts (either in tr/ folder or with lang: tr in frontmatter)
 const posts = (await getCollection("blog", ({ data, id }) => {
+  console.log('--> data,id', data, id)
   // Include if in tr/ folder or has lang: tr
   return (id.startsWith('tr/') || data.lang === 'tr') && !data.hidden;
 })).sort(
