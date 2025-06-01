@@ -1,5 +1,5 @@
 ---
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns";
 import readingTime from "reading-time";
 
 // Turkish month names for localization
@@ -33,7 +33,7 @@ const fullEnglishMonths = {
   Nov: "November",
   Dec: "December",
 };
-// Tags component not used in this file
+import Tags from "@components/Tags.astro";
 import { getPatternName } from "@utils/get-pattern-name";
 import "../styles/blog-list.css";
 
@@ -49,16 +49,13 @@ const pathname = Astro.url.pathname;
 const isTurkish = pathname === "/tr" || pathname.startsWith("/tr/");
 
 // Helper function to format date without timezone adjustments
-function formatDatePreserveDay(dateStr: string, useTurkish = false) {
+function formatDatePreserveDay(dateStr, useTurkish = false) {
   // Handle cases where dateStr might not be a string
   if (!dateStr) return "";
 
   // Convert to string if it's a Date object
-  // Use type assertion to fix TypeScript error with instanceof
   const dateString =
-    typeof dateStr === "object" && dateStr !== null
-      ? (dateStr as Date).toISOString()
-      : String(dateStr);
+    dateStr instanceof Date ? dateStr.toISOString() : String(dateStr);
 
   try {
     // Extract year, month, day directly from the string to avoid timezone issues
@@ -89,7 +86,7 @@ function formatDatePreserveDay(dateStr: string, useTurkish = false) {
 }
 
 // Group posts by year
-const getYear = (date: Date) => {
+const getYear = date => {
   if (!date) return "";
   return new Date(date).getFullYear();
 };
@@ -104,7 +101,7 @@ const postsByYear = posts.reduce((acc, post) => {
   return acc;
 }, {});
 
-// Sort years in descending order (convert strings to numbers first)
+// Sort years in descending order
 const sortedYears = Object.keys(postsByYear).sort(
   (a, b) => Number(b) - Number(a)
 );
@@ -120,8 +117,8 @@ const sortedYears = Object.keys(postsByYear).sort(
           </h2>
         </div>
         <ul>
-          {postsByYear[year].map((post: any) => {
-            const { title, date } = post.data; // tags removed as unused
+          {postsByYear[year].map(post => {
+            const { title, date, tags } = post.data;
             const patternName = getPatternName(post.slug);
             // Calculate reading time
             const time = post.body
@@ -130,7 +127,7 @@ const sortedYears = Object.keys(postsByYear).sort(
             return (
               <li>
                 <div
-                  class={`blog-bg-pattern border-b border-gray-200 p-6 blog-bg-pattern-${patternName}`}
+                  class={`blog-bg-pattern border-b border-gray-200 p-6 blog-bg-pattern-${patternName} blog-bg-pattern-auto-dark`}
                   transition:name={post.slug}
                 >
                   <div class="flex items-center gap-4 whitespace-nowrap text-xs text-gray-500">

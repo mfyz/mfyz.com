@@ -36,21 +36,26 @@
   }
 
   html {
-    @apply scroll-m-20 overflow-auto scroll-smooth bg-white dark:bg-gray-900 text-text selection:bg-primary selection:text-background dark:text-gray-200;
+    @apply scroll-m-20 overflow-auto scroll-smooth bg-white text-text selection:bg-primary selection:text-background dark:bg-gray-900 dark:text-gray-200;
   }
 
   body {
     @apply font-sans text-base md:text-lg;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-secondary dark:text-gray-100 font-normal;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-secondary font-normal dark:text-gray-100;
     line-height: 1.4em !important;
   }
 
   /* Content styling */
   .main-content-wrapper {
-    @apply leading-7 md:leading-8 text-base md:text-lg tracking-normal;
+    @apply text-base leading-7 tracking-normal md:text-lg md:leading-8;
   }
 
   .main-content-wrapper h1 code,
@@ -64,27 +69,36 @@
 
   /* Headings - preserve Georgia font as required */
   .main-content-wrapper h1 {
-    @apply font-secondary font-normal text-4xl md:text-5xl mt-14 mb-10 text-slate-800 dark:text-gray-100;
+    @apply mb-10 mt-14 font-secondary text-4xl font-normal md:text-5xl;
   }
 
   .main-content-wrapper h2 {
-    @apply font-secondary font-normal text-3xl md:text-4xl mt-14 mb-10 text-slate-800 dark:text-gray-100;
+    @apply mb-10 mt-14 font-secondary text-3xl font-normal md:text-4xl;
   }
 
   .main-content-wrapper h3 {
-    @apply font-secondary font-semibold text-2xl md:text-3xl mt-14 mb-10 text-slate-800 dark:text-gray-100;
+    @apply mb-10 mt-14 font-secondary text-2xl font-semibold md:text-3xl;
   }
 
   .main-content-wrapper h4 {
-    @apply font-secondary font-semibold text-xl md:text-2xl mt-12 mb-8 text-slate-800 dark:text-gray-100;
+    @apply mb-8 mt-12 font-secondary text-xl font-semibold md:text-2xl;
   }
 
   .main-content-wrapper h5 {
-    @apply font-secondary font-semibold text-lg md:text-xl mt-10 mb-6 text-slate-800 dark:text-gray-100;
+    @apply mb-6 mt-10 font-secondary text-lg font-semibold md:text-xl;
   }
 
   .main-content-wrapper h6 {
-    @apply font-secondary font-bold text-base md:text-lg mt-10 mb-6 text-slate-800 dark:text-gray-100;
+    @apply mb-6 mt-10 font-secondary text-base font-bold md:text-lg;
+  }
+
+  .main-content-wrapper h1:not([class*="text-"]),
+  .main-content-wrapper h2:not([class*="text-"]),
+  .main-content-wrapper h3:not([class*="text-"]),
+  .main-content-wrapper h4:not([class*="text-"]),
+  .main-content-wrapper h5:not([class*="text-"]),
+  .main-content-wrapper h6:not([class*="text-"]) {
+    @apply text-slate-800 dark:text-gray-100;
   }
 
   /* Paragraphs */
@@ -95,7 +109,7 @@
 
   /* Links with arrow */
   .main-content-wrapper a:not([class*="text-"]) {
-    @apply text-primary-dark dark:text-primary-bright font-bold decoration-1 underline underline-offset-2 transition-all;
+    @apply font-bold text-primary-dark underline decoration-1 underline-offset-2 transition-all dark:text-primary-bright;
   }
 
   .main-content-wrapper a[href^="http"]:not(:has(img))::after {
@@ -104,13 +118,13 @@
 
   /* Lists */
   .main-content-wrapper ul {
-    @apply list-disc pl-6 my-6 marker:text-primary dark:marker:text-primary-light;
+    @apply my-6 list-disc pl-6 marker:text-primary dark:marker:text-primary-light;
   }
 
   .main-content-wrapper ol {
-    @apply list-decimal pl-6 my-6 marker:text-primary dark:marker:text-primary-light;
+    @apply my-6 list-decimal pl-6 marker:text-primary dark:marker:text-primary-light;
   }
-  
+
   /* Site logo styling with star icon default and home icon on hover */
   .mfyz-logo {
     display: inline-block;
@@ -118,38 +132,55 @@
     padding-left: 30px; /* Space for the icon */
     transition: opacity 0.3s ease;
   }
-  
+
   .mfyz-logo::before {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     top: 50%;
     transform: translateY(-50%);
     width: 24px;
     height: 24px;
-    background: url('/images/star-icon.svg') no-repeat center center;
+    background: url("/images/star-icon.svg") no-repeat center center;
     background-size: contain;
     transition: opacity 0.3s ease;
   }
-  
+
+  /* Invert logo icon in dark mode */
+  @media (prefers-color-scheme: dark) {
+    .mfyz-logo::before {
+      filter: invert(1);
+    }
+
+    .mfyz-logo::after {
+      filter: invert(1);
+    }
+  }
+
+  /* Support for class-based dark mode */
+  .dark .mfyz-logo::before,
+  .dark .mfyz-logo::after {
+    filter: invert(1);
+  }
+
   .mfyz-logo::after {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     top: 50%;
     transform: translateY(-50%);
     width: 24px;
     height: 24px;
-    background: url('/images/home.svg') no-repeat center center;
+    background: url("/images/home.svg") no-repeat center center;
     background-size: contain;
     opacity: 0;
     transition: opacity 0.3s ease;
   }
-  
+
   .mfyz-logo:hover::before {
     opacity: 0;
   }
-  
+
   .mfyz-logo:hover::after {
     opacity: 1;
   }
@@ -161,18 +192,19 @@
   .main-content-wrapper ol ol {
     @apply my-2 pl-4;
   }
-  
-  .main-content-wrapper ul li, .main-content-wrapper ol li {
-    @apply ml-3 mb-3 pl-1;
+
+  .main-content-wrapper ul li,
+  .main-content-wrapper ol li {
+    @apply mb-3 ml-3 pl-1;
   }
-  
+
   .main-content-wrapper li:last-child {
     @apply mb-0;
   }
 
   /* Blockquotes */
   .main-content-wrapper blockquote {
-    @apply border-l-4 border-primary bg-primary/10 dark:bg-primary/20 pl-4 py-4 my-6 italic;
+    @apply my-6 border-l-4 border-primary bg-primary/10 py-4 pl-4 italic dark:bg-primary/20;
   }
 
   .main-content-wrapper blockquote p:last-child {
@@ -181,24 +213,25 @@
 
   /* Code blocks */
   .main-content-wrapper pre {
-    @apply my-6 p-4 rounded-md overflow-auto bg-slate-100 dark:bg-slate-800 text-sm md:text-base;
+    @apply my-6 overflow-auto rounded-md bg-slate-100 p-4 text-sm dark:bg-slate-800 md:text-base;
   }
-  
+
   /* Word wrap for code blocks when enabled */
   .main-content-wrapper pre.word-wrap-enabled {
     @apply whitespace-pre-wrap break-words;
   }
-  
+
   /* Style for the code block button group */
   .code-buttons-group {
-    @apply shadow-sm transition-transform duration-200 transform hover:scale-105;
+    @apply transform shadow-sm transition-transform duration-200 hover:scale-105;
   }
-  
+
   /* Style for individual code block buttons */
-  .copy-code, .wrap-code {
+  .copy-code,
+  .wrap-code {
     @apply transition-colors duration-200 hover:bg-slate-600 dark:hover:bg-slate-600;
   }
-  
+
   /* Add subtle shadow to make button group stand out more */
   .code-buttons-group {
     @apply shadow;
@@ -206,33 +239,35 @@
 
   /* Inline code styles */
   .main-content-wrapper :not(pre) > code {
-    @apply bg-primary/20 dark:bg-primary/30 px-2 py-0.5 rounded;
+    @apply rounded bg-primary/20 px-2 py-0.5 dark:bg-primary/30;
   }
-  .main-content-wrapper :not(pre):not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) > code {
+  .main-content-wrapper
+    :not(pre):not(h1):not(h2):not(h3):not(h4):not(h5):not(h6)
+    > code {
     @apply text-xs md:text-sm;
   }
 
   /* Tables */
   .main-content-wrapper table {
-    @apply w-full border-collapse my-6;
+    @apply my-6 w-full border-collapse;
   }
 
   .main-content-wrapper th {
-    @apply border border-gray-300 dark:border-gray-700 px-4 py-2 text-left bg-gray-100 dark:bg-gray-800;
+    @apply border border-gray-300 bg-gray-100 px-4 py-2 text-left dark:border-gray-700 dark:bg-gray-800;
   }
 
   .main-content-wrapper td {
-    @apply border border-gray-300 dark:border-gray-700 px-4 py-2;
+    @apply border border-gray-300 px-4 py-2 dark:border-gray-700;
   }
 
   /* Images */
   .main-content-wrapper img {
-    @apply rounded-md my-6;
+    @apply my-6 rounded-md;
     /* hover:scale-105 transition-transform */
   }
 
   .main-content-wrapper hr {
-    @apply mt-14 mb-14;
+    @apply mb-14 mt-14;
   }
 
   /* Remove any extra spacing */
@@ -257,21 +292,19 @@
 
 @layer components {
   .btn-secondary {
-    @apply inline-block rounded-lg border border-gray-200 px-6 py-3 hover:bg-gray-50 transition-colors
-    dark:border-gray-700 dark:hover:bg-gray-800 dark:text-gray-200;
+    @apply inline-block rounded-lg border border-gray-200 px-6 py-3 transition-colors hover:bg-gray-50 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800;
   }
 
   .btn-icon {
-    @apply rounded-full p-2 hover:bg-gray-100 transition-colors
-    dark:hover:bg-gray-800;
+    @apply rounded-full p-2 transition-colors hover:bg-gray-100 dark:hover:bg-gray-800;
   }
 }
 
 @layer utilities {
   .tag {
-    @apply rounded-md bg-primary/15 dark:bg-primary/30 px-2 py-0.5 text-xs text-primary dark:text-primary-light;
+    @apply rounded-md bg-primary/15 px-2 py-0.5 text-xs text-primary dark:bg-primary/30 dark:text-primary-light;
   }
-  
+
   .tag-light {
     @apply rounded-md bg-white/80 px-2 py-0.5 text-xs text-gray-800;
   }
@@ -337,7 +370,8 @@ nav a {
   background-image: url(/images/post-patterns/pt-cone.svg);
 }
 
-.blog-bg-pattern-cone-white {
+.blog-bg-pattern-cone-white,
+.blog-bg-pattern-cone.blog-bg-pattern-auto-dark {
   background-image: url(/images/post-patterns/pt-cone-white.svg);
 }
 
@@ -345,7 +379,8 @@ nav a {
   background-image: url(/images/post-patterns/pt-cube.svg);
 }
 
-.blog-bg-pattern-cube-white {
+.blog-bg-pattern-cube-white,
+.blog-bg-pattern-cube.blog-bg-pattern-auto-dark {
   background-image: url(/images/post-patterns/pt-cube-white.svg);
 }
 
@@ -353,7 +388,8 @@ nav a {
   background-image: url(/images/post-patterns/pt-triangle.svg);
 }
 
-.blog-bg-pattern-triangle-white {
+.blog-bg-pattern-triangle-white,
+.blog-bg-pattern-triangle.blog-bg-pattern-auto-dark {
   background-image: url(/images/post-patterns/pt-triangle-white.svg);
 }
 
@@ -361,6 +397,7 @@ nav a {
   background-image: url(/images/post-patterns/pt-wave.svg);
 }
 
-.blog-bg-pattern-wave-white {
+.blog-bg-pattern-wave-white,
+.blog-bg-pattern-wave.blog-bg-pattern-auto-dark {
   background-image: url(/images/post-patterns/pt-wave-white.svg);
 }
