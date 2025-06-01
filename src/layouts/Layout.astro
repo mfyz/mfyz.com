@@ -1,6 +1,4 @@
 ---
-import { ViewTransitions } from "astro:transitions";
-import { AstroFont } from "astro-font";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import "@styles/global.css";
@@ -12,13 +10,17 @@ interface Props {
   size?: "small" | "large";
   noContentWrapperClass?: boolean;
   lang?: string;
+  frontmatter?: Record<string, any>;
 }
 
 // Get properties from Astro.props and handle frontmatter data
 const pageFrontmatter = Astro.props.frontmatter || {};
 
 // Merge frontmatter and props, giving props priority
-const { title, description, size, noContentWrapperClass, lang } = { ...pageFrontmatter, ...Astro.props };
+const { title, description, size, noContentWrapperClass, lang } = {
+  ...pageFrontmatter,
+  ...Astro.props,
+};
 
 const pathname = Astro.url.pathname;
 const {
@@ -31,16 +33,17 @@ const {
 
 // Extract title from frontmatter, props, or use default
 const rawTitle = pageFrontmatter.title || title || defaultTitle;
-const pageDescription = pageFrontmatter.description || description || defaultDescription;
+const pageDescription =
+  pageFrontmatter.description || description || defaultDescription;
 
 // Format title consistently: "Page Title - mfyz.com" for pages with custom titles
-const formattedTitle = rawTitle !== defaultTitle ? rawTitle : `${SITE.title} - ${SITE.description}`;
+const formattedTitle =
+  rawTitle !== defaultTitle ? rawTitle : `${SITE.title} - ${SITE.description}`;
 
 // Set language based on frontmatter
 const pageLang = lang || "en";
 
 const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}/og.png`;
-
 ---
 
 <!doctype html>
@@ -48,8 +51,16 @@ const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}/og.png`;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f5f5f4" media="(prefers-color-scheme: light)"/>
-    <meta name="theme-color" content="#1f2937" media="(prefers-color-scheme: dark)"/>
+    <meta
+      name="theme-color"
+      content="#f5f5f4"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#1f2937"
+      media="(prefers-color-scheme: dark)"
+    />
 
     <!-- General Meta Tags -->
     <title>{formattedTitle}</title>
@@ -58,13 +69,25 @@ const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}/og.png`;
     <meta name="author" content={author} />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="200x200" />
-    
+
     <!-- RSS Feed Discovery -->
-    {pageLang === "tr" ? (
-      <link rel="alternate" type="application/rss+xml" title="mfyz (Türkçe)" href="/tr/rss.xml" />
-    ) : (
-      <link rel="alternate" type="application/rss+xml" title="mfyz" href="/rss.xml" />
-    )}
+    {
+      pageLang === "tr" ? (
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="mfyz (Türkçe)"
+          href="/tr/rss.xml"
+        />
+      ) : (
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="mfyz"
+          href="/rss.xml"
+        />
+      )
+    }
 
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content={formattedTitle} />
@@ -99,7 +122,8 @@ const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}/og.png`;
       </>
     )} -->
 
-    <ViewTransitions />
+    <!-- Use the modern meta tag approach for view transitions -->
+    <meta name="view-transition" content="same-origin" />
   </head>
 
   <body
@@ -108,45 +132,48 @@ const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}/og.png`;
   >
     <Header size={size} lang={pageLang} />
     <main class="container mt-24 pb-4" style="scrollbar-gutter: stable">
-      <div class={`${noContentWrapperClass ? "" : "main-content-wrapper"} mx-auto max-w-${size === "small" ? "3xl" : "5xl"}`}>
+      <div
+        class={`${noContentWrapperClass ? "" : "main-content-wrapper"} mx-auto max-w-${size === "small" ? "3xl" : "5xl"}`}
+      >
         <slot />
       </div>
     </main>
 
-    <!-- Code block enhancement script -->  
+    <!-- Code block enhancement script -->
     <script is:inline>
-      /** 
+      /**
        * Code Blocks Enhancement Script
-       * 
+       *
        * This script attaches copy and word wrap toggle buttons to code blocks in the document.
        */
-      
+
       console.log("Code blocks script loaded");
-      
+
       // Initialize immediately and also on page transition with Astro
       function initCodeBlocks() {
         console.log("Initializing code block buttons");
         const copyButtonLabel = "Copy";
         const wrapButtonLabel = "Wrap";
         const codeBlocks = Array.from(document.querySelectorAll("pre"));
-        
+
         console.log(`Found ${codeBlocks.length} code blocks to enhance`);
-      
+
         for (const codeBlock of codeBlocks) {
           // Skip if this code block already has buttons
           if (codeBlock.parentNode?.classList?.contains("code-block-wrapper")) {
             continue;
           }
-      
+
           // Create wrapper for relative positioning
           const wrapper = document.createElement("div");
           wrapper.style.position = "relative";
           wrapper.className = "code-block-wrapper";
-      
+
           // Create button group container
           const buttonGroup = document.createElement("div");
-          buttonGroup.className = "code-buttons-group absolute right-3 -top-3 flex rounded overflow-hidden";
-          
+          buttonGroup.className =
+            "code-buttons-group absolute right-3 -top-3 flex rounded overflow-hidden";
+
           // Create word wrap toggle button (first in the group) - icon only
           const wrapButton = document.createElement("button");
           wrapButton.className =
@@ -155,33 +182,40 @@ const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}/og.png`;
           wrapButton.setAttribute("aria-label", wrapButtonLabel);
           wrapButton.setAttribute("aria-pressed", "false");
           wrapButton.setAttribute("title", "Toggle word wrap");
-          
+
           // Create divider between buttons
           const divider = document.createElement("div");
           divider.className = "border-r border-gray-400 dark:border-gray-600";
-          
+
           // Create copy button (second in the group) - icon with text
           const copyButton = document.createElement("button");
           copyButton.className =
             "copy-code bg-gray-500 dark:bg-gray-700 py-1 px-2 text-xs text-white font-medium rounded-r flex items-center";
           copyButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3 mr-0.5"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>${copyButtonLabel}`;
-          copyButton.setAttribute("aria-label", `${copyButtonLabel} code to clipboard`);
-          copyButton.setAttribute("title", `${copyButtonLabel} code to clipboard`);
-      
+          copyButton.setAttribute(
+            "aria-label",
+            `${copyButtonLabel} code to clipboard`
+          );
+          copyButton.setAttribute(
+            "title",
+            `${copyButtonLabel} code to clipboard`
+          );
+
           // Make sure we have the code element
           const code = codeBlock.querySelector("code");
           if (!code) continue; // Skip if no code element found
-          
+
           // Get the original code content
           const clone = code.cloneNode(true);
           const originalCode = clone.innerText;
-      
+
           // Toggle word wrap on click
           wrapButton.addEventListener("click", () => {
-            const isPressed = wrapButton.getAttribute("aria-pressed") === "true";
+            const isPressed =
+              wrapButton.getAttribute("aria-pressed") === "true";
             const newPressedState = !isPressed;
             wrapButton.setAttribute("aria-pressed", newPressedState.toString());
-            
+
             if (newPressedState) {
               code.classList.add("whitespace-pre-wrap");
               wrapButton.classList.add("active-button");
@@ -194,7 +228,7 @@ const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}/og.png`;
               wrapButton.classList.add("bg-gray-500", "dark:bg-gray-700");
             }
           });
-      
+
           // Copy to clipboard on click
           copyButton.addEventListener("click", () => {
             navigator.clipboard.writeText(originalCode);
@@ -202,34 +236,34 @@ const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}/og.png`;
             copyButton.innerText = "Copied!";
             copyButton.setAttribute("disabled", "");
             copyButton.classList.add("copied");
-      
+
             setTimeout(() => {
               copyButton.innerHTML = originalContent;
               copyButton.removeAttribute("disabled");
               copyButton.classList.remove("copied");
             }, 2000);
           });
-      
+
           // Add buttons to button group
           buttonGroup.appendChild(wrapButton);
           buttonGroup.appendChild(divider);
           buttonGroup.appendChild(copyButton);
-          
+
           // Add button group to wrapper
           wrapper.appendChild(buttonGroup);
-      
+
           // Replace code block with wrapper containing code block and buttons
           codeBlock.parentNode.insertBefore(wrapper, codeBlock);
           wrapper.appendChild(codeBlock);
         }
       }
-      
+
       // Initialize on first load
       document.addEventListener("DOMContentLoaded", initCodeBlocks);
-      
+
       // Re-initialize on Astro page transitions
       document.addEventListener("astro:page-load", initCodeBlocks);
-      
+
       // Fallback - try to initialize after a short delay
       setTimeout(initCodeBlocks, 500);
     </script>

@@ -5,16 +5,15 @@
 const { id, startAt } = Astro.props;
 
 // Build YouTube URL with optional start time parameter
-const startParam = startAt ? '?start=' + startAt : '';
+const startParam = startAt ? "?start=" + startAt : "";
 const url = `https://www.youtube.com/embed/${id}${startParam}`;
 ---
 
-<div class="relative pb-[56.25%] h-0 rounded-lg overflow-hidden my-8">
+<div class="relative my-8 h-0 overflow-hidden rounded-lg pb-[56.25%]">
   <iframe
     src={url}
-    border="0"
+    style="border: 0;"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
     allowfullscreen
-    class="absolute top-0 left-0 w-full h-full"
-  />
+    class="absolute left-0 top-0 h-full w-full"></iframe>
 </div>

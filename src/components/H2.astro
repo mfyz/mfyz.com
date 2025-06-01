@@ -2,7 +2,8 @@
 // H2.astro - Heading component with anchor links (no React dependency)
 
 // Function to generate ID from text
-function generateId(text) {
+// This function is kept for reference but not currently used
+function generateId(text: string): string {
   return text
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
@@ -16,22 +17,25 @@ const { id, ...props } = Astro.props;
 // since we can't directly access the slot content in the Astro component
 ---
 
-<h2 {...props} class:list={["heading-anchor group hover:!text-text/80", props.class]}>
+<h2
+  {...props}
+  class:list={["heading-anchor group hover:!text-text/80", props.class]}
+>
   <a class="flex items-center gap-2">
     <slot />
-    
+
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      stroke-width="1.5"
       stroke="currentColor"
       class="invisible size-6 group-hover:visible"
       aria-hidden="true"
     >
       <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        stroke-linecap="round"
+        stroke-linejoin="round"
         d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244"
       ></path>
     </svg>
@@ -39,25 +43,25 @@ const { id, ...props } = Astro.props;
 </h2>
 
 <script>
-  document.addEventListener('astro:page-load', () => {
+  document.addEventListener("astro:page-load", () => {
     // Find all heading anchor elements
-    const headings = document.querySelectorAll('.heading-anchor');
-    
+    const headings = document.querySelectorAll(".heading-anchor");
+
     headings.forEach(heading => {
       // Get the text content of the heading
-      const text = heading.textContent?.trim() || '';
-      
+      const text = heading.textContent?.trim() || "";
+
       // Generate ID from text
       const id = text
         .toLowerCase()
         .replace(/[^a-z0-9]+/g, "-")
         .replace(/(^-|-$)+/g, "");
-      
+
       // Set ID on the heading
       heading.id = id;
-      
+
       // Update the anchor link href
-      const anchor = heading.querySelector('a');
+      const anchor = heading.querySelector("a");
       if (anchor) {
         anchor.href = `#${id}`;
       }

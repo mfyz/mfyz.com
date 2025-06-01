@@ -1,7 +1,6 @@
 ## 1. TRANSITION ANIMATIONS
 
-**IMPORTANT**: Preserve the transition animations for cover images
-- CoverImage.astro must include transition:name={slug} on the Image component
+**IMPORTANT**: Preserve the transition animations for hero areas
 - This enables the zoom animation when navigating between:
   - Blog list and blog detail pages
   - App list and app detail pages

@@ -10,5 +10,7 @@
       "@utils/*": ["src/utils/*"],
       "@styles/*": ["src/styles/*"]
     }
-  }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["dist/**", "coverage/**", "node_modules/**", "migration/**"]
 }

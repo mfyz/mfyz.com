@@ -11,16 +11,20 @@ const { title, date, imageURL, tags, content, slug, frontmatter } = Astro.props;
 const time = readingTime(content);
 
 // Helper function to format date without timezone adjustments
-function formatDatePreserveDay(dateStr) {
+function formatDatePreserveDay(dateStr: string | Date) {
   // Handle cases where dateStr might not be a string
-  if (!dateStr) return '';
-  
+  if (!dateStr) return "";
+
   // Convert to string if it's a Date object
-  const dateString = dateStr instanceof Date ? dateStr.toISOString() : String(dateStr);
-  
+  const dateString =
+    dateStr instanceof Date ? dateStr.toISOString() : String(dateStr);
+
   try {
     // Extract year, month, day directly from the string to avoid timezone issues
-    const [year, month, day] = dateString.split('T')[0].split('-').map(num => parseInt(num, 10));
+    const [year, month, day] = dateString
+      .split("T")[0]
+      .split("-")
+      .map(num => parseInt(num, 10));
     // Format the date to "Feb 1, 2023" style
     return format(new Date(year, month - 1, day), "MMM d, yyyy");
   } catch (error) {

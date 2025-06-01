@@ -1,18 +1,23 @@
-import { defineConfig } from 'vitest/config';
 import { getViteConfig } from 'astro/config';
 
-export default defineConfig({
-  ...getViteConfig(),
+export default getViteConfig({
   test: {
     globals: true,
     environment: 'node',
     exclude: ['**/node_modules/**', '**/e2e/**', '**/.astro/**', '**/dist/**'],
     deps: {
-      // Handle .astro files with the Astro package
-      inline: ['astro']
+      optimizer: {
+        ssr: {
+          include: ['astro']
+        }
+      }
     },
     transformMode: {
-      web: [/\.[jt]sx?$/]
+      web: [/\.[jt]sx?$/],
+      ssr: [/\.astro$/]
+    },
+    content: {
+      includeAstro: true
     },
     // Show verbose output with detailed test case listings
     reporter: 'verbose',

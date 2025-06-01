@@ -11,8 +11,8 @@ import "@styles/blog-grid.css";
 export async function getStaticPaths() {
   const posts = await getAllPosts({ includeHidden: true });
   return posts.map(post => ({
-      params: { slug: post.slug },
-      props: { post },
+    params: { slug: post.slug },
+    props: { post },
   }));
 }
 
@@ -20,66 +20,88 @@ const { post } = Astro.props;
 
 const { Content } = await post.render();
 const { title, summary } = post.data;
-const metadata = post.rendered && post.rendered.metadata ? post.rendered.metadata : {};
+
+// Type assertion for metadata to avoid TypeScript errors
+type MetadataType = { frontmatter?: { lang?: string } };
+const metadata = (
+  post.rendered && post.rendered.metadata ? post.rendered.metadata : {}
+) as MetadataType;
 
 // Emoticon to emoji conversion is now handled by the remark-emoticons plugin during build
 
-const isTurkish = metadata?.frontmatter?.lang === 'tr' || Astro.url.pathname.startsWith('/tr/');
+const isTurkish =
+  metadata?.frontmatter?.lang === "tr" || Astro.url.pathname.startsWith("/tr/");
 
 export const prerender = true;
 ---
 
-<script define:vars={{ isHidden: post.data.hidden }}>
+<script is:inline define:vars={{ isHidden: post.data.hidden }}>
   // Client-side check for hidden posts and preview parameter
   if (isHidden) {
     const params = new URLSearchParams(window.location.search);
-    if (!params.has('preview')) {
+    if (!params.has("preview")) {
       // Redirect to 404 page if post is hidden and no preview parameter
-      window.location.href = '/404';
+      window.location.href = "/404";
     }
   }
 </script>
 
-  <Layout
-    title={title}
-    description={summary}
-    lang={isTurkish ? 'tr' : 'en'}
-    size="small"
-    noContentWrapperClass
+<Layout
+  title={title}
+  description={summary}
+  lang={isTurkish ? "tr" : "en"}
+  size="small"
+  noContentWrapperClass
+>
+  <BlogPost
+    {...post.data}
+    slug={post.slug}
+    content={post.body}
+    frontmatter={metadata.frontmatter || {}}
   >
-  <BlogPost {...post.data} slug={post.slug} content={post.body} frontmatter={metadata.frontmatter}>
     <div class="main-content-wrapper">
       <Content />
     </div>
     <div class="mt-12">
       <BlogSharingAndReactions post={post} />
-  
+
       {/* Related Posts Block */}
-      {post.data.tags && post.data.tags.length > 0 && (
-        await (async () => {
-          const postFrontmatterLang = post.rendered?.metadata?.frontmatter?.lang;
-          const isTurkishPost = isTurkish || postFrontmatterLang === 'tr';
-          
-          // Get related posts using our enhanced utility function
-          const relatedPosts = await getRelatedPosts({ 
-            slug: post.slug, 
-            language: isTurkishPost ? 'tr' : 'en',
-            tags: post.data.tags || [],
-            requireMatchingTag: true,
-            randomize: true,
-            limit: 6,
-          });
-          if (relatedPosts.length === 0) return null;
-          return (
-            <div class="mt-16">
-              <h2 class="font-secondary text-3xl mb-6">
-                {isTurkish ? "İlgili Yazılar" : "Related Posts"}
-              </h2>
-              <BlogGrid posts={relatedPosts} limit={6} simpleGrid={true} useTurkish={isTurkish} />
-            </div>
-          );
-        })()
-      )}
+      {
+        post.data.tags &&
+          post.data.tags.length > 0 &&
+          (await (async () => {
+            // Type assertion for rendered metadata
+            const renderedMetadata = post.rendered?.metadata as
+              | MetadataType
+              | undefined;
+            const postFrontmatterLang = renderedMetadata?.frontmatter?.lang;
+            const isTurkishPost = isTurkish || postFrontmatterLang === "tr";
+
+            // Get related posts using our enhanced utility function
+            const relatedPosts = await getRelatedPosts({
+              slug: post.slug,
+              language: isTurkishPost ? "tr" : "en",
+              tags: post.data.tags || [],
+              requireMatchingTag: true,
+              randomize: true,
+              limit: 6,
+            });
+            if (relatedPosts.length === 0) return null;
+            return (
+              <div class="mt-16">
+                <h2 class="mb-6 font-secondary text-3xl">
+                  {isTurkish ? "İlgili Yazılar" : "Related Posts"}
+                </h2>
+                <BlogGrid
+                  posts={relatedPosts}
+                  limit={6}
+                  simpleGrid={true}
+                  useTurkish={isTurkish}
+                />
+              </div>
+            );
+          })())
+      }
     </div>
   </BlogPost>
 </Layout>

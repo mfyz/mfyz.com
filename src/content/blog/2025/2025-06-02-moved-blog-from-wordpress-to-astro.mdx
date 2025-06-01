@@ -10,13 +10,12 @@ tags:
   - astro
   - wordpress
   - case study
-coverImage: "/images/blog/2025/wordpress-to-astro-migration.jpg"
 ---
 
-import { Image } from 'astro:assets';
-import ImageZoom from '@components/ImageZoom.astro';
-import YouTube from '@components/YouTube.astro';
-import CollapsibleText from '@components/CollapsibleText.astro';
+import { Image } from "astro:assets";
+import ImageZoom from "@components/ImageZoom.astro";
+import YouTube from "@components/YouTube.astro";
+import CollapsibleText from "@components/CollapsibleText.astro";
 
 One of the main reasons I started blogging was to have a development playground. Throughout the early 2000s, I heavily used this site as my canvas - designing, custom coding, re-designing, and re-writing many times. In fact, I went through 7 complete re-launches, almost starting from scratch each time.
 
@@ -26,9 +25,14 @@ This post documents my journey migrating from WordPress to Astro - the decision 
 
 It all started with a curiosity: can I rebuild my personal blog with modern Jamstack tools? Astro caught my attention for being component-based, simple, and optimized for content-first websites. I started a small proof of concept during the weekend, and it quickly grew into a full migration project.
 
-<ImageZoom src="/images/blog/2025/wordpress-vs-astro-comparison.jpg" alt="Side-by-side comparison of WordPress (left) and Astro (right) versions of mfyz.com" width={1200} height={800} />
+<ImageZoom
+  src="/images/blog/2025/wordpress-vs-astro-comparison.jpg"
+  alt="Side-by-side comparison of WordPress (left) and Astro (right) versions of mfyz.com"
+  width={1200}
+  height={800}
+/>
 
-*On the left is the live WordPress version of mfyz.com, and on the right is the new Astro implementation. I slightly modified and improved the layout, but I was able to replicate the core design with just a few hours of "vibe coding."*
+_On the left is the live WordPress version of mfyz.com, and on the right is the new Astro implementation. I slightly modified and improved the layout, but I was able to replicate the core design with just a few hours of "vibe coding."_
 
 ## 🤔 Why I Decided to Move Away from WordPress
 
@@ -43,7 +47,13 @@ WordPress powers over 40% of the web for good reasons: it's flexible, has a mass
 
 ## Why Astro?
 
-<Image src="/images/blog/2025/astro-framework.jpg" alt="Astro framework logo and tagline - Build faster websites" width={800} height={420} transition:name="astro-framework" />
+<Image
+  src="/images/blog/2025/astro-framework.jpg"
+  alt="Astro framework logo and tagline - Build faster websites"
+  width={800}
+  height={420}
+  transition:name="astro-framework"
+/>
 
 After evaluating several modern frameworks, I landed on [Astro](https://astro.build) for its focus on content-first websites, component flexibility, and emphasis on shipping minimal JavaScript. Using Vercel for deployment gives me best-in-class preview deployments and makes the entire process incredibly smooth.
 
@@ -94,25 +104,21 @@ By perfecting the article page first, the migration path became much clearer. I 
 The migration wasn't without challenges:
 
 <CollapsibleText title="WordPress plugin functionality">
-Replacing WordPress plugins required finding alternative solutions:
-- **Comments**: Replaced with GitHub Discussions
-- **Forms**: Implemented with a serverless function
-- **Search**: Added static search with Pagefind
+  Replacing WordPress plugins required finding alternative solutions: -
+  **Comments**: Replaced with GitHub Discussions - **Forms**: Implemented with a
+  serverless function - **Search**: Added static search with Pagefind
 </CollapsibleText>
 
 <CollapsibleText title="Content migration issues">
-Some content required manual fixing:
-- Custom shortcodes needed conversion to Astro components
-- Embedded content needed special handling
-- Image paths and metadata needed updating
+  Some content required manual fixing: - Custom shortcodes needed conversion to
+  Astro components - Embedded content needed special handling - Image paths and
+  metadata needed updating
 </CollapsibleText>
 
 <CollapsibleText title="SEO considerations">
-Ensuring SEO continuity required:
-- Mapping all old URLs to new ones
-- Setting up proper redirects
-- Verifying structured data implementation
-- Resubmitting sitemaps
+  Ensuring SEO continuity required: - Mapping all old URLs to new ones - Setting
+  up proper redirects - Verifying structured data implementation - Resubmitting
+  sitemaps
 </CollapsibleText>
 
 ## 🛠️ Technical Implementation Details
