@@ -1,14 +1,15 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry } from "astro:content";
 import BlogPost from "@layouts/BlogPost.astro";
 import Layout from "@layouts/Layout.astro";
 import BlogGrid from "@components/BlogGrid.astro";
 import BlogSharingAndReactions from "@components/BlogSharingAndReactions.astro";
+import { getAllPosts, getRelatedPosts } from "@utils/getPosts.ts";
 import "@styles/blog-grid.css";
 
 // astro takes care of filtering the blog posts
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
+  const posts = await getAllPosts({ includeHidden: true });
   return posts.map(post => ({
       params: { slug: post.slug },
       props: { post },
@@ -57,21 +58,17 @@ export const prerender = true;
       {post.data.tags && post.data.tags.length > 0 && (
         await (async () => {
           const postFrontmatterLang = post.rendered?.metadata?.frontmatter?.lang;
-          // Fetch all posts except the current one
-          const relatedPosts = (await getCollection("blog"))
-            .filter(p => !p.hidden)
-            .filter(p => p.slug !== post.slug)
-            .filter(p => (
-              typeof postFrontmatterLang !== 'undefined' ?
-                p.rendered?.metadata?.frontmatter?.lang === postFrontmatterLang :
-                typeof p.rendered?.metadata?.frontmatter?.lang === 'undefined'
-            ))
-            // Find related posts by matching any tag
-            .filter(p =>
-              p.data.tags && p.data.tags.some(tag => post.data.tags.includes(tag))
-            )
-            .sort(() => 0.5 - Math.random()) // Shuffle
-            .slice(0, 6);
+          const isTurkishPost = isTurkish || postFrontmatterLang === 'tr';
+          
+          // Get related posts using our enhanced utility function
+          const relatedPosts = await getRelatedPosts({ 
+            slug: post.slug, 
+            language: isTurkishPost ? 'tr' : 'en',
+            tags: post.data.tags || [],
+            requireMatchingTag: true,
+            randomize: true,
+            limit: 6,
+          });
           if (relatedPosts.length === 0) return null;
           return (
             <div class="mt-16">

@@ -1,29 +1,13 @@
 import rss from "@astrojs/rss";
-import { getCollection } from "astro:content";
 import { SITE } from "../consts";
+import { getPosts } from "../utils/getPosts.ts";
 
 // Shared RSS generation function for both English and Turkish feeds
 export async function generateRssFeed(context, languageFilter) {
-  const blogPosts = await getCollection("blog", ({ data, id }) => {
-    // Skip hidden posts
-    if (data.hidden) return false;
-
-    // Check if the post is in the Turkish directory
-    const isTurkishPath = id.startsWith('tr/');
-    const hasTurkishLang = data.lang === 'tr';
-    const isTurkishPost = isTurkishPath || hasTurkishLang;
-
-    // For English feed, exclude Turkish posts
-    if (languageFilter === 'en') {
-      return !isTurkishPost;
-    }
-
-    // For Turkish feed, only include Turkish posts
-    if (languageFilter === 'tr') {
-      return isTurkishPost;
-    }
-
-    return true; // Include all if no filter specified
+  const blogPosts = await getPosts({
+    language: languageFilter || 'all',
+    includeHidden: false,
+    sorted: true
   });
   
   // Map posts to RSS items format
