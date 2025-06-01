@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from "astro:transitions";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import "@styles/global.css";
@@ -107,23 +108,31 @@ const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}/og.png`;
     <meta name="twitter:image:width" content="800" />
     <meta name="twitter:image:height" content="600" />
 
-    <!-- {import.meta.env.PUBLIC_VERCEL_ENV === 'production' && (
-      <>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MP2JXY39CE"></script>
-        <script is:inline>
-          const isAdmin = document.cookie.includes('mfyz_admin=');
-          if (!isAdmin) {
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-MP2JXY39CE');
-          }
-        </script>
-      </>
-    )} -->
+    {
+      import.meta.env.PUBLIC_VERCEL_ENV === "production" && (
+        <>
+          <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-MP2JXY39CE"
+          />
+          <Fragment
+            set:html={`
+            <script is:inline>
+              const isAdmin = document.cookie.includes('mfyz_admin=');
+              if (!isAdmin) {
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-MP2JXY39CE');
+              }
+            </script>
+            `}
+          />
+        </>
+      )
+    }
 
-    <!-- Use the modern meta tag approach for view transitions -->
-    <meta name="view-transition" content="same-origin" />
+    <ViewTransitions />
   </head>
 
   <body
