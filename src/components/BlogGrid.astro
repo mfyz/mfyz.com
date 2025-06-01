@@ -122,8 +122,8 @@ function formatDatePreserveDay(dateStr, useTurkish = false) {
               }
             </span>
           </div>
-          <a href={`/${post.slug}/`}>
-            <h3 class="font-secondary text-6xl transition-colors hover:text-primary">
+          <a href={`/${post.slug}/`} class="no-underline">
+            <h3 class="font-secondary text-6xl text-white transition-colors hover:text-primary">
               {title}
             </h3>
           </a>
@@ -193,7 +193,7 @@ function formatDatePreserveDay(dateStr, useTurkish = false) {
                   }
                 </span>
               </div>
-              <a href={`/${post.slug}/`} class={`block font-secondary ${title.length > 60 ? "text-base" : (title.length > 30 ? "text-lg" : "text-xl")} mb-2 transition-colors ${bgDark ? "hover:text-gray-300" : "hover:text-primary"}`}>
+              <a href={`/${post.slug}/`} class={`block font-secondary ${title.length > 60 ? "text-base" : (title.length > 30 ? "text-lg" : "text-xl")} mb-2 transition-colors ${bgDark ? "text-gray-100 hover:text-white" : "text-gray-800 dark:text-gray-900 hover:text-primary"}`}>
                 {title}
               </a>
             </li>

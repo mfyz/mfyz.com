@@ -15,7 +15,7 @@
 }
 
 /* Remove underlines from titles */
-.blog-grid a {
+.main-content-wrapper .blog-grid a {
   text-decoration: none;
 }
 

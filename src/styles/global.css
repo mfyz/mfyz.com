@@ -94,8 +94,8 @@
   }
 
   /* Links with arrow */
-  .main-content-wrapper a {
-    @apply text-primary-dark dark:text-primary-bright font-bold underline decoration-1 underline-offset-2 transition-all;
+  .main-content-wrapper a:not([class*="text-"]) {
+    @apply text-primary-dark dark:text-primary-bright font-bold decoration-1 underline underline-offset-2 transition-all;
   }
 
   .main-content-wrapper a[href^="http"]:not(:has(img))::after {
