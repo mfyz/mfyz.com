@@ -4,5 +4,8 @@ COMMIT_HASH=$(git rev-parse HEAD)
 # The GitHub repository URL (adjust if needed)
 REPO_URL="https://github.com/mfyz/mfyz.com"
 
+echo "Opening commit in github.com"
+sleep 1
+
 # Open the commit in the default browser
 open "$REPO_URL/commit/$COMMIT_HASH"

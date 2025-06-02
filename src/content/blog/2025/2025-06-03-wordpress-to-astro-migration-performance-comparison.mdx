@@ -25,7 +25,20 @@ Recently, [I migrated my blog from WordPress to Astro](/moved-blog-from-wordpres
 
 This post focuses exclusively on the performance comparison between my WordPress site and the new Astro version. Using Lighthouse and real-world metrics, I'll analyze the performance differences, share unexpected findings, and what we can learn from them.
 
-## Performance Comparison: WordPress vs. Astro
+## Performance comparison script
+
+You can find the nodejs script I created to run this performance comparison [github.com/mfyz/mfyzcom_lighthouse_benchmark](https://github.com/mfyz/mfyzcom_lighthouse_benchmark).
+
+- Runs Lighthouse performance benchmarks on matching pages across two websites
+- Compares key metrics: Performance, Accessibility, Best Practices, SEO
+- Measures Web Vitals: LCP, FID, TTFB - Additionally analyzes resource sizes: HTML, JS, CSS
+- Exports results to CSV for analysis
+
+Script is not limited to WordPress and Astro. There are two domains and list of urls defined in the script, but these two domains can be really anything.
+
+💡 A common use case for this script could be, using preview deployment URLs of any site to compare its performance changes before you push them live. Especially handy if you are using Vercel or Netlify for deployments.
+
+## Let's get to the comparison: WordPress vs. Astro
 
 Before pushing the new site live, I ran comprehensive performance tests comparing the WordPress site with the Astro version.
 
@@ -231,11 +244,6 @@ The key findings from this migration:
 4. **SEO improvements**: The most significant advantage was in SEO scores, where Astro consistently achieved perfect scores compared to WordPress's 86.0 average
 5. **Content-dependent results**: Nearly all page types showed LCP improvements in Astro, with only a couple of image-heavy exceptions
 
-In the coming weeks, I'll share more detailed posts about specific aspects of the migration, including:
-
-1. Content migration techniques
-2. Component design decisions
-3. Performance optimization strategies
-4. SEO maintenance during framework migration
-
 Let me know if you're considering a similar migration—I'm happy to share more specific insights about the process!
+
+If you want to conduct a similar performance comparison between two sites, you can use the performance comparison script I created: [github.com/mfyz/mfyzcom_lighthouse_benchmark](https://github.com/mfyz/mfyzcom_lighthouse_benchmark).
