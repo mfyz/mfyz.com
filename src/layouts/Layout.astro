@@ -32,6 +32,9 @@ const {
   title: defaultTitle,
 } = SITE;
 
+// Generate canonical URL
+const canonicalURL = new URL(pathname, website).toString();
+
 // Extract title from frontmatter, props, or use default
 const rawTitle = pageFrontmatter.title || title || defaultTitle;
 const pageDescription =
@@ -44,7 +47,13 @@ const formattedTitle =
 // Set language based on frontmatter
 const pageLang = lang || "en";
 
-const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}/og.png`;
+console.log("--> ogImage", ogImage);
+console.log("--> pathname", pathname);
+const ogImageBasedOnPath =
+  pathname === "/"
+    ? ogImage
+    : `${pathname}${pathname.endsWith("/") ? `` : `/`}og.png`;
+console.log("--> ogImageBasedOnPath", ogImageBasedOnPath);
 ---
 
 <!doctype html>
@@ -90,10 +99,13 @@ const ogImageBasedOnPath = pathname === "/" ? ogImage : `${pathname}/og.png`;
       )
     }
 
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content={formattedTitle} />
     <meta property="og:description" content={pageDescription} />
-    <meta property="og:url" content={`${website}/`} />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={website + ogImageBasedOnPath} />
     <meta property="og:image:height" content="600" />
     <meta property="og:image:width" content="800" />
