@@ -20,6 +20,7 @@ const { post } = Astro.props;
 
 const { Content } = await post.render();
 const { title, summary } = post.data;
+const id = post.id; // Access the id from post object instead of post.data
 
 // Type assertion for metadata to avoid TypeScript errors
 type MetadataType = { frontmatter?: { lang?: string } };
@@ -27,10 +28,7 @@ const metadata = (
   post.rendered && post.rendered.metadata ? post.rendered.metadata : {}
 ) as MetadataType;
 
-// Emoticon to emoji conversion is now handled by the remark-emoticons plugin during build
-
-const isTurkish =
-  metadata?.frontmatter?.lang === "tr" || Astro.url.pathname.startsWith("/tr/");
+const isTurkish = post.id.startsWith("tr/");
 
 export const prerender = true;
 ---
@@ -57,6 +55,7 @@ export const prerender = true;
     {...post.data}
     slug={post.slug}
     content={post.body}
+    isTurkish={isTurkish}
     frontmatter={metadata.frontmatter || {}}
   >
     <div class="main-content-wrapper">
@@ -70,17 +69,9 @@ export const prerender = true;
         post.data.tags &&
           post.data.tags.length > 0 &&
           (await (async () => {
-            // Type assertion for rendered metadata
-            const renderedMetadata = post.rendered?.metadata as
-              | MetadataType
-              | undefined;
-            const postFrontmatterLang = renderedMetadata?.frontmatter?.lang;
-            const isTurkishPost = isTurkish || postFrontmatterLang === "tr";
-
-            // Get related posts using our enhanced utility function
             const relatedPosts = await getRelatedPosts({
               slug: post.slug,
-              language: isTurkishPost ? "tr" : "en",
+              language: isTurkish ? "tr" : "en",
               tags: post.data.tags || [],
               requireMatchingTag: true,
               randomize: true,

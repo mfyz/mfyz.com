@@ -1,0 +1,118 @@
+---
+title: "Bloğumu WordPress'ten Astro'ya Taşıdım"
+description: "Uzun yıllar sonra sonunda WordPress'ten kurtuldum ve modern bir jamstack yapısına geçtim. İşte yaşadıklarım ve WordPress'e veda etme hikayem."
+slug: blogumu-wordpress-ten-astroya-tasidim
+date: "2025-06-02"
+status: ready
+lang: "tr"
+tags:
+  - web geliştirme
+  - astro
+  - wordpress
+  - jamstack
+---
+
+import { Image } from "astro:assets";
+import ImageZoom from "@components/ImageZoom.astro";
+
+Yaşlandıkça insanlar gibi teknolojiler de değişiyor. Bazen bundan dolayı onlarla yollarımızı ayırmamız gerekiyor. Ben de geçen hafta sonu "hadi artık şu işi yapalım" moduna girip, en az 10 yıldır kullandığım WordPress'ten blogumu modern bir yapıya taşıdım.
+
+Bu blogla maceram 2000'lerin başında başladı. O günden beri kişisel sitemi bir geliştirici tuvalim gibi kullandım - tasarımdan kodlamaya, sürekli yeniden yapmaya kadar. Hatırladığım kadarıyla tam 7 kez sıfırdan yeniden kodladım bu siteyi!
+
+<ImageZoom
+  src="/images/blog/2025/wordpress-vs-astro-comparison.jpg"
+  alt="WordPress (solda) ve Astro (sağda) versiyonlarının mfyz.com için yan yana karşılaştırması"
+  width={1200}
+  height={800}
+/>
+
+_Solda eski WordPress versiyonu, sağda ise yeni Astro sitesi. Tasarım neredeyse aynı görünüyor değil mi? Çok kısa sürede yeniden hayata geçirebildim ama arkaplanda her şey tamamen farklı!_
+
+2013 civarında "artık kendi CMS'imi yazacak vaktim yok, hadi WordPress geçelim" moduna girmiştim. O dönemde bu mantıklıydı. Herkes WordPress kullanıyordu, eklentileri vardı, sorunsuz çalışıyordu, ve ben sadece blog yazmak istiyordum. Ama meger o "sorunsuz" çalışma hayal gücümün bir ürünüymüş...
+
+## 🤔 Neden WordPress'ten Vazgeçtim?
+
+WordPress dünyanın en popüler içerik yönetim sistemi. Webin %40'ından fazlasını güçlendiriyor diyorlar. Fırlama bir istatistik! Ama bazen en popüler seçenek sizin için en ideal olmayabiliyor. Benim için de öyle oldu. İşte WordPress'ten vazgeçme nedenlerim:
+
+- **Bakım derdi** 🔧: Bir günceleme, iki güncelleme, üç güncelleme... Sonra bir eklenti bozuluyor, sonra güvenlik açığı, sonra PHP sürümü güncellemesi... Bu döngü hiç bitmiyor!
+
+- **Güncel teknolojilere uzaklık** 👨‍💻: Günümüzün modern teknolojileriyle (React, TypeScript, yeni JavaScript özellikleri) çalışmak istiyorum. WordPress'in PHP tabanı beni sınırlıyordu.
+
+- **Aşırı karmaşıklık** 🧩: Düşünsene, ben tek kişilik bir blogum. Database, dinamik sayfa oluşturma, caching sistemleri... Bunların hiçbirine gerek yok aslında! Ben dev bir editöryal ekip falan değilim ki.
+
+- **Markdown'a geçiş isteği** ❤️: Artık her şeyi Markdown'da yazmanın kolaylığını keşfettim. WordPres'in görsel editörü ile uğraşmak istemiyorum. Bir de küçük kod örnekleri eklemek bile bir dert oluyordu.
+
+## 🌟 Peki Neden Astro'yu Seçtim?
+
+<Image
+  src="/images/blog/2025/astro-framework.jpg"
+  alt="Astro framework logosu ve slogan - Daha hızlı web siteleri oluşturun"
+  width={800}
+  height={420}
+  transition:name="astro-framework"
+/>
+
+Hazir WordPress'ten kurtulmaya karar verdiğime göre, yerine ne kullanmam gerektiğini düşünmeye başladım. Son birkaç yılda web framework'leri patlama yaşadı, resmen hangi birini seçeceğimi şaşırdım.
+
+Next.js'i çok seviyorum (başka projelerde kullanıyorum) ama bir blog için fazla komplike geldi. Svelte harika görünüyor ama ekosistem hala daha küçük. Gatsby'i eskiden denemiştim, oradan uzak durayım dedim. 11ty çok minimal...
+
+Sonra [Astro](https://astro.build/)'yu daha yakından inceledim. Şirketimin developer dokümantasyon portali için zaten kullanmaya başlamıştım. Sonra da ekibimle birlikte, Astro'yu büyük ölçekli medya sitelerinde kullanma fikrini keşfetmeye başladık.
+
+Astro'nun beni kendine çeken özellikleri şunlar oldu:
+
+- **💾 Minimal JavaScript** - JS'yi sadece gereken yerlere gönderiyor, geri kalan her şey statik HTML. Bu da siteyi roket gibi hızlı yapıyor!
+
+- **📄 Markdown sevgisi** - Markdown/MDX dosyaları doğal olarak destekliyor. Artık kod editörümde doğrudan içerik yazabiliyorum.
+
+- **👨‍💻 React/Vue/Svelte bileşenlerini kullanabilme** - Şu anda bildiğim herhangi bir framework'le bileşen yazabiliyorum ve Astro onları kullanabiliyor.
+
+- **🚀 Vercel'le kusursuz çalışması** - Tek tuşla deploy, önizleme ortamları ve ücretsiz hosting... Daha ne olsun!
+
+Bir de Next.js'e kıyasla Astro'nun bir avantajı, Vite üzerinde çalışması. Vite geliştirme ortamında ışık hızında. Next.js'in webpack configurasyonlarıyla uğraşmaktan yorulmuştum, artık hepsine elveda!
+
+## 🔥 Astro'ya Geçişin Süper Faydaları
+
+Yaklaşık bir haftadır bu yeni sisteme geçmiş durumdayım ve eğer kişisel bir blog işletiyorsanız, bunu neden daha önce yapmadığımı düşünüyorum! İşte bu geçişin bana sağladığı en güzel faydalar:
+
+- **😎 Git tabanlı iş akışı** - WordPress admin panelinden kurtuldum! Artık kod editörümde bir post yazıp, commit edip, push edince otomatik olarak yayınlanıyor. Geliştirici olarak bu kadar doğal bir süreç olamaz!
+
+- **📕 Markdown yazmanın kolaylığı** - Markdown syntax'i ne kadar kolay ya. Henüz keşfetmediyseniz, kesinlikle deneyin. WordPress'in rich text editörüyle boğuşmaya son! Üstelik ChatGPT gibi YZ sistemleri de Markdown'la çok iyi anlaşıyor.
+
+- **🔒 Sıfır güvenlik endişesi** - Artık gece yarısı "acaba siteme birisi saldırıyor mu?" diye düşünmek yok. Statik dosyalara saldırıp ne yapacaklar? HİÇ!
+
+- **👤 Kolay dağıtım** - Git push yapıyorum ve birkaç saniye içinde site güncelleniyor. Plug-in kurmak, güncellemek, PHP versiyonu kontrol etmek falan yok.
+
+- **💰 Bedava hosting** - Artık WordPress için her ay hosting parası ödememe gerek yok. Netlify/Vercel gibi platformlar statik siteler için bedava hosting sunuyor.
+
+- **🗼 Taşınabilirlik** - Tüm içerik ve kod Git reposunda. Bir gün Astro'dan başka bir şeye geçmek istesem, içerik oldugu gibi yanımda gelir.
+
+## 👍 Birkaç Önemli Tavsiye
+
+Ben Astro'ya geçerken birkaç şey öğrendim, belki sizin de işinize yarar:
+
+### 💻 Önce bir "örnek vitrin sayfası" yap!
+
+Bu ne mi demek? Yani, bütün içeriği hemen taşımaya çalışma. Önce tek bir örnek sayfa yap, tüm bileşenleri, stilleri, özellikleri içeren. Ben blog detay sayfasını önce yaptım, çünkü en karmaşık kısım oraydı.
+
+Bu yaklaşım baya işe yaradı. Çünkü;
+
+- Hangi bileşenleri kodlamam gerektiğini net olarak gördüm
+- CSS stilleri için bir temel oluşturdum
+- Makale için "işte bu" dediğim bir format buldum
+- Kod blokları, resim galerileri, daraltılabilir bölümler gibi bileşenleri deneyebildim
+
+Bu örnek sayfayı yapınca, WordPress içeriğimin neye dönüşmesi gerektiği çok net oldu. Çünkü hedef artık gittikçe daha netledi.
+
+### 📥 Altyapıyı unutma
+
+İçerik taşırken RSS feed'i, sitemap.xml gibi şeyleri unutmak çok kolay. Bunlar genelde WordPress'in otomatik hallettiği şeylerdi, ama statik sitede bunları kendin yapmak zorundasın. Ben ilk günden bunları listeye ekledim.
+
+### 🔧 Her şeyi daha basit yap
+
+Harika bir fırsat: "Acaba bu özellik gerçekten gerekli mi?" diye sormak. WordPress'te kategoriler, etiketler, yazarlar, yorumlar vs. kullanıyordum. Bunların çoğunu kullanmıyordum bile!
+
+Ben mesela ana sayfada sayfalamayı tamamen kaldırdım. Tüm blog yazılarımı tek sayfada listeliyorum. Ne gerek var sayfalamaya? Hem zaten 3 ayda bir yazı yazıyorum 😂
+
+### 💻 Kod kontrolü altında içerik
+
+Blogumu artık VS Code'da düzenleyebiliyorum! Bu bir geliştirici için harika. Kod yardımları, Git versiyon kontrolü, hızlı düzenleme çok işime yarıyor. WordPress'in editörüne bir daha asla geri dönmek istemiyorum.
