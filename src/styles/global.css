@@ -211,6 +211,11 @@
     @apply mb-0;
   }
 
+  /* Remove margin from last paragraph in Note component */
+  .main-content-wrapper .note-content p:last-child {
+    @apply mb-1;
+  }
+
   /* Code blocks */
   .main-content-wrapper pre {
     @apply my-6 overflow-auto rounded-md bg-slate-100 p-4 text-sm dark:bg-slate-800 md:text-base;

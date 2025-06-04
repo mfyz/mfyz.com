@@ -2,9 +2,11 @@
 // Note.astro - Informational note component (converted from React)
 ---
 
-<div class="flex items-start gap-2 rounded-lg bg-blue-50 p-4 text-sm">
+<div
+  class="mb-4 flex items-start gap-2 rounded-lg bg-blue-50 px-4 pb-2 pt-3 text-sm dark:bg-blue-900 dark:text-gray-200"
+>
   <span class="text-lg">ℹ️</span>
-  <div>
+  <div class="note-content">
     <slot />
   </div>
 </div>
