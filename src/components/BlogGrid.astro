@@ -39,10 +39,11 @@ interface Props {
   posts: any[];
   limit?: number;
   useTurkish?: boolean;
-  simpleGrid?: boolean;
+  showFirstPostFull?: boolean;
+  narrow?: boolean;
 }
 
-const { posts, limit, simpleGrid = false } = Astro.props; // useTurkish removed as unused
+const { posts, limit, showFirstPostFull = true, narrow = false } = Astro.props; // useTurkish removed as unused
 
 // Get the current page path to determine language
 const pathname = Astro.url.pathname;
@@ -92,7 +93,7 @@ function formatDatePreserveDay(dateStr: string | Date, useTurkish = false) {
   <div class="blog-grid">
     {/* First post - full width */}
     {
-      !simpleGrid &&
+      showFirstPostFull &&
         displayPosts.length > 0 &&
         (() => {
           const post = displayPosts[0];
@@ -142,7 +143,7 @@ function formatDatePreserveDay(dateStr: string | Date, useTurkish = false) {
     {/* Rest of the posts in checker pattern */}
     <ul class="grid gap-0 sm:grid-cols-3">
       {
-        (simpleGrid ? displayPosts : displayPosts.slice(1)).map(
+        (!showFirstPostFull ? displayPosts : displayPosts.slice(1)).map(
           (post, index) => {
             const { title, date } = post.data; // imageURL, summary, tags removed as unused
             // Calculate reading time
@@ -176,13 +177,22 @@ function formatDatePreserveDay(dateStr: string | Date, useTurkish = false) {
             const patternName = getPatternName(post.slug);
             const patternClass = `blog-bg-pattern blog-bg-pattern-${patternName}${bgDark ? "-white" : ""}`;
 
+            let titleTextSizeClass = "";
+            if (title.length > 60) {
+              titleTextSizeClass = narrow ? "text-base" : "text-xl";
+            } else if (title.length > 30) {
+              titleTextSizeClass = narrow ? "text-lg" : "text-2xl";
+            } else {
+              titleTextSizeClass = narrow ? "text-xlg" : "text-3xl";
+            }
+
             return (
               <li
                 class={`relative transition-transform hover:scale-[1.02] ${bgColor} ${patternClass}`}
                 transition:name={post.slug}
               >
                 <div
-                  class={`mb-2 flex items-center text-xs ${bgDark ? "text-gray-300" : "text-gray-500"} flex-wrap gap-3`}
+                  class={`mb-2 flex items-center text-sm ${bgDark ? "text-gray-300" : "text-gray-500"} flex-wrap gap-3`}
                 >
                   <time>{formatDatePreserveDay(date, isTurkish)}</time>
                   <span class="flex items-center gap-1">
@@ -207,7 +217,7 @@ function formatDatePreserveDay(dateStr: string | Date, useTurkish = false) {
                 </div>
                 <a
                   href={`/${post.slug}/`}
-                  class={`block font-secondary ${title.length > 60 ? "text-base" : title.length > 30 ? "text-lg" : "text-xl"} mb-2 transition-colors ${bgDark ? "text-gray-100 hover:text-white" : "text-gray-800 hover:text-primary dark:text-gray-900"}`}
+                  class={`block font-secondary ${titleTextSizeClass} mb-2 transition-colors ${bgDark ? "text-gray-100 hover:text-white" : "text-gray-800 hover:text-primary dark:text-gray-900"}`}
                 >
                   {title}
                 </a>
