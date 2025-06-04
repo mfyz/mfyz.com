@@ -1,0 +1,250 @@
+---
+title: "Astro vs WordPress: Blogumu Taşıdıktan Sonra Performans Karşılaştırması"
+description: "WordPress'ten Astro'ya geçiş sürecimde yaşadıklarım, öncesi/sonrası performans metrikleri ve bu süreçte öğrendiklerim."
+slug: wordpress-astro-performans-karsilastirmasi
+date: "2025-06-03"
+tags:
+  - web development
+  - astro
+  - wordpress
+  - performans
+  - vaka çalışması
+lang: "tr"
+---
+
+import ImageZoom from "@components/ImageZoom.astro";
+import CollapsibleText from "@components/CollapsibleText.astro";
+
+Bir blog yazarı olarak zaman zaman insan kendini bir yol ayrımında buluyor, değil mi? Teknolojiler değişiyor, beklentiler farklılaşıyor ve kullandığımız araçlar artık o ilk günkü heyecanı vermeyebiliyor. İşte ben de geçtiğimiz günlerde böyle bir kararla [blogumu WordPress'ten Astro'ya taşıdım](/blogumu-wordpress-ten-astroya-tasidim). Bu macerada geliştirici deneyimi, içerik yönetimi ve tabii ki performans tarafında nelerle karşılaşacağımı merak ediyordum. Açıkçası, ana motivasyonum sadece performans değildi – o hikayeyi bir önceki yazımda uzun uzun anlatmıştım – ama madem böyle bir değişikliğe gittim, iki platform arasındaki performans farklarını da masaya yatırmadan olmazdı.
+
+<ImageZoom
+  src="/images/blog/2025/wordpress-astro-comparison.jpg"
+  alt="WordPress ve Astro blog gönderilerinin yan yana performans karşılaştırması"
+  width={1200}
+  height={600}
+/>
+
+Bu yazıda, lafı çok uzatmadan doğrudan WordPress sitem ile taptaze Astro versiyonu arasındaki performans farklarına dalacağız. Lighthouse ve diğer metriklerle yaptığım ölçümlerde neler bulduğuma, hangi sonuçların beni şaşırttığına ve bu süreçten ne gibi dersler çıkardığımıza gelin birlikte bakalım.
+
+## Performans karşılaştırma scripti
+
+Tabii böyle detaylı bir karşılaştırma yapacaksam, işi biraz otomatize etmek, rakamları konuşturmak lazımdı. Öyle değil mi? :) Ben de kolları sıvayıp küçük bir Node.js script'i hazırladım. Merak edenler için script'e şuradan ulaşabilirsiniz: [github.com/mfyz/mfyzcom_lighthouse_benchmark](https://github.com/mfyz/mfyzcom_lighthouse_benchmark).
+
+- İki farklı sitede eşleşen sayfalarda Lighthouse performans testleri çalıştırır
+- Temel metrikleri karşılaştırır: Performans, Erişilebilirlik, En İyi Uygulamalar, SEO
+- Web Vitals ölçümlerini alır: LCP, FID, TTFB - Ayrıca kaynak boyutlarını analiz eder: HTML, JS, CSS
+- Sonuçları CSV olarak dışa aktarır
+
+Script sadece WordPress ve Astro ile sınırlı değil. Scriptte iki domain ve url listesi tanımlı, ancak bu iki domain herhangi iki site olabilir.
+
+💡 Bu scriptin yaygın bir kullanım alanı, canlıya almadan önce preview deployment URL'leriyle performans değişikliklerini karşılaştırmak olabilir. Özellikle Vercel veya Netlify gibi platformlarda deployment yapıyorsanız çok pratik.
+
+## Gelelim karşılaştırmaya: WordPress vs. Astro
+
+Yeni siteyi yayına almadan önce, WordPress sitesi ile Astro versiyonu arasında kapsamlı performans testleri yaptım.
+
+<CollapsibleText title="Test için seçtiğim sayfalar">
+Çeşitli içerik tiplerine sahip farklı sayfalar seçtim:
+
+- Ana sayfa
+- Farklı içerik tiplerine sahip blog yazıları (metin ağırlıklı, kod ağırlıklı, görsel ağırlıklı)
+- Statik sayfalar (Hakkında, Lisans)
+
+</CollapsibleText>
+
+<CollapsibleText title="Benchmark nasıl yapıldı?">
+Node.js ve Lighthouse kullanarak hem canlı WordPress sitesinde hem de yerel Astro geliştirme ortamında testler yaptım. Script:
+
+1. Ana sayfa ve rastgele seçilmiş 10 blog yazısını test eder
+2. Her sayfada performans, erişilebilirlik, en iyi uygulamalar ve SEO için Lighthouse denetimleri çalıştırır
+3. Core Web Vitals metriklerini toplar: LCP, FID, CLS
+4. Karşılaştırma verilerini içeren bir CSV raporu üretir
+
+Tüm testler, adil bir karşılaştırma sağlamak için aynı ağ ve cihaz koşullarında çalıştırıldı.
+
+</CollapsibleText>
+
+### Temel Performans Bulguları
+
+Sitenin hem WordPress hem de Astro sürümlerinde kapsamlı Lighthouse testleri çalıştırdıktan sonra elde edilen gerçek performans sonuçları şöyle:
+
+#### Genel Ortalama Puanlar
+
+<table class="performance-table">
+  <thead>
+    <tr>
+      <th>Metrik</th>
+      <th>WordPress</th>
+      <th>Astro</th>
+      <th>Fark</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Performans Puanı</td>
+      <td>99.1</td>
+      <td>99.5</td>
+      <td style="background-color: #e6f4ea;">+0.4 puan</td>
+    </tr>
+    <tr>
+      <td>Erişilebilirlik</td>
+      <td>99.0</td>
+      <td>97.7</td>
+      <td style="background-color: #ffe0e0;">-1.3 puan</td>
+    </tr>
+    <tr>
+      <td>En İyi Uygulamalar</td>
+      <td>99.3</td>
+      <td>100.0</td>
+      <td style="background-color: #e6f4ea;">+0.7 puan</td>
+    </tr>
+    <tr>
+      <td>SEO</td>
+      <td>86.0</td>
+      <td>100.0</td>
+      <td style="background-color: #e6f4ea;">+14.0 puan</td>
+    </tr>
+    <tr>
+      <td>Largest Contentful Paint (LCP)</td>
+      <td>0.81s</td>
+      <td>0.44s</td>
+      <td style="background-color: #e6f4ea;">-0.37s (daha hızlı)</td>
+    </tr>
+    <tr>
+      <td>First Input Delay (FID)</td>
+      <td>16ms</td>
+      <td>16ms</td>
+      <td>Değişiklik yok</td>
+    </tr>
+    <tr>
+      <td>Time To First Byte (TTFB)</td>
+      <td>83.1ms</td>
+      <td>68.3ms</td>
+      <td style="background-color: #e6f4ea;">-14.8ms (daha hızlı)</td>
+    </tr>
+    <tr>
+      <td>HTML Boyutu</td>
+      <td>38.9KB</td>
+      <td>10.9KB</td>
+      <td style="background-color: #e6f4ea; font-weight: bold;">
+        -28.0KB (🔻 %72.0) 😍
+      </td>
+    </tr>
+    <tr>
+      <td>JavaScript Boyutu</td>
+      <td>13.4KB</td>
+      <td>5.3KB</td>
+      <td style="background-color: #e6f4ea; font-weight: bold;">
+        -8.1KB (🔻 %60.4) 😍
+      </td>
+    </tr>
+    <tr>
+      <td>CSS Boyutu</td>
+      <td>67.2KB</td>
+      <td>6.6KB</td>
+      <td style="background-color: #e6f4ea; font-weight: bold;">
+        -60.6KB (🔻 %90.2) 😍
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+Blogumun çoğunluğu için ortalama 20kb toplam indirme boyutu. Neden bundan daha fazla olsun ki? Sadece yazıyorum. Tek istediğim temiz, basit bir düzen, tipografi ve gerçekten ihtiyaç duyduğumda bazı zengin öğeler. Bunun üzerindeki her şey sadece şişkinlik.
+
+Şimdi tekrar 1999 gibi hissettiriyor :)
+
+#### Performans Analizi
+
+Gelelim fasulyenin faydalarına! Testleri çalıştırdıktan sonra karşıma çıkan sonuçlar gerçekten ilginçti. Şunu baştan söyleyeyim, her iki site de temel performans metriklerinde gayet iyi iş çıkardı, hatta Lighthouse performans kategorisinde ikisi de neredeyse kusursuz puanlar aldı. Peki bu rakamlar bize tam olarak ne anlatıyor? Gelin, biraz daha yakından bakalım:
+
+- **Performans**: Burada Astro, WordPress'e kıyasla 99.5'e 99.1 gibi minik bir farkla da olsa öne geçiyor. Aslında her iki puan da "Harika!" dedirtecek cinsten (90-100 arası "İyi" kabul ediliyor). Ama bu ufacık fark bile bize şunu fısıldıyor olabilir: Statik site mimarisi, en iyi optimize edilmiş dinamik CMS'lere karşı bile ufak da olsa bir avantaj sağlayabiliyor demek ki.
+
+- **Erişilebilirlik**: WordPress 99.0 ile Astro'nun 97.7 puanına kıyasla biraz daha yüksek bir skor elde etti. Astro implementasyonundaki son erişilebilirlik iyileştirmelerinden sonra aradaki fark önemli ölçüde kapandı. Her ikisi de artık "İyi" aralığında ve aralarında sadece 1.3 puanlık bir fark var.
+
+- **En İyi Uygulamalar**: Astro, WordPress'in 99.3 puanına karşılık mükemmel bir 100.0 puanla biraz daha iyi performans gösterdi. Her ikisi de "İyi" aralığında, ancak Astro web en iyi uygulamalarına biraz daha iyi uyum sağlıyor.
+
+- **SEO**: Astro, WordPress'in 86.0 puanına kıyasla mükemmel bir 100 puanla önemli ölçüde daha iyi performans gösterdi. Bu, Astro uygulamasının en net avantajlarından biri ve önemli bir iyileşmeyi temsil ediyor.
+
+- **Core Web Vitals ve Hız Metrikleri**: Her iki site de bu kritik metriklerde olağanüstü iyi performans gösterdi, ancak bazı dikkate değer farklılıklar vardı:
+
+  - LCP (Largest Contentful Paint): Astro ortalama 0.44s ile WordPress'in 0.81s değerine kıyasla %46'lık bir iyileşme gösterdi ve 2.5s'lik "İyi" eşiğinin oldukça altında kaldı.
+  - FID (First Input Delay): Her ikisi de 16ms ile 100ms'lik "İyi" eşiğinin oldukça altında.
+  - TTFB (Time To First Byte): Astro 68.3ms ile WordPress'in 83.1ms değerine kıyasla %18 daha hızlıydı.
+
+- **Kaynak Boyutu**: En çarpıcı farklar kaynak boyutlarındaydı:
+  - HTML: Astro'nun HTML'i %72.0 daha küçüktü (10.9KB vs 38.9KB)
+  - JavaScript: Astro %60.4 daha az JavaScript kullandı (5.3KB vs 13.4KB)
+  - CSS: Astro %90.2 daha az CSS kullandı (6.6KB vs 67.2KB)
+
+#### Sayfa Bazında Performans
+
+Test edilen her sayfa için performans puanlarının ayrıntılı dökümü aşağıdadır:
+
+| Sayfa                | WP Performans | Astro Performans | WP Erişilebilirlik | Astro Erişilebilirlik | WP LCP (s) | Astro LCP (s) |
+| -------------------- | ------------- | ---------------- | ------------------ | --------------------- | ---------- | ------------- |
+| Ana Sayfa            | 98.0          | 100.0            | 100.0              | 98.0                  | 0.90       | 0.32          |
+| n8n iş akışları      | 99.0          | 100.0            | 98.0               | 100.0                 | 0.84       | 0.26          |
+| XMLHTTPRequest       | 98.0          | 100.0            | 100.0              | 100.0                 | 0.86       | 0.32          |
+| n8n form tetikleyici | 99.0          | 100.0            | 96.0               | 95.0                  | 0.82       | 0.26          |
+| Fastify + Vercel     | 98.0          | 100.0            | 100.0              | 97.0                  | 1.05       | 0.50          |
+| n8n ile otomasyon    | 100.0         | 100.0            | 98.0               | 97.0                  | 0.82       | 0.27          |
+| Arc XP'de Ölçekleme  | 99.0          | 100.0            | 100.0              | 100.0                 | 0.83       | 0.48          |
+| turso + drizzle      | 100.0         | 97.0             | 100.0              | 97.0                  | 0.78       | 1.09          |
+| kokorojs             | 99.0          | 98.0             | 99.0               | 95.0                  | 0.89       | 0.89          |
+| Hakkında             | 100.0         | 100.0            | 98.0               | 96.0                  | 0.53       | 0.26          |
+| Lisans               | 100.0         | 100.0            | 100.0              | 100.0                 | 0.61       | 0.23          |
+
+#### İçerik Türüne Göre Performans
+
+İlginç bir şekilde, belirli içerik türleri belirli desenler gösterdi:
+
+- **Basit sayfalar** (Hakkında, Lisans): Astro sürümünün LCP süreleri daha hızlıydı (Hakkında için 0.28s vs 0.40s; Lisans için 0.26s vs 0.36s)
+- **Kod ağırlıklı blog yazıları**: Astro genellikle WordPress'ten daha iyi performans gösterdi (XMLHTTPRequest yazısı için 0.34s vs 0.74s)
+- **Görsel ağırlıklı yazılar**: Çoğu yazı Astro'da daha iyi performans gösterdi, ancak turso+drizzle yazısı (1.10s vs 0.90s LCP) ve kokorojs yazısı (0.90s vs 0.88s LCP) gibi bazı yazılar WordPress'te biraz daha iyi performans gösterdi
+
+## Bu Sonuçlar Ne Anlama Geliyor?
+
+Peki, tüm bu rakamlar, tablolar, yüzdeler bize ne anlatıyor? Statik siteler gerçekten de her derde deva mı, yoksa iyi optimize edilmiş bir WordPress de pekala iş görür mü? Gelin, bu sonuçlardan çıkarabileceğimiz önemli noktalara bir göz atalım:
+
+### Bu Yüksek Derecede Optimize Edilmiş Bir WordPress'ti
+
+WordPress sitemin birden fazla seviyede yoğun bir şekilde statik olarak önbelleğe alındığını vurgulamakta fayda var:
+
+- **WP Rocket**: Sunucu tarafında statik HTML dosyaları oluşturan önbellekleme eklentisi
+- **Cloudflare Edge Caching**: CDN seviyesinde 1 haftalık TTL
+
+Bu, testler sırasında WordPress sitesinde gerçek bir PHP render işleminin gerçekleşmediği anlamına geliyor. Bu benchmark'ta kesinlikle yüksek derecede optimize edilmiş bir WordPress kurulumuna bakıyoruz, bu da Lighthouse performans puanlarının birçok durumda neden aynı olduğunu açıklıyor.
+
+1. **WordPress doğru optimizasyonla hala hızlı olabilir**: WordPress sitem zaten hafif bir tema, minimum eklenti ve iyi bir hosting ile yüksek derecede optimize edilmişti. Aynı performans puanları (her ikisi için de 99.5) bunu açıkça gösteriyor.
+
+2. **İçerik türü önemli**: Basit sayfalar ve çoğu içerik türü Astro'da tutarlı iyileşmeler gösterdi, ancak bazı görsel ağırlıklı yazılar için birkaç istisna vardı.
+
+3. **SEO iyileştirmeleri önemli**: Tüm Astro sayfalarındaki mükemmel 100 SEO puanları, WordPress'in ortalama 86.0 puanına kıyasla anlamlı bir iyileşmeyi temsil ediyor.
+
+4. **Kaynak verimliliği Astro'da çarpıcı biçimde daha iyi**: En çarpıcı farklar kaynak boyutlarındaydı; Astro %72.0 daha az HTML, %60.4 daha az JavaScript ve %90.2 daha az CSS kullandı.
+
+## Teknik Uygulama Notları
+
+Astro uygulamasının teknik yönleriyle ilgilenenler için:
+
+- **Kullanılan Teknolojiler**: Astro, içerik için MDX, stil için TailwindCSS
+- **Hosting**: Vercel ile statik site oluşturma
+- **Bileşenler**: Astro ve React bileşenlerinin bir karışımı
+- **Görseller**: Astro'nun yerleşik görsel optimizasyonu ile optimize edildi
+- **Performans özellikleri**: Rota ön yükleme, ertelenmiş hydration, CSS optimizasyonu
+
+## Sonuç
+
+WordPress'ten Astro'ya geçiş serüvenim, sadece bir teknoloji değişikliğinden çok daha fazlası oldu benim için. İçerik üretme şeklimi baştan aşağı değiştirdi ve evet, performans tarafında da yüzümü güldüren sonuçlar ortaya koydu. Özellikle kaynak kullanımı ve yükleme hızlarındaki iyileşme takdire şayan. Tabii şunu da unutmamak gerek, eski WordPress sitem de zaten üzerine epey kafa yorduğum, optimize ettiğim bir yapıydı. Belki de bu yüzden her iki platform da Lighthouse'da benzer zirve puanları (99.5) alabildi. Demek ki neymiş? Emek verilince WordPress de üzmüyormuş! :)
+
+Bu geçişten elde edilen temel bulgular:
+
+1. **Performans sadece framework ile ilgili değil**: İyi optimize edilmiş bir WordPress sitesi, temel Lighthouse performans metriklerinde statik bir siteyle neredeyse eşleşebilir.
+2. **LCP iyileştirmeleri önemli**: Astro, ortalama olarak %46 daha hızlı Largest Contentful Paint sundu (0.44s vs 0.81s).
+3. **Kaynak verimliliği çarpıcı biçimde daha iyi**: Astro %72.0 daha az HTML, %60.4 daha az JavaScript ve %90.2 daha az CSS kullandı.
+4. **SEO iyileştirmeleri**: En önemli avantaj SEO puanlarındaydı; Astro, WordPress'in ortalama 86.0 puanına kıyasla tutarlı bir şekilde mükemmel puanlar aldı.
+5. **İçeriğe bağlı sonuçlar**: Neredeyse tüm sayfa türleri Astro'da LCP iyileştirmeleri gösterdi, yalnızca birkaç görsel ağırlıklı istisna vardı.
+
+Benzer bir geçiş düşünüyorsanız veya aklınızda sorular varsa, çekinmeyin, yorumlarda veya sosyal medyada bana ulaşın. Tecrübelerimi paylaşmaktan her zaman keyif alırım! Unutmayın, en iyi araç, sizin ihtiyaçlarınıza en iyi cevap verendir. Benim için bu Astro oldu, sizin için başka bir şey olabilir. Önemli olan, keşfetmekten ve denemekten çekinmemek.
+
+Eğer siz de iki site arasında benzer bir performans karşılaştırması yapmak isterseniz, hazırladığım scripti kullanabilirsiniz: [github.com/mfyz/mfyzcom_lighthouse_benchmark](https://github.com/mfyz/mfyzcom_lighthouse_benchmark). Bol optimizasyonlu günler!
