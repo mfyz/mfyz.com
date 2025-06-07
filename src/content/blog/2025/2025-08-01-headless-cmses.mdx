@@ -1,0 +1,82 @@
+---
+hidden: true
+title: "My take on Headless CMSes - When and Why"
+description: "A practical look at when headless CMS makes sense"
+slug: headless-cmses
+date: 2025-07-21
+tags:
+  - cms
+  - headless
+  - frontend
+  - content
+  - arcxp
+---
+
+I’ve worked with a few headless CMS platforms in past projects—Strapi, Contentful, Directus—but I don’t use one myself right now because my own writing process is pretty simple, single writer, and I like static hosting, so I have solutions that works in that way. Still, the headless approach keeps popping up in conversations around modern web architecture, so I wanted to share what it actually is, where it makes sense, and my 2 cents.
+
+### What Is a Headless CMS?
+
+A headless CMS is basically a content backend with no opinions about how or where your content is displayed. It gives you an admin panel to write and manage content, then serves that content over APIs—usually REST or GraphQL.
+
+So instead of having your frontend and backend tightly coupled (like with WordPress), you can build the frontend however you want—React, Astro, mobile apps, smart fridges, whatever.
+
+Traditional CMS platforms like WordPress or Drupal manage both your content and how it gets rendered on the page. In contrast, a headless CMS is only concerned with storing and delivering content. You don’t get built-in themes or page rendering logic—it’s just an API. That separation gives you more flexibility as a developer but also adds complexity if you’re not already managing your own frontend code.
+
+### Why Go Headless?
+
+There are solid reasons to reach for a headless CMS:
+
+#### 1. Total Frontend Freedom
+
+You’re not locked into a templating system or theme. You can use any framework, design system, or deployment strategy you want.
+
+#### 2. Omnichannel Distribution
+
+One content entry can be reused across your website, mobile app, newsletter, etc. That makes it easier to stay consistent across platforms without duplicating content.
+
+#### 3. Better Performance
+
+Headless setups work great with static site generators or edge-rendered apps. You can keep your content dynamic while delivering pages fast.
+
+#### 4. Dev–Content Separation
+
+Developers work in code. Editors and content managers use the CMS UI. This clean separation helps teams move faster without stepping on each other’s toes. Developers don’t have to teach editors how the repo works. Editors don’t need GitHub access. Everyone stays in their lane.
+
+---
+
+### Popular Headless CMS Platforms
+
+There are quite a few players in the headless CMS space, each with a slightly different angle. Here are some of the most notable ones:
+
+- **[Contentful](https://www.contentful.com/)**: One of the most enterprise-focused options. Powerful APIs, global CDN, and a polished UI. Great if you’re working with larger teams or need localization and complex content modeling. Contentful is the most complex headless project I worked with. 
+
+- **[Strapi](https://strapi.io/)**: Open-source and self-hostable. Built with Node.js. If you want to control your own stack and infrastructure, Strapi is a solid choice. It’s flexible and developer-first. I like strapi's open source ecosystem, strong growth and developer extensibility on top its core features.
+
+- **[Sanity](https://www.sanity.io/)**: Real-time collaboration, structured content, and their query language GROQ make Sanity stand out. It’s great for projects that need highly structured or nested content.
+
+- **[Directus](https://directus.io/)**: Also open source, and uniquely works with your existing SQL database without forcing you into a new data model. Nice fit for teams who already have a backend and just want a clean CMS layer. It's nice and extendable, but me and my team had hard time managing Directus at scale.
+
+- **[Prismic](https://prismic.io/)**: Developer-friendly, with “Slices” to support reusable page sections. Offers a solid writing experience and good documentation.
+
+- **[Ghost](https://ghost.org/)**: Originally a blog engine, Ghost has evolved into a headless publishing platform. Still best for blog and newsletter-focused use cases.
+
+There are many more headless CMSes, but I am sharing the ones I have either experience with or investigated them deeply. Each of these tools comes with trade-offs around cost, hosting, customization, and complexity. The best one depends entirely on your team’s size, tech stack, and publishing needs.
+
+Self-Promo: I work at [Arc XP](https://arcxp.com) (part of The Washington Post) and we are probably the most mature, enterprise CMS built for large media organizations. We also have a [headless CMS solution](https://dev.arcxp.com/api/public-content-retrieval/view-api/) that our customers leverage delivery content at scale, to billions, with having complex editorial workflows.
+
+---
+
+### TL;DR
+
+Headless CMS is powerful—but it’s not for everyone. It shines when:
+
+- You have multiple frontends (web, mobile, email, etc.)
+- You need a shared backend for content teams
+- You want API-first architecture
+- You want full freedom on your reader experience side
+
+But if your project is simple, and you’re already comfortable managing your own code and content, you might not need it.
+
+Just because something is modern doesn’t mean it’s necessary.
+
+Curious to hear how others are using (or not using) headless CMS in their setups.
