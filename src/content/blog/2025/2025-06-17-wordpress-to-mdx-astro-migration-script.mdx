@@ -1,0 +1,342 @@
+---
+hidden: true
+title: "WordPress to MDX (Astro) migration script"
+description: "A practical Node.js script to export your WordPress blog posts to Astro MDX format with proper frontmatter and content transformation"
+slug: wordpress-to-mdx-astro-migration-script
+date: "2025-06-17"
+tags:
+  - web development
+  - astro
+  - wordpress
+  - nodejs
+  - migration
+---
+
+import ImageZoom from "@components/ImageZoom.astro";
+import Note from "@components/Note.astro";
+
+In my [previous post](/moved-blog-from-wordpress-to-astro), I shared my journey migrating from WordPress to Astro. I mentioned that one of the most critical parts of the process was migrating content from WordPress into a MDX format that works well with Astro which was a breeze. Since target format was file-based, very easy to work with format for storing meta data; it was actually fun to do the migration.
+
+Today, I'm sharing the exact migration script I used to convert my WordPress database posts into nicely formatted MDX files for Astro. This script connects directly to your WordPress database, extracts posts, and converts them to MDX with proper frontmatter.
+
+## The Migration Challenge
+
+When moving from WordPress to a static site generator like Astro, the most challenging part is translating all different types of ways your content may be stored in wordpress database. By default it's HTML but there are many plugins that may store its own meta data and final rendered content in may different forms. Most commonly short code wrapped, serialized data. Often JSON, but not always. I was lucky that there was only one plugin I used that was storing some LD+JSON meta data, which I sacrificed and said, I don't need it in astro version. But you may have more complex content elements that could become challenging to translate them to markdown, or front-matter properties. Other general challenges:
+
+- Media references and paths
+- Tags and categories
+- Special characters and formatting
+
+I needed a script that would handle these challenges while giving me complete control over the migration process. After looking at various tools, I decided to write my own script that would directly access my WordPress database and export the posts exactly how I wanted them.
+
+Tip: I exported my database and spun it up locally, and connected to localhost, which made migration script to run and convert 1000 post in less than 10 seconds. This allowed me to fix issues, tweak it and re-run it many times quickly.
+
+## Before and After
+
+Let's look at what we're trying to achieve:
+
+**Before:** A WordPress post stored in a MySQL database with HTML content, metadata in separate tables, and media referenced from WordPress's uploads directory.
+
+**After:** A clean MDX file with:
+
+- Structured frontmatter (title, slug, date, tags, etc.)
+- Content converted from HTML to Markdown
+- Image paths updated to local references
+- Code blocks properly formatted
+- Special characters correctly handled
+
+## The Migration Script
+
+The script uses Node.js to connect to your WordPress database, extract posts, and convert them to MDX files organized by year. Here's what you'll need:
+
+```sh
+npm install dotenv mysql2 turndown slugify
+```
+
+And here's the complete script with detailed comments:
+
+````js
+require("dotenv").config();
+const fs = require("fs/promises");
+const path = require("path");
+const mysql = require("mysql2/promise");
+const TurndownService = require("turndown");
+const he = require("he"); // HTML entity decoder for fixing &amp; in titles
+
+const postsDir = path.join(__dirname, "../src/content/blog");
+
+const turndown = new TurndownService({
+  codeBlockStyle: "fenced",
+  escapeCodeBlock: false,
+  headingStyle: "atx", // This will use # symbols for headings
+});
+
+// Function to replace WordPress image URLs with local paths
+function replaceImageUrls(content) {
+  // Simply replace just the CDN prefix for all URLs, keeping everything else intact
+  let processedContent = content.replace(
+    /https?:\/\/i[0-9]\.wp\.com\/mfyz\.com\//g,
+    "https://mfyz.com/"
+  );
+
+  // Replace regular URLs with local path format
+  return processedContent.replace(
+    /https?:\/\/(?:www\.)?mfyz\.(?:com|wp)\/wp-content\/uploads\/([0-9]{4})\/([0-9]{2})\/([^"\s)]+)/g,
+    (match, year, month, filename) =>
+      `/images/archive/en/${year}/${month}/${filename}`
+  );
+}
+
+// Add special rule for paragraph breaks
+turndown.addRule("paragraphBreak", {
+  filter: function (node) {
+    return (
+      node.nodeName === "P" &&
+      node.getAttribute("data-paragraph-break") !== null
+    );
+  },
+  replacement: function () {
+    return "\n\n";
+  },
+});
+
+// Configure code blocks to use triple backticks
+turndown.addRule("pre", {
+  filter: "pre",
+  replacement: function (content) {
+    return "\n```\n" + content + "\n```\n";
+  },
+});
+
+async function connectToDatabase() {
+  return await mysql.createConnection({
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT || 3306,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
+  });
+}
+
+async function getPosts(connection) {
+  const [rows] = await connection.execute(`
+        SELECT 
+            p.ID,
+            p.post_title, 
+            p.post_content,
+            p.post_date,
+            p.post_name,
+            p.guid,
+            GROUP_CONCAT(DISTINCT t.name) as tags,
+            GROUP_CONCAT(DISTINCT c.name) as categories
+        FROM ${process.env.WP_TABLE_PREFIX}posts p
+        LEFT JOIN ${process.env.WP_TABLE_PREFIX}term_relationships tr ON p.ID = tr.object_id
+        LEFT JOIN ${process.env.WP_TABLE_PREFIX}term_taxonomy tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
+        LEFT JOIN ${process.env.WP_TABLE_PREFIX}terms t ON tt.term_id = t.term_id
+        LEFT JOIN ${process.env.WP_TABLE_PREFIX}terms c ON (tt.taxonomy = 'category' AND tt.term_id = c.term_id)
+        WHERE p.post_status = 'publish' AND p.post_type = 'post'
+        GROUP BY p.ID
+    `);
+  return rows;
+}
+
+async function processPost(post) {
+  const date = new Date(post.post_date);
+  const year = date.getFullYear();
+  const formattedDate = date.toISOString().split("T")[0];
+  const fileName = `${formattedDate}-${post.post_name}.mdx`;
+
+  // Use the year as both the directory and part of the filename
+  const yearFolder = year.toString();
+
+  // Decode HTML entities in title (like &amp; to &)
+  const decodedTitle = post.post_title
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"');
+
+  const frontMatter = {
+    title: decodedTitle,
+    slug: post.post_name,
+    date: date.toISOString().substring(0, 10),
+    url: post.guid.replace("mfyz.wp", "mfyz.com"),
+    tags: post.tags ? post.tags.split(",") : [],
+    category: post.categories ? post.categories.split(",")[0] : "",
+    migration: {
+      wpId: post.ID,
+      wpPostDate: post.post_date,
+    },
+  };
+
+  // Preprocessing to better identify and preserve paragraph breaks in the HTML
+  // This works by identifying double newlines in the HTML (which indicate paragraph breaks)
+  // and marking them with a special marker that will be preserved through turndown
+  let preprocessedHtml = post.post_content
+    // Normalize all newlines first
+    .replace(/\r\n|\r/g, "\n")
+    // Mark paragraph breaks with a special token
+    .replace(/\n\n+/g, "\n\n<p data-paragraph-break></p>\n\n");
+
+  // Convert HTML to Markdown
+  let content = turndown.turndown(preprocessedHtml);
+
+  // Post-process the markdown to restore proper paragraph spacing
+  content = content
+    // Replace our paragraph break markers with double newlines
+    .replace(/\n*<p data-paragraph-break><\/p>\n*/g, "\n\n");
+
+  // Fix issue: Remove unnecessary backslash escapes from markdown content
+  // This handles common characters that shouldn't be escaped in normal text
+  content = content
+    // Fix escaped underscores (common in code references)
+    .replace(/\\(_)/g, "$1")
+    // Fix escaped asterisks
+    .replace(/\\(\*)/g, "$1")
+    // Fix escaped square brackets
+    .replace(/\\(\[|\])/g, "$1")
+    // Fix escaped backslashes that aren't part of actual escape sequences
+    .replace(/\\(\\)([^\w])/g, "$1$2");
+
+  // Extra step for code blocks: Make sure code content is not escaped
+  content = content.replace(
+    /```[^\n]*\n([\s\S]*?)\n```/g,
+    function (match, codeContent) {
+      // Unescape characters in code blocks
+      return match.replace(
+        codeContent,
+        codeContent
+          .replace(/\\(_)/g, "$1")
+          .replace(/\\(\*)/g, "$1")
+          .replace(/\\(\[|\])/g, "$1")
+          .replace(/\\(\\)/g, "$1")
+      );
+    }
+  );
+
+  // Replace WordPress image URLs with local paths
+  content = replaceImageUrls(content);
+  return {
+    year: yearFolder,
+    fileName: fileName,
+    content: `---
+${Object.entries(frontMatter)
+  .map(([k, v]) => {
+    if (k === "title") {
+      // Use single quotes for titles containing double quotes
+      return v.includes('"') ? `${k}: '${v}'` : `${k}: "${v}"`;
+    } else {
+      return `${k}: ${typeof v === "object" ? JSON.stringify(v) : v}`;
+    }
+  })
+  .join("\n")}
+---
+
+import Image from "@components/Image.astro";
+
+${content}`,
+  };
+}
+
+async function main() {
+  try {
+    const connection = await connectToDatabase();
+    const posts = await getPosts(connection);
+    console.log(`Found ${posts.length} posts to process`);
+
+    await fs.mkdir(postsDir, { recursive: true });
+
+    for (const [index, post] of posts.entries()) {
+      console.log(
+        `Processing ${index + 1}/${posts.length}: ${post.post_title}`
+      );
+      const { year, fileName, content } = await processPost(post);
+
+      // Create year directory if it doesn't exist
+      const yearDir = path.join(postsDir, year);
+      await fs.mkdir(yearDir, { recursive: true });
+
+      // Write the file to the year directory
+      await fs.writeFile(path.join(yearDir, fileName), content);
+    }
+
+    await connection.end();
+
+    console.log("Export completed successfully!");
+  } catch (error) {
+    console.error("Export failed:", error);
+    process.exit(1);
+  }
+}
+
+main();
+````
+
+## Environment Setup
+
+You'll need to create a `.env` file with your WordPress database credentials:
+
+```
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=your_db_user
+DB_PASS=your_db_password
+DB_NAME=your_wordpress_db
+WP_TABLE_PREFIX=wp_
+```
+
+<Note>
+  Remember to update the target directory in the script to match your Astro
+  project structure. By default, it puts files in `../src/content/blog/YYYY/`
+  relative to the script location.
+</Note>
+
+## Key Features of the Migration Script
+
+The script isn't just a simple converter - it includes several features to handle common WordPress-to-Markdown migration issues:
+
+1. **HTML to Markdown conversion**: Uses Turndown to convert WordPress HTML to clean Markdown.
+2. **Smart frontmatter generation**: Creates structured frontmatter with all necessary fields for Astro.
+3. **Image path rewriting**: Converts WordPress media URLs to local file paths.
+4. **Paragraph spacing preservation**: Maintains proper spacing between paragraphs.
+5. **Markdown escape fixing**: Removes unnecessary escaping of characters.
+6. **Year-based organization**: Organizes posts by year, matching my Astro content structure.
+7. **Special character handling**: Properly decodes HTML entities in titles.
+
+## Customizing the Script
+
+While this script worked perfectly for my needs, you might want to customize it for your specific WordPress setup:
+
+- **Change the content directory**: Update the `postsDir` variable to match your Astro content location.
+- **Modify the frontmatter**: Add or remove fields in the `frontMatter` object.
+- **Adjust image paths**: Update the `replaceImageUrls` function to match your desired image path format.
+- **Add additional content processing**: Insert any other transformations your content might need.
+
+## Images and Media
+
+I simply manually copied my wp-content folder into astor public folder like `/public/images/archive`, and the script has a section that updates the paths from `/wp-content/uploads/` to `/images/archive/` in the markdown content.
+
+## Going Live with Your Migration
+
+Once you've run the script and verified your content looks good, follow these steps:
+
+1. Review a sample of the exported MDX files to ensure the content and formatting are correct
+2. Check image paths and make sure all media is properly referenced
+3. Run your Astro site locally to catch any issues before deploying
+4. Set up redirects for your old WordPress URLs if your URL structure has changed
+
+## Time for Your Own Migration
+
+The beauty of using a custom script like this is the complete control it gives you over the migration process. While there are plugins and tools that can export WordPress content, they often don't handle the specifics of your target format as well as a custom solution.
+
+This script saved me countless hours of manual formatting and helped me maintain consistency across all my posts. Feel free to use it as a starting point for your own WordPress to Astro migration!
+
+Have you migrated from WordPress to another platform? What challenges did you face? I'd love to hear about your experiences!
+
+## What's Next?
+
+With your content successfully migrated, you can focus on building out the features and design of your new Astro site. In my experience, having clean content makes this process much more enjoyable, as you're working with properly structured data from the start.
+
+Migration was the first thing I did before tweaking and refining my Astro site styles and formatting and all of that. After having my full content archive in place, it was actually super fun to make them even better looking and polished compared to my old WordPress site.
+
+One thing I suggest is, to just open and scroll every single post. Just to make sure nothing funky left in the formatting (like extra lines/spaces in code blocks), or missing elements. What I did was open 2 browsers side by side, and went every single post, live version, and astro/locally to see they looks comparable, at least from the content perspective, even if styling was not same.

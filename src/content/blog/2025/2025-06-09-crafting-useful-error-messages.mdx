@@ -15,7 +15,7 @@ tags:
 import ImageZoom from "@components/ImageZoom.astro";
 import Note from "@components/Note.astro";
 
-Let's be honest - nobody likes seeing error messages. But they're an unavoidable part of any digital product. What's surprising is how little attention we give to these critical touchpoints in our user journeys. We spend countless hours perfecting the happy paths while treating error states as afterthoughts.
+As much as your happy path of your UX journey, error mesages are also curcial part of your UX flow. What's surprising is how little attention they get. We spend countless hours perfecting the happy paths while treating error states as afterthoughts.
 
 I've worked on dozens of web projects over the years, and consistently see the same mistake: beautifully designed interfaces suddenly turning into cryptic dead ends when something goes wrong. It's like building an amazing house but forgetting to install proper exit signs - the moment there's smoke, people don't know which way to run.
 
@@ -23,7 +23,7 @@ Here's my practical approach to crafting error messages that actually help users
 
 ## 🔍 Plan Your Error Strategy
 
-Before writing a single error message, take the time to identify all the potential failure points in your user experience. This proactive approach prevents cryptic default errors from slipping into production.
+Consider your UX journey and think all possible ways things can go wrong. Before writing a single error message, take the time to identify all the potential failure points in your user experience. Including general scenarios like network errors, timeout, server errors, logical errors. This proactive approach prevents cryptic default errors from slipping into production.
 
 I typically start by mapping out these common error scenarios:
 
@@ -33,7 +33,7 @@ I typically start by mapping out these common error scenarios:
 - Authentication and permission issues
 - Network connectivity problems
 
-For complex systems, I create a spreadsheet that tracks each error state, its trigger conditions, and the message I want to display. This becomes especially valuable when working with development teams who might otherwise default to technical jargon.
+Generally these can be designed as part of your UX flow. And often best way to "see" it all, in a ux flow chart. The most fun style I loke is seeing actual screens and attaching all possible errors into specific screens. For more complex systems, I create a spreadsheet that tracks each error state, its trigger conditions, and the message I want to display. This becomes especially valuable when working with development teams who might otherwise default to technical jargon. This also acts a good inventory of error messages, when we move on to implementing observability into our systems, like noting analytics events right in this sheet as new columns. Or give each error message a code, that gets reported in the events, or perhaps even shown to user as a reference.
 
 ## ✍️ Writing Messages That Actually Help
 
@@ -46,11 +46,13 @@ The [Wix-UX team article](https://wix-ux.com/when-life-gives-you-lemons-write-be
   alt="Good Error Message"
 />
 
+I really like this framework and only modification I have to this is, adding a link to your help portal, knowledge base about this error that talks in more depth and solutions. That may not apply for simple errors, but sometimes errors have multiple possuble reasons, and differnt solution paths. A dedicated help article allows making users first error message more concise and give them the most common solution, but if user still can't solve their issue, they can click and learn more about that particular problem.
+
 ### Write Like You're Sitting Next to Them
 
-Error messages have a strange way of bringing out the robot in us. We suddenly start writing things like "An error occurred processing your request" or "Invalid input detected in field #4."
+Error messages have a strange way of bringing out the robot in us. We suddenly start writing things like "An error occurred processing your request" or "Invalid input #4."
 
-Instead, imagine you're sitting next to the user when they hit a problem. How would you explain what went wrong? What advice would you give them?
+Instead, imagine you're sitting next to the user when they hit a problem (or, usual mom-test: picture your mom seeing that message). How would you explain what went wrong? What advice would you give them?
 
 | **Instead of this** ❌    | **Write this** ✅                                                                                   |
 | ------------------------- | --------------------------------------------------------------------------------------------------- |
@@ -103,7 +105,7 @@ For system errors users can't fix:
 
 I love Stripe's approach to form validation errors. They not only highlight the specific field and explain the issue, but also provide direct links to relevant documentation pages when users need additional context. This self-service approach empowers users to solve problems without contacting support.
 
-A good example Next.js error messages in CLI:
+Another good example to that is Next.js error messages in CLI:
 
 ```
 error - ./pages/test.module.scss
@@ -123,7 +125,7 @@ Require stack:
 - /Users/fatih/test/node_modules/webpack/lib/Compiler.js
 ```
 
-## 👎 Avoid Negative Language and ALL CAPS
+## 🙅‍♂️ Avoid Negative Language and ALL CAPS
 
 Error messages aren't the place for negative language or SHOUTING AT USERS. Both can intensify the stress of an already frustrating situation.
 
@@ -136,9 +138,15 @@ When crafting error messages:
 
 One app I regularly use has an error message that reads "INVALID INPUT - TRY AGAIN" when you make a mistake. Every time I see it, I feel like my computer is shouting at me. Don't be that app.
 
+## Error message shows the real teams behind them
+
+It is also a sign of poor thinking and care in moy opinion. A development or product team should pay attention to any of these little details as they are important part of a digital product. Seeing an error message that is not thought, or sloppy shows the team behind it.
+
+In fact, there are many products that have crafted clever, funny error messages that wins users over. It's like the stories we hear Zappos customer support going beyond and making customers happy. Although find balance when writing error message, because it can distract user from the actual solution, or it has company, branding impact.
+
 ## Do Real-time and Inline Validation as Much as You Can
 
-One major improvement I strongly advocate for is using inline validation rather than bombarding users with a list of errors after submission. Show errors next to problematic fields as soon as users move to the next field.
+One major improvement I strongly advocate for is using inline validation rather than bombarding users with a list of errors in a single error box/banner/popup after submission. Show errors next to problematic fields as soon as users move to the next field.
 
 I've seen countless forms that dump validation errors at the top of the page after submission. This forces users to scroll up and down, trying to match error messages with fields. It's a frustrating experience that's easily avoidable.
 
