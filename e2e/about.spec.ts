@@ -20,7 +20,7 @@ test('About page has correct headings and content', async ({ page }) => {
   await expect(h1).toBeVisible();
   
   // Test the h2 heading
-  const h2 = page.locator('h2:has-text("About Mehmet Fatih Yıldız")');
+  const h2 = page.locator('h2:has-text("About Fatih Yıldız")');
   await expect(h2).toBeVisible();
   
   // Test that the link to mfyz.net exists
