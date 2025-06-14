@@ -1,9 +1,10 @@
 ---
-title: "XMLHttpRequest Nedir?"
+title: "XMLHttpRequest Nedir? (AJAX'ın Temeli)"
 slug: xmlhttprequest-nedir
 date: 2006-08-20
+description: "XMLHttpRequest (XHR) nesnesi nedir ve AJAX teknolojisinin temelini nasıl oluşturur? Sayfa yenilemeden sunucuyla iletişim kurma, avantajları, dezavantajları ve pratik kullanım alanları."
 url: http://mfyz.com/tr/xmlhttprequest-nedir/
-tags: ["ajax","Arayüz Programlama","xhr","xmlhttprequest"]
+tags: ["XMLHttpRequest", "XHR", "AJAX", "JavaScript", "web geliştirme", "asenkron iletişim", "arayüz programlama"]
 category: Arayüz Programlama
 migration: {"wpId":115,"wpPostDate":"2006-08-20T14:48:17.000Z"}
 lang: tr

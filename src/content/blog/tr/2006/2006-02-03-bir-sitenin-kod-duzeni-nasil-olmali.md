@@ -2,8 +2,9 @@
 title: "Bir sitenin kod düzeni nasıl olmalı?"
 slug: bir-sitenin-kod-duzeni-nasil-olmali
 date: 2006-02-03
+description: "PHP tabanlı web siteleri için ideal kod ve dizin yapısı nasıl olmalıdır? Modüler tasarım, ayar dosyaları ve veri/kod ayrımı prensipleriyle daha yönetilebilir projeler oluşturun."
 url: http://mfyz.com/tr/bir-sitenin-kod-duzeni-nasil-olmali/
-tags: ["NULL","PHP"]
+tags: ["PHP", "kod düzeni", "proje yapısı", "modüler tasarım", "web geliştirme", "en iyi pratikler"]
 category: PHP
 migration: {"wpId":87,"wpPostDate":"2006-02-03T06:15:40.000Z"}
 lang: tr

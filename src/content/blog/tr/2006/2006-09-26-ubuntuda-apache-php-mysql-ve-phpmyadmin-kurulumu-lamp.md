@@ -1,9 +1,10 @@
 ---
-title: "Ubuntu'da Apache, Php, MySQL ve PHPMyAdmin kurulumu (LAMP)"
+title: "Ubuntu'da LAMP (Apache, PHP, MySQL) ve PHPMyAdmin Kurulum Rehberi"
 slug: ubuntuda-apache-php-mysql-ve-phpmyadmin-kurulumu-lamp
 date: 2006-09-26
+description: "Ubuntu üzerinde LAMP (Linux, Apache, MySQL, PHP) sunucu ortamı ve PHPMyAdmin nasıl kurulur? Adım adım Apache, PHP, MySQL kurulumu ve yapılandırması, PHPMyAdmin entegrasyonu."
 url: http://mfyz.com/tr/ubuntuda-apache-php-mysql-ve-phpmyadmin-kurulumu-lamp/
-tags: ["apache","kurulum","lamp","OS","php","Sunucu Programlama","ubunt"]
+tags: ["Ubuntu", "LAMP", "Apache", "PHP", "MySQL", "PHPMyAdmin", "sunucu kurulumu", "web sunucusu", "Linux", "aptitude"]
 category: OS
 migration: {"wpId":94,"wpPostDate":"2006-09-26T03:27:12.000Z"}
 lang: tr

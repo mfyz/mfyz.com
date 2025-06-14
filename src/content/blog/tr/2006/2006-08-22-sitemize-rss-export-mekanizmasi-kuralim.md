@@ -1,9 +1,10 @@
 ---
-title: "Sitemize RSS export mekanizması kuralım"
+title: "Sitemize RSS Beslemesi (Export) Mekanizması Kuralım"
 slug: sitemize-rss-export-mekanizmasi-kuralim
 date: 2006-08-22
+description: "Web sitenize nasıl RSS beslemesi ekleyebilirsiniz? PHP ve XML kullanarak dinamik içerikleriniz için RSS 2.0 standardında bir export mekanizması oluşturma adımları ve örnek kodlar."
 url: http://mfyz.com/tr/sitemize-rss-export-mekanizmasi-kuralim/
-tags: ["export","rss","rss export","Sunucu Programlama","xml"]
+tags: ["RSS", "XML", "PHP", "içerik sendikasyonu", "web geliştirme", "veri export"]
 category: Sunucu Programlama
 migration: {"wpId":92,"wpPostDate":"2006-08-22T04:39:56.000Z"}
 lang: tr

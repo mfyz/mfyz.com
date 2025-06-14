@@ -1,9 +1,10 @@
 ---
-title: "Photoshop ile grafikleri web için optimize etmek"
+title: "Photoshop ile Grafikleri Web İçin Optimize Etme Yöntemleri"
 slug: photoshop-ile-grafikleri-web-icin-optimize-etmek
 date: 2006-10-05
+description: "Photoshop'un 'Save for Web' özelliğiyle (Ctrl+Alt+Shift+S) JPEG, GIF ve PNG formatındaki grafikleri web için nasıl optimize edeceğinizi öğrenin. Kalite ve dosya boyutu dengesi için ipuçları."
 url: http://mfyz.com/tr/photoshop-ile-grafikleri-web-icin-optimize-etmek/
-tags: ["optimizasyon","photoshop","save for web","Tasarım","web"]
+tags: ["Photoshop", "web optimizasyonu", "görsel optimizasyonu", "Save for Web", "JPEG", "GIF", "PNG", "dosya boyutu küçültme", "web tasarımı", "grafik tasarımı"]
 category: Tasarım
 migration: {"wpId":61,"wpPostDate":"2006-10-05T08:07:07.000Z"}
 lang: tr

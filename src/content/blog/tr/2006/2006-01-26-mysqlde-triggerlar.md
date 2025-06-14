@@ -2,8 +2,9 @@
 title: "MySQL'de Triggerlar"
 slug: mysqlde-triggerlar
 date: 2006-01-26
+description: "MySQL trigger'ları nedir, ne işe yarar? INSERT, UPDATE, DELETE işlemleri öncesi veya sonrası otomatik çalışan sorgularla veritabanı işlemlerini yönetin. MySQL 5.0.2+ için örnekler."
 url: http://mfyz.com/tr/mysqlde-triggerlar/
-tags: ["PHP","triggers"]
+tags: ["MySQL", "trigger", "veritabanı", "SQL", "otomasyon", "veritabanı tetikleyicileri"]
 category: PHP
 migration: {"wpId":83,"wpPostDate":"2006-01-26T05:31:15.000Z"}
 lang: tr

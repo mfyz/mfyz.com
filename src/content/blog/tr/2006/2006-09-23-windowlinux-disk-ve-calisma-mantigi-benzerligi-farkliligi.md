@@ -1,9 +1,10 @@
 ---
-title: "Window/Linux Disk ve Çalışma Mantığı/Benzerliği/Farklılığı"
+title: "Windows ve Linux: Disk Yönetimi, Dosya Sistemleri ve Çalışma Mantığı Karşılaştırması"
 slug: windowlinux-disk-ve-calisma-mantigi-benzerligi-farkliligi
 date: 2006-09-23
+description: "Windows ve Linux işletim sistemlerinin disk yönetimi, dosya sistemleri (FAT, NTFS, ext2/3, ReiserFS, swap), dizin yapıları ve konfigürasyon yönetimi (Registry vs. /etc, /home) arasındaki temel farklar ve benzerlikler."
 url: http://mfyz.com/tr/windowlinux-disk-ve-calisma-mantigi-benzerligi-farkliligi/
-tags: ["disk","ext3","fat","fstab","linux","ntfs","OS","windows"]
+tags: ["Linux", "Windows", "işletim sistemleri", "disk yönetimi", "dosya sistemi", "FAT", "NTFS", "ext3", "ReiserFS", "swap", "fstab", "dizin yapısı", "karşılaştırma"]
 category: OS
 migration: {"wpId":98,"wpPostDate":"2006-09-23T21:11:10.000Z"}
 lang: tr

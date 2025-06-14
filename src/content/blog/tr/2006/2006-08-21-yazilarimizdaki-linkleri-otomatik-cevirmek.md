@@ -1,9 +1,10 @@
 ---
-title: "Yazılarımızdaki linkleri otomatik çevirmek"
+title: "Yazılarımızdaki Linkleri Otomatik Olarak HTML'e Çevirmek"
 slug: yazilarimizdaki-linkleri-otomatik-cevirmek
 date: 2006-08-21
+description: "PHP'de düzenli ifadeler (regex) kullanarak metin içerisindeki URL'leri ve e-posta adreslerini otomatik olarak tıklanabilir HTML linklerine nasıl dönüştürebilirsiniz? Pratik `preg_replace` örnekleri."
 url: http://mfyz.com/tr/yazilarimizdaki-linkleri-otomatik-cevirmek/
-tags: ["autolink","PHP","regex"]
+tags: ["PHP", "regex", "düzenli ifadeler", "preg_replace", "otomatik linkleme", "metin işleme"]
 category: PHP
 migration: {"wpId":91,"wpPostDate":"2006-08-21T04:36:09.000Z"}
 lang: tr

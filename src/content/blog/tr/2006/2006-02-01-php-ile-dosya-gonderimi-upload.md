@@ -2,8 +2,9 @@
 title: "PHP ile dosya gönderimi (upload)"
 slug: php-ile-dosya-gonderimi-upload
 date: 2006-02-01
+description: "PHP kullanarak sunucuya dosya yükleme (upload) işlemleri nasıl yapılır? HTML form ayarları, `php.ini` yapılandırması, `$_FILES` süper globali ve hata yönetimi hakkında detaylı bilgiler."
 url: http://mfyz.com/tr/php-ile-dosya-gonderimi-upload/
-tags: ["PHP","upload"]
+tags: ["PHP", "dosya yükleme", "upload", "$_FILES", "form handling", "web geliştirme"]
 category: PHP
 migration: {"wpId":86,"wpPostDate":"2006-02-01T06:06:11.000Z"}
 lang: tr

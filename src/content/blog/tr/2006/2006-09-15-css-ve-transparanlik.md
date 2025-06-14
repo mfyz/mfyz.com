@@ -1,9 +1,10 @@
 ---
-title: "CSS ve Transparanlık"
+title: "CSS ile Elementlere Transparanlık (Saydamlık) Verme"
 slug: css-ve-transparanlik
 date: 2006-09-15
+description: "CSS kullanarak HTML elementlerine transparanlık (saydamlık) efekti nasıl verilir? Farklı tarayıcılar (IE, Firefox, Safari, Opera) için `opacity` ve `filter` özelliklerinin kullanımı ve JavaScript ile dinamik kontrol."
 url: http://mfyz.com/tr/css-ve-transparanlik/
-tags: ["Arayüz Programlama","css","opacity","saydamlık","transparanlık","transparent"]
+tags: ["CSS", "transparanlık", "saydamlık", "opacity", "filter", "web tasarım", "arayüz programlama", "JavaScript", "MooTools"]
 category: Arayüz Programlama
 migration: {"wpId":116,"wpPostDate":"2006-09-15T15:18:36.000Z"}
 lang: tr
