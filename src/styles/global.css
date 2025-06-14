@@ -406,3 +406,11 @@ nav a {
 .blog-bg-pattern-wave.blog-bg-pattern-auto-dark {
   background-image: url(/images/post-patterns/pt-wave-white.svg);
 }
+
+.giscuss_comments_wrapper {
+  padding-top: 2rem;
+}
+
+iframe.giscus-frame {
+  outline: none;
+}

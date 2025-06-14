@@ -37,8 +37,7 @@ const canonicalURL = new URL(pathname, website).toString();
 
 // Extract title from frontmatter, props, or use default
 const rawTitle = pageFrontmatter.title || title || defaultTitle;
-const pageDescription =
-  pageFrontmatter.description || description || defaultDescription;
+const pageDescription = description || defaultDescription;
 
 // Format title consistently: "Page Title - mfyz.com" for pages with custom titles
 const formattedTitle =
@@ -47,13 +46,10 @@ const formattedTitle =
 // Set language based on frontmatter
 const pageLang = lang || "en";
 
-console.log("--> ogImage", ogImage);
-console.log("--> pathname", pathname);
 const ogImageBasedOnPath =
   pathname === "/"
     ? ogImage
     : `${pathname}${pathname.endsWith("/") ? `` : `/`}og.png`;
-console.log("--> ogImageBasedOnPath", ogImageBasedOnPath);
 ---
 
 <!doctype html>
@@ -101,6 +97,7 @@ console.log("--> ogImageBasedOnPath", ogImageBasedOnPath);
 
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL} />
+    <meta name="giscus:backlink" content={canonicalURL.replace(/\/$/, "")} />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content={formattedTitle} />
