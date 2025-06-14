@@ -2,8 +2,9 @@
 title: "Temel JavaScript (2) - JavaScript'e Girelim"
 slug: temel-javascript-2-javascripte-girelim
 date: 2005-01-28
+description: "Temel JavaScript dersleri serisinin ikinci bölümü. Bu rehber, JavaScript'te olay (event) yönetimine odaklanarak `onLoad`, `onClick`, `onMouseOver` gibi yaygın olayları ve kullanıcı etkileşimlerine nasıl tepki verileceğini açıklıyor."
 url: http://mfyz.com/tr/temel-javascript-2-javascripte-girelim/
-tags: ["Arayüz Programlama","javascript","js"]
+tags: ["JavaScript", "JS", "Arayüz Programlama", "olay yönetimi", "events", "DOM", "web geliştirme", "javascript dersleri"]
 category: Arayüz Programlama
 migration: {"wpId":119,"wpPostDate":"2005-01-28T05:00:00.000Z"}
 lang: tr

@@ -1,9 +1,10 @@
 ---
-title: "Dosyaları kitlemek"
+title: "Dosyaları Kilitlemek"
 slug: dosyalari-kitlemek
 date: 2005-06-04
+description: "PHP'de `flock()` fonksiyonu kullanarak dosya kilitleme yöntemlerini öğrenin. Web sunucularında eş zamanlı dosya erişimlerinde veri bozulmalarını önlemek için paylaşımlı ve özel kilitlerin nasıl kullanılacağı açıklanıyor."
 url: http://mfyz.com/tr/dosyalari-kitlemek/
-tags: ["NULL","PHP"]
+tags: ["PHP", "dosya kilitleme", "flock", "dosya işlemleri", "veri bütünlüğü", "eşzamanlılık", "Sunucu Programlama", "LOCK_EX", "LOCK_SH", "LOCK_UN"]
 category: PHP
 migration: {"wpId":78,"wpPostDate":"2005-06-04T06:50:07.000Z"}
 lang: tr

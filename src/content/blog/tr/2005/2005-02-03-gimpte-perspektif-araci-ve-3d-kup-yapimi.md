@@ -1,9 +1,10 @@
 ---
-title: "Gimp'te Perspektif aracı ve 3d küp yapımı"
+title: "GIMP'te Perspektif Aracı ve 3D Küp Yapımı"
 slug: gimpte-perspektif-araci-ve-3d-kup-yapimi
 date: 2005-02-03
+description: "GIMP'te perspektif aracını kullanarak nasıl 3 boyutlu bir küp oluşturulacağını öğrenin. Bu rehber, kare yüzeylere geçiş efektleri uygulayıp perspektiflerini ayarlayarak gerçekçi bir 3D küp görünümü elde etme adımlarını gösteriyor."
 url: http://mfyz.com/tr/gimpte-perspektif-araci-ve-3d-kup-yapimi/
-tags: ["3d","gimp","howto","küp","perspektif","Tasarım"]
+tags: ["GIMP", "perspektif aracı", "3D küp", "grafik tasarım", "eğitim", "nasıl yapılır", "görüntü işleme", "tasarım", "3B modelleme"]
 category: Tasarım
 migration: {"wpId":58,"wpPostDate":"2005-02-03T08:41:27.000Z"}
 lang: tr

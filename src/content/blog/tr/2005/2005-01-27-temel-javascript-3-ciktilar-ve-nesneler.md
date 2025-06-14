@@ -2,8 +2,9 @@
 title: "Temel Javascript (3) - Çıktılar ve Nesneler"
 slug: temel-javascript-3-ciktilar-ve-nesneler
 date: 2005-01-27
+description: "Temel JavaScript dersleri serisinin üçüncü bölümü. Bu rehber, `document.write` ile sayfaya yazı yazdırma, `alert` ile uyarı gösterme ve `String`, `Math`, `Date` gibi temel JavaScript nesneleri ve metodlarını örneklerle açıklıyor."
 url: http://mfyz.com/tr/temel-javascript-3-ciktilar-ve-nesneler/
-tags: ["Arayüz Programlama","date","javascript","js","matematik","math","string","tarih"]
+tags: ["JavaScript", "JS", "Arayüz Programlama", "çıktı işlemleri", "nesneler", "String", "Math", "Date", "document.write", "alert", "web geliştirme", "javascript dersleri"]
 category: Arayüz Programlama
 migration: {"wpId":120,"wpPostDate":"2005-01-27T05:00:00.000Z"}
 lang: tr

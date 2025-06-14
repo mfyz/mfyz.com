@@ -1,9 +1,10 @@
 ---
-title: "XML (Extensible Markup Language)"
+title: "XML (Extensible Markup Language) Nedir?"
 slug: xml-extensible-markup-language
 date: 2005-10-11
+description: "XML (Genişletilebilir İşaretleme Dili) nedir, HTML'den farkları nelerdir? Veri taşıma, saklama ve platform bağımsızlığı konularında XML'in rolü, kullanım alanları ve temel sözdizimi kuralları."
 url: http://mfyz.com/tr/xml-extensible-markup-language/
-tags: ["nedir","Programlama","xml"]
+tags: ["XML", "Extensible Markup Language", "işaretleme dili", "veri taşıma", "veri saklama", "platform bağımsızlığı", "HTML", "web teknolojileri", "veri formatı", "sözdizimi"]
 category: Programlama
 migration: {"wpId":111,"wpPostDate":"2005-10-11T03:37:16.000Z"}
 lang: tr

@@ -2,8 +2,9 @@
 title: "RSS nedir, ne işe yarar, ne yapmalıyız?"
 slug: rss-nedir-ne-ise-yarar-ne-yapmaliyiz
 date: 2005-09-10
+description: "RSS (Really Simple Syndication) teknolojisinin ne olduğunu, web sitelerindeki güncellemeleri takip etmeyi nasıl kolaylaştırdığını ve neden kullanılması gerektiğini öğrenin. XML tabanlı bu standart ve RSS okuyucuları hakkında bilgi."
 url: http://mfyz.com/tr/rss-nedir-ne-ise-yarar-ne-yapmaliyiz/
-tags: ["Diğer","nedir","rss","xml"]
+tags: ["RSS", "XML", "veri paylaşımı", "içerik sendikasyonu", "web teknolojileri", "haber akışı", "blog takibi", "RSS okuyucu"]
 category: Diğer
 migration: {"wpId":109,"wpPostDate":"2005-09-10T03:05:48.000Z"}
 lang: tr

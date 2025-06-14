@@ -1,9 +1,10 @@
 ---
-title: "Pratik ve hızlı gentoo kurlumu"
+title: "Pratik ve hızlı Gentoo kurulumu"
 slug: pratik-ve-hizli-gentoo-kurlumu
 date: 2005-02-01
+description: "Gentoo Linux 2005.1 sürümü için pratik ve hızlı bir kurulum rehberi. Disk hazırlama, internet ayarları, stage3 ve portage kurulumu, kernel derleme ve Lilo/Grub yapılandırması gibi adımları içerir."
 url: http://mfyz.com/tr/pratik-ve-hizli-gentoo-kurlumu/
-tags: ["gentoo","kurulum","nasil","OS"]
+tags: ["Gentoo", "Linux", "kurulum", "nasıl yapılır", "işletim sistemi", "OS", "Portage", "kernel derleme", "stage3", "Linux dağıtımı"]
 category: OS
 migration: {"wpId":66,"wpPostDate":"2005-02-01T16:35:23.000Z"}
 lang: tr

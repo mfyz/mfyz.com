@@ -1,9 +1,10 @@
 ---
-title: "MySQL'de verileri seçme, listeleme ve arama işlemleri"
+title: "MySQL'de Verileri Seçme, Listeleme ve Arama İşlemleri"
 slug: mysqlde-verileri-secme-listeleme-ve-arama-islemleri
 date: 2005-02-06
+description: "MySQL'de SELECT sorguları ile veri seçme, WHERE ile filtreleme, ORDER BY ile sıralama ve LIMIT ile sayfalama işlemlerini öğrenin. PHP'de mysql_fetch_array gibi fonksiyonlarla sonuçları işleme ve LIKE ile arama yapma yöntemleri anlatılıyor."
 url: http://mfyz.com/tr/mysqlde-verileri-secme-listeleme-ve-arama-islemleri/
-tags: ["fetch","like","limit","mysql","query","select","Sunucu Programlama"]
+tags: ["MySQL", "PHP", "SQL", "SELECT", "WHERE", "ORDER BY", "LIMIT", "LIKE", "veritabanı", "veri listeleme", "veri arama", "Sunucu Programlama", "mysql_fetch_array"]
 category: Sunucu Programlama
 migration: {"wpId":76,"wpPostDate":"2005-02-06T07:36:11.000Z"}
 lang: tr

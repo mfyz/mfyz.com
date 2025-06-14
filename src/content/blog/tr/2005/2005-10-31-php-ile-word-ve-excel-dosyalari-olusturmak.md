@@ -2,8 +2,9 @@
 title: "PHP ile Word ve Excel dosyaları oluşturmak"
 slug: php-ile-word-ve-excel-dosyalari-olusturmak
 date: 2005-10-31
+description: "PHP'de COM eklentisi kullanarak Microsoft Word (.doc) ve Excel (.xls) dosyalarını dinamik olarak nasıl oluşturacağınızı öğrenin. Sunucuda Office uygulamalarıyla etkileşim kurma ve veri yazma örnekleri."
 url: http://mfyz.com/tr/php-ile-word-ve-excel-dosyalari-olusturmak/
-tags: ["excel","PHP","word"]
+tags: ["PHP", "COM", "Microsoft Word", "Microsoft Excel", "dosya oluşturma", "Word otomasyonu", "Excel otomasyonu", "Sunucu Programlama", ".doc", ".xls", "Office otomasyonu"]
 category: PHP
 migration: {"wpId":82,"wpPostDate":"2005-10-31T15:23:03.000Z"}
 lang: tr

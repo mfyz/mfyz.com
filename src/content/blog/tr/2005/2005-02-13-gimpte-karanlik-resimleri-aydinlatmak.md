@@ -1,9 +1,10 @@
 ---
-title: "Gimp'te karanlık resimleri aydınlatmak"
+title: "GIMP'te Karanlık Resimleri Aydınlatmak"
 slug: gimpte-karanlik-resimleri-aydinlatmak
 date: 2005-02-13
+description: "GIMP kullanarak karanlık çıkmış fotoğraflardaki bölgeleri nasıl aydınlatacağınızı öğrenin. Bu rehber, Threshold, katman maskeleri ve Brightness-Contrast araçlarıyla fotoğraflarınızı iyileştirme adımlarını gösterir."
 url: http://mfyz.com/tr/gimpte-karanlik-resimleri-aydinlatmak/
-tags: ["aydınlatma","gimp","karanlık fotoğraf","Tasarım"]
+tags: ["GIMP", "fotoğraf düzenleme", "resim aydınlatma", "karanlık fotoğraf", "Threshold", "katman maskesi", "Brightness-Contrast", "görüntü işleme", "Tasarım", "eğitim"]
 category: Tasarım
 migration: {"wpId":60,"wpPostDate":"2005-02-13T08:59:40.000Z"}
 lang: tr
