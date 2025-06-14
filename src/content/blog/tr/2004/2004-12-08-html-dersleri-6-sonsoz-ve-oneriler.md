@@ -2,8 +2,9 @@
 title: "HTML Dersleri (6) : Sonsöz ve öneriler"
 slug: html-dersleri-6-sonsoz-ve-oneriler
 date: 2004-12-08
+description: "HTML öğrenme serisinin son bölümü. Bu yazıda HTML'nin neden önemli olduğu, geleceği ve standartlara uygun, temiz kod yazmak için ipuçları ve öneriler yer alıyor."
 url: http://mfyz.com/tr/html-dersleri-6-sonsoz-ve-oneriler/
-tags: ["Arayüz Programlama","html"]
+tags: ["Arayüz Programlama", "html", "web geliştirme", "web tasarımı", "standartlar", "ipuçları", "sonsöz"]
 category: Arayüz Programlama
 migration: {"wpId":108,"wpPostDate":"2004-12-08T19:21:50.000Z"}
 lang: tr

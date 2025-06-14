@@ -2,8 +2,9 @@
 title: "HTML Dersleri (2) : Başlıklar, paragraflar, metin biçimlendirme ve köprüler"
 slug: html-dersleri-2-basliklar-paragraflar-metin-bicimlendirme-ve-kopruler
 date: 2004-12-12
+description: "HTML dersleri serisinin ikinci bölümü. Bu rehber, `<h1>`-`<h6>` başlıkları, `<p>` paragrafları, `<b>`, `<i>` gibi metin biçimlendirme etiketleri ve `<a>` etiketiyle köprü (link) oluşturma gibi temel konuları ele alıyor."
 url: http://mfyz.com/tr/html-dersleri-2-basliklar-paragraflar-metin-bicimlendirme-ve-kopruler/
-tags: ["Arayüz Programlama","headings","html","link","metin"]
+tags: ["Arayüz Programlama", "headings", "html", "link", "metin", "p", "a", "köprü", "paragraf", "başlık", "web geliştirme", "html dersleri", "metin biçimlendirme"]
 category: Arayüz Programlama
 migration: {"wpId":104,"wpPostDate":"2004-12-12T21:50:41.000Z"}
 lang: tr

@@ -2,8 +2,9 @@
 title: "Fibonacci dizisini hesaplayan program"
 slug: fibonacci-dizisini-hesaplayan-program
 date: 2004-11-12
+description: "QBasic dilinde yazılmış, Fibonacci dizisinin istenen sayıda elemanını hesaplayan ve ekrana yazdıran bir program. Bu örnek, özyinelemeli ve iteratif algoritmaların temel bir örneğidir."
 url: http://mfyz.com/tr/fibonacci-dizisini-hesaplayan-program/
-tags: ["Basic","fibonacci","örnek kod"]
+tags: ["Basic", "QBasic", "fibonacci", "dizi", "örnek kod", "programlama", "algoritma", "matematik"]
 category: Basic
 migration: {"wpId":52,"wpPostDate":"2004-11-12T08:29:53.000Z"}
 lang: tr

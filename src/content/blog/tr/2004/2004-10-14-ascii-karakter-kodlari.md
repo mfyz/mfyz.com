@@ -2,8 +2,9 @@
 title: "ASCII Karakter Kodları"
 slug: ascii-karakter-kodlari
 date: 2004-10-14
+description: "ASCII karakterleri ve kodlarının kapsamlı bir listesi. HTML sayfalarında kullanılabilecek özel karakterlerin HTML entity kodları ve sayısal kodlarını içeren ayrıntılı referans tablosu."
 url: http://mfyz.com/tr/ascii-karakter-kodlari/
-tags: ["ascii","Diğer","entities","karakter"]
+tags: ["ascii","Diğer","entities","karakter","html","kodlama"]
 category: Diğer
 migration: {"wpId":101,"wpPostDate":"2004-10-14T15:48:44.000Z"}
 lang: tr

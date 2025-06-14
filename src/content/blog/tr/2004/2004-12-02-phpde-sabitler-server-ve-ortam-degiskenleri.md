@@ -2,8 +2,9 @@
 title: "PHP'de sabitler, server ve ortam değişkenleri"
 slug: phpde-sabitler-server-ve-ortam-degiskenleri
 date: 2004-12-02
+description: "PHP'de kullanılan özel sabitler, süper global değişkenler ve sunucu ortam değişkenleri hakkında bir rehber. `__FILE__`, `__LINE__`, `$_SERVER`, `$_COOKIE` gibi değişkenlerin ne işe yaradığını ve betik içinde nasıl kullanıldığını öğrenin."
 url: http://mfyz.com/tr/phpde-sabitler-server-ve-ortam-degiskenleri/
-tags: ["NULL","PHP"]
+tags: ["PHP", "sabitler", "değişkenler", "$_SERVER", "$_COOKIE", "$_GET", "$_POST", "süper global", "web geliştirme", "programlama", "__FILE__", "__LINE__"]
 category: PHP
 migration: {"wpId":43,"wpPostDate":"2004-12-02T23:10:06.000Z"}
 lang: tr

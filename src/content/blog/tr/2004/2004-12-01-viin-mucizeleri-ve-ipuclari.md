@@ -2,8 +2,9 @@
 title: "Vi'ın mucizeleri ve ipuçları"
 slug: viin-mucizeleri-ve-ipuclari
 date: 2004-12-01
+description: "Linux'un güçlü metin editörü Vi (ve Vim) için kullanışlı komutlar, ipuçları ve mucizevi özellikler. Silme, arama, bul ve değiştir gibi temel ve ileri düzey komutlarla verimliliğinizi artırın."
 url: http://mfyz.com/tr/viin-mucizeleri-ve-ipuclari/
-tags: ["coding","editor","OS","vi","vim"]
+tags: ["coding", "editor", "OS", "vi", "vim", "linux", "terminal", "metin editörü", "ipuçları", "programlama"]
 category: OS
 migration: {"wpId":64,"wpPostDate":"2004-12-01T16:17:58.000Z"}
 lang: tr

@@ -2,8 +2,9 @@
 title: "PI sayısını bulan program"
 slug: pi-sayisini-bulan-program
 date: 2004-11-15
+description: "QBasic dilinde Monte Carlo yöntemi kullanarak Pi sayısını yaklaşık olarak hesaplayan bir program. Bu örnek, rastgele sayılar ve olasılık kullanarak matematiksel sabitlerin nasıl bulunabileceğini gösterir."
 url: http://mfyz.com/tr/pi-sayisini-bulan-program/
-tags: ["Basic","örnek kod","pi"]
+tags: ["Basic", "QBasic", "pi", "örnek kod", "programlama", "algoritma", "matematik", "monte carlo"]
 category: Basic
 migration: {"wpId":55,"wpPostDate":"2004-11-15T08:33:47.000Z"}
 lang: tr

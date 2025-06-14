@@ -2,8 +2,9 @@
 title: "QBasic Kullanımı"
 slug: qbasic-kullanimi
 date: 2004-10-13
+description: "QBasic programının temel kullanımını ve arayüz işlemlerini anlatan adım adım bir klavuz. Yeni program oluşturma, kaydetme, açma ve çalıştırma yöntemlerini içerir."
 url: http://mfyz.com/tr/qbasic-kullanimi/
-tags: ["Basic","kullanim","qbasic"]
+tags: ["Basic","kullanim","qbasic","programlama","yazilim"]
 category: Basic
 migration: {"wpId":44,"wpPostDate":"2004-10-13T06:14:12.000Z"}
 lang: tr

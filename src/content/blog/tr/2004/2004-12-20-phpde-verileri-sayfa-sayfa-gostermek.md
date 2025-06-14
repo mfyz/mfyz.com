@@ -2,8 +2,9 @@
 title: "PHP'de verileri sayfa sayfa göstermek!"
 slug: phpde-verileri-sayfa-sayfa-gostermek
 date: 2004-12-20
+description: "PHP'de sayfalama (pagination) tekniğini öğrenin. Bu rehber, dizilerden (array) ve MySQL veritabanı sonuçlarından gelen verileri sayfa sayfa listeleyeceğinizi gösterir."
 url: http://mfyz.com/tr/phpde-verileri-sayfa-sayfa-gostermek/
-tags: ["NULL","PHP"]
+tags: ["PHP", "sayfalama", "pagination", "veritabanı", "mysql", "dizi", "array", "web geliştirme", "programlama"]
 category: PHP
 migration: {"wpId":72,"wpPostDate":"2004-12-20T06:13:33.000Z"}
 lang: tr

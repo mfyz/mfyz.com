@@ -2,8 +2,9 @@
 title: "HTML Dersleri (4) : Tablolar ve çerçeveler"
 slug: html-dersleri-4-tablolar-ve-cerceveler
 date: 2004-12-10
+description: "HTML dersleri serisinin dördüncü bölümü. Bu rehber, verileri düzenli bir şekilde sunmak için kullanılan `<table>`, `<tr>`, `<td>` etiketleriyle tabloların nasıl oluşturulduğunu ve `<iframe>` ile sayfa içine başka sayfaların nasıl yerleştirildiğini anlatıyor."
 url: http://mfyz.com/tr/html-dersleri-4-tablolar-ve-cerceveler/
-tags: ["Arayüz Programlama","çerçeve","frame","html","iframe","table","tablo"]
+tags: ["Arayüz Programlama", "çerçeve", "frame", "html", "iframe", "table", "tablo", "web geliştirme", "web tasarımı", "html dersleri"]
 category: Arayüz Programlama
 migration: {"wpId":106,"wpPostDate":"2004-12-10T21:05:11.000Z"}
 lang: tr
