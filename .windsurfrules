@@ -96,11 +96,10 @@ Please consult with Fatih before changing any of these design patterns.
 ---
 hidden: true
 title: Kitchensink Example
+description: Everything you need to know
 slug: kitchen-sink-example
 date: 2025-02-18
-description: Everything you need to know
-tags:
-  - AwesomeTag
+tags: ["AwesomeTag", "AwesomeTag2"]
 ---
 
 import H2 from "@components/H2.astro";
