@@ -82,9 +82,9 @@ export const prerender = true;
           data-lang="en"
           data-loading="lazy"
           crossorigin="anonymous"
-          data-theme="/giscuss_theme.css"
-          async>
-        </script>
+          data-theme="https://mfyz-com-git-feat-giscuss-and-descriptions-mfyz-projects.vercel.app/giscuss_theme.css"
+          async
+        ></script>
       </div>
 
       {/* Related Posts Block */}
@@ -93,7 +93,9 @@ export const prerender = true;
           post.data.tags.length > 0 &&
           (await (async () => {
             let postsToShow = [];
-            let postsToShowTitle = isTurkish ? "İlgili Yazılar" : "Related Posts";
+            let postsToShowTitle = isTurkish
+              ? "İlgili Yazılar"
+              : "Related Posts";
             postsToShow = await getRelatedPosts({
               slug: post.slug,
               language: isTurkish ? "tr" : "en",
@@ -112,9 +114,7 @@ export const prerender = true;
             }
             return (
               <div class="mt-16">
-                <h2 class="mb-6 font-secondary text-3xl">
-                  {postsToShowTitle}
-                </h2>
+                <h2 class="mb-6 font-secondary text-3xl">{postsToShowTitle}</h2>
                 <BlogGrid
                   posts={postsToShow}
                   limit={6}

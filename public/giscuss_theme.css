@@ -1,3 +1,7 @@
+body {
+  background-color: red !important;
+}
+
 .gsc-reactions {
-	text-align: left;
+  text-align: left;
 }
