@@ -61,10 +61,14 @@ export const prerender = true;
     <div class="main-content-wrapper">
       <Content />
     </div>
-    <div class="mt-12">
-      <BlogSharingAndReactions post={post} />
+    <div
+      class="reactions_and_comments_container relative mt-20 border-t border-gray-200"
+    >
+      <div class="absolute -top-4 right-0">
+        <BlogSharingAndReactions post={post} />
+      </div>
 
-      <div class="giscuss_comments_wrapper">
+      <div class="giscuss_comments_wrapper -mt-4">
         <script
           is:inline
           data-astro-rerun
@@ -83,8 +87,12 @@ export const prerender = true;
           crossorigin="anonymous"
           data-theme="https://mfyz-com-git-feat-giscuss-and-descriptions-mfyz-projects.vercel.app/giscuss_theme.css"
           async></script>
+        <!-- data-theme="https://1411-2600-4040-9c38-ac00-edcd-e47b-422d-a90d.ngrok-free.app/giscuss_theme.css" -->
+        <!-- data-theme="preferred_color_scheme" -->
       </div>
+    </div>
 
+    <div>
       {/* Related Posts Block */}
       {
         post.data.tags &&

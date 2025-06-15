@@ -1,4 +1,5 @@
 main {
+  --color-bg: #fff;
   --color-prettylights-syntax-comment: #6e7781;
   --color-prettylights-syntax-constant: #0550ae;
   --color-prettylights-syntax-entity: #8250df;
@@ -101,6 +102,7 @@ main .gsc-loading-image {
 	*/
 
   main {
+    --color-bg: rgb(17 24 39);
     --color-prettylights-syntax-comment: #8b949e;
     --color-prettylights-syntax-constant: #79c0ff;
     --color-prettylights-syntax-entity: #d2a8ff;
@@ -194,4 +196,28 @@ main .gsc-loading-image {
   main .gsc-loading-image {
     background-image: url("https://github.githubassets.com/images/mona-loading-dark.gif");
   }
+}
+
+.gsc-reactions {
+  flex-direction: row;
+}
+
+.gsc-reactions > div.justify-center {
+  justify-content: start !important;
+  margin-top: 0 !important;
+  margin-left: 1em !important;
+}
+
+.gsc-reactions .gsc-reactions-count,
+.gsc-reactions button {
+  background-color: var(--color-bg);
+}
+
+.gsc-comments {
+  margin-top: 1.5em;
+}
+
+.gsc-left-header em {
+  opacity: 0.5 !important;
+  font-size: 0.8em !important;
 }
