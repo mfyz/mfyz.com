@@ -1,11 +1,20 @@
 ---
 title: "Creating sequence diagrams using mermaidjs to map out your user journey"
+description: "An effective product planning process using sequence diagrams created with Mermaid.js to map out user journeys is detailed. This visualization aids in understanding interactions between various user personas and system components."
 slug: creating-sequence-diagrams-using-mermaidjs-to-map-out-your-user-journey
 date: 2023-01-23
 url: https://mfyz.com/?p=816
-tags: ["diagram","mermaidjs","Product Design","user story","ux"]
+tags:
+  [
+    "sequence diagrams",
+    "mermaidjs",
+    "user journey mapping",
+    "product planning",
+    "ux design",
+    "diagramming",
+  ]
 category: Product Design
-migration: {"wpId":816,"wpPostDate":"2023-01-23T13:31:20.000Z"}
+migration: { "wpId": 816, "wpPostDate": "2023-01-23T13:31:20.000Z" }
 ---
 
 ![](https://cdn-images-1.medium.com/max/1600/1*0s1dZ31s07AjgQvdpCT-gw.png)
@@ -22,39 +31,39 @@ User journeys can easily highlight differences between these users and how they 
 
 Sequence diagram is a type of diagram that does great job telling 2 things:
 
-*   How many participants in a journey
+- How many participants in a journey
 
-*   The order of things between which participants happen.
+- The order of things between which participants happen.
 
 And example to this would be, order a food at a restaurant.
 
 Participants:
 
-*   Guest
+- Guest
 
-*   Host
+- Host
 
-*   Waiter
+- Waiter
 
-*   Kitchen
+- Kitchen
 
 And maybe steps would be:
 
-*   Guest asks Host can I have a table for 2?
+- Guest asks Host can I have a table for 2?
 
-*   Host shows and sits the Guests to a table.
+- Host shows and sits the Guests to a table.
 
-*   Waiter comes to the table and asks for order from Guests.
+- Waiter comes to the table and asks for order from Guests.
 
-*   Guests places their order.
+- Guests places their order.
 
-*   Waiter tells Kitchen about the order
+- Waiter tells Kitchen about the order
 
-*   Kitchen prepares the order
+- Kitchen prepares the order
 
-*   Kitchen tells Waiter that order is ready.
+- Kitchen tells Waiter that order is ready.
 
-*   Waiter brings food to the table to the Guests
+- Waiter brings food to the table to the Guests
 
 A journey like this can be visualized in a sequence diagram like this:
 

@@ -1,11 +1,21 @@
 ---
 title: "NocoDB - Open source Airtable, a rich admin tooling with OOTB rest API to your DBs"
+description: "NocoDB, an open-source alternative to Airtable, is introduced. Its features, including BYO database, various view types (grid, calendar, gallery), form building, bulk data import/export, and out-of-the-box REST APIs and webhooks, are highlighted."
 slug: nocodb-open-source-airtable-a-rich-admin-tooling-with-ootb-rest-api-to-your-dbs
 date: 2024-06-18
 url: https://mfyz.com/?p=834
-tags: ["airtable","Geekin'","nocodb"]
+tags:
+  [
+    "nocodb",
+    "airtable alternative",
+    "open source",
+    "database management",
+    "no-code",
+    "rest api",
+    "admin tools",
+  ]
 category: Geekin'
-migration: {"wpId":834,"wpPostDate":"2024-06-18T01:12:24.000Z"}
+migration: { "wpId": 834, "wpPostDate": "2024-06-18T01:12:24.000Z" }
 ---
 
 ![](/images/archive/en/2024/06/Screenshot-2024-06-17-20.51.59-1600x793.jpg)

@@ -1,11 +1,21 @@
 ---
 title: "Just launched my newest product in ProductHunt: Sheet2Cal - Organize calendar events inside from your Google Sheets doc."
+description: "The launch of Sheet2Cal, a new product featured on Product Hunt, is announced. Sheet2Cal enables users to organize and sync calendar events directly from their Google Sheets documents."
 slug: just-launched-my-newest-product-in-producthunt-sheet2cal-organize-calendar-events-inside-from-your-google-sheets-doc
 date: 2020-04-02
 url: https://mfyz.com/?p=443
-tags: ["Other"]
+tags:
+  [
+    "product hunt",
+    "google sheets",
+    "calendar sync",
+    "productivity tools",
+    "product launch",
+    "gsuite addon",
+    "sheet2cal",
+  ]
 category: Other
-migration: {"wpId":443,"wpPostDate":"2020-04-02T12:59:32.000Z"}
+migration: { "wpId": 443, "wpPostDate": "2020-04-02T12:59:32.000Z" }
 ---
 
 Sheet2Cal helps you to sync your event data from Google Sheets to your favorite calendar app. Plan and collaborate your events (social media/editorial content, wedding & travel planning) freely on Google Sheets and export it easily to a calendar subscription using Sheet2Cal.

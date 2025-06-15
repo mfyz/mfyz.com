@@ -1,8 +1,18 @@
 ---
-title: "I found a way to make n8n workflows-as-code"
-slug: i-found-a-way-to-make-n8n-worksflows-as-code
+title: "A Method for Managing n8n Workflows as Code"
+description: "A method for managing n8n workflows as code using Node.js scripts is presented, enabling version control, local backups, and easier management of complex or AI-driven automations."
+slug: i-found-a-way-to-make-n8n-workflows-as-code
 date: 2025-05-20
-tags: ["n8n", "code", "automation", "workflow", "ai", "gitops"]
+tags:
+  [
+    "n8n",
+    "workflows-as-code",
+    "automation",
+    "gitops",
+    "version control",
+    "ai workflows",
+    "nodejs",
+  ]
 category: Dev
 ---
 

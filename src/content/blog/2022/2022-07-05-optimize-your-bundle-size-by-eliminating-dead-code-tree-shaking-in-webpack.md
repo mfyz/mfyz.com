@@ -1,11 +1,20 @@
 ---
 title: "Optimize your bundle size by eliminating dead code / tree-shaking in Webpack"
+description: "The concept of tree-shaking in Webpack is explained as a method to optimize JavaScript bundle sizes by eliminating unused code. Examples are provided, including how to correctly import from libraries like Material-UI and Lodash to enable effective tree-shaking."
 slug: optimize-your-bundle-size-by-eliminating-dead-code-tree-shaking-in-webpack
 date: 2022-07-05
 url: https://mfyz.com/?p=755
-tags: ["Front-End","optimization","reactjs","webpack"]
+tags:
+  [
+    "webpack",
+    "tree-shaking",
+    "bundle optimization",
+    "performance",
+    "javascript",
+    "dead code elimination",
+  ]
 category: Front-End
-migration: {"wpId":755,"wpPostDate":"2022-07-05T09:50:09.000Z"}
+migration: { "wpId": 755, "wpPostDate": "2022-07-05T09:50:09.000Z" }
 ---
 
 ![](/images/archive/en/2022/07/Webpack-Tree-Shaking.jpg)
@@ -17,8 +26,7 @@ Today, I want to talk about a very effective method to optimize your bundle size
 Traditionally, we install a module and import the methods we use from a module. In many modules, the methods in them are not separately exported and are part of a single default export that we object deconstruct from the default import. The most common example of this is:
 
 ```js
-import { Box } from "@material-ui/core"
-
+import { Box } from "@material-ui/core";
 ```
 
 This results webpack to bundle all module methods. Even if we don’t use any of them.
@@ -32,29 +40,25 @@ Another method is the tree shaking where we still install the full library but w
 Instead of:
 
 ```js
-import { Box } from "@material-ui/core"
-
+import { Box } from "@material-ui/core";
 ```
 
 Do this:
 
 ```js
 import Box from "@material-ui/core/Box";
-
 ```
 
 Similarly, a lodash example: instead of:
 
 ```js
 import { groupBy } from "lodash";
-
 ```
 
 Do this:
 
 ```js
 import groupBy from "lodash/groupBy";
-
 ```
 
 ### Alternative method

@@ -1,11 +1,12 @@
 ---
 title: "Using Ant Design as our primary react.js UI framework"
+description: "An overview of Ant Design as the primary React.js UI framework used at Nomad Interactive. The post highlights its benefits, such as a rich component library, customization options, and improved consistency in application development."
 slug: using-ant-design-as-our-primary-react-js-ui-framework
 date: 2021-02-01
 url: https://mfyz.com/?p=629
-tags: ["antd","Front-End","Product Design","reactjs","ui"]
+tags: ["ant design", "reactjs", "ui framework", "front-end", "web development"]
 category: Front-End
-migration: {"wpId":629,"wpPostDate":"2021-02-01T13:15:00.000Z"}
+migration: { "wpId": 629, "wpPostDate": "2021-02-01T13:15:00.000Z" }
 ---
 
 ![A_zx7LTI_ECSAAAAAAAAAAAABkARQnAQ.png](/images/archive/en/2021/01/image-2-1600x791.png)

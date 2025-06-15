@@ -1,11 +1,12 @@
 ---
 title: "Get Google Sheets document content as JSON without Google API oAuth"
+description: "A step-by-step guide is provided on retrieving Google Sheets document content as a JSON object without needing Google API OAuth. The process involves sharing the sheet and publishing it to the web to construct a specific URL for JSON access."
 slug: get-google-sheets-document-content-as-json-without-google-api-oauth
 date: 2021-05-06
 url: https://mfyz.com/?p=649
-tags: ["Other"]
+tags: ["google sheets", "json", "api", "data extraction", "no-code"]
 category: Other
-migration: {"wpId":649,"wpPostDate":"2021-05-06T18:29:39.000Z"}
+migration: { "wpId": 649, "wpPostDate": "2021-05-06T18:29:39.000Z" }
 ---
 
 Use an existing google sheet document or create a new google sheet and once you are done with your content;

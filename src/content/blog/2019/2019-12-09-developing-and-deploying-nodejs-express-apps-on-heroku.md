@@ -1,11 +1,13 @@
 ---
 title: "Developing and Deploying Nodejs (Express) apps on Heroku"
+description: "Key considerations for developing and deploying Node.js and Express applications on Heroku are discussed. Topics include using environment variables, specifying Node.js versions, utilizing prebuild/postbuild scripts, and leveraging Heroku add-ons."
 slug: developing-and-deploying-nodejs-express-apps-on-heroku
 date: 2019-12-09
 url: https://mfyz.com/?p=396
-tags: ["deployment","express","heroku","nodejs","Other"]
+tags:
+  ["heroku", "nodejs", "express", "deployment", "PaaS", "environment variables"]
 category: Other
-migration: {"wpId":396,"wpPostDate":"2019-12-09T14:00:08.000Z"}
+migration: { "wpId": 396, "wpPostDate": "2019-12-09T14:00:08.000Z" }
 ---
 
 ![](/images/archive/en/2019/12/spacex-OHOU-5UVIYQ-unsplash.jpg)
@@ -28,7 +30,7 @@ Using environment variables is the best way to set configuration details for you
 
 ### Setting which node.js version your app will use
 
-As simple as adding “engines” object in package.json and having your node.js version defined in “node” property inside engines object like:  
+As simple as adding “engines” object in package.json and having your node.js version defined in “node” property inside engines object like:
 
 ```json
 "engines": {"node": "12.13.0"}
@@ -42,7 +44,7 @@ By default, heroku will build your application on every deployment. This is not 
 
 ### Utilize heroku add-ons
 
-Remember, Heroku comes with tons of 3rd party services which a lot of them have free packages that will be enough to try things out and start coding stuff up quickly. One of my favorite is heroku’s internal database service providing postgresql database with single command line command:  
+Remember, Heroku comes with tons of 3rd party services which a lot of them have free packages that will be enough to try things out and start coding stuff up quickly. One of my favorite is heroku’s internal database service providing postgresql database with single command line command:
 
 ```sh
 heroku addons:create heroku-postgresql

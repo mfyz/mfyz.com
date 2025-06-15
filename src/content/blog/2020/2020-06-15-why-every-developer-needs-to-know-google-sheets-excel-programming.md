@@ -1,11 +1,21 @@
 ---
 title: "Why every developer needs to know google sheets & excel programming"
+description: "The importance of Google Sheets and Excel programming skills for developers is highlighted, emphasizing how Google Apps Script can facilitate data sharing with non-technical colleagues and enable rapid prototyping of ideas."
 slug: why-every-developer-needs-to-know-google-sheets-excel-programming
 date: 2020-06-15
 url: https://mfyz.com/?p=499
-tags: ["Other"]
+tags:
+  [
+    "google sheets",
+    "excel",
+    "google apps script",
+    "developer productivity",
+    "automation",
+    "data collaboration",
+    "prototyping",
+  ]
 category: Other
-migration: {"wpId":499,"wpPostDate":"2020-06-15T12:00:00.000Z"}
+migration: { "wpId": 499, "wpPostDate": "2020-06-15T12:00:00.000Z" }
 ---
 
 I’ve recently talked about different cloud documentation services [Smart(Er) Documents – Quip, Notion, Airtable, Coda Or Good Old GDocs & GSheets](/smarter-documents-quip-notion-airtable-coda-or-good-old-gdocsgsheets/) and the my take on [Smarting up Google Docs](/smarting-up-google-docs-and-sheets/).

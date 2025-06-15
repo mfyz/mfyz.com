@@ -1,11 +1,21 @@
 ---
 title: "How Figma changed how we collaborate on our UX and UI designs"
+description: "An exploration of how Figma revolutionized the team's UX/UI design collaboration by consolidating tools and enabling real-time, browser-based workflows, alongside considerations for its impact on the design process."
 slug: how-figma-changed-how-we-collaborate-on-our-ux-and-ui-designs
 date: 2020-09-02
 url: https://mfyz.com/?p=531
-tags: ["Other"]
+tags:
+  [
+    "figma",
+    "design tools",
+    "ux design",
+    "ui design",
+    "collaboration",
+    "design workflow",
+    "remote design",
+  ]
 category: Other
-migration: {"wpId":531,"wpPostDate":"2020-09-02T20:30:07.000Z"}
+migration: { "wpId": 531, "wpPostDate": "2020-09-02T20:30:07.000Z" }
 ---
 
 ![abstract figma interface](/images/archive/en/2020/09/Assets_Update_-2.png)

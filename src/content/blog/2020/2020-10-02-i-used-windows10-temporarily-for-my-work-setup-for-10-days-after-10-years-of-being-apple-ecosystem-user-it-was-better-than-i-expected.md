@@ -1,11 +1,21 @@
 ---
 title: "I used Windows10 temporarily for my work setup for 10 days after 10+ years of being apple ecosystem user - It was better than I expected..."
+description: "An account of a 10-day experiment using Windows 10 for a work setup after over a decade in the Apple ecosystem. The experience, including migrating workflows and the development environment with WSL, was surprisingly positive."
 slug: i-used-windows10-temporarily-for-my-work-setup-for-10-days-after-10-years-of-being-apple-ecosystem-user-it-was-better-than-i-expected
 date: 2020-10-02
 url: https://mfyz.com/?p=555
-tags: ["figma","Geekin'","ipadpro","OS","windows10","wsl"]
+tags:
+  [
+    "windows 10",
+    "macos",
+    "operating systems",
+    "developer experience",
+    "wsl",
+    "surface pro",
+    "tech experiment",
+  ]
 category: Geekin'
-migration: {"wpId":555,"wpPostDate":"2020-10-02T08:31:15.000Z"}
+migration: { "wpId": 555, "wpPostDate": "2020-10-02T08:31:15.000Z" }
 ---
 
 I used windows from it’s 3.1 version to pre-vista years - early 2000s. Then switched fully to be linux person for years in between before switching to mac around 2007. Since then have been apple fanboy, owning, using and geeking about apple hardware and software. But coming from other OSes, I’m not like people started their computer journey with easy-to-use apple devices. So I know there is more out therefor having more “control” and “customization” on your digital everyday space. I also worked as custom computer/hardware builder for years in my early years of converting my hobby to my profession. I also wasn’t too distant to “what in computer” question.

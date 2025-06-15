@@ -1,11 +1,21 @@
 ---
 title: "Make Vercel open source and self-hosted, you get Coolify"
+description: "Coolify, a self-hostable and open-source alternative to deployment platforms like Vercel and Heroku, is introduced. Its lightweight nature, support for any language and Docker services, and GitOps-based deployment capabilities are highlighted."
 slug: make-vercel-open-source-and-self-hosted-you-get-coolify
 date: 2025-02-21
 url: https://mfyz.com/?p=941
-tags: ["docker","opensource","Other","selfhost","vercel"]
+tags:
+  [
+    "coolify",
+    "self-hosting",
+    "open source",
+    "devops",
+    "docker",
+    "vercel alternative",
+    "gitops",
+  ]
 category: Other
-migration: {"wpId":941,"wpPostDate":"2025-02-21T14:01:32.000Z"}
+migration: { "wpId": 941, "wpPostDate": "2025-02-21T14:01:32.000Z" }
 ---
 
 If you've been browsing through options for cloud deployment, you may have stumbled upon some popular solutions like Heroku, Netlify, or Vercel. But what if you want something that you can host yourself and tailor to your needs? That’s where Coolify comes into play. It's an open-source and self-hostable alternative that can take your development experience to the next level.
@@ -16,30 +26,26 @@ If you've been browsing through options for cloud deployment, you may have stumb
 
 There's a lot to love about Coolify. Here are some reasons that caught my interest:
 
-*   **It’s Lightweight.** Don't you just hate when tools hog all your system resources? Coolify is designed to be lean, meaning it won't slow you down.
+- **It’s Lightweight.** Don't you just hate when tools hog all your system resources? Coolify is designed to be lean, meaning it won't slow you down.
 
-*   **SSH Connection Required.** All you need to get started is an SSH connection. This simplicity makes the setup process fairly straightforward.
+- **SSH Connection Required.** All you need to get started is an SSH connection. This simplicity makes the setup process fairly straightforward.
 
-*   **Supports Any Language.** Are you a polyglot programmer? Coolify embraces that! You can work with any programming language you like, providing flexibility for your projects.
+- **Supports Any Language.** Are you a polyglot programmer? Coolify embraces that! You can work with any programming language you like, providing flexibility for your projects.
 
-*   **Compatible with Any Service that Runs on Docker.** If you’re familiar with Docker, you need not worry. Coolify is designed to accommodate any Docker services, making deployment a breeze.
+- **Compatible with Any Service that Runs on Docker.** If you’re familiar with Docker, you need not worry. Coolify is designed to accommodate any Docker services, making deployment a breeze.
 
-*   **Versatile Server Support.** Want to run multiple applications on different servers? Coolify doesn’t limit you to a specific server type; it allows you to use any server that meets your requirements.
+- **Versatile Server Support.** Want to run multiple applications on different servers? Coolify doesn’t limit you to a specific server type; it allows you to use any server that meets your requirements.
 
-*   **Emphasis on GitOps Based Deployments.** The latest trends in deployment revolve around GitOps, and Coolify supports that approach, making it easier to manage your deployments through code.
+- **Emphasis on GitOps Based Deployments.** The latest trends in deployment revolve around GitOps, and Coolify supports that approach, making it easier to manage your deployments through code.
 
-*   **Additional Features**:
-    *   SSL certificates
-    
-    *   Automatic backups
-    
-    *   Webhooks
-    
-    *   API-first approach
-    
-    *   Collaboration tools
-    
-    *   Monitoring and notifications
+- **Additional Features**:
+
+  - SSL certificates
+  - Automatic backups
+  - Webhooks
+  - API-first approach
+  - Collaboration tools
+  - Monitoring and notifications
 
 ![](/images/archive/en/2025/02/coolify-deploy-1600x957.png)
 

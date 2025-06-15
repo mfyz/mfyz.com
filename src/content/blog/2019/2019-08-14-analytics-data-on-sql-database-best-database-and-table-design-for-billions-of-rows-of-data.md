@@ -1,11 +1,20 @@
 ---
 title: "Analytics Data on SQL Database - Best database and table design for billions of rows of data"
+description: "In this post, I explore a Stack Overflow answer detailing how to efficiently store and query billions of rows of analytics data using PostgreSQL and BRIN indexes. It's a great DIY approach for managing large datasets."
 slug: analytics-data-on-sql-database-best-database-and-table-design-for-billions-of-rows-of-data
 date: 2019-08-14
 url: https://mfyz.com/?p=339
-tags: ["Back-End","database","db","postgresql","sql"]
+tags:
+  [
+    "postgresql",
+    "sql",
+    "database design",
+    "big data",
+    "analytics",
+    "brin index",
+  ]
 category: Back-End
-migration: {"wpId":339,"wpPostDate":"2019-08-14T00:57:55.000Z"}
+migration: { "wpId": 339, "wpPostDate": "2019-08-14T00:57:55.000Z" }
 ---
 
 This is not an article that I am writing but I'm mostly quoting a great gem on a stack overflow answer I came across when I was researching a DIY way to store and create analytics reports for a small to medium size project. The project's type doesn't matter because this is a generic problem and great solution.
@@ -35,7 +44,7 @@ AS
   FROM generate_series(1,1728000000) -- for 1.7 billion rows
     AS gs(x);
 
-                             QUERY PLAN                              
+                             QUERY PLAN
 --------------------------------------------------------------------
  Function Scan on generate_series gs  (cost=0.00..15.00 rows=1000 width=4) (actual time=173119.796..750391.668 rows=1728000000 loops=1)
  Planning time: 0.099 ms
@@ -47,7 +56,7 @@ So it took 22min to create the table. Largely, because the table is a modest 97G
 
 ```sql
 CREATE INDEX ON electrothingy USING brin (tsin);
-CREATE INDEX ON electrothingy USING brin (id);    
+CREATE INDEX ON electrothingy USING brin (id);
 VACUUM ANALYZE electrothingy;
 ```
 
@@ -61,7 +70,7 @@ SELECT max(temp)
 FROM electrothingy
 WHERE id BETWEEN 1000000 AND 1001000;
 
-                             QUERY PLAN                                                                  
+                             QUERY PLAN
 --------------------------------------------------------------------
  Aggregate  (cost=5245.22..5245.23 rows=1 width=7) (actual time=42.317..42.317 rows=1 loops=1)
    ->  Bitmap Heap Scan on electrothingy  (cost=1282.17..5242.73 rows=993 width=7) (actual time=40.619..42.158 rows=1001 loops=1)
@@ -94,7 +103,7 @@ AS
   FROM generate_series(1,1728000000)
     AS gs(x);
 
-                             QUERY PLAN                                                                
+                             QUERY PLAN
 --------------------------------------------------------------------
  Function Scan on generate_series gs  (cost=0.00..17.50 rows=1000 width=4) (actual time=176163.107..5891430.759 rows=1728000000 loops=1)
  Planning time: 0.607 ms
@@ -108,8 +117,8 @@ Now we can run a query on a timestamp value instead,,
 EXPLAIN ANALYZE
 SELECT count(*), min(temp), max(temp)
 FROM electrothingy WHERE tsin BETWEEN '1974-01-01' AND '1974-01-02';
-                                                                        
-                              QUERY PLAN                                                                         
+
+                              QUERY PLAN
 --------------------------------------------------------------------
  Aggregate  (cost=296073.83..296073.84 rows=1 width=7) (actual time=83.243..83.243 rows=1 loops=1)
    ->  Bitmap Heap Scan on electrothingy  (cost=2460.86..295490.76 rows=77743 width=7) (actual time=41.466..59.442 rows=86401 loops=1)
@@ -126,7 +135,7 @@ FROM electrothingy WHERE tsin BETWEEN '1974-01-01' AND '1974-01-02';
 Result:
 
 ```
- count |  min  |  max  
+ count |  min  |  max
 -------+-------+-------
  86401 | 97.50 | 97.50
 (1 row)
@@ -148,7 +157,7 @@ WHERE tsin >= '1974-01-01'
   AND tsin < '1974-01-02'
 GROUP BY date_trunc('hour', tsin)
 ORDER BY 1;
-          tsin          | count |  min  |  max  
+          tsin          | count |  min  |  max
 ------------------------+-------+-------+-------
  1974-01-01 01:00:00-06 |  3600 | 97.50 | 97.50
  1974-01-01 02:00:00-06 |  3600 | 97.50 | 97.50

@@ -1,11 +1,21 @@
 ---
-title: "Why Written Communication is King?"
+title: "Why Written Communication is King"
+description: "Exploring the importance of written communication for personal thought organization, learning, and its critical role in business and team collaboration for clarity, consistency, and asynchronous work."
 slug: written-communication-king
 date: 2017-10-19
 url: http://mfyz.com/?p=193
-tags: ["Life"]
+tags:
+  [
+    "written communication",
+    "writing skills",
+    "team collaboration",
+    "business communication",
+    "productivity",
+    "learning",
+    "remote work",
+  ]
 category: Life
-migration: {"wpId":193,"wpPostDate":"2017-10-19T16:24:30.000Z"}
+migration: { "wpId": 193, "wpPostDate": "2017-10-19T16:24:30.000Z" }
 ---
 
 Writing represents pretty much the biggest leap in human history. We started to make great things after we started documenting our wisdom and make it portable. Anything was written is made for communication even if it means communicating by yourself. People write, scribble to solidify their ideas, thoughts and there is no better format than written or drawn materials.

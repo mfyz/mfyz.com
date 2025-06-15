@@ -1,11 +1,22 @@
 ---
-title: "Fastify + Vercel = Best Vibes - Single file, 2 mins"
+title: "Fastify + Vercel: Single-File APIs in Minutes"
+description: "A demonstration of building and deploying a simple CRUD API endpoint using Fastify and Drizzle ORM on Vercel is provided. The ease of use, zero-config deploys, and suitability for quick prototypes or single endpoints are highlighted."
 slug: fastify-vercel-best-vibes-single-file-2-mins
 date: 2025-04-29
 url: https://mfyz.com/?p=967
-tags: ["api","Back-End","fastify","Other","rest","typescript","vercel"]
+tags:
+  [
+    "fastify",
+    "vercel",
+    "api",
+    "serverless",
+    "typescript",
+    "drizzle orm",
+    "backend",
+    "crud",
+  ]
 category: Back-End
-migration: {"wpId":967,"wpPostDate":"2025-04-29T12:30:00.000Z"}
+migration: { "wpId": 967, "wpPostDate": "2025-04-29T12:30:00.000Z" }
 ---
 
 ![](/images/archive/en/2025/04/vibin.gif)
@@ -20,15 +31,15 @@ You probably know Vercel as the go-to place for frontend apps, especially Next.j
 
 Here’s why:
 
-*   **Zero-config deploys**
+- **Zero-config deploys**
 
-*   **Built-in scalability**
+- **Built-in scalability**
 
-*   **Serverless by default**
+- **Serverless by default**
 
-*   **Free tier good enough for small APIs**
+- **Free tier good enough for small APIs**
 
-*   **Instant previews for each commit**
+- **Instant previews for each commit**
 
 That means your idea can go from local to live in minutes.
 
@@ -39,41 +50,43 @@ In this example, we’ll build a RESTful CRUD endpoint for managing books. We’
 ### File: `api/books.ts`
 
 ```ts
-import { drizzle } from 'drizzle-orm/vercel-postgres';
-import { sql } from '@vercel/postgres';
-import { FastifyRequest, FastifyReply } from 'fastify';
-import Fastify from 'fastify';
+import { drizzle } from "drizzle-orm/vercel-postgres";
+import { sql } from "@vercel/postgres";
+import { FastifyRequest, FastifyReply } from "fastify";
+import Fastify from "fastify";
 
 const db = drizzle(sql);
 
 const fastify = Fastify();
 
-fastify.get('/books', async (req: FastifyRequest, reply: FastifyReply) => {
+fastify.get("/books", async (req: FastifyRequest, reply: FastifyReply) => {
   const books = await db.query.books.findMany();
   return reply.send(books);
 });
 
-fastify.post('/books', async (req: FastifyRequest, reply: FastifyReply) => {
+fastify.post("/books", async (req: FastifyRequest, reply: FastifyReply) => {
   const body = req.body as { title: string; author: string };
-  const inserted = await db.insertInto('books').values(body).returning();
+  const inserted = await db.insertInto("books").values(body).returning();
   return reply.code(201).send(inserted);
 });
 
-fastify.put('/books/:id', async (req: FastifyRequest, reply: FastifyReply) => {
+fastify.put("/books/:id", async (req: FastifyRequest, reply: FastifyReply) => {
   const { id } = req.params as { id: string };
   const body = req.body as { title?: string; author?: string };
-  const updated = await db.update('books').set(body).where({ id }).returning();
+  const updated = await db.update("books").set(body).where({ id }).returning();
   return reply.send(updated);
 });
 
-fastify.delete('/books/:id', async (req: FastifyRequest, reply: FastifyReply) => {
-  const { id } = req.params as { id: string };
-  await db.deleteFrom('books').where({ id });
-  return reply.code(204).send();
-});
+fastify.delete(
+  "/books/:id",
+  async (req: FastifyRequest, reply: FastifyReply) => {
+    const { id } = req.params as { id: string };
+    await db.deleteFrom("books").where({ id });
+    return reply.code(204).send();
+  }
+);
 
 export default fastify;
-
 ```
 
 This file is all you need. Put it under the `api/` folder in a Vercel project. Vercel will automatically treat it as a serverless function.
@@ -94,7 +107,7 @@ https://your-app-name.vercel.app/api/books
 
 ```
 
-* * *
+---
 
 ## Test It with `curl`
 
@@ -113,13 +126,13 @@ You’ll get a `201 Created` with the new book entry.
 
 Fastify has a rich plugin ecosystem. Some handy ones to know:
 
-*   [`@fastify/swagger`](https://github.com/fastify/fastify-swagger) – Auto-generate OpenAPI docs
+- [`@fastify/swagger`](https://github.com/fastify/fastify-swagger) – Auto-generate OpenAPI docs
 
-*   [`@fastify/rate-limit`](https://github.com/fastify/fastify-rate-limit) – Protect endpoints from abuse
+- [`@fastify/rate-limit`](https://github.com/fastify/fastify-rate-limit) – Protect endpoints from abuse
 
-*   [`@fastify/jwt`](https://github.com/fastify/fastify-jwt) – Simple JWT authentication
+- [`@fastify/jwt`](https://github.com/fastify/fastify-jwt) – Simple JWT authentication
 
-*   [`@fastify/cors`](https://github.com/fastify/fastify-cors) – Easy CORS handling
+- [`@fastify/cors`](https://github.com/fastify/fastify-cors) – Easy CORS handling
 
 Adding them is just a few lines of code. That’s part of the joy of Fastify.
 
@@ -127,18 +140,18 @@ Adding them is just a few lines of code. That’s part of the joy of Fastify.
 
 Fastify on Vercel is perfect for AI-generated APIs. When tools or agents generate code for your backend, you want:
 
-*   Fast iteration
+- Fast iteration
 
-*   Clear docs
+- Clear docs
 
-*   Built-in tests
+- Built-in tests
 
-*   Easy deploys
+- Easy deploys
 
 This combo checks all those boxes. It’s low friction, flexible, and fun to build with. You can write code manually or have AI generate it—and either way, it just works.
 
 When you want to build fast and iterate even faster, this is a stack worth reaching for.
 
-* * *
+---
 
 That’s it. One file, fully working CRUD API, deployable in under 2 minutes. Enjoy the vibes 🧃

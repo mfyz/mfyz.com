@@ -1,11 +1,23 @@
 ---
 title: "My process of doing macOS clean (re)install twice on Intel and M1 Macbook Air - In search of better performance and clean start"
+description: "Fatih's detailed process for performing clean macOS reinstalls on both Intel and M1 MacBooks is shared, covering backup strategies, application and tool setup (including Homebrew, dotfiles, and development environments), and considerations for optimizing performance."
 slug: my-process-of-doing-macos-clean-reinstall-twice-on-intel-and-m1-macbook-air-in-search-of-better-performance-and-clean-start
 date: 2021-10-19
 url: https://mfyz.com/?p=703
-tags: ["homebrew","m1","macos","nodejs","OS"]
+tags:
+  [
+    "macos",
+    "m1 mac",
+    "intel mac",
+    "clean install",
+    "developer setup",
+    "dotfiles",
+    "homebrew",
+    "macbook pro",
+    "macbook air",
+  ]
 category: OS
-migration: {"wpId":703,"wpPostDate":"2021-10-19T14:00:00.000Z"}
+migration: { "wpId": 703, "wpPostDate": "2021-10-19T14:00:00.000Z" }
 ---
 
 ![by Remy_Loz](/images/archive/en/2021/10/3S0INpfREQc.jpg)
@@ -18,20 +30,20 @@ I wanted to write about my process of perfecting my process of setting up a bran
 
 Here is the todo list I created for myself for this whole operation:
 
-*   Make Lists of Applications
-    *   Make List of homebrew packages installed
-    *   Make List of npm packages installed
-*   Backup application configurations
-*   Make List of git repositories
-    *   Push all repositories
-*   Push .dotenv and .dotenv-secret
-*   Backup SSH keys (also onto 1password)
-*   Backup all .env files
-*   Backup to (SSD)
-    *   Application configuration folders
-    *   Development folder
-    *   Home & Library folders (tar)
-*   Backup `~/.config` `~/.aws` and similar credentials files/folders
+- Make Lists of Applications
+  - Make List of homebrew packages installed
+  - Make List of npm packages installed
+- Backup application configurations
+- Make List of git repositories
+  - Push all repositories
+- Push .dotenv and .dotenv-secret
+- Backup SSH keys (also onto 1password)
+- Backup all .env files
+- Backup to (SSD)
+  - Application configuration folders
+  - Development folder
+  - Home & Library folders (tar)
+- Backup `~/.config` `~/.aws` and similar credentials files/folders
 
 ## Backups
 
@@ -41,10 +53,10 @@ Here is the script I run: [https://gist.github.com/mfyz/087379eb77ec8581b665e23
 
 Things I do regular backups using this script:
 
-*   App settings (~/Library/Application Support)
-*   Dropbox content x2 (Personal + Work)
-*   Development folder
-*   Databases
+- App settings (~/Library/Application Support)
+- Dropbox content x2 (Personal + Work)
+- Development folder
+- Databases
 
 ### Can you live without these tools you were using before? Or can you find open-source alternatives, or better paid alternatives?
 
@@ -57,25 +69,25 @@ Before installing any new app. This is actually a great opportunity to re-evalua
 Using homebrew + using cask to install usual tools. Here is the partial list of the apps I installed with just running the following command:
 
 ```sh
-brew install --cask zoom  
-brew install --cask android-studio  
-brew install --cask charles  
-brew install --cask docker  
-brew install --cask grammarly  
-brew install --cask imageoptim  
-brew install --cask little-snitch  
-brew install --cask miro  
-brew install --cask krisp  
-brew install --cask noun-project  
-brew install --cask postman  
-brew install --cask robo-3t  
-brew install --cask skype  
-brew install --cask transmission  
-brew install --cask transmit  
-brew install --cask tunnelblick  
-brew install --cask virtualbox  
-brew install --cask vlc  
-brew install --cask zoom  
+brew install --cask zoom
+brew install --cask android-studio
+brew install --cask charles
+brew install --cask docker
+brew install --cask grammarly
+brew install --cask imageoptim
+brew install --cask little-snitch
+brew install --cask miro
+brew install --cask krisp
+brew install --cask noun-project
+brew install --cask postman
+brew install --cask robo-3t
+brew install --cask skype
+brew install --cask transmission
+brew install --cask transmit
+brew install --cask tunnelblick
+brew install --cask virtualbox
+brew install --cask vlc
+brew install --cask zoom
 brew install --cask jdiskreport
 ```
 
@@ -97,16 +109,16 @@ I generally don’t use the install script and manually clone the repo in new ma
 
 Dotfiles can include any file actually but here are the famous ones that help me ground up a brand new shell environment with a couple of steps. I often use this approach to configure an SSH environment I’ve given access to on a server that I will be working on more frequently.
 
-*   bashrc or [zshrc](https://github.com/mfyz/dotfiles/blob/master/zsh/.zshrc)
-*   [my aliases](https://github.com/mfyz/dotfiles/blob/master/zsh/.my-aliases.sh)
-*   shell configuration files (for go-to tools like vim, tmux...)
+- bashrc or [zshrc](https://github.com/mfyz/dotfiles/blob/master/zsh/.zshrc)
+- [my aliases](https://github.com/mfyz/dotfiles/blob/master/zsh/.my-aliases.sh)
+- shell configuration files (for go-to tools like vim, tmux...)
 
 I also include a few cheatsheets of keyboard shortcuts or commands for tools like vim for myself.
 
 Running install script doesn’t get everything 100% set up. Or for certain environments, I don’t want to install some of the tools. So for those tools, I have a few more scripts that does the setup work for me.
 
-*   Setup and configure zsh + oh-my-zsh: [https://github.com/mfyz/dotfiles/blob/master/_bootstrap/zsh.sh](https://github.com/mfyz/dotfiles/blob/master/_bootstrap/zsh.sh)
-*   Set up Vim plugins: [https://github.com/mfyz/dotfiles/blob/master/_bootstrap/vim.sh](https://github.com/mfyz/dotfiles/blob/master/_bootstrap/vim.sh) (after vim package manager is installed, you still need to open vim and run :PluginInstall command to install all the plugins used in my vimrc).
+- Setup and configure zsh + oh-my-zsh: [https://github.com/mfyz/dotfiles/blob/master/\_bootstrap/zsh.sh](https://github.com/mfyz/dotfiles/blob/master/_bootstrap/zsh.sh)
+- Set up Vim plugins: [https://github.com/mfyz/dotfiles/blob/master/\_bootstrap/vim.sh](https://github.com/mfyz/dotfiles/blob/master/_bootstrap/vim.sh) (after vim package manager is installed, you still need to open vim and run :PluginInstall command to install all the plugins used in my vimrc).
 
 ### SSH settings + Keys
 
@@ -130,13 +142,13 @@ Not so fast on M1! :) I faced various issues on M1 not only nodejs but all aroun
 
 I try to keep my development set up as plain as I can. Also, the nature of my job allows me to be picky and also be able to consolidate my stack. In the last 4-5 years, I was able to get away with the following when I needed to set up my development environment:
 
-*   Web / Back-end
-    *   Nodejs
-    *   LAMP (using MAMP Pro)
-*   Mobile
-    *   XCode + Android Studio
-    *   Ruby / Fastlane
-    *   Cocapods
+- Web / Back-end
+  - Nodejs
+  - LAMP (using MAMP Pro)
+- Mobile
+  - XCode + Android Studio
+  - Ruby / Fastlane
+  - Cocapods
 
 ### Mobile Studios - XCode + Android Studio
 
@@ -174,36 +186,35 @@ Here is the help document for Table Plus for exporting and importing connection 
 ### Restoring/re-pulling local working copies of the projects
 
 ```js
-const fs = require('fs')  
-const path = require('path')  
-const { execSync, spawnSync } = require('child_process')  
-  
-const runCmd = (cmd) => {  
-    try {  
-        const res = spawnSync(cmd, [], { shell: true })  
-        return res.stdout.toString()  
-    }  
-    catch (err) {  
-        return false  
-    }  
-}  
+const fs = require("fs");
+const path = require("path");
+const { execSync, spawnSync } = require("child_process");
 
-const root = './'  
-const ls = fs.readdirSync(root)  
+const runCmd = cmd => {
+  try {
+    const res = spawnSync(cmd, [], { shell: true });
+    return res.stdout.toString();
+  } catch (err) {
+    return false;
+  }
+};
 
-const results = []  
-ls.forEach((dir) => {  
-    if (fs.lstatSync(path.join(root, dir)).isDirectory()) {  
-        const result = runCmd(`cd ${path.join(root, dir)} && git remote -v && cd ..`, { stdio: 'inherit' })  
-        const gitRemote = result && result.split('\t')[1].split(' ')[0]  
-        results.push([
-            dir,
-            (gitRemote || '-')
-        ])
-    }  
-})
+const root = "./";
+const ls = fs.readdirSync(root);
 
-console.table(results)
+const results = [];
+ls.forEach(dir => {
+  if (fs.lstatSync(path.join(root, dir)).isDirectory()) {
+    const result = runCmd(
+      `cd ${path.join(root, dir)} && git remote -v && cd ..`,
+      { stdio: "inherit" }
+    );
+    const gitRemote = result && result.split("\t")[1].split(" ")[0];
+    results.push([dir, gitRemote || "-"]);
+  }
+});
+
+console.table(results);
 ```
 
 ### `.env` files

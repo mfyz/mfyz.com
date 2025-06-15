@@ -1,11 +1,20 @@
 ---
 title: "Create a website from Notion document collection with custom subdomain via Fruition in 10 minutes"
+description: "A method for creating a website from Notion document collections using a custom subdomain, facilitated by Fruition and Cloudflare Workers, is detailed. The ease of setup and benefits of this approach for quick website deployment are highlighted."
 slug: create-a-website-from-notion-document-collection-with-custom-subdomain-via-fruition-in-10-minutes
 date: 2021-06-09
 url: https://mfyz.com/?p=674
-tags: ["Other"]
+tags:
+  [
+    "notion",
+    "fruition",
+    "cloudflare workers",
+    "no-code",
+    "website builder",
+    "custom domain",
+  ]
 category: Other
-migration: {"wpId":674,"wpPostDate":"2021-06-09T11:59:14.000Z"}
+migration: { "wpId": 674, "wpPostDate": "2021-06-09T11:59:14.000Z" }
 ---
 
 ![home.png](/images/archive/en/2021/06/image.png)

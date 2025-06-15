@@ -1,11 +1,21 @@
 ---
 title: "Better code history with gitlinter / commitlinter"
+description: "The significance of maintaining consistent and informative commit messages for improved code history readability and team collaboration is discussed. Tools like commitlinter and conventions such as Conventional Commits are presented as methods to enforce these standards."
 slug: better-code-history-with-gitlinter-commitlinter
 date: 2020-10-27
 url: https://mfyz.com/?p=570
-tags: ["Programming"]
+tags:
+  [
+    "git",
+    "commit messages",
+    "conventional commits",
+    "commitlint",
+    "version control",
+    "developer productivity",
+    "team collaboration",
+  ]
 category: Programming
-migration: {"wpId":570,"wpPostDate":"2020-10-27T21:00:23.000Z"}
+migration: { "wpId": 570, "wpPostDate": "2020-10-27T21:00:23.000Z" }
 ---
 
 Working with git (or a similar version control system) is not an essential part of coding. We do frequent code commits as part of our workflow. Every developer has their own way of committing their code and labeling the changes made in the commit with commit messages. We often do this without putting enough thought into our commit messages that essentially define our change log in a more readable way when we look in the history of changes.
@@ -42,33 +52,24 @@ I suggest you to review these different conventions and pick a convention that s
 
 At a high level, defining "scope" for your commit messages is the most critical categorization of the change content when commiting. An approach like the below is a good start:
 
-*   **feat**: Add a new feature to the codebase (MINOR in semantic versioning).
-*   **fix**: Fix a bug (equivalent to a PATCH in Semantic Versioning).
-*   **docs**: Documentation changes.
-*   **style**: Code style change (semicolon, indentation...).
-*   **refactor**: Refactor code without changing public API.
-*   **perf**: Update code performances.
-*   **test**: Add a test to an existing feature.
-*   **chore**: Update something without impacting the user (ex: bump a dependency in package.json).
+- **feat**: Add a new feature to the codebase (MINOR in semantic versioning).
+- **fix**: Fix a bug (equivalent to a PATCH in Semantic Versioning).
+- **docs**: Documentation changes.
+- **style**: Code style change (semicolon, indentation...).
+- **refactor**: Refactor code without changing public API.
+- **perf**: Update code performances.
+- **test**: Add a test to an existing feature.
+- **chore**: Update something without impacting the user (ex: bump a dependency in package.json).
 
 We use a simplified version of this scope set. A sample commitlinter config file:
 
 ```js
 module.exports = {
-	parserPreset: 'conventional-changelog-conventionalcommits',
-	extends: ["@commitlint/config-conventional"],
-	rules: {
-		"type-enum": [
-			2,
-			"always",
-			[
-				"feat",
-				"fix",
-				"cont",
-				"chore"
-			]
-		]
-	}
+  parserPreset: "conventional-changelog-conventionalcommits",
+  extends: ["@commitlint/config-conventional"],
+  rules: {
+    "type-enum": [2, "always", ["feat", "fix", "cont", "chore"]],
+  },
 };
 ```
 
@@ -86,19 +87,19 @@ Conventional changelog generators can translate each conventional commit spec to
 
 ```json
 {
-    "types": [
-      {"type": "feat", "section": "Features"},
-      {"type": "fix", "section": "Bug Fixes"},
-      {"type": "chore", "hidden": true},
-      {"type": "docs", "hidden": true},
-      {"type": "style", "hidden": true},
-      {"type": "refactor", "hidden": true},
-      {"type": "perf", "hidden": true},
-      {"type": "test", "hidden": true}
-    ],
-    "commitUrlFormat": "https://github.com/mokkapps/changelog-generator-demo/commits/{{hash}}",
-    "compareUrlFormat": "https://github.com/mokkapps/changelog-generator-demo/compare/{{previousTag}}...{{currentTag}}"
-  }
+  "types": [
+    { "type": "feat", "section": "Features" },
+    { "type": "fix", "section": "Bug Fixes" },
+    { "type": "chore", "hidden": true },
+    { "type": "docs", "hidden": true },
+    { "type": "style", "hidden": true },
+    { "type": "refactor", "hidden": true },
+    { "type": "perf", "hidden": true },
+    { "type": "test", "hidden": true }
+  ],
+  "commitUrlFormat": "https://github.com/mokkapps/changelog-generator-demo/commits/{{hash}}",
+  "compareUrlFormat": "https://github.com/mokkapps/changelog-generator-demo/compare/{{previousTag}}...{{currentTag}}"
+}
 ```
 
 That generates a nicely organized markdown or HTML document. AngularJS is one of the known project utilized conventional commit messages and conventional changelog. See their changelog for an example of this; [https://github.com/angular/angular/blob/master/CHANGELOG.md](https://github.com/angular/angular/blob/master/CHANGELOG.md)

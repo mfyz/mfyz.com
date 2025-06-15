@@ -1,11 +1,21 @@
 ---
 title: "mfyz.com homepage design update"
+description: "A homepage design update for mfyz.com is detailed, focusing on improved usability and aesthetics. The changes aim to better showcase recent posts with subtle category-based visualizations and a more consistent, colorful tone."
 slug: mfyz-com-homepage-design-update
 date: 2020-10-12
 url: https://mfyz.com/?p=564
-tags: ["Creative"]
+tags:
+  [
+    "blog design",
+    "website redesign",
+    "homepage update",
+    "ux",
+    "ui",
+    "web design",
+    "personal blog",
+  ]
 category: Creative
-migration: {"wpId":564,"wpPostDate":"2020-10-12T11:38:53.000Z"}
+migration: { "wpId": 564, "wpPostDate": "2020-10-12T11:38:53.000Z" }
 ---
 
 It's been forever that I haven't put any aesthetics filter on my blog's design. For years (in Turkish version) I've custom coded my site many times over. It hosted a lot of my development ideas and acted as a playground for me.

@@ -1,11 +1,21 @@
 ---
 title: "Remove unused CSS with PurgeCSS"
+description: "The use of PurgeCSS to remove unused CSS from web applications is detailed, highlighting its effectiveness in reducing final CSS size and improving rendering times, especially with frameworks like TailwindCSS."
 slug: remove-unused-css-with-purgecss
 date: 2022-07-15
 url: https://mfyz.com/?p=760
-tags: ["css","Front-End","Other","Programming","purge"]
+tags:
+  [
+    "purgecss",
+    "css",
+    "optimization",
+    "performance",
+    "tailwindcss",
+    "nextjs",
+    "web development",
+  ]
 category: Front-End
-migration: {"wpId":760,"wpPostDate":"2022-07-15T19:36:18.000Z"}
+migration: { "wpId": 760, "wpPostDate": "2022-07-15T19:36:18.000Z" }
 ---
 
 ![](/images/archive/en/2022/07/D94DDA08-12B3-4CE0-91FD-C5F3AD7612B5.png)

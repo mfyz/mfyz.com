@@ -1,11 +1,13 @@
 ---
 title: "At least do this for securing your Wordpress site as a quick win, use Wordfence"
+description: "Basic WordPress security measures achievable with the Wordfence plugin are outlined, emphasizing quick wins such as enabling Multi-Factor Authentication, rate limiting, and country blocking to enhance site protection."
 slug: at-least-do-this-for-securing-your-wordpress-site-as-a-quick-win-use-wordfence
 date: 2022-05-20
 url: https://mfyz.com/?p=740
-tags: ["Other"]
+tags:
+  ["wordpress", "security", "wordfence", "mfa", "firewall", "website security"]
 category: Other
-migration: {"wpId":740,"wpPostDate":"2022-05-20T13:37:11.000Z"}
+migration: { "wpId": 740, "wpPostDate": "2022-05-20T13:37:11.000Z" }
 ---
 
 ## Security is an oversight for a lot of WordPress site owners
