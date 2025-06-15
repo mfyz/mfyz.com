@@ -1,9 +1,10 @@
 ---
 title: "Arayüzsüz tarayıcıları, web ve tarayıcı otomasyonu"
+description: "Arayüzsüz (headless) tarayıcılar nedir ve web otomasyonunda nasıl kullanılır? Programatik testler, ekran görüntüsü alma ve arayüz akışlarını otomatikleştirme konularını keşfedin."
 slug: arayuzsuz-tarayicilari-web-tarayici-otomasyonu
 date: 2018-03-13
 url: https://mfyz.com/tr/?p=1431
-tags: ["Arayüz Programlama","automation","browser","testing","web"]
+tags: ["headless browser", "tarayıcı otomasyonu", "yazılım testi", "web geliştirme", "otomasyon"]
 category: Arayüz Programlama
 migration: {"wpId":1431,"wpPostDate":"2018-03-13T10:00:42.000Z"}
 lang: tr

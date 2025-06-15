@@ -1,9 +1,10 @@
 ---
-title: "Kotu Urun Tasarimi: Sadece bir takimda calisabilirsin!"
+title: "Kötü Ürün Tasarımı: Sadece Bir Takımda Çalışabilirsin!"
+description: "Dropbox ve Quip gibi servislerde kişisel ve takım hesaplarını kullanırken sadece tek bir takıma üye olabilme kısıtlamasının kötü bir ürün tasarımı örneği olduğu ve bunun freelancerlar ile birden fazla proje yönetenler için yarattığı zorluklar."
 slug: kotu-urun-tasarimi-sadece-bir-takimda-calisabilirsin
 date: 2017-09-24
 url: http://mfyz.com/tr/?p=1384
-tags: ["Diğer"]
+tags: ["ürün tasarımı", "kullanıcı deneyimi", "dropbox", "quip", "takım çalışması", "freelancer"]
 category: Diğer
 migration: {"wpId":1384,"wpPostDate":"2017-09-24T15:05:33.000Z"}
 lang: tr

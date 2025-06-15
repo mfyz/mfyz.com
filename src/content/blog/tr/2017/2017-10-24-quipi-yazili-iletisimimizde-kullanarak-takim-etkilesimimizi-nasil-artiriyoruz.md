@@ -1,9 +1,10 @@
 ---
-title: "Quip'i yazili iletisimimizde kullanarak takim etkilesimimizi nasil artiriyoruz"
+title: "Quip'i Yazılı İletişimimizde Kullanarak Takım Etkileşimimizi Nasıl Artırıyoruz"
+description: "Bir takımın, yazılı iletişimi ve işbirliğini geliştirmek için Quip aracını nasıl kullandığı anlatılıyor. Quip'in kişisel not alma ve takım içi doküman yönetimi, transparanlık ve etkileşim artırma gibi faydaları vurgulanıyor."
 slug: quipi-yazili-iletisimimizde-kullanarak-takim-etkilesimimizi-nasil-artiriyoruz
 date: 2017-10-24
 url: http://mfyz.com/tr/?p=1414
-tags: ["Diğer"]
+tags: ["quip", "takım çalışması", "işbirliği araçları", "yazılı iletişim", "verimlilik", "proje yönetimi", "uzaktan çalışma"]
 category: Diğer
 migration: {"wpId":1414,"wpPostDate":"2017-10-24T17:05:51.000Z"}
 lang: tr

@@ -1,9 +1,10 @@
 ---
-title: "Bilgisayarsız iPad'de çalışmak"
+title: "Bilgisayarsız iPad'de Çalışmak"
+description: "Dört aylık bir deneyim: Bilgisayar yerine sadece iPad kullanarak proje yönetimi, kodlama ve iletişim gibi işleri yürütmenin avantajları, zorlukları ve kullanılan üretkenlik uygulamaları."
 slug: bilgisayarsiz-ipadde-calismak
 date: 2017-06-26
 url: http://mfyz.com/tr/bilgisayarsiz-ipadde-calismak/
-tags: ["Diğer"]
+tags: ["ipad", "bilgisayarsız çalışma", "mobil verimlilik", "ios", "uzaktan çalışma", "üretkenlik uygulamaları"]
 category: Diğer
 migration: {"wpId":373,"wpPostDate":"2017-06-26T01:01:41.000Z"}
 lang: tr

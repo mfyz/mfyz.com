@@ -1,9 +1,10 @@
 ---
 title: "Bir yildan fazladir “ekransiz cumartesi” yapiyorum"
+description: "Bir yıldan fazla süredir uyguladığım 'ekransız Cumartesi' deneyimimi paylaşıyorum. Teknoloji ve ekran bağımlılığının etkileri, dijital detoksun faydaları ve bu süreçte edindiğim kazanımlar."
 slug: bir-yildan-fazladir-ekransiz-cumartesi-yapiyorum
 date: 2018-04-02
 url: https://mfyz.com/tr/?p=1444
-tags: ["Diğer"]
+tags: ["dijital detoks", "ekransız yaşam", "teknoloji bağımlılığı", "kişisel gelişim", "sağlıklı yaşam"]
 category: Diğer
 migration: {"wpId":1444,"wpPostDate":"2018-04-02T22:00:34.000Z"}
 lang: tr

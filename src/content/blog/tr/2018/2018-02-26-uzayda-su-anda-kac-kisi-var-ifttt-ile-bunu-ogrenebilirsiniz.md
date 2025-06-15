@@ -1,9 +1,10 @@
 ---
 title: "Uzayda şu anda kaç kişi var? IFTTT ile bunu öğrenebilirsiniz"
+description: "IFTTT (If This Then That) ile internet servislerini otomatikleştirmeyi ve NASA'nın uzay görevlerini Slack üzerinden nasıl takip edebileceğinizi öğrenin. Uzayda kaç kişi olduğunu anlık olarak bilin!"
 slug: uzayda-su-anda-kac-kisi-var-ifttt-ile-bunu-ogrenebilirsiniz
 date: 2018-02-26
 url: https://mfyz.com/tr/?p=1422
-tags: ["Diğer"]
+tags: ["ifttt", "otomasyon", "nasa", "uzay", "slack", "api entegrasyonu"]
 category: Diğer
 migration: { "wpId": 1422, "wpPostDate": "2018-02-26T07:00:20.000Z" }
 lang: tr

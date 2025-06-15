@@ -1,9 +1,10 @@
 ---
 title: "Çözünürlüğe göre tasarlamayın"
+description: "Farklı ekran çözünürlükleri ve yüksek PPI (Retina) ekranlar için tasarım yaparken çözünürlük bağımsız yaklaşımların önemi. Akışkan arayüzler, SVG, Canvas ve ikon fontları gibi teknikler ele alınıyor."
 slug: cozunurluge-gore-tasarlamayin
 date: 2013-01-28
 url: http://mfyz.com/tr/cozunurluge-gore-tasarlamayin/
-tags: ["@2x","canvas","css3","Diğer","icons","resolution","retina","scalability","svg","ui","ux"]
+tags: ["çözünürlük bağımsız tasarım", "responsive design", "retina", "ppi", "svg", "canvas", "ikon fontları"]
 category: Diğer
 migration: {"wpId":332,"wpPostDate":"2013-01-28T06:00:00.000Z"}
 lang: tr

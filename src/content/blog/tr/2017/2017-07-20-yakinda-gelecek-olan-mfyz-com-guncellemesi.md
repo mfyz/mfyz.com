@@ -1,9 +1,10 @@
 ---
-title: "Yakında gelecek olan mfyz.com güncellemesi"
+title: "Yakında Gelecek Olan mfyz.com Güncellemesi"
+description: "mfyz.com için planlanan kozmetik ve odak noktası değişiklikleri duyuruluyor. Site sadeleşecek, okunabilirlik artacak ve ana dil İngilizce olacak; Türkçe içerik ise alt bir bölümde devam edecek."
 slug: yakinda-gelecek-olan-mfyz-com-guncellemesi
 date: 2017-07-20
 url: http://mfyz.com/tr/?p=540
-tags: ["Diğer","ingilizce","mfyz"]
+tags: ["mfyz.com", "güncelleme", "yeniden tasarım", "blog", "ingilizce"]
 category: Diğer
 migration: {"wpId":540,"wpPostDate":"2017-07-20T02:58:22.000Z"}
 lang: tr

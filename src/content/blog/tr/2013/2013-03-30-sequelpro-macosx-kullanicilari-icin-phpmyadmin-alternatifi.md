@@ -1,9 +1,10 @@
 ---
 title: "SequelPro: MacOSX kullanıcıları için PHPMyAdmin alternatifi"
+description: "MacOSX kullanıcıları için PHPMyAdmin'e alternatif, ücretsiz ve minimalist MySQL yönetim aracı Sequel Pro'nun özellikleri ve avantajları."
 slug: sequelpro-macosx-kullanicilari-icin-phpmyadmin-alternatifi
 date: 2013-03-30
 url: http://mfyz.com/tr/sequelpro-macosx-kullanicilari-icin-phpmyadmin-alternatifi/
-tags: ["app","export","import","macosx","mysql","OS","sequelpro","sql","Sunucu Programlama","tool"]
+tags: ["sequel pro", "mysql", "veritabanı yönetimi", "macosx", "phpmyadmin alternatifi"]
 category: OS
 migration: {"wpId":347,"wpPostDate":"2013-03-30T17:04:53.000Z"}
 lang: tr

@@ -1,9 +1,10 @@
 ---
 title: "Son ürünüm Screenshot Tracker yayında (ve Product Hunt'da)"
+description: "Screenshot Tracker, web sitelerinin tam sayfa ekran görüntülerini farklı çözünürlüklerde almanızı sağlayan ücretsiz ve açık kaynaklı bir masaüstü uygulamasıdır. Product Hunt'ta destekleyin!"
 slug: son-urunum-screenshot-tracker-yayinda-ve-product-huntda
 date: 2020-03-23
 url: https://mfyz.com/tr/?p=1478
-tags: ["Diğer"]
+tags: ["screenshot tracker", "product hunt", "masaüstü uygulaması", "web geliştirme araçları", "açık kaynak"]
 category: Diğer
 migration: {"wpId":1478,"wpPostDate":"2020-03-23T12:09:38.000Z"}
 lang: tr

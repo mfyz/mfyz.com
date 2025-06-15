@@ -1,9 +1,10 @@
 ---
-title: "Baya ucuz sanal sunucu sağlayıcı: Scaleway"
+title: "Baya Ucuz Sanal Sunucu Sağlayıcı: Scaleway"
+description: "Kişisel web sitelerini barındırmak için Digital Ocean'da yaşanan performans sorunları ve daha ucuz bir alternatif olan ARM tabanlı Scaleway sanal sunucu sağlayıcısına geçiş deneyimi."
 slug: baya-ucuz-sanal-sunucu-saglayici-scaleway
 date: 2017-09-15
 url: http://mfyz.com/tr/?p=1187
-tags: ["OS"]
+tags: ["scaleway", "vps", "sanal sunucu", "hosting", "digital ocean", "arm mimarisi"]
 category: OS
 migration: {"wpId":1187,"wpPostDate":"2017-09-15T04:55:08.000Z"}
 lang: tr
