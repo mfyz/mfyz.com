@@ -1,9 +1,10 @@
 ---
-title: "PEAR ve MDB2 ile “Prepare & Execute” sayesinde SQL injection saldırılarına karşı koymak"
+title: "PEAR MDB2 ile SQL Injection Saldırılarına Karşı Koymak: Prepare & Execute Kullanımı"
 slug: pear-ve-mdb2-ile-prepare-execute-sayesinde-sql-injection-saldirilarina-karsi-koymak
 date: 2008-02-17
+description: "SQL injection saldırılarına karşı PHP'de PEAR MDB2 kütüphanesinin 'prepare' ve 'execute' metodları nasıl kullanılır? Veri türü kontrolü ve özel karakterlerden kaçınma ile güvenli veritabanı işlemleri."
 url: http://mfyz.com/tr/pear-ve-mdb2-ile-prepare-execute-sayesinde-sql-injection-saldirilarina-karsi-koymak/
-tags: ["attack","execute","injection","mdb2","pear","php","prepare","saldırı","sql injection"]
+tags: ["PHP", "PEAR", "MDB2", "SQL injection", "güvenlik", "veritabanı güvenliği", "programlama", "eğitim", "prepare statement", "web güvenliği"]
 category: PHP
 migration: {"wpId":134,"wpPostDate":"2008-02-17T04:34:05.000Z"}
 lang: tr

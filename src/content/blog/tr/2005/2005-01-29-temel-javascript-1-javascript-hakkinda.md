@@ -2,8 +2,9 @@
 title: "Temel JavaScript (1) - JavaScript Hakkında"
 slug: temel-javascript-1-javascript-hakkinda
 date: 2005-01-29
+description: "Temel JavaScript dersleri serisinin ilk bölümü. Bu rehber, JavaScript'in ne olduğunu, web geliştirmede neden önemli olduğunu, değişken tanımlamayı ve HTML nesnelerine erişimi (`document.getElementById`) temel düzeyde açıklıyor."
 url: http://mfyz.com/tr/temel-javascript-1-javascript-hakkinda/
-tags: ["Arayüz Programlama","javascript","js"]
+tags: ["JavaScript", "JS", "Arayüz Programlama", "web geliştirme", "javascript temelleri", "değişkenler", "DOM", "javascript dersleri", "betik dili"]
 category: Arayüz Programlama
 migration: {"wpId":118,"wpPostDate":"2005-01-29T05:00:00.000Z"}
 lang: tr

@@ -1,11 +1,20 @@
 ---
 title: "Secure Your Applications and Access to Services Using Cloudflare Zero Trust"
+description: "An overview of Cloudflare Zero Trust is provided, detailing its approach to securing web applications and services by authenticating at the DNS proxy layer, utilizing secure tunnels, and integrating with existing identity providers."
 slug: secure-your-applications-and-access-to-services-using-cloudflare-zero-trust
 date: 2024-04-27
 url: https://mfyz.com/?p=828
-tags: ["Other"]
+tags:
+  [
+    "cloudflare zero trust",
+    "security",
+    "web applications",
+    "network security",
+    "identity management",
+    "vpn alternative",
+  ]
 category: Other
-migration: {"wpId":828,"wpPostDate":"2024-04-27T00:54:16.000Z"}
+migration: { "wpId": 828, "wpPostDate": "2024-04-27T00:54:16.000Z" }
 ---
 
 When deploying a web application, ensuring the security of the application is a crucial step that can't be skipped. In some cases, your application depends on the authenticated users' roles, permissions, and identity. But a lot of times it only needs to make sure it's running behind secure controls. Actually, often this is the case. You just want to secure your application and trust that authentication systems do their job. This is where Cloudflare Zero Trust comes into the picture, offering a fresh perspective on web application security. Traditionally, securing servers, and services at the high level brings network-based, firewall-based filtering of traffic into the application. Where VPN access is common. Cloudflare Zero Trust takes a leap further by performing authentication at the DNS proxy layer, speeding up the network communication between your application and the privileged users' browsers.

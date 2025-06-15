@@ -1,11 +1,20 @@
 ---
 title: "Convenient white boarding with Confluence Whiteboards for Atlassian operated teams"
+description: "The advantages of Confluence Whiteboards for Atlassian-based teams, such as integration, accessibility, and licensing, are discussed in comparison to tools like Figjam and Miro."
 slug: convenient-white-boarding-with-confluence-whiteboards-for-atlassian-operated-teams
 date: 2025-02-26
 url: https://mfyz.com/?p=946
-tags: ["Other"]
+tags:
+  [
+    "confluence",
+    "atlassian",
+    "whiteboarding",
+    "collaboration",
+    "jira",
+    "productivity tools",
+  ]
 category: Other
-migration: {"wpId":946,"wpPostDate":"2025-02-26T13:57:31.000Z"}
+migration: { "wpId": 946, "wpPostDate": "2025-02-26T13:57:31.000Z" }
 ---
 
 We’re all about that Atlassian life at my workplace. I even use Atlassian products for my personal/hobby projects. At work, Atlassian products (Jira and Confluence mainly) is a daily thing for me. Recently I started using Confluence Whiteboards more frequently than Figjam which has been my go to digital white boarding, ideating, diagraming tool.

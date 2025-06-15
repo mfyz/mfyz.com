@@ -1,9 +1,10 @@
 ---
 title: "Twitter insanlarına genel bakış ve Twitter Türkleri"
+description: "Eylül 2009 itibarıyla Twittercount verilerine dayanarak Türkiye'deki Twitter kullanıcı profillerine genel bir bakış. En çok takip edenler, en çok takipçisi olanlar ve marka hesapları."
 slug: twitter-insanlarina-genel-bakis-ve-twitter-turkleri
 date: 2009-09-16
 url: http://mfyz.com/tr/twitter-insanlarina-genel-bakis-ve-twitter-turkleri/
-tags: ["accounts","Diğer","global","groups","insanlar","istatistik","people","statistics","twitter"]
+tags: ["twitter", "sosyal medya", "istatistikler", "türkiye", "kullanıcı analizi"]
 category: Diğer
 migration: {"wpId":150,"wpPostDate":"2009-09-16T05:30:05.000Z"}
 lang: tr

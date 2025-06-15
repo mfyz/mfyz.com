@@ -2,8 +2,9 @@
 title: "Statik imajlarınız için cookie bağımsız domain kullanın"
 slug: statik-imajlariniz-icin-cookie-bagimsiz-domain-kullanin
 date: 2010-08-11
+description: "Web sitesi optimizasyonu için statik dosyaların (imaj, CSS, JS) cookie içermeyen ayrı bir alt alan adı (subdomain) üzerinden sunulması, gereksiz cookie transferini azaltarak sayfa yükleme hızını artırır."
 url: http://mfyz.com/tr/statik-imajlariniz-icin-cookie-bagimsiz-domain-kullanin/
-tags: ["Arayüz Programlama","cookie","optimization","subdomain","Sunucu Programlama"]
+tags: ["performans", "optimizasyon", "cookie", "subdomain", "statik içerik", "web geliştirme", "Arayüz Programlama"]
 category: Arayüz Programlama
 migration: {"wpId":254,"wpPostDate":"2010-08-11T13:58:54.000Z"}
 lang: tr

@@ -1,9 +1,10 @@
 ---
-title: "100 yıl sonra bir döküman"
+title: "Uzun Bir Aradan Sonra Yeni Doküman: PEAR MDB2 ile Veritabanı İşlemleri"
 slug: 100-yil-sonra-bir-dokuman
 date: 2008-10-06
+description: "Uzun bir aradan sonra PEAR MDB2 kütüphanesi kullanarak PHP'de veritabanı işlemlerini kolaylaştırma, hızlandırma ve SQL injection saldırılarına karşı koruma yöntemlerini anlatan yeni bir doküman yayınladığını duyuruyor."
 url: http://mfyz.com/tr/100-yil-sonra-bir-dokuman/
-tags: ["NULL","Sunucu Programlama"]
+tags: ["PEAR", "MDB2", "PHP", "veritabanı", "SQL injection", "Sunucu Programlama", "tutorial", "güvenlik", "programlama"]
 category: Sunucu Programlama
 migration: {"wpId":208,"wpPostDate":"2008-10-06T11:07:52.000Z"}
 lang: tr

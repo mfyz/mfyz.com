@@ -1,21 +1,30 @@
 ---
 title: "Analyze and Optimize Webpack Bundles Size and Contents"
+description: "Methods for analyzing and optimizing the size and contents of Webpack bundles are presented. Tools like Webpack Bundle Analyzer and Bundlesize are introduced to help identify large modules and monitor bundle size changes."
 slug: analyze-and-optimize-webpack-bundles-size-and-contents
 date: 2022-04-15
 url: https://mfyz.com/?p=724
-tags: ["Other"]
+tags:
+  [
+    "webpack",
+    "bundle optimization",
+    "performance",
+    "javascript",
+    "webpack-bundle-analyzer",
+    "bundlesize",
+  ]
 category: Other
-migration: {"wpId":724,"wpPostDate":"2022-04-15T19:59:38.000Z"}
+migration: { "wpId": 724, "wpPostDate": "2022-04-15T19:59:38.000Z" }
 ---
 
 When creating web applications with popular frameworks like react.js, angular.js, or similar, most likely, you will be utilizing a bundler/packager tool like webpack to bundle your application source code to combined bundle javascript files that can be loaded and executed by browsers. With the ease of package managers handling most dependencies, it's easy to lose track of what's included in your final application bundle file. We may be using an easy-to-use library that streamlines our workflow but it may come with a cost.
 
 In this article, we will talk about ways to analyze and understand what goes into your bundle code and increase your awareness when picking libraries to use and their effect on the final js bundle size. You will:
 
-*   Realize what's _really_ inside your bundle
-*   Find out the modules make up the most of its size
-*   Find modules that got there by mistake
-*   Consider alternatives to optimize your bundle size
+- Realize what's *really* inside your bundle
+- Find out the modules make up the most of its size
+- Find modules that got there by mistake
+- Consider alternatives to optimize your bundle size
 
 There are a few popular tools we can use with minimal effort to analyze our bundle, visually.
 

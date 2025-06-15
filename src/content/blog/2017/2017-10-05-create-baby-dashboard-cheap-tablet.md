@@ -1,11 +1,21 @@
 ---
 title: "Create Baby Dashboard with cheap Tablet"
+description: "Learn how to create a DIY baby dashboard using a cheap tablet to track feedings and diaper changes for newborns, complete with software, hardware, and mounting tips."
 slug: create-baby-dashboard-cheap-tablet
 date: 2017-10-05
 url: http://mfyz.com/?p=175
-tags: ["Geekin'"]
+tags:
+  [
+    "baby dashboard",
+    "diy",
+    "parenting tech",
+    "iot",
+    "cheap tablet",
+    "data logging",
+    "newborn care",
+  ]
 category: Geekin'
-migration: {"wpId":175,"wpPostDate":"2017-10-05T15:00:13.000Z"}
+migration: { "wpId": 175, "wpPostDate": "2017-10-05T15:00:13.000Z" }
 ---
 
 When becoming parent, first thing you get into is the feeding and changing cycle of the baby(ies). It's tiring but optimizable cycle since the whole thing is pretty standard in the beginning.

@@ -1,9 +1,10 @@
 ---
-title: "Sitede kullanılan bazı ikonlar"
+title: "Site İçin Özel Tasarım İkonlar ve PSD Dosyaları"
 slug: sitede-kullanilan-bazi-ikonlar
 date: 2008-07-21
+description: "mfyz.com için tasarladığım özel ikonlar (PHP logosu, takvim ikonu, Firefox bannerı vb.) ve bu ikonların PSD dosyalarının Creative Commons lisansıyla paylaşıma sunulması."
 url: http://mfyz.com/tr/sitede-kullanilan-bazi-ikonlar/
-tags: ["banner","calendar","download","firefox","grafik","icon","ikon","logo","php","Tasarım"]
+tags: ["ikon tasarımı", "grafik tasarım", "PSD", "ücretsiz kaynak", "Creative Commons", "web tasarımı", "PHP logosu", "Firefox bannerı", "Tasarım", "ikon"]
 category: Tasarım
 migration: {"wpId":199,"wpPostDate":"2008-07-21T00:32:31.000Z"}
 lang: tr

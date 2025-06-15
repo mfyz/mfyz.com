@@ -2,8 +2,9 @@
 title: "Facebook entegrasyonu"
 slug: facebook-entegrasyonu
 date: 2012-07-04
+description: "mfyz.com'a eklenen Facebook ile giriş özelliği duyuruluyor. Bu entegrasyon, kullanıcıların siteye tek tıkla üye olmasını ve giriş yapmasını kolaylaştırmayı amaçlıyor."
 url: http://mfyz.com/tr/facebook-entegrasyonu/
-tags: ["api","auth","facebook","mfyz.com"]
+tags: ["Facebook entegrasyonu", "sosyal giriş", "API", "mfyz.com", "kullanıcı deneyimi", "web geliştirme"]
 category: mfyz.com
 migration: {"wpId":305,"wpPostDate":"2012-07-04T01:08:54.000Z"}
 lang: tr

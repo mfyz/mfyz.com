@@ -2,8 +2,9 @@
 title: "Web Tasarımcısına Öğütler"
 slug: web-tasarimcisina-ogutler
 date: 2008-02-05
+description: "Web tasarımcıları için basitlik, içerik, hız, renk, tipografi ve kullanıcı deneyimi gibi konularda 99 pratik öğüt. Yaratıcılık ve iş akışı ipuçları."
 url: http://mfyz.com/tr/web-tasarimcisina-ogutler/
-tags: ["Diğer","NULL"]
+tags: ["web tasarımı", "tasarım ilkeleri", "kullanıcı deneyimi", "UX", "UI", "tasarım öğütleri", "yaratıcılık"]
 category: Diğer
 migration: {"wpId":126,"wpPostDate":"2008-02-05T08:47:35.000Z"}
 lang: tr

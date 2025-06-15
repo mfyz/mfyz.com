@@ -1,11 +1,21 @@
 ---
 title: "Super Affordable Cloud VPS: Scaleway"
+description: "A review of Scaleway, an ARM-based VPS provider, as a cost-effective alternative to Digital Ocean for hosting personal websites and small projects, detailing the migration experience and initial performance."
 slug: super-affordable-cloud-vps-scaleway
 date: 2017-09-15
 url: http://mfyz.com/?p=146
-tags: ["OS"]
+tags:
+  [
+    "vps",
+    "scaleway",
+    "cloud hosting",
+    "digital ocean",
+    "arm server",
+    "web hosting",
+    "server migration",
+  ]
 category: OS
-migration: {"wpId":146,"wpPostDate":"2017-09-15T13:55:28.000Z"}
+migration: { "wpId": 146, "wpPostDate": "2017-09-15T13:55:28.000Z" }
 ---
 
 ![](/images/archive/en/2020/05/C9sskUYW0AA6hPj_zswyjo.jpg?fit=278%2C300&ssl=1&cld_params=w_278)

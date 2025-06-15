@@ -98,7 +98,7 @@ hidden: true
 title: Kitchensink Example
 slug: kitchen-sink-example
 date: 2025-02-18
-summary: Everything you need to know
+description: Everything you need to know
 tags:
   - AwesomeTag
 ---

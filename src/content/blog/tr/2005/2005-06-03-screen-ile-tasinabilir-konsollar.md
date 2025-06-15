@@ -1,9 +1,10 @@
 ---
-title: "Screen ile taşınabilir konsollar"
+title: "Screen ile Taşınabilir Konsollar"
 slug: screen-ile-tasinabilir-konsollar
 date: 2005-06-03
+description: "Linux'ta screen komutu ile sanal konsollar oluşturmayı ve yönetmeyi öğrenin. Bu rehber, screen'in ne olduğunu, oturumları ayırma (detach), yeniden bağlama (reattach) ve paylaşma gibi faydalarını ve temel kullanım komutlarını açıklıyor."
 url: http://mfyz.com/tr/screen-ile-tasinabilir-konsollar/
-tags: ["konsol","OS","screen","terminal"]
+tags: ["Linux", "screen", "terminal", "konsol", "tty", "SSH", "sanal konsol", "komut satırı", "işletim sistemi", "OS", "detach", "reattach"]
 category: OS
 migration: {"wpId":67,"wpPostDate":"2005-06-03T15:55:48.000Z"}
 lang: tr

@@ -2,8 +2,9 @@
 title: "Teknolojiyi hissetmek"
 slug: teknolojiyi-hissetmek
 date: 2012-01-06
+description: "Teknolojiyle etkileşimimizin klavyeden dokunmatik ekranlara ve hareket sensörlerine evrimi, oyun endüstrisinin bu gelişimdeki rolü ve kullanıcı deneyimini nasıl daha doğal hale getirdiği üzerine bir yazı."
 url: http://mfyz.com/tr/teknolojiyi-hissetmek/
-tags: ["apple","console","controllers","game","Hayat","ipad","iphone","ps3","touch","xbox"]
+tags: ["teknoloji", "kullanıcı deneyimi", "etkileşim tasarımı", "dokunmatik ekran", "oyun teknolojileri", "mobil cihazlar", "Hayat"]
 category: Hayat
 migration: {"wpId":297,"wpPostDate":"2012-01-06T01:41:05.000Z"}
 lang: tr

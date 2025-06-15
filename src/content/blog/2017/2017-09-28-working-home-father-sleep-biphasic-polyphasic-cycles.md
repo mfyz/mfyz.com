@@ -1,11 +1,22 @@
 ---
-title: "Working from home as a father and sleep in biphasic or polyphasic cycles"
+title: "Working from Home as a Father and Sleep in Biphasic or Polyphasic Cycles"
+description: "A new father working from home shares experiments with biphasic and polyphasic sleep cycles to balance work and newborn care, alongside focus strategies."
 slug: working-home-father-sleep-biphasic-polyphasic-cycles
 date: 2017-09-28
 url: http://mfyz.com/?p=164
-tags: ["Life"]
+tags:
+  [
+    "remote work",
+    "fatherhood",
+    "sleep patterns",
+    "biphasic sleep",
+    "polyphasic sleep",
+    "time management",
+    "productivity",
+    "work-life balance",
+  ]
 category: Life
-migration: {"wpId":164,"wpPostDate":"2017-09-28T15:25:20.000Z"}
+migration: { "wpId": 164, "wpPostDate": "2017-09-28T15:25:20.000Z" }
 ---
 
 For last 2 years, we have re-structured our company and teamwork process to become very (digital) nomadic. We have reconfigured all of our communication and project management processes to be remote-friendly. In fact, 7 out of 10 of our team members work completely remote. 2 of the team members that I've been working for last 2 years that I haven't met in person :)
@@ -50,8 +61,8 @@ I like the pomodoro framework with adding few extra tools and adjusting the stri
 
 So, essentially I split my work hours to pomodoro blocks. Which is 25-minute work + 5-minute rest (30 minutes) sprints that gives me 15 pomodoros a day. Pomodoro is just a mental checkpoint for me. To me more important to think about, how to minimize distractions. With many “screens” that we carry and wear, it becomes so much easier to get distracted even if you lock yourself in a room to work. Below, few tips I follow when I execute my pomodoros.
 
-1) No mobile device to be vibrating, flashing screen or making sounds while working in pomodoro. A simple way to do this is, disable your notifications - using don't disturb on mobile phones is the easiest way to do this. Put your phone/tablet etc facing screen down on the table is enough way to achieve this. Don't use wearables that vibrate - or disable everything. I only use apple watch in airplane mode for the timer.
+1. No mobile device to be vibrating, flashing screen or making sounds while working in pomodoro. A simple way to do this is, disable your notifications - using don't disturb on mobile phones is the easiest way to do this. Put your phone/tablet etc facing screen down on the table is enough way to achieve this. Don't use wearables that vibrate - or disable everything. I only use apple watch in airplane mode for the timer.
 
-2) Define with pomodoro blocks that you will use communication tools, email responding, slacking, trello, social network etc... Only allow yourself to use these apps/sites. Use a tool to restrict your access to social networks, email sites even apps to use on your mac/windows. I use “Focus” app to block distracting apps and sites that show an alert even if I forgot and try to open these apps or sites.
+2. Define with pomodoro blocks that you will use communication tools, email responding, slacking, trello, social network etc... Only allow yourself to use these apps/sites. Use a tool to restrict your access to social networks, email sites even apps to use on your mac/windows. I use “Focus” app to block distracting apps and sites that show an alert even if I forgot and try to open these apps or sites.
 
-3) Stop when pomodoro ends. 5-minute breaks are essential and don't look at the screen on your break. Drink water, stand up, lay down on the couch but don't interact with screens while on your short break. Use a visual or strong vibrating wearable for your pomodoro to make you annoyed if you don't walk away from the computer. I use apple watch and it's basic timer to get me very very aware of the timer is up with haptic feedback. I tried jawbone up and other alarms - phone alarm or pomodoro timers on mac. Nothing is as strong as my solution for me.
+3. Stop when pomodoro ends. 5-minute breaks are essential and don't look at the screen on your break. Drink water, stand up, lay down on the couch but don't interact with screens while on your short break. Use a visual or strong vibrating wearable for your pomodoro to make you annoyed if you don't walk away from the computer. I use apple watch and it's basic timer to get me very very aware of the timer is up with haptic feedback. I tried jawbone up and other alarms - phone alarm or pomodoro timers on mac. Nothing is as strong as my solution for me.

@@ -1,11 +1,21 @@
 ---
 title: "Portainer + gitops ❤️: A simple way to deploy and manage your self-hosted applications"
+description: "A method for deploying and managing self-hosted applications using Portainer for container management and a GitOps workflow for automated deployments from a Git repository is detailed. This approach simplifies managing Dockerized applications."
 slug: portainer-gitops-a-simple-way-to-deploy-and-manage-your-self-hosted-applications
 date: 2024-10-08
 url: https://mfyz.com/?p=885
-tags: ["container","deployment","OS","portainer","selfhost"]
+tags:
+  [
+    "portainer",
+    "gitops",
+    "docker",
+    "self-hosting",
+    "container management",
+    "deployment",
+    "automation",
+  ]
 category: OS
-migration: {"wpId":885,"wpPostDate":"2024-10-08T12:47:30.000Z"}
+migration: { "wpId": 885, "wpPostDate": "2024-10-08T12:47:30.000Z" }
 ---
 
 Self-hosting became a much easier and more viable option using docker. You don’t need to understand the source code or have no intent to customize stuff. Setting things that you are not familiar with made open source applications require their own experts.
@@ -31,7 +41,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 volumes:
   data:
-
 ```
 
 ## Web UI
@@ -56,7 +65,7 @@ I use Cloudflare zero trust to expose my portainer (and other private apps). As 
 
 Let’s get to the juicy part, the magic factor for portainer: gitops integration. It’s not rocket science, but it’s the most important “need” when hosting your own apps.
 
-Certainly, if you are managing code, like templates, extensions, plugins, or basic stuff like your configuration files for an app’s server environments (like *sql, redis, node, php, nginx).
+Certainly, if you are managing code, like templates, extensions, plugins, or basic stuff like your configuration files for an app’s server environments (like \*sql, redis, node, php, nginx).
 
 This makes your simple projects also closer to “Infrastructure as Code” practices, without going through complex AWS, Azure, IaC models.
 

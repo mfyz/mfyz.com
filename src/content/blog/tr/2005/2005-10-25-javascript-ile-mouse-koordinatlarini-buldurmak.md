@@ -2,8 +2,9 @@
 title: "Javascript ile mouse koordinatlarını buldurmak"
 slug: javascript-ile-mouse-koordinatlarini-buldurmak
 date: 2005-10-25
+description: "JavaScript kullanarak web sayfasında fare (mouse) imlecinin X ve Y koordinatlarını nasıl tespit edeceğinizi öğrenin. Tarayıcı uyumluluğunu da dikkate alan pratik bir kod örneği."
 url: http://mfyz.com/tr/javascript-ile-mouse-koordinatlarini-buldurmak/
-tags: ["Arayüz Programlama","ipucu","javascript","kordinatlar","mouse"]
+tags: ["JavaScript", "mouse koordinatları", "fare hareketleri", "DOM", "event handling", "clientX", "pageY", "arayüz programlama", "web geliştirme", "ipucu"]
 category: Arayüz Programlama
 migration: {"wpId":113,"wpPostDate":"2005-10-25T14:14:41.000Z"}
 lang: tr

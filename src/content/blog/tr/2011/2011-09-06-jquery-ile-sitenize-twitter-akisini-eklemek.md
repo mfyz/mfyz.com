@@ -1,9 +1,10 @@
 ---
 title: "jQuery ile sitenize Twitter akışını eklemek"
+description: "Twitter'ın kendi widget'larını kullanmadan, jQuery ve Twitter API'si ile sitenize nasıl özel bir Twitter akışı ekleyebileceğinizi adım adım anlatan bir rehber. Kod örnekleri ve açıklamalarla."
 slug: jquery-ile-sitenize-twitter-akisini-eklemek
 date: 2011-09-06
 url: http://mfyz.com/tr/jquery-ile-sitenize-twitter-akisini-eklemek/
-tags: ["Arayüz Programlama","javascript","jquery","timeline","twitter","widget"]
+tags: ["jquery", "twitter api", "javascript", "önyüz geliştirme", "widget", "sosyal medya entegrasyonu"]
 category: Arayüz Programlama
 migration: {"wpId":156,"wpPostDate":"2011-09-06T09:50:48.000Z"}
 lang: tr

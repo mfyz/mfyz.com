@@ -1,9 +1,10 @@
 ---
-title: "4 döküman daha"
+title: "4 Yeni Döküman Daha Yayında"
 slug: 4-dokuman-daha
 date: 2008-02-10
+description: "mfyz.com'da yayınlanan dört yeni dökümanın duyurusu: Mootools CSS seçicileri, kağıt üzeri çalışmaları dijitalleştirme, sosyal imleme butonları ve SEO optimizasyonu."
 url: http://mfyz.com/tr/4-dokuman-daha/
-tags: ["mfyz.com","NULL"]
+tags: ["mfyz.com", "duyuru", "Mootools", "CSS seçicileri", "dijitalleştirme", "sosyal imleme", "SEO", "web geliştirme", "makale"]
 category: mfyz.com
 migration: {"wpId":176,"wpPostDate":"2008-02-10T07:36:04.000Z"}
 lang: tr

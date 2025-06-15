@@ -1,9 +1,10 @@
 ---
 title: "Grunt nedir? Bir web geliştiricisinin neden görev çalıştırıcısına ihtiyacı var?"
+description: "Grunt, bir JavaScript görev çalıştırıcısıdır. Web geliştirme süreçlerinizde LESS/Sass derleme, kod doğrulama, imaj optimizasyonu gibi tekrarlayan görevleri nasıl otomatize edebileceğinizi öğrenin."
 slug: grunt-nedir-bir-web-gelistiricisinin-neden-gorev-calistiricisina-ihtiyaci-var
 date: 2014-06-26
 url: http://mfyz.com/tr/grunt-nedir-bir-web-gelistiricisinin-neden-gorev-calistiricisina-ihtiyaci-var/
-tags: ["Arayüz Programlama","build","compile","grunt","nedir","worker"]
+tags: ["grunt", "javascript", "task runner", "otomasyon", "web geliştirme", "build araçları"]
 category: Arayüz Programlama
 migration: {"wpId":360,"wpPostDate":"2014-06-26T19:19:29.000Z"}
 lang: tr

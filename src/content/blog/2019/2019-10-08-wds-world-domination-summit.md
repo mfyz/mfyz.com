@@ -1,11 +1,20 @@
 ---
 title: "WDS (World Domination Summit)"
+description: "The World Domination Summit (WDS), an annual gathering in Portland, OR, is described as an event for unconventional thinkers to share impactful ideas on community, purpose, and creative living. Personal experiences from attending are shared."
 slug: wds-world-domination-summit
 date: 2019-10-08
 url: https://mfyz.com/?p=365
-tags: ["conference","Life","nomad","nomadic","travel","wds"]
+tags:
+  [
+    "wds",
+    "conference",
+    "portland",
+    "community",
+    "personal development",
+    "inspiration",
+  ]
 category: Life
-migration: {"wpId":365,"wpPostDate":"2019-10-08T17:54:53.000Z"}
+migration: { "wpId": 365, "wpPostDate": "2019-10-08T17:54:53.000Z" }
 ---
 
 ![WDS - Welcome Adventurer](/images/archive/en/2019/10/2D99D417-307B-4ECC-BE22-99DE008AF0CE.jpeg)

@@ -1,9 +1,10 @@
 ---
-title: "Swift öğrenmek isteyenlere..."
+title: "Swift Öğrenmek İsteyenlere..."
+description: "iOS uygulama geliştirmeye meraklı olanlar için Swift öğrenmeye yönelik kapsamlı kaynaklar: Dersler, iTunes U kursu ve örnek projeler."
 slug: swift-ogrenmek-isteyenlere
 date: 2017-04-10
 url: http://mfyz.com/tr/swift-ogrenmek-isteyenlere/
-tags: ["development","Diğer","iOS","mobile","swift"]
+tags: ["swift", "ios geliştirme", "mobil uygulama", "programlama öğrenme", "eğitim kaynakları"]
 category: Diğer
 migration: {"wpId":361,"wpPostDate":"2017-04-10T04:25:03.000Z"}
 lang: tr

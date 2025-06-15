@@ -1,9 +1,10 @@
 ---
-title: "Bulut'da çalışan mobil simulatörler nerede kaldı?"
+title: "Bulut'da Çalışan Mobil Simülatörler Nerede Kaldı?"
+description: "Mobil uygulama test süreçlerinde bulut tabanlı simülatörlerin ve cihaz çiftliklerinin mevcut durumu, karşılaşılan zorluklar ve ideal bir çözüm arayışı üzerine bir değerlendirme."
 slug: bulutda-calisan-mobil-simulatorler-nerede-kaldi
 date: 2017-04-04
 url: http://mfyz.com/tr/bulutda-calisan-mobil-simulatorler-nerede-kaldi/
-tags: ["bulut","Diğer","mobil","simulator","vpn"]
+tags: ["mobil test", "bulut bilişim", "simülatör", "cihaz çiftliği", "uygulama geliştirme", "android", "ios"]
 category: Diğer
 migration: {"wpId":371,"wpPostDate":"2017-04-04T04:08:36.000Z"}
 lang: tr

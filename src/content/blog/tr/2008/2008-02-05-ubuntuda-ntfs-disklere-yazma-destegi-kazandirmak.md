@@ -1,9 +1,10 @@
 ---
-title: "Ubuntu'da NTFS disklere yazma desteği kazandırmak"
+title: "Ubuntu'da NTFS Disklere Yazma Desteği Kazandırmak"
 slug: ubuntuda-ntfs-disklere-yazma-destegi-kazandirmak
 date: 2008-02-05
+description: "Ubuntu sistemlerde ntfs-3g yazılımı kullanarak NTFS formatlı disk bölümlerine yazma desteği nasıl eklenir? Kurulum, fstab ayarları ve dikkat edilmesi gerekenler."
 url: http://mfyz.com/tr/ubuntuda-ntfs-disklere-yazma-destegi-kazandirmak/
-tags: ["fstab","ntfs","ntfs-3g","OS","ubuntu"]
+tags: ["Ubuntu", "Linux", "NTFS", "ntfs-3g", "dosya sistemi", "disk yönetimi", "fstab"]
 category: OS
 migration: {"wpId":125,"wpPostDate":"2008-02-05T08:19:27.000Z"}
 lang: tr

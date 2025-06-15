@@ -1,11 +1,12 @@
 ---
 title: "Using Axe & React-axe to audit your web application’s accessibility"
+description: "The importance of web accessibility and tools like Axe and react-axe for auditing and improving the accessibility of web applications are discussed. These tools help identify and resolve common accessibility issues, aligning with standards like WCAG."
 slug: using-axe-react-axe-to-audit-your-web-applications-accessibility
 date: 2021-10-07
 url: https://mfyz.com/?p=699
-tags: ["Other"]
+tags: ["accessibility", "a11y", "axe", "react-axe", "wcag", "web development"]
 category: Other
-migration: {"wpId":699,"wpPostDate":"2021-10-07T12:48:46.000Z"}
+migration: { "wpId": 699, "wpPostDate": "2021-10-07T12:48:46.000Z" }
 ---
 
 Web accessibility is one of the keys and often missed parts of web development. If you are building a website for a larger, general audience, you have to make sure your page complies with web accessibility standards (most known [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/)). 

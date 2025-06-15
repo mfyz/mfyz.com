@@ -1,11 +1,13 @@
 ---
 title: "Hosting your own private npm packages with self-hosted npm registry using Verdaccio"
+description: "Notes about the experience of using Verdaccio for a self-hosted private npm registry at Nomad Interactive. It covers the ease of setup and considerations that led to eventually favoring public npm packages."
 slug: hosting-your-own-private-npm-packages-with-self-hosted-npm-registry-using-verdaccio
 date: 2021-02-24
 url: https://mfyz.com/?p=641
-tags: ["Other"]
+tags:
+  ["verdaccio", "npm", "private registry", "self-hosting", "package management"]
 category: Other
-migration: {"wpId":641,"wpPostDate":"2021-02-24T18:47:07.000Z"}
+migration: { "wpId": 641, "wpPostDate": "2021-02-24T18:47:07.000Z" }
 ---
 
 ![](/images/archive/en/2021/02/verdaccio-tiny@3x.png)

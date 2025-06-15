@@ -1,9 +1,10 @@
 ---
 title: "iOS'de otomatik yenilenen abonelikleri doğrulamak"
+description: "iOS uygulamalarında otomatik yenilenen aboneliklerin entegrasyonu ve doğrulanması karmaşık bir süreçtir. Bu yazı, App Store üzerinden yapılan aboneliklerin yönetimini ve PHP ile fatura doğrulama adımlarını detaylandırıyor."
 slug: iosde-otomatik-yenilenen-abonelikleri-dogrulamak
 date: 2013-01-14
 url: http://mfyz.com/tr/iosde-otomatik-yenilenen-abonelikleri-dogrulamak/
-tags: ["app store","apple","in-app purchase","iOS","ipad","iphone","itunes","itunes connect","PHP","purchase","store","storekit","subscription","verification"]
+tags: ["ios", "abonelik", "in-app purchase", "app store", "doğrulama", "php"]
 category: PHP
 migration: {"wpId":327,"wpPostDate":"2013-01-14T06:00:00.000Z"}
 lang: tr

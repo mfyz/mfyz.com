@@ -1,9 +1,10 @@
 ---
-title: "Mootools ile ipucu açıklamaları (tooltip)"
+title: "Mootools ile İpucu Açıklamaları (Tooltip)"
 slug: mootools-ile-ipucu-aciklamalari-tooltip
 date: 2008-02-06
+description: "Mootools Tips.js eklentisi ile web sayfalarında fare imlecini takip eden ipucu açıklamaları (tooltip) nasıl oluşturulur? HTML, JavaScript ve CSS ile pratik uygulama ve stil ipuçları."
 url: http://mfyz.com/tr/mootools-ile-ipucu-aciklamalari-tooltip/
-tags: ["Arayüz Programlama","ipucu","mootools","tooltip"]
+tags: ["Mootools", "JavaScript", "tooltip", "ipucu", "web geliştirme", "arayüz programlama", "UI", "UX", "Tips.js"]
 category: Arayüz Programlama
 migration: {"wpId":127,"wpPostDate":"2008-02-06T00:24:47.000Z"}
 lang: tr

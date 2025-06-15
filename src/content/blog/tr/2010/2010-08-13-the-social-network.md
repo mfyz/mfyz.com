@@ -2,8 +2,9 @@
 title: "The Social Network"
 slug: the-social-network
 date: 2010-08-13
+description: "Facebook'un kuruluşunu ve Mark Zuckerberg'in hikayesini anlatan, David Fincher yönetmenliğindeki 'The Social Network' filmi hakkındaki düşünceler ve film bilgileri."
 url: http://mfyz.com/tr/the-social-network/
-tags: ["Diğer","facebook","network","social","social media"]
+tags: ["film", "sinema", "Facebook", "The Social Network", "Mark Zuckerberg", "David Fincher", "sosyal medya", "Diğer"]
 category: Diğer
 migration: {"wpId":255,"wpPostDate":"2010-08-13T19:17:45.000Z"}
 lang: tr

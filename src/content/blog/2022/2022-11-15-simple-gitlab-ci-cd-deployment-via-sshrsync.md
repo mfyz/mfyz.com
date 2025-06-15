@@ -1,11 +1,12 @@
 ---
 title: "Simple Gitlab CI/CD Deployment via SSH+RSYNC"
+description: "A straightforward method for deploying applications using GitLab CI/CD, SSH, and RSYNC is presented. The process covers updating code on a remote server and restarting applications, suitable for various project types including PHP and Node.js."
 slug: simple-gitlab-ci-cd-deployment-via-sshrsync
 date: 2022-11-15
 url: https://mfyz.com/?p=802
-tags: ["Back-End","cd","ci","deployment","gitlab","Other","rsync"]
+tags: ["gitlab", "ci-cd", "ssh", "rsync", "deployment", "devops", "automation"]
 category: Back-End
-migration: {"wpId":802,"wpPostDate":"2022-11-15T15:51:06.000Z"}
+migration: { "wpId": 802, "wpPostDate": "2022-11-15T15:51:06.000Z" }
 ---
 
 ![](/images/archive/en/2022/11/Simple-Gitlab-CICD-Deployment-via-SSHRSYNC.png)
@@ -67,7 +68,7 @@ production_deployment:
     PRIVATE_KEY: $SSH_PRIVATE_KEY_DEPLOYER
   script:
     - mkdir -p ~/.ssh
-    - 'which ssh-agent || ( apk add --update openssh )'
+    - "which ssh-agent || ( apk add --update openssh )"
     - eval "$(ssh-agent -s)"
     - echo "${PRIVATE_KEY}" | tr -d ' ' | base64 -d | ssh-add -
     - '[[ -f /.dockerenv ]] && echo -e "Host *\\n\\tStrictHostKeyChecking no\\n\\n" > ~/.ssh/config'
@@ -80,14 +81,13 @@ production_deployment:
   environment:
     name: production
     url: <http://myproject.com>
-
 ```
 
 Essentially we need to do:
 
 1.  Upload (or update) the files in the server
 
-3.  Restart the application (if needed)
+2.  Restart the application (if needed)
 
 You get a deployment log like this:
 

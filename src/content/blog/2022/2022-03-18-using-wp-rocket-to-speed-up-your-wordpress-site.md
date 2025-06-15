@@ -1,11 +1,20 @@
 ---
 title: "Using wp-rocket to speed up your wordpress site"
+description: "The benefits of using WP-Rocket for WordPress site optimization are explored, covering caching strategies and CDN integration to improve performance and page load speed. Options like Rocket CDN and Cloudflare are also discussed."
 slug: using-wp-rocket-to-speed-up-your-wordpress-site
 date: 2022-03-18
 url: https://mfyz.com/?p=715
-tags: ["Other"]
+tags:
+  [
+    "wordpress",
+    "wp-rocket",
+    "performance",
+    "caching",
+    "cdn",
+    "website optimization",
+  ]
 category: Other
-migration: {"wpId":715,"wpPostDate":"2022-03-18T13:15:26.000Z"}
+migration: { "wpId": 715, "wpPostDate": "2022-03-18T13:15:26.000Z" }
 ---
 
 Despite its pain points for developers, it is hard to ignore WordPress's popularity and flexibility it helps a lot of people for entry and mid-level website building. WordPress is a very powerful website builder tool but has an extremely fragmented plugin marketplace resulting in a lot of site owners with websites being powered by a mashup of a lot of plugins and different styles of coding/implementation and opinions from different developers. When not done carefully, it may result in low-performing websites. So optimizing WordPress-powered websites is a real effort. But regardless of the plugins used in the back-end, there is a very common optimization step that applies to the vast majority of WordPress sites.

@@ -1,11 +1,19 @@
 ---
 title: "No-jQuery Movement"
+description: "The historical utility of jQuery and the contemporary shift towards vanilla JavaScript for enhanced web performance and optimization are examined. Resources for developers transitioning away from jQuery are also highlighted."
 slug: no-jquery-movement
 date: 2021-05-27
 url: https://mfyz.com/?p=671
-tags: ["Front-End","jquery","vanillajs"]
+tags:
+  [
+    "javascript",
+    "jquery",
+    "vanilla js",
+    "web performance",
+    "front-end development",
+  ]
 category: Front-End
-migration: {"wpId":671,"wpPostDate":"2021-05-27T17:35:35.000Z"}
+migration: { "wpId": 671, "wpPostDate": "2021-05-27T17:35:35.000Z" }
 ---
 
 ### Why jQuery?
@@ -28,8 +36,8 @@ With enough knowledge of the underlying technologies, you can actually see how m
 
 Here are two great resources compiles the non-jQuery ways of doing things:
 
-*   [http://youmightnotneedjquery.com](http://youmightnotneedjquery.com/)
-*   [https://tobiasahlin.com/blog/move-from-jquery-to-vanilla-javascript/](https://tobiasahlin.com/blog/move-from-jquery-to-vanilla-javascript/)
+- [http://youmightnotneedjquery.com](http://youmightnotneedjquery.com/)
+- [https://tobiasahlin.com/blog/move-from-jquery-to-vanilla-javascript/](https://tobiasahlin.com/blog/move-from-jquery-to-vanilla-javascript/)
 
 ### No jQuery Movement
 

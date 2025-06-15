@@ -1,11 +1,12 @@
 ---
-title: "XMLHTTPRequest vs. Fetch: Which is the Difference and Which JavaScript API Should You Use?"
+title: "XMLHTTPRequest vs. Fetch: Which JavaScript API Should You Use?"
+description: "A comparison between XMLHttpRequest (XHR) and the modern Fetch API for JavaScript network requests is provided. Key differences, benefits of Fetch, and considerations for choosing between them are outlined."
 slug: xmlhttprequest-vs-fetch-which-is-the-difference-and-which-javascript-api-should-you-use
 date: 2025-05-13
 url: https://mfyz.com/?p=981
-tags: ["Other"]
+tags: ["javascript", "fetch api", "xmlhttprequest", "ajax", "web development"]
 category: Other
-migration: {"wpId":981,"wpPostDate":"2025-05-13T12:00:00.000Z"}
+migration: { "wpId": 981, "wpPostDate": "2025-05-13T12:00:00.000Z" }
 ---
 
 The JavaScript world has come a long way since the early days of `XMLHttpRequest`. If you're still using it in 2025, it might be time to consider a change. Let's break down why `fetch()` is the modern replacement — and what you should keep in mind when choosing between the two.
@@ -40,23 +41,21 @@ Here’s a side-by-side:
 
 ```js
 const xhr = new XMLHttpRequest();
-xhr.open('GET', '/api/data');
+xhr.open("GET", "/api/data");
 xhr.onload = () => {
   if (xhr.status === 200) {
     console.log(xhr.responseText);
   }
 };
 xhr.send();
-
 ```
 
 **Fetch Equivalent:**
 
 ```js
-fetch('/api/data')
+fetch("/api/data")
   .then(res => res.text())
   .then(data => console.log(data));
-
 ```
 
 Cleaner, right?
@@ -65,17 +64,17 @@ Cleaner, right?
 
 But it’s not just syntax. `fetch` also offers:
 
-*   **Request/Response objects** for better control and more flexibility
+- **Request/Response objects** for better control and more flexibility
 
-*   **Stream support** for efficiently handling large data responses
+- **Stream support** for efficiently handling large data responses
 
-*   **AbortController** to cancel requests mid-flight
+- **AbortController** to cancel requests mid-flight
 
-*   **Improved CORS support** out-of-the-box
+- **Improved CORS support** out-of-the-box
 
-*   **Consistent error handling**, unlike XHR which requires extra boilerplate to detect errors
+- **Consistent error handling**, unlike XHR which requires extra boilerplate to detect errors
 
-*   **Support for modern content types** like JSON, FormData, and Blob directly
+- **Support for modern content types** like JSON, FormData, and Blob directly
 
 ### Debugging Advantage
 
@@ -91,21 +90,20 @@ But now that fetch is native in almost all major environments (including Node 18
 
 ## What to Keep in Mind
 
-*   `XMLHttpRequest` is still widely supported and may be required in legacy codebases or certain environments where `fetch` isn't polyfilled.
+- `XMLHttpRequest` is still widely supported and may be required in legacy codebases or certain environments where `fetch` isn't polyfilled.
 
-*   `fetch` isn’t available in very old browsers, so you’ll need a polyfill if supporting them matters to your audience. But who cares old browsers anymore?
+- `fetch` isn’t available in very old browsers, so you’ll need a polyfill if supporting them matters to your audience. But who cares old browsers anymore?
 
-*   `fetch` doesn’t reject on HTTP error statuses (like 404 or 500). You still need to check `res.ok` manually and handle those cases accordingly.
+- `fetch` doesn’t reject on HTTP error statuses (like 404 or 500). You still need to check `res.ok` manually and handle those cases accordingly.
 
 ```js
-fetch('/api/missing')
+fetch("/api/missing")
   .then(res => {
-    if (!res.ok) throw new Error('Request failed');
+    if (!res.ok) throw new Error("Request failed");
     return res.json();
   })
   .then(data => console.log(data))
   .catch(err => console.error(err));
-
 ```
 
 ## Just use fetch pls

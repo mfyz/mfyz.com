@@ -1,11 +1,21 @@
 ---
-title: "How we scale to billions of news/media readers at Arc XP"
+title: "How Arc XP Scales to Billions of News/Media Readers"
+description: "A brief overview of a blog post detailing how Arc XP, an enterprise CMS, utilizes CDN and caching layers to achieve resiliency, security, and scalability for billions of news and media readers."
 slug: how-we-scale-to-billions-of-news-media-readers-at-arc-xp
 date: 2025-04-15
 url: https://mfyz.com/?p=974
-tags: ["Back-End","cache","cdn","Other","scale"]
+tags:
+  [
+    "arcxp",
+    "scalability",
+    "cdn",
+    "caching",
+    "enterprise cms",
+    "media technology",
+    "high traffic",
+  ]
 category: Back-End
-migration: {"wpId":974,"wpPostDate":"2025-04-15T12:00:00.000Z"}
+migration: { "wpId": 974, "wpPostDate": "2025-04-15T12:00:00.000Z" }
 ---
 
 I have recently published a blog post on my company blog about how I and my team helps our customers at Arc XP to scale their reader traffic to billions on our platform.

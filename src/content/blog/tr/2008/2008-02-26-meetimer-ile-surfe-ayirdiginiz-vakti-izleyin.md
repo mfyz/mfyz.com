@@ -1,9 +1,10 @@
 ---
-title: "MeeTimer ile surf'e ayırdığınız vakti izleyin"
+title: "MeeTimer: Firefox ile Web'de Geçirdiğiniz Zamanı Takip Edin"
 slug: meetimer-ile-surfe-ayirdiginiz-vakti-izleyin
 date: 2008-02-26
+description: "MeeTimer Firefox eklentisi ile internette gezinirken hangi sitelerde ne kadar vakit geçirdiğinizi takip edin. Siteleri gruplandırarak zaman yönetiminizi iyileştirin."
 url: http://mfyz.com/tr/meetimer-ile-surfe-ayirdiginiz-vakti-izleyin/
-tags: ["Diğer","eklenti","extension","firefox","meetimer","time tracking","zaman"]
+tags: ["Firefox", "eklenti", "MeeTimer", "zaman yönetimi", "verimlilik", "internet", "web tarayıcı", "yazılım", "araçlar"]
 category: Diğer
 migration: {"wpId":179,"wpPostDate":"2008-02-26T02:08:34.000Z"}
 lang: tr

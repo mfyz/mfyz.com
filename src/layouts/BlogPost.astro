@@ -1,6 +1,5 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { format } from "date-fns";
 import Tags from "@components/Tags.astro";
 import readingTime from "reading-time";
 import BlogHero from "@components/BlogHero.astro";
@@ -10,29 +9,6 @@ const { title, date, imageURL, tags, content, slug, frontmatter, isTurkish } =
   Astro.props;
 
 const time = readingTime(content);
-
-// Helper function to format date without timezone adjustments
-function formatDatePreserveDay(dateStr: string | Date) {
-  // Handle cases where dateStr might not be a string
-  if (!dateStr) return "";
-
-  // Convert to string if it's a Date object
-  const dateString =
-    dateStr instanceof Date ? dateStr.toISOString() : String(dateStr);
-
-  try {
-    // Extract year, month, day directly from the string to avoid timezone issues
-    const [year, month, day] = dateString
-      .split("T")[0]
-      .split("-")
-      .map(num => parseInt(num, 10));
-    // Format the date to "Feb 1, 2023" style
-    return format(new Date(year, month - 1, day), "MMM d, yyyy");
-  } catch (error) {
-    console.error("Error formatting date:", dateString, error);
-    return dateString; // Return original value if formatting fails
-  }
-}
 ---
 
 <article class="mx-auto max-w-5xl">

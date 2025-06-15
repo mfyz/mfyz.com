@@ -1,9 +1,10 @@
 ---
-title: "SPAM'ın amacı ve popülerliği"
+title: "SPAM'ın Amacı, Popülerliği ve İnternet Üzerindeki Etkileri"
 slug: spamin-amaci-ve-populerligi
 date: 2008-08-13
+description: "SPAM'in (istenmeyen e-posta ve yorumlar) amacı, yaygınlığı ve internet üzerindeki can sıkıcı etkileri üzerine bir yazı. CAPTCHA gibi önlemlere rağmen devam eden manuel spam çabaları ve bu soruna yönelik çözüm arayışları tartışılıyor."
 url: http://mfyz.com/tr/spamin-amaci-ve-populerligi/
-tags: ["Diğer","spam"]
+tags: ["spam", "istenmeyen posta", "yorum spamı", "internet etiği", "CAPTCHA", "dijital kirlilik", "online güvenlik", "Diğer"]
 category: Diğer
 migration: {"wpId":202,"wpPostDate":"2008-08-13T17:20:30.000Z"}
 lang: tr

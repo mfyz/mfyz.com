@@ -1,9 +1,10 @@
 ---
-title: "Evden calisan baba olmak ve alternatif uyku duzenleri ile calisma saatlerini planlamak"
+title: "Evden Çalışan Baba Olmak ve Alternatif Uyku Düzenleri ile Çalışma Saatlerini Planlamak"
+description: "Evden çalışan bir babanın, ikiz bebekleriyle birlikte iş ve yaşam dengesini kurmak için alternatif uyku düzenlerini (bifazik, polifazik) ve esnek çalışma saatlerini nasıl planladığını anlatan bir yazı."
 slug: evden-calisan-baba-olmak-alternatif-uyku-duzenleri-ile-calisma-saatlerini-planlamak
 date: 2017-09-27
 url: http://mfyz.com/tr/?p=1389
-tags: ["Hayat"]
+tags: ["evden çalışma", "babalık", "uyku düzeni", "zaman yönetimi", "verimlilik", "uzaktan çalışma", "polifazik uyku"]
 category: Hayat
 migration: {"wpId":1389,"wpPostDate":"2017-09-27T06:28:14.000Z"}
 lang: tr

@@ -2,8 +2,9 @@
 title: "Değişiklikler"
 slug: degisiklikler
 date: 2008-01-28
+description: "mfyz.com'da yapılan son güncellemeler: Sadeleştirilmiş yeni artalan tasarımı, PEAR HTTP_Flood_Control ile sel saldırılarına karşı koruma ve yorumlara kolay erişim için iyileştirmeler."
 url: http://mfyz.com/tr/degisiklikler/
-tags: ["mfyz.com","NULL"]
+tags: ["mfyz.com", "güncelleme", "PEAR", "flood control", "web geliştirme", "kullanıcı deneyimi"]
 category: mfyz.com
 migration: {"wpId":169,"wpPostDate":"2008-01-28T06:55:09.000Z"}
 lang: tr

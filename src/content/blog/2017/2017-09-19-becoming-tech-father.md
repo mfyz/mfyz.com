@@ -1,11 +1,20 @@
 ---
-title: "Becoming tech father"
+title: "Becoming Tech Father"
+description: "A new father's reflections on integrating technology into parenting, exploring how tech can aid in childcare, and the rise of parent-driven innovation in baby-related products and services."
 slug: becoming-tech-father
 date: 2017-09-19
 url: http://mfyz.com/?p=152
-tags: ["Life"]
+tags:
+  [
+    "fatherhood",
+    "parenting",
+    "technology",
+    "childcare",
+    "innovation",
+    "entrepreneurship",
+  ]
 category: Life
-migration: {"wpId":152,"wpPostDate":"2017-09-19T16:29:13.000Z"}
+migration: { "wpId": 152, "wpPostDate": "2017-09-19T16:29:13.000Z" }
 ---
 
 I've recently had twin girls and I've been in the process to become a parent. Have been reading and following tons about what to expect in pregnancy as well as rising a child. Obviously, one of the active conversations everybody is having in many different aspects is; how technology affects a child's development. My opinion is, there is a lot goes into how technology affects a person's education depending on how kids are exposed to the technology itself.

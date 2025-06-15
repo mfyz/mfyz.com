@@ -2,8 +2,9 @@
 title: "HTML Dersleri (3) : Web nesneleri ve resimler"
 slug: html-dersleri-3-web-nesneleri-ve-resimler
 date: 2004-12-11
+description: "HTML dersleri serisinin üçüncü bölümü. Bu rehber, `<img>` etiketiyle resim, `<embed>` ile ortam dosyaları ve `<hr>` ile yatay çizgi gibi web nesnelerinin sayfalara nasıl ekleneceğini ve kullanılacağını anlatıyor."
 url: http://mfyz.com/tr/html-dersleri-3-web-nesneleri-ve-resimler/
-tags: ["Arayüz Programlama","html","img","nesne","object","resim"]
+tags: ["Arayüz Programlama", "html", "img", "nesne", "object", "resim", "web geliştirme", "web tasarımı", "html dersleri", "embed", "hr"]
 category: Arayüz Programlama
 migration: {"wpId":105,"wpPostDate":"2004-12-11T21:41:52.000Z"}
 lang: tr

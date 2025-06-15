@@ -2,8 +2,9 @@
 title: "Web geliştiricileri ve müşterilerin takıntıları - Bölüm 1"
 slug: web-gelistiricileri-ve-musterilerin-takintilari-bolum-1
 date: 2010-08-06
+description: "Web geliştirme sürecinde kod standartları, validasyon ve optimizasyon konularında geliştiriciler ile müşteriler arasında yaşanan takıntılar ve beklenti yönetimi üzerine bir yazı dizisinin ilk bölümü."
 url: http://mfyz.com/tr/web-gelistiricileri-ve-musterilerin-takintilari-bolum-1/
-tags: ["Hayat","iş yönetimi","müşteri","takıntı","validate","validation"]
+tags: ["web geliştirme", "müşteri ilişkileri", "kod kalitesi", "validasyon", "optimizasyon", "proje yönetimi", "Hayat"]
 category: Hayat
 migration: {"wpId":253,"wpPostDate":"2010-08-06T21:54:55.000Z"}
 lang: tr

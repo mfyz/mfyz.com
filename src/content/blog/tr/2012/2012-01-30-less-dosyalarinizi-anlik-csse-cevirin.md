@@ -2,8 +2,9 @@
 title: "LESS dosyalarınızı anlık css'e çevirin"
 slug: less-dosyalarinizi-anlik-csse-cevirin
 date: 2012-01-30
+description: "LESS dosyalarınızı kaydettiğiniz anda otomatik olarak CSS'e derleyen Less.app, SimpleLess ve WinLess gibi araçların tanıtımı ve platform destekleri."
 url: http://mfyz.com/tr/less-dosyalarinizi-anlik-csse-cevirin/
-tags: ["app","Arayüz Programlama","compile","compiler","css","less","linux","macosx","on-the-fly","windows"]
+tags: ["LESS", "CSS", "ön işlemci", "derleyici", "arayüz geliştirme", "otomasyon", "web geliştirme"]
 category: Arayüz Programlama
 migration: {"wpId":160,"wpPostDate":"2012-01-30T02:48:06.000Z"}
 lang: tr

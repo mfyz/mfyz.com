@@ -1,11 +1,13 @@
 ---
 title: "Portable Wordpress with SQLite instead of MySQL"
+description: "A method for creating a portable WordPress environment using SQLite instead of MySQL is detailed. The process leverages wp-cli for automating installation and configuration, making it suitable for testing themes and plugins."
 slug: portable-wordpress-with-sqlite-instead-of-mysql
 date: 2022-08-05
 url: https://mfyz.com/?p=765
-tags: ["Programming","wordpress"]
+tags:
+  ["wordpress", "sqlite", "wp-cli", "portable development", "php", "database"]
 category: Programming
-migration: {"wpId":765,"wpPostDate":"2022-08-05T12:03:08.000Z"}
+migration: { "wpId": 765, "wpPostDate": "2022-08-05T12:03:08.000Z" }
 ---
 
 ![](/images/archive/en/2022/08/Wordpress20SQLite.jpg)

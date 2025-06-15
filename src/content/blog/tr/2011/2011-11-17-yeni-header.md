@@ -1,9 +1,10 @@
 ---
-title: "Yeni header"
+title: "Yeni Header"
+description: "mfyz.com'un yeni header tasarımı hakkında bir duyuru. Bu değişikliğin bir kullanılabilirlik geliştirmesi olduğu ve sitenin diğer bölümleri için de yeniliklerin geleceği belirtiliyor."
 slug: yeni-header
 date: 2011-11-17
 url: http://mfyz.com/tr/yeni-header/
-tags: ["design","header","mfyz","mfyz.com","update"]
+tags: ["mfyz.com", "tasarım", "header", "yenilik", "kullanılabilirlik", "arayüz"]
 category: mfyz.com
 migration: {"wpId":292,"wpPostDate":"2011-11-17T21:36:52.000Z"}
 lang: tr

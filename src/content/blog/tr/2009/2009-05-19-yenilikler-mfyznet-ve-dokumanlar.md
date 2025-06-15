@@ -1,9 +1,10 @@
 ---
 title: "Yenilikler: mfyz.net ve Dökümanlar"
+description: "Yeni portfolyo sitesi mfyz.net'in duyurusu ve Facebook Connect ile e-posta bültenleri üzerine yazılmış yeni teknik dökümanların tanıtımı."
 slug: yenilikler-mfyznet-ve-dokumanlar
 date: 2009-05-19
 url: http://mfyz.com/tr/yenilikler-mfyznet-ve-dokumanlar/
-tags: ["Diğer","dokuman","portfolio","yeni"]
+tags: ["mfyz.net", "portfolyo", "teknik dokümanlar", "facebook connect", "e-posta bülteni"]
 category: Diğer
 migration: {"wpId":214,"wpPostDate":"2009-05-19T05:15:13.000Z"}
 lang: tr

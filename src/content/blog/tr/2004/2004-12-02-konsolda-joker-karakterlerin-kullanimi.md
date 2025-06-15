@@ -2,8 +2,9 @@
 title: "Konsolda joker karakterlerin kullanımı"
 slug: konsolda-joker-karakterlerin-kullanimi
 date: 2004-12-02
+description: "Linux ve Unix konsolunda dosya işlemleri yaparken verimliliği artıran joker karakterlerin (*, ?, []) nasıl kullanılacağını öğrenin. Bu rehber, çok sayıda dosyayı kolayca yönetmek için pratik örnekler sunar."
 url: http://mfyz.com/tr/konsolda-joker-karakterlerin-kullanimi/
-tags: ["joker","konsol","OS","terminal"]
+tags: ["joker", "konsol", "OS", "terminal", "linux", "wildcard", "dosya yönetimi", "shell", "bash", "komut satırı"]
 category: OS
 migration: {"wpId":65,"wpPostDate":"2004-12-02T16:31:41.000Z"}
 lang: tr

@@ -1,11 +1,21 @@
 ---
 title: "Using gitlab.com as your background workers using CI schedules"
+description: "Leveraging GitLab.com's CI/CD scheduled pipelines as a method for running background worker scripts is explored. This approach offers a convenient way to manage and monitor scheduled tasks without dedicated worker infrastructure."
 slug: using-gitlab-com-as-your-background-workers-using-ci-schedules
 date: 2020-12-28
 url: https://mfyz.com/?p=610
-tags: ["Programming"]
+tags:
+  [
+    "gitlab",
+    "ci/cd",
+    "background workers",
+    "scheduled tasks",
+    "devops",
+    "automation",
+    "serverless",
+  ]
 category: Programming
-migration: {"wpId":610,"wpPostDate":"2020-12-28T13:24:00.000Z"}
+migration: { "wpId": 610, "wpPostDate": "2020-12-28T13:24:00.000Z" }
 ---
 
 ![ci-cd-test-deploy-illustration_2x.png](/images/archive/en/2020/12/image-4.png)

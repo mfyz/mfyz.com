@@ -1,9 +1,10 @@
 ---
 title: "The Smashing Book : Ortalığı mahvedecek"
+description: "Smashing Magazine'in web tasarım ve geliştirme üzerine çıkaracağı 'The Smashing Book' adlı kitabın duyurusu, içeriği ve ön sipariş bilgileri."
 slug: the-smashing-book-ortaligi-mahvedecek
 date: 2009-08-06
 url: http://mfyz.com/tr/the-smashing-book-ortaligi-mahvedecek/
-tags: ["arayüz","book","design","development","Diğer","kitap","smashing","social","tasarım","tipografi","typography","ui"]
+tags: ["smashing magazine", "web tasarım kitabı", "css", "kullanıcı arayüzü", "tipografi"]
 category: Diğer
 migration: {"wpId":221,"wpPostDate":"2009-08-06T14:47:13.000Z"}
 lang: tr

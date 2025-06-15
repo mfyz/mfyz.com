@@ -1,9 +1,10 @@
 ---
 title: "Doğal hareketlere özenen teknolojiler"
+description: "iPhone ile popülerleşen çoklu dokunmatik ekranlar ve Kinect gibi doğal hareketlere dayalı teknolojilerin, kullanıcı deneyimini nasıl değiştirdiğini ve gelecekteki potansiyelini inceliyoruz."
 slug: dogal-hareketlere-ozenen-teknolojiler
 date: 2011-07-24
 url: http://mfyz.com/tr/dogal-hareketlere-ozenen-teknolojiler/
-tags: ["Diğer","gestures","kinect","lion","multitouch","scroll"]
+tags: ["çoklu dokunmatik", "doğal hareketler", "kullanıcı deneyimi", "kinect", "teknoloji", "arayüz"]
 category: Diğer
 migration: {"wpId":274,"wpPostDate":"2011-07-24T05:59:06.000Z"}
 lang: tr

@@ -1,9 +1,10 @@
 ---
-title: "PHP en iyi uygulama geliştirme kuralları"
+title: "PHP En İyi Uygulama Geliştirme Kuralları"
 slug: php-en-iyi-uygulama-gelistirme-kurallari
 date: 2012-10-19
+description: "PHP geliştiricileri için 'en iyi uygulama kuralları' (best practices) kavramı tanıtılıyor ve bu konuda güncel bilgileri derleyen 'PHP The Right Way' (phptherightway.com) adlı açık kaynaklı bir kaynak öneriliyor."
 url: http://mfyz.com/tr/php-en-iyi-uygulama-gelistirme-kurallari/
-tags: ["best","coding","php","practices"]
+tags: ["PHP", "En İyi Pratikler", "Kodlama Standartları", "Yazılım Geliştirme", "PHP The Right Way", "Programlama"]
 category: PHP
 migration: {"wpId":320,"wpPostDate":"2012-10-19T00:42:53.000Z"}
 lang: tr

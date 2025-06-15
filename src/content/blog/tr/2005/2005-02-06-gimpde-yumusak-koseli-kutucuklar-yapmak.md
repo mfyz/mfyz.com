@@ -1,9 +1,10 @@
 ---
-title: "Gimp'de yumuşak köşeli kutucuklar yapmak"
+title: "GIMP'te Yumuşak Köşeli Kutucuklar Yapmak"
 slug: gimpde-yumusak-koseli-kutucuklar-yapmak
 date: 2005-02-06
+description: "GIMP kullanarak yumuşak köşeli (yuvarlatılmış) kutucuklar oluşturmayı öğrenin. Bu rehber, Gaussian Blur ve Levels araçlarını kullanarak dikdörtgenlerin köşelerini nasıl yumuşatacağınızı adım adım gösteriyor."
 url: http://mfyz.com/tr/gimpde-yumusak-koseli-kutucuklar-yapmak/
-tags: ["gimp","howto","kutu","nasil","Tasarım","yumuşak köşe"]
+tags: ["GIMP", "yumuşak köşe", "yuvarlatılmış köşeler", "grafik tasarım", "eğitim", "nasıl yapılır", "Gaussian Blur", "Levels aracı", "tasarım", "görüntü işleme"]
 category: Tasarım
 migration: {"wpId":59,"wpPostDate":"2005-02-06T08:53:22.000Z"}
 lang: tr

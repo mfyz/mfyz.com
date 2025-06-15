@@ -1,9 +1,10 @@
 ---
 title: "Bilgisayar kurtları için en iyi işleri yoluna koyma methodu - Todo.txt"
+description: "Bilgisayar başında çalışanlar için görev yönetimi yöntemi olan Todo.txt'yi keşfedin. GTD'ye alternatif, basit, esnek ve programlanabilir bir metin tabanlı yapılacaklar listesi çözümü."
 slug: bilgisayar-kurtlari-icin-en-iyi-isleri-yoluna-koyma-methodu-todo-txt
 date: 2018-11-16
 url: https://mfyz.com/tr/?p=1449
-tags: ["Diğer"]
+tags: ["todo.txt", "görev yönetimi", "GTD", "verimlilik", "metin tabanlı araçlar", "kişisel organizasyon"]
 category: Diğer
 migration: {"wpId":1449,"wpPostDate":"2018-11-16T07:32:32.000Z"}
 lang: tr

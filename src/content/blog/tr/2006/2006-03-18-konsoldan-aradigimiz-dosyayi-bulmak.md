@@ -1,9 +1,10 @@
 ---
-title: "Konsoldan, aradığımız dosyayı bulmak"
+title: "Konsoldan Aradığımız Dosyayı Bulmak (find Komutu)"
 slug: konsoldan-aradigimiz-dosyayi-bulmak
 date: 2006-03-18
+description: "Linux/Unix konsolunda `find` komutu ile dosya arama nasıl yapılır? İsim, izin, kullanıcı, tarih ve diğer kriterlere göre dosya bulma seçenekleri ve pratik örnekler."
 url: http://mfyz.com/tr/konsoldan-aradigimiz-dosyayi-bulmak/
-tags: ["find","konsol","OS","terminal"]
+tags: ["Linux", "Unix", "find komutu", "dosya arama", "konsol komutları", "terminal"]
 category: OS
 migration: {"wpId":95,"wpPostDate":"2006-03-18T06:06:36.000Z"}
 lang: tr

@@ -1,9 +1,10 @@
 ---
-title: "Büyümüş de 5 yıl olmuş"
+title: "mfyz.com 5 Yaşında: Bir Teşekkür ve Geriye Bakış"
 slug: buyumus-de-5-yil-olmus
 date: 2008-04-08
+description: "mfyz.com'un 5. yıl dönümü! Sitenin başlangıcından v0.7'ye uzanan yolculuğu, kullanıcıların katkıları ve Wayback Machine ile geçmişe bir bakış."
 url: http://mfyz.com/tr/buyumus-de-5-yil-olmus/
-tags: ["mfyz.com","NULL"]
+tags: ["mfyz.com", "yıldönümü", "blog", "topluluk", "web geçmişi", "teşekkür", "kişisel"]
 category: mfyz.com
 migration: {"wpId":185,"wpPostDate":"2008-04-08T04:19:53.000Z"}
 lang: tr

@@ -2,8 +2,9 @@
 title: "CSS çatısı kullanmanın faydaları"
 slug: css-catisi-kullanmanin-faydalari
 date: 2012-07-12
+description: "CSS çatılarının (framework) web geliştirme süreçlerindeki faydaları, özellikle Twitter Bootstrap örneği üzerinden anlatılıyor. Zaman tasarrufu, tutarlılık ve tarayıcı uyumluluğu gibi avantajlarına değiniliyor."
 url: http://mfyz.com/tr/css-catisi-kullanmanin-faydalari/
-tags: ["Arayüz Programlama","bootstrap","css","css3","frameworks","html5","less","twitter"]
+tags: ["CSS framework", "Twitter Bootstrap", "LESS", "SASS", "web geliştirme", "arayüz programlama", "CSS3", "HTML5", "verimlilik"]
 category: Arayüz Programlama
 migration: {"wpId":307,"wpPostDate":"2012-07-12T02:14:26.000Z"}
 lang: tr

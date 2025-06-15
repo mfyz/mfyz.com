@@ -1,11 +1,21 @@
 ---
 title: "Monitor everything with Healthchecks.io"
+description: "The utility of Healthchecks.io for monitoring cron jobs, services, and applications via a 'dead man's switch' mechanism is detailed. Its setup, features like scheduling and integrations, and its open-source nature are explored."
 slug: monitor-everything-with-healthchecks-io
 date: 2024-10-22
 url: https://mfyz.com/?p=896
-tags: ["cron","healthchecks","monitoring","opensource","OS"]
+tags:
+  [
+    "healthchecks.io",
+    "monitoring",
+    "cron monitoring",
+    "uptime",
+    "open source",
+    "devops",
+    "server monitoring",
+  ]
 category: OS
-migration: {"wpId":896,"wpPostDate":"2024-10-22T13:00:00.000Z"}
+migration: { "wpId": 896, "wpPostDate": "2024-10-22T13:00:00.000Z" }
 ---
 
 ### Why monitor?
@@ -88,11 +98,11 @@ If you want a more robust monitoring tool that has more ways to monitor your ser
 
 It has almost all the features [healthchecks.io](http://healthchecks.io) has, plus a few more:
 
-*   Status pages
+- Status pages
 
-*   More check methods like DNS record, ping, docker container, SSL cert
+- More check methods like DNS record, ping, docker container, SSL cert
 
-*   Its Web UI looks more traditional monitoring tools like uptime history, response time, etc
+- Its Web UI looks more traditional monitoring tools like uptime history, response time, etc
 
 Run via Docker:
 

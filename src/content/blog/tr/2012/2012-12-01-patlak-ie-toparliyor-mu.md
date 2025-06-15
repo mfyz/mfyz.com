@@ -1,9 +1,10 @@
 ---
-title: "Patlak IE toparlıyor (mu?)"
+title: "Patlak IE Toparlıyor (mu?)"
 slug: patlak-ie-toparliyor-mu
 date: 2012-12-01
+description: "Microsoft'un Internet Explorer'ın kötü şöhretini düzeltme çabalarını ve 'Nefret Etmeyi Sevdiğiniz Tarayıcı' (The Browser You Loved to Hate) kampanyasını yorumlayan kısa bir yazı."
 url: http://mfyz.com/tr/patlak-ie-toparliyor-mu/
-tags: ["browser","ie","microsoft","video"]
+tags: ["Internet Explorer", "Microsoft", "Web Tarayıcıları", "Pazarlama Kampanyası", "Teknoloji", "Windows 8"]
 category: 
 migration: {"wpId":328,"wpPostDate":"2012-12-01T00:46:09.000Z"}
 lang: tr

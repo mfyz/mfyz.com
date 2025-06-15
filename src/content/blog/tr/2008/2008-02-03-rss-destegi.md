@@ -1,9 +1,10 @@
 ---
-title: "RSS desteği"
+title: "RSS Desteği"
 slug: rss-destegi
 date: 2008-02-03
+description: "mfyz.com'a RSS desteği eklendi. Artık günlük girdileri, dökümanlar ve son yazılanlar RSS okuyucuları üzerinden kolayca takip edilebilir. Kaynak listesine /rss/ adresinden ulaşabilirsiniz."
 url: http://mfyz.com/tr/rss-destegi/
-tags: ["Diğer","rss","xml"]
+tags: ["RSS", "XML", "syndication", "web geliştirme", "mfyz.com", "içerik takibi"]
 category: Diğer
 migration: {"wpId":173,"wpPostDate":"2008-02-03T20:22:49.000Z"}
 lang: tr

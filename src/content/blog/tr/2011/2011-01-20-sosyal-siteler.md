@@ -1,9 +1,10 @@
 ---
 title: "Sosyal siteler"
+description: "Sosyal ağların ve API'lerinin web uygulamaları arasındaki iletişimi nasıl kolaylaştırdığını, bu durumun avantajlarını, dezavantajlarını ve mfyz.com'un gelecekteki entegrasyon planlarını inceliyoruz."
 slug: sosyal-siteler
 date: 2011-01-20
 url: http://mfyz.com/tr/sosyal-siteler/
-tags: ["api","blog","Diğer","integration","network","service","social"]
+tags: ["sosyal ağlar", "API", "entegrasyon", "web geliştirme", "veri paylaşımı"]
 category: Diğer
 migration: {"wpId":265,"wpPostDate":"2011-01-20T07:06:54.000Z"}
 lang: tr

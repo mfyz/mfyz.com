@@ -2,8 +2,9 @@
 title: "QBasic'de kontrol yapıları ve döngüler"
 slug: qbasicde-kontrol-yapilari-ve-donguler
 date: 2004-11-07
+description: "QBasic programlama dilinde karar yapıları ve döngülerin kullanımı. IF-THEN-ELSE, SELECT CASE gibi kontrol yapıları ile FOR, DO WHILE, DO UNTIL gibi döngü yapılarının örneklerle açıklanması."
 url: http://mfyz.com/tr/qbasicde-kontrol-yapilari-ve-donguler/
-tags: ["Basic","do","döngü","if","kontrol yapıları","while"]
+tags: ["Basic","QBasic","do","döngü","if","kontrol yapıları","while","programlama","algoritma"]
 category: Basic
 migration: {"wpId":47,"wpPostDate":"2004-11-07T08:16:10.000Z"}
 lang: tr

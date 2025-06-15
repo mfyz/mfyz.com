@@ -23,6 +23,9 @@ export default defineConfig({
     },
   },
   vite: {
+    server: {
+      allowedHosts: ["1411-2600-4040-9c38-ac00-edcd-e47b-422d-a90d.ngrok-free.app"],
+    },
     optimizeDeps: {
       exclude: ["@resvg/resvg-js"],
     },

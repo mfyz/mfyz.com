@@ -1,30 +1,36 @@
 ---
 title: "Quick and dirty set up Graylog in 5 minutes with docker"
+description: "See how to quickly set up a Graylog instance using Docker in about 5 minutes. I also provide a simple Node.js application to send logs to your new Graylog setup."
 slug: quick-and-dirty-set-up-graylog-in-5-minutes-with-docker
 date: 2019-04-09
 url: https://mfyz.com/?p=254
-tags: ["docker","log","nodejs","Programming"]
+tags: ["graylog", "docker", "docker-compose", "logging", "nodejs"]
 category: Programming
-migration: {"wpId":254,"wpPostDate":"2019-04-09T15:29:18.000Z"}
+migration: { "wpId": 254, "wpPostDate": "2019-04-09T15:29:18.000Z" }
 ---
 
 Docker made things super easy if you are curious about a new open source tool to try and even use it with isolated installations on your machine. In this article, I'll show quick steps to install and give graylog a try with a simple nodejs application to send logical errors to graylog instance.
 
-1) Copy the docker-compose.yml file content below to a file then run:
+1. Copy the docker-compose.yml file content below to a file then run:
+
 ```sh
 docker-compose -f docker-compose.yml up
 ```
-2) Login to graylog with opening http://127.0.0.1:9000/ in the browser Username: admin Password: admin
 
-3) Configure inputs: Go to System > Inputs Add new "GELF UDP" configuration as global input using port 12201
+2. Login to graylog with opening http://127.0.0.1:9000/ in the browser Username: admin Password: admin
 
-4) Run the simple nodejs application below to send logs to graylog. First init npm and install graylog2 package from npm with:
+3. Configure inputs: Go to System > Inputs Add new "GELF UDP" configuration as global input using port 12201
+
+4. Run the simple nodejs application below to send logs to graylog. First init npm and install graylog2 package from npm with:
+
 ```sh
 npm install -s graylog2
 ```
+
 docker-compose.yml
+
 ```yml
-version: '2'
+version: "2"
 services:
   mongodb:
     image: mongo:3
@@ -61,32 +67,32 @@ services:
       - 12201:12201 # GELF TCP
       - 12201:12201/udp # GELF UDP
 ```
+
 app.js
+
 ```js
 var graylog2 = require("graylog2");
 
 var logger = new graylog2.graylog({
-    servers: [
-        { host: "127.0.0.1", port: 12201 },
-    ],
-    facility: "Test.js",
+  servers: [{ host: "127.0.0.1", port: 12201 }],
+  facility: "Test.js",
 });
 
-logger.on("error", function(error) {
-    console.error("Error while trying to write to graylog2:", error);
+logger.on("error", function (error) {
+  console.error("Error while trying to write to graylog2:", error);
 });
 
 setTimeout(() => {
-    // logger.log("What we've got here is...failure to communicate");
-    logger.log("With some data coming...", {
-        cool: 'beans',
-        test: { 
-           yoo: 123,
-        }
-    });
-    // logger.notice("What we've got here is...failure to communicate");
+  // logger.log("What we've got here is...failure to communicate");
+  logger.log("With some data coming...", {
+    cool: "beans",
+    test: {
+      yoo: 123,
+    },
+  });
+  // logger.notice("What we've got here is...failure to communicate");
 
-    console.log('logged?');
-    // process.exit();
+  console.log("logged?");
+  // process.exit();
 }, 2000);
 ```

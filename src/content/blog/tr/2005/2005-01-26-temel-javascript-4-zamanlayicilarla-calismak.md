@@ -2,8 +2,9 @@
 title: "Temel JavaScript (4) - Zamanlayıcılarla çalışmak"
 slug: temel-javascript-4-zamanlayicilarla-calismak
 date: 2005-01-26
+description: "Temel JavaScript dersleri serisinin dördüncü bölümü. Bu rehber, `setTimeout` ve `clearTimeout` fonksiyonlarıyla JavaScript'te zamanlayıcıların nasıl kullanılacağını, periyodik veya gecikmeli işlemlerin nasıl yapılacağını örneklerle açıklıyor."
 url: http://mfyz.com/tr/temel-javascript-4-zamanlayicilarla-calismak/
-tags: ["Arayüz Programlama","interval","javascript","js","timer"]
+tags: ["JavaScript", "JS", "Arayüz Programlama", "zamanlayıcı", "timer", "setTimeout", "clearTimeout", "web geliştirme", "javascript dersleri"]
 category: Arayüz Programlama
 migration: {"wpId":121,"wpPostDate":"2005-01-26T05:00:00.000Z"}
 lang: tr

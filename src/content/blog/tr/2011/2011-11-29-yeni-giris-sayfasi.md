@@ -1,9 +1,10 @@
 ---
-title: "Yeni giriş sayfası"
+title: "Yeni Giriş Sayfası"
+description: "mfyz.com'un yenilenen giriş sayfası duyurusu. PHPTAL, LESS ve CSS3 kullanılarak geliştirilen yeni arayüz ve gelecekteki UX/fonksiyonellik iyileştirmeleri hakkında bilgi."
 slug: yeni-giris-sayfasi
 date: 2011-11-29
 url: http://mfyz.com/tr/yeni-giris-sayfasi/
-tags: ["animations","css3","form","layout","login","mfyz.com","ui","ux","webkit"]
+tags: ["mfyz.com", "giriş sayfası", "arayüz yenileme", "css3", "less", "phptal", "ux", "webkit"]
 category: mfyz.com
 migration: {"wpId":293,"wpPostDate":"2011-11-29T03:25:57.000Z"}
 lang: tr

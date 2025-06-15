@@ -1,11 +1,13 @@
 ---
 title: "Our git workflow at Nomad Interactive (branching, tagging)"
+description: "Notes about the Git workflow implemented at Nomad Interactive, including branching models, tagging conventions, and continuous integration practices. It also covers automated delivery pipelines and code review processes."
 slug: our-git-workflow-at-nomad-interactive-branching-tagging
 date: 2021-02-09
 url: https://mfyz.com/?p=634
-tags: ["Programming"]
+tags:
+  ["git workflow", "ci-cd", "devops", "branching strategy", "nomad interactive"]
 category: Programming
-migration: {"wpId":634,"wpPostDate":"2021-02-09T16:20:15.000Z"}
+migration: { "wpId": 634, "wpPostDate": "2021-02-09T16:20:15.000Z" }
 ---
 
 Here is an adjusted version of our internal documentation at Nomad Interactive about our git workflow explained. We almost exclusively write javascript on all platforms (node.js back-end, react.js web front-end, and desktop, react native for mobile with minimal swift and android java for mobile apps). There are a lot of biased opinions and structures in this article that may be too javascript focused but it can be applied to other languages with equivalent solutions. 
@@ -38,12 +40,12 @@ We don’t have any code coverage requirements yet.
 
 ## Branching and Tagging Practices
 
-*   We always lock the master branch for all users except the CI server, locked for pushes and merge requests as well.
-*   Dev branch is also locked for direct commit/pushes. Only pull request and merge requests are going to be allowed.
-*   Development code is pulled or merged to the “dev” branch when the CI pipeline succeeds.
-*   Every developer works on their own local development branches per feature, fix, or other categorized with uniform branch naming strategy.
-*   We should avoid having long-living remote branches other than the protected branches that are specific to a developer - at all costs.
-*   When it's time to push your changes to a build or the latest development branch where all developers push their branch remote, then merge their code. You can create merge requests to the dev branch from your branch easily on GitLab or GitHub UI or from the command line. Then, the CI server picks up your commit, makes sure your code is clean and acceptable, then it approves and finishes merge to the dev branch. You continue working on your local branch and repeat this process.
+- We always lock the master branch for all users except the CI server, locked for pushes and merge requests as well.
+- Dev branch is also locked for direct commit/pushes. Only pull request and merge requests are going to be allowed.
+- Development code is pulled or merged to the “dev” branch when the CI pipeline succeeds.
+- Every developer works on their own local development branches per feature, fix, or other categorized with uniform branch naming strategy.
+- We should avoid having long-living remote branches other than the protected branches that are specific to a developer - at all costs.
+- When it's time to push your changes to a build or the latest development branch where all developers push their branch remote, then merge their code. You can create merge requests to the dev branch from your branch easily on GitLab or GitHub UI or from the command line. Then, the CI server picks up your commit, makes sure your code is clean and acceptable, then it approves and finishes merge to the dev branch. You continue working on your local branch and repeat this process.
 
 Diagram below demonstrates the branching and development workflow.
 

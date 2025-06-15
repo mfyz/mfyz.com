@@ -1,9 +1,10 @@
 ---
 title: "Terkedilmis mfyz.com"
+description: "mfyz.com'un bir süredir ihmal edildiğini fark edip, spam sorunları ve kod hatalarını temizleme ve siteyi yenileme sürecine başlama kararı üzerine bir yazı."
 slug: terkedilmis-mfyzcom
 date: 2011-07-05
 url: http://mfyz.com/tr/terkedilmis-mfyzcom/
-tags: ["mfyz.com","NULL"]
+tags: ["mfyz.com", "blog", "yenileme", "spam", "geliştirme"]
 category: mfyz.com
 migration: {"wpId":270,"wpPostDate":"2011-07-05T11:55:44.000Z"}
 lang: tr

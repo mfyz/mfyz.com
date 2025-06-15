@@ -1,9 +1,10 @@
 ---
-title: "LESS ile hiyerarşik ve fonksiyonel css yazmak"
+title: "LESS ile Hiyerarşik ve Fonksiyonel CSS Yazmak"
+description: "LESS kullanarak CSS dosyalarınızı nasıl daha hiyerarşik ve fonksiyonel bir yapıda yazabileceğinizi, değişkenler, mixin'ler gibi özelliklerden nasıl faydalanabileceğinizi ve LESS dosyalarınızı CSS'e derleme yöntemlerini öğrenin."
 slug: less-ile-hiyerarsik-ve-fonksiyonel-css-yazmak
 date: 2011-11-13
 url: http://mfyz.com/tr/less-ile-hiyerarsik-ve-fonksiyonel-css-yazmak/
-tags: ["Arayüz Programlama","css","css3","grid","less","structural"]
+tags: ["less", "css", "css preprocessor", "frontend", "web geliştirme", "hiyerarşik css", "fonksiyonel css"]
 category: Arayüz Programlama
 migration: {"wpId":158,"wpPostDate":"2011-11-13T15:00:28.000Z"}
 lang: tr

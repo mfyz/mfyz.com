@@ -1,9 +1,10 @@
 ---
 title: "E-Postalar ve html+css imza ile güçlü imza"
+description: "E-posta imzalarınızı HTML ve CSS kullanarak nasıl daha etkili ve çekici hale getirebileceğinizi anlatan ve ilgili rehberlere yönlendiren bir yazı."
 slug: e-postalar-ve-htmlcss-imza-ile-guclu-imza
 date: 2009-07-03
 url: http://mfyz.com/tr/e-postalar-ve-htmlcss-imza-ile-guclu-imza/
-tags: ["Diğer","imza","mail","signature"]
+tags: ["e-posta imzası", "html imza", "css", "e-posta pazarlama", "mail.app"]
 category: Diğer
 migration: {"wpId":215,"wpPostDate":"2009-07-03T04:25:04.000Z"}
 lang: tr

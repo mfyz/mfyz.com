@@ -1,11 +1,21 @@
 ---
 title: "Github page is the most important place as a developer and here is why it is so important"
+description: "The significance of a developer's GitHub profile for career prospects is emphasized, detailing what recruiters seek and offering advice on optimizing a profile to effectively showcase skills, projects, and contributions."
 slug: github-page-is-the-most-important-place-as-a-developer-and-here-is-why-it-is-so-important
 date: 2022-09-05
 url: https://mfyz.com/?p=780
-tags: ["Geekin'","github","jobs","profile","recruiter","resume"]
+tags:
+  [
+    "github",
+    "developer profile",
+    "career",
+    "recruitment",
+    "open source",
+    "portfolio",
+    "job search",
+  ]
 category: Geekin'
-migration: {"wpId":780,"wpPostDate":"2022-09-05T03:21:55.000Z"}
+migration: { "wpId": 780, "wpPostDate": "2022-09-05T03:21:55.000Z" }
 ---
 
 ![](/images/archive/en/2022/09/Why-github-profile-is-so-important-as-dev.jpg)
@@ -18,17 +28,17 @@ A developer’s Github profile has now become THE source of how hiring decisions
 
 At a glance, your profile tells things like, how many repositories you have, what is your public (open source) contributions are, and how much reaction you received for your projects (stars). But a bit deeper, here are a few bullet points I compiled from what I read on this topic/discussions, that what Engineering (Hiring) Manager or a Technical Recruiter will be looking for:
 
-*   Are the projects well organized...by looking at the directory structure naming, can I get a sense of the architecture/design - it is easy to figure out where to go in the project to locate the various functional areas and layers.
-*   Do projects have clear README and contribution guidelines written out clearly? Do you have good communication and documentation skills?
-*   Does the first thing I see (the README) clearly describe the project e.g. what it does, how to run and build it etc?
-*   Is the code clean, easy to read, and commented appropriately?
-*   Is there an organized branching/tag process being followed, e.g. gitflow
-*   Is there some sense that the person understands basic design patterns?
-*   Does the project leverage existing open source libraries and frameworks (good) or does the code re-solve common problems/routines (bad)
-*   Forks of other repos on which you have made pull requests (don’t worry about whether they’ve been accepted or not).
-*   Do I see replicated code i.e. do I see obvious 'cut and paste' and 'repeating myself' code (bad)
-*   ARE THERE TESTS!!!! There should be a test harness and if I run it (because the README told me how to run them), the tests should pass. This is a big one for me. If I don't see tests, the very first question I will ask will be 'how do/did you test this code' and your answer will be 'manually' which of course means you don't test!! IMO, professional quality code includes some level of unit/integration testing delivered along with it.
-*   I am less concerned with what the project does, more concerned that it was developed professionally. I look for commercial quality code... will others be able to take the project and easily enhance/maintain it.
+- Are the projects well organized...by looking at the directory structure naming, can I get a sense of the architecture/design - it is easy to figure out where to go in the project to locate the various functional areas and layers.
+- Do projects have clear README and contribution guidelines written out clearly? Do you have good communication and documentation skills?
+- Does the first thing I see (the README) clearly describe the project e.g. what it does, how to run and build it etc?
+- Is the code clean, easy to read, and commented appropriately?
+- Is there an organized branching/tag process being followed, e.g. gitflow
+- Is there some sense that the person understands basic design patterns?
+- Does the project leverage existing open source libraries and frameworks (good) or does the code re-solve common problems/routines (bad)
+- Forks of other repos on which you have made pull requests (don’t worry about whether they’ve been accepted or not).
+- Do I see replicated code i.e. do I see obvious 'cut and paste' and 'repeating myself' code (bad)
+- ARE THERE TESTS!!!! There should be a test harness and if I run it (because the README told me how to run them), the tests should pass. This is a big one for me. If I don't see tests, the very first question I will ask will be 'how do/did you test this code' and your answer will be 'manually' which of course means you don't test!! IMO, professional quality code includes some level of unit/integration testing delivered along with it.
+- I am less concerned with what the project does, more concerned that it was developed professionally. I look for commercial quality code... will others be able to take the project and easily enhance/maintain it.
 
 You should be pinning some of the projects that you think it reflects your best professional work. Aside of pinning these example projects, let’s talk about pimping up your profile view. This does not mean throwing every github markdown feature you find online in your profile view. You need to be really mindful of what you are showing on your profile. It has to be meaningful. Don’t put HTML/CSS or Word/Excel badges. Your **goal** is to **get a recruiter interested in reading** more of your profile and projects. So the purpose of this practice is to make your profile more skimmable.
 
@@ -40,17 +50,17 @@ But we are human, and we also want to talk about who we are. A recruiter will no
 
 ```md
 ### Hi there 👋
-* 👂 My name is ...
-* 👩 Pronouns: ...
-* 🔭 I’m currently working on ...
-* 🌱 I’m currently learning ...
-* 🤝 I’m looking to collaborate on ...
-* 🤔 I’m looking for help with ...
-* 💬 Ask me about ...
-* 📫 How to reach me: ...
-* ❤️ I love ...
-* ⚡ Fun fact: ...
 
+- 👂 My name is ...
+- 👩 Pronouns: ...
+- 🔭 I’m currently working on ...
+- 🌱 I’m currently learning ...
+- 🤝 I’m looking to collaborate on ...
+- 🤔 I’m looking for help with ...
+- 💬 Ask me about ...
+- 📫 How to reach me: ...
+- ❤️ I love ...
+- ⚡ Fun fact: ...
 ```
 
 Here are a few other tricks that may help you to convey what I talked about.
@@ -82,8 +92,9 @@ A beautiful project to visually communicate your github activity like your stats
 ![](https://github-readme-stats.vercel.app/api?username=mfyz&show_icons=true)
 
 ```html
-<img src="https://github-readme-stats.vercel.app/api?username=mfyz&show_icons=true" />
-
+<img
+  src="https://github-readme-stats.vercel.app/api?username=mfyz&show_icons=true"
+/>
 ```
 
 ### Most Used Languages
@@ -91,8 +102,9 @@ A beautiful project to visually communicate your github activity like your stats
 ![](https://github-readme-stats.vercel.app/api/top-langs?username=mfyz&layout=compact)
 
 ```html
-<img src="https://github-readme-stats.vercel.app/api/top-langs?username=zluvsand&layout=compact"/>
-
+<img
+  src="https://github-readme-stats.vercel.app/api/top-langs?username=zluvsand&layout=compact"
+/>
 ```
 
 ### Get Inspiration

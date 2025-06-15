@@ -1,11 +1,12 @@
 ---
 title: "Single JavaScript file node/express/Instagram authentication (OAuth) and get user photos"
+description: "A guide is provided for implementing Instagram OAuth authentication and fetching user photos using Node.js and Express, all within a single JavaScript file. Steps include registering an Instagram app and coding the server-side logic."
 slug: single-javascript-file-node-express-instagram-authentication-oauth-and-get-user-photos
 date: 2019-10-24
 url: https://mfyz.com/?p=371
-tags: ["Other"]
+tags: ["instagram", "oauth", "nodejs", "express", "api", "javascript"]
 category: Other
-migration: {"wpId":371,"wpPostDate":"2019-10-24T20:31:21.000Z"}
+migration: { "wpId": 371, "wpPostDate": "2019-10-24T20:31:21.000Z" }
 ---
 
 ![](/images/archive/en/2019/10/jakob-owens-R-8Kkjaztn0-unsplash.jpg)
@@ -14,15 +15,15 @@ migration: {"wpId":371,"wpPostDate":"2019-10-24T20:31:21.000Z"}
 
 Register your Instagram app in their developer portal and obtain **client id** and **client secret** keys. To do that, follow the steps below:
 
-*   Go to IG Developer page: [https://www.instagram.com/developer/](https://www.instagram.com/developer/)
-*   Click “Register your application” button (if you are not logged in, you will be asked to log in on this step)
-*   Fill all fields. The only field you need to pay attention to is the “valid redirect URLs”. This is where your app is publicly hosted. Below, we will create a URL on the application to capture Instagram authentication after the user goes to the Instagram page for permission dialog, then comes back to this URL. It’ll be something like [https://yoursite.com/instagram/callback](https://yoursite.com/instagram/callback)
-*   Once you register the app, the page will display client id and secret. Keep this ready on the next steps.
+- Go to IG Developer page: [https://www.instagram.com/developer/](https://www.instagram.com/developer/)
+- Click “Register your application” button (if you are not logged in, you will be asked to log in on this step)
+- Fill all fields. The only field you need to pay attention to is the “valid redirect URLs”. This is where your app is publicly hosted. Below, we will create a URL on the application to capture Instagram authentication after the user goes to the Instagram page for permission dialog, then comes back to this URL. It’ll be something like [https://yoursite.com/instagram/callback](https://yoursite.com/instagram/callback)
+- Once you register the app, the page will display client id and secret. Keep this ready on the next steps.
 
 ### Code it up
 
-Let’s set up the plain node.js and express the application.  
-  
+Let’s set up the plain node.js and express the application.
+
 First, install the required packages:
 
 ```sh
@@ -112,12 +113,12 @@ Either locally or after you place it on your server, run:
 node index.js
 ```
 
-Tip 1: use “forever” on your server to run this application permanently.  
+Tip 1: use “forever” on your server to run this application permanently.
 
 Tip 2: For experimental purposes, you can run this app on your local and have a tunneling tool like “ngrok" to open your local port to the public with a quick domain assignment. Ngrok will provide a URL (random subdomain on their domain), you have to update the IG developer app’s settings to add this domain as a valid redirect URL, otherwise, after this app redirects user for authentication to Instagram, it will give an error.
 
 ### Get the real thing
 
-The code above in this article was a quick and dirty version. I put the little bit more proper express application version on Github. It uses pug for its views and has proper layout/content block separation as well.  
+The code above in this article was a quick and dirty version. I put the little bit more proper express application version on Github. It uses pug for its views and has proper layout/content block separation as well.
 
 [https://github.com/mfyz/express-passport-instagram-example](https://github.com/mfyz/express-passport-instagram-example)

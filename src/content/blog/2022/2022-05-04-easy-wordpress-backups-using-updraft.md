@@ -1,11 +1,20 @@
 ---
 title: "Easy WordPress backups using Updraft"
+description: "The UpdraftPlus plugin is presented as a solution for easy WordPress backups, covering scheduling, what to backup, restoration, migration capabilities, and cloud storage integrations. Key features and benefits are highlighted."
 slug: easy-wordpress-backups-using-updraft
 date: 2022-05-04
 url: https://mfyz.com/?p=732
-tags: ["Other"]
+tags:
+  [
+    "wordpress",
+    "backup",
+    "updraftplus",
+    "website maintenance",
+    "data protection",
+    "migration",
+  ]
 category: Other
-migration: {"wpId":732,"wpPostDate":"2022-05-04T12:59:03.000Z"}
+migration: { "wpId": 732, "wpPostDate": "2022-05-04T12:59:03.000Z" }
 ---
 
 ![](/images/archive/en/2022/05/banner-772x250-1.png)

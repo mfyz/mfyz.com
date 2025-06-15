@@ -2,8 +2,9 @@
 title: "Küçük projeleriniz için tüm e-posta stratejinizi mailchimp ile yapın"
 slug: kucuk-projeleriniz-icin-tum-e-posta-stratejinizi-mailchimp-ile-yapin
 date: 2012-08-10
+description: "Küçük ve orta ölçekli projeler için e-posta pazarlama stratejilerinin Mailchimp kullanılarak nasıl etkili bir şekilde yönetilebileceği anlatılıyor. Mailchimp'in liste yönetimi, kampanya oluşturma, şablonlar ve form entegrasyonu gibi özellikleri vurgulanıyor."
 url: http://mfyz.com/tr/kucuk-projeleriniz-icin-tum-e-posta-stratejinizi-mailchimp-ile-yapin/
-tags: ["api","customer","Diğer","email","mail","mailchimp","marketing","newsletter","subscription","unsubscribe"]
+tags: ["Mailchimp", "E-posta Pazarlama", "Email Marketing", "Newsletter", "E-Bülten", "Dijital Pazarlama", "Küçük İşletmeler", "API"]
 category: Diğer
 migration: {"wpId":314,"wpPostDate":"2012-08-10T05:05:07.000Z"}
 lang: tr

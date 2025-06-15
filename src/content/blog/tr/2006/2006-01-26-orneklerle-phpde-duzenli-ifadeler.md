@@ -1,9 +1,10 @@
 ---
-title: "Örneklerle php'de düzenli ifadeler"
+title: "Örneklerle PHP'de düzenli ifadeler"
 slug: orneklerle-phpde-duzenli-ifadeler
 date: 2006-01-26
+description: "PHP'de düzenli ifadeler (regular expressions) ve `eregi` fonksiyonu kullanımı. Metin başlangıcı, sonu, karakter eşleşmeleri ve daha fazlası için pratik örnekler ve açıklamalar."
 url: http://mfyz.com/tr/orneklerle-phpde-duzenli-ifadeler/
-tags: ["düzenli ifadeler","PHP","regex","regular expressions"]
+tags: ["PHP", "regex", "düzenli ifadeler", "eregi", "metin işleme", "programlama"]
 category: PHP
 migration: {"wpId":84,"wpPostDate":"2006-01-26T05:36:58.000Z"}
 lang: tr

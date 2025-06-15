@@ -1,9 +1,10 @@
 ---
-title: "Google Chart API ile grafik çizdirmek"
+title: "Google Chart API Kullanarak Dinamik Grafikler Oluşturma Rehberi"
 slug: google-chart-api-ile-grafik-cizdirmek
 date: 2008-06-27
+description: "Google Chart API kullanarak çeşitli grafik türlerini (çizgi, bar, pasta, saçılım vb.) nasıl oluşturabileceğinizi öğrenin. API parametreleri, veri formatları ve PHP/JavaScript ile veri kodlama örnekleri içeren kapsamlı bir rehber."
 url: http://mfyz.com/tr/google-chart-api-ile-grafik-cizdirmek/
-tags: ["api","chart","google","grafik","Sunucu Programlama"]
+tags: ["Google Chart API", "API", "grafik oluşturma", "veri görselleştirme", "Google", "PHP", "JavaScript", "web geliştirme", "Sunucu Programlama", "tutorial", "rehber"]
 category: Sunucu Programlama
 migration: {"wpId":138,"wpPostDate":"2008-06-27T06:19:47.000Z"}
 lang: tr

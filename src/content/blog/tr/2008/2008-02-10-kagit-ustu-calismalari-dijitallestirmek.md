@@ -1,9 +1,10 @@
 ---
-title: "Kağıt üstü çalışmaları dijitalleştirmek"
+title: "Kağıt Üstü Çalışmaları Dijitalleştirmek"
 slug: kagit-ustu-calismalari-dijitallestirmek
 date: 2008-02-10
+description: "Kağıt üzerindeki çizim, yazı ve taslaklarınızı tarayarak veya fotoğraflayarak dijital ortama aktarma adımları. Photoshop/GIMP gibi araçlarla temizleme, Threshold ile siyah-beyaz dönüştürme ve renklendirme teknikleri."
 url: http://mfyz.com/tr/kagit-ustu-calismalari-dijitallestirmek/
-tags: ["digitalize","dijital","illustration","kağıt","paper","Tasarım"]
+tags: ["dijitalleştirme", "tasarım", "Photoshop", "GIMP", "çizim", "illüstrasyon", "grafik tasarım", "eğitim", "kağıttan dijitale", "Threshold", "Path aracı", "logo tasarımı", "ikon tasarımı", "dijital sanat"]
 category: Tasarım
 migration: {"wpId":130,"wpPostDate":"2008-02-10T07:34:53.000Z"}
 lang: tr

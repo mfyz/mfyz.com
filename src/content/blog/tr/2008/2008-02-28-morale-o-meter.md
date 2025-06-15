@@ -1,9 +1,10 @@
 ---
-title: "Morale-O-Meter"
+title: "Morale-O-Meter: Günlük Ruh Halinizi ve Yaşam Kalitenizi Takip Edin"
 slug: morale-o-meter
 date: 2008-02-28
+description: "Morale-O-Meter aracı ile günlük moral, sağlık, uyku, alkol ve kafein tüketimi gibi değerlerinizi kaydedip grafiksel olarak takip edin. 43things entegrasyonu da mevcut."
 url: http://mfyz.com/tr/morale-o-meter/
-tags: ["Diğer","morale","social","tool","tracking"]
+tags: ["Morale-O-Meter", "kişisel gelişim", "sağlık takibi", "ruh hali", "zaman yönetimi", "sosyal araçlar", "43things", "web uygulaması", "araçlar", "verimlilik"]
 category: Diğer
 migration: {"wpId":181,"wpPostDate":"2008-02-28T23:19:45.000Z"}
 lang: tr

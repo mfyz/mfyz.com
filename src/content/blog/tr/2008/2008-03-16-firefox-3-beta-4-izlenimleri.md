@@ -1,9 +1,10 @@
 ---
-title: "Firefox 3 Beta 4 İzlenimleri"
+title: "Firefox 3 Beta 4 İzlenimleri: Hız ve macOS Entegrasyonu Ön Planda"
 slug: firefox-3-beta-4-izlenimleri
 date: 2008-03-16
+description: "Firefox 3 Beta 4'ün ilk izlenimleri: Artan performans, geliştirilmiş JavaScript motoru, macOS ile daha iyi entegrasyon (Growl, Cocoa widget'ları) ve genel kullanıcı deneyimi iyileştirmeleri."
 url: http://mfyz.com/tr/firefox-3-beta-4-izlenimleri/
-tags: ["beta","Diğer","firefox","mozilla"]
+tags: ["Firefox", "Mozilla", "web tarayıcı", "beta", "yazılım incelemesi", "teknoloji", "macOS", "performans", "JavaScript", "kullanıcı deneyimi"]
 category: Diğer
 migration: {"wpId":183,"wpPostDate":"2008-03-16T20:19:59.000Z"}
 lang: tr

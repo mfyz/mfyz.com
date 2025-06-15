@@ -2,8 +2,9 @@
 title: "Girilen iki sayının OBEB'ini bulan program"
 slug: girilen-iki-sayinin-obebini-bulan-program
 date: 2004-11-08
+description: "QBasic dilinde yazılmış, kullanıcının girdiği iki sayının en büyük ortak bölenini (OBEB) hesaplayan basit bir program. Matematik ve programlama algoritmasına iyi bir örnek teşkil ediyor."
 url: http://mfyz.com/tr/girilen-iki-sayinin-obebini-bulan-program/
-tags: ["Basic","obeb","örnek kod"]
+tags: ["Basic","QBasic","obeb","örnek kod","matematik","algoritma","programlama"]
 category: Basic
 migration: {"wpId":48,"wpPostDate":"2004-11-08T08:22:49.000Z"}
 lang: tr

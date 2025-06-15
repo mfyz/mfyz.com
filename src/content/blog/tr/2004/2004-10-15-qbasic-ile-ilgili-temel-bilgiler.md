@@ -2,8 +2,9 @@
 title: "QBasic ile ilgili temel bilgiler"
 slug: qbasic-ile-ilgili-temel-bilgiler
 date: 2004-10-15
+description: "QBasic programlama dilinin temel özellikleri, yeterliliği ve kullanım alanları hakkında bilgiler. Yeni başlayanlar için QBasic'in programlama mantığını öğrenmede nasıl yardımcı olabileceği açıklanıyor."
 url: http://mfyz.com/tr/qbasic-ile-ilgili-temel-bilgiler/
-tags: ["Basic","NULL"]
+tags: ["Basic","QBasic","programlama","yazilim","basit-programlama"]
 category: Basic
 migration: {"wpId":45,"wpPostDate":"2004-10-15T06:38:13.000Z"}
 lang: tr

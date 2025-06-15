@@ -2,8 +2,9 @@
 title: "Fiber internet"
 slug: fiber-internet
 date: 2010-08-21
+description: "İstanbul'da fiber internetin yaygınlaşması, hız avantajları, Türkiye'deki internet fiyatları ve merkezi bölgelerdeki durumu üzerine bir değerlendirme."
 url: http://mfyz.com/tr/fiber-internet/
-tags: ["Diğer","fiber","internet","superonline"]
+tags: ["fiber internet", "internet hızları", "teknoloji", "Türkiye internet", "Superonline", "altyapı", "Diğer"]
 category: Diğer
 migration: {"wpId":257,"wpPostDate":"2010-08-21T21:49:17.000Z"}
 lang: tr

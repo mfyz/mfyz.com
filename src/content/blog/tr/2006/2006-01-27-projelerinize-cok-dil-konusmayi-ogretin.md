@@ -2,8 +2,9 @@
 title: "Projelerinize çok dil konuşmayı öğretin!"
 slug: projelerinize-cok-dil-konusmayi-ogretin
 date: 2006-01-27
+description: "PHP ve diğer programlama dillerinde projelerinize nasıl çoklu dil desteği ekleyeceğinizi öğrenin. Dil dosyaları, oturum yönetimi ve dinamik içerik çevirisi için pratik yöntemler."
 url: http://mfyz.com/tr/projelerinize-cok-dil-konusmayi-ogretin/
-tags: ["dil desteği","language","PHP"]
+tags: ["PHP", "çoklu dil desteği", "yerelleştirme", "i18n", "dil dosyaları", "uluslararasılaştırma"]
 category: PHP
 migration: {"wpId":85,"wpPostDate":"2006-01-27T05:52:01.000Z"}
 lang: tr

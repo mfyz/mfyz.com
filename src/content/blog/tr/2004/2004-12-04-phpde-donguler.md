@@ -2,8 +2,9 @@
 title: "PHP'de döngüler"
 slug: phpde-donguler
 date: 2004-12-04
+description: "PHP programlama dilindeki `while`, `for` ve `foreach` gibi temel döngü yapılarının kullanımı. Bu rehber, döngülerin ne işe yaradığını, nasıl çalıştığını ve farklı senaryolarda nasıl kullanılacağını örneklerle açıklar."
 url: http://mfyz.com/tr/phpde-donguler/
-tags: ["döngüler","for","loop","PHP","while"]
+tags: ["döngüler", "for", "loop", "PHP", "while", "foreach", "programlama", "web geliştirme", "kontrol yapıları", "algoritma"]
 category: PHP
 migration: {"wpId":70,"wpPostDate":"2004-12-04T05:53:44.000Z"}
 lang: tr

@@ -1,11 +1,22 @@
 ---
 title: "Better CMD+R - Improved command line history using Atuin"
+description: "Atuin, a command-line utility for replacing existing shell history with a SQLite database, is introduced. Its features, including advanced search capabilities and optional encrypted history synchronization between devices, are highlighted."
 slug: better-cmdr-improved-command-line-history-using-atuin
 date: 2022-10-12
 url: https://mfyz.com/?p=787
-tags: ["bash","command line","Geekin'","shell"]
+tags:
+  [
+    "atuin",
+    "cli",
+    "shell history",
+    "developer tools",
+    "sqlite",
+    "command line",
+    "bash",
+    "zsh",
+  ]
 category: Geekin'
-migration: {"wpId":787,"wpPostDate":"2022-10-12T12:49:56.000Z"}
+migration: { "wpId": 787, "wpPostDate": "2022-10-12T12:49:56.000Z" }
 ---
 
 ![](/images/archive/en/2022/10/Better-CLI-history.jpg)

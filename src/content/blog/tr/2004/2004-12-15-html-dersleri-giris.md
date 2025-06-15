@@ -2,8 +2,9 @@
 title: "HTML Dersleri : Giriş"
 slug: html-dersleri-giris
 date: 2004-12-15
+description: "HTML dersleri serisine başlangıç. Bu giriş yazısı, HTML'in ne olduğunu, etiket yapısını ve seride ele alınacak konuları tanıtarak web geliştirmenin temellerine bir adım atmanızı sağlıyor."
 url: http://mfyz.com/tr/html-dersleri-giris/
-tags: ["Arayüz Programlama","html"]
+tags: ["Arayüz Programlama", "html", "web geliştirme", "web tasarımı", "html dersleri", "giriş", "temel html"]
 category: Arayüz Programlama
 migration: {"wpId":102,"wpPostDate":"2004-12-15T23:28:51.000Z"}
 lang: tr

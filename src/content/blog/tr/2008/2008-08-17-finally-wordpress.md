@@ -1,9 +1,10 @@
 ---
-title: "Finally Wordpress"
+title: "WordPress ile Tanışma ve Olumlu İlk İzlenimler"
 slug: finally-wordpress
 date: 2008-08-17
+description: "WordPress ile ilgili ilk deneyimlerim, platformun esnekliği, tema özelleştirme kolaylığı ve mfyz.org için potansiyel kullanımı hakkındaki düşünceleri. WordPress kaynaklarını derleyip paylaşma planından da bahsediliyor."
 url: http://mfyz.com/tr/finally-wordpress/
-tags: ["blog","cms","Diğer","wordpress"]
+tags: ["WordPress", "CMS", "içerik yönetim sistemi", "blog platformu", "web geliştirme", "tema geliştirme", "Diğer", "mfyz.org"]
 category: Diğer
 migration: {"wpId":203,"wpPostDate":"2008-08-17T01:44:15.000Z"}
 lang: tr

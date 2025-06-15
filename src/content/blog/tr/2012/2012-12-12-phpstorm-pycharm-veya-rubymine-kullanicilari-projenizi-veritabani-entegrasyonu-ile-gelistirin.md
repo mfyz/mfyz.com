@@ -1,9 +1,10 @@
 ---
-title: "PHPStorm, PyCharm veya RubyMine kullanıcıları, projenizi veritabanı entegrasyonu ile geliştirin"
+title: "PHPStorm, PyCharm veya RubyMine Kullanıcıları: Projenizi Veritabanı Entegrasyonu ile Geliştirin"
 slug: phpstorm-pycharm-veya-rubymine-kullanicilari-projenizi-veritabani-entegrasyonu-ile-gelistirin
 date: 2012-12-12
+description: "JetBrains IDE'leri PHPStorm, PyCharm ve RubyMine'ın gelişmiş veritabanı entegrasyonu özellikleri tanıtılıyor. SQL yazarken kod tamamlama ve doğrudan kod içinden sorgu çalıştırma gibi yetenekler vurgulanıyor."
 url: http://mfyz.com/tr/phpstorm-pycharm-veya-rubymine-kullanicilari-projenizi-veritabani-entegrasyonu-ile-gelistirin/
-tags: ["editor","ide","jetbrains","mssql","mysql","pgsql","php","phpstorm","postgresql","pycharm","python","ruby","rubymine","sql"]
+tags: ["JetBrains", "PHPStorm", "PyCharm", "RubyMine", "IDE", "Veritabanı Entegrasyonu", "SQL", "Yazılım Geliştirme", "Kod Editörü"]
 category: PHP
 migration: {"wpId":323,"wpPostDate":"2012-12-12T01:02:22.000Z"}
 lang: tr

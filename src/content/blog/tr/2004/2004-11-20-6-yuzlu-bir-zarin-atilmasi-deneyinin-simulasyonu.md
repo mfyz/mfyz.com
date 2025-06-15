@@ -2,8 +2,9 @@
 title: "6 yüzlü bir zarın atılması deneyinin simülasyonu"
 slug: 6-yuzlu-bir-zarin-atilmasi-deneyinin-simulasyonu
 date: 2004-11-20
+description: "QBasic dilinde, 6 yüzlü bir zarın belirli sayıda atılmasını simüle eden ve her bir yüzün kaç kez geldiğini sayan bir program. Bu örnek, rastgele sayı üretimi ve istatistiksel simülasyonların temellerini gösterir."
 url: http://mfyz.com/tr/6-yuzlu-bir-zarin-atilmasi-deneyinin-simulasyonu/
-tags: ["Basic","örnek kod","simulasyon","zar"]
+tags: ["Basic", "QBasic", "örnek kod", "simulasyon", "zar", "programlama", "algoritma", "istatistik", "olasılık", "rastgele sayı"]
 category: Basic
 migration: {"wpId":57,"wpPostDate":"2004-11-20T08:36:29.000Z"}
 lang: tr

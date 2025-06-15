@@ -2,8 +2,9 @@
 title: "Windows XP'de performans artışı sağlamak"
 slug: windows-xpde-performans-artisi-saglamak
 date: 2004-10-13
+description: "Windows XP işletim sisteminde kayıt defteri (registry) üzerinden yapılabilecek basit değişiklikler ile sistem performansını artırmanın yöntemleri."
 url: http://mfyz.com/tr/windows-xpde-performans-artisi-saglamak/
-tags: ["OS","performans","windows","xp"]
+tags: ["OS","performans","windows","xp","registry","optimizasyon"]
 category: OS
 migration: {"wpId":100,"wpPostDate":"2004-10-13T04:33:21.000Z"}
 lang: tr

@@ -1,9 +1,10 @@
 ---
 title: "MacOSX'de Mail.app (Apple Mail) istemcisinde html imza ayarlamak"
+description: "MacOSX'teki Mail.app (Apple Mail) uygulamasında HTML e-posta imzası ayarlamak için adım adım bir rehber. Safari kullanarak webarchive oluşturma ve Mail.app ayarları."
 slug: macosxde-mailapp-apple-mail-istemcisinde-html-imza-ayarlamak
 date: 2009-07-03
 url: http://mfyz.com/tr/macosxde-mailapp-apple-mail-istemcisinde-html-imza-ayarlamak/
-tags: ["apple","eposta","html","imza","mail","mail.app","OS","signature"]
+tags: ["mail.app", "html imza", "macosx", "apple mail", "e-posta ayarları"]
 category: OS
 migration: {"wpId":144,"wpPostDate":"2009-07-03T04:21:01.000Z"}
 lang: tr

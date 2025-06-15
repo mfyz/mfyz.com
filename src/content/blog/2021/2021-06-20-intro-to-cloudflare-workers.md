@@ -1,11 +1,20 @@
 ---
 title: "Intro to Cloudflare Workers"
+description: "An introduction to Cloudflare Workers is provided, highlighting its capabilities as a distributed, serverless platform for building lightweight back-end components and serving dynamic content. The benefits, free tier, and related tools like Flareact are also discussed."
 slug: intro-to-cloudflare-workers
 date: 2021-06-20
 url: https://mfyz.com/?p=678
-tags: ["cdn","dns","Geekin'","workers"]
+tags:
+  [
+    "cloudflare workers",
+    "serverless",
+    "edge computing",
+    "cdn",
+    "flareact",
+    "web development",
+  ]
 category: Geekin'
-migration: {"wpId":678,"wpPostDate":"2021-06-20T14:08:51.000Z"}
+migration: { "wpId": 678, "wpPostDate": "2021-06-20T14:08:51.000Z" }
 ---
 
 ![maxresdefault.jpg](/images/archive/en/2021/06/image-1.png)

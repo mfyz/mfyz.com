@@ -1,11 +1,12 @@
 ---
 title: "Using Heroku for a quick development environment"
+description: "Heroku has changed how I create and deploy apps. In this post, I explain how I use its CLI and Git integration for quick development and deployment, supporting languages like PHP and Node.js."
 slug: using-heroku-for-a-quick-development-environment
 date: 2019-05-26
 url: https://mfyz.com/?p=318
-tags: ["cli","deployment","heroku","nodejs","php","Programming"]
+tags: ["heroku", "deployment", "PaaS", "development environment", "cli", "git"]
 category: Programming
-migration: {"wpId":318,"wpPostDate":"2019-05-26T13:00:47.000Z"}
+migration: { "wpId": 318, "wpPostDate": "2019-05-26T13:00:47.000Z" }
 ---
 
 Heroku is an industry-changing service that is established in 2007. It transformed how developers create and deploy apps today. With its add-ons marketplace, Heroku became the development hub that you can easily enable 3rd party cloud services. These services can be in many different categories that a web application may require. From database services, caching, image processing to mail delivery and so on...
@@ -71,8 +72,8 @@ I highly suggest all developers adapt Heroku in their workflow, at least for the
 
 I have created some boilerplate repositories in the past:
 
-*   [https://github.com/mfyz/heroku-php-helloworld](https://github.com/mfyz/heroku-php-helloworld)
-*   [https://github.com/mfyz/heroku-nodejs-express-helloworld](https://github.com/mfyz/heroku-nodejs-express-helloworld)
-*   [https://github.com/mfyz/heroku-cloudinary-uploads-example](https://github.com/mfyz/heroku-cloudinary-uploads-example)
-*   [https://github.com/mfyz/heroku-memcachier-example](https://github.com/mfyz/heroku-memcachier-example)
-*   [https://github.com/mfyz/heroku-queue-worker-example](https://github.com/mfyz/heroku-queue-worker-example)
+- [https://github.com/mfyz/heroku-php-helloworld](https://github.com/mfyz/heroku-php-helloworld)
+- [https://github.com/mfyz/heroku-nodejs-express-helloworld](https://github.com/mfyz/heroku-nodejs-express-helloworld)
+- [https://github.com/mfyz/heroku-cloudinary-uploads-example](https://github.com/mfyz/heroku-cloudinary-uploads-example)
+- [https://github.com/mfyz/heroku-memcachier-example](https://github.com/mfyz/heroku-memcachier-example)
+- [https://github.com/mfyz/heroku-queue-worker-example](https://github.com/mfyz/heroku-queue-worker-example)

@@ -2,8 +2,9 @@
 title: "PingSitemap: Yeni sayfalarınız için arama motorlarını haberdar edin"
 slug: pingsitemap-yeni-sayfalariniz-icin-arama-motorlarini-haberdar-edin
 date: 2010-03-25
+description: "Arama motorlarının ping servisleri kullanılarak sitemap.xml dosyasının güncellendiğini bildirme ve yeni içeriklerin hızlıca indekslenmesini sağlama yöntemleri PHP koduyla anlatılıyor."
 url: http://mfyz.com/tr/pingsitemap-yeni-sayfalariniz-icin-arama-motorlarini-haberdar-edin/
-tags: ["google","ping","seo","sitemap","sitemap.xml","Sunucu Programlama"]
+tags: ["SEO", "sitemap", "ping", "arama motorları", "indeksleme", "PHP", "Sunucu Programlama"]
 category: Sunucu Programlama
 migration: {"wpId":154,"wpPostDate":"2010-03-25T15:22:16.000Z"}
 lang: tr

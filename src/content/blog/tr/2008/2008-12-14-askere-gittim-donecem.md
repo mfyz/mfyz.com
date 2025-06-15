@@ -2,8 +2,9 @@
 title: "Askere gittim dönecem"
 slug: askere-gittim-donecem
 date: 2008-12-14
+description: "Fatih, kısa dönem havacı olarak Kütahya'da askerlik görevine başladığını duyuruyor. 5-6 ay sonra 'muhteşem bir dönüş' vaadiyle okuyucularına veda ediyor."
 url: http://mfyz.com/tr/askere-gittim-donecem/
-tags: ["asker","havacı","Hayat"]
+tags: ["askerlik", "vatani görev", "kısa dönem", "havacı", "Kütahya", "kişisel", "Hayat", "ara verme"]
 category: Hayat
 migration: {"wpId":212,"wpPostDate":"2008-12-14T08:17:58.000Z"}
 lang: tr

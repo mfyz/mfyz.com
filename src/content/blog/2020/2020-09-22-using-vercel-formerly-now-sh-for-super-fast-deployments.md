@@ -1,11 +1,21 @@
 ---
 title: "Using Vercel (formerly Zeit/now.sh) for super-fast deployments"
+description: "The benefits of using Vercel (formerly Zeit/now.sh) for rapid web application deployments are discussed, covering its command-line interface, Git integration for automatic deployments, and serverless API features."
 slug: using-vercel-formerly-now-sh-for-super-fast-deployments
 date: 2020-09-22
 url: https://mfyz.com/?p=543
-tags: ["Other"]
+tags:
+  [
+    "vercel",
+    "now.sh",
+    "deployment",
+    "serverless",
+    "ci/cd",
+    "web development",
+    "static hosting",
+  ]
 category: Other
-migration: {"wpId":543,"wpPostDate":"2020-09-22T20:00:10.000Z"}
+migration: { "wpId": 543, "wpPostDate": "2020-09-22T20:00:10.000Z" }
 ---
 
 ![](/images/archive/en/2020/09/git-push.png)
@@ -51,9 +61,9 @@ module.exports = (req, res) => {
   res.json({
     body: req.body,
     query: req.query,
-    cookies: req.cookies
-  })
-}
+    cookies: req.cookies,
+  });
+};
 ```
 
 save this as echo.js under api folder in your project and you have yourself an endpoint :)

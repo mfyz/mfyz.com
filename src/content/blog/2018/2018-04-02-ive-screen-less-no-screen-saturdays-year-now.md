@@ -1,11 +1,19 @@
 ---
 title: "I've been doing Screen-less (no screen) Saturdays more than a year now"
+description: "For over a year, I've embraced screen-less Saturdays. I'll share why I find it vital for digital well-being, its impact on my daily life, and the creative benefits I've discovered from this practice."
 slug: ive-screen-less-no-screen-saturdays-year-now
 date: 2018-04-02
 url: https://mfyz.com/?p=232
-tags: ["Life"]
+tags:
+  [
+    "digital detox",
+    "screen-free",
+    "mindfulness",
+    "work-life balance",
+    "technology",
+  ]
 category: Life
-migration: {"wpId":232,"wpPostDate":"2018-04-02T17:00:58.000Z"}
+migration: { "wpId": 232, "wpPostDate": "2018-04-02T17:00:58.000Z" }
 ---
 
 ![](/images/archive/en/2020/05/no_screens_classic_round_sticker-r8b6167129588449f969019c8c377d9ae_v9waf_8byvr_324-300x300_dokxat.jpg?resize=150%2C150&ssl=1&cld_params=h_300,w_300,x_0,y_0/h_150,w_150)I firmly believe screen-less or no screen time is a necessary concept for digital dwellers. Screen-less / No screen is very much like sabbatical practice where you don't interact with technology as much, or to be more specific don't interact with screens.
@@ -50,13 +58,13 @@ When I first did no screen, without realizing, I got into a situation that I boo
 
 A lot of good came out of no screen days:
 
-*   read much more,
-*   workout in many different ways, running, yoga, biking, hiking,
-*   farmers market, vintage shop, random exploration of my neighborhood,
-*   having less serious plans and schedule for Saturdays,
-*   catching up with friends more,
-*   meditating,
-*   writing, life planning
+- read much more,
+- workout in many different ways, running, yoga, biking, hiking,
+- farmers market, vintage shop, random exploration of my neighborhood,
+- having less serious plans and schedule for Saturdays,
+- catching up with friends more,
+- meditating,
+- writing, life planning
 
 It's been over a year now and it became part of my weekly routine.
 

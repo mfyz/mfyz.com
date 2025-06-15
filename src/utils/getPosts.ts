@@ -138,10 +138,7 @@ export async function getRelatedPosts({
   // First get posts with the same language, excluding the current post
   let relatedPosts = await getPosts({
     language,
-    excludeSlug: slug,
-    // Use a larger limit initially if we're going to filter by tags
-    limit:
-      requireMatchingTag && tags.length > 0 ? Math.max(limit * 3, 20) : limit,
+    excludeSlug: slug
   });
 
   // Filter by matching tags if tags are provided and matching is required

@@ -2,8 +2,9 @@
 title: "PHP'de kontrol yapıları (if,else if,switch/case)"
 slug: phpde-kontrol-yapilari-ifelse-if-switch-case
 date: 2004-12-04
+description: "PHP'de program akışını yönetmek için kullanılan `if`, `else`, `elseif` ve `switch/case` gibi temel kontrol yapılarının nasıl çalıştığını ve kullanıldığını anlatan bir rehber. Koşullu ifadelerle dinamik betikler oluşturmayı öğrenin."
 url: http://mfyz.com/tr/phpde-kontrol-yapilari-ifelse-if-switch-case/
-tags: ["else","elseif","if","kontrol yapıları","PHP","switch","switch case"]
+tags: ["else", "elseif", "if", "kontrol yapıları", "PHP", "switch", "switch case", "programlama", "web geliştirme", "koşullu ifadeler", "algoritma"]
 category: PHP
 migration: {"wpId":69,"wpPostDate":"2004-12-04T05:43:23.000Z"}
 lang: tr

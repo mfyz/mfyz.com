@@ -1,9 +1,10 @@
 ---
 title: "Sosyal mfyz.com: maksimum kullanıcı etkileşimi?"
+description: "mfyz.com'u daha sosyal ve etkileşimli bir platforma dönüştürme planları. Facebook Connect, oylama sistemleri ve topluluk katılımı üzerine düşünceler."
 slug: sosyal-mfyzcom-maksimum-kullanici-etkilesimi
 date: 2009-09-29
 url: http://mfyz.com/tr/sosyal-mfyzcom-maksimum-kullanici-etkilesimi/
-tags: ["etkileşim","facebook","fbconnect","interaction","mfyz","mfyz.com","social","v0.8","web 2.0"]
+tags: ["mfyz.com", "sosyal medya", "kullanıcı etkileşimi", "web 2.0", "topluluk yönetimi"]
 category: mfyz.com
 migration: {"wpId":230,"wpPostDate":"2009-09-29T03:09:14.000Z"}
 lang: tr

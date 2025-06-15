@@ -1,9 +1,10 @@
 ---
-title: '"Session" v.s. "Cookie"'
+title: "Session ve Cookie Karşılaştırması"
 slug: session-vs-cookie
 date: 2005-06-03
+description: "PHP'de session (oturum) ve cookie (çerez) kavramlarını, farklarını ve kullanım alanlarını öğrenin. Kullanıcı bilgilerini saklama yöntemleri, güvenlik ve en iyi uygulamalar üzerine bir inceleme."
 url: http://mfyz.com/tr/session-vs-cookie/
-tags: ["cookie","PHP","session"]
+tags: ["PHP", "session", "cookie", "oturum yönetimi", "çerezler", "web geliştirme", "güvenlik", "Sunucu Programlama"]
 category: PHP
 migration: {"wpId":77,"wpPostDate":"2005-06-03T06:45:26.000Z"}
 lang: tr

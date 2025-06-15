@@ -1,9 +1,10 @@
 ---
 title: "Benim dalgam senin dalganı döver!"
+description: "Google Wave'in çıkışı ve yarattığı hayal kırıklığı üzerine bir eleştiri. Kullanıcı dostu olmaması ve Friendfeed gibi akıcı bir yapıya sahip olmaması eleştiriliyor."
 slug: benim-dalgam-senin-dalgani-dover
 date: 2009-11-16
 url: http://mfyz.com/tr/benim-dalgam-senin-dalgani-dover/
-tags: ["Diğer","google","media","service","social","wave"]
+tags: ["google wave", "sosyal medya", "teknoloji eleştirisi", "kullanıcı deneyimi", "google"]
 category: Diğer
 migration: {"wpId":237,"wpPostDate":"2009-11-16T21:05:30.000Z"}
 lang: tr

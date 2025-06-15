@@ -2,8 +2,9 @@
 title: "@font-face kullanmak oldukça güvenli"
 slug: font-face-kullanmak-oldukca-guvenli
 date: 2010-12-05
+description: "Web sayfalarında özel font kullanmak için CSS `@font-face` yönteminin tarayıcı desteği, Cufon gibi alternatiflere göre avantajları, farklı font formatları (EOT, SVG, TTF, OTF) ve Font Squirrel gibi kaynaklar."
 url: http://mfyz.com/tr/font-face-kullanmak-oldukca-guvenli/
-tags: ["Arayüz Programlama","browsers","css3","font-face","support"]
+tags: ["@font-face", "web fontları", "tipografi", "CSS", "tarayıcı desteği", "Font Squirrel", "Arayüz Programlama", "web tasarımı"]
 category: Arayüz Programlama
 migration: {"wpId":263,"wpPostDate":"2010-12-05T04:50:12.000Z"}
 lang: tr

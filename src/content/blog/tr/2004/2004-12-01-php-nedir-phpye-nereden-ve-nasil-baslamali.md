@@ -2,8 +2,9 @@
 title: "PHP nedir? PHP'ye nereden ve nasıl başlamalı?"
 slug: php-nedir-phpye-nereden-ve-nasil-baslamali
 date: 2004-12-01
+description: "PHP'nin ne olduğunu, sunucu taraflı bir betik dili olarak nasıl çalıştığını ve web geliştirmede neden önemli olduğunu anlatan bir başlangıç rehberi. PHP öğrenmeye nereden ve nasıl başlanacağına dair pratik ipuçları ve yöntemler."
 url: http://mfyz.com/tr/php-nedir-phpye-nereden-ve-nasil-baslamali/
-tags: ["baslangic","nasil","nedir","php"]
+tags: ["baslangic", "nasil", "nedir", "php", "web geliştirme", "programlama", "sunucu taraflı", "betik dili", "öğrenme"]
 category: PHP
 migration: {"wpId":42,"wpPostDate":"2004-12-01T22:31:33.000Z"}
 lang: tr

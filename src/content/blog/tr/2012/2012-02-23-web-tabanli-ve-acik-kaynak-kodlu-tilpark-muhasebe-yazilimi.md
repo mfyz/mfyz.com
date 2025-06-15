@@ -2,8 +2,9 @@
 title: "Web Tabanlı ve Açık Kaynak Kodlu Tilpark Muhasebe Yazılımı"
 slug: web-tabanli-ve-acik-kaynak-kodlu-tilpark-muhasebe-yazilimi
 date: 2012-02-23
+description: "Açık kaynak kodlu, PHP tabanlı web tabanlı muhasebe yazılımı Tilpark tanıtılıyor. Projenin potansiyeli ve daha fazla geliştiriciye olan ihtiyacına değiniliyor."
 url: http://mfyz.com/tr/web-tabanli-ve-acik-kaynak-kodlu-tilpark-muhasebe-yazilimi/
-tags: ["account","Diğer","muhasebe","open source","php","web app"]
+tags: ["muhasebe yazılımı", "açık kaynak", "PHP", "Tilpark", "web uygulaması", "girişim", "Diğer"]
 category: Diğer
 migration: {"wpId":300,"wpPostDate":"2012-02-23T20:49:15.000Z"}
 lang: tr

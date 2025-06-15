@@ -1,9 +1,10 @@
 ---
 title: "Kendi portfolyo Twitter temanızı tasarlayın"
+description: "Twitter profil sayfanızı etkili bir portfolyoya dönüştürmek için kendi arka plan temanızı nasıl tasarlayabileceğinize dair ipuçları ve yöntemler."
 slug: kendi-portfolyo-twitter-temanizi-tasarlayin
 date: 2009-05-25
 url: http://mfyz.com/tr/kendi-portfolyo-twitter-temanizi-tasarlayin/
-tags: ["artalan","background","Diğer","portfolio","reklam","twitter"]
+tags: ["twitter", "profil tasarımı", "portfolyo", "kişisel markalaşma", "sosyal medya"]
 category: Diğer
 migration: {"wpId":143,"wpPostDate":"2009-05-25T20:41:29.000Z"}
 lang: tr

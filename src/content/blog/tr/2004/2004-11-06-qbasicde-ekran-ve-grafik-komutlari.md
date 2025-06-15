@@ -2,8 +2,9 @@
 title: "QBasic'de ekran ve grafik komutları"
 slug: qbasicde-ekran-ve-grafik-komutlari
 date: 2004-11-06
+description: "QBasic programlama dilinde ekran yönetimi ve grafik çizimi için kullanılan PRINT, INPUT, SPACE, LOCATE gibi temel komutların kullanımı ve örnekleri. Ekranda konum belirleme ve grafik çizim teknikleri hakkında kapsamlı bir rehber."
 url: http://mfyz.com/tr/qbasicde-ekran-ve-grafik-komutlari/
-tags: ["Basic","ekran","grafik çizim"]
+tags: ["Basic","QBasic","ekran","grafik","programlama","komutlar"]
 category: Basic
 migration: {"wpId":46,"wpPostDate":"2004-11-06T07:57:57.000Z"}
 lang: tr

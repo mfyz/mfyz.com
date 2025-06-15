@@ -1,10 +1,11 @@
 ---
-title: "Bir Türk internet faciası"
+title: "Bir Türk İnternet Faciası"
 slug: bir-turk-internet-faciasi
 date: 2012-12-28
+description: "Yazar, yurt dışından Türk kredi kartıyla online ödeme yapmaya çalışırken 3D Secure zorunluluğu nedeniyle yaşadığı internet faciasını ve Türk bankalarının esnek olmayan güvenlik katmanlarını eleştiriyor. Türkiye'deki servislerin global kullanıcıları yeterince dikkate almadığı vurgulanıyor."
 url: http://mfyz.com/tr/bir-turk-internet-faciasi/
-tags: []
-category: 
+tags: ["3D Secure", "Online Ödeme", "Banka Güvenliği", "Kullanıcı Deneyimi", "Yurt Dışı Yaşam", "Türk Bankaları", "Garanti Bankası", "İnternet Bankacılığı", "E-ticaret", "Global Kullanılabilirlik"]
+category: Diğer
 migration: {"wpId":340,"wpPostDate":"2012-12-28T06:00:00.000Z"}
 lang: tr
 ---

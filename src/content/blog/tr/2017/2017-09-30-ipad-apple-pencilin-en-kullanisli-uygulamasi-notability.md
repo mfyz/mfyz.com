@@ -1,9 +1,10 @@
 ---
-title: "iPad ve Apple Pencil'in en kullanisli uygulamasi Notability"
+title: "iPad ve Apple Pencil'in En Kullanışlı Uygulaması: Notability"
+description: "iPad Pro ve Apple Pencil ile Notability uygulamasının kullanışlılığı üzerine bir inceleme. Yazar, dijital not alma, çizim ve fikir üretme deneyimlerini ve yeni iPad ekran teknolojisinin etkilerini paylaşıyor."
 slug: ipad-apple-pencilin-en-kullanisli-uygulamasi-notability
 date: 2017-09-30
 url: http://mfyz.com/tr/?p=1396
-tags: ["OS"]
+tags: ["ipad pro", "apple pencil", "notability", "dijital not alma", "çizim uygulaması", "ios", "teknoloji incelemesi"]
 category: OS
 migration: {"wpId":1396,"wpPostDate":"2017-09-30T06:31:13.000Z"}
 lang: tr

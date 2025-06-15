@@ -1,9 +1,10 @@
 ---
-title: "PHP dosyanıza resim (dosya) gömmek"
+title: "PHP Dosyanıza Resim veya Dosya Gömme Tekniği (Base64)"
 slug: php-dosyaniza-resim-dosya-gommek
 date: 2008-02-18
+description: "PHP dosyanıza küçük resim veya dosyaları base64 encoding ile nasıl gömebilirsiniz? Tek dosya projeler için ideal olan bu yöntem, binary veriyi ASCII'ye çevirerek PHP içinde saklamayı ve dinamik olarak sunmayı açıklar."
 url: http://mfyz.com/tr/php-dosyaniza-resim-dosya-gommek/
-tags: ["base64","decode","dosya","embed","encode","php"]
+tags: ["PHP", "base64", "dosya gömme", "web geliştirme", "programlama", "eğitim", "kodlama teknikleri", "data URI", "inline image", "tek dosya proje"]
 category: PHP
 migration: {"wpId":136,"wpPostDate":"2008-02-18T21:44:08.000Z"}
 lang: tr

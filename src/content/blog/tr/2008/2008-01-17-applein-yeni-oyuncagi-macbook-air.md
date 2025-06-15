@@ -2,8 +2,9 @@
 title: "Apple'ın yeni oyuncağı Macbook Air"
 slug: applein-yeni-oyuncagi-macbook-air
 date: 2008-01-17
+description: "Apple'ın Macworld 2008'de tanıttığı, dünyanın en ince dizüstü bilgisayarı olan MacBook Air hakkındaki ilk izlenimler. Steve Jobs'un ikonik sunumu ve ürünün getirdiği yenilikler."
 url: http://mfyz.com/tr/applein-yeni-oyuncagi-macbook-air/
-tags: ["apple","Diğer","ince","laptop","macbook","macbook air","notebook"]
+tags: ["Apple", "MacBook Air", "Steve Jobs", "Macworld", "dizüstü bilgisayar", "teknoloji"]
 category: Diğer
 migration: {"wpId":168,"wpPostDate":"2008-01-17T02:59:54.000Z"}
 lang: tr

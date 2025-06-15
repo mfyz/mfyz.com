@@ -8,6 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "tunnel": "ngrok http 4321 --response-header-add \"Access-Control-Allow-Origin: *\"",
     "test": "vitest run --coverage",
     "test:watch": "vitest --watch",
     "test:coverage": "vitest run --coverage",

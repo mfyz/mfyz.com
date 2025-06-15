@@ -1,9 +1,10 @@
 ---
-title: "Sayfamıza “Social Bookmarking Buton” koyalım"
+title: "Sayfamıza Sosyal İmleme (Social Bookmarking) Butonları Ekleyelim"
 slug: sayfamiza-social-bookmarking-buton-koyalim
 date: 2008-02-11
+description: "Web sayfalarınıza Delicious, Digg, Reddit gibi popüler sosyal imleme sitelerine kolayca içerik eklemeyi sağlayan butonların nasıl ekleneceğini öğrenin. JavaScript ve AddThis servisinin kullanımı."
 url: http://mfyz.com/tr/sayfamiza-social-bookmarking-buton-koyalim/
-tags: ["addthis","boomark","del.icio.us","Diğer","digg","eklebunu","furl","reddit","social","technorati"]
+tags: ["sosyal imleme", "web geliştirme", "JavaScript", "AddThis", "Delicious", "Digg", "Reddit", "Technorati", "site trafiği", "SEO", "web araçları", "eğitim"]
 category: Diğer
 migration: {"wpId":131,"wpPostDate":"2008-02-11T02:19:39.000Z"}
 lang: tr

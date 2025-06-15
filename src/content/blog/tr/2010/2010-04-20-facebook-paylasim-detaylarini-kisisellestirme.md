@@ -2,8 +2,9 @@
 title: "Facebook paylaşım detaylarını kişiselleştirme"
 slug: facebook-paylasim-detaylarini-kisisellestirme
 date: 2010-04-20
+description: "Web sayfalarının Facebook'ta paylaşılırken nasıl görüneceğini (başlık, açıklama, görsel) meta etiketleri (title, description, image_src) kullanarak özelleştirme yöntemleri anlatılıyor."
 url: http://mfyz.com/tr/facebook-paylasim-detaylarini-kisisellestirme/
-tags: ["Arayüz Programlama","facebook","html","media","meta","paylaşım","share","social"]
+tags: ["Facebook", "sosyal medya", "meta etiketleri", "Open Graph", "paylaşım", "web geliştirme", "Arayüz Programlama"]
 category: Arayüz Programlama
 migration: {"wpId":155,"wpPostDate":"2010-04-20T19:27:24.000Z"}
 lang: tr

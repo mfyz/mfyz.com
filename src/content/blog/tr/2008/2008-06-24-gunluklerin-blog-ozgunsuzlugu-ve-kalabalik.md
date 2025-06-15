@@ -1,9 +1,10 @@
 ---
-title: "Günlüklerin (blog) özgün(süz)lüğü ve kalabalık"
+title: "Blogların Özgünlük Sorunu ve Artan İçerik Kalabalığı Üzerine"
 slug: gunluklerin-blog-ozgunsuzlugu-ve-kalabalik
 date: 2008-06-24
+description: "Blog dünyasında artan özgün olmayan içerik, kopya yazılar ve RSS akışlarındaki bilgi kirliliği üzerine eleştirel bir yazı. Kaliteli ve özgün içeriğin önemi vurgulanıyor."
 url: http://mfyz.com/tr/gunluklerin-blog-ozgunsuzlugu-ve-kalabalik/
-tags: ["blog","copy-paste","Diğer","günlük","rss"]
+tags: ["blog", "özgünlük", "içerik kalitesi", "RSS", "internet kültürü", "kopya içerik", "blogosfer", "eleştiri", "dijital yayıncılık"]
 category: Diğer
 migration: {"wpId":195,"wpPostDate":"2008-06-24T23:42:58.000Z"}
 lang: tr

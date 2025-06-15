@@ -1,9 +1,10 @@
 ---
 title: "Twitter istatistikleri (Ağustos 09)"
+description: "Ağustos 2009 itibarıyla Twitter kullanım istatistikleri üzerine detaylı bir araştırma. Kullanıcı demografisi, aktivite oranları, içerik kaynakları ve Türkiye özelindeki durum."
 slug: twitter-istatistikleri-agustos-09
 date: 2009-09-03
 url: http://mfyz.com/tr/twitter-istatistikleri-agustos-09/
-tags: ["Diğer","istatistik","medya","social","sosyal","twitter"]
+tags: ["twitter", "sosyal medya", "istatistikler", "kullanıcı analizi", "ağustos 2009"]
 category: Diğer
 migration: {"wpId":225,"wpPostDate":"2009-09-03T22:04:33.000Z"}
 lang: tr

@@ -2,8 +2,9 @@
 title: "Temel JavaScript (5) - Küçük uygulamalar"
 slug: temel-javascript-5-kucuk-uygulamalar
 date: 2005-01-25
+description: "Temel JavaScript dersleri serisinin beşinci bölümü. Bu rehber, e-posta formatı kontrolü, basit rollover efektleri ve rastgele sayı üreterek resim değiştirme gibi pratik JavaScript uygulamalarını örneklerle açıklıyor."
 url: http://mfyz.com/tr/temel-javascript-5-kucuk-uygulamalar/
-tags: ["Arayüz Programlama","example","javascript","js","örnek"]
+tags: ["JavaScript", "JS", "Arayüz Programlama", "örnek uygulamalar", "e-posta kontrolü", "rollover efekti", "web geliştirme", "javascript dersleri"]
 category: Arayüz Programlama
 migration: {"wpId":122,"wpPostDate":"2005-01-25T05:00:00.000Z"}
 lang: tr

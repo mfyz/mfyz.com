@@ -1,9 +1,10 @@
 ---
-title: "javascript alert fancy"
+title: "JavaScript ile Daha Şık Uyarı Kutuları (Fancy Alert)"
 slug: javascript-alert-fancy
 date: 2012-09-20
+description: "Standart JavaScript alert() fonksiyonunun kısıtlamalarına alternatif olarak, jQuery ve Fancybox eklentisi kullanarak nasıl daha zengin içerikli, HTML destekli ve özelleştirilebilir uyarı (alert) kutuları oluşturulabileceği anlatılıyor."
 url: http://mfyz.com/tr/javascript-alert-fancy/
-tags: ["alert","Arayüz Programlama","box","fancy","javascript","jquery","js","lightbox","message","modal","plugin"]
+tags: ["JavaScript", "jQuery", "Fancybox", "Alert Kutusu", "Modal Pencere", "Lightbox", "Kullanıcı Arayüzü", "Web Geliştirme", "Plugin"]
 category: Arayüz Programlama
 migration: {"wpId":317,"wpPostDate":"2012-09-20T01:35:45.000Z"}
 lang: tr

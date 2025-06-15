@@ -1,9 +1,10 @@
 ---
 title: "Twistory ile twitter geçmişinizi takviminize yedekleyin"
+description: "Twistory.net, Twitter geçmişinizi iCal formatında takviminize aktararak yedeklemenizi sağlayan bir araçtır. Tweetlerinizi tarihe göre düzenleyebilirsiniz."
 slug: twistory-ile-twitter-gecmisinizi-takviminize-yedekleyin
 date: 2009-12-27
 url: http://mfyz.com/tr/twistory-ile-twitter-gecmisinizi-takviminize-yedekleyin/
-tags: ["backup","calendar","Diğer","history","ical","media","social","tool","twitter","yedek"]
+tags: ["twistory", "twitter", "yedekleme", "takvim", "ical"]
 category: Diğer
 migration: {"wpId":243,"wpPostDate":"2009-12-27T07:07:38.000Z"}
 lang: tr

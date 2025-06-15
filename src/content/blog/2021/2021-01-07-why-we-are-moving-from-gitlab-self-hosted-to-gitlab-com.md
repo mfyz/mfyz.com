@@ -1,11 +1,12 @@
 ---
 title: "Why we are moving from GitLab self-hosted to gitlab.com"
+description: "This post outlines the rationale behind migrating from a self-hosted GitLab instance to the gitlab.com cloud service. It covers the benefits of reduced maintenance and the smooth transition experience."
 slug: why-we-are-moving-from-gitlab-self-hosted-to-gitlab-com
 date: 2021-01-07
 url: https://mfyz.com/?p=616
-tags: ["Programming"]
+tags: ["gitlab", "self-hosting", "cloud services", "ci-cd", "devops"]
 category: Programming
-migration: {"wpId":616,"wpPostDate":"2021-01-07T22:09:45.000Z"}
+migration: { "wpId": 616, "wpPostDate": "2021-01-07T22:09:45.000Z" }
 ---
 
 ![gitlab ci-cd test deploy illustration](/images/archive/en/2021/01/image.png)

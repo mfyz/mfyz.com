@@ -2,8 +2,9 @@
 title: "/etc/issue ile konsol girişlerini çılgınlaştıralım!"
 slug: etcissue-ile-konsol-girislerini-cilginlastiralim
 date: 2004-12-01
+description: "Linux sistemlerde konsol giriş ekranını (login prompt) `/etc/issue` dosyasını düzenleyerek nasıl kişiselleştirebileceğinizi öğrenin. Bu rehber, tarih, saat, çekirdek sürümü gibi dinamik bilgileri gösteren özel kodları nasıl kullanacağınızı anlatıyor."
 url: http://mfyz.com/tr/etcissue-ile-konsol-girislerini-cilginlastiralim/
-tags: ["giris","issue","konsol","linux","login","OS"]
+tags: ["giris", "issue", "konsol", "linux", "login", "OS", "terminal", "sistem yönetimi", "kişiselleştirme", "etc"]
 category: OS
 migration: {"wpId":63,"wpPostDate":"2004-12-01T05:46:29.000Z"}
 lang: tr

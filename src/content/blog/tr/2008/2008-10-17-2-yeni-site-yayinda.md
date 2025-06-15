@@ -1,9 +1,10 @@
 ---
-title: "2 yeni site yayında"
+title: "İki Yeni Web Sitesi Yayında: Oltayagelme.com ve LKD E-posta Listeleri Sayfası"
 slug: 2-yeni-site-yayinda
 date: 2008-10-17
+description: "İki yeni web projesini duyuruyorum: Türkiye'deki phishing (yemleme) saldırılarına karşı bir URL veritabanı olan Oltayagelme.com ve Linux Kullanıcıları Derneği (LKD) için yenilenen e-posta listeleri bilgilendirme sayfası."
 url: http://mfyz.com/tr/2-yeni-site-yayinda/
-tags: ["Diğer","liste","lkd","oltayagelme","phish"]
+tags: ["web projeleri", "Oltayagelme.com", "phishing", "yemleme", "güvenlik", "LKD", "Linux Kullanıcıları Derneği", "e-posta listeleri", "web tasarımı", "Diğer"]
 category: Diğer
 migration: {"wpId":210,"wpPostDate":"2008-10-17T07:19:56.000Z"}
 lang: tr

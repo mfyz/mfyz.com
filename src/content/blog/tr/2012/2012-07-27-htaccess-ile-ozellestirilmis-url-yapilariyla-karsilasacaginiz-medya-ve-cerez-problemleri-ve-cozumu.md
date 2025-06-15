@@ -2,8 +2,9 @@
 title: "htaccess ile özelleştirilmiş url yapılarıyla karşılaşacagınız medya ve çerez problemleri ve çözümü"
 slug: htaccess-ile-ozellestirilmis-url-yapilariyla-karsilasacaginiz-medya-ve-cerez-problemleri-ve-cozumu
 date: 2012-07-27
+description: ".htaccess ve mod_rewrite ile özel URL yapıları kullanırken karşılaşılan medya (CSS, JS, resim) yolları ve çerez (cookie) erişim sorunları ve bu sorunların pratik çözümleri anlatılıyor."
 url: http://mfyz.com/tr/htaccess-ile-ozellestirilmis-url-yapilariyla-karsilasacaginiz-medya-ve-cerez-problemleri-ve-cozumu/
-tags: ["Arayüz Programlama","assets","cookie","fix","htaccess","html","javascript","mod_rewrite","php","schema","url"]
+tags: [".htaccess", "mod_rewrite", "URL yönlendirme", "SEO dostu URL", "medya yolları", "çerez yönetimi", "web geliştirme", "PHP", "JavaScript"]
 category: Arayüz Programlama
 migration: {"wpId":310,"wpPostDate":"2012-07-27T04:11:56.000Z"}
 lang: tr

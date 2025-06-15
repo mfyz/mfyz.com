@@ -1,9 +1,10 @@
 ---
-title: "Tek dosyalı projeler (siteler) üretmek"
+title: "PHP ile Tek Dosyalı Projeler ve Siteler Üretmek"
 slug: tek-dosyali-projeler-siteler-uretmek
 date: 2008-02-18
+description: "PHP kullanarak tüm içeriği ve işlevselliği tek bir dosyada barındıran web siteleri veya modüller nasıl oluşturulur? GET parametreleri, çıktı tamponlama (output buffering) ve heredoc sözdizimi kullanımı."
 url: http://mfyz.com/tr/tek-dosyali-projeler-siteler-uretmek/
-tags: ["NULL","PHP"]
+tags: ["PHP", "web geliştirme", "programlama", "tek dosya proje", "site yapımı", "eğitim", "kodlama teknikleri", "output buffering"]
 category: PHP
 migration: {"wpId":135,"wpPostDate":"2008-02-18T21:43:41.000Z"}
 lang: tr

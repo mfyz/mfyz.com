@@ -1,9 +1,10 @@
 ---
-title: "Eski Rss entrylerinin hepsinin gorunmesi"
+title: "Eski RSS Kayıtlarının Tekrar Görünmesi Sorunu"
+description: "PHPTAL ile RSS akışlarını render etmeye başladıktan sonra tarihlerin oynaması nedeniyle Google Reader'da eski tüm kayıtların yeniden görünmesi sorununa dair kısa bir bilgilendirme."
 slug: eski-rss-entrylerinin-hepsinin-gorunmesi
 date: 2011-07-25
 url: http://mfyz.com/tr/eski-rss-entrylerinin-hepsinin-gorunmesi/
-tags: ["bug","mfyz.com","rss"]
+tags: ["rss", "hata", "mfyz.com", "google reader", "phptal"]
 category: mfyz.com
 migration: {"wpId":275,"wpPostDate":"2011-07-25T04:03:09.000Z"}
 lang: tr

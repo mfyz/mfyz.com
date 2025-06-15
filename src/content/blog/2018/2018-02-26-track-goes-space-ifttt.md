@@ -1,11 +1,12 @@
 ---
 title: "Track who goes to space with IFTTT"
+description: "I'll show you a fun way I use IFTTT to track when astronauts go to space! By connecting NASA's events to a Slack channel, I get updates and can learn more about the astronauts and their missions."
 slug: track-goes-space-ifttt
 date: 2018-02-26
 url: https://mfyz.com/?p=204
-tags: ["Geekin'"]
+tags: ["ifttt", "space", "nasa", "automation", "slack"]
 category: Geekin'
-migration: {"wpId":204,"wpPostDate":"2018-02-26T09:43:34.000Z"}
+migration: { "wpId": 204, "wpPostDate": "2018-02-26T09:43:34.000Z" }
 ---
 
 I have a fun way to track people goes to space and I want to share that with you on this post :)
@@ -14,9 +15,9 @@ I love using “If This Then That” (IFTTT) and have been using it for years. I
 
 Some generic samples of how to use IFTTT;
 
-*   When I post a photo to facebook → Save to dropbox
-*   When there is a new entry in RSS → Send me an email
-*   When weather is rainy → Tweet “take umbrella”
+- When I post a photo to facebook → Save to dropbox
+- When there is a new entry in RSS → Send me an email
+- When weather is rainy → Tweet “take umbrella”
 
 Almost all popular services are available in IFTTT.Each service has their own set of events and actions.
 

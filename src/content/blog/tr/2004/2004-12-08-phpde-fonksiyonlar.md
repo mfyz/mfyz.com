@@ -2,8 +2,9 @@
 title: "PHP'de fonksiyonlar"
 slug: phpde-fonksiyonlar
 date: 2004-12-08
+description: "PHP'de fonksiyonların ne olduğunu, nasıl tanımlandığını ve kullanıldığını öğrenin. Bu rehber, yerleşik fonksiyonlar, parametreler, değer döndürme ve kendi özel fonksiyonlarınızı nasıl yazacağınızı örneklerle açıklıyor."
 url: http://mfyz.com/tr/phpde-fonksiyonlar/
-tags: ["fonksiyonlar","function","PHP"]
+tags: ["fonksiyonlar", "function", "PHP", "programlama", "web geliştirme", "parametre", "return", "kodlama"]
 category: PHP
 migration: {"wpId":71,"wpPostDate":"2004-12-08T05:57:43.000Z"}
 lang: tr

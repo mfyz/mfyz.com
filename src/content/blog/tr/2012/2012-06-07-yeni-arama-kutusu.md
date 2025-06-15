@@ -2,8 +2,9 @@
 title: "Yeni arama kutusu"
 slug: yeni-arama-kutusu
 date: 2012-06-07
+description: "mfyz.com'a eklenen yeni site içi arama kutusu tanıtılıyor. Google Ajax API'leri kullanılarak geliştirilen bu özellik, anlık arama sonuçları sunarak kullanıcı deneyimini iyileştiriyor."
 url: http://mfyz.com/tr/yeni-arama-kutusu/
-tags: ["arama","google","internal","mfyz.com","search"]
+tags: ["site içi arama", "Google Ajax API", "canlı arama", "mfyz.com", "kullanıcı deneyimi", "web geliştirme", "arama motoru"]
 category: mfyz.com
 migration: {"wpId":303,"wpPostDate":"2012-06-07T22:26:41.000Z"}
 lang: tr

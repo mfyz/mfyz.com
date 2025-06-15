@@ -1,9 +1,10 @@
 ---
 title: "Birbirleriyle konuşan cihazlara ihtiyacımız var"
+description: "Artan akıllı cihaz sayımızla birlikte dijital içeriklerimizi yönetmek ve cihazlar arası iletişim kurmak için AirPlay, DLNA ve Microsoft Surface gibi teknolojilere olan ihtiyacımızı inceliyoruz."
 slug: birbirleriyle-konusan-cihazlara-ihtiyacimiz-var
 date: 2011-04-28
 url: http://mfyz.com/tr/birbirleriyle-konusan-cihazlara-ihtiyacimiz-var/
-tags: ["airplay","connectivity","Diğer","share","sharing","wireless"]
+tags: ["akıllı cihazlar", "cihazlararası iletişim", "airplay", "dlna", "microsoft surface", "teknoloji"]
 category: Diğer
 migration: {"wpId":269,"wpPostDate":"2011-04-28T03:54:36.000Z"}
 lang: tr

@@ -2,8 +2,9 @@
 title: "Açık Kaynak Kodlu Yazılım Nedir?"
 slug: acik-kaynak-kodlu-yazilim-nedir
 date: 2005-10-03
+description: "Açık kaynak kodlu yazılımın ne olduğunu, kapalı kaynak kodlu yazılımlardan farklarını ve lisanslama modellerini keşfedin. Bireysel ve kurumsal kullanıcılar için maliyet ve teknik destek avantajları inceleniyor."
 url: http://mfyz.com/tr/acik-kaynak-kodlu-yazilim-nedir/
-tags: ["açık kaynak","Diğer","lisans","open source","teknik destek","yazılım"]
+tags: ["açık kaynak", "open source", "yazılım lisanslama", "özgür yazılım", "kapalı kaynak", "teknik destek", "yazılım maliyetleri", "kurumsal yazılım", "Linux"]
 category: Diğer
 migration: {"wpId":110,"wpPostDate":"2005-10-03T03:33:23.000Z"}
 lang: tr

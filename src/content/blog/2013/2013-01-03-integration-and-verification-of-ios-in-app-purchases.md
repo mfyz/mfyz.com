@@ -1,11 +1,12 @@
 ---
 title: "Integration and verification of iOS In-App Purchases"
+description: "Learn how to integrate and verify iOS In-App Purchases using StoreKit, including server-side receipt validation with PHP to prevent fraud and manage different product types."
 slug: integration-and-verification-of-ios-in-app-purchases
 date: 2013-01-03
 url: http://mfyz.com/integration-and-verification-of-ios-in-app-purchases/
-tags: ["app store","apple","Back-End","in-app purchase","integration","ios","ipad","iphone","itunes","itunes connect","php","purchase","server","store","storekit","verification"]
+tags: ["ios", "in-app purchase", "storekit", "receipt validation", "php"]
 category: Back-End
-migration: {"wpId":55,"wpPostDate":"2013-01-03T09:02:36.000Z"}
+migration: { "wpId": 55, "wpPostDate": "2013-01-03T09:02:36.000Z" }
 ---
 
 ![](/images/archive/en/2020/05/in-app-purchases_e7nqtz.png?fit=177%2C196&ssl=1) Economy models in iOS apps use In-App purchases become very popular. Lots of developers pick iOS environment because of the flawless payments through iTunes.
@@ -25,6 +26,7 @@ Some amateur developers don't feel the necessity of verifying the receipts they 
 Apple provides a protocol to validate receipts. There is an HTTP service that you can send your receipts data and it returns the payment details in JSON format. You have to have a developer key in order to use this HTTP service. You can grab your developer key from iTunes Connect interface.
 
 Here is a helper method for PHP powered apps:
+
 ```php
 function validate_receipt($receipt_data, $sandbox_receipt = FALSE) {
 	if ($sandbox_receipt) {
@@ -62,36 +64,40 @@ function validate_receipt($receipt_data, $sandbox_receipt = FALSE) {
 	return $decoded;
 }
 ```
+
 This method used to send and receive the receipt details to Apple validation servers. As you can see, there are two different servers. One for the live app, another one is for your app in development which called Sandbox. You need to convey the information of your app is in development mode or live app over your API. So you have to send each receipt to correct servers in order to get verification result. If your app distribution is not for App Store when you build, all StoreKit calls will run in Sandbox mode which you'll see a notice in all confirmation boxes of purchases. This scenario includes apps running on iOS simulator, compiled directly from XCode to your device, or even TestFlight builds. You need to use sandbox users to make purchases in sandbox mode. There is an interface in iTunes Connect to create sandbox users.
 
 Anyway, if you're trying to validate a sandbox receipt, you can define it as a boolean in the second parameter of that function. This function simply will create an HTTP request and it will return the JSON result as an array if the HTTP response code is 200.
 
 Here is the response JSON object:
+
 ```json
 {
-	"receipt":{
-		"original_purchase_date_pst":"2012-12-11 19:39:22 America/Los_Angeles",
-		"unique_identifier":"130f26a2d4f02b6ec66a44e6d0d1054a0c67b31d",
-		"original_transaction_id":"900010202504325481451",
-		"bvrs":"2.0",
-		"app_item_id":"469944437",
-		"transaction_id":"2390034200035752112451",
-		"quantity":"1",
-		"unique_vendor_identifier":"A6CF45BAC2347-E21D-4827-D14D52A43240",
-		"product_id":"com.moonit.moonit.starpower800",
-		"item_id":"5756897490",
-		"version_external_identifier":"11723464",
-		"bid":"com.moonit.moonit",
-		"purchase_date_ms":"1355283562408",
-		"purchase_date":"2012-12-12 03:39:22 Etc/GMT",
-		"purchase_date_pst":"2012-12-11 19:39:22 America/Los_Angeles",
-		"original_purchase_date":"2012-12-12 03:39:22 Etc/GMT",
-		"original_purchase_date_ms":"1355283562408"
-	},
-	"status":0
+  "receipt": {
+    "original_purchase_date_pst": "2012-12-11 19:39:22 America/Los_Angeles",
+    "unique_identifier": "130f26a2d4f02b6ec66a44e6d0d1054a0c67b31d",
+    "original_transaction_id": "900010202504325481451",
+    "bvrs": "2.0",
+    "app_item_id": "469944437",
+    "transaction_id": "2390034200035752112451",
+    "quantity": "1",
+    "unique_vendor_identifier": "A6CF45BAC2347-E21D-4827-D14D52A43240",
+    "product_id": "com.moonit.moonit.starpower800",
+    "item_id": "5756897490",
+    "version_external_identifier": "11723464",
+    "bid": "com.moonit.moonit",
+    "purchase_date_ms": "1355283562408",
+    "purchase_date": "2012-12-12 03:39:22 Etc/GMT",
+    "purchase_date_pst": "2012-12-11 19:39:22 America/Los_Angeles",
+    "original_purchase_date": "2012-12-12 03:39:22 Etc/GMT",
+    "original_purchase_date_ms": "1355283562408"
+  },
+  "status": 0
 }
 ```
+
 The first thing you need to check is "status" code. This is the return code is the result of verification. If this code is "0" (zero) means everything is ok and receipt is valid. If not, here is the all the possible return codes and meanings (This is copied from Apple developer documentation):
+
 ```
 21000 The App Store could not read the JSON object you provided.
 21002 The data in the receipt-data property was malformed.
@@ -101,6 +107,7 @@ The first thing you need to check is "status" code. This is the return code is t
 21007 This receipt is a sandbox receipt, but it was sent to the production server.
 21008 This receipt is a production receipt, but it was sent to the sandbox server
 ```
+
 Back to JSON response object above. You may think you will get one unique transaction_id value for each payment. But in practice, it doesn't necessarily one transaction for one payment. In some cases, StoreKit triggers its callback method multiple times (sometimes even more than 5 times) and all of them will have different receipt-data and different transaction ids. So you need to use original_transaction_id to understand all of them stands for one payment. I recommend you to keep the record of other transactions as well. Save the receipt-data in your database, in that case, you can re-validate whenever you want. But if you have problems to capture receipt-data form client (which is your app) that will be a problem on user's end.
 
 Response object also contains some information about, the product identifier that user purchased (you may have multiple products in your app, or same product with different price points, but in iTunes Connect all of them will be treated as different products), purchase time, purchased app version etc... I also recommend you to store this response object as it is in your database as of verification result. You might want to use it for your analytics or revenue calculation.
@@ -111,10 +118,10 @@ When you want to create a new product, you need to create that product details i
 
 When you try to define a product, you need to decide what type of product it will be. Also, Apple has a strict rule of using these types appropriately, which if you pick the wrong type of product, your submission might be rejected. Here are the product types:
 
-*   Consumable product: Users can purchase this product multiple times. For instance, a consumable resource in a game that users can keep purchase and add more resources (Product: "500 Gold", you can deplete your golds in the game and purchase as you need, or even if you don't need you can still pay and add more).
-*   Non-consumable product: These products are only purchased one time. They can't be purchased it again. For instance, a feature or a goodie user can possess (Product: "Super powered sword", when the user purchases this sword, they possess it, they don't need to (and can't) re-own it).
-*   Non-recurring subscription.
-*   Reoccuring subscription: Last two products are for subscriptions. The only difference between them are, the reoccurring one does repeating auto payments. User subscribes and in every period, it processes automatic payments without requiring user's action. This happens until user cancels the subscription through iTunes.
+- Consumable product: Users can purchase this product multiple times. For instance, a consumable resource in a game that users can keep purchase and add more resources (Product: "500 Gold", you can deplete your golds in the game and purchase as you need, or even if you don't need you can still pay and add more).
+- Non-consumable product: These products are only purchased one time. They can't be purchased it again. For instance, a feature or a goodie user can possess (Product: "Super powered sword", when the user purchases this sword, they possess it, they don't need to (and can't) re-own it).
+- Non-recurring subscription.
+- Reoccuring subscription: Last two products are for subscriptions. The only difference between them are, the reoccurring one does repeating auto payments. User subscribes and in every period, it processes automatic payments without requiring user's action. This happens until user cancels the subscription through iTunes.
 
 If you're providing an ongoing service like membership or subscription to a fresh content, Apple requires you to use a subscription product type. If your service is not ongoing service, if it's one-time service, Apple wants you to use regular consumable or non-consumable product types. Apple rejects wrong defined product types.
 

@@ -16,19 +16,19 @@ const emailUrl = `mailto:?subject=${encodedTitle}&body=${encodedTitle}%0A${encod
 const blueskyUrl = `https://bsky.app/intent/compose?text=${encodedTitle}%0A${encodedUrl}`;
 ---
 
-<div class="mt-16 border-b border-t border-gray-200 py-8">
-  <div class="flex flex-col items-center">
-    <h3 class="mb-4 font-secondary text-lg">
-      {isTurkish ? "Paylaş" : "Share this post"}
+<div>
+  <div class="flex items-center">
+    <h3 class="mr-2 font-secondary text-sm">
+      {isTurkish ? "Paylaş" : "Share"}
     </h3>
 
-    <div class="flex flex-wrap justify-center gap-3">
+    <div class="flex flex-wrap justify-center gap-1">
       <!-- Twitter/X -->
       <a
         href={twitterUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-black text-white transition-all hover:scale-105 hover:bg-gray-800"
+        class="inline-flex h-7 w-7 items-center justify-center bg-black text-white transition-all hover:scale-105 hover:bg-gray-800"
         aria-label="Share on X/Twitter"
         title="Share on X/Twitter"
       >
@@ -50,7 +50,7 @@ const blueskyUrl = `https://bsky.app/intent/compose?text=${encodedTitle}%0A${enc
         href={blueskyUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-500 text-white transition-all hover:scale-105 hover:bg-blue-600"
+        class="inline-flex h-7 w-7 items-center justify-center bg-blue-500 text-white transition-all hover:scale-105 hover:bg-blue-600"
         aria-label="Share on Bluesky"
         title="Share on Bluesky"
       >
@@ -72,7 +72,7 @@ const blueskyUrl = `https://bsky.app/intent/compose?text=${encodedTitle}%0A${enc
         href={linkedinUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-700 text-white transition-all hover:scale-105 hover:bg-blue-800"
+        class="inline-flex h-7 w-7 items-center justify-center bg-blue-700 text-white transition-all hover:scale-105 hover:bg-blue-800"
         aria-label="Share on LinkedIn"
         title="Share on LinkedIn"
       >
@@ -94,7 +94,7 @@ const blueskyUrl = `https://bsky.app/intent/compose?text=${encodedTitle}%0A${enc
         href={facebookUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-white transition-all hover:scale-105 hover:bg-blue-700"
+        class="inline-flex h-7 w-7 items-center justify-center bg-blue-600 text-white transition-all hover:scale-105 hover:bg-blue-700"
         aria-label="Share on Facebook"
         title="Share on Facebook"
       >
@@ -115,7 +115,7 @@ const blueskyUrl = `https://bsky.app/intent/compose?text=${encodedTitle}%0A${enc
       <a
         href={emailUrl}
         rel="noopener noreferrer"
-        class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gray-600 text-white transition-all hover:scale-105 hover:bg-gray-700"
+        class="inline-flex h-7 w-7 items-center justify-center bg-gray-600 text-white transition-all hover:scale-105 hover:bg-gray-700"
         aria-label="Share via Email"
         title="Share via Email"
       >

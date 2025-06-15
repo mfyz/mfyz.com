@@ -1,9 +1,10 @@
 ---
-title: "Flickr PRO ve fotograf düzenleme işleri"
+title: "Fotoğraf Arşivini Düzenleme Çilesi ve Flickr Pro Arayışı"
 slug: flickr-pro-ve-fotograf-duzenleme-isleri
 date: 2008-05-07
+description: "Büyük bir dijital fotoğraf arşivini (30GB, 7000+ fotoğraf) yönetme zorlukları, iPhoto ve Digikam deneyimleri ve online çözüm olarak Flickr Pro'nun değerlendirilmesi. Flickr Pro kullanıcılarından deneyim ve tavsiye isteniyor."
 url: http://mfyz.com/tr/flickr-pro-ve-fotograf-duzenleme-isleri/
-tags: ["aperture","Diğer","flickr","iphoto","lightroom","organizer","photo"]
+tags: ["Flickr", "fotoğraf yönetimi", "dijital arşiv", "fotoğraf düzenleme", "iPhoto", "Digikam", "Lightroom", "Aperture", "online depolama", "EXIF", "metadata", "organizasyon", "kişisel arşiv"]
 category: Diğer
 migration: {"wpId":190,"wpPostDate":"2008-05-07T02:22:48.000Z"}
 lang: tr
