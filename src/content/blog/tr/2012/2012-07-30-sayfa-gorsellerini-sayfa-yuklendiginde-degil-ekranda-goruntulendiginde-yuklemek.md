@@ -2,8 +2,9 @@
 title: "Sayfa görsellerini sayfa yüklendiğinde değil ekranda görüntülendiğinde yüklemek"
 slug: sayfa-gorsellerini-sayfa-yuklendiginde-degil-ekranda-goruntulendiginde-yuklemek
 date: 2012-07-30
+description: "Web sayfalarındaki görsellerin, sayfa ilk yüklendiğinde değil, kullanıcı sayfayı kaydırdıkça ve görseller ekranda görünür hale geldikçe yüklenmesini sağlayan 'lazy loading' tekniği ve jQuery Lazy Load eklentisi ile uygulanışı anlatılıyor. Bu yöntem, sayfa yükleme performansını artırır."
 url: http://mfyz.com/tr/sayfa-gorsellerini-sayfa-yuklendiginde-degil-ekranda-goruntulendiginde-yuklemek/
-tags: ["Arayüz Programlama","html","javascript","jquery","lazyload","media","optimization","performance","plugin","screen"]
+tags: ["lazy loading", "performans optimizasyonu", "jQuery", "JavaScript", "web geliştirme", "görsel yükleme", "kullanıcı deneyimi", "sayfa hızı"]
 category: Arayüz Programlama
 migration: {"wpId":311,"wpPostDate":"2012-07-30T03:32:58.000Z"}
 lang: tr

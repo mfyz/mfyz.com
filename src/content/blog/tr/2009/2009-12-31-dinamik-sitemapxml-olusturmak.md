@@ -1,9 +1,10 @@
 ---
 title: "Dinamik sitemap.xml oluşturmak"
+description: "Dinamik içerikli siteler için PHP kullanarak otomatik sitemap.xml oluşturma yöntemleri ve kod örnekleri. Sık güncellenen blog ve forumlar için idealdir."
 slug: dinamik-sitemapxml-olusturmak
 date: 2009-12-31
 url: http://mfyz.com/tr/dinamik-sitemapxml-olusturmak/
-tags: ["generator","google","php","sitemap","Sunucu Programlama"]
+tags: ["sitemap", "xml", "php", "dinamik içerik", "seo"]
 category: Sunucu Programlama
 migration: {"wpId":153,"wpPostDate":"2009-12-31T18:45:30.000Z"}
 lang: tr

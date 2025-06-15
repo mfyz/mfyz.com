@@ -1,9 +1,10 @@
 ---
-title: "MacOSX için ücretsiz yazılımlar"
+title: "MacOSX İçin Ücretsiz ve Açık Kaynak Kodlu Yazılım Önerileri"
 slug: macosx-icin-ucretsiz-yazilimlar
 date: 2008-06-23
+description: "MacOSX kullanıcıları için internet, multimedya ve diğer kategorilerde faydalı, ücretsiz ve açık kaynak kodlu yazılım önerileri. Firefox, CyberDuck, Adium, VLC gibi popüler uygulamalar ve MacLibre gibi araçlar tanıtılıyor."
 url: http://mfyz.com/tr/macosx-icin-ucretsiz-yazilimlar/
-tags: ["applications","free","macosx","OS","program","ücretsiz","uygulama"]
+tags: ["MacOSX", "ücretsiz yazılım", "açık kaynak", "uygulama önerileri", "Firefox", "CyberDuck", "Adium", "VLC", "MPlayer", "Handbrake", "MAMP", "Quicksilver", "NeoOffice", "MacLibre", "alternatif yazılımlar"]
 category: OS
 migration: {"wpId":137,"wpPostDate":"2008-06-23T03:06:51.000Z"}
 lang: tr

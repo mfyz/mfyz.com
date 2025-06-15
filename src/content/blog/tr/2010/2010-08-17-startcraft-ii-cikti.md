@@ -1,9 +1,10 @@
 ---
-title: "StartCraft II çıktı"
+title: "StarCraft II çıktı"
 slug: startcraft-ii-cikti
 date: 2010-08-17
+description: "Blizzard'ın efsanevi strateji oyunu StarCraft II: Wings of Liberty'nin Türkiye'de satışa sunulması, oyunun özellikleri, grafik motoru, sistem gereksinimleri ve Collector's Edition detayları."
 url: http://mfyz.com/tr/startcraft-ii-cikti/
-tags: ["Diğer","oyun","sc2","starcraft2","strateji"]
+tags: ["StarCraft II", "Blizzard", "oyun", "strateji", "PC oyunu", "Wings of Liberty", "Diğer"]
 category: Diğer
 migration: {"wpId":256,"wpPostDate":"2010-08-17T14:10:06.000Z"}
 lang: tr

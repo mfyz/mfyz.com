@@ -1,9 +1,10 @@
 ---
-title: "Spotify'in amerikayi kesfi"
+title: "Spotify'ın Amerika'yı Keşfi"
+description: "Spotify'ın Amerika pazarına girişi ve Grooveshark, Last.fm gibi diğer online müzik servisleriyle karşılaştırılması. Spotify'ın öne çıkan özellikleri, ses kalitesi ve sosyal entegrasyonları üzerine bir değerlendirme."
 slug: spotifyin-amerikayi-kesfi
 date: 2011-08-14
 url: http://mfyz.com/tr/spotifyin-amerikayi-kesfi/
-tags: ["Diğer","google music","grooveshark","music","spotify","startups"]
+tags: ["spotify", "müzik servisleri", "online müzik", "grooveshark", "last.fm", "amerika"]
 category: Diğer
 migration: {"wpId":280,"wpPostDate":"2011-08-14T22:19:42.000Z"}
 lang: tr

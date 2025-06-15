@@ -1,9 +1,10 @@
 ---
 title: "PHP'de Pratikçe Sorgu Cümlesi Oluşturmak"
+description: "PHP'de özellikle çok sayıda alan içeren INSERT ve UPDATE SQL sorgu cümlelerini pratik bir şekilde oluşturma ve SQL injection'a karşı temel önlemler alma yöntemi."
 slug: phpde-pratikce-sorgu-cumlesi-olusturmak
 date: 2009-08-25
 url: http://mfyz.com/tr/phpde-pratikce-sorgu-cumlesi-olusturmak/
-tags: ["injection","php","pratik","query","sql"]
+tags: ["php", "sql", "veritabanı", "sql injection", "kodlama teknikleri"]
 category: PHP
 migration: {"wpId":146,"wpPostDate":"2009-08-25T18:25:53.000Z"}
 lang: tr

@@ -1,9 +1,10 @@
 ---
-title: "Bu yil tumblr 1 milyar yazidan 10 milyara cikmis"
+title: "Bu Yıl Tumblr 1 Milyar Yazıdan 10 Milyara Çıkmış"
+description: "Tumblr'ın bir yılda 1 milyar yazıdan 10 milyar yazıya ulaşan etkileyici büyümesi, mikroblogların artan popülaritesi ve Tumblr'ın bu başarıyı yakalamasındaki etkenler üzerine bir değerlendirme."
 slug: bu-yil-tumblr-1-milyar-yazidan-10-milyara-cikmis
 date: 2011-09-14
 url: http://mfyz.com/tr/bu-yil-tumblr-1-milyar-yazidan-10-milyara-cikmis/
-tags: ["blog","Diğer","social","tumblr"]
+tags: ["tumblr", "mikroblog", "sosyal medya", "büyüme", "istatistikler", "startup"]
 category: Diğer
 migration: {"wpId":284,"wpPostDate":"2011-09-14T10:23:30.000Z"}
 lang: tr

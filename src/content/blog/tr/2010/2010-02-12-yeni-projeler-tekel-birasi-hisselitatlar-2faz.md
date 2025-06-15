@@ -2,8 +2,9 @@
 title: "Yeni projeler: Tekel Birası & Hisselitatlar 2.Faz"
 slug: yeni-projeler-tekel-birasi-hisselitatlar-2faz
 date: 2010-02-12
+description: "Portfolyoya eklenen yeni projeler: Tekel Birası için zaman makinesi konseptli kampanya ve Fritolay Hisselitatlar'ın 'Seç tadı al parayı' adlı ikinci fazı tanıtılıyor."
 url: http://mfyz.com/tr/yeni-projeler-tekel-birasi-hisselitatlar-2faz/
-tags: ["bira","Diğer","doritos","hisselitatlar","portfolio","portfolyo","projeler","tekel","tytz"]
+tags: ["portfolyo", "Tekel Birası", "Hisselitatlar", "Fritolay", "kampanya", "web projeleri"]
 category: Diğer
 migration: {"wpId":246,"wpPostDate":"2010-02-12T20:29:16.000Z"}
 lang: tr

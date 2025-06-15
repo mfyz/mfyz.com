@@ -1,9 +1,10 @@
 ---
 title: "Jailbreak Apple TV ile neler yapiyorum"
+description: "Apple TV'yi jailbreak yaparak Netflix ve iTunes'a ek olarak, Time Capsule'deki AVI/MKV formatındaki yerel medya dosyalarını XMBC üzerinden nasıl izlediğimi anlatıyorum."
 slug: jailbreak-apple-tv-ile-neler-yapiyorum
 date: 2011-08-04
 url: http://mfyz.com/tr/jailbreak-apple-tv-ile-neler-yapiyorum/
-tags: ["apple tv","iOS","itunes","jailbreak","OS","tv"]
+tags: ["apple tv", "jailbreak", "xmbc", "medya oynatıcı", "ios", "film izleme"]
 category: OS
 migration: {"wpId":278,"wpPostDate":"2011-08-04T15:53:50.000Z"}
 lang: tr

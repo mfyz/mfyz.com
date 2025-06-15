@@ -1,9 +1,10 @@
 ---
-title: "PHPStorm bu güne kadarki en eli yüzü düzgün PHP IDEsi"
+title: "PHPStorm: Bu Güne Kadarki En Eli Yüzü Düzgün PHP IDE'si"
 slug: phpstorm-bu-gune-kadarki-en-eli-yuzu-duzgun-php-idesi
 date: 2012-12-04
+description: "JetBrains tarafından geliştirilen PHPStorm IDE'sinin; gelişmiş kod zekası, Xdebug entegrasyonu, sürüm kontrolü ve veritabanı araçları gibi özellikleriyle PHP geliştiricileri için neden en iyi seçeneklerden biri olduğu anlatılıyor."
 url: http://mfyz.com/tr/phpstorm-bu-gune-kadarki-en-eli-yuzu-duzgun-php-idesi/
-tags: ["css","deployment","editor","git","html","ide","jetbrains","less","php","phpstorm","svn","tdd","version control"]
+tags: ["PHPStorm", "JetBrains", "IDE", "PHP", "Web Geliştirme", "Kod Editörü", "Xdebug", "Git", "Versiyon Kontrolü", "Veritabanı Araçları"]
 category: PHP
 migration: {"wpId":324,"wpPostDate":"2012-12-04T11:12:18.000Z"}
 lang: tr

@@ -1,9 +1,10 @@
 ---
-title: "Belki de son dökümanlar"
+title: "Belki de Son Dökümanlar: Yeni Yazılar ve Gelecek Planları"
 slug: belki-de-son-dokumanlar
 date: 2008-02-18
+description: "mfyz.com'da yayınlanan 'Tek Dosyalı Projeler' ve 'PHP Dosyasına Resim Gömme' başlıklı yeni makalelerin duyurusu. Yazar ayrıca okuluna odaklanacağı için yazı sıklığının azalabileceğini belirtiyor."
 url: http://mfyz.com/tr/belki-de-son-dokumanlar/
-tags: ["mfyz.com","NULL"]
+tags: ["mfyz.com", "duyuru", "blog", "PHP", "web geliştirme", "eğitim", "kişisel", "güncel"]
 category: mfyz.com
 migration: {"wpId":178,"wpPostDate":"2008-02-18T21:51:24.000Z"}
 lang: tr

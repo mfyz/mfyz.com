@@ -1,9 +1,10 @@
 ---
-title: "6 Yeni döküman ve yenilikler"
+title: "6 Yeni Döküman ve Yenilikler"
 slug: 6-yeni-dokuman-ve-yenilikler
 date: 2008-02-05
+description: "Siteye PEAR Captcha ile form güvenliği eklendi ve 6 yeni döküman yayınlandı: Web tasarımcı öğütleri, Gimp, Ubuntu'da DNS cache/NTFS desteği ve Mootools ile Ajax/tooltip uygulamaları."
 url: http://mfyz.com/tr/6-yeni-dokuman-ve-yenilikler/
-tags: ["mfyz.com","NULL"]
+tags: ["mfyz.com", "güncelleme", "döküman", "PEAR", "Captcha", "Gimp", "Ubuntu", "Mootools"]
 category: mfyz.com
 migration: {"wpId":174,"wpPostDate":"2008-02-05T08:51:45.000Z"}
 lang: tr

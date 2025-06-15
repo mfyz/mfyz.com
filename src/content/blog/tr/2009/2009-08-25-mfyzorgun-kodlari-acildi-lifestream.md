@@ -1,9 +1,10 @@
 ---
 title: "mfyz.org'un kodları açıldı: LifeStream"
+description: "mfyz.org sitesinin altyapısını oluşturan LifeStream projesinin kodları açık kaynak olarak yayınlandı. Proje, RSS beslemeleriyle sosyal akışları birleştiriyor."
 slug: mfyzorgun-kodlari-acildi-lifestream
 date: 2009-08-25
 url: http://mfyz.com/tr/mfyzorgun-kodlari-acildi-lifestream/
-tags: ["Diğer","kod","lifestream","mfyz","proje","rss","script"]
+tags: ["lifestream", "açık kaynak", "rss", "php", "proje paylaşımı"]
 category: Diğer
 migration: {"wpId":223,"wpPostDate":"2009-08-25T22:39:45.000Z"}
 lang: tr

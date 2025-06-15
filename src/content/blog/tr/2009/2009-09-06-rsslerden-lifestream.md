@@ -1,9 +1,10 @@
 ---
 title: "RSS'lerden Lifestream"
+description: "Çeşitli sosyal medya servislerinden RSS beslemelerini kullanarak kişisel bir lifestream (sosyal akış) oluşturma rehberi. PHP ve Simplepie kütüphanesi ile uygulama."
 slug: rsslerden-lifestream
 date: 2009-09-06
 url: http://mfyz.com/tr/rsslerden-lifestream/
-tags: ["lifestream","parse","PHP","rss","xml"]
+tags: ["lifestream", "rss", "php", "simplepie", "sosyal medya entegrasyonu"]
 category: PHP
 migration: {"wpId":148,"wpPostDate":"2009-09-06T18:47:15.000Z"}
 lang: tr

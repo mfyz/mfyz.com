@@ -1,9 +1,10 @@
 ---
-title: "Firefox 3 Rekor İndirme Günü"
+title: "Firefox 3 İçin Guinness Rekoru Denemesi: Download Day"
 slug: firefox-3-rekor-indirme-gunu
 date: 2008-06-01
+description: "SpreadFirefox'un Firefox 3'ün çıkış gününde '24 saatte en çok indirilen yazılım' Guinness rekorunu kırma girişimi olan 'Download Day' kampanyası ve katılım çağrısı."
 url: http://mfyz.com/tr/firefox-3-rekor-indirme-gunu/
-tags: ["Diğer","download","firefox","firefox 3","guinness","record"]
+tags: ["Firefox", "Firefox 3", "Mozilla", "Guinness Rekoru", "Download Day", "yazılım indirme", "kampanya", "internet", "web tarayıcı", "teknoloji haberleri"]
 category: Diğer
 migration: {"wpId":191,"wpPostDate":"2008-06-01T22:56:12.000Z"}
 lang: tr

@@ -1,9 +1,10 @@
 ---
-title: "VirtualBox ile sanallaştırma"
+title: "VirtualBox ile Sanallaştırma: Web Geliştiriciler İçin Pratik Bir Çözüm"
 slug: virtualbox-ile-sanallastirma
 date: 2008-09-19
+description: "Sanallaştırma teknolojisinin faydaları ve VirtualBox'ın web geliştiriciler için (özellikle Internet Explorer testleri) ücretsiz ve açık kaynaklı bir alternatif olarak nasıl kullanılabileceği anlatılıyor. VMware ile karşılaştırmalar da içerir."
 url: http://mfyz.com/tr/virtualbox-ile-sanallastirma/
-tags: ["Diğer","virtualbox","virtualization","vmware"]
+tags: ["VirtualBox", "sanallaştırma", "virtualization", "VMware", "açık kaynak", "web geliştirme", "test", "Internet Explorer", "işletim sistemi", "Diğer"]
 category: Diğer
 migration: {"wpId":205,"wpPostDate":"2008-09-19T06:21:22.000Z"}
 lang: tr

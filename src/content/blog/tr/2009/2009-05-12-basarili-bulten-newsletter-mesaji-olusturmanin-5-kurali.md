@@ -1,9 +1,10 @@
 ---
 title: "Başarılı bülten (newsletter) mesajı oluşturmanın 5 kuralı"
+description: "Etkili ve tüm platformlara uygun HTML e-posta bültenleri (newsletter) hazırlamak için dikkat edilmesi gereken 5 önemli kural ve teknik ipuçları."
 slug: basarili-bulten-newsletter-mesaji-olusturmanin-5-kurali
 date: 2009-05-12
 url: http://mfyz.com/tr/basarili-bulten-newsletter-mesaji-olusturmanin-5-kurali/
-tags: ["Arayüz Programlama","bulten","list","mail","mailing","newsletter"]
+tags: ["e-posta pazarlama", "newsletter", "html e-posta", "bülten tasarımı", "dijital pazarlama"]
 category: Arayüz Programlama
 migration: {"wpId":141,"wpPostDate":"2009-05-12T07:49:36.000Z"}
 lang: tr

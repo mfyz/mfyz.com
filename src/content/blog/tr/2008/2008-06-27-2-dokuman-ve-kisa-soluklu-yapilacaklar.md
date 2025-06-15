@@ -1,9 +1,10 @@
 ---
-title: "2 Döküman ve kısa soluklu yapılacaklar"
+title: "Yeni Dokümanlar Yayında: Google Chart API ve Ücretsiz MacOSX Yazılımları"
 slug: 2-dokuman-ve-kisa-soluklu-yapilacaklar
 date: 2008-06-27
+description: "Yazarın yayınladığı iki yeni kapsamlı doküman duyurusu: Google Chart API ile grafik oluşturma rehberi ve MacOSX için ücretsiz yazılım önerileri. Ayrıca blog için planlanan sayfalama geliştirmesi de belirtiliyor."
 url: http://mfyz.com/tr/2-dokuman-ve-kisa-soluklu-yapilacaklar/
-tags: ["api","applications","chart","Diğer","free","google","mac","osx"]
+tags: ["Google Chart API", "MacOSX", "ücretsiz yazılım", "teknik doküman", "yazılım listesi", "blog güncellemesi", "site geliştirme", "API kullanımı", "grafik oluşturma"]
 category: Diğer
 migration: {"wpId":196,"wpPostDate":"2008-06-27T06:20:20.000Z"}
 lang: tr

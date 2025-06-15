@@ -1,9 +1,10 @@
 ---
 title: "Ödüllere gelesin!"
+description: "Wanda Digital'in Altın Örümcek, Kristal Elma ve Interactive Media Awards'da kazandığı ödüller ve bu başarıların motivasyonel etkisi üzerine bir yazı."
 slug: odullere-gelesin
 date: 2009-07-05
 url: http://mfyz.com/tr/odullere-gelesin/
-tags: ["altın örümcek","Diğer","kristal elma","ödül","wanda"]
+tags: ["wanda digital", "altın örümcek", "kristal elma", "ödüller", "ajans başarısı"]
 category: Diğer
 migration: {"wpId":216,"wpPostDate":"2009-07-05T07:18:48.000Z"}
 lang: tr

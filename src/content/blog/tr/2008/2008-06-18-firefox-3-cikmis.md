@@ -1,9 +1,10 @@
 ---
-title: "Firefox 3 Çıkmış"
+title: "Firefox 3 Yayınlandı: İndirme Rekoruna Destek Zamanı!"
 slug: firefox-3-cikmis
 date: 2008-06-18
+description: "Firefox 3'ün resmi olarak yayınlandığı duyurusu. Kullanıcılar, Guinness indirme rekoru denemesine katkıda bulunmaya teşvik ediliyor. MacOSX performansı övülüyor."
 url: http://mfyz.com/tr/firefox-3-cikmis/
-tags: ["Diğer","download","firefox"]
+tags: ["Firefox", "Firefox 3", "Mozilla", "yazılım güncellemesi", "web tarayıcı", "Download Day", "Guinness Rekoru", "teknoloji haberleri", "MacOSX"]
 category: Diğer
 migration: {"wpId":193,"wpPostDate":"2008-06-18T04:44:27.000Z"}
 lang: tr

@@ -1,9 +1,10 @@
 ---
 title: "Wordpress araştırmaları ve"
+description: "Yakın zamanda mfyz.com'da yayınlanacak olan Wordpress, sosyal medya entegrasyonu ve eklenti özelleştirmeleri hakkındaki dökümanlara dair bir duyuru."
 slug: wordpress-arastirmalari-ve-yakinda
 date: 2009-09-09
 url: http://mfyz.com/tr/wordpress-arastirmalari-ve-yakinda/
-tags: ["Diğer","dokuman","plugin","wordpress"]
+tags: ["wordpress", "bloglama", "sosyal medya", "eklentiler", "içerik duyurusu"]
 category: Diğer
 migration: {"wpId":228,"wpPostDate":"2009-09-09T22:05:52.000Z"}
 lang: tr

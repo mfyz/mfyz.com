@@ -1,9 +1,10 @@
 ---
 title: "Firefox 3.5 Hızlanmış"
+description: "Firefox 3.5 sürümünün getirdiği hız artışı, yeni Özel Dolaşım Modu (Private Browsing) ve Firebug güncellemeleri üzerine ilk izlenimler."
 slug: firefox-35-hizlanmis
 date: 2009-07-09
 url: http://mfyz.com/tr/firefox-35-hizlanmis/
-tags: ["Diğer","firefox","logo"]
+tags: ["firefox", "internet tarayıcıları", "yazılım güncellemesi", "web teknolojileri", "firebug"]
 category: Diğer
 migration: {"wpId":217,"wpPostDate":"2009-07-09T04:13:27.000Z"}
 lang: tr

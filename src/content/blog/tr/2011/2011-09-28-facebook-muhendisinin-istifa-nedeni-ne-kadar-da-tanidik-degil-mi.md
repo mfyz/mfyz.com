@@ -1,9 +1,10 @@
 ---
-title: "Facebook mühendisi'nin istifa nedeni ne kadar da tanidik degil mi?"
+title: "Facebook Mühendisinin İstifa Nedeni Ne Kadar da Tanıdık Değil mi?"
+description: "Facebook'un iPad uygulamasını geliştiren mühendisin, ürünün yayınlanmasının sürekli ertelenmesi üzerine istifa edip Google'a geçişini ve bu durumun geliştiriciler için ne kadar tanıdık bir senaryo olduğunu anlatan bir yazı."
 slug: facebook-muhendisinin-istifa-nedeni-ne-kadar-da-tanidik-degil-mi
 date: 2011-09-28
 url: http://mfyz.com/tr/facebook-muhendisinin-istifa-nedeni-ne-kadar-da-tanidik-degil-mi/
-tags: ["facebook","Hayat","resign"]
+tags: ["facebook", "istifa", "mühendislik", "ipad uygulaması", "google", "iş hayatı", "geliştirici sorunları"]
 category: Hayat
 migration: {"wpId":287,"wpPostDate":"2011-09-28T08:32:12.000Z"}
 lang: tr

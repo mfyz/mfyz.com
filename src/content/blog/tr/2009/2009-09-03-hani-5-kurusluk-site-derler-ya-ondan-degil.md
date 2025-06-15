@@ -1,9 +1,10 @@
 ---
 title: 'Hani "5 kuruşluk site" derler ya, ondan değil'
+description: "mfyz.com sitesinin online araçlarla hesaplanan tahmini parasal değeri üzerine bir yazı. Site değerleme araçları ve kişisel blogun potansiyel değeri."
 slug: hani-5-kurusluk-site-derler-ya-ondan-degil
 date: 2009-09-03
 url: http://mfyz.com/tr/hani-5-kurusluk-site-derler-ya-ondan-degil/
-tags: ["değer","Diğer","mfyz","para","yatırım"]
+tags: ["site değeri", "web sitesi analizi", "mfyz.com", "online araçlar", "bloglama"]
 category: Diğer
 migration: {"wpId":224,"wpPostDate":"2009-09-03T02:50:54.000Z"}
 lang: tr

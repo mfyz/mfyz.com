@@ -1,9 +1,10 @@
 ---
 title: "Web projeleri icin Springloops"
+description: "Springloops'un web projeleri için SVN/Git barındırma ve otomatik dağıtım (deployment) özelliklerini, mfyz.com'daki kullanım deneyimiyle birlikte anlatan bir yazı. Servisin avantajları ve farklı proje ihtiyaçlarına yönelik planları."
 slug: web-projeleri-icin-springloops
 date: 2011-07-18
 url: http://mfyz.com/tr/web-projeleri-icin-springloops/
-tags: ["deployment","git","springloops","subversion","Sunucu Programlama","svn","version control"]
+tags: ["springloops", "svn", "git", "versiyon kontrolü", "deployment", "web geliştirme"]
 category: Sunucu Programlama
 migration: {"wpId":272,"wpPostDate":"2011-07-18T12:38:29.000Z"}
 lang: tr

@@ -1,9 +1,10 @@
 ---
-title: "SEO Optimizasyonu"
+title: "SEO Optimizasyonu: Arama Motorları İçin Site İyileştirme"
 slug: seo-optimizasyonu
 date: 2008-02-11
+description: "Arama Motoru Optimizasyonu (SEO) nedir? Web sitenizi Google gibi arama motorlarında üst sıralara taşımak için HTML, META etiketleri, robots.txt ve URL yapılandırması gibi temel SEO teknikleri."
 url: http://mfyz.com/tr/seo-optimizasyonu/
-tags: ["Diğer","engine","meta","optimization","robots.txt","search","seo"]
+tags: ["SEO", "arama motoru optimizasyonu", "web geliştirme", "dijital pazarlama", "Google", "meta etiketleri", "robots.txt", "URL optimizasyonu", "site trafiği", "içerik optimizasyonu", "eğitim"]
 category: Diğer
 migration: {"wpId":132,"wpPostDate":"2008-02-11T04:40:21.000Z"}
 lang: tr

@@ -1,9 +1,10 @@
 ---
 title: "MacOSX ve Flash Player problemleri"
+description: "MacOSX üzerinde Flash Player ile karşılaşılan iki önemli sorun: multiply blend modu ile kullanılan bitmaplerin bozuk görünmesi ve Türkçe karakterlerin düzgün görüntülenememesi."
 slug: macosx-ve-flash-player-problemleri
 date: 2009-10-13
 url: http://mfyz.com/tr/macosx-ve-flash-player-problemleri/
-tags: ["adobe","apple","flash","macosx","OS","osx","player","swf"]
+tags: ["flash player", "macosx", "adobe flash", "uyumluluk sorunları", "türkçe karakter"]
 category: OS
 migration: {"wpId":233,"wpPostDate":"2009-10-13T14:24:16.000Z"}
 lang: tr

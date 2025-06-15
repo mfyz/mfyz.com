@@ -1,9 +1,10 @@
 ---
-title: "Google plus app altyapisi yapmayi planliyor mudur?"
+title: "Google Plus App Altyapısı Yapmayı Planlıyor mudur?"
+description: "Google Plus'ın Facebook'a rakip olabilmesi için geliştiricilere güçlü bir uygulama altyapısı sunma potansiyeli ve Google'ın mevcut servisleriyle entegrasyonunun getirebileceği avantajlar üzerine bir analiz."
 slug: google-plus-app-altyapisi-yapmayi-planliyor-mudur
 date: 2011-12-13
 url: http://mfyz.com/tr/google-plus-app-altyapisi-yapmayi-planliyor-mudur/
-tags: ["app","developer","Diğer","facebook","google","network","plus","social"]
+tags: ["google plus", "facebook", "sosyal ağlar", "uygulama platformu", "api", "geliştiriciler", "google"]
 category: Diğer
 migration: {"wpId":295,"wpPostDate":"2011-12-13T02:39:40.000Z"}
 lang: tr

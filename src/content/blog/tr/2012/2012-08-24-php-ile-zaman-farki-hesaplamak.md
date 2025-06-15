@@ -2,8 +2,9 @@
 title: "PHP ile Zaman Farkı Hesaplamak"
 slug: php-ile-zaman-farki-hesaplamak
 date: 2012-08-24
+description: "PHP'de DateTime sınıfı ve date_diff fonksiyonu kullanılarak iki tarih arasındaki zaman farkının (yıl, ay, gün, saat, dakika) nasıl hesaplanacağı ve 'X gün önce' gibi formatlarda nasıl gösterileceği anlatılıyor."
 url: http://mfyz.com/tr/php-ile-zaman-farki-hesaplamak/
-tags: ["date","diff","fark","php","tarih","timestamp","timestampdiff","zaman"]
+tags: ["PHP", "DateTime", "date_diff", "Zaman Farkı", "Tarih İşlemleri", "Programlama", "Web Geliştirme"]
 category: PHP
 migration: {"wpId":316,"wpPostDate":"2012-08-24T01:14:40.000Z"}
 lang: tr

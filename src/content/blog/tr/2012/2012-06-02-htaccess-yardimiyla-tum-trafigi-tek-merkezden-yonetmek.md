@@ -2,8 +2,9 @@
 title: "htaccess yardımıyla tüm trafiği tek merkezden yönetmek"
 slug: htaccess-yardimiyla-tum-trafigi-tek-merkezden-yonetmek
 date: 2012-06-02
+description: ".htaccess ve mod_rewrite kullanarak web sitesi trafiğini tek bir index.php dosyası üzerinden yönetme yöntemleri. SEO dostu URL'ler ve front controller deseni oluşturma."
 url: http://mfyz.com/tr/htaccess-yardimiyla-tum-trafigi-tek-merkezden-yonetmek/
-tags: ["apache","htaccess","mod_rewrite","route","router","Sunucu Programlama"]
+tags: [".htaccess", "mod_rewrite", "Apache", "URL yönlendirme", "SEO", "PHP", "front controller", "web geliştirme", "Sunucu Programlama"]
 category: Sunucu Programlama
 migration: {"wpId":163,"wpPostDate":"2012-06-02T00:23:54.000Z"}
 lang: tr

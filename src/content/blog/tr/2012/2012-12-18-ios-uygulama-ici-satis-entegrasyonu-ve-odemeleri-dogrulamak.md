@@ -1,9 +1,10 @@
 ---
-title: "iOS uygulama içi satış entegrasyonu ve ödemeleri doğrulamak"
+title: "iOS Uygulama İçi Satış Entegrasyonu ve Ödemeleri Doğrulamak"
 slug: ios-uygulama-ici-satis-entegrasyonu-ve-odemeleri-dogrulamak
 date: 2012-12-18
+description: "iOS uygulamalarında uygulama içi satın alma (in-app purchase) entegrasyonu ve Apple sunucularında ödeme faturalarının (receipt) PHP ile doğrulanması süreci detaylıca anlatılıyor. StoreKit, ürün türleri ve analitik konularına değiniliyor."
 url: http://mfyz.com/tr/ios-uygulama-ici-satis-entegrasyonu-ve-odemeleri-dogrulamak/
-tags: ["app store","apple","in-app purchase","integration","iOS","ipad","iphone","itunes","itunes connect","php","purchase","server","store","storekit","verification"]
+tags: ["iOS", "In-App Purchase", "Uygulama İçi Satın Alma", "StoreKit", "Apple", "Ödeme Doğrulama", "PHP", "Mobil Geliştirme", "iTunes Connect", "Receipt Validation"]
 category: PHP
 migration: {"wpId":335,"wpPostDate":"2012-12-18T05:01:00.000Z"}
 lang: tr

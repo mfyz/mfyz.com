@@ -2,8 +2,9 @@
 title: "Google Search API ile ajax arama"
 slug: google-search-api-ile-ajax-arama
 date: 2012-08-14
+description: "Google Search API kullanarak AJAX tabanlı site içi arama motoru oluşturma yöntemleri ve jQuery ile pratik bir uygulama örneği. API kullanımı, JSON veri işleme ve sayfalama teknikleri anlatılıyor."
 url: http://mfyz.com/tr/google-search-api-ile-ajax-arama/
-tags: ["ajax","api","Diğer","google","jquery","json","search"]
+tags: ["Google Search API", "AJAX Arama", "Site İçi Arama", "jQuery", "JSON", "API Entegrasyonu", "Web Geliştirme"]
 category: Diğer
 migration: {"wpId":315,"wpPostDate":"2012-08-14T04:16:11.000Z"}
 lang: tr

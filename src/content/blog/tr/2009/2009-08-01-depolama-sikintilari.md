@@ -1,9 +1,10 @@
 ---
 title: "Depolama Sıkıntıları"
+description: "Kişisel dijital arşivlerin (film, müzik) yönetiminde yaşanan depolama zorlukları ve Western Digital My Book gibi harici disk çözümlerine geçiş deneyimi."
 slug: depolama-sikintilari
 date: 2009-08-01
 url: http://mfyz.com/tr/depolama-sikintilari/
-tags: ["depo","Diğer","disc","external","hdd","my book","western digital"]
+tags: ["dijital arşiv", "veri depolama", "harici disk", "western digital", "teknoloji"]
 category: Diğer
 migration: {"wpId":219,"wpPostDate":"2009-08-01T06:17:40.000Z"}
 lang: tr

@@ -1,9 +1,10 @@
 ---
 title: "I love refactoring"
+description: "mfyz.com altyapısını yeniden yazmak yerine refaktör etmenin neden daha iyi bir yaklaşım olduğunu ve bu süreçteki deneyimlerimi anlatan bir yazı. Joel Spolsky'nin konuyla ilgili görüşlerine de değiniyorum."
 slug: i-love-refactoring
 date: 2011-08-09
 url: http://mfyz.com/tr/i-love-refactoring/
-tags: ["code","development","Diğer","Refactor","refactoring"]
+tags: ["refaktör", "kod iyileştirme", "yazılım geliştirme", "mfyz.com", "joel spolsky"]
 category: Diğer
 migration: {"wpId":279,"wpPostDate":"2011-08-09T10:09:10.000Z"}
 lang: tr

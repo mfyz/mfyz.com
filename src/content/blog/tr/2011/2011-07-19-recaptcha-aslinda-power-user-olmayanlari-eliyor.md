@@ -1,9 +1,10 @@
 ---
 title: "Recaptcha aslinda power user olmayanlari eliyor"
+description: "Spam sorununu çözmek için Recaptcha kullanımının, aslında interneti çok iyi bilmeyen kullanıcıları nasıl elediğini ve bunun bazı siteler için dolaylı bir avantaj olabileceğini inceliyoruz."
 slug: recaptcha-aslinda-power-user-olmayanlari-eliyor
 date: 2011-07-19
 url: http://mfyz.com/tr/recaptcha-aslinda-power-user-olmayanlari-eliyor/
-tags: ["captcha","Diğer","recaptcha","spam"]
+tags: ["recaptcha", "spam", "kullanıcı deneyimi", "captcha", "web güvenliği"]
 category: Diğer
 migration: {"wpId":273,"wpPostDate":"2011-07-19T21:05:47.000Z"}
 lang: tr

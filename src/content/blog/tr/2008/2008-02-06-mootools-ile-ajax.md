@@ -2,8 +2,9 @@
 title: "Mootools ile Ajax"
 slug: mootools-ile-ajax
 date: 2008-02-06
+description: "Mootools JavaScript kütüphanesi kullanarak Ajax istekleri yapma, sunucudan gelen cevapları işleme ve formları asenkron gönderme rehberi. XMLHttpRequest temelleri ve pratik örnekler."
 url: http://mfyz.com/tr/mootools-ile-ajax/
-tags: ["ajax","Arayüz Programlama","mootools","xmlhttprequest"]
+tags: ["Mootools", "Ajax", "JavaScript", "XMLHttpRequest", "web geliştirme", "arayüz programlama", "eğitim"]
 category: Arayüz Programlama
 migration: {"wpId":128,"wpPostDate":"2008-02-06T06:07:17.000Z"}
 lang: tr

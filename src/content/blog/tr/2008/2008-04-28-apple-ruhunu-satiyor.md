@@ -1,9 +1,10 @@
 ---
-title: "Apple Ruhunu Satıyor!"
+title: "Apple Ruhunu Satıyor mu? Eleştirel Bir Bakış"
 slug: apple-ruhunu-satiyor
 date: 2008-04-28
+description: "Apple'ın Windows Vista lisanslarını Mac alımlarıyla birleştireceği söylentileri ve şirketin değişen stratejileri üzerine eleştirel bir yazı. Apple'ın özgün çizgisinden uzaklaştığı düşünceleri paylaşılıyor."
 url: http://mfyz.com/tr/apple-ruhunu-satiyor/
-tags: ["apple","Diğer","vista","windows"]
+tags: ["Apple", "eleştiri", "Windows Vista", "macOS", "teknoloji şirketleri", "kapitalizm", "Steve Jobs", "kurumsal strateji", "marka imajı"]
 category: Diğer
 migration: {"wpId":189,"wpPostDate":"2008-04-28T02:54:33.000Z"}
 lang: tr

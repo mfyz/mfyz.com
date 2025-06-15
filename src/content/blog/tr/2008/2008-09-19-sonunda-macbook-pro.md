@@ -1,9 +1,10 @@
 ---
-title: "Sonunda MacBook Pro"
+title: "Nihayet Bir MacBook Pro Sahibi Oldum!"
 slug: sonunda-macbook-pro
 date: 2008-09-19
+description: "Yazar, uzun bir bekleyişin ardından yeni MacBook Pro'suna kavuşmasını ve ilk izlenimlerini paylaşıyor. Performans, tasarım özellikleri ve pil ömrü övülürken, cihazın teknik detayları da aktarılıyor."
 url: http://mfyz.com/tr/sonunda-macbook-pro/
-tags: ["apple","Hayat","macbookpro","macintosh"]
+tags: ["MacBook Pro", "Apple", "laptop", "dizüstü bilgisayar", "teknoloji", "donanım", "kişisel deneyim", "Hayat", "macOS"]
 category: Hayat
 migration: {"wpId":206,"wpPostDate":"2008-09-19T06:48:30.000Z"}
 lang: tr

@@ -2,8 +2,9 @@
 title: "PHP'de diziler yerine nesnelerle çalışmaya alışmak"
 slug: phpde-diziler-yerine-nesnelerle-calismaya-alismak
 date: 2010-11-28
+description: "Javascript ve jQuery'nin nesne yönelimli yapısından etkilenerek PHP'de anlık veri yapıları için diziler yerine nesneleri kullanma alışkanlığı ve bunun nasıl yapılabileceğine dair bir örnek."
 url: http://mfyz.com/tr/phpde-diziler-yerine-nesnelerle-calismaya-alismak/
-tags: ["array","javascript","js","object","php"]
+tags: ["PHP", "nesne yönelimli programlama", "OOP", "dizi", "nesne", "veri yapıları", "javascript", "jQuery", "kodlama alışkanlıkları"]
 category: PHP
 migration: {"wpId":261,"wpPostDate":"2010-11-28T10:07:54.000Z"}
 lang: tr

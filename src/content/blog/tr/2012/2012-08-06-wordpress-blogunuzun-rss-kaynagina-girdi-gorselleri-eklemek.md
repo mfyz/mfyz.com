@@ -2,8 +2,9 @@
 title: "Wordpress blogunuzun RSS kaynağına girdi görselleri eklemek"
 slug: wordpress-blogunuzun-rss-kaynagina-girdi-gorselleri-eklemek
 date: 2012-08-06
+description: "WordPress RSS beslemelerine yazı görsellerini (thumbnail) eklemek için pratik bir PHP çözümü. functions.php dosyasına eklenecek bir fonksiyon ile RSS içeriğine otomatik olarak yazıların öne çıkan görselleri dahil ediliyor."
 url: http://mfyz.com/tr/wordpress-blogunuzun-rss-kaynagina-girdi-gorselleri-eklemek/
-tags: ["feed","PHP","rss","theme","thumbnail","wordpress","wp"]
+tags: ["WordPress", "RSS Beslemesi", "Öne Çıkan Görsel", "PHP", "Tema Geliştirme", "functions.php", "WordPress Eklentileri"]
 category: PHP
 migration: {"wpId":313,"wpPostDate":"2012-08-06T00:57:46.000Z"}
 lang: tr

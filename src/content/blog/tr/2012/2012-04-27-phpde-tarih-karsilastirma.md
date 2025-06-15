@@ -2,8 +2,9 @@
 title: "PHP'de tarih karşılaştırma"
 slug: phpde-tarih-karsilastirma
 date: 2012-04-27
+description: "PHP'de tarihleri karşılaştırmanın çeşitli yolları ve özellikle `strtotime()` fonksiyonunun farklı tarih formatlarını ve doğal dil ifadelerini zaman damgasına çevirerek karşılaştırmayı nasıl kolaylaştırdığı anlatılıyor."
 url: http://mfyz.com/tr/phpde-tarih-karsilastirma/
-tags: ["date","diff","php","sql","strtotime"]
+tags: ["PHP", "tarih karşılaştırma", "strtotime", "zaman damgası", "programlama", "web geliştirme"]
 category: PHP
 migration: {"wpId":162,"wpPostDate":"2012-04-27T20:22:41.000Z"}
 lang: tr

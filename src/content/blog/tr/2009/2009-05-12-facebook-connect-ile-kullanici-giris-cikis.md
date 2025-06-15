@@ -1,9 +1,10 @@
 ---
 title: "Facebook connect ile kullanıcı giriş çıkış"
+description: "Web sitelerine Facebook Connect entegrasyonu ile kullanıcı girişi ve yetkilendirme işlemlerinin nasıl yapılacağını adım adım anlatan bir rehber. FBML ve JavaScript kullanımı."
 slug: facebook-connect-ile-kullanici-giris-cikis
 date: 2009-05-12
 url: http://mfyz.com/tr/facebook-connect-ile-kullanici-giris-cikis/
-tags: ["api","Arayüz Programlama","connect","facebook"]
+tags: ["facebook connect", "kullanıcı girişi", "api entegrasyonu", "web geliştirme", "javascript"]
 category: Arayüz Programlama
 migration: {"wpId":140,"wpPostDate":"2009-05-12T07:44:04.000Z"}
 lang: tr

@@ -1,9 +1,10 @@
 ---
-title: "Jquery Kaynakları"
+title: "Kapsamlı jQuery Kaynakları Listesi: Siteler, Eklentiler ve Makaleler"
 slug: jquery-kaynaklari
 date: 2008-06-30
+description: "MooTools'tan jQuery'ye geçiş yapan yazarın derlediği kapsamlı jQuery kaynakları listesi. Resmi siteler, dökümantasyonlar, popüler eklentiler ve faydalı makaleler içerir."
 url: http://mfyz.com/tr/jquery-kaynaklari/
-tags: ["Arayüz Programlama","jquery","link","plugin"]
+tags: ["jQuery", "JavaScript", "web geliştirme", "Arayüz Programlama", "kaynak listesi", "plugin", "dökümantasyon", "tutorial", "MooTools", "web tasarımı"]
 category: Arayüz Programlama
 migration: {"wpId":197,"wpPostDate":"2008-06-30T03:28:08.000Z"}
 lang: tr

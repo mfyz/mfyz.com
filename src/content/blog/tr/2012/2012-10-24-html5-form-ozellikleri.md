@@ -2,8 +2,9 @@
 title: "HTML5 Form Özellikleri"
 slug: html5-form-ozellikleri
 date: 2012-10-24
+description: "HTML5 ile gelen yeni form özellikleri (autofocus, placeholder, input türleri: email, url, number, date, color vb.) ve bu özelliklerin kullanıcı deneyimini nasıl iyileştirdiği, JavaScript ihtiyacını nasıl azalttığı anlatılıyor."
 url: http://mfyz.com/tr/html5-form-ozellikleri/
-tags: ["Arayüz Programlama","colorpicker","datepicker","form","html","html5","input","javascript","mobile"]
+tags: ["HTML5", "Formlar", "Web Geliştirme", "Input Türleri", "Kullanıcı Arayüzü", "Frontend", "JavaScript", "Mobil Web"]
 category: Arayüz Programlama
 migration: {"wpId":321,"wpPostDate":"2012-10-24T00:26:57.000Z"}
 lang: tr

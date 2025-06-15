@@ -1,9 +1,10 @@
 ---
 title: "Tüm önyüz PHPTAL'e taşındı"
+description: "mfyz.com'un tüm önyüzünün PHPTAL şablon motoruna taşınması ve sitenin MVC yapısına geçiş sürecindeki bu önemli adımın detayları. PHPTAL'in avantajları ve geliştirme sürecine etkileri."
 slug: tum-onyuz-phptale-tasindi
 date: 2011-07-27
 url: http://mfyz.com/tr/tum-onyuz-phptale-tasindi/
-tags: ["front-end","mfyz.com","mvc","phptal","views"]
+tags: ["phptal", "önyüz", "mvc", "şablon motoru", "mfyz.com", "web geliştirme"]
 category: mfyz.com
 migration: {"wpId":276,"wpPostDate":"2011-07-27T04:17:59.000Z"}
 lang: tr

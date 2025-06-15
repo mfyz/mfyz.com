@@ -1,9 +1,10 @@
 ---
-title: "Yeni macbook pro modelleri çıkmış."
+title: "Yeni MacBook Pro Modelleri: Bir Tasarım Eleştirisi"
 slug: yeni-macbook-pro-modelleri-cikmis
 date: 2008-10-15
+description: "Apple'ın yeni MacBook Pro modellerini değerlendiriyor. Yeni tasarımı (parlak siyah ekran çerçevesi, siyah klavye, kaba hatlar) eleştirirken, eski modelini almış olmaktan duyduğu memnuniyeti dile getiriyor. Ayrıca iPhone uyumlu kulaklık modifikasyonundan bahsediyor."
 url: http://mfyz.com/tr/yeni-macbook-pro-modelleri-cikmis/
-tags: ["Diğer","NULL"]
+tags: ["MacBook Pro", "Apple", "laptop", "dizüstü bilgisayar", "teknoloji", "donanım", "tasarım eleştirisi", "ürün incelemesi", "Diğer", "iPhone"]
 category: Diğer
 migration: {"wpId":209,"wpPostDate":"2008-10-15T09:23:00.000Z"}
 lang: tr

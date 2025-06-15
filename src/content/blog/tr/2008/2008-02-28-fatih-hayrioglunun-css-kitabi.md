@@ -1,9 +1,10 @@
 ---
-title: "(Fatih Hayrioğlu'nun) CSS Kitabı"
+title: "Fatih Hayrioğlu'ndan Kapsamlı CSS E-Kitabı"
 slug: fatih-hayrioglunun-css-kitabi
 date: 2008-02-28
+description: "Fatih Hayrioğlu'nun yayınladığı, CSS özelliklerini sade, öz ve akış şemalarıyla destekleyerek anlatan kapsamlı e-kitabının duyurusu. Web tasarımcılar için değerli bir kaynak."
 url: http://mfyz.com/tr/fatih-hayrioglunun-css-kitabi/
-tags: ["Arayüz Programlama","css","e-book","e-kitap","kitap"]
+tags: ["CSS", "e-kitap", "Fatih Hayrioğlu", "web tasarım", "web geliştirme", "kaynak", "duyuru", "eğitim", "arayüz programlama"]
 category: Arayüz Programlama
 migration: {"wpId":180,"wpPostDate":"2008-02-28T22:58:45.000Z"}
 lang: tr

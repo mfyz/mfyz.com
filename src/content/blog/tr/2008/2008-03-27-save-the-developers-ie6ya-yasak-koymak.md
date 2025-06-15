@@ -1,9 +1,10 @@
 ---
-title: "Save The Developers - IE6'ya yasak koymak?"
+title: "Save The Developers: IE6 Kullanımına Karşı Bir Protesto"
 slug: save-the-developers-ie6ya-yasak-koymak
 date: 2008-03-27
+description: "'Save The Developers' girişimi ve Internet Explorer 6'nın web geliştiriciler için yarattığı zorluklar üzerine bir değerlendirme. IE6'nın hala yaygın kullanımı ve geliştiricilerin bu duruma tepkisi ele alınıyor."
 url: http://mfyz.com/tr/save-the-developers-ie6ya-yasak-koymak/
-tags: ["Arayüz Programlama","ie6","internet explorer","yasak"]
+tags: ["Internet Explorer 6", "IE6", "web geliştirme", "Save The Developers", "web standartları", "tarayıcı uyumluluğu", "arayüz programlama", "protesto", "teknoloji eleştirisi"]
 category: Arayüz Programlama
 migration: {"wpId":184,"wpPostDate":"2008-03-27T23:18:39.000Z"}
 lang: tr

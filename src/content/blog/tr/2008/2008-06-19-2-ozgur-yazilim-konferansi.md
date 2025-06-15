@@ -1,9 +1,10 @@
 ---
-title: "2. Özgür Yazılım Konferansı"
+title: "2. Özgür Yazılım Konferansı TOBB'da Düzenleniyor"
 slug: 2-ozgur-yazilim-konferansi
 date: 2008-06-19
+description: "Linux Kullanıcıları Derneği (LKD) tarafından TOBB Üniversitesi'nde düzenlenecek olan 2. Özgür Yazılım Konferansı hakkında duyuru. Etkinlik programı, katılım ve gönüllülük bilgileri paylaşılıyor."
 url: http://mfyz.com/tr/2-ozgur-yazilim-konferansi/
-tags: ["Diğer","konferans","linux","özgür yazılım"]
+tags: ["Özgür Yazılım", "Linux", "konferans", "LKD", "TOBB Üniversitesi", "etkinlik", "teknoloji", "açık kaynak", "topluluk"]
 category: Diğer
 migration: {"wpId":194,"wpPostDate":"2008-06-19T04:59:45.000Z"}
 lang: tr

@@ -2,8 +2,9 @@
 title: "Leopard'ın Finder'ı ve Chroma Player"
 slug: leopardin-finderi-ve-chroma-player
 date: 2008-02-08
+description: "Mac OS X Leopard'ın Finder'ındaki Cover Flow özelliği, klasör görünüm ayarlarındaki sorunlar ve Dock Stacks üzerine ilk izlenimler. Ayrıca Chroma Player yazılımının lisanslanması."
 url: http://mfyz.com/tr/leopardin-finderi-ve-chroma-player/
-tags: ["chroma","Diğer","finder","license","lisans","movie","player"]
+tags: ["Mac OS X", "Leopard", "Finder", "Coverflow", "Dock Stacks", "Chroma Player", "Apple", "işletim sistemi", "yazılım"]
 category: Diğer
 migration: {"wpId":175,"wpPostDate":"2008-02-08T21:53:22.000Z"}
 lang: tr

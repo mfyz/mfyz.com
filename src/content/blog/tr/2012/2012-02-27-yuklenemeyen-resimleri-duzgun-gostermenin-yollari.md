@@ -2,8 +2,9 @@
 title: "Yüklenemeyen resimleri düzgün göstermenin yolları"
 slug: yuklenemeyen-resimleri-duzgun-gostermenin-yollari
 date: 2012-02-27
+description: "Web sayfalarında yüklenemeyen veya bozuk resimlerin kullanıcı deneyimini olumsuz etkilememesi için JavaScript (jQuery) ile resimleri gizleme veya yerine jenerik bir görsel gösterme yöntemleri."
 url: http://mfyz.com/tr/yuklenemeyen-resimleri-duzgun-gostermenin-yollari/
-tags: ["Arayüz Programlama","fallback","image","javascript","jquery"]
+tags: ["bozuk resim", "resim yükleme hatası", "JavaScript", "jQuery", "kullanıcı deneyimi", "arayüz programlama", "onerror"]
 category: Arayüz Programlama
 migration: {"wpId":161,"wpPostDate":"2012-02-27T12:54:46.000Z"}
 lang: tr

@@ -2,8 +2,9 @@
 title: "Development sürecinde css ve js dosyalarının cachlenmesini engelleyin"
 slug: development-surecinde-css-ve-js-dosyalarinin-cachlenmesini-engelleyin
 date: 2010-09-26
+description: "Geliştirme aşamasında Apache sunucularda `.htaccess` dosyasına eklenecek `Cache-Control` ve `Expires` başlıklarıyla CSS ve JS dosyalarının tarayıcı tarafından önbelleğe alınmasını engelleme yöntemi."
 url: http://mfyz.com/tr/development-surecinde-css-ve-js-dosyalarinin-cachlenmesini-engelleyin/
-tags: ["apache","cache","css","htaccess","javascript","Sunucu Programlama"]
+tags: ["cache", "önbellek", "CSS", "javascript", "apache", ".htaccess", "web geliştirme", "Sunucu Programlama"]
 category: Sunucu Programlama
 migration: {"wpId":260,"wpPostDate":"2010-09-26T03:41:50.000Z"}
 lang: tr

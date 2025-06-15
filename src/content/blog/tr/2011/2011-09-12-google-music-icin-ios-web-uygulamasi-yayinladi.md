@@ -1,9 +1,10 @@
 ---
-title: "Google Music icin iOS web uygulamasi yayinladi"
+title: "Google Music için iOS Web Uygulaması Yayınlandı"
+description: "Google'ın Music servisi için yayınladığı iOS web uygulamasının ilk izlenimleri. Tarayıcıda arka planda çalma, cihaz kontrolleriyle entegrasyon ve AirPlay desteği gibi özellikler ve Google Music'in sosyal entegrasyon eksikliği üzerine bir değerlendirme."
 slug: google-music-icin-ios-web-uygulamasi-yayinladi
 date: 2011-09-12
 url: http://mfyz.com/tr/google-music-icin-ios-web-uygulamasi-yayinladi/
-tags: ["app","google","iOS","music","OS","safari","web app","webkit"]
+tags: ["google music", "ios", "web uygulaması", "safari", "airplay", "müzik servisleri"]
 category: OS
 migration: {"wpId":283,"wpPostDate":"2011-09-12T09:30:55.000Z"}
 lang: tr

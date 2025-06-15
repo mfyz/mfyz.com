@@ -1,9 +1,10 @@
 ---
-title: "iOS icin gelistirilen uygulamayi test etmek"
+title: "iOS İçin Geliştirilen Uygulamayı Test Etmek"
+description: "Web ve iOS uygulama geliştirme süreçlerindeki test farklılıkları, iOS güncellemelerinin zorlukları ve TestFlight gibi araçlarla alpha test gruplarına dağıtımın önemi üzerine bir analiz."
 slug: ios-icin-gelistirilen-uygulamayi-test-etmek
 date: 2011-09-21
 url: http://mfyz.com/tr/ios-icin-gelistirilen-uygulamayi-test-etmek/
-tags: ["alpha","Diğer","iOS","stage","testing"]
+tags: ["ios", "test süreci", "uygulama geliştirme", "testflight", "alpha test", "mobil geliştirme"]
 category: Diğer
 migration: {"wpId":286,"wpPostDate":"2011-09-21T08:51:26.000Z"}
 lang: tr

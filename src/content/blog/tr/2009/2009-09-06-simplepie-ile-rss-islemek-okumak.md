@@ -1,9 +1,10 @@
 ---
 title: "Simplepie ile rss işlemek (okumak)"
+description: "PHP tabanlı Simplepie kütüphanesi kullanarak RSS beslemelerini işlemenin (okumanın) ve verileri yapılandırılmış bir diziye dönüştürmenin anlatıldığı rehber."
 slug: simplepie-ile-rss-islemek-okumak
 date: 2009-09-06
 url: http://mfyz.com/tr/simplepie-ile-rss-islemek-okumak/
-tags: ["parse","rss","simple pie","simplepie","Sunucu Programlama","xml"]
+tags: ["simplepie", "php", "rss", "xml ayrıştırma", "kütüphane"]
 category: Sunucu Programlama
 migration: {"wpId":147,"wpPostDate":"2009-09-06T18:44:55.000Z"}
 lang: tr

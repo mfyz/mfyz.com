@@ -2,8 +2,9 @@
 title: "PHP SDK ile Facebook API hareketlerini izleme ve optimize etme yöntemleri"
 slug: php-sdk-ile-facebook-api-hareketlerini-izleme-ve-optimize-etme-yontemleri
 date: 2012-08-03
+description: "Facebook PHP SDK kullanılarak yapılan API çağrılarının nasıl izleneceği ve optimize edileceği anlatılıyor. API çağrı sürelerini ve sayılarını takip ederek performansı artırma ve FQL ile sorgu birleştirme gibi optimizasyon yöntemleri sunuluyor."
 url: http://mfyz.com/tr/php-sdk-ile-facebook-api-hareketlerini-izleme-ve-optimize-etme-yontemleri/
-tags: ["api","facebook","fb","fql","monitoring","opengraph","optimization","PHP","profile","profiling","sdk"]
+tags: ["Facebook API", "PHP SDK", "API Optimizasyonu", "Performans İzleme", "FQL", "Facebook Geliştirme", "PHP", "API Çağrıları"]
 category: PHP
 migration: {"wpId":312,"wpPostDate":"2012-08-03T03:41:17.000Z"}
 lang: tr

@@ -2,8 +2,9 @@
 title: "HTML Dersleri Tekrar dökümanlar bölümünde"
 slug: html-dersleri-tekrar-dokumanlar-bolumunde
 date: 2008-01-30
+description: "Eski 'Temel HTML Bilgisi' döküman serisi, yeni site yapısına uygun olarak güncellenmiş stiller, tablosuz arayüz ve daha iyi okunabilirlik ile yeniden yayınlandı."
 url: http://mfyz.com/tr/html-dersleri-tekrar-dokumanlar-bolumunde/
-tags: ["dersler","html","mfyz.com"]
+tags: ["HTML", "dersler", "eğitim", "web tasarımı", "mfyz.com", "döküman"]
 category: mfyz.com
 migration: {"wpId":170,"wpPostDate":"2008-01-30T23:45:15.000Z"}
 lang: tr

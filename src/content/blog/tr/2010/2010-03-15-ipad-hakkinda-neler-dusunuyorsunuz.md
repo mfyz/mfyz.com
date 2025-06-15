@@ -2,8 +2,9 @@
 title: "iPad hakkında neler düşünüyorsunuz?"
 slug: ipad-hakkinda-neler-dusunuyorsunuz
 date: 2010-03-15
+description: "Apple'ın iPad'inin yakında piyasaya sürüleceği haberi üzerine, bu yeni tabletin web tasarımı ve geliştirme süreçlerine olası etkileri tartışılıyor. Mobil cihazlara yönelik adaptasyon sorgulanıyor."
 url: http://mfyz.com/tr/ipad-hakkinda-neler-dusunuyorsunuz/
-tags: ["apple","Diğer","ipad","iphone","itunes","mobile","tablet"]
+tags: ["iPad", "Apple", "tablet", "mobil geliştirme", "web tasarımı", "kullanılabilirlik", "teknoloji"]
 category: Diğer
 migration: {"wpId":248,"wpPostDate":"2010-03-15T06:58:07.000Z"}
 lang: tr

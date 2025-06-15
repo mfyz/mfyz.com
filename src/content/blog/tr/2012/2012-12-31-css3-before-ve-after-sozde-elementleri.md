@@ -1,9 +1,10 @@
 ---
-title: "CSS before ve after sözde elementleri"
+title: "CSS ::before ve ::after Sözde Elemanları"
 slug: css3-before-ve-after-sozde-elementleri
 date: 2012-12-31
+description: "CSS'in ::before ve ::after sözde elemanlarının kullanımı anlatılıyor. Elementlerin başına veya sonuna içerik ekleyerek tırnak işaretleri, 'devamını oku' linkleri için '...' veya dış bağlantılar için ikon gibi görsel öğeler oluşturma yöntemleri örneklerle açıklanıyor. Tarayıcı desteği ve erişilebilirlik notlarına da değiniliyor."
 url: http://mfyz.com/tr/css3-before-ve-after-sozde-elementleri/
-tags: ["after","Arayüz Programlama","before","css","css3","html","pseudo"]
+tags: ["CSS", "CSS3", "Pseudo-elements", "::before", "::after", "Frontend", "Web Geliştirme", "Arayüz Programlama", "Sözde Elemanlar"]
 category: Arayüz Programlama
 migration: {"wpId":343,"wpPostDate":"2012-12-31T08:06:38.000Z"}
 lang: tr

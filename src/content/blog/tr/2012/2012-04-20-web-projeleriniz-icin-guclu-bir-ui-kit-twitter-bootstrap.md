@@ -2,8 +2,9 @@
 title: "Web projeleriniz için güçlü bir UI kit: Twitter Bootstrap"
 slug: web-projeleriniz-icin-guclu-bir-ui-kit-twitter-bootstrap
 date: 2012-04-20
+description: "Twitter Bootstrap'in web projeleri için sunduğu güçlü arayüz kiti, açık kaynak olması, responsive tasarım yetenekleri ve geliştirme süreçlerini nasıl kolaylaştırdığı anlatılıyor."
 url: http://mfyz.com/tr/web-projeleriniz-icin-guclu-bir-ui-kit-twitter-bootstrap/
-tags: ["Arayüz Programlama","boilerplate","bootstrap","css3","html","jquery","template","twitter"]
+tags: ["Twitter Bootstrap", "Bootstrap", "UI kit", "CSS framework", "arayüz geliştirme", "web tasarımı", "açık kaynak", "responsive tasarım"]
 category: Arayüz Programlama
 migration: {"wpId":301,"wpPostDate":"2012-04-20T11:26:20.000Z"}
 lang: tr

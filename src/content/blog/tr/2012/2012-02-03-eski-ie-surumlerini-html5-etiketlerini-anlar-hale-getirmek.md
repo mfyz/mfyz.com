@@ -2,8 +2,9 @@
 title: "Eski IE surumlerini, HTML5 etiketlerini anlar hale getirmek"
 slug: eski-ie-surumlerini-html5-etiketlerini-anlar-hale-getirmek
 date: 2012-02-03
+description: "Eski Internet Explorer sürümlerinin (IE6, 7, 8) HTML5 etiketlerini tanıması ve doğru görüntülemesi için JavaScript ve CSS ile uygulanabilecek basit çözümler."
 url: http://mfyz.com/tr/eski-ie-surumlerini-html5-etiketlerini-anlar-hale-getirmek/
-tags: ["Arayüz Programlama","css3","html5","ie","internet explorer"]
+tags: ["HTML5", "Internet Explorer", "IE uyumluluğu", "CSS", "JavaScript", "web geliştirme", "Arayüz Programlama"]
 category: Arayüz Programlama
 migration: {"wpId":299,"wpPostDate":"2012-02-03T18:04:58.000Z"}
 lang: tr

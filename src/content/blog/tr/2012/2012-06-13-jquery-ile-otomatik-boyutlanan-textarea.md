@@ -2,8 +2,9 @@
 title: "jQuery ile otomatik boyutlanan textarea"
 slug: jquery-ile-otomatik-boyutlanan-textarea
 date: 2012-06-13
+description: "autosize jQuery eklentisi ile textarea'ların içeriğe göre otomatik olarak nasıl boyutlandırılabileceği ve kullanıcı deneyimini nasıl iyileştirdiği anlatılıyor."
 url: http://mfyz.com/tr/jquery-ile-otomatik-boyutlanan-textarea/
-tags: ["Arayüz Programlama","auto","autoresize","autosize","javascript","jquery","otomatik","textarea"]
+tags: ["jQuery", "textarea", "autosize", "otomatik boyutlandırma", "JavaScript", "kullanıcı deneyimi", "arayüz programlama", "form elemanları"]
 category: Arayüz Programlama
 migration: {"wpId":164,"wpPostDate":"2012-06-13T00:33:16.000Z"}
 lang: tr

@@ -1,9 +1,10 @@
 ---
-title: "PHP ve PEAR"
+title: "PHP ve PEAR: MDB2 ile Veritabanı İşlemleri Üzerine Yeni Dökümanlar"
 slug: php-ve-pear
 date: 2008-02-17
+description: "PHP'de PEAR kütüphanesi ve MDB2 paketi ile veritabanı işlemleri ve SQL injection'a karşı korunma yöntemlerini anlatan iki yeni dökümanın duyurusu."
 url: http://mfyz.com/tr/php-ve-pear/
-tags: ["execute","mdb2","mfyz.com","mssql","mysql","pear","pgsql","php","prepare","sqlite"]
+tags: ["PHP", "PEAR", "MDB2", "veritabanı", "SQL injection", "mfyz.com", "duyuru", "programlama", "eğitim"]
 category: mfyz.com
 migration: {"wpId":177,"wpPostDate":"2008-02-17T04:34:46.000Z"}
 lang: tr

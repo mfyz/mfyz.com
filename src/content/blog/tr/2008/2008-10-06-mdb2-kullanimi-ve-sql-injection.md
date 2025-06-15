@@ -1,9 +1,10 @@
 ---
-title: "MDB2 Kullanımı ve SQL Injection"
+title: "PHP'de PEAR MDB2 ile Güvenli ve Esnek Veritabanı İşlemleri (SQL Injection Önlemleri)"
 slug: mdb2-kullanimi-ve-sql-injection
 date: 2008-10-06
+description: "PEAR MDB2 kütüphanesi kullanarak PHP'de veritabanı bağlantısı kurma, sorgu çalıştırma ve özellikle 'prepare & execute' yöntemiyle SQL injection saldırılarına karşı güvenli kod yazma teknikleri anlatılmaktadır."
 url: http://mfyz.com/tr/mdb2-kullanimi-ve-sql-injection/
-tags: ["injection","mdb2","pear","PHP","sql"]
+tags: ["PHP", "PEAR", "MDB2", "veritabanı", "SQL", "SQL injection", "güvenlik", "programlama", "tutorial", "Sunucu Programlama"]
 category: PHP
 migration: {"wpId":139,"wpPostDate":"2008-10-06T11:06:42.000Z"}
 lang: tr

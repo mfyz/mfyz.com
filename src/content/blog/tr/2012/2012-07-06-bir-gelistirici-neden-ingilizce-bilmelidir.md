@@ -2,8 +2,9 @@
 title: "Bir geliştirici neden Ingilizce bilmelidir?"
 slug: bir-gelistirici-neden-ingilizce-bilmelidir
 date: 2012-07-06
+description: "Bir yazılım geliştiricinin neden İngilizce bilmesi gerektiği; güncel kaynaklara erişim, küresel geliştirici topluluklarıyla iletişim ve teknolojik gelişmeleri takip etme açısından İngilizce'nin önemi vurgulanıyor."
 url: http://mfyz.com/tr/bir-gelistirici-neden-ingilizce-bilmelidir/
-tags: ["dil","gelistirici","Hayat","ingilizce","programci"]
+tags: ["İngilizce", "yazılım geliştirme", "geliştirici", "programlama", "kariyer", "teknoloji", "dil öğrenimi", "Hayat"]
 category: Hayat
 migration: {"wpId":306,"wpPostDate":"2012-07-06T18:33:32.000Z"}
 lang: tr

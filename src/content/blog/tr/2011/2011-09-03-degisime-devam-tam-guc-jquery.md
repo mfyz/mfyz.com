@@ -1,9 +1,10 @@
 ---
-title: "Degisime devam, tam guc jQuery!"
+title: "Değişime Devam, Tam Güç jQuery!"
+description: "mfyz.com'daki büyük mimari değişimler devam ediyor. Bu yazıda, sitenin tüm ön yüz JavaScript altyapısının MooTools'tan jQuery'ye geçiş sürecini ve bu değişimin getirdiği sadeleşmeleri anlatıyorum."
 slug: degisime-devam-tam-guc-jquery
 date: 2011-09-03
 url: http://mfyz.com/tr/degisime-devam-tam-guc-jquery/
-tags: ["Arayüz Programlama","jquery","mootools"]
+tags: ["jquery", "mootools", "javascript", "önyüz geliştirme", "mfyz.com", "refaktör"]
 category: Arayüz Programlama
 migration: {"wpId":281,"wpPostDate":"2011-09-03T11:11:29.000Z"}
 lang: tr

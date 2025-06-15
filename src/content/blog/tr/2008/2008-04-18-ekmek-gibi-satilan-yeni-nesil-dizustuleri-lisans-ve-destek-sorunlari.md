@@ -1,9 +1,10 @@
 ---
-title: "Ekmek gibi satılan yeni nesil dizüstüleri, lisans ve destek sorunları"
+title: "Yeni Nesil Dizüstü Bilgisayarlar: Lisans, Sürücü ve Destek Çıkmazları"
 slug: ekmek-gibi-satilan-yeni-nesil-dizustuleri-lisans-ve-destek-sorunlari
 date: 2008-04-18
+description: "Yeni alınan Acer dizüstü bilgisayarla yaşanan Vista, kurtarma medyası eksikliği, sürücü uyumsuzlukları ve üretici destek politikaları üzerine eleştirel bir deneyim yazısı. Farklı işletim sistemleri kurma çabaları ve karşılaşılan zorluklar."
 url: http://mfyz.com/tr/ekmek-gibi-satilan-yeni-nesil-dizustuleri-lisans-ve-destek-sorunlari/
-tags: ["destek","dizüstü","Hayat","laptop","license","lisans","notebook","support"]
+tags: ["dizüstü bilgisayar", "laptop", "teknik destek", "sürücü sorunu", "Windows Vista", "macOS", "Windows XP", "lisanslama", "donanım uyumluluğu", "Acer", "kullanıcı deneyimi", "teknoloji eleştirisi"]
 category: Hayat
 migration: {"wpId":188,"wpPostDate":"2008-04-18T20:08:17.000Z"}
 lang: tr
