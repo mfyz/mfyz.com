@@ -1,11 +1,22 @@
 ---
-title: "turso + drizzle, perfect sqlite combo in production"
+title: "Turso + Drizzle: The Perfect SQLite Combo for Production"
+description: "The combination of Turso, a hosted SQLite service, and Drizzle, a TypeScript ORM, for using SQLite in production environments is explored. Benefits include simplicity, type safety, and seamless transition from local development to production."
 slug: turso-drizzle-perfect-sqlite-combo-in-production
 date: 2025-04-02
 url: https://mfyz.com/?p=961
-tags: ["Back-End","drizzle","orm","sqlite","turso","typescript"]
+tags:
+  [
+    "turso",
+    "drizzle",
+    "sqlite",
+    "orm",
+    "typescript",
+    "database",
+    "backend",
+    "production",
+  ]
 category: Back-End
-migration: {"wpId":961,"wpPostDate":"2025-04-02T19:49:14.000Z"}
+migration: { "wpId": 961, "wpPostDate": "2025-04-02T19:49:14.000Z" }
 ---
 
 ![](/images/archive/en/2025/04/image.png)
@@ -28,19 +39,19 @@ Even though there's some skepticism around using SQLite in production, I find it
 
 Using SQLite can be a game-changer for various reasons:
 
-*   **Simplicity**: Its ease of setup and minimal configuration is perfect for rapid development.
+- **Simplicity**: Its ease of setup and minimal configuration is perfect for rapid development.
 
-*   **Lightweight**: Taking up a fraction of the resources compared to other databases.
+- **Lightweight**: Taking up a fraction of the resources compared to other databases.
 
-*   **Portability**: SQLite databases can be easily moved around, making it a breeze to manage local development and testing environments.
+- **Portability**: SQLite databases can be easily moved around, making it a breeze to manage local development and testing environments.
 
 ## Introducing Drizzle
 
 Now, let’s talk about Drizzle. Drizzle is a fantastic TypeScript ORM (Object-Relational Mapping) tool. Here’s why I think Drizzle is great:
 
-*   **Type Safety**: Built with TypeScript, it provides type safety, reducing runtime errors.
+- **Type Safety**: Built with TypeScript, it provides type safety, reducing runtime errors.
 
-*   **Simple Relationships**: Managing schema and migrations with Drizzle is a walk in the park. You can ease your work by using a clear and concise API, simplifying data manipulation and access.
+- **Simple Relationships**: Managing schema and migrations with Drizzle is a walk in the park. You can ease your work by using a clear and concise API, simplifying data manipulation and access.
 
 ## A Great Match: Turso and Drizzle
 
@@ -48,9 +59,9 @@ Turso is a hosted SQLite service that has come to embrace modern development wor
 
 The synergy between Turso and Drizzle makes for an efficient development experience. You can run local SQLite for development and testing, and when you're ready to go live, transition to Turso seamlessly. Here’s why this combo works so well:
 
-*   **Connection Simplicity**: Switching from a local SQLite file to a Turso-hosted database is smooth, making the transition to production seamless.
+- **Connection Simplicity**: Switching from a local SQLite file to a Turso-hosted database is smooth, making the transition to production seamless.
 
-*   **Consistent Development Environment**: You can maintain consistency between your local and production environments, reducing deployment headaches.
+- **Consistent Development Environment**: You can maintain consistency between your local and production environments, reducing deployment headaches.
 
 ## Setting Up Turso and Local DB with Drizzle
 
@@ -75,11 +86,11 @@ yarn add drizzle-orm
 You’ll want to create a configuration file to set up your connection:
 
 ```js
-import { drizzle } from 'drizzle-orm/sqlite';
-import { SqliteDialect } from 'drizzle-orm/sqlite';
-import sqlite3 from 'sqlite3';
+import { drizzle } from "drizzle-orm/sqlite";
+import { SqliteDialect } from "drizzle-orm/sqlite";
+import sqlite3 from "sqlite3";
 
-const db = drizzle(new sqlite3.Database('path-to-your-database.db'), {
+const db = drizzle(new sqlite3.Database("path-to-your-database.db"), {
   dialect: new SqliteDialect(),
 });
 ```
@@ -89,7 +100,7 @@ const db = drizzle(new sqlite3.Database('path-to-your-database.db'), {
 When you’re ready to use Turso, you need to adjust your connection. Turso provides a unique connection string that you can find in your dashboard. Just replace the database connection in the code above:
 
 ```js
-const db = drizzle(new sqlite3.Database('your-turso-db-url'), {
+const db = drizzle(new sqlite3.Database("your-turso-db-url"), {
   dialect: new SqliteDialect(),
 });
 ```
@@ -128,20 +139,22 @@ export { db };
 Example books, authors in a schema:
 
 ```js
-import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
-import { relations } from 'drizzle-orm';
+import { sqliteTable, text, integer } from "drizzle-orm/sqlite-core";
+import { relations } from "drizzle-orm";
 
-export const authors = sqliteTable('authors', {
-  id: integer('id').primaryKey({ autoIncrement: true }),
-  name: text('name').notNull(),
-  bio: text('bio'),
+export const authors = sqliteTable("authors", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  name: text("name").notNull(),
+  bio: text("bio"),
 });
 
-export const books = sqliteTable('books', {
-  id: integer('id').primaryKey({ autoIncrement: true }),
-  title: text('title').notNull(),
-  authorId: integer('author_id').notNull().references(() => authors.id),
-  publishedYear: integer('published_year'),
+export const books = sqliteTable("books", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  title: text("title").notNull(),
+  authorId: integer("author_id")
+    .notNull()
+    .references(() => authors.id),
+  publishedYear: integer("published_year"),
 });
 
 export const authorsRelations = relations(authors, ({ many }) => ({
@@ -161,10 +174,12 @@ Here is what some Drizzle usage examples looks like
 Insert an author and a book:
 
 ```js
-await db.insert(authors).values({ name: 'Jane Austen', bio: 'English novelist' });
+await db
+  .insert(authors)
+  .values({ name: "Jane Austen", bio: "English novelist" });
 
 await db.insert(books).values({
-  title: 'Pride and Prejudice',
+  title: "Pride and Prejudice",
   authorId: 1,
   publishedYear: 1813,
 });

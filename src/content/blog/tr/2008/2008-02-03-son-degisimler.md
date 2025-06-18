@@ -1,9 +1,10 @@
 ---
-title: "Son değişimler"
+title: "Son Değişimler"
 slug: son-degisimler
 date: 2008-02-03
+description: "mfyz.com'daki son değişiklikler: Kullanıcı aktivitesini gösteren bölüm, tarayıcıyı yormayan daha sade ve performanslı bir tasarımla, AJAX kullanılarak yeniden geliştirildi."
 url: http://mfyz.com/tr/son-degisimler/
-tags: ["mfyz.com","NULL"]
+tags: ["mfyz.com", "güncelleme", "AJAX", "performans", "web geliştirme", "kullanıcı deneyimi"]
 category: mfyz.com
 migration: {"wpId":172,"wpPostDate":"2008-02-03T08:56:55.000Z"}
 lang: tr

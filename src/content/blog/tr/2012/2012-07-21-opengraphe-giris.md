@@ -2,8 +2,9 @@
 title: "OpenGraph'e giriş"
 slug: opengraphe-giris
 date: 2012-07-21
+description: "Facebook'un Open Graph protokolüne giriş. Open Graph'ın ne olduğu, neden kullanıldığı, nasıl çalıştığı (og: etiketleri) ve Facebook uygulamaları için sunduğu avantajlar (detaylı aktivite paylaşımı, gruplandırılmış hikayeler, artan görünürlük ve etkileşim) anlatılıyor."
 url: http://mfyz.com/tr/opengraphe-giris/
-tags: ["api","content","Diğer","facebook","graph","og","opengraph","share","social"]
+tags: ["Open Graph", "Facebook API", "Sosyal Medya", "Meta Etiketleri", "og:tags", "Web Geliştirme", "Sosyal Paylaşım", "API Entegrasyonu"]
 category: Diğer
 migration: {"wpId":309,"wpPostDate":"2012-07-21T20:25:34.000Z"}
 lang: tr

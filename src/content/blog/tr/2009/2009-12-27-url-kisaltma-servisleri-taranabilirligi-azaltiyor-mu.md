@@ -1,9 +1,10 @@
 ---
 title: "URL kısaltma servisleri taranabilirliği azaltıyor mu?"
+description: "URL kısaltma servislerinin arama motoru botları tarafından nasıl algılandığı ve SEO açısından taranabilirlik ile dış bağlantı sayısını etkileyip etkilemediği üzerine bir değerlendirme."
 slug: url-kisaltma-servisleri-taranabilirligi-azaltiyor-mu
 date: 2009-12-27
 url: http://mfyz.com/tr/url-kisaltma-servisleri-taranabilirligi-azaltiyor-mu/
-tags: ["Diğer","google","kısaltma","search","service","short url","shortener","tool","url","web tool"]
+tags: ["url kısaltma", "seo", "arama motoru optimizasyonu", "taranabilirlik", "backlink"]
 category: Diğer
 migration: {"wpId":242,"wpPostDate":"2009-12-27T01:00:50.000Z"}
 lang: tr

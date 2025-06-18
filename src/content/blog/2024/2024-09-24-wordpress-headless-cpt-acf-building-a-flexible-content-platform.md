@@ -1,11 +1,21 @@
 ---
 title: "WordPress Headless + CPT + ACF: Building a Flexible Content Platform"
+description: "Building flexible content platforms using WordPress in a headless setup, combined with Custom Post Types (CPT) and Advanced Custom Fields (ACF), is explored. This approach allows for front-end framework flexibility and streamlined content management."
 slug: wordpress-headless-cpt-acf-building-a-flexible-content-platform
 date: 2024-09-24
 url: https://mfyz.com/?p=861
-tags: ["api","headless","nextjs","postman","Programming","wordpress"]
+tags:
+  [
+    "wordpress",
+    "headless cms",
+    "cpt",
+    "acf",
+    "nextjs",
+    "content platform",
+    "api",
+  ]
 category: Programming
-migration: {"wpId":861,"wpPostDate":"2024-09-24T13:30:00.000Z"}
+migration: { "wpId": 861, "wpPostDate": "2024-09-24T13:30:00.000Z" }
 ---
 
 This article will guide you through creating a flexible and dynamic content platform using WordPress as a headless CMS, Custom Post Types (CPTs), and Advanced Custom Fields (ACF). Whether you're a seasoned developer or just starting out, this combination offers a powerful foundation for your projects.
@@ -22,9 +32,9 @@ One of the big benefits of using wordpress headless is to remove concerns of any
 
 Before we dive into the fun stuff, let's set up a playground. Here's what you'll need:
 
-*   **WordPress Installation / Local Server:** Use **Docker** for a streamlined setup. Check out this docker compose I wrote a few years back, it should still be a good place to start: [https://github.com/mfyz/wordpress-docker-compose](https://github.com/mfyz/wordpress-docker-compose) or I’m sure you can find a valid/recent example quickly.
+- **WordPress Installation / Local Server:** Use **Docker** for a streamlined setup. Check out this docker compose I wrote a few years back, it should still be a good place to start: [https://github.com/mfyz/wordpress-docker-compose](https://github.com/mfyz/wordpress-docker-compose) or I’m sure you can find a valid/recent example quickly.
 
-*   **Headless Framework:** Consider **Next.js** for a React-based frontend. You can find a sample project I played with it here: [https://github.com/mfyz/next-wp](https://github.com/mfyz/next-wp)
+- **Headless Framework:** Consider **Next.js** for a React-based frontend. You can find a sample project I played with it here: [https://github.com/mfyz/next-wp](https://github.com/mfyz/next-wp)
 
 ### Unleashing the Power of WP-JSON
 
@@ -36,9 +46,9 @@ WordPress's REST API, accessible through `wp-json`, is your gateway to interacti
 
 Postman is a fantastic tool for testing APIs. Here's how to utilize it for exploring the WordPress REST API:
 
-*   **Import a Postman Collection:** Import the pre-built [WordPress Postman Collection](https://www.postman.com/avionics-specialist-27554543/workspace/work-2-0/documentation/15086392-e8a0648d-b23b-4eb8-af97-93a2af65e0c0) to get started quickly. This collection provides pre-configured requests for interacting with various WordPress resources.
+- **Import a Postman Collection:** Import the pre-built [WordPress Postman Collection](https://www.postman.com/avionics-specialist-27554543/workspace/work-2-0/documentation/15086392-e8a0648d-b23b-4eb8-af97-93a2af65e0c0) to get started quickly. This collection provides pre-configured requests for interacting with various WordPress resources.
 
-*   **Test Requests:** Send GET requests to retrieve various post types, pages, and custom fields. Explore the available endpoints and data structures.
+- **Test Requests:** Send GET requests to retrieve various post types, pages, and custom fields. Explore the available endpoints and data structures.
 
 ### Customizing Your Content types with Custom Post Types (CPT)
 
@@ -56,11 +66,11 @@ WordPress offers you the flexibility to create custom post types beyond the stan
 
 Here's what you can achieve with ACF:
 
-*   **Create Flexible Layouts:** Design complex page layouts with varied content formats using ACF fields.
+- **Create Flexible Layouts:** Design complex page layouts with varied content formats using ACF fields.
 
-*   **Simplify Content Creation:** Provide editors with user-friendly interfaces for adding and managing content, even for complex data structures.
+- **Simplify Content Creation:** Provide editors with user-friendly interfaces for adding and managing content, even for complex data structures.
 
-*   **Enhanced Data Management:** Store complex data structures efficiently with custom field groups.
+- **Enhanced Data Management:** Store complex data structures efficiently with custom field groups.
 
 Here is how your custom fields will look like in your pages, or posts:
 

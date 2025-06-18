@@ -1,9 +1,10 @@
 ---
 title: "Web sayfalarinda yapabileceginiz basit birkac guvenlik onlemi"
+description: "Web siteleri için temel güvenlik önlemleri: HTTPS/SSL kullanımı, eklenti riskleri ve kullanıcı verilerini koruma yöntemleri üzerine basit ipuçları."
 slug: web-sayfalarinda-yapabileceginiz-basit-birkac-guvenlik-onlemi
 date: 2013-04-14
 url: http://mfyz.com/tr/web-sayfalarinda-yapabileceginiz-basit-birkac-guvenlik-onlemi/
-tags: []
+tags: ["web güvenliği", "https", "ssl", "veri güvenliği", "güvenlik açıkları"]
 category: 
 migration: {"wpId":357,"wpPostDate":"2013-04-14T22:58:43.000Z"}
 lang: tr

@@ -1,11 +1,21 @@
 ---
 title: "dotfiles method to sync your command line configurations between machines"
+description: "A common method for synchronizing command-line tool configurations across multiple machines using 'dotfiles' is explained. The use of GNU Stow for managing these configuration files and strategies for handling sensitive information are also covered."
 slug: dotfiles-method-to-sync-your-command-line-configurations-between-machines
 date: 2022-12-05
 url: https://mfyz.com/?p=807
-tags: ["bash","dotfiles","OS","shell"]
+tags:
+  [
+    "dotfiles",
+    "cli",
+    "shell configuration",
+    "developer tools",
+    "gnu stow",
+    "sync",
+    "automation",
+  ]
 category: OS
-migration: {"wpId":807,"wpPostDate":"2022-12-05T14:12:32.000Z"}
+migration: { "wpId": 807, "wpPostDate": "2022-12-05T14:12:32.000Z" }
 ---
 
 ![](/images/archive/en/2022/12/dotfiles-sync.png)
@@ -70,11 +80,11 @@ done
 
 Further more, you can automate the whole installation steps:
 
-*   clone the github repo, so you have local copy
+- clone the github repo, so you have local copy
 
-*   install gnu stow using the operating system’s package manager
+- install gnu stow using the operating system’s package manager
 
-*   walk all directories and run stow command that will link files to the root folder.
+- walk all directories and run stow command that will link files to the root folder.
 
 The final installation script will look like this:
 

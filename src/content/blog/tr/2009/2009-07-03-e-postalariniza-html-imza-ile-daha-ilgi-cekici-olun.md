@@ -1,9 +1,10 @@
 ---
 title: "E-postalarınıza HTML imza ile daha ilgi çekici olun"
+description: "HTML kullanarak e-posta imzalarınızı nasıl daha profesyonel, etkileşimli ve ilgi çekici hale getirebileceğinize dair kapsamlı bir rehber. Etik kurallar ve teknik ipuçları."
 slug: e-postalariniza-html-imza-ile-daha-ilgi-cekici-olun
 date: 2009-07-03
 url: http://mfyz.com/tr/e-postalariniza-html-imza-ile-daha-ilgi-cekici-olun/
-tags: ["Diğer","html","improvement","imza","mail","signature","thunbderbird"]
+tags: ["html imza", "e-posta tasarımı", "profesyonel imza", "thunderbird", "e-posta etiği"]
 category: Diğer
 migration: {"wpId":145,"wpPostDate":"2009-07-03T04:21:45.000Z"}
 lang: tr

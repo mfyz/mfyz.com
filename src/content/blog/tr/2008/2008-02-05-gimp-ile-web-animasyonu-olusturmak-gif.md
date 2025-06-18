@@ -1,9 +1,10 @@
 ---
-title: "Gimp ile web animasyonu oluşturmak (gif)"
+title: "GIMP ile Web Animasyonu Oluşturmak (GIF)"
 slug: gimp-ile-web-animasyonu-olusturmak-gif
 date: 2008-02-05
+description: "Açık kaynak kodlu GIMP yazılımı kullanarak katmanlar halinde web için GIF animasyonları hazırlama rehberi. Sahnelerin oluşturulması, GIF optimizasyonu ve kaydetme adımları."
 url: http://mfyz.com/tr/gimp-ile-web-animasyonu-olusturmak-gif/
-tags: ["animation","gif","gimp","Tasarım"]
+tags: ["GIMP", "GIF", "animasyon", "web tasarımı", "grafik tasarım", "eğitim", "açık kaynak"]
 category: Tasarım
 migration: {"wpId":123,"wpPostDate":"2008-02-05T08:07:51.000Z"}
 lang: tr

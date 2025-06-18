@@ -1,9 +1,10 @@
 ---
 title: "''Dönüşüm Muhteşem'' oldu"
+description: "Askerlik sonrası hayata dönüş, İstanbul'a taşınma, Wanda Digital'deki yeni iş ve mfyz.com için gelecek planları hakkında kişisel bir güncelleme."
 slug: donusum-muhtesem-oldu
 date: 2009-05-19
 url: http://mfyz.com/tr/donusum-muhtesem-oldu/
-tags: ["Hayat","NULL"]
+tags: ["kişisel", "hayat değişikliği", "askerlik sonrası", "Wanda Digital", "mfyz.com"]
 category: Hayat
 migration: {"wpId":213,"wpPostDate":"2009-05-19T05:22:13.000Z"}
 lang: tr

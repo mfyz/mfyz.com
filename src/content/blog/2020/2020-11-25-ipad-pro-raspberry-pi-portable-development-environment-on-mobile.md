@@ -1,11 +1,23 @@
 ---
 title: "iPad Pro + Raspberry Pi = Portable development environment on mobile"
+description: "The creation of a portable development environment using an iPad Pro paired with a Raspberry Pi is explored, detailing how this setup overcomes iOS limitations for coding by providing a full Linux environment for tasks like Node.js development."
 slug: ipad-pro-raspberry-pi-portable-development-environment-on-mobile
 date: 2020-11-25
 url: https://mfyz.com/?p=583
-tags: ["Geekin'","Life"]
+tags:
+  [
+    "ipad pro",
+    "raspberry pi",
+    "portable development",
+    "mobile development",
+    "ios",
+    "linux",
+    "nodejs",
+    "remote development",
+    "developer setup",
+  ]
 category: Geekin'
-migration: {"wpId":583,"wpPostDate":"2020-11-25T16:17:01.000Z"}
+migration: { "wpId": 583, "wpPostDate": "2020-11-25T16:17:01.000Z" }
 ---
 
 When the first iPad pro 12“ came out, I was one of the first to buy (not in the line though). I owned pretty much all the previous generations of iPads and a big fan of the iPad to be a perfect replacement for the everyday stuff you do on a computer - quick google, watch stuff, check mail, listen, read…
@@ -24,7 +36,7 @@ But there were few deal-breakers. On top of the list was (and still is) to not h
 
 ### Python
 
-“Pythonista” is actually pretty well done. It’s almost full python runtime that you can run a lot of things, including package manager pip and well-known frameworks like Django (SQLite only though). But it’s still an isolated environment under the app’s own container. So no talking to other apps - yet iOS won’t let apps run daemons for long. You can run basic HTTP server like stuff but when it’s decided to kill or freeze the app, your deamon is gone too. So you have to rely on multitasking (split-screen keeping your server’s app running).  
+“Pythonista” is actually pretty well done. It’s almost full python runtime that you can run a lot of things, including package manager pip and well-known frameworks like Django (SQLite only though). But it’s still an isolated environment under the app’s own container. So no talking to other apps - yet iOS won’t let apps run daemons for long. You can run basic HTTP server like stuff but when it’s decided to kill or freeze the app, your deamon is gone too. So you have to rely on multitasking (split-screen keeping your server’s app running).
 
 ![](/images/archive/en/2020/11/33198527-e0b02724-d0eb-11e7-8041-018213351bba-2-1600x1200.png)
 

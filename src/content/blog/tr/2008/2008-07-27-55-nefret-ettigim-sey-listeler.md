@@ -2,8 +2,9 @@
 title: "55+ nefret ettiğim şey: Listeler!"
 slug: 55-nefret-ettigim-sey-listeler
 date: 2008-07-27
+description: "Bloglarda sıkça rastlanan 'X+ Adımda Y' veya 'En İyi Z Listesi' gibi liste formatındaki yazıların internetteki içerik kalitesine ve bilgi kirliliğine etkileri üzerine bir eleştiri."
 url: http://mfyz.com/tr/55-nefret-ettigim-sey-listeler/
-tags: ["blog","Hayat","listeler"]
+tags: ["blog kültürü", "içerik kalitesi", "internet eleştirisi", "liste yazıları", "bilgi kirliliği", "Hayat", "blogging", "eleştiri"]
 category: Hayat
 migration: {"wpId":201,"wpPostDate":"2008-07-27T00:09:32.000Z"}
 lang: tr

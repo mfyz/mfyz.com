@@ -1,11 +1,20 @@
 ---
-title: "duplicati for backups"
+title: "Duplicati for Backups"
+description: "An overview of Duplicati, an open-source backup solution, is provided, highlighting its ease of use, web UI, support for various destinations, and how it can be deployed using Docker. Fatih's personal setup and monitoring methods are also shared."
 slug: duplicati-for-backups
 date: 2025-02-11
 url: https://mfyz.com/?p=932
-tags: ["Other"]
+tags:
+  [
+    "duplicati",
+    "backup",
+    "open source",
+    "docker",
+    "self-hosting",
+    "data protection",
+  ]
 category: Other
-migration: {"wpId":932,"wpPostDate":"2025-02-11T13:29:12.000Z"}
+migration: { "wpId": 932, "wpPostDate": "2025-02-11T13:29:12.000Z" }
 ---
 
 I use a few different methods to backup my stuff on my server (and my mac). Duplicati is one of them. It’s probably the easiest to set up backup tool I’ve used.
@@ -21,7 +30,7 @@ I use a pretty simple single-container compose file that I deploy using portaine
 Here is my `docker-compose.yml` for my duplicati setup:
 
 ```yml
-version: '3.9'
+version: "3.9"
 services:
   duplicati:
     image: lscr.io/linuxserver/duplicati:latest
@@ -40,7 +49,6 @@ services:
       - 8200:8200
 volumes:
   config:
-
 ```
 
 ## Simple Web UI to manage backups

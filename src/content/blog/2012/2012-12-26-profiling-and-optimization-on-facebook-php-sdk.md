@@ -1,11 +1,20 @@
 ---
 title: "Profiling and optimization on Facebook PHP SDK"
+description: "Learn how to profile Facebook PHP SDK API calls by modifying the SDK to log call durations and arguments, helping identify and optimize performance bottlenecks in your Facebook app."
 slug: profiling-and-optimization-on-facebook-php-sdk
 date: 2012-12-26
 url: http://mfyz.com/profiling-and-optimization-on-facebook-php-sdk/
-tags: ["api","Back-End","facebook","opengraph","optimization","php","profiling","sdk"]
+tags:
+  [
+    "facebook sdk",
+    "php",
+    "api optimization",
+    "profiling",
+    "performance",
+    "opengraph",
+  ]
 category: Back-End
-migration: {"wpId":54,"wpPostDate":"2012-12-26T23:31:05.000Z"}
+migration: { "wpId": 54, "wpPostDate": "2012-12-26T23:31:05.000Z" }
 ---
 
 If you're developing PHP based Facebook application, you might want to use (or already using) Facebook integration little more than just authentication and identification of your user. Even if you have the simplest Facebook app and using PHP SDK, you probably have regularly done API calls.

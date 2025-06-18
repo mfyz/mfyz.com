@@ -1,9 +1,10 @@
 ---
 title: "MongoDB ile Flörtleşme ve MongoLab ile Bulut Veritabanı"
+description: "NoSQL veritabanı MongoDB'ye giriş, MongoLab ile ücretsiz bulut MongoDB kullanımı ve PHP ile temel MongoDB işlemleri (koleksiyon oluşturma, listeleme, kayıt ekleme) örnekleri."
 slug: mongodb-ile-flortlesme-ve-mongolab-ile-bulut-veritabani
 date: 2013-04-08
 url: http://mfyz.com/tr/mongodb-ile-flortlesme-ve-mongolab-ile-bulut-veritabani/
-tags: ["api","cloud","database","db","free","mongo","nosql","service","Sunucu Programlama"]
+tags: ["mongodb", "nosql", "mongolab", "bulut veritabanı", "php"]
 category: Sunucu Programlama
 migration: {"wpId":356,"wpPostDate":"2013-04-08T15:44:21.000Z"}
 lang: tr

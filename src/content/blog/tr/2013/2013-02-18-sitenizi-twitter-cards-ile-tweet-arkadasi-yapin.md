@@ -1,9 +1,10 @@
 ---
 title: "Sitenizi Twitter Cards ile tweet arkadaşı yapın"
+description: "Web sayfalarınızın Twitter'da paylaşıldığında daha zengin ve özetlenmiş içerikle görünmesini sağlayan Twitter Cards meta etiketlerinin nasıl kullanılacağını ve ayarlanacağını öğrenin."
 slug: sitenizi-twitter-cards-ile-tweet-arkadasi-yapin
 date: 2013-02-18
 url: http://mfyz.com/tr/sitenizi-twitter-cards-ile-tweet-arkadasi-yapin/
-tags: ["Arayüz Programlama","cards","meta","share","twitter"]
+tags: ["twitter cards", "meta etiketleri", "sosyal medya", "seo", "web geliştirme"]
 category: Arayüz Programlama
 migration: {"wpId":345,"wpPostDate":"2013-02-18T04:54:10.000Z"}
 lang: tr

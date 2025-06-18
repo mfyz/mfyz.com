@@ -1,9 +1,10 @@
 ---
 title: "Fluence Bir Blog Olsa?"
+description: "Renault Fluence için düzenlenen 'Fluence Bir Blog Olsa?' kampanyası. Bloggerlar ve karikatüristlerin katılımıyla, Selçuk Erdem, Erdil Yaşaroğlu ve Kaan Sezyum tasarımları oylamaya sunuldu."
 slug: fluence-bir-blog-olsa
 date: 2009-10-20
 url: http://mfyz.com/tr/fluence-bir-blog-olsa/
-tags: ["Diğer","fluence","kampanya","karikatür","proje","project","proximity","renault","wanda"]
+tags: ["renault fluence", "pazarlama kampanyası", "karikatür", "blogger etkinliği", "wanda digital"]
 category: Diğer
 migration: {"wpId":234,"wpPostDate":"2009-10-20T16:28:36.000Z"}
 lang: tr

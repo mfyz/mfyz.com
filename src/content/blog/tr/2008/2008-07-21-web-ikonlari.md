@@ -1,9 +1,10 @@
 ---
-title: "Web İkonları"
+title: "Web Sitesi İçin Özel Tasarım Web 2.0 İkonları (RSS, XHTML, CSS)"
 slug: web-ikonlari
 date: 2008-07-21
+description: "Yazarın web sitesinin altbilgisi için tasarladığı Web 2.0 tarzı ikonlar (RSS, XHTML, CSS geçerlilik rozetleri). Bu ikonların PSD dosyaları Creative Commons lisansıyla paylaşıma sunulmuştur."
 url: http://mfyz.com/tr/web-ikonlari/
-tags: ["css","download","grafik","html","icon","ikon","rss","Tasarım","valid","xhtml"]
+tags: ["web ikonları", "ikon tasarımı", "grafik tasarım", "PSD", "ücretsiz kaynak", "Creative Commons", "web tasarımı", "RSS ikonu", "XHTML ikonu", "CSS ikonu", "Tasarım", "Web 2.0"]
 category: Tasarım
 migration: {"wpId":200,"wpPostDate":"2008-07-21T00:32:57.000Z"}
 lang: tr

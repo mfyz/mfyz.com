@@ -1,10 +1,11 @@
 ---
 title: "Bootstrap'ın yeni sürümü çıktı"
+description: "Twitter Bootstrap'ın yeni sürümü yayınlandı. Mobil öncelikli ve flat design akımına uygun geliştirmeler içeren bu sürümün detayları ve getirdiği yenilikler."
 slug: bootstrapin-yeni-surumu-cikti
 date: 2013-09-04
 url: http://mfyz.com/tr/bootstrapin-yeni-surumu-cikti/
-tags: ["bootstrap","twitter"]
-category: 
+tags: ["bootstrap", "twitter bootstrap", "css framework", "responsive design", "flat design"]
+category: "Arayüz Programlama"
 migration: {"wpId":358,"wpPostDate":"2013-09-04T13:55:55.000Z"}
 lang: tr
 ---

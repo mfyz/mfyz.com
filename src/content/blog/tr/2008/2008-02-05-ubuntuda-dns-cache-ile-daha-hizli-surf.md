@@ -1,9 +1,10 @@
 ---
-title: "Ubuntu'da DNS Cache ile daha hızlı surf"
+title: "Ubuntu'da DNS Cache ile Daha Hızlı Surf"
 slug: ubuntuda-dns-cache-ile-daha-hizli-surf
 date: 2008-02-05
+description: "Ubuntu ve Debian sistemlerde Dnsmasq kullanarak yerel DNS önbellekleme (cache) nasıl yapılır? Bu sayede internette gezinme hızınızı artırın. Kurulum ve yapılandırma adımları."
 url: http://mfyz.com/tr/ubuntuda-dns-cache-ile-daha-hizli-surf/
-tags: ["cache","dns","OS","surf","ubuntu"]
+tags: ["Ubuntu", "Linux", "DNS", "cache", "Dnsmasq", "internet hızı", "ağ ayarları"]
 category: OS
 migration: {"wpId":124,"wpPostDate":"2008-02-05T08:14:11.000Z"}
 lang: tr

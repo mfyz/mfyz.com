@@ -1,9 +1,10 @@
 ---
-title: "Ucuz tablet ile Bebek Monitoru yapmak"
+title: "Ucuz Tablet ile Bebek Monitörü Yapmak"
+description: "Yeni ebeveynler için bebeklerin beslenme takibini kolaylaştıran bir çözüm: Eski veya ucuz bir tableti, IFTTT ve basit bir web uygulamasıyla bebek monitörüne dönüştürme rehberi."
 slug: ucuz-tablet-ile-bebek-monitoru-yapmak
 date: 2017-10-05
 url: http://mfyz.com/tr/?p=1401
-tags: ["Hayat"]
+tags: ["bebek monitörü", "tablet", "kendin yap", "ebeveynlik", "teknoloji", "IFTTT", "beslenme takibi"]
 category: Hayat
 migration: {"wpId":1401,"wpPostDate":"2017-10-05T06:14:16.000Z"}
 lang: tr

@@ -1,9 +1,10 @@
 ---
 title: "MySQL'de Procedure Analyse ile optimizasyon analizi"
+description: "MySQL'de PROCEDURE ANALYSE() fonksiyonunun detaylı kullanımı. Tablo alanlarının istatistiklerini ve en uygun veri türü önerilerini alarak veritabanı optimizasyonu yapma."
 slug: mysqlde-procedure-analyse-ile-optimizasyon-analizi
 date: 2009-09-09
 url: http://mfyz.com/tr/mysqlde-procedure-analyse-ile-optimizasyon-analizi/
-tags: ["analyse","mysql","optimisation","optimizasyon","procedure","sql","Sunucu Programlama"]
+tags: ["mysql", "procedure analyse", "veritabanı optimizasyonu", "sql", "performans"]
 category: Sunucu Programlama
 migration: {"wpId":149,"wpPostDate":"2009-09-09T04:40:53.000Z"}
 lang: tr

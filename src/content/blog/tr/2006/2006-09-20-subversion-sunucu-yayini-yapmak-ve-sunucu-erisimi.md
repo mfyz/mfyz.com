@@ -1,9 +1,10 @@
 ---
-title: "Subversion sunucu yayını yapmak ve sunucu erişimi"
+title: "Subversion (SVN) Sunucusu Kurulumu: Yayın ve Uzak Erişim (`svnserve`, `svn+ssh`)"
 slug: subversion-sunucu-yayini-yapmak-ve-sunucu-erisimi
 date: 2006-09-20
+description: "Subversion (SVN) sunucusu nasıl kurulur ve yayına açılır? `svnserve` kullanarak SVN deposunu ağa açma, port yapılandırması ve `svn+ssh` ile güvenli uzak erişim yöntemleri."
 url: http://mfyz.com/tr/subversion-sunucu-yayini-yapmak-ve-sunucu-erisimi/
-tags: ["OS","subversion","sunucu","svn"]
+tags: ["Subversion", "SVN", "svnserve", "sürüm kontrolü", "sunucu kurulumu", "svn+ssh", "uzak erişim", "Linux", "proje yönetimi", "versiyon kontrol"]
 category: OS
 migration: {"wpId":97,"wpPostDate":"2006-09-20T21:05:49.000Z"}
 lang: tr

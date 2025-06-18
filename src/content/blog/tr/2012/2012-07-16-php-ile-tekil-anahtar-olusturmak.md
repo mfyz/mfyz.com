@@ -2,8 +2,9 @@
 title: "PHP ile tekil anahtar oluşturmak"
 slug: php-ile-tekil-anahtar-olusturmak
 date: 2012-07-16
+description: "PHP'de tahmin edilmesi zor, benzersiz (tekil) anahtarlar (hash) oluşturma yöntemleri. Özellikle URL'lerde sayısal kimlikler yerine kullanılarak güvenliği artırma ve veritabanında anahtarın tekilliğini kontrol etme adımları anlatılıyor."
 url: http://mfyz.com/tr/php-ile-tekil-anahtar-olusturmak/
-tags: ["code","db","generate","hash","key","mysql","php"]
+tags: ["PHP", "tekil anahtar", "hash oluşturma", "benzersiz kimlik", "veritabanı", "güvenlik", "programlama"]
 category: PHP
 migration: {"wpId":308,"wpPostDate":"2012-07-16T11:48:14.000Z"}
 lang: tr

@@ -1,9 +1,10 @@
 ---
-title: "İçerik Yönetim Sistemleri"
+title: "İçerik Yönetim Sistemleri (CMS)"
 slug: icerik-yonetim-sistemleri
 date: 2006-04-03
+description: "İçerik Yönetim Sistemi (CMS) nedir, temel özellikleri ve modüler yapısı nasıl olmalıdır? PHPNuke, Mambo gibi popüler CMS'ler ve kendi CMS'inizi oluşturma adımları."
 url: http://mfyz.com/tr/icerik-yonetim-sistemleri/
-tags: ["cms","içerik yönetim sistemi","PHP"]
+tags: ["CMS", "içerik yönetim sistemi", "PHP", "web geliştirme", "modüler tasarım", "PHPNuke", "Mambo", "Drupal"]
 category: PHP
 migration: {"wpId":89,"wpPostDate":"2006-04-03T03:51:50.000Z"}
 lang: tr

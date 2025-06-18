@@ -4,7 +4,7 @@ import BlogPost from "@layouts/BlogPost.astro";
 import Layout from "@layouts/Layout.astro";
 import BlogGrid from "@components/BlogGrid.astro";
 import BlogSharingAndReactions from "@components/BlogSharingAndReactions.astro";
-import { getAllPosts, getRelatedPosts } from "@utils/getPosts.ts";
+import { getPosts, getAllPosts, getRelatedPosts } from "@utils/getPosts.ts";
 import "@styles/blog-grid.css";
 
 // astro takes care of filtering the blog posts
@@ -19,7 +19,7 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 
 const { Content } = await post.render();
-const { title, summary } = post.data;
+const { title, description } = post.data;
 const id = post.id; // Access the id from post object instead of post.data
 
 // Type assertion for metadata to avoid TypeScript errors
@@ -46,7 +46,7 @@ export const prerender = true;
 
 <Layout
   title={title}
-  description={summary}
+  description={description}
   lang={isTurkish ? "tr" : "en"}
   size="small"
   noContentWrapperClass
@@ -61,15 +61,46 @@ export const prerender = true;
     <div class="main-content-wrapper">
       <Content />
     </div>
-    <div class="mt-12">
-      <BlogSharingAndReactions post={post} />
+    <div
+      class="reactions_and_comments_container relative mt-20 border-t border-gray-200"
+    >
+      <div class="absolute -top-4 right-0">
+        <BlogSharingAndReactions post={post} isTurkish={isTurkish} />
+      </div>
 
+      <div class="giscuss_comments_wrapper -mt-4">
+        <script
+          is:inline
+          data-astro-rerun
+          src="https://giscus.app/client.js"
+          data-repo="mfyz/mfyz.com"
+          data-repo-id="R_kgDOOgf-Uw"
+          data-category="Blog Post Discussions"
+          data-category-id="DIC_kwDOOgf-U84CrgBX"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-lang={isTurkish ? "tr" : "en"}
+          data-loading="lazy"
+          crossorigin="anonymous"
+          data-theme="https://mfyz.com/giscuss_theme.css"
+          async></script>
+      </div>
+    </div>
+
+    <div>
       {/* Related Posts Block */}
       {
         post.data.tags &&
           post.data.tags.length > 0 &&
           (await (async () => {
-            const relatedPosts = await getRelatedPosts({
+            let postsToShow = [];
+            let postsToShowTitle = isTurkish
+              ? "İlgili Yazılar"
+              : "Related Posts";
+            postsToShow = await getRelatedPosts({
               slug: post.slug,
               language: isTurkish ? "tr" : "en",
               tags: post.data.tags || [],
@@ -77,14 +108,19 @@ export const prerender = true;
               randomize: true,
               limit: 6,
             });
-            if (relatedPosts.length === 0) return null;
+            if (postsToShow.length < 3) {
+              postsToShowTitle = isTurkish ? "En Son Yazılar" : "Recent Posts";
+              postsToShow = await getPosts({
+                excludeSlug: post.slug,
+                language: isTurkish ? "tr" : "en",
+                limit: 6,
+              });
+            }
             return (
               <div class="mt-16">
-                <h2 class="mb-6 font-secondary text-3xl">
-                  {isTurkish ? "İlgili Yazılar" : "Related Posts"}
-                </h2>
+                <h2 class="mb-6 font-secondary text-3xl">{postsToShowTitle}</h2>
                 <BlogGrid
-                  posts={relatedPosts}
+                  posts={postsToShow}
                   limit={6}
                   showFirstPostFull={false}
                   narrow={true}

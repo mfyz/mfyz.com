@@ -1,9 +1,10 @@
 ---
 title: "Freelancer'ların harcamaları/masrafları"
+description: "GoMediaZine anketine göre freelancer'ların işleri için en çok para harcadığı kalemler yazılım ve donanım. Tasarımcıların Macbook Pro ve Adobe yazılımları gibi ihtiyaçları örnekleniyor."
 slug: freelancerlarin-harcamalari-masraflari
 date: 2009-12-05
 url: http://mfyz.com/tr/freelancerlarin-harcamalari-masraflari/
-tags: ["Diğer","expense","freelancer","harcama","masraf"]
+tags: ["freelancer", "masraflar", "harcamalar", "yazılım", "donanım"]
 category: Diğer
 migration: {"wpId":239,"wpPostDate":"2009-12-05T07:21:25.000Z"}
 lang: tr

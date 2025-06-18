@@ -1,9 +1,10 @@
 ---
-title: "PHP'de MySQL kullanımı ve temel işlemler"
+title: "PHP'de MySQL Kullanımı ve Temel İşlemler"
 slug: phpde-mysql-kullanimi-ve-temel-islemler
 date: 2005-02-05
+description: "PHP ile MySQL veritabanı kullanımını ve temel SQL işlemlerini öğrenin. Bu rehber, `mysql_connect` ile bağlantı kurma, veritabanı seçme, `INSERT`, `SELECT`, `UPDATE`, `DELETE` sorgularını `mysql_query` ile çalıştırma adımlarını açıklıyor."
 url: http://mfyz.com/tr/phpde-mysql-kullanimi-ve-temel-islemler/
-tags: ["kullanim","mysql","Sunucu Programlama","temel işlemler"]
+tags: ["PHP", "MySQL", "SQL", "veritabanı", "Sunucu Programlama", "web geliştirme", "CRUD", "mysql_connect", "mysql_query"]
 category: Sunucu Programlama
 migration: {"wpId":75,"wpPostDate":"2005-02-05T07:28:14.000Z"}
 lang: tr

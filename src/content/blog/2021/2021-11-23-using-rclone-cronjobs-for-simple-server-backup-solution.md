@@ -1,11 +1,20 @@
 ---
 title: "Using rclone & cronjobs for simple server backup solution"
+description: "A simple server backup solution using rclone and cronjobs is outlined. The process involves syncing files and database backups to cloud storage providers like Google Drive, along with monitoring the backup tasks."
 slug: using-rclone-cronjobs-for-simple-server-backup-solution
 date: 2021-11-23
 url: https://mfyz.com/?p=707
-tags: ["Other"]
+tags:
+  [
+    "rclone",
+    "cronjobs",
+    "server backup",
+    "automation",
+    "cloud storage",
+    "sysadmin",
+  ]
 category: Other
-migration: {"wpId":707,"wpPostDate":"2021-11-23T13:38:24.000Z"}
+migration: { "wpId": 707, "wpPostDate": "2021-11-23T13:38:24.000Z" }
 ---
 
 ![](/images/archive/en/2021/11/img_6029.jpg)

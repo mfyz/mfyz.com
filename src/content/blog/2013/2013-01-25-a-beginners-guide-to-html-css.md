@@ -1,11 +1,13 @@
 ---
 title: "A Beginner's Guide to HTML & CSS"
+description: "Discover Shay Howe's excellent beginner's guide to HTML & CSS, a modern resource for learning web development fundamentals. Also, check out his advanced guide."
 slug: a-beginners-guide-to-html-css
 date: 2013-01-25
 url: http://mfyz.com/a-beginners-guide-to-html-css/
-tags: ["beginner","css","Front-End","guide","html","tutorial"]
+tags:
+  ["html", "css", "web development", "beginners guide", "learning resources"]
 category: Front-End
-migration: {"wpId":56,"wpPostDate":"2013-01-25T20:12:29.000Z"}
+migration: { "wpId": 56, "wpPostDate": "2013-01-25T20:12:29.000Z" }
 ---
 
 ![](/images/archive/en/2020/05/html5beginner_zelpg4.png?fit=229%2C95&ssl=1) [@shayhowe](//twitter.com/shayhowe") sum up HTML & CSS for beginners: "**A Beginner's Guide to HTML & CSS**" http://learn.shayhowe.com/html-css/

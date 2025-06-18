@@ -2,8 +2,9 @@
 title: "Girilen sayının asal olup olmadığını bulan program"
 slug: girilen-sayinin-asal-olup-olmadigini-bulan-program
 date: 2004-11-09
+description: "QBasic dilinde yazılmış, kullanıcıdan alınan herhangi bir sayının asal sayı olup olmadığını kontrol eden algoritma. Program, matematiksel bir yöntem kullanarak sayının kendisi ve 1 dışında böleninin olup olmadığını tespit eder."
 url: http://mfyz.com/tr/girilen-sayinin-asal-olup-olmadigini-bulan-program/
-tags: ["asal sayı","Basic","örnek kod"]
+tags: ["asal sayı","Basic","QBasic","örnek kod","matematik","algoritma","programlama"]
 category: Basic
 migration: {"wpId":49,"wpPostDate":"2004-11-09T08:25:09.000Z"}
 lang: tr

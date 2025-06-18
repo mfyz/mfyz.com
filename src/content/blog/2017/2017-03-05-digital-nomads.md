@@ -1,11 +1,21 @@
 ---
 title: "Digital Nomads"
+description: "An exploration of the 'Digital Nomad' lifestyle, covering key aspects like workspace independence, maintaining focus, effective time management, and tips for navigating new cities."
 slug: digital-nomads
 date: 2017-03-05
 url: http://mfyz.com/digital-nomads/
-tags: ["digital","Life","nomad"]
+tags:
+  [
+    "digital nomad",
+    "remote work",
+    "lifestyle",
+    "productivity",
+    "travel",
+    "focus",
+    "time management",
+  ]
 category: Life
-migration: {"wpId":57,"wpPostDate":"2017-03-05T19:35:57.000Z"}
+migration: { "wpId": 57, "wpPostDate": "2017-03-05T19:35:57.000Z" }
 ---
 
 The term "Digital Nomad" becoming more and more popular in every year within last decade, maybe more visible in last 5 years. It has become well known and accepted as more people shared their nomadic stories on their blogs.

@@ -1,11 +1,20 @@
 ---
 title: "Static Site hosting with Cloudflare Pages"
+description: "Cloudflare Pages is presented as a static site hosting solution, emphasizing its fast network performance, Git-integrated deployment process, and suitability for JAMStack applications. Key features such as custom domain support and pricing are also covered."
 slug: static-site-hosting-with-cloudflare-pages
 date: 2021-06-30
 url: https://mfyz.com/?p=681
-tags: ["cloudflare","Geekin'","hosting","jamstack"]
+tags:
+  [
+    "cloudflare pages",
+    "static site hosting",
+    "jamstack",
+    "cdn",
+    "web hosting",
+    "cloudflare",
+  ]
 category: Geekin'
-migration: {"wpId":681,"wpPostDate":"2021-06-30T18:17:57.000Z"}
+migration: { "wpId": 681, "wpPostDate": "2021-06-30T18:17:57.000Z" }
 ---
 
 ![Cloudflare Pages](/images/archive/en/2021/06/A1F44916-C24F-4B29-BD84-8A799EE8C2BB.jpeg)

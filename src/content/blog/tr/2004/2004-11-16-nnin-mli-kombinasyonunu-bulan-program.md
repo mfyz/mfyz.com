@@ -2,8 +2,9 @@
 title: "N'nin M'li kombinasyonunu bulan program"
 slug: nnin-mli-kombinasyonunu-bulan-program
 date: 2004-11-16
+description: "QBasic dilinde yazılmış, N'nin M'li kombinasyonunu (C(n, m)) hesaplayan bir program. Bu örnek, faktöriyel hesaplamalarını kullanarak kombinatorik bir problemi çözer."
 url: http://mfyz.com/tr/nnin-mli-kombinasyonunu-bulan-program/
-tags: ["Basic","kombinasyon","örnek kod"]
+tags: ["Basic", "QBasic", "kombinasyon", "örnek kod", "programlama", "algoritma", "matematik", "faktöriyel"]
 category: Basic
 migration: {"wpId":56,"wpPostDate":"2004-11-16T08:34:48.000Z"}
 lang: tr

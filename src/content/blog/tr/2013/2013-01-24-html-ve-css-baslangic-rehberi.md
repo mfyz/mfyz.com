@@ -1,9 +1,10 @@
 ---
 title: "HTML ve CSS Başlangıç Rehberi"
+description: "Shay Howe tarafından hazırlanan, HTML ve CSS'e yeni başlayanlar için genel bir bakış sunan, güncel bilgilerle donatılmış başlangıç ve ileri düzey rehberler."
 slug: html-ve-css-baslangic-rehberi
 date: 2013-01-24
 url: http://mfyz.com/tr/html-ve-css-baslangic-rehberi/
-tags: ["Arayüz Programlama","beginner","css","guide","html","tutorial"]
+tags: ["html", "css", "başlangıç rehberi", "web geliştirme", "shay howe"]
 category: Arayüz Programlama
 migration: {"wpId":348,"wpPostDate":"2013-01-24T06:00:00.000Z"}
 lang: tr

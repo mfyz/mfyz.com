@@ -1,9 +1,10 @@
 ---
 title: "Easy Framework"
+description: "jQuery tabanlı Easy Framework, CSS ve JavaScript'i birleştirerek navigasyon, tablo, grid, form ve lightbox gibi arayüz elemanlarının kolayca oluşturulmasını sağlar."
 slug: easy-framework
 date: 2009-12-12
 url: http://mfyz.com/tr/easy-framework/
-tags: ["Arayüz Programlama","easy","framework","jquery","plugin"]
+tags: ["easy framework", "jquery", "css framework", "javascript framework", "arayüz geliştirme"]
 category: Arayüz Programlama
 migration: {"wpId":240,"wpPostDate":"2009-12-12T19:19:59.000Z"}
 lang: tr

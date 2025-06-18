@@ -2,8 +2,9 @@
 title: "İlk Tepkiler"
 slug: ilk-tepkiler
 date: 2008-01-12
+description: "mfyz.com v0.7'nin yayına girmesinin ardından gelen ilk olumlu kullanıcı tepkileri ve sitenin geleceği için planlanan adımlar: eski dökümanların güncellenmesi, hata düzeltmeleri ve yeni özellikler."
 url: http://mfyz.com/tr/ilk-tepkiler/
-tags: ["mfyz.com","NULL"]
+tags: ["mfyz.com", "v0.7", "geri bildirim", "web geliştirme", "site güncellemeleri"]
 category: mfyz.com
 migration: {"wpId":167,"wpPostDate":"2008-01-12T05:33:50.000Z"}
 lang: tr

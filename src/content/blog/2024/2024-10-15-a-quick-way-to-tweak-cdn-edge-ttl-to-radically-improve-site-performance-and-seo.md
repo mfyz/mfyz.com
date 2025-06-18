@@ -1,11 +1,21 @@
 ---
 title: "A quick way to tweak CDN/Edge TTL to radically improve site performance (and SEO)"
+description: "Significant site performance and SEO improvements through CDN Edge TTL optimization are detailed. Configuration of longer TTLs, using Cloudflare as an example, to enhance Time-To-First-Byte (TTFB) and Core Web Vitals is explained."
 slug: a-quick-way-to-tweak-cdn-edge-ttl-to-radically-improve-site-performance-and-seo
 date: 2024-10-15
 url: https://mfyz.com/?p=891
-tags: ["cdn","cloudflare","gogle","Programming","seo","webvitals"]
+tags:
+  [
+    "cdn",
+    "ttl",
+    "web performance",
+    "seo",
+    "cloudflare",
+    "core web vitals",
+    "ttfb",
+  ]
 category: Programming
-migration: {"wpId":891,"wpPostDate":"2024-10-15T13:00:00.000Z"}
+migration: { "wpId": 891, "wpPostDate": "2024-10-15T13:00:00.000Z" }
 ---
 
 I want to talk about a quick tweak you can do in your CDN TTL settings to radically improve your site's performance. Direct impact on Time-To-First-Byte (TTFB) metric, but as a halo effect, pretty much every other Web Vital.
@@ -60,9 +70,9 @@ This is where the real value of super-long TTLs comes in. Especially if you comb
 
 There is one caveat though, which is content freshness. When you bump the Edge TTL up to multi-day TTLs like I did, you need to make sure your CMS/site is nicely integrated with your CDN’s cache clear systems, in the case you make updates. Two scenarios:
 
-*   You update existing content (like fixing a typo, or changing the cover image of a post), the change should be reflected on the content’s detail page right away.
+- You update existing content (like fixing a typo, or changing the cover image of a post), the change should be reflected on the content’s detail page right away.
 
-*   You publish new content, so the new content is supposed to show up in common places like your homepage.
+- You publish new content, so the new content is supposed to show up in common places like your homepage.
 
 You can use your CDN’s cache clear UI or APIs to trigger “purge” on URLs you think it’s impacted (homepage, section pages, etc), or highly visible pages like the homepage can be configured with a lower TTL in a separate cache rule set.
 

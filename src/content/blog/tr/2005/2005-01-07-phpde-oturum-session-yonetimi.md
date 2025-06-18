@@ -2,8 +2,9 @@
 title: "PHP'de Oturum (Session) Yönetimi"
 slug: phpde-oturum-session-yonetimi
 date: 2005-01-07
+description: "PHP'de oturum (session) yönetiminin temellerini öğrenin. Bu rehber, `session_start()`, `session_register()`, `session_destroy()` gibi fonksiyonlarla oturum başlatma, değişken kaydetme ve sonlandırma işlemlerini örneklerle açıklıyor."
 url: http://mfyz.com/tr/phpde-oturum-session-yonetimi/
-tags: ["oturum","PHP","session"]
+tags: ["PHP", "session", "oturum yönetimi", "web geliştirme", "programlama", "$_SESSION"]
 category: PHP
 migration: {"wpId":73,"wpPostDate":"2005-01-07T06:32:35.000Z"}
 lang: tr

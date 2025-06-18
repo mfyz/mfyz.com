@@ -1,9 +1,10 @@
 ---
-title: "Full-time İş Bulma Kaynakları ve Öneriler"
+title: "Tam Zamanlı (Full-time) İş Bulma Rehberi: Kaynaklar ve Öneriler"
 slug: full-time-is-bulma-kaynaklari-ve-oneriler
 date: 2006-09-25
+description: "Tam zamanlı iş arayışında olanlar için kapsamlı bir rehber: Etkili CV hazırlama, online varlık oluşturma, Türkiye ve yurtdışından iş bulma siteleri, başvuru süreci ve sonrası için pratik öneriler."
 url: http://mfyz.com/tr/full-time-is-bulma-kaynaklari-ve-oneriler/
-tags: ["cv","Diğer","iş","job","kaynak"]
+tags: ["iş arama", "kariyer", "CV hazırlama", "özgeçmiş", "iş bulma siteleri", "mülakat teknikleri", "kariyer tavsiyeleri", "IT sektörü", "tam zamanlı iş"]
 category: Diğer
 migration: {"wpId":117,"wpPostDate":"2006-09-25T15:53:39.000Z"}
 lang: tr

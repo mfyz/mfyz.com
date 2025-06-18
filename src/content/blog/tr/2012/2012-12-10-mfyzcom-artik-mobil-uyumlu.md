@@ -1,9 +1,10 @@
 ---
-title: "mfyz.com artık mobil uyumlu"
+title: "mfyz.com Artık Mobil Uyumlu"
 slug: mfyzcom-artik-mobil-uyumlu
 date: 2012-12-10
+description: "mfyz.com'un mobil uyumlu (responsive) tasarıma geçtiği duyuruluyor. Farklı ekran çözünürlüklerine (masaüstü, tablet, mobil) göre optimize edilmiş arayüz ve okunabilirlik iyileştirmeleri anlatılıyor."
 url: http://mfyz.com/tr/mfyzcom-artik-mobil-uyumlu/
-tags: ["css","Diğer","iphone","media","mfyz","mobile","phone","responsive","table"]
+tags: ["Mobil Uyumlu Tasarım", "Responsive Design", "CSS", "Web Geliştirme", "mfyz.com", "Kullanıcı Arayüzü", "Frontend", "Media Queries"]
 category: Diğer
 migration: {"wpId":333,"wpPostDate":"2012-12-10T00:40:45.000Z"}
 lang: tr

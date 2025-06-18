@@ -1,11 +1,20 @@
 ---
 title: "How Google had almost 10 years' head start on voice assistants and lost its competition to Amazon"
+description: "Google's early advantage in voice assistant technology and its subsequent loss of market leadership to Amazon's Alexa are examined. The potential implications for Google's search dominance are also considered."
 slug: how-google-had-almost-10-years-head-start-on-voice-assistants-and-lost-its-competition-to-amazon
 date: 2022-08-22
 url: https://mfyz.com/?p=771
-tags: ["alexa","Geekin'","google home","voice assistants"]
+tags:
+  [
+    "voice assistants",
+    "google assistant",
+    "amazon alexa",
+    "siri",
+    "tech competition",
+    "google",
+  ]
 category: Geekin'
-migration: {"wpId":771,"wpPostDate":"2022-08-22T12:39:59.000Z"}
+migration: { "wpId": 771, "wpPostDate": "2022-08-22T12:39:59.000Z" }
 ---
 
 ![](/images/archive/en/2022/08/How-Google-lost-voice-assistant-war.jpg)

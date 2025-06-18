@@ -2,8 +2,9 @@
 title: "HTML Dersleri (1) : Yapı ve sayfa üstbilgi etiketleri"
 slug: html-dersleri-1-yapi-ve-sayfa-ustbilgi-etiketleri
 date: 2004-12-13
+description: "HTML dersleri serisinin ilk bölümü. Bu rehber, bir HTML belgesinin temel yapısını, `<!DOCTYPE>` tanımını ve `<head>` bölümünde yer alan `<title>`, `<meta>` gibi önemli sayfa üstbilgi etiketlerini açıklıyor."
 url: http://mfyz.com/tr/html-dersleri-1-yapi-ve-sayfa-ustbilgi-etiketleri/
-tags: ["Arayüz Programlama","body","html","meta","title"]
+tags: ["Arayüz Programlama", "body", "html", "meta", "title", "web geliştirme", "html dersleri", "head", "doctype", "yapı"]
 category: Arayüz Programlama
 migration: {"wpId":103,"wpPostDate":"2004-12-13T22:26:14.000Z"}
 lang: tr

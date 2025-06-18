@@ -1,9 +1,10 @@
 ---
-title: "Ubuntu için ideal bir çalışma/masaüstü ortamı için ipuçları"
+title: "Ubuntu İçin İdeal Çalışma ve Masaüstü Ortamı İpuçları"
 slug: ubuntu-icin-ideal-bir-calisma-ve-masaustu-ortami-icin-ipuclari
 date: 2006-09-28
+description: "Ubuntu'da verimli bir çalışma ve masaüstü deneyimi için yazılım önerileri ve ipuçları: PDF okuyucular, sıkıştırma araçları, multimedya, grafik, internet ve geliştirme yazılımları."
 url: http://mfyz.com/tr/ubuntu-icin-ideal-bir-calisma-ve-masaustu-ortami-icin-ipuclari/
-tags: ["desktop","gnome","masaüstü","OS","ubuntu","workspace"]
+tags: ["Ubuntu", "Linux", "GNOME", "masaüstü ortamı", "yazılım önerileri", "üretkenlik", "Linux uygulamaları", "kişiselleştirme", "işletim sistemi"]
 category: OS
 migration: {"wpId":99,"wpPostDate":"2006-09-28T21:15:23.000Z"}
 lang: tr

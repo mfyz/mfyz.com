@@ -1,9 +1,10 @@
 ---
 title: "İşe yarayacak birkaç FQL ve Facebook API sorgu optimizasyonu"
+description: "Facebook API'si ile FQL kullanarak kullanıcı bilgileri, arkadaş listesi, profil fotoğrafı alma ve API sorgularını batch request ile optimize etme yöntemleri."
 slug: ise-yarayacak-birkac-fql-ve-facebook-api-sorgu-optimizasyonu
 date: 2013-03-22
 url: http://mfyz.com/tr/ise-yarayacak-birkac-fql-ve-facebook-api-sorgu-optimizasyonu/
-tags: ["api","batch","facebook","fql","opengraph","optimization"]
+tags: ["facebook api", "fql", "api optimizasyonu", "batch request", "opengraph"]
 category: 
 migration: {"wpId":346,"wpPostDate":"2013-03-22T05:02:50.000Z"}
 lang: tr

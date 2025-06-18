@@ -1,9 +1,10 @@
 ---
-title: "Pear'da MDB2 ile veritabanı işlemleri"
+title: "PEAR MDB2 ile Veritabanı İşlemleri: Kapsamlı Rehber"
 slug: pear-da-mdb2-ile-veritabani-islemleri
 date: 2008-02-17
+description: "PHP'de PEAR MDB2 kütüphanesi kullanarak MySQL, PostgreSQL, MSSQL gibi farklı veritabanlarıyla nasıl çalışılır? Bağlantı, sorgulama, veri çekme (fetchRow, fetchAll) ve hata yönetimi."
 url: http://mfyz.com/tr/pear-da-mdb2-ile-veritabani-islemleri/
-tags: ["database","db","mdb2","mssql","mysql","pear","pgsql","PHP","veritabanı"]
+tags: ["PHP", "PEAR", "MDB2", "veritabanı", "MySQL", "PostgreSQL", "MSSQL", "SQLite", "veritabanı soyutlama", "programlama", "eğitim"]
 category: PHP
 migration: {"wpId":133,"wpPostDate":"2008-02-17T04:08:44.000Z"}
 lang: tr

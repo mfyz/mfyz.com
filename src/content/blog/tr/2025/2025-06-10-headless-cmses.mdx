@@ -1,0 +1,66 @@
+---
+title: "Headless CMS'ler Hakkındaki Görüşlerim - Ne Zaman ve Neden Kullanmalı?"
+description: "Headless CMS platformlarının pratik bir incelemesi sunulmakta, kullanımlarının ne zaman en faydalı olduğu ve nedenleri ana hatlarıyla belirtilmektedir."
+slug: headless-cmsler
+date: 2025-06-10
+tags: ["cms", "headless", "frontend", "içerik", "arcxp"]
+lang: "tr"
+---
+
+Geçmiş projelerimde birkaç headless CMS platformuyla (Strapi, Contentful, Directus) çalıştım ancak şu anda mfyz.com için headless CMS kullanmıyorum çünkü kendi yazma sürecim oldukça basit, tek yazarlıyım ve statik hosting'i seviyorum, bu yüzden bu şekilde çalışan bir çözüm kullandım. Yine de, headless yaklaşımı modern web mimarisi etrafındaki konuşmalarda sürekli karşıma çıkıyor, bu yüzden bunun gerçekte ne olduğunu, nerede mantıklı olduğunu ve benim düşüncelerimi paylaşmak istedim.
+
+### Headless CMS Nedir?
+
+Headless CMS, temel olarak içeriğinizin nasıl veya nerede görüntüleneceğiyle ilgilenmeyen bir içerik yönetim sistemidir. Size içerik yazmak ve yönetmek için bir yönetici paneli sunar, ardından bu içeriği API'ler (genellikle REST veya GraphQL) üzerinden sunar.
+
+Yani, front-end ve back-end sıkı sıkıya bağlı olduğu (WordPress'teki gibi) bir yapı yerine, front-end'inizi istediğiniz gibi (React, Astro, mobil uygulamalar, akıllı TV'ler, ne olursa olsun) oluşturabilirsiniz.
+
+WordPress veya Drupal gibi geleneksel CMS platformları hem içeriğinizi hem de sayfada nasıl oluşturulacağını yönetir. Buna karşılık, bir headless CMS yalnızca içeriği depolamak ve sunmakla ilgilenir. Dahili temalar veya sayfa oluşturma mantığı elde etmezsiniz; bu sadece bir API'dir. Bu ayrım, bir geliştirici olarak size daha fazla esneklik sağlar ancak kendi ön uç kodunuzu zaten yönetmiyorsanız karmaşıklık da ekler.
+
+### Neden Headless Kullanmalı?
+
+Bir headless CMS'e yönelmek için sağlam nedenler var:
+
+#### 1. Tam Front-end Özgürlüğü
+
+Bir şablon sistemine veya temaya kilitli değilsiniz. İstediğiniz herhangi bir framework'ü, tasarım sistemini veya dağıtım stratejisini kullanabilirsiniz.
+
+#### 2. Çok Kanallı Dağıtım
+
+Bir içerik girişi web sitenizde, mobil uygulamanızda, bülteninizde vb. yeniden kullanılabilir. Bu, içeriği çoğaltmadan platformlar arasında tutarlı kalmayı kolaylaştırır.
+
+#### 3. Daha İyi Performans
+
+Headless kurulumlar, statik site oluşturucuları veya edge'de oluşturulan uygulamalarla harika çalışır. İçeriğinizi dinamik tutarken sayfaları hızlı bir şekilde sunabilirsiniz.
+
+#### 4. Geliştirici-İçerik Ayrımı
+
+Geliştiriciler kodla çalışır. Editörler ve içerik yöneticileri CMS kullanıcı arayüzünü kullanır. Bu temiz ayrım, ekiplerin birbirlerinin işine karışmadan daha hızlı hareket etmesine yardımcı olur. Geliştiricilerin editörlere deponun nasıl çalıştığını öğretmesi gerekmez. Editörlerin GitHub erişimine ihtiyacı yoktur. Herkes kendi alanında kalır.
+
+---
+
+### Popüler Headless CMS Platformları
+
+Headless CMS alanında her birinin biraz farklı bir açısı olan epey oyuncu var. İşte en dikkat çekici olanlardan bazıları:
+
+- **[Contentful](https://www.contentful.com/)**: En kurumsal odaklı seçeneklerden biri. Güçlü API'ler, küresel CDN ve gösterişli bir kullanıcı arayüzü. Daha büyük ekiplerle çalışıyorsanız veya yerelleştirme ve karmaşık içerik modellemesine ihtiyacınız varsa harika. Contentful, çalıştığım en karmaşık headless projeydi.
+- **[Sanity](https://www.sanity.io/)**: Geliştirici dostu yaklaşımıyla bilinir. İçeriği kod olarak ele almanıza olanak tanıyan taşınabilir metin ve gerçek zamanlı işbirliği özelliklerine sahiptir.
+- **[Strapi](https://strapi.io/)**: Açık kaynaklı ve kendi kendine barındırılabilen (self-hosted) bir seçenek. Özelleştirilebilir API'ler ve eklenti sistemi sunar. Node.js tabanlıdır.
+- **[Storyblok](https://www.storyblok.com/)**: Görsel bir düzenleyiciye sahip olmasıyla öne çıkar, bu da pazarlamacılar için çekici olabilir. Bileşen tabanlı bir yaklaşım sunar.
+- **[Directus](https://directus.io/)**: Mevcut bir SQL veritabanını anında bir REST/GraphQL API'sine dönüştüren açık kaynaklı bir veri platformudur.
+
+### Headless Ne Zaman Mantıklı Olur?
+
+Herkesin bir headless CMS'e ihtiyacı yoktur. İşte gerçekten parladığı bazı senaryolar:
+
+- **Birden Fazla Kanalınız Varsa**: İçeriği bir web sitesi, mobil uygulama ve belki bir kiosk arasında paylaşmanız gerekiyorsa.
+- **Belirli Bir Front-end Teknolojisi İstiyorsanız**: En son JavaScript framework'ünü kullanmak istiyorsanız veya mevcut bir ön uç yığınınız varsa.
+- **Performans Kritikse**: Statik siteler veya Jamstack mimarileri oluşturuyorsanız.
+- **Büyük, Dağıtık Ekipleriniz Varsa**: İçerik ve geliştirme iş akışlarını ayırmak faydalı olduğunda.
+- **Geleceğe Hazırlanıyorsanız**: Ön ucunuzu değiştirmek istediğinizde tüm içeriğinizi taşımak zorunda kalmak istemiyorsanız.
+
+### Son Düşüncelerim
+
+Headless CMS'ler güçlüdür ve modern web geliştirme için birçok avantaj sunar. Ancak, aynı zamanda ek karmaşıklık ve geliştirme yükü de getirirler. Basit bir blog veya kişisel site için aşırıya kaçmak olabilir (benim durumumda olduğu gibi).
+
+Ancak, ölçeklenebilir, esnek ve çok kanallı bir içerik stratejisine ihtiyacınız varsa, headless kesinlikle dikkate değerdir. Önemli olan, projenizin özel ihtiyaçlarını anlamak ve buna uygun aracı seçmektir.

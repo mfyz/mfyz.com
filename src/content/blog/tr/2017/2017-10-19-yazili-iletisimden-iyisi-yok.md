@@ -1,9 +1,10 @@
 ---
-title: "Neden Yazili Iletisimden Iyisi Yok?"
+title: "Neden Yazılı İletişimden İyisi Yok?"
+description: "Yazılı iletişimin, düşünceleri somutlaştırma, yaratıcılığı artırma ve bireyler arası etkili iletişim kurmadaki önemi. Kişisel not almanın ve fikir geliştirmenin yazıyla olan ilişkisi vurgulanıyor."
 slug: yazili-iletisimden-iyisi-yok
 date: 2017-10-19
 url: http://mfyz.com/tr/?p=1411
-tags: ["Hayat"]
+tags: ["yazılı iletişim", "iletişim", "düşünme", "yaratıcılık", "kişisel gelişim", "not alma", "bloglama"]
 category: Hayat
 migration: {"wpId":1411,"wpPostDate":"2017-10-19T07:24:20.000Z"}
 lang: tr

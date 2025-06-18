@@ -2,8 +2,9 @@
 title: "PHP projelerimizde ayar dosyası kullanmak"
 slug: php-projelerimizde-ayar-dosyasi-kullanmak
 date: 2005-10-31
+description: "PHP projelerinizde ayar dosyaları (.conf, .ini) kullanarak yapılandırma bilgilerini merkezi bir yerden yönetmenin avantajlarını ve nasıl yapılacağını öğrenin. Veritabanı bağlantıları, limitler gibi ayarlar için pratik bir yöntem."
 url: http://mfyz.com/tr/php-projelerimizde-ayar-dosyasi-kullanmak/
-tags: ["ayar","brief","ini","PHP"]
+tags: ["PHP", "ayar dosyası", "konfigürasyon yönetimi", "ini dosyası", ".conf", "yapılandırma", "en iyi pratikler", "Sunucu Programlama", "proje yönetimi"]
 category: PHP
 migration: {"wpId":81,"wpPostDate":"2005-10-31T05:16:15.000Z"}
 lang: tr

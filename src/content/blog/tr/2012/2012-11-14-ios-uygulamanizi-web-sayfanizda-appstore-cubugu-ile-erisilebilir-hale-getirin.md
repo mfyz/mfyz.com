@@ -1,9 +1,10 @@
 ---
-title: "iOS uygulamanızı web sayfanızda AppStore çubuğu ile erişilebilir hale getirin"
+title: "iOS Uygulamanızı Web Sayfanızda App Store Çubuğu ile Erişilebilir Hale Getirin"
 slug: ios-uygulamanizi-web-sayfanizda-appstore-cubugu-ile-erisilebilir-hale-getirin
 date: 2012-11-14
+description: "Web sitenize eklenecek basit bir 'apple-itunes-app' meta etiketi ile iOS uygulamanız için Safari'de otomatik bir App Store banner'ı (Akıllı Uygulama Banner'ı) göstererek kullanıcı erişimini kolaylaştırın."
 url: http://mfyz.com/tr/ios-uygulamanizi-web-sayfanizda-appstore-cubugu-ile-erisilebilir-hale-getirin/
-tags: ["app","apple","appstore","banner","Diğer","iOS","itunes","mobile"]
+tags: ["iOS", "App Store", "Akıllı Uygulama Bannerı", "Meta Etiketi", "Mobil Uygulama", "Safari", "Web Geliştirme", "iTunes"]
 category: Diğer
 migration: {"wpId":322,"wpPostDate":"2012-11-14T17:43:56.000Z"}
 lang: tr

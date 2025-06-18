@@ -2,8 +2,9 @@
 title: "Pharma hack (Google Cloaking Hack) nedir?"
 slug: pharma-hack-google-cloaking-hack-nedir
 date: 2012-01-02
+description: "Pharma Hack (Google Cloaking) nedir, siteleri nasıl etkiler ve nasıl tespit edilir? SEO odaklı bu saldırının WordPress gibi sistemlerdeki tehlikeleri ve korunma yolları."
 url: http://mfyz.com/tr/pharma-hack-google-cloaking-hack-nedir/
-tags: ["cloak","cloaking","google","hack","pharma","php","seo","Sunucu Programlama","wordpress"]
+tags: ["pharma hack", "google cloaking", "seo saldırısı", "site güvenliği", "wordpress", "php", "hack"]
 category: Sunucu Programlama
 migration: {"wpId":159,"wpPostDate":"2012-01-02T03:09:02.000Z"}
 lang: tr

@@ -1,9 +1,10 @@
 ---
 title: "Ya hep ya hiç : www kullanın veya kullanmayın"
+description: "Web sitelerinde www olan veya olmayan alan adı kullanımının tutarlılığının önemi. Oturum, çerez ve cross-domain sorunlarını önlemek için PHP ile yönlendirme çözümleri."
 slug: ya-hep-ya-hic-www-kullanin-veya-kullanmayin
 date: 2009-11-20
 url: http://mfyz.com/tr/ya-hep-ya-hic-www-kullanin-veya-kullanmayin/
-tags: ["crossdomain","redirect","subdomain","Sunucu Programlama","www"]
+tags: ["www yönlendirme", "alan adı", "seo", "php", "web geliştirme"]
 category: Sunucu Programlama
 migration: {"wpId":152,"wpPostDate":"2009-11-20T20:35:31.000Z"}
 lang: tr

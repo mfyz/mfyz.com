@@ -1,9 +1,10 @@
 ---
-title: "Twitter zamazingosu"
+title: "Twitter Zamazingosu"
+description: "Sitenize özel tasarımlı bir Twitter akışı eklemek için jQuery ve Twitter API'sini nasıl kullanabileceğinize dair bir önceki yazıya kısa bir referans."
 slug: twitter-zamazingosu
 date: 2011-09-06
 url: http://mfyz.com/tr/twitter-zamazingosu/
-tags: ["mfyz.com","twitter","widget"]
+tags: ["twitter", "widget", "jquery", "api", "mfyz.com"]
 category: mfyz.com
 migration: {"wpId":282,"wpPostDate":"2011-09-06T09:52:07.000Z"}
 lang: tr

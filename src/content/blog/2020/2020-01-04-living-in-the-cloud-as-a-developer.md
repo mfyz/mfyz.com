@@ -1,11 +1,21 @@
 ---
 title: "Living in the cloud as a developer"
+description: "As a developer, I find myself living more in the cloud. Our tools, workflows, and even development environments are shifting towards remote access and constant connectivity, making powerful local machines less of a necessity."
 slug: living-in-the-cloud-as-a-developer
 date: 2020-01-04
 url: https://mfyz.com/?p=404
-tags: ["Life"]
+tags:
+  [
+    "cloud development",
+    "remote work",
+    "developer tools",
+    "cloud services",
+    "future of work",
+    "connectivity",
+    "software development",
+  ]
 category: Life
-migration: {"wpId":404,"wpPostDate":"2020-01-04T05:02:10.000Z"}
+migration: { "wpId": 404, "wpPostDate": "2020-01-04T05:02:10.000Z" }
 ---
 
 ![](/images/archive/en/2020/01/rodion-kutsaev-8P-uQaTd8rw-unsplash.jpg)

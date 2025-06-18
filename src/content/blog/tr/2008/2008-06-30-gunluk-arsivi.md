@@ -1,9 +1,10 @@
 ---
-title: "Günlük Arşivi"
+title: "mfyz.com'a Yeni Özellik: Günlük Arşivi ve Sayfalama"
 slug: gunluk-arsivi
 date: 2008-06-30
+description: "mfyz.com'a eklenen yeni günlük arşivi özelliği duyuruldu. Artık eski yazılara sayfalama ve etiket bulutu ile ulaşılabilecek. Ayrıca RSS için Feedburner kullanım planları da belirtiliyor."
 url: http://mfyz.com/tr/gunluk-arsivi/
-tags: ["archive","günlük","mfyz.com"]
+tags: ["mfyz.com", "blog güncellemesi", "site özellikleri", "arşiv", "sayfalama", "etiket bulutu", "RSS", "Feedburner", "web geliştirme"]
 category: mfyz.com
 migration: {"wpId":198,"wpPostDate":"2008-06-30T07:59:24.000Z"}
 lang: tr

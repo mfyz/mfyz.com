@@ -1,11 +1,19 @@
 ---
 title: "Things that shouldn't be included in the client-side Javascript bundles"
+description: "Strategies for optimizing client-side JavaScript bundles by excluding unnecessary items like binary assets, large utility libraries, development tools, and static data are explored. The importance of code splitting is also highlighted."
 slug: things-that-shouldnt-be-included-in-the-client-side-javascript-bundles
 date: 2025-02-04
 url: https://mfyz.com/?p=924
-tags: ["Front-End"]
+tags:
+  [
+    "javascript",
+    "frontend",
+    "web performance",
+    "bundle optimization",
+    "code splitting",
+  ]
 category: Front-End
-migration: {"wpId":924,"wpPostDate":"2025-02-04T13:31:17.000Z"}
+migration: { "wpId": 924, "wpPostDate": "2025-02-04T13:31:17.000Z" }
 ---
 
 We're creating more bloated digital experiences every day. Worst part, it became the default.

@@ -1,9 +1,10 @@
 ---
 title: "Dijital Göçebelik"
+description: "Dijital göçebelik akımını, bu yaşam tarzının gerektirdiği yer/mekan bağımsızlığı, odaklı çalışma ve zaman yönetimi gibi önemli noktaları kişisel deneyimlerle anlatan bir yazı."
 slug: dijital-gocebelik
 date: 2017-03-05
 url: http://mfyz.com/tr/dijital-gocebelik/
-tags: ["gocebe","Hayat","nomad"]
+tags: ["dijital göçebelik", "uzaktan çalışma", "yaşam tarzı", "verimlilik", "odaklanma", "ipad"]
 category: Hayat
 migration: {"wpId":367,"wpPostDate":"2017-03-05T19:28:43.000Z"}
 lang: tr

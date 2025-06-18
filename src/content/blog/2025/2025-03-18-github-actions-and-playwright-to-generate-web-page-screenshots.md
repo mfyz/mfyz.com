@@ -1,11 +1,21 @@
 ---
 title: "GitHub Actions and Playwright to Generate Web Page Screenshots"
+description: "A guide to automating web page screenshot generation using GitHub Actions and Playwright is provided. The setup includes installing Playwright, writing a screenshot script, and configuring a GitHub Actions workflow to run on code pushes, along with tips for speeding up the process."
 slug: github-actions-and-playwright-to-generate-web-page-screenshots
 date: 2025-03-18
 url: https://mfyz.com/?p=950
-tags: ["automation","Geekin'","github","playwright","screenshots"]
+tags:
+  [
+    "github actions",
+    "playwright",
+    "automation",
+    "screenshots",
+    "ci-cd",
+    "web development",
+    "testing",
+  ]
 category: Geekin'
-migration: {"wpId":950,"wpPostDate":"2025-03-18T12:30:00.000Z"}
+migration: { "wpId": 950, "wpPostDate": "2025-03-18T12:30:00.000Z" }
 ---
 
 ![](/images/archive/en/2025/03/image.png)
@@ -22,11 +32,11 @@ GitHub Actions is a built-in CI/CD (Continuous Integration and Continuous Deploy
 
 ### Why Use GitHub Actions?
 
-*   **Seamless Integration**: It’s built into GitHub, so you don’t need any external setup.
+- **Seamless Integration**: It’s built into GitHub, so you don’t need any external setup.
 
-*   **Flexible Workflows**: You can create custom automation with YAML.
+- **Flexible Workflows**: You can create custom automation with YAML.
 
-*   **Pre-Built Actions**: A marketplace full of ready-to-use workflows.
+- **Pre-Built Actions**: A marketplace full of ready-to-use workflows.
 
 [Read more on GitHub Actions](https://docs.github.com/en/actions).
 
@@ -36,11 +46,11 @@ Playwright, developed by Microsoft, is an automation framework for browser testi
 
 ### Why Playwright?
 
-*   **Multi-Browser Support**: Works with Chromium, Firefox, and WebKit.
+- **Multi-Browser Support**: Works with Chromium, Firefox, and WebKit.
 
-*   **Headless Mode**: Run tests in the background without opening a browser.
+- **Headless Mode**: Run tests in the background without opening a browser.
 
-*   **Powerful API**: Automate clicks, form fills, and even screenshots effortlessly.
+- **Powerful API**: Automate clicks, form fills, and even screenshots effortlessly.
 
 [Check out Playwright on GitHub](https://github.com/microsoft/playwright).
 
@@ -52,9 +62,9 @@ Let’s get started by setting up a GitHub repository and configuring Playwright
 
 1.  Head to [GitHub](https://github.com/) and create a new repository.
 
-3.  Name it something like `webpage-screenshot-automation`.
+2.  Name it something like `webpage-screenshot-automation`.
 
-5.  Clone the repo to your local machine.
+3.  Clone the repo to your local machine.
 
 ### Step 2: Install Playwright
 
@@ -72,21 +82,20 @@ npm install playwright
 Create a new file called `screenshot.js` and add the following code:
 
 ```js
-const { chromium } = require('playwright');
+const { chromium } = require("playwright");
 
 (async () => {
   const browser = await chromium.launch();
   const page = await browser.newPage();
 
   // Navigate to the desired page
-  await page.goto('<https://example.com>');
+  await page.goto("<https://example.com>");
 
   // Capture a screenshot
-  await page.screenshot({ path: 'screenshot.png' });
+  await page.screenshot({ path: "screenshot.png" });
 
   await browser.close();
 })();
-
 ```
 
 Run the script to test it locally:
@@ -125,7 +134,7 @@ jobs:
       - name: Set Up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: "14"
 
       - name: Install Dependencies
         run: npm install
@@ -138,7 +147,6 @@ jobs:
         with:
           name: screenshot
           path: screenshot.png
-
 ```
 
 ### Step 2: Push Your Changes
@@ -172,14 +180,13 @@ Then, modify your script to use only the installed browser.
 Since downloading and installing Playwright browsers happens on every workflow run, caching them can significantly speed up execution. Modify your workflow to cache the Playwright binaries:
 
 ```yml
-      - name: Cache Playwright Browsers
-        uses: actions/cache@v2
-        with:
-          path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}
-          restore-keys: |
-            playwright-${{ runner.os }}
-
+- name: Cache Playwright Browsers
+  uses: actions/cache@v2
+  with:
+    path: ~/.cache/ms-playwright
+    key: playwright-${{ runner.os }}
+    restore-keys: |
+      playwright-${{ runner.os }}
 ```
 
 This ensures that Playwright's browser binaries are reused across runs, reducing setup time.
@@ -190,10 +197,10 @@ That’s it! You’ve successfully set up an automated workflow that generates w
 
 ### Next Steps
 
-*   Modify the script to capture multiple pages.
+- Modify the script to capture multiple pages.
 
-*   Add email or Slack notifications.
+- Add email or Slack notifications.
 
-*   Extend it to handle different screen sizes.
+- Extend it to handle different screen sizes.
 
 If you found this guide useful, share it with your fellow developers! Got questions? Drop them in the comments. 🚀

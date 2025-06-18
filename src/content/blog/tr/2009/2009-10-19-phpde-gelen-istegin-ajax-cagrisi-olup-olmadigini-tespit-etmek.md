@@ -1,9 +1,10 @@
 ---
 title: "PHP'de gelen isteğin Ajax çağrısı olup olmadığını tespit etmek"
+description: "PHP'de bir HTTP isteğinin AJAX çağrısı mı yoksa normal bir istek mi olduğunu $_SERVER[\"HTTP_X_REQUESTED_WITH\"] değişkeni ile nasıl ayırt edebileceğinizi anlatan bir yazı."
 slug: phpde-gelen-istegin-ajax-cagrisi-olup-olmadigini-tespit-etmek
 date: 2009-10-19
 url: http://mfyz.com/tr/phpde-gelen-istegin-ajax-cagrisi-olup-olmadigini-tespit-etmek/
-tags: ["ajax","http","php","request","server","variables","xml"]
+tags: ["php", "ajax", "http request", "sunucu değişkenleri", "web geliştirme"]
 category: PHP
 migration: {"wpId":151,"wpPostDate":"2009-10-19T01:29:10.000Z"}
 lang: tr

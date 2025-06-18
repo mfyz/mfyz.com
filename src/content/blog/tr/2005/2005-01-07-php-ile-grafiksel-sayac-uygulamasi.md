@@ -2,8 +2,9 @@
 title: "PHP ile grafiksel sayaç uygulaması"
 slug: php-ile-grafiksel-sayac-uygulamasi
 date: 2005-01-07
+description: "PHP ile grafiksel bir ziyaretçi sayacı uygulaması geliştirmeyi öğrenin. Bu rehber, cookie kullanarak ziyaret sayısını takip etmeyi, sayacı artırmayı ve rakamları temsil eden görsellerle dinamik olarak göstermeyi adım adım açıklıyor."
 url: http://mfyz.com/tr/php-ile-grafiksel-sayac-uygulamasi/
-tags: ["NULL","PHP"]
+tags: ["PHP", "sayaç", "cookie", "grafiksel sayaç", "web geliştirme", "programlama", "ziyaretçi takibi"]
 category: PHP
 migration: {"wpId":74,"wpPostDate":"2005-01-07T06:56:28.000Z"}
 lang: tr

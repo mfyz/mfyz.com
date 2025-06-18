@@ -2,8 +2,9 @@
 title: "Nerede/nasıl çalıştığının ne önemi var?"
 slug: nerede-nasil-calistiginin-ne-onemi-var
 date: 2010-09-28
+description: "Deneyimli bir geliştirici için iş tatmininin; yapılan işin kalitesi, keyfi ve etkisiyle nasıl şekillendiği, kurumsal beklentilerle çatışmaları ve sektördeki özgürlük ve hareketlilik üzerine bir yazı."
 url: http://mfyz.com/tr/nerede-nasil-calistiginin-ne-onemi-var/
-tags: ["global developer","Hayat","mobility","workspace"]
+tags: ["iş hayatı", "kariyer", "yazılım geliştirme", "motivasyon", "iş tatmini", "uzaktan çalışma", "teknoloji", "Hayat"]
 category: Hayat
 migration: {"wpId":259,"wpPostDate":"2010-09-28T15:24:48.000Z"}
 lang: tr

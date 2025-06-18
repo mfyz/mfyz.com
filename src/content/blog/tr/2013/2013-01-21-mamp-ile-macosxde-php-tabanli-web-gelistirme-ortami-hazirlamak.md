@@ -1,9 +1,10 @@
 ---
 title: "MAMP ile MacOSX'de PHP tabanlı web geliştirme ortamı hazırlamak"
+description: "MacOSX üzerinde PHP ile web geliştirme yapmak için MAMP kullanarak Apache, MySQL ve PHP ortamını nasıl hızlıca kurabileceğinizi öğrenin. MAMP ve MAMP PRO'nun özelliklerine ve ipuçlarına değiniliyor."
 slug: mamp-ile-macosxde-php-tabanli-web-gelistirme-ortami-hazirlamak
 date: 2013-01-21
 url: http://mfyz.com/tr/mamp-ile-macosxde-php-tabanli-web-gelistirme-ortami-hazirlamak/
-tags: ["apache","apple","mamp","maxosx","php","server"]
+tags: ["mamp", "macosx", "php", "apache", "mysql", "web geliştirme"]
 category: PHP
 migration: {"wpId":342,"wpPostDate":"2013-01-21T06:00:00.000Z"}
 lang: tr

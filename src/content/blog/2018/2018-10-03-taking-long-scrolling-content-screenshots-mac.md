@@ -1,11 +1,13 @@
 ---
 title: "Taking long (scrolling content) screenshots on Mac"
+description: "Ever needed to screenshot a long, scrolling piece of content on your Mac? I'll show you a handy tool called Xnip that makes capturing full-length screenshots from web pages or even native desktop apps a breeze."
 slug: taking-long-scrolling-content-screenshots-mac
 date: 2018-10-03
 url: https://mfyz.com/?p=237
-tags: ["Geekin'","OS"]
+tags:
+  ["macOS", "screenshots", "scrolling capture", "xnip", "productivity tools"]
 category: Geekin'
-migration: {"wpId":237,"wpPostDate":"2018-10-03T00:47:07.000Z"}
+migration: { "wpId": 237, "wpPostDate": "2018-10-03T00:47:07.000Z" }
 ---
 
 Sometimes we need to take a screenshot of a long content mostly from scrolling applications. Most common example of this is full-length web page screenshot. There are chrome extensions we can use for taking full-length website screenshot. But there is not an easy way to take screenshot from other apps like native desktop apps or email content from mail clients.

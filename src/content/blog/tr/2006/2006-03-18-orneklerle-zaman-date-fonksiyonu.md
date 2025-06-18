@@ -1,9 +1,10 @@
 ---
-title: "Örneklerle zaman, date() fonksiyonu"
+title: "Örneklerle zaman, PHP date() fonksiyonu"
 slug: orneklerle-zaman-date-fonksiyonu
 date: 2006-03-18
+description: "PHP'de `date()` fonksiyonu ile tarih ve saat bilgilerini nasıl formatlayacağınızı öğrenin. Gün, ay, yıl, saat, dakika ve diğer zaman parametreleri için pratik örnekler."
 url: http://mfyz.com/tr/orneklerle-zaman-date-fonksiyonu/
-tags: ["NULL","PHP"]
+tags: ["PHP", "date fonksiyonu", "tarih formatlama", "zaman işlemleri", "programlama"]
 category: PHP
 migration: {"wpId":88,"wpPostDate":"2006-03-18T06:21:34.000Z"}
 lang: tr

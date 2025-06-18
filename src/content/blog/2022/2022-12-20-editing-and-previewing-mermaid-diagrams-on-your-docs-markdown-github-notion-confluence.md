@@ -1,11 +1,22 @@
 ---
 title: "Editing and previewing Mermaid diagrams on your docs (markdown, github, notion, confluence)"
+description: "Methods for editing and previewing Mermaid.js diagrams within various documentation tools like Markdown editors, GitHub, Notion, and Confluence are explored. The utility of Mermaid.js for creating diagrams from plain text is highlighted."
 slug: editing-and-previewing-mermaid-diagrams-on-your-docs-markdown-github-notion-confluence
 date: 2022-12-20
 url: https://mfyz.com/?p=811
-tags: ["diagram","mermaidjs","notion","Product Design","vscode"]
+tags:
+  [
+    "mermaidjs",
+    "diagramming",
+    "markdown",
+    "github",
+    "notion",
+    "confluence",
+    "documentation tools",
+    "vscode",
+  ]
 category: Product Design
-migration: {"wpId":811,"wpPostDate":"2022-12-20T13:37:20.000Z"}
+migration: { "wpId": 811, "wpPostDate": "2022-12-20T13:37:20.000Z" }
 ---
 
 ![](https://cdn-images-1.medium.com/max/1600/1*9m1nk8aZXUja7u43XLVyng.png)

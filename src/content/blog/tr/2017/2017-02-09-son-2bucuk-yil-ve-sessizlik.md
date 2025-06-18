@@ -1,9 +1,10 @@
 ---
 title: "Son 2,5 yıl ve sessizlik"
+description: "Uzun bir aradan sonra kişisel bir yazı: Son 2,5 yıldaki değişimler, öğrenme tutkusu ve mfyz.com'da farklı konularda Türkçe ve İngilizce yazma isteği."
 slug: son-2bucuk-yil-ve-sessizlik
 date: 2017-02-09
 url: http://mfyz.com/tr/son-2bucuk-yil-ve-sessizlik/
-tags: ["hayat"]
+tags: ["kişisel", "bloglama", "öğrenme", "hayat", "mfyz.com"]
 category: 
 migration: {"wpId":362,"wpPostDate":"2017-02-09T00:43:47.000Z"}
 lang: tr

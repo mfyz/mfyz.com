@@ -1,9 +1,10 @@
 ---
 title: "CSS ile radio butonlardan segmented control yapmak"
+description: "HTML radio butonları ve CSS kullanarak, JavaScript'e ihtiyaç duymadan, iOS benzeri 'segmented control' (bölümlenmiş kontrol) form elemanları oluşturma tekniği ve teorisi."
 slug: css-ile-radio-butonlardan-segmented-control-yapmak
 date: 2013-04-04
 url: http://mfyz.com/tr/css-ile-radio-butonlardan-segmented-control-yapmak/
-tags: ["Arayüz Programlama","button","css","radio","segmented control","switch","tabs"]
+tags: ["css", "html", "form elemanları", "segmented control", "radio buton"]
 category: Arayüz Programlama
 migration: {"wpId":353,"wpPostDate":"2013-04-04T05:00:00.000Z"}
 lang: tr

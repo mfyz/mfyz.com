@@ -1,11 +1,20 @@
 ---
 title: "Animating systems diagrams with draw.io"
+description: "The use of draw.io for animating system diagrams to enhance understanding of complex processes is explored. Techniques for creating animated flows and the benefits of draw.io as a versatile diagramming tool are highlighted."
 slug: animating-systems-diagrams-with-draw-io
 date: 2024-10-01
 url: https://mfyz.com/?p=878
-tags: ["animation","diagram","Product Design"]
+tags:
+  [
+    "draw.io",
+    "animated diagrams",
+    "system diagrams",
+    "data visualization",
+    "diagramming tools",
+    "open source",
+  ]
 category: Product Design
-migration: {"wpId":878,"wpPostDate":"2024-10-01T13:00:00.000Z"}
+migration: { "wpId": 878, "wpPostDate": "2024-10-01T13:00:00.000Z" }
 ---
 
 Diagrams are fantastic tools for explaining complex systems. They act as a visual map, allowing viewers to grasp how various components interact and connect in a single glance.

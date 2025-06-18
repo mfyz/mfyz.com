@@ -1,9 +1,10 @@
 ---
-title: "Bitbucket ile statik websitenizi host edebilirsiniz"
+title: "Bitbucket ile Statik Websitenizi Host Edebilirsiniz"
+description: "Bitbucket'in, GitHub Pages'e benzer şekilde, statik web sitelerini (HTML, CSS, JS) `kullaniciadi.bitbucket.io` adresi üzerinden ücretsiz olarak barındırma özelliğinin nasıl kullanılacağına dair kısa bir rehber."
 slug: bitbucket-ile-statik-websitenizi-host-edebilirsiniz
 date: 2017-10-09
 url: http://mfyz.com/tr/?p=1407
-tags: ["Arayüz Programlama"]
+tags: ["bitbucket", "statik site", "hosting", "github pages", "web geliştirme", "ücretsiz hosting"]
 category: Arayüz Programlama
 migration: {"wpId":1407,"wpPostDate":"2017-10-09T06:08:25.000Z"}
 lang: tr

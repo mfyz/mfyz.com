@@ -1,9 +1,10 @@
 ---
 title: "Gitti gidiyor eBay'a gitti"
+description: "eBay'in Gittigidiyor'un çoğunluk hissesini alarak Türkiye e-ticaret pazarına girişini ve bu satın almanın Türk girişimciliği için ne anlama geldiğini değerlendiren bir yazı."
 slug: gitti-gidiyor-ebaya-gitti
 date: 2011-04-26
 url: http://mfyz.com/tr/gitti-gidiyor-ebaya-gitti/
-tags: ["Diğer","ebay","eticaret","girisim","gittigidiyor"]
+tags: ["gittigidiyor", "ebay", "e-ticaret", "satın alma", "girişimcilik"]
 category: Diğer
 migration: {"wpId":268,"wpPostDate":"2011-04-26T17:56:46.000Z"}
 lang: tr

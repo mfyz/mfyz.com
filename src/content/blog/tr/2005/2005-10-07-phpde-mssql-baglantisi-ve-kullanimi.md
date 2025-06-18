@@ -2,8 +2,9 @@
 title: "PHP'de MSSQL Bağlantısı ve Kullanımı"
 slug: phpde-mssql-baglantisi-ve-kullanimi
 date: 2005-10-07
+description: "PHP ile Microsoft SQL Server (MSSQL) veritabanına bağlanma yöntemleri. MSSQL ve ODBC kütüphanelerinin kullanımı, bağlantı kurma, sorgu çalıştırma ve Türkçe karakter sorunlarına çözümler."
 url: http://mfyz.com/tr/phpde-mssql-baglantisi-ve-kullanimi/
-tags: ["mssql","PHP"]
+tags: ["PHP", "MSSQL", "Microsoft SQL Server", "ODBC", "veritabanı bağlantısı", "SQL", "veritabanı", "Sunucu Programlama", "php_mssql", "php_odbc"]
 category: PHP
 migration: {"wpId":80,"wpPostDate":"2005-10-07T04:15:19.000Z"}
 lang: tr

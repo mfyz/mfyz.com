@@ -2,8 +2,9 @@
 title: "Sosyal Medya'nın dibine vurmak"
 slug: sosyal-medyanin-dibine-vurmak
 date: 2010-04-20
+description: "Sosyal medyanın yaygınlaşması, kişisel bilgilerin Facebook, Twitter gibi platformlarda aşırı paylaşımı ve bunun getirdiği gizlilik endişeleri ile olası bağımlılık riskleri tartışılıyor."
 url: http://mfyz.com/tr/sosyal-medyanin-dibine-vurmak/
-tags: ["Diğer","facebook","friendfeed","media","medya","social","sosyal","twitter"]
+tags: ["sosyal medya", "paylaşım", "gizlilik", "internet kültürü", "bağımlılık", "teknoloji eleştirisi", "Diğer"]
 category: Diğer
 migration: {"wpId":249,"wpPostDate":"2010-04-20T19:45:12.000Z"}
 lang: tr

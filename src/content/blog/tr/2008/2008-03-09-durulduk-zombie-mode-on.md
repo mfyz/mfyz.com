@@ -1,9 +1,10 @@
 ---
-title: 'Durulduk: "Zombie mode on"'
+title: 'Durulduk: "Zombie Mode On"'
 slug: durulduk-zombie-mode-on
 date: 2008-03-09
+description: "Okul yoğunluğu nedeniyle mfyz.com'a eskisi kadar vakit ayıramadığını ve sitenin 'zombi moda' geçtiğini paylaşıyorum. v0.7 ve SEO iyileştirmelerinin kullanıcı deneyimini olumlu etkilediğini belirtiyorum."
 url: http://mfyz.com/tr/durulduk-zombie-mode-on/
-tags: ["mfyz.com","NULL"]
+tags: ["mfyz.com", "kişisel", "blog", "güncel", "zaman yönetimi", "okul", "yoğunluk"]
 category: mfyz.com
 migration: {"wpId":182,"wpPostDate":"2008-03-09T19:43:39.000Z"}
 lang: tr

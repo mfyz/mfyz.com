@@ -1,9 +1,10 @@
 ---
 title: "CDN nedir ve neden kullanmalısınız?"
+description: "CDN (İçerik Dağıtım Ağı) nedir, statik içerikler için neden önemlidir ve web sitenizin performansını nasıl artırır? Popüler kütüphaneler için CDN servislerini keşfedin."
 slug: cdn-nedir-ve-neden-kullanmalisiniz
 date: 2014-01-10
 url: http://mfyz.com/tr/cdn-nedir-ve-neden-kullanmalisiniz/
-tags: ["assets","cdn","css","framework","javascript","library"]
+tags: ["cdn", "performans", "javascript", "css", "web geliştirme", "statik içerik"]
 category: 
 migration: {"wpId":359,"wpPostDate":"2014-01-10T16:22:12.000Z"}
 lang: tr

@@ -1,11 +1,20 @@
 ---
 title: "How to use Genymotion for Android testing (simulator/emulator) on macOS or Windows"
+description: "Notes about using Genymotion for Android testing (simulator/emulator) on macOS or Windows. It covers its advantages over the official emulator in the past and various use cases, including mobile web testing and running Android apps on a desktop."
 slug: how-to-use-genymotion-for-android-testing-simulator-emulator-on-macos-or-windows
 date: 2021-01-19
 url: https://mfyz.com/?p=621
-tags: ["OS","Other"]
+tags:
+  [
+    "genymotion",
+    "android emulator",
+    "mobile testing",
+    "android development",
+    "macos",
+    "windows",
+  ]
 category: OS
-migration: {"wpId":621,"wpPostDate":"2021-01-19T16:20:58.000Z"}
+migration: { "wpId": 621, "wpPostDate": "2021-01-19T16:20:58.000Z" }
 ---
 
 If you are in mobile development, particularly Android development, you probably heard or used Genymotion's simulator.

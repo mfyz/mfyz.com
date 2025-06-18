@@ -1,11 +1,20 @@
 ---
 title: "Google Sheets + Zapier is a perfect gateway for quick integrations when bootstrapping a new tool/service"
+description: "Google Sheets and Zapier are explored as a powerful combination for streamlining third-party integrations when launching new products. The advantages of this method for quick bootstrapping are detailed, alongside an example of a Zapier automation."
 slug: google-sheets-zapier-is-a-perfect-gateway-for-quick-integrations-when-bootstrapping-a-new-tool-service
 date: 2021-05-17
 url: https://mfyz.com/?p=662
-tags: ["automation","Geekin'","integration","zapier"]
+tags:
+  [
+    "google sheets",
+    "zapier",
+    "automation",
+    "integration",
+    "bootstrapping",
+    "no-code tools",
+  ]
 category: Geekin'
-migration: {"wpId":662,"wpPostDate":"2021-05-17T18:59:11.000Z"}
+migration: { "wpId": 662, "wpPostDate": "2021-05-17T18:59:11.000Z" }
 ---
 
 When bootstrapping a new product, regardless of platform and solution is used in back-end and front-end, the time comes very quickly that you will need to integrate with 3rd party platforms to create continuity of the product’s user experience between different solutions.

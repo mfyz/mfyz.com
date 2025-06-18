@@ -2,8 +2,9 @@
 title: "İlginç bir geri bildirim hikayesi"
 slug: ilginc-bir-geri-bildirim-hikayesi
 date: 2012-10-08
+description: "Görme engelli bir geliştiriciden alınan olumlu erişilebilirlik geri bildirimi ve bu deneyimin, yazılım geliştirirken standartlara ve en iyi pratiklere uymanın beklenmedik faydalarını nasıl ortaya koyduğu anlatılıyor."
 url: http://mfyz.com/tr/ilginc-bir-geri-bildirim-hikayesi/
-tags: ["accesibility","best practices","blind","developer","feedback","qa","standarts","w3c"]
+tags: ["erişilebilirlik", "web standartları", "kullanıcı geri bildirimi", "yazılım geliştirme", "en iyi pratikler", "W3C", "HTML", "kapsayıcı tasarım"]
 category: 
 migration: {"wpId":319,"wpPostDate":"2012-10-08T01:19:24.000Z"}
 lang: tr

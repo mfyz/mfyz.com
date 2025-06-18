@@ -1,11 +1,21 @@
 ---
-title: "How we use Quip and how to leverage collaborative writing tool in team communication"
+title: "How We Use Quip and Leverage Collaborative Writing Tools in Team Communication"
+description: "An overview of using Quip for personal note-taking and enhancing team collaboration, highlighting its benefits for transparency, real-time work, and offering tips for effective team communication."
 slug: use-quip-leverage-collaborative-writing-tool-team-communication
 date: 2017-10-25
 url: http://mfyz.com/?p=196
-tags: ["Geekin'"]
+tags:
+  [
+    "quip",
+    "collaboration tools",
+    "team communication",
+    "productivity",
+    "note-taking",
+    "remote work",
+    "writing tools",
+  ]
 category: Geekin'
-migration: {"wpId":196,"wpPostDate":"2017-10-25T02:05:38.000Z"}
+migration: { "wpId": 196, "wpPostDate": "2017-10-25T02:05:38.000Z" }
 ---
 
 ![](/images/archive/en/2020/05/quip-rocket_owq43o.png?fit=1499%2C650&ssl=1)
@@ -20,14 +30,14 @@ At our team, we use quip daily basis and I use quip maybe as much as I use my em
 
 We use Quip at our team for following reasons primarily;
 
-*   Transparency - we believe in creating a culture of transparency, where our team has full visibility into all aspects of our work.
-*   Quip allows us to see (in real-time) what people are working on.
-*   Quip's history allows us to see the conversations and evolution of our thinking, not just the finished product.
+- Transparency - we believe in creating a culture of transparency, where our team has full visibility into all aspects of our work.
+- Quip allows us to see (in real-time) what people are working on.
+- Quip's history allows us to see the conversations and evolution of our thinking, not just the finished product.
 
 Here are few tips that we collected as the team and try to implement on our Quip settings.
 
-*   Turn notifications off apart from @mentions to reduce the noise - most of us don't need to know everything that is happening in quip in real-time.
-*   Fine tune your notifications for documents and folders that you are an active contributor or reviewer of.
+- Turn notifications off apart from @mentions to reduce the noise - most of us don't need to know everything that is happening in quip in real-time.
+- Fine tune your notifications for documents and folders that you are an active contributor or reviewer of.
 
 We use Quip with it's “team” version which we pay very minimal cost monthly but there is almost zero reason you need to pay as the team. Their team functionality is free and it's not very different than sharing a folder to a group of contacts.
 

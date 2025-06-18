@@ -2,8 +2,9 @@
 title: "mfyz'yi kapattım"
 slug: mfyzyi-kapattim
 date: 2008-10-01
+description: "mfyz.net alan adını da alarak mfyz (.com, .net, .org) ailesini tamamladığını duyuruyor. Her bir alan adı için gelecek planları ve www alt alan adının kaldırılması fikri paylaşılıyor."
 url: http://mfyz.com/tr/mfyzyi-kapattim/
-tags: ["Diğer","NULL"]
+tags: ["mfyz.com", "mfyz.net", "mfyz.org", "alan adı", "domain", "web sitesi planlama", "markalaşma", "URL yapısı", "Diğer"]
 category: Diğer
 migration: {"wpId":207,"wpPostDate":"2008-10-01T05:08:45.000Z"}
 lang: tr

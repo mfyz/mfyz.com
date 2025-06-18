@@ -1,9 +1,10 @@
 ---
-title: "PHP+MySQL sistemler için üye giriş-çıkış-kayıt"
+title: "PHP+MySQL Sistemler İçin Üye Giriş, Çıkış ve Kayıt İşlemleri"
 slug: phpmysql-sistemler-icin-uye-giris-cikis-kayit
 date: 2006-08-20
+description: "PHP ve MySQL kullanarak web siteleri için üye giriş, çıkış ve kayıt sistemi nasıl oluşturulur? Oturum yönetimi, şifreleme ve veritabanı işlemleriyle güvenli bir üyelik sistemi kurma rehberi."
 url: http://mfyz.com/tr/phpmysql-sistemler-icin-uye-giris-cikis-kayit/
-tags: ["login","logout","mysql","PHP","session"]
+tags: ["PHP", "MySQL", "üyelik sistemi", "giriş çıkış", "oturum yönetimi", "şifreleme", "web geliştirme"]
 category: PHP
 migration: {"wpId":90,"wpPostDate":"2006-08-20T04:20:11.000Z"}
 lang: tr

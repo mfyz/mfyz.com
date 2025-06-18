@@ -2,8 +2,9 @@
 title: "Linuxta dosya parçalamak"
 slug: linuxta-dosya-parcalamak
 date: 2004-11-09
+description: "Linux'ta büyük dosyaları `split` komutu kullanarak nasıl parçalayacağınızı ve `cat` komutu ile nasıl birleştireceğinizi anlatan pratik bir rehber. Dosya taşıma ve depolama limitlerini aşmak için kullanışlı yöntemler."
 url: http://mfyz.com/tr/linuxta-dosya-parcalamak/
-tags: ["ayırmak","bölmek","dosya parçalamak","konsol","linux","OS","split"]
+tags: ["ayırmak","bölmek","dosya parçalamak","konsol","linux","OS","split", "terminal", "dosya yönetimi"]
 category: OS
 migration: {"wpId":62,"wpPostDate":"2004-11-09T05:32:19.000Z"}
 lang: tr

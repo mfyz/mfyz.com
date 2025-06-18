@@ -1,9 +1,10 @@
 ---
-title: "Mootools'da Nesne Seçiciler, CSS Seçicileri"
+title: "Mootools'da Nesne Seçiciler: CSS Seçicileri Kullanımı"
 slug: mootoolsda-nesne-seciciler-css-secicileri
 date: 2008-02-09
+description: "Mootools JavaScript kütüphanesinde $ ve $$ fonksiyonları ile HTML elementlerini CSS seçicileri (ID, class, tag) kullanarak nasıl seçeceğinizi öğrenin. Pratik örneklerle DOM manipülasyonu."
 url: http://mfyz.com/tr/mootoolsda-nesne-seciciler-css-secicileri/
-tags: ["Arayüz Programlama","css selectors","element","mootools"]
+tags: ["Mootools", "JavaScript", "CSS seçicileri", "DOM", "web geliştirme", "arayüz programlama", "eğitim"]
 category: Arayüz Programlama
 migration: {"wpId":129,"wpPostDate":"2008-02-09T21:14:12.000Z"}
 lang: tr

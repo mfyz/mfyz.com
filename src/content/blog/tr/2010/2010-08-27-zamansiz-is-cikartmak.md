@@ -2,8 +2,9 @@
 title: "Zamansız iş çıkartmak"
 slug: zamansiz-is-cikartmak
 date: 2010-08-27
+description: "Yazılım sektöründe kısıtlı zaman baskısıyla iş üretmenin; kod kalitesi, standartlar, geliştirici motivasyonu ve projelerin sürdürülebilirliği üzerindeki olumsuz etkileri eleştiriliyor."
 url: http://mfyz.com/tr/zamansiz-is-cikartmak/
-tags: ["deadline","Hayat","timeless"]
+tags: ["iş hayatı", "proje yönetimi", "yazılım geliştirme", "deadline", "zaman yönetimi", "kod kalitesi", "motivasyon", "Hayat"]
 category: Hayat
 migration: {"wpId":258,"wpPostDate":"2010-08-27T21:18:19.000Z"}
 lang: tr

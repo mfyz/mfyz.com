@@ -1,9 +1,10 @@
 ---
 title: "MySQL'de optimizasyon analizi"
+description: "MySQL'deki PROCEDURE ANALYSE() fonksiyonu ile tablo yapısı optimizasyonu için istatistiksel veri ve ideal alan türü önerileri alma hakkında bir giriş yazısı."
 slug: mysqlde-optimizasyon-analizi
 date: 2009-09-09
 url: http://mfyz.com/tr/mysqlde-optimizasyon-analizi/
-tags: ["analyse","mysql","optimizasyon","procedure","sql","Sunucu Programlama"]
+tags: ["mysql", "optimizasyon", "procedure analyse", "veritabanı yönetimi", "sql"]
 category: Sunucu Programlama
 migration: {"wpId":227,"wpPostDate":"2009-09-09T04:41:19.000Z"}
 lang: tr

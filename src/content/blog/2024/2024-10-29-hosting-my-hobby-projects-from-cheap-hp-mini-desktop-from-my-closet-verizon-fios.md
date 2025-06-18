@@ -1,11 +1,21 @@
 ---
 title: "Hosting my hobby projects from cheap HP mini desktop from my closet (Verizon Fios)"
+description: "A setup for self-hosting hobby projects using an HP mini desktop, Verizon Fios, and a software stack including Docker and Cloudflare Tunnels is detailed. Motivations, hardware choices, and the home lab configuration are explored."
 slug: hosting-my-hobby-projects-from-cheap-hp-mini-desktop-from-my-closet-verizon-fios
 date: 2024-10-29
 url: https://mfyz.com/?p=909
-tags: ["cloudflare","docker","gitops","opensource","OS","Other","portainer","selfhost","tunnel","zerotrust"]
+tags:
+  [
+    "self-hosting",
+    "home lab",
+    "hp mini pc",
+    "verizon fios",
+    "docker",
+    "portainer",
+    "cloudflare tunnels",
+  ]
 category: OS
-migration: {"wpId":909,"wpPostDate":"2024-10-29T13:00:00.000Z"}
+migration: { "wpId": 909, "wpPostDate": "2024-10-29T13:00:00.000Z" }
 ---
 
 ## Why?
@@ -18,11 +28,11 @@ As part of my job, I need to have a deep understanding of developer experience. 
 
 There are a bunch of other reasons one may choose to do this:
 
-*   **Privacy**: your data
+- **Privacy**: your data
 
-*   **Full control**: You own it (well, both good and bad)
+- **Full control**: You own it (well, both good and bad)
 
-*   **Cost-effective**: (may not be always true, but mostly true)
+- **Cost-effective**: (may not be always true, but mostly true)
 
 ## You shouldn’t do this… But if you really want to…
 

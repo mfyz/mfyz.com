@@ -1,9 +1,10 @@
 ---
-title: "Şekil URL'ler yapmak"
+title: "PHP ile Şekilli (Pretty) URL'ler Oluşturmak"
 slug: sekil-urller-yapmak
 date: 2006-09-04
+description: "PHP'de `$_SERVER['QUERY_STRING']` ve `explode()` fonksiyonlarını kullanarak standart URL yapıları yerine daha okunaklı ve 'şekilli' URL'ler nasıl oluşturulur? Modüler yapılar için pratik bir yöntem."
 url: http://mfyz.com/tr/sekil-urller-yapmak/
-tags: ["PHP","url"]
+tags: ["PHP", "URL yönlendirme", "pretty URL", "SEO dostu URL", "QUERY_STRING", "web geliştirme"]
 category: PHP
 migration: {"wpId":93,"wpPostDate":"2006-09-04T03:08:16.000Z"}
 lang: tr

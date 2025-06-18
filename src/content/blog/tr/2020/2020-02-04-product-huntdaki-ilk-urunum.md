@@ -1,9 +1,10 @@
 ---
 title: "Product Hunt'daki ilk ürünüm"
+description: "Product Hunt'ta yayınladığım ilk ürünüm olan 'Post to Wordpress' Chrome eklentisini keşfedin. Bu eklenti, gezdiğiniz sayfalardan hızlıca Wordpress sitenize içerik göndermenizi sağlar."
 slug: product-huntdaki-ilk-urunum
 date: 2020-02-04
 url: https://mfyz.com/tr/?p=1473
-tags: ["Diğer"]
+tags: ["product hunt", "chrome eklentisi", "wordpress", "verimlilik", "bloglama araçları"]
 category: Diğer
 migration: {"wpId":1473,"wpPostDate":"2020-02-04T10:37:56.000Z"}
 lang: tr

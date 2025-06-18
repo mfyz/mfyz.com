@@ -1,9 +1,10 @@
 ---
-title: "Yeni Lisanslar Macheist'den"
+title: "MacHeist'ten Yeni Yazılım Lisansları: MacHeist-mini Paketi"
 slug: yeni-lisanslar-macheistden
 date: 2008-04-14
+description: "MacHeist'in sunduğu yeni MacHeist-mini yazılım paketi hakkında. Overflow ve ChaChing gibi uygulamaları içeren paketin değerlendirmesi ve hayır kurumlarına yapılan bağış boyutu."
 url: http://mfyz.com/tr/yeni-lisanslar-macheistden/
-tags: ["apple","Diğer","license","macosx"]
+tags: ["MacHeist", "yazılım paketi", "macOS", "Apple", "uygulama", "lisans", "indirim", "Overflow", "ChaChing", "hayırseverlik"]
 category: Diğer
 migration: {"wpId":187,"wpPostDate":"2008-04-14T19:59:35.000Z"}
 lang: tr

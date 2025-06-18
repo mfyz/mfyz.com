@@ -1,9 +1,10 @@
 ---
-title: "Teknolojik baba olmak"
+title: "Teknolojik Baba Olmak"
+description: "Yeni baba olan bir yazılımcının, teknoloji ve ebeveynlik kesişimindeki düşünceleri: Çocuk yetiştirmede teknolojinin rolü, anne-baba girişimciliği ve kişisel deneyimlerin paylaşımı."
 slug: teknolojik-baba-olmak
 date: 2017-09-19
 url: http://mfyz.com/tr/?p=1381
-tags: ["Hayat"]
+tags: ["babalık", "ebeveynlik", "teknoloji", "çocuk yetiştirme", "girişimcilik", "kişisel"]
 category: Hayat
 migration: {"wpId":1381,"wpPostDate":"2017-09-19T07:28:12.000Z"}
 lang: tr

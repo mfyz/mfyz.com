@@ -1,9 +1,10 @@
 ---
-title: "Mootools vs JQuery"
+title: "MooTools mu, jQuery mi? JavaScript Kütüphanesi Seçimi Üzerine Düşünceler"
 slug: mootools-vs-jquery
 date: 2008-04-12
+description: "jQuery'nin artan popülaritesi ve MooTools ile karşılaştırılması. Yazar, jQuery eklentilerinin bolluğunu ve topluluk görüşlerini değerlendirerek kendi JavaScript kütüphane tercihini sorguluyor."
 url: http://mfyz.com/tr/mootools-vs-jquery/
-tags: ["Arayüz Programlama","jquery","mootools"]
+tags: ["jQuery", "MooTools", "JavaScript", "web geliştirme", "kütüphane karşılaştırması", "arayüz programlama", "teknoloji seçimi", "programlama"]
 category: Arayüz Programlama
 migration: {"wpId":186,"wpPostDate":"2008-04-12T02:33:33.000Z"}
 lang: tr

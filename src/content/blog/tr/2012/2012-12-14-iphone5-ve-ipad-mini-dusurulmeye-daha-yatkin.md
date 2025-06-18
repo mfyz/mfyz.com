@@ -1,9 +1,10 @@
 ---
-title: "iPhone5 ve iPad Mini düşürülmeye daha yatkın"
+title: "iPhone 5 ve iPad Mini Düşürülmeye Daha Yatkın"
 slug: iphone5-ve-ipad-mini-dusurulmeye-daha-yatkin
 date: 2012-12-14
+description: "Yazar, yeni iPhone 5 ve iPad Mini'nin hafif ve küçük tasarımları nedeniyle eski, daha ağır cihazlara kıyasla düşmeye daha yatkın olduğu yönündeki kişisel deneyimlerini ve gözlemlerini paylaşıyor."
 url: http://mfyz.com/tr/iphone5-ve-ipad-mini-dusurulmeye-daha-yatkin/
-tags: ["apple","Diğer","ipad","ipad mini","iphone","iphone5"]
+tags: ["iPhone 5", "iPad Mini", "Apple", "Mobil Cihazlar", "Dayanıklılık Testi", "Kullanıcı Deneyimi", "Cihaz Tasarımı"]
 category: Diğer
 migration: {"wpId":336,"wpPostDate":"2012-12-14T06:00:00.000Z"}
 lang: tr

@@ -1,9 +1,10 @@
 ---
-title: "Allah bütün iş olmayanlara blog versin"
+title: "Blog Kirliliği ve RSS Çorbası Üzerine Bir Serzeniş"
 slug: allah-butun-is-olmayanlara-blog-versin
 date: 2008-09-04
+description: "Yazar, internetteki blog sayısındaki artışla birlikte çoğalan kopya içeriklere ve RSS akışlarındaki bilgi kirliliğine dikkat çekiyor. Özellikle alakasız blogların aynı haberleri tekrarlaması eleştiriliyor."
 url: http://mfyz.com/tr/allah-butun-is-olmayanlara-blog-versin/
-tags: ["blog","çorba","Diğer","rss"]
+tags: ["blog kültürü", "içerik kalitesi", "internet eleştirisi", "RSS", "bilgi kirliliği", "kopya içerik", "Diğer", "blogging", "eleştiri"]
 category: Diğer
 migration: {"wpId":204,"wpPostDate":"2008-09-04T01:10:13.000Z"}
 lang: tr

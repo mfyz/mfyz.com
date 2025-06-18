@@ -1,9 +1,10 @@
 ---
 title: "Radio butonları CSS ile makyajlamak"
+description: "CSS3 ile radio butonları nasıl özelleştirebileceğinizi öğrenin. JavaScript'e ihtiyaç duymadan form elemanlarınıza istediğiniz görünümü kazandırın."
 slug: radio-butonlari-css-ile-makyajlamak
 date: 2013-01-04
 url: http://mfyz.com/tr/radio-butonlari-css-ile-makyajlamak/
-tags: ["Arayüz Programlama","css","css3","form","html","radio","style","styling"]
+tags: ["css3", "radio buton", "form stilizasyonu", "arayüz tasarımı", "css"]
 category: Arayüz Programlama
 migration: {"wpId":341,"wpPostDate":"2013-01-04T06:00:00.000Z"}
 lang: tr

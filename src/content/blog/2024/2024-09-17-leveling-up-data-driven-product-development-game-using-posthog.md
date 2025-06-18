@@ -1,11 +1,20 @@
 ---
 title: "Leveling up Data-Driven Product Development game using Posthog"
+description: "PostHog, an open-source product analytics platform, is presented as a tool for data-driven product development. Key features like auto-capture, HogQL, funnels, heatmaps, and session recordings are discussed."
 slug: leveling-up-data-driven-product-development-game-using-posthog
 date: 2024-09-17
 url: https://mfyz.com/?p=853
-tags: ["analytics","Geekin'","open source","product"]
+tags:
+  [
+    "posthog",
+    "product analytics",
+    "open source",
+    "data-driven",
+    "user behavior",
+    "web analytics",
+  ]
 category: Geekin'
-migration: {"wpId":853,"wpPostDate":"2024-09-17T13:30:00.000Z"}
+migration: { "wpId": 853, "wpPostDate": "2024-09-17T13:30:00.000Z" }
 ---
 
 **Posthog** is an open-source product analytics platform that offers flexibility and control. You can deploy it on your own infrastructure or use the cloud-based option. This gives you the freedom to customize and extend the platform to meet your specific needs.
@@ -19,33 +28,32 @@ I've been using **Posthog** for a while now, and it's quickly become my go-to to
 One of the things I appreciate most about Posthog is its **auto-capture** feature. It's like having a tiny detective following my users around, recording their every click and interaction. This has saved me countless hours of manually setting up tracking events. It also has pretty good customizations on what gets auto captured what not:
 
 ```js
-posthog.init('phc_.........................', {
-    api_host: '<https://us.i.posthog.com>',
-    autocapture: {
-        dom_event_allowlist: ['click'],
-        url_allowlist: ['posthog.com./docs/.*'],
-        url_ignorelist: ['posthog.com./docs/.*/secret-section/.*'],
-        element_allowlist: ['button'],
-        css_selector_allowlist: ['[ph-autocapture]'],
-        element_attribute_ignorelist:['data-attr-pii="email"'],
-    },
-})
-
+posthog.init("phc_.........................", {
+  api_host: "<https://us.i.posthog.com>",
+  autocapture: {
+    dom_event_allowlist: ["click"],
+    url_allowlist: ["posthog.com./docs/.*"],
+    url_ignorelist: ["posthog.com./docs/.*/secret-section/.*"],
+    element_allowlist: ["button"],
+    css_selector_allowlist: ["[ph-autocapture]"],
+    element_attribute_ignorelist: ['data-attr-pii="email"'],
+  },
+});
 ```
 
 **Beyond the basics, Posthog has a ton of cool features that make it a powerhouse. Here are a few of my favorites:**
 
-*   **HogQL:** Their SQL-like querying language. This is an awesome capability for a data nerd like me. Even though alternatives like Amplitude have similar SQL-ish capabilities, they are almost always included in their Enterprise plans, unlike Posthog which is included in all plans.
+- **HogQL:** Their SQL-like querying language. This is an awesome capability for a data nerd like me. Even though alternatives like Amplitude have similar SQL-ish capabilities, they are almost always included in their Enterprise plans, unlike Posthog which is included in all plans.
 
-*   **User funnels:** I can easily visualize how users flow through my product and identify bottlenecks where they might be dropping off.
+- **User funnels:** I can easily visualize how users flow through my product and identify bottlenecks where they might be dropping off.
 
-*   **Cohort analysis:** I can segment my users into groups based on their behavior and track their performance over time.
+- **Cohort analysis:** I can segment my users into groups based on their behavior and track their performance over time.
 
-*   **Heatmaps:** I can see exactly where users are clicking on my website or app, helping me optimize the user experience.
+- **Heatmaps:** I can see exactly where users are clicking on my website or app, helping me optimize the user experience.
 
-*   **Session recordings:** I can watch actual recordings of user sessions to see how they're interacting with my product.
+- **Session recordings:** I can watch actual recordings of user sessions to see how they're interacting with my product.
 
-*   **Web Analytics:** A recently added feature for people who struggled to adopt GA4. They have pretty simple old-school web analytics automatically tracked.
+- **Web Analytics:** A recently added feature for people who struggled to adopt GA4. They have pretty simple old-school web analytics automatically tracked.
 
 ![](/images/archive/en/2024/09/image-1-1600x918.jpg)
 

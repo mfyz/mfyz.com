@@ -2,8 +2,9 @@
 title: "mp3 indirmeyin, radyo kaydedin! (stream rip)"
 slug: mp3-indirmeyin-radyo-kaydedin-stream-rip
 date: 2006-02-03
+description: "İnternet radyolarından müzik yayını nasıl kaydedilir? CastRipper ve StreamRipperX gibi programlarla online radyo yayınlarını MP3 olarak kaydetme ve arşivleme yöntemleri."
 url: http://mfyz.com/tr/mp3-indirmeyin-radyo-kaydedin-stream-rip/
-tags: ["Diğer","kayıt","radyo","rip","stream","streamrip"]
+tags: ["stream ripping", "radyo kaydetme", "MP3", "CastRipper", "StreamRipperX", "internet radyosu", "müzik"]
 category: Diğer
 migration: {"wpId":114,"wpPostDate":"2006-02-03T15:25:47.000Z"}
 lang: tr

@@ -1,9 +1,10 @@
 ---
 title: "Seçmece bunlar : Ruffles Seçen Seçene"
+description: "Wanda Digital tarafından geliştirilen Facebook tabanlı Ruffles Seçen Seçene advergame projesinin tanıtımı. Oyunda kullanıcılar arkadaşlarını oylayarak ödüller kazanıyor."
 slug: secmece-bunlar-ruffles-secen-secene
 date: 2009-07-11
 url: http://mfyz.com/tr/secmece-bunlar-ruffles-secen-secene/
-tags: ["Diğer","facebook","oyun","ruffles","wanda"]
+tags: ["ruffles", "advergame", "facebook uygulaması", "wanda digital", "yarışma"]
 category: Diğer
 migration: {"wpId":218,"wpPostDate":"2009-07-11T02:01:08.000Z"}
 lang: tr

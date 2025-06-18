@@ -1,9 +1,10 @@
 ---
-title: "DinamiTürk ve SoberKoala ile Youtube erişimi yapmak"
+title: "YouTube Erişim Engellerini Aşma: DinamiTürk ve SoberKoala Çözümleri"
 slug: dinamiturk-ve-soberkoala-ile-youtube-erisimi-yapmak
 date: 2008-06-15
+description: "YouTube erişim sorunlarına karşı DinamiTürk ve SoberKoala gibi alternatif servislerle video izleme yöntemleri. Bu araçlar, YouTube'u cache'leyerek veya mirror siteler üzerinden erişim sağlıyor."
 url: http://mfyz.com/tr/dinamiturk-ve-soberkoala-ile-youtube-erisimi-yapmak/
-tags: ["cache","Diğer","mirror","shoutcast","youtube"]
+tags: ["YouTube", "erişim engeli", "internet sansürü", "DinamiTürk", "SoberKoala", "alternatif erişim", "proxy", "cache", "mirror site", "video izleme", "Shoutcast"]
 category: Diğer
 migration: {"wpId":192,"wpPostDate":"2008-06-15T20:52:27.000Z"}
 lang: tr

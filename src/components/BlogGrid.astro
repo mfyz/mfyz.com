@@ -145,7 +145,7 @@ function formatDatePreserveDay(dateStr: string | Date, useTurkish = false) {
       {
         (!showFirstPostFull ? displayPosts : displayPosts.slice(1)).map(
           (post, index) => {
-            const { title, date } = post.data; // imageURL, summary, tags removed as unused
+            const { title, date } = post.data; // imageURL, description, tags removed as unused
             // Calculate reading time
             const time = post.body
               ? readingTime(post.body)

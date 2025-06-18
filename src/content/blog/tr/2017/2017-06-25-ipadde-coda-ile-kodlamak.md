@@ -1,9 +1,10 @@
 ---
 title: "iPad'de Coda ile kodlamak"
+description: "iPad'de Coda uygulaması ile kod yazma deneyimi: Coda'nın kod editörü, SSH terminali ve FTP dosya yönetimi gibi özellikleri ve iPadOS üzerinde geliştirme yapmanın avantajları ve zorlukları."
 slug: ipadde-coda-ile-kodlamak
 date: 2017-06-25
 url: http://mfyz.com/tr/ipadde-coda-ile-kodlamak/
-tags: ["coding","digital nomad","iOS","ipad","kodlama","nomadic","OS","work anywhere"]
+tags: ["ipad", "coda", "kodlama", "ios", "mobil geliştirme", "uzaktan çalışma", "ide"]
 category: OS
 migration: {"wpId":364,"wpPostDate":"2017-06-25T23:59:51.000Z"}
 lang: tr

@@ -2,8 +2,9 @@
 title: "Konum bazlı servisler ve uygulamaların hayatımıza kattıkları"
 slug: konum-bazli-servisler-ve-uygulamalarin-hayatimiza-kattiklari
 date: 2012-09-21
+description: "Mobil internet ve akıllı telefonlarla yaygınlaşan konum tabanlı servislerin (Foursquare, Uber, Walk Score vb.) günlük hayatı nasıl kolaylaştırdığı, dijital rehberlerin önemi ve bu teknolojilerin sosyal etkileşimlere etkileri anlatılıyor."
 url: http://mfyz.com/tr/konum-bazli-servisler-ve-uygulamalarin-hayatimiza-kattiklari/
-tags: ["foursquare","geolocation","gps","Hayat","location","mobile","services","sonar","startups","uber","walkscore"]
+tags: ["Konum Tabanlı Servisler", "Mobil Uygulamalar", "GPS", "Foursquare", "Uber", "Walk Score", "Akıllı Telefonlar", "Dijital Yaşam", "Coğrafi Konum"]
 category: Hayat
 migration: {"wpId":318,"wpPostDate":"2012-09-21T00:26:47.000Z"}
 lang: tr

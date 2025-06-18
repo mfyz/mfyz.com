@@ -1,9 +1,10 @@
 ---
-title: "PHP siniflarinizi RESTful API'lere cevirin: Restler"
+title: "PHP Sınıflarınızı RESTful API'lere Çevirin: Restler"
+description: "Restler adlı açık kaynak kodlu PHP kütüphanesi ile mevcut PHP sınıflarınızı nasıl kolayca RESTful API'lere dönüştürebileceğinizi ve bu kütüphanenin XML, JSON, Plist, AMF gibi formatları nasıl desteklediğini öğrenin."
 slug: php-siniflarinizi-restful-apilere-cevirin-restler
 date: 2011-10-12
 url: http://mfyz.com/tr/php-siniflarinizi-restful-apilere-cevirin-restler/
-tags: ["api","class","converter","generator","php class","rest api","Sunucu Programlama"]
+tags: ["php", "restful api", "restler", "api geliştirme", "kütüphane", "açık kaynak"]
 category: Sunucu Programlama
 migration: {"wpId":289,"wpPostDate":"2011-10-12T10:54:32.000Z"}
 lang: tr

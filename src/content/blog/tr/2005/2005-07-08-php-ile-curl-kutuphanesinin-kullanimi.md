@@ -1,9 +1,10 @@
 ---
-title: "PHP ile curl kütüphanesinin kullanımı"
+title: "PHP ile cURL Kütüphanesinin Kullanımı"
 slug: php-ile-curl-kutuphanesinin-kullanimi
 date: 2005-07-08
+description: "PHP'de cURL kütüphanesi ile HTTP istekleri yapma, veri indirme/yükleme, POST/GET işlemleri ve proxy/çerez yönetimi gibi ağ işlemlerini öğrenin. Temel cURL fonksiyonları ve pratik örnekler içerir."
 url: http://mfyz.com/tr/php-ile-curl-kutuphanesinin-kullanimi/
-tags: ["curl","PHP"]
+tags: ["PHP", "cURL", "libcurl", "HTTP", "API", "veri çekme", "dosya indirme", "POST", "GET", "Sunucu Programlama", "ağ programlama"]
 category: PHP
 migration: {"wpId":79,"wpPostDate":"2005-07-08T03:49:39.000Z"}
 lang: tr

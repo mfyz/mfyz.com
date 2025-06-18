@@ -1,9 +1,10 @@
 ---
-title: "Teknoloji girişimleri neden Türkiye'de kolay veya hızlı büyüyemiyorlar?"
+title: "Teknoloji Girişimleri Neden Türkiye'de Kolay veya Hızlı Büyüyemiyorlar?"
+description: "Türkiye'deki teknoloji girişimlerinin neden Amerika gibi pazarlarda olduğu kadar hızlı ve kolay büyüyemediğini, yatırımcı eksikliği, global düşünme gerekliliği ve kültürel faktörler üzerinden inceleyen bir yazı."
 slug: teknoloji-girisimleri-neden-turkiyede-kolay-veya-hizli-buyuyemiyorlar
 date: 2011-10-03
 url: http://mfyz.com/tr/teknoloji-girisimleri-neden-turkiyede-kolay-veya-hizli-buyuyemiyorlar/
-tags: ["Hayat","startup","startups","tech","turkey"]
+tags: ["startup", "girişimcilik", "türkiye", "teknoloji", "yatırım", "globalleşme"]
 category: Hayat
 migration: {"wpId":288,"wpPostDate":"2011-10-03T10:05:49.000Z"}
 lang: tr

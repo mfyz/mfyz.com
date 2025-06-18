@@ -1,9 +1,10 @@
 ---
-title: "Growl'u Apple alsa?"
+title: "Growl'u Apple Alsa?"
+description: "Popüler macOS bildirim sistemi Growl'un ücretli olması ve yeni özellikleriyle birlikte, Apple'ın macOS için kendi bildirim merkezini kurma veya Growl'u satın alma ihtimali üzerine bir değerlendirme."
 slug: growlu-apple-alsa
 date: 2011-12-07
 url: http://mfyz.com/tr/growlu-apple-alsa/
-tags: ["apple","growl","macosx","notification","OS"]
+tags: ["growl", "apple", "macos", "bildirim sistemi", "ios", "yazılım", "notification center"]
 category: OS
 migration: {"wpId":294,"wpPostDate":"2011-12-07T03:23:22.000Z"}
 lang: tr

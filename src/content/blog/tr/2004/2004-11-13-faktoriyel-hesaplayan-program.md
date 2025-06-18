@@ -2,8 +2,9 @@
 title: "Faktöriyel hesaplayan program"
 slug: faktoriyel-hesaplayan-program
 date: 2004-11-13
+description: "QBasic dilinde yazılmış, girilen bir sayının faktöriyelini hesaplayan basit bir program. Bu örnek, döngüsel hesaplamalar ve temel matematiksel fonksiyonlar için iyi bir başlangıç noktasıdır."
 url: http://mfyz.com/tr/faktoriyel-hesaplayan-program/
-tags: ["Basic","faktöriyel","örnek kod"]
+tags: ["Basic", "QBasic", "faktöriyel", "örnek kod", "programlama", "algoritma", "matematik"]
 category: Basic
 migration: {"wpId":53,"wpPostDate":"2004-11-13T08:31:35.000Z"}
 lang: tr

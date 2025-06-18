@@ -1,9 +1,10 @@
 ---
-title: "Linux'ta kablosuz ağ yapılandırması"
+title: "Linux'ta Kablosuz Ağ Yapılandırması"
 slug: linuxta-kablosuz-ag-yapilandirmasi
 date: 2005-06-09
+description: "Linux işletim sisteminde kablosuz ağ (Wi-Fi) bağlantısının nasıl yapılandırılacağını öğrenin. Bu rehber, `lsmod`, `ifconfig`, `iwlist` ve `iwconfig` komutlarıyla sürücü kontrolü, ağ tarama, ESSID ve WEP anahtarı ayarlama adımlarını içerir."
 url: http://mfyz.com/tr/linuxta-kablosuz-ag-yapilandirmasi/
-tags: ["kablosuz ağ","OS","wireless","yapılandırma"]
+tags: ["Linux", "kablosuz ağ", "Wi-Fi", "wireless", "ağ yapılandırması", "ifconfig", "iwconfig", "iwlist", "WEP", "ESSID", "işletim sistemi", "OS", "ipw2200", "dhclient"]
 category: OS
 migration: {"wpId":68,"wpPostDate":"2005-06-09T16:03:26.000Z"}
 lang: tr

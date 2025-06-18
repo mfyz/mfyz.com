@@ -1,11 +1,21 @@
 ---
 title: "Create quick diagrams and Wireframes using Excalidraw + VSCode"
+description: "The capabilities of Excalidraw, an open-source diagramming and wireframing tool, are explored, with a focus on its VSCode extension for creating quick visuals. Features like portability and collaborative editing are highlighted."
 slug: create-quick-diagrams-and-wireframes-using-excalidraw-vscode
 date: 2022-11-01
 url: https://mfyz.com/?p=794
-tags: ["diagram","excalidraw","Geekin'","open-source","Product Design","vscode","wireframe"]
+tags:
+  [
+    "excalidraw",
+    "diagramming",
+    "wireframing",
+    "vscode",
+    "open source",
+    "productivity tools",
+    "visual design",
+  ]
 category: Geekin'
-migration: {"wpId":794,"wpPostDate":"2022-11-01T13:46:20.000Z"}
+migration: { "wpId": 794, "wpPostDate": "2022-11-01T13:46:20.000Z" }
 ---
 
 ![](/images/archive/en/2022/11/quick-diagrams-using-excalidraw-and-vscode.png)
@@ -49,11 +59,10 @@ import { useState, useEffect } from "react";
 export default function IndexPage() {
   const [Comp, setComp] = useState(null);
   useEffect(() => {
-    import("@excalidraw/excalidraw").then((comp) => setComp(comp.default));
+    import("@excalidraw/excalidraw").then(comp => setComp(comp.default));
   }, []);
   return <>{Comp && <Comp />}</>;
 }
-
 ```
 
 [https://www.npmjs.com/package/@excalidraw/excalidraw](https://www.npmjs.com/package/@excalidraw/excalidraw)

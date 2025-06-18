@@ -1,9 +1,10 @@
 ---
-title: "PHP'de Hata Ayıklama (Debug)"
+title: "PHP'de Hata Ayıklama (Debug) Teknikleri"
 slug: phpde-hata-ayiklama-debug
 date: 2006-10-19
+description: "PHP'de etkili hata ayıklama (debug) yöntemleri: Değişken kontrolü, print_r kullanımı, @ ile hata gizleme, error_reporting ayarları ve okunabilir kod yazmanın önemi üzerine pratik bilgiler."
 url: http://mfyz.com/tr/phpde-hata-ayiklama-debug/
-tags: ["debug","error","hata","PHP"]
+tags: ["PHP", "debug", "hata ayıklama", "programlama", "web geliştirme", "error_reporting", "kodlama teknikleri", "PHP hataları", "yazılım geliştirme"]
 category: PHP
 migration: {"wpId":112,"wpPostDate":"2006-10-19T03:50:53.000Z"}
 lang: tr

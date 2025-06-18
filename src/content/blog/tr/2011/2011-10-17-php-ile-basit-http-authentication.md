@@ -1,9 +1,10 @@
 ---
-title: "PHP ile basit HTTP authentication"
+title: "PHP ile Basit HTTP Authentication"
+description: "PHP'de HTTP başlıkları kullanarak basit bir kimlik doğrulama (authentication) sistemi nasıl oluşturulur? Yönetici panelleri gibi tek kullanıcılı alanlar için pratik bir çözüm ve örnek kod."
 slug: php-ile-basit-http-authentication
 date: 2011-10-17
 url: http://mfyz.com/tr/php-ile-basit-http-authentication/
-tags: ["auth","authentication","http","http auth","php"]
+tags: ["php", "http authentication", "kimlik doğrulama", "güvenlik", "web geliştirme", "htaccess"]
 category: PHP
 migration: {"wpId":157,"wpPostDate":"2011-10-17T02:14:30.000Z"}
 lang: tr

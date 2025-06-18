@@ -1,11 +1,21 @@
 ---
-title: "iPad and Apple Pencil best works with Notability app"
+title: "iPad and Apple Pencil Work Best with Notability App"
+description: "A review of the Apple Pencil and iPad Pro experience, highlighting the Notability app as a top choice for note-taking and drawing due to its responsiveness and simplicity."
 slug: ipad-apple-pencil-best-works-notability-app
 date: 2017-10-01
 url: http://mfyz.com/?p=170
-tags: ["OS"]
+tags:
+  [
+    "ipad pro",
+    "apple pencil",
+    "notability",
+    "note-taking",
+    "digital drawing",
+    "stylus",
+    "ios apps",
+  ]
 category: OS
-migration: {"wpId":170,"wpPostDate":"2017-10-01T15:34:14.000Z"}
+migration: { "wpId": 170, "wpPostDate": "2017-10-01T15:34:14.000Z" }
 ---
 
 I was very skeptical about styluses for many years, especially over a screen. Closest thing was Wacom's Cintiq and that was a giant monitor. The reason that styluses weren't compelling is because they were laggy and never felt great to draw on screen.

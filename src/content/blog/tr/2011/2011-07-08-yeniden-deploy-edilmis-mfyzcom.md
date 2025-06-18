@@ -1,9 +1,10 @@
 ---
 title: "Yeniden deploy edilmis mfyz.com"
+description: "mfyz.com'un altyapı ve kod hataları düzeltildikten sonra yeniden deploy edilmesi ve gelecekteki güncelleme planları üzerine kısa bir bilgilendirme."
 slug: yeniden-deploy-edilmis-mfyzcom
 date: 2011-07-08
 url: http://mfyz.com/tr/yeniden-deploy-edilmis-mfyzcom/
-tags: ["mfyz.com","NULL"]
+tags: ["mfyz.com", "blog", "yeniden deploy", "altyapı", "güncelleme"]
 category: mfyz.com
 migration: {"wpId":271,"wpPostDate":"2011-07-08T11:53:12.000Z"}
 lang: tr

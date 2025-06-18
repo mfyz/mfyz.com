@@ -1,9 +1,10 @@
 ---
-title: "Subversion ile proje geliştirmek"
+title: "Subversion (SVN) ile Proje Geliştirmek ve Sürüm Kontrolü"
 slug: subversion-ile-proje-gelistirmek
 date: 2006-09-19
+description: "Subversion (SVN) nedir, neden kullanılır ve proje geliştirmede nasıl faydalar sağlar? SVN kurulumu, temel komutları (depo oluşturma, proje ekleme, checkout) ve sürüm kontrol sistemi olarak kullanımı."
 url: http://mfyz.com/tr/subversion-ile-proje-gelistirmek/
-tags: ["OS","proje","subversion","svn"]
+tags: ["Subversion", "SVN", "versiyon kontrol", "sürüm yönetimi", "proje yönetimi", "yazılım geliştirme", "svnadmin", "svn import", "svn checkout", "Linux"]
 category: OS
 migration: {"wpId":96,"wpPostDate":"2006-09-19T20:52:36.000Z"}
 lang: tr

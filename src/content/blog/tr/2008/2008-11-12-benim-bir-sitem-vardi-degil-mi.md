@@ -2,8 +2,9 @@
 title: "Benim bir sitem vardı değil mi?"
 slug: benim-bir-sitem-vardi-degil-mi
 date: 2008-11-12
+description: "İş yoğunluğu ve kişisel engeller nedeniyle sitesini ihmal ettiğimi itiraf ediyorum. Okuyucularından sabır dileyerek, engelleri aştıktan sonra blog yazmaya daha aktif bir şekilde döneceğinin sözünü veriyorum."
 url: http://mfyz.com/tr/benim-bir-sitem-vardi-degil-mi/
-tags: ["Hayat","unutmak"]
+tags: ["blogging", "kişisel", "site güncellemesi", "öz eleştiri", "geri dönüş", "internet kültürü", "Hayat", "mfyz.com"]
 category: Hayat
 migration: {"wpId":211,"wpPostDate":"2008-11-12T18:54:48.000Z"}
 lang: tr

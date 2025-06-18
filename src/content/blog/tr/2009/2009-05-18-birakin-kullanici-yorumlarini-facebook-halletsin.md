@@ -1,9 +1,10 @@
 ---
 title: "Bırakın kullanıcı yorumlarını facebook halletsin"
+description: "Web sitenize Facebook Connect Yorum Kutusu entegre ederek kullanıcı etkileşimini artırın. FBML ile Facebook yorumlarını sitenizde kolayca yönetin."
 slug: birakin-kullanici-yorumlarini-facebook-halletsin
 date: 2009-05-18
 url: http://mfyz.com/tr/birakin-kullanici-yorumlarini-facebook-halletsin/
-tags: ["api","Arayüz Programlama","box","comment","connect","facebook"]
+tags: ["facebook connect", "yorum entegrasyonu", "fbml", "sosyal medya", "web geliştirme"]
 category: Arayüz Programlama
 migration: {"wpId":142,"wpPostDate":"2009-05-18T22:35:33.000Z"}
 lang: tr

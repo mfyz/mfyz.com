@@ -1,9 +1,10 @@
 ---
 title: "Minimalist PHP Çatısı Slim"
+description: "Slim Framework, basit web uygulamaları ve API'ler için ideal, minimalist bir PHP çatısıdır. Temel özellikleri ve kullanım örnekleri inceleniyor."
 slug: minimalist-php-catisi-slim
 date: 2013-04-16
 url: http://mfyz.com/tr/minimalist-php-catisi-slim/
-tags: ["framework","minimal","php","slim"]
+tags: ["php", "slim framework", "minimalist framework", "web geliştirme", "api"]
 category: PHP
 migration: {"wpId":354,"wpPostDate":"2013-04-16T05:00:00.000Z"}
 lang: tr

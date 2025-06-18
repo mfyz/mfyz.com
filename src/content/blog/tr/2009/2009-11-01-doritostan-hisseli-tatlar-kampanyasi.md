@@ -1,9 +1,10 @@
 ---
 title: "Doritos'tan Hisseli Tatlar Kampanyası"
+description: "Doritos'un 'Hisseli Tatlar' kampanyası ile kullanıcılar tytz.com üzerinden kendi cipslerini tasarlayıp, seçilirse satıştan %1 pay alma şansı yakalıyor."
 slug: doritostan-hisseli-tatlar-kampanyasi
 date: 2009-11-01
 url: http://mfyz.com/tr/doritostan-hisseli-tatlar-kampanyasi/
-tags: ["Diğer","doritos","interaktif","kampanya","tytz","wanda"]
+tags: ["doritos", "hisseli tatlar", "pazarlama kampanyası", "kullanıcı katılımı", "tytz.com"]
 category: Diğer
 migration: {"wpId":236,"wpPostDate":"2009-11-01T04:29:00.000Z"}
 lang: tr

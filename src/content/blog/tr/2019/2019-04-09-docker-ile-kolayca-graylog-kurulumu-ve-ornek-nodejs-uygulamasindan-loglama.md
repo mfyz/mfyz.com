@@ -1,9 +1,10 @@
 ---
 title: "Docker ile kolayca graylog kurulumu ve ornek nodejs uygulamasindan loglama"
+description: "Docker kullanarak Graylog'u kolayca nasıl kuracağınızı ve örnek bir Node.js uygulamasından Graylog'a nasıl log göndereceğinizi öğrenin. Adım adım kurulum ve kod örnekleri."
 slug: docker-ile-kolayca-graylog-kurulumu-ve-ornek-nodejs-uygulamasindan-loglama
 date: 2019-04-09
 url: https://mfyz.com/tr/?p=1455
-tags: ["docker","nodejs","Programlama"]
+tags: ["docker", "graylog", "nodejs", "log yönetimi", "devops", "uygulama loglama"]
 category: Programlama
 migration: {"wpId":1455,"wpPostDate":"2019-04-09T06:44:36.000Z"}
 lang: tr

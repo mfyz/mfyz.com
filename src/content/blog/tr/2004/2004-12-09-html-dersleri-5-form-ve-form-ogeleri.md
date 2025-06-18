@@ -2,8 +2,9 @@
 title: "HTML Dersleri (5) : Form ve form öğeleri"
 slug: html-dersleri-5-form-ve-form-ogeleri
 date: 2004-12-09
+description: "HTML dersleri serisinin beşinci bölümü. Bu rehber, kullanıcıdan veri almak için kullanılan `<form>` etiketini ve `input`, `textarea`, `select` gibi temel form öğelerinin nasıl kullanılacağını örneklerle açıklıyor. `GET` ve `POST` metodları gibi form özellikleri de ele alınıyor."
 url: http://mfyz.com/tr/html-dersleri-5-form-ve-form-ogeleri/
-tags: ["Arayüz Programlama","form","html","input","select","textarea"]
+tags: ["Arayüz Programlama", "form", "html", "input", "select", "textarea", "web geliştirme", "web tasarımı", "html dersleri", "form elemanları", "get", "post"]
 category: Arayüz Programlama
 migration: {"wpId":107,"wpPostDate":"2004-12-09T20:02:46.000Z"}
 lang: tr

@@ -1,11 +1,20 @@
 ---
-title: "Great resource to learn programming Swift"
+title: "Great Resource to Learn Programming Swift"
+description: "A recommendation for a comprehensive resource for learning Swift programming for iOS development, including sample projects, video walkthroughs, and GitHub source code links."
 slug: great-resource-to-learn-programming-swift
 date: 2017-04-10
 url: http://mfyz.com/great-resource-to-learn-programming-swift/
-tags: ["ios","mobile","Programming","swift"]
+tags:
+  [
+    "swift",
+    "ios development",
+    "programming",
+    "learn to code",
+    "mobile development",
+    "itunesu",
+  ]
 category: Programming
-migration: {"wpId":60,"wpPostDate":"2017-04-10T04:29:52.000Z"}
+migration: { "wpId": 60, "wpPostDate": "2017-04-10T04:29:52.000Z" }
 ---
 
 If you are interested in getting started with mobile development and if you like to start with iOS, I bumped into a great resource to learn Swift. There are tons of sample projects and great video walkthroughs as well as source codes of the projects you can download from GitHub.
