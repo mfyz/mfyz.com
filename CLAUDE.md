@@ -76,15 +76,19 @@ Available for use in MDX posts:
 ### Development Workflow
 - **Content Creation**: MDX files with comprehensive front matter
 - **Preview System**: Hidden posts accessible via `?preview=1` query parameter
-- **Hot Reloading**: Astro dev server with file watching
+- **Hot Reloading**: Astro dev server with file watching (may need restart for content collection changes)
 - **Type Safety**: TypeScript throughout with strict checking
 - **Git Hooks**: Pre-commit linting and formatting
+- **Content Collections**: Astro's type-safe content system with automatic language detection
+- **Internal Links**: Always use absolute paths without host (e.g., `/post-slug/` not `https://mfyz.com/post-slug/`)
 
 ### Language & Internationalization
 - **Dual Language**: English (default) and Turkish content
-- **Smart Routing**: `/tr/` prefix for Turkish pages
+- **Content Structure**: Turkish posts stored in `src/content/blog/tr/` directory
+- **URL Structure**: Direct slug URLs without `/tr/` prefix for article detail pages (language determined by file location)
 - **Content Detection**: Automatic language detection via folder structure and frontmatter
 - **Separate Indexes**: Independent listing pages for each language
+- **Translation Style**: Mix English technical terms with Turkish explanations, conversational tone with emojis
 
 ### Performance Optimizations
 - **Static Generation**: Pre-built pages for fast loading

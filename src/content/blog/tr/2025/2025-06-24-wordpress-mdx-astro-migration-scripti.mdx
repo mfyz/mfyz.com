@@ -1,0 +1,331 @@
+---
+title: "WordPress'ten MDX (Astro) Aktarım Script'i"
+description: "WordPress blog yazılarını Astro MDX formatına aktarmak için yazdığım Node.js script'inin detayları, frontmatter oluşturma ve içerik dönüştürme süreçleri."
+slug: wordpress-mdx-astro-migration-scripti
+date: "2025-06-24"
+tags:
+  - web development
+  - astro
+  - wordpress
+  - nodejs
+  - migration
+---
+
+import ImageZoom from "@components/ImageZoom.astro";
+import Note from "@components/Note.astro";
+
+[Önceki yazımda](/blogumu-wordpress-ten-astroya-tasidim) WordPress'ten Astro'ya geçiş yolculuğumu paylaşmıştım. O yazıda bahsettiğim gibi, sürecin en kritik kısımlarından biri WordPress'teki içerikleri Astro ile uyumlu MDX formatına taşımaktı - ki bu gerçekten de keyifli bir sürece dönüştü!
+
+Bu yazıda, WordPress veritabanımdaki yazıları düzgün formatlanmış MDX dosyalarına dönüştürmek için kullandığım script'i paylaşıyorum. Bu script doğrudan WordPress veritabanınıza bağlanıyor, yazıları çekiyor ve uygun frontmatter ile MDX formatına dönüştürüyor.
+
+## 🤔 Genel Taşınma Zorlukları
+
+WordPress'ten Astro gibi bir statik site üreticisine taşımada en zorlu kısım, WordPress veritabanında saklanan farklı türdeki içerik yapılarını çevirmek. Wordpress, yazilarinizi, HTML formatında saklıyor ama birçok plugin kendi meta data'sını saklayabiliyor. Çoğunlukla shortcode olabiliyor, veya serialize edilmis data saklanabiliyor. Genelde JSON formatinda, ama her zaman değil. Şanslıydım ki, onceki Wordpress blogumda sadece bir plugin kullaniyordum ve o da LD+JSON meta data saklıyordu, onu da feda ettim ve Astro versiyonunda ihtiyacım yok diyebildim. Ama sizin daha karmaşık içerik elementleriniz olabilir ki bunları markdown'a ya da front-matter özelliklerine çevirmek zorlayıcı olabilir. Diğer genel zorluklar:
+
+- Medya referansları ve URL yollari
+- Etiketler ve kategoriler
+- Özel karakterler ve biçimlendirme
+
+Taşıma süreci üzerinde tam kontrol sahibi olabilecek bir script'e ihtiyacım vardı. Çeşitli araçlara baktıktan sonra, doğrudan WordPress veritabanıma erişecek ve yazıları tam istediğim şekilde çıkaracak kendi script'imi yazmaya karar verdim. Bunu da zaten AI Editor ile hizlica yapabildim.
+
+💡 **İpucu:** Veritabanımı dışa aktarıp (export) yerel'de çalıştırdım bu scripti ve localhost'daki MySQL veritabanına bağlandım. Bu sayede, script 1000 yazıyı 10 saniyeden az sürede dönüştürebildi. Bu sayede sorunları çözüp, ince ayar yapıp, hızlıca tekrar tekrar çalıştırabildim.
+
+## 📋 Önce ve Sonra
+
+Ne yapmaya çalıştığımıza bakalım:
+
+**Önce:** MySQL veritabanında saklanan bir WordPress yazısı - HTML içerik, ayrı tablolarda metadata ve WordPress'in yükleme dizininden referans edilen medya.
+
+**Sonra:** Temiz bir MDX dosyası:
+
+- Yapılandırılmış frontmatter (title, slug, date, tags vs.)
+- HTML'den Markdown'a dönüştürülmüş içerik
+- Yerel referanslara güncellenmiş resim yolları
+- Düzgün formatlanmış kod blokları
+- Doğru işlenmiş özel karakterler
+
+## 🛠️ Aktarım Script'i
+
+Script, WordPress veritabanınıza bağlanmak, yazıları çekmek ve yıla göre organize edilmiş MDX dosyalarına dönüştürmek için Node.js kullanıyor. İhtiyacınız olanlar:
+
+```sh
+npm install dotenv mysql2 turndown slugify
+```
+
+Detaylı açıklamalarla birlikte tam script:
+
+````js
+require("dotenv").config();
+const fs = require("fs/promises");
+const path = require("path");
+const mysql = require("mysql2/promise");
+const TurndownService = require("turndown");
+const he = require("he"); // HTML entity decoder for fixing &amp; in titles
+
+const postsDir = path.join(__dirname, "../src/content/blog");
+
+const turndown = new TurndownService({
+  codeBlockStyle: "fenced",
+  escapeCodeBlock: false,
+  headingStyle: "atx", // Bu # sembollerini kullanacak başlıklar için
+});
+
+// WordPress resim URL'lerini yerel yollarla değiştiren fonksiyon
+function replaceImageUrls(content) {
+  // Sadece CDN prefix'ini değiştir, diğer her şeyi olduğu gibi bırak
+  let processedContent = content.replace(
+    /https?:\/\/i[0-9]\.wp\.com\/mfyz\.com\//g,
+    "https://mfyz.com/"
+  );
+
+  // Normal URL'leri yerel yol formatına çevir
+  return processedContent.replace(
+    /https?:\/\/(?:www\.)?mfyz\.(?:com|wp)\/wp-content\/uploads\/([0-9]{4})\/([0-9]{2})\/([^"\s)]+)/g,
+    (match, year, month, filename) =>
+      `/images/archive/en/${year}/${month}/${filename}`
+  );
+}
+
+// Paragraf araları için özel kural ekle
+turndown.addRule("paragraphBreak", {
+  filter: function (node) {
+    return (
+      node.nodeName === "P" &&
+      node.getAttribute("data-paragraph-break") !== null
+    );
+  },
+  replacement: function () {
+    return "\n\n";
+  },
+});
+
+// Kod bloklarını üçlü backtick kullanacak şekilde ayarla
+turndown.addRule("pre", {
+  filter: "pre",
+  replacement: function (content) {
+    return "\n```\n" + content + "\n```\n";
+  },
+});
+
+async function connectToDatabase() {
+  return await mysql.createConnection({
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT || 3306,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
+  });
+}
+
+async function getPosts(connection) {
+  const [rows] = await connection.execute(`
+        SELECT 
+            p.ID,
+            p.post_title, 
+            p.post_content,
+            p.post_date,
+            p.post_name,
+            p.guid,
+            GROUP_CONCAT(DISTINCT t.name) as tags,
+            GROUP_CONCAT(DISTINCT c.name) as categories
+        FROM ${process.env.WP_TABLE_PREFIX}posts p
+        LEFT JOIN ${process.env.WP_TABLE_PREFIX}term_relationships tr ON p.ID = tr.object_id
+        LEFT JOIN ${process.env.WP_TABLE_PREFIX}term_taxonomy tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
+        LEFT JOIN ${process.env.WP_TABLE_PREFIX}terms t ON tt.term_id = t.term_id
+        LEFT JOIN ${process.env.WP_TABLE_PREFIX}terms c ON (tt.taxonomy = 'category' AND tt.term_id = c.term_id)
+        WHERE p.post_status = 'publish' AND p.post_type = 'post'
+        GROUP BY p.ID
+    `);
+  return rows;
+}
+
+async function processPost(post) {
+  const date = new Date(post.post_date);
+  const year = date.getFullYear();
+  const formattedDate = date.toISOString().split("T")[0];
+  const fileName = `${formattedDate}-${post.post_name}.mdx`;
+
+  // Yılı hem dizin hem de dosya adının parçası olarak kullan
+  const yearFolder = year.toString();
+
+  // Başlıktaki HTML entity'leri çöz (&amp; -> & gibi)
+  const decodedTitle = post.post_title
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"');
+
+  const frontMatter = {
+    title: decodedTitle,
+    slug: post.post_name,
+    date: date.toISOString().substring(0, 10),
+    url: post.guid.replace("mfyz.wp", "mfyz.com"),
+    tags: post.tags ? post.tags.split(",") : [],
+    category: post.categories ? post.categories.split(",")[0] : "",
+    migration: {
+      wpId: post.ID,
+      wpPostDate: post.post_date,
+    },
+  };
+
+  // HTML'de paragraf aralarını daha iyi tanımlayıp korumak için ön işleme
+  // Bu, HTML'deki çift satır sonlarını (paragraf aralarını gösterir) tanımlayarak
+  // ve onları turndown boyunca korunacak özel işaretleyici ile işaretleyerek çalışır
+  let preprocessedHtml = post.post_content
+    // Önce tüm satır sonlarını normalize et
+    .replace(/\r\n|\r/g, "\n")
+    // Paragraf aralarını özel token ile işaretle
+    .replace(/\n\n+/g, "\n\n<p data-paragraph-break></p>\n\n");
+
+  // HTML'i Markdown'a çevir
+  let content = turndown.turndown(preprocessedHtml);
+
+  // Markdown'ı son işlemden geçirerek düzgün paragraf aralığını geri yükle
+  content = content
+    // Paragraf arası işaretleyicilerimizi çift satır sonu ile değiştir
+    .replace(/\n*<p data-paragraph-break><\/p>\n*/g, "\n\n");
+
+  // Sorun düzeltme: Markdown içerikten gereksiz ters eğik çizgi kaçışlarını kaldır
+  // Bu, normal metinde kaçırılmaması gereken yaygın karakterleri işler
+  content = content
+    // Kaçırılmış alt çizgileri düzelt (kod referanslarında yaygın)
+    .replace(/\\(_)/g, "$1")
+    // Kaçırılmış yıldızları düzelt
+    .replace(/\\(\*)/g, "$1")
+    // Kaçırılmış köşeli parantezleri düzelt
+    .replace(/\\(\[|\])/g, "$1")
+    // Gerçek kaçış dizilerinin parçası olmayan kaçırılmış ters eğik çizgileri düzelt
+    .replace(/\\(\\)([^\w])/g, "$1$2");
+
+  // Kod blokları için ekstra adım: Kod içeriğinin kaçırılmadığından emin ol
+  content = content.replace(
+    /```[^\n]*\n([\s\S]*?)\n```/g,
+    function (match, codeContent) {
+      // Kod bloklarındaki karakterleri kaçıştan çıkar
+      return match.replace(
+        codeContent,
+        codeContent
+          .replace(/\\(_)/g, "$1")
+          .replace(/\\(\*)/g, "$1")
+          .replace(/\\(\[|\])/g, "$1")
+          .replace(/\\(\\)/g, "$1")
+      );
+    }
+  );
+
+  // WordPress resim URL'lerini yerel yollarla değiştir
+  content = replaceImageUrls(content);
+  return {
+    year: yearFolder,
+    fileName: fileName,
+    content: `---
+${Object.entries(frontMatter)
+  .map(([k, v]) => {
+    if (k === "title") {
+      // Çift tırnak içeren başlıklar için tek tırnak kullan
+      return v.includes('"') ? `${k}: '${v}'` : `${k}: "${v}"`;
+    } else {
+      return `${k}: ${typeof v === "object" ? JSON.stringify(v) : v}`;
+    }
+  })
+  .join("\n")}
+---
+
+import Image from "@components/Image.astro";
+
+${content}`,
+  };
+}
+
+async function main() {
+  try {
+    const connection = await connectToDatabase();
+    const posts = await getPosts(connection);
+    console.log(`İşlenecek ${posts.length} yazı bulundu`);
+
+    await fs.mkdir(postsDir, { recursive: true });
+
+    for (const [index, post] of posts.entries()) {
+      console.log(`İşleniyor ${index + 1}/${posts.length}: ${post.post_title}`);
+      const { year, fileName, content } = await processPost(post);
+
+      // Yıl dizini yoksa oluştur
+      const yearDir = path.join(postsDir, year);
+      await fs.mkdir(yearDir, { recursive: true });
+
+      // Dosyayı yıl dizinine yaz
+      await fs.writeFile(path.join(yearDir, fileName), content);
+    }
+
+    await connection.end();
+
+    console.log("Dışa aktarım başarıyla tamamlandı!");
+  } catch (error) {
+    console.error("Dışa aktarım başarısız:", error);
+    process.exit(1);
+  }
+}
+
+main();
+````
+
+## ⚙️ Ortam Degiskenlerini ve Ayarlar
+
+WordPress veritabanı bilgilerinizle bir `.env` dosyası oluşturmanız gerekecek:
+
+```
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=your_db_user
+DB_PASS=your_db_password
+DB_NAME=your_wordpress_db
+WP_TABLE_PREFIX=wp_
+```
+
+<Note>
+  Script'teki hedef dizini Astro proje yapınıza uyacak şekilde güncellemeyi
+  unutmayın. Varsayılan olarak dosyaları script konumuna göre
+  `../src/content/blog/YYYY/` içine koyuyor.
+</Note>
+
+## 🌟 Script'in Temel Özellikleri
+
+Script sadece basit bir dönüştürücü değil - yaygın WordPress'ten Markdown aktarım sorunlarını çözmek için birkaç özellik içeriyor:
+
+1. **HTML'den Markdown dönüşümü**: Turndown kullanarak WordPress HTML'ini temiz Markdown'a çeviriyor
+2. **Akıllı frontmatter oluşturma**: Astro için gerekli tüm alanları içeren yapılandırılmış frontmatter oluşturuyor
+3. **Resim yolu yeniden yazma**: WordPress medya URL'lerini yerel dosya yollarına çeviriyor
+4. **Paragraf aralığı koruma**: Paragraflar arası düzgün aralığı koruyor
+5. **Markdown kaçış düzeltme**: Karakterlerin gereksiz kaçışlarını kaldırıyor
+6. **Yıl bazlı organizasyon**: Yazıları yıla göre düzenliyor, Astro içerik yapıma uygun
+7. **Özel karakter işleme**: Başlıklardaki HTML entity'leri düzgün çözüyor
+
+## 🎨 Script'i Kendi İhtiyacınıza Göre Düzenleyebilirsiniz
+
+Bu script benim ihtiyaçlarım için mükemmel çalışsa da, siz kendi WordPress kurulumunuz için düzenlemek isteyebilirsiniz:
+
+- **İçerik dizinini değiştirin**: `postsDir` değişkenini Astro içerik konumunuza uyacak şekilde güncelleyin
+- **Frontmatter'ı değiştirin**: `frontMatter` nesnesine alan ekleyin ya da çıkarın
+- **Resim yollarını ayarlayın**: `replaceImageUrls` fonksiyonunu istediğiniz resim yolu formatına uyacak şekilde güncelleyin
+- **Ek içerik işleme ekleyin**: İçeriğinizin ihtiyaç duyabileceği diğer dönüşümleri ekleyin
+
+## 🖼️ Resimler ve Medya
+
+Ben wp-content dizinimi manuel olarak Astro public dizinine kopyaladım (`/public/images/archive` gibi), script'te de yolları `/wp-content/uploads/`'dan `/images/archive/`'a güncelleyen bir bölüm var.
+
+## 🚀 Yayina Girmeden Once
+
+Script'i çalıştırıp içeriğinizin iyi göründüğünü doğruladıktan sonra, yayina almadan once, şu adımları izleyin:
+
+1. Dışa aktarılan MDX dosyalarından bir örneği gözden geçirin, içerik ve biçimlendirmenin doğru olduğundan emin olun. Hatta tum icerikleri tek tek kontrol etmeniz da iyi olabilir.
+2. Resim yollarını kontrol edin ve tüm medyanın düzgün referans edildiğinden emin olun
+3. Yayına almadan önce sorunları yakalamak için Astro sitenizi yerel'de çalıştırın
+4. URL yapınız değiştiyse eski WordPress URL'leriniz için yönlendirmeler kurun
+
+## 🎯 Sırada Ne Var?
+
+İçeriğinizi başarıyla aktardıktan sonra, yeni Astro sitenizin özelliklerini ve tasarımını geliştirmeye odaklanabilirsiniz. Benim deneyimimde, temiz içeriğe sahip olmak bu süreci çok daha keyifli hale getiriyor, çünkü baştan düzgün yapılandırılmış veriyle çalışıyorsunuz.
+
+Aktarım, Astro site stillerimi ve biçimlendirmelerimi ince ayar yapıp geliştirmeden önce yaptığım ilk şeydi. Tam içerik arşivim yerinde olduktan sonra, onları eski WordPress siteme kıyasla daha da iyi görünür ve cilalı hale getirmek gerçekten çok eğlenceliydi.
+
+Ben 2 tarayıcıyı yan yana açtım ve her yazıyı, canlı versiyonu ve astro/yerel'i karşılaştırarak en azından içerik perspektifinden benzer göründüklerinden emin oldum, stil aynı olmasa bile.

@@ -1,0 +1,161 @@
+---
+title: "Kullanıcıya Gerçekten Yardım Eden Hata Mesajları Yazmak"
+description: "Dijital ürünlerde kullanıcıları etkili bir şekilde yönlendiren ve hayal kırıklığını önleyen hata mesajları oluşturma yöntemleri."
+slug: kullaniciya-yardim-eden-hata-mesajlari
+date: 2025-07-01
+tags:
+  - kullanici deneyimi
+  - tasarim
+  - gelistirme
+  - ux
+  - hata yonetimi
+---
+
+import ImageZoom from "@components/ImageZoom.astro";
+import Note from "@components/Note.astro";
+
+Iyi bir kullanıcı deneyimi tasarlarken happy-path kadar hata senaryoları, ve hata mesajları da kritik öneme sahip. Şaşırtıcı olan, bir çok yazılım ekibinin siklikla gözden kaçırdığı bu nokta. Happy-path'leri mükemmelleştirmek için saatler harcarken, hata durumlarını genellikle arka plan olarak ele alıyoruz.
+
+Yıllar boyunca onlarca yazılım projesinde çalıştım ve sürekli aynı hatayı görüyorum: güzel tasarlanmış arayüzler, bir şey ters gittiğinde aniden şifreli çıkmaz sokaklara dönüşüyor. Bu, harika bir ev inşa etmeyi ama uygun çıkış işaretleri koymayı unutmayı andırıyor - duman çıktığı anda insanlar hangi yöne koşacaklarını bilmiyor.
+
+Bu yazida, kullanıcıların bu cikmaz sokaklardan kurtulmasına ve yolculuklarına devam etmesini sağlayacak fikirlerimi paylasacagim.
+
+## 🔍 Hata Stratejinizi Bastan Planlayın
+
+Kullanıcı deneyimi yolculuğunuzu düşünün ve işlerin ters gidebileceği tüm olası yolları değerlendirin. Tek bir hata mesajı yazmadan önce, kullanıcı deneyiminizdeki tüm potansiyel başarısızlık noktalarını belirlemeye zaman ayırın. Ağ hataları, zaman aşımı, sunucu hataları, mantık hataları gibi genel senaryoları da dahil edin. Bu proaktif yaklaşım, şifreli varsayılan hataların üretime sızmasını önler.
+
+Genellikle şu yaygın hata senaryolarını haritalayarak başlarım:
+
+- Form doğrulama hataları (eksik alanlar, yanlış formatlar)
+- Sonuç döndürmeyen arama sorguları
+- Sunucu hataları ve API başarısızlıkları
+- Kimlik doğrulama ve izin sorunları
+- Ağ bağlantı problemleri
+
+Genellikle bunlar kullanıcı deneyimi akışınızın bir parçası olarak tasarlanabilir. Ve genellikle hepsini "görmek" için en iyi yol, bir kullanıcı deneyimi akış şemasında görmektir. Sevdiğim en eğlenceli stil, gerçek ekranları görmek ve tüm olası hataları belirli ekranlara bağlamaktır. Daha karmaşık sistemlerde, her hata durumunu, tetikleme koşullarını ve göstermek istediğim mesajı takip eden bir elektronik tablo oluştururum. Bu, aksi takdirde teknik jargona yönelebilecek geliştirme ekipleriyle çalışırken özellikle değerli hale gelir. Bu ayrıca, sistemlerimize gözlemlenebilirlik uygulama konusunda ilerlediğimizde, analitik olayları doğrudan bu sayfada yeni sütunlar olarak not etmek gibi iyi bir hata mesajı envanteri görevi de görür. Veya her hata mesajına olaylarda rapor edilen ya da hatta kullanıcıya referans olarak gösterilen bir kod verebilir.
+
+## ✍️ Gerçekten Yardımcı Olan Mesajlar Yazın
+
+Hata mesajlarını yazma şekliniz, kullanıcıların başarıyla kurtulup kurtulmayacağını yoksa ürününüzü hayal kırıklığıyla terk edip etmeyeceklerini doğrudan etkiler.
+
+Aşağıda bağlantısı verilen [Wix-UX ekibi makalesi](https://wix-ux.com/when-life-gives-you-lemons-write-better-error-messages-46c5223e1a2f), bu makalede ele aldığım temel noktaları vurgulayan oldukça iyi bir görselleştirmeye sahip:
+
+<ImageZoom
+  src="/images/blog/2025/good-error-message.jpg"
+  alt="İyi Hata Mesajı"
+/>
+
+Bu yaklasimi gerçekten beğeniyorum ve buna yaptığım tek değişiklik, bu hata hakkında daha derinlemesine konuşan ve çözümler sunan yardım portalınıza, bilgi tabanınıza bir bağlantı eklemek. Bu basit hatalar için geçerli olmayabilir, ancak bazen hatalar birden çok olası nedene ve farklı çözüm yollarına sahiptir. Özel bir yardım makalesi, kullanıcıların ilk hata mesajını daha kısa tutmaya ve onlara en yaygın çözümü vermeye olanak tanır, ancak kullanıcı sorununu hala çözemezse, tıklayıp o belirli problem hakkında daha fazla bilgi edinebilir.
+
+### Yanlarında Oturuyormuş Gibi Yazın
+
+Hata mesajlarının içimizdeki robotu ortaya çıkarma konusunda tuhaf bir yolu var. Aniden "İsteğinizi işlerken bir hata oluştu" veya "Geçersiz giriş #4" gibi şeyler yazmaya başlıyoruz.
+
+Bunun yerine, kullanıcı bir sorunla karşılaştığında onun yanında oturduğunuzu hayal edin (ya da her zamanki anne testi: annenizin o mesajı gördüğünü hayal edin). Neyin yanlış gittiğini nasıl açıklarsınız? Onlara ne tavsiye verirsiniz?
+
+| **Bunun yerine** ❌      | **Bunu yazın** ✅                                                                                    |
+| ------------------------ | ---------------------------------------------------------------------------------------------------- |
+| Geçersiz e-posta formatı | Lütfen geçerli bir e-posta adresi girin (örn: ornek@domain.com)                                      |
+| 404 - Sayfa bulunamadı   | Aradığınız sayfayı bulamadık. Taşınmış veya silinmiş olabilir.                                       |
+| Ödeme işlemi başarısız   | Ödemenizi işleyemedik. Lütfen kart bilgilerinizi kontrol edin veya farklı bir ödeme yöntemi deneyin. |
+| Bağlantı hatası          | Çevrimdışı görünüyorsunuz. Lütfen internet bağlantınızı kontrol edin ve tekrar deneyin.              |
+
+### Kullanıcıyı Suçlamayın
+
+Kullanıcılar bir hatayla karşılaştıklarında zaten hayal kırıklığına uğramış durumdalar. Onları yanlış bir şey yapmış gibi hissettirmek bu hayal kırıklığını sadece artırır. Neyin yanlış gittiğini açıklarken "yaptınız" veya "yapmadınız" gibi ifadelerden kaçının.
+
+Bu yaklaşımları karşılaştırın:
+
+> "E-postanızı yanlış girdiniz."
+
+karşısında
+
+> "Lütfen ad@ornek.com formatını kullanarak geçerli bir e-posta adresi girin"
+
+Fark ince ama önemli. İlki kullanıcıları hatalı hissettirir; ikincisi onları sadece çözüme doğru yönlendirir.
+
+## 🔄 Aktif Dil Kullanin ve Açık Sonraki Adımlar Sunun
+
+Hata mesajlarınızı geliştirmenin en basit yollarından biri aktif dil, etken çatıya geçmektir. Bu, kimin ne yapması gerektiğini netleştirir ve belirsizliği azaltır.
+
+Bunun yerine:
+
+> "Form gönderiminiz işlenemedi."
+
+Şunu deneyin:
+
+> "Yüklediğiniz dosya çok büyük olduğu için formunuzu işleyemedik. Lütfen 5MB'dan küçük bir dosya yükleyin ve tekrar deneyin."
+
+Her hata mesajı net bir ileriye yönelik yol içermelidir. Bu, hatanın kullanıcı tarafından düzeltilebilir olup olmadığına veya sistem arızası olmasına bakılmaksızın geçerlidir.
+
+Kullanıcıların düzeltebileceği hatalar için:
+
+- Neyin yanlış gittiğini açıkça belirtin
+- Sorunu çözmek için belirli talimatlar verin
+- Çözümü mümkün olduğunca sürtünmesiz hale getirin
+- Daha derinlemesine anlayış için belgelere bağlantılar ekleyin
+
+Kullanıcıların düzeltemeyeceği sistem hataları için:
+
+- Ne olduğunu basit terimlerle açıklayın
+- Hedeflerine ulaşmak için alternatif bir yol sunun
+- Halihazırda girdikleri verilere ne olduğunu bildirin
+- Konu hakkında daha fazla açıklama yapan belgelerinize bağlantı ekleyin
+
+Stripe'ın form doğrulama hatalarına yaklaşımını seviyorum. Sadece belirli alanı vurgulamakla ve sorunu açıklamakla kalmaz, aynı zamanda kullanıcılar ek bağlama ihtiyaç duyduklarında ilgili belge sayfalarına doğrudan bağlantılar da sağlar. Bu kendi kendine hizmet yaklaşımı, kullanıcıları destek ile iletişim kurmadan sorunları çözme konusunda güçlendirir.
+
+Buna başka bir güzel örnek de Next.js'in komut satırı arayüzündeki hata mesajlarıdır:
+
+```
+error - ./pages/test.module.scss
+To use Next.js built-in Sass support, you first need to install `sass`.
+Run `npm i sass` or `yarn add sass` inside your workspace.
+
+Learn more: https://err.sh/next.js/install-sass
+Require stack:
+- /Users/fatih/test/node_modules/sass-loader/dist/getDefaultSassImplementation.js
+- /Users/fatih/test/node_modules/sass-loader/dist/getSassImplementation.js
+- /Users/fatih/test/node_modules/sass-loader/dist/index.js
+- /Users/fatih/test/node_modules/sass-loader/dist/cjs.js
+- /Users/fatih/test/node_modules/loader-runner/lib/loadLoader.js
+- /Users/fatih/test/node_modules/loader-runner/lib/LoaderRunner.js
+- /Users/fatih/test/node_modules/webpack/lib/NormalModule.js
+- /Users/fatih/test/node_modules/webpack/lib/NormalModuleFactory.js
+- /Users/fatih/test/node_modules/webpack/lib/Compiler.js
+```
+
+## 🙅‍♂️ Olumsuz Dil ve Büyük Harf Kullanmaktan Kaçının
+
+Hata mesajları olumsuz dil kullanma veya KULLANICILARA BAĞIRMA yeri değildir. Her ikisi de zaten sinir bozucu bir durumun stresini artırabilir.
+
+Hata mesajları yazarken:
+
+- "Başarısız", "geçersiz" veya "yanlış" yerine daha tarafsız alternatifler kullanın
+- Asla BÜYÜK HARFLERLE yazmayın (dijital eşdeğeri bağırmaktır)
+- Ünlem işaretlerinden kaçının! Gereksiz aciliyet katarlar!!!
+- Sistem hatalı olduğunda sorumluluk alın ("İşleyemedik" yerine "İşleme başarısız oldu")
+
+Düzenli kullandığım bir uygulamada hata yaptığınızda "GEÇERSİZ GİRİŞ - TEKRAR DENEYİN" yazan bir hata mesajı var. Her gördüğümde bilgisayarımın bana bağırdığını hissediyorum. O uygulama olmayın.
+
+## Hata mesajları arkalarındaki gerçek ekipleri gösterir
+
+Bu aynı zamanda bence kötü düşünce ve özensizligin işareti. Bir geliştirme veya ürün ekibi, dijital bir ürünün önemli parçası oldukları için bu küçük ayrıntıların herhangi birine dikkat etmelidir. Düşünülmemiş veya özensiz bir hata mesajı görmek, arkasındaki ekibin ciddiyetini gösterir.
+
+Aslında, kullanıcıları kazanan zekice, komik hata mesajları hazırlamış birçok ürün var. Bu, Zappos müşteri desteğinin ötesine geçip müşterileri mutlu ettiği hikayeler gibi. Hata mesajı yazarken denge bulun, çünkü kullanıcıyı gerçek çözümden alıkoyabilir veya şirket, markalaşma etkisi olabilir.
+
+## Mümkün Olduğunca Gerçek Zamanlı ve Aninda Doğrulama Yapın
+
+Savunduğum önemli bir nokta, gönderim sonrasında tek bir hata kutusu/banner/açılır pencerede kullanıcıları hata listesiyle bombardıman etmek yerine satır içi doğrulama kullanmaktır. Kullanıcılar bir sonraki alana geçer geçmez, sorunlu alanların yanında hataları gösterin. Form'u gondermelerini beklemeyin.
+
+Satır içi doğrulamanın birkaç önemli faydası vardır:
+
+- Kullanıcılar sorunları hepsini bir anda yerine artımsal olarak düzeltebilir
+- Kullanıcıların tam olarak hangi alanda sorun olduğunu anlamalarına yardımcı olur
+- Ekran okuyucu kullanıcıları için çok daha erişilebilir
+
+## Alakali Kaynaklar
+
+- [When Life Gives You Lemons, Write Better Error Messages](https://wix-ux.com/when-life-gives-you-lemons-write-better-error-messages-46c5223e1a2f)
+- [Google Developers' Guide to Writing Error Messages](https://developers.google.com/tech-writing/error-messages)
+- [Nielsen Norman Group's Error Message Guidelines](https://www.nngroup.com/articles/error-message-guidelines/)
+- [UX Writing Hub's Error Message Examples](https://uxwritinghub.com/error-message-examples/)

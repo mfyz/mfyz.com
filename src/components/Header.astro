@@ -17,12 +17,16 @@ const isTurkish = lang === "tr";
 <header
   class="fixed left-0 top-0 z-50 w-full bg-white/80 backdrop-blur-sm supports-[backdrop-filter]:bg-white/60 dark:bg-gray-900/80 dark:supports-[backdrop-filter]:bg-gray-900/60"
 >
-  <nav class={`mx-auto max-w-${size === "small" ? "3xl" : "5xl"}`}>
+  <nav
+    class={`mx-auto max-w-${size === "small" ? "3xl" : "5xl"} px-4 sm:px-6 lg:px-8 xl:px-0`}
+  >
     <h2>
       <a
         href={isTurkish ? "/tr" : "/"}
-        class="mfyz-logo font-secondary text-xl dark:text-white">{SITE.title}</a
+        class="mfyz-logo font-secondary text-xl dark:text-white"
       >
+        {SITE.title}
+      </a>
     </h2>
     <div class="flex items-center gap-4">
       <!-- {categoriesInNav.map((category) => (
@@ -32,13 +36,25 @@ const isTurkish = lang === "tr";
       {
         isTurkish ? (
           <>
-            <HeaderLink href="/hakkinda">Hakkında</HeaderLink>
-            <HeaderLink href="/">🇺🇸 English</HeaderLink>
+            <HeaderLink href="/hakkinda">
+              <span class="hidden sm:inline">Hakkında</span>
+              <span class="sm:hidden">ℹ️</span>
+            </HeaderLink>
+            <HeaderLink href="/">
+              <span class="hidden sm:inline">🇺🇸 English</span>
+              <span class="sm:hidden">🇺🇸</span>
+            </HeaderLink>
           </>
         ) : (
           <>
-            <HeaderLink href="/about">About</HeaderLink>
-            <HeaderLink href="/tr">🇹🇷 Türkçe Yazılar</HeaderLink>
+            <HeaderLink href="/about">
+              <span class="hidden sm:inline">About</span>
+              <span class="sm:hidden">ℹ️</span>
+            </HeaderLink>
+            <HeaderLink href="/tr">
+              <span class="hidden sm:inline">🇹🇷 Türkçe Yazılar</span>
+              <span class="sm:hidden">🇹🇷</span>
+            </HeaderLink>
           </>
         )
       }
