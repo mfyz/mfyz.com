@@ -40,6 +40,7 @@ This is mfyz.com, a personal blog built with Astro framework featuring bilingual
 - **Static Site Generation**: Astro builds to static files for optimal performance
 - **Component-Based**: Reusable Astro components for consistent UI
 - **MDX Integration**: Rich content with React-like components in Markdown
+- **Consistent Code Highlighting**: Both MD and MDX files use shared Shiki configuration with Dracula theme
 - **RSS Feeds**: Separate feeds for English (`/rss.xml`) and Turkish (`/tr/rss.xml`)
 - **OG Image Generation**: Dynamic social media images using Satori
 - **Path Aliases**: Import shortcuts (@, @components, @layouts, @content, @utils, @styles)

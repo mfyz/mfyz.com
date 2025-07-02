@@ -8,19 +8,30 @@ import { transformerNotationHighlight } from "@shikijs/transformers";
 import remarkToc from 'remark-toc'
 import { remarkEmoticons } from './src/remark-plugins/remark-emoticons.mjs'
 
+// Define shared Shiki configuration
+const shikiConfig = {
+  themes: {
+    light: "dracula",
+    dark: "dracula",
+  },
+  transformers: [transformerNotationHighlight()],
+};
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://mfyz.com",
-  integrations: [mdx({remarkPlugins: [remarkToc, remarkEmoticons]}), sitemap(), tailwind()],
+  integrations: [
+    mdx({
+      remarkPlugins: [remarkToc, remarkEmoticons],
+      syntaxHighlight: 'shiki',
+      shikiConfig: shikiConfig, // Add Shiki config to MDX
+    }), 
+    sitemap(), 
+    tailwind()
+  ],
   markdown: {
     remarkPlugins: [remarkToc, remarkEmoticons],
-    shikiConfig: {
-      themes: {
-        light: "dracula",
-        dark: "dracula",
-      },
-      transformers: [transformerNotationHighlight()],
-    },
+    shikiConfig: shikiConfig, // Reuse same config for consistency
   },
   vite: {
     server: {

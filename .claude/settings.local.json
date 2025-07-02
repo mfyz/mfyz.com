@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh issue create:*)",
+      "mcp__puppeteer__puppeteer_navigate",
+      "mcp__puppeteer__puppeteer_evaluate",
+      "mcp__puppeteer__puppeteer_screenshot",
+      "Bash(gh issue view:*)",
+      "Bash(grep:*)",
+      "Bash(npm run test:e2e:*)"
+    ],
+    "deny": []
+  }
+}
