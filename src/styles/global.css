@@ -16,6 +16,11 @@
 @tailwind utilities;
 @tailwind components;
 
+/* Prevent horizontal scroll globally */
+body {
+  overflow-x: hidden;
+}
+
 @layer base {
   :root {
     --primary: 209 91 53; /* #D15B35 */
@@ -218,7 +223,21 @@
 
   /* Code blocks */
   .main-content-wrapper pre {
-    @apply my-6 overflow-auto rounded-md bg-slate-100 p-4 text-sm dark:bg-slate-800 md:text-base;
+    @apply my-6 overflow-x-auto rounded-md bg-slate-100 p-4 text-sm dark:bg-slate-800 md:text-base;
+    /* Ensure code blocks never exceed container width */
+    max-width: 100%;
+    width: 100%;
+    /* Additional constraints for mobile to prevent page-wide horizontal scroll */
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  /* Ensure main content wrapper itself is properly constrained */
+  .main-content-wrapper {
+    max-width: 100%;
+    min-width: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   /* Word wrap for code blocks when enabled */

@@ -148,7 +148,10 @@ const ogImageBasedOnPath =
     style="scrollbar-gutter: stable"
   >
     <Header size={size} lang={pageLang} />
-    <main class="container mt-24 pb-4" style="scrollbar-gutter: stable">
+    <main
+      class={`container ${size === "small" ? "mt-16 pt-8 px-4 md:px-6 lg:px-8" : "mt-24"} pb-4`}
+      style="scrollbar-gutter: stable; max-width: 100vw;"
+    >
       <div
         class={`${noContentWrapperClass ? "" : "main-content-wrapper"} mx-auto max-w-${size === "small" ? "3xl" : "5xl"}`}
       >

@@ -11,7 +11,10 @@ const { title, date, imageURL, tags, content, slug, frontmatter, isTurkish } =
 const time = readingTime(content);
 ---
 
-<article class="mx-auto max-w-5xl">
+<article
+  class="mx-auto max-w-5xl px-2 md:px-6 lg:px-8"
+  style="max-width: 100%;"
+>
   <div class="-mt-12">
     <BlogHero
       title={title}
