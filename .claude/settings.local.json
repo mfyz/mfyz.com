@@ -7,7 +7,8 @@
       "mcp__puppeteer__puppeteer_screenshot",
       "Bash(gh issue view:*)",
       "Bash(grep:*)",
-      "Bash(npm run test:e2e:*)"
+      "Bash(npm run test:e2e:*)",
+      "WebFetch(domain:github.com)"
     ],
     "deny": []
   }
