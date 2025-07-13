@@ -4,7 +4,7 @@
 
 2. **How to vibe-code n8n workflows**
 
-3. **Notion databases via API for automation** ✅
+3. [SCHEDULED] **Notion databases via API for automation**
 
 4. **taming claude code**
 
@@ -14,7 +14,7 @@
 
 7. **Designing scalable CSV importers - What a good "importer" should do**
 
-8. **Stuff you can do with wasm on your browser**
+8. [SCHEDULED] **Stuff you can do with wasm on your browser**
 
 9. **you may not need react**
 

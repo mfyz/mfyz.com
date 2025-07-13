@@ -1,0 +1,217 @@
+---
+title: "You May Not Need React"
+description: "Exploring when React becomes overkill and rediscovering the power of simpler web technologies for content-driven websites and applications."
+date: 2025-07-29
+slug: "you-may-not-need-react"
+tags: ["react", "web-development", "performance", "vanilla-js", "astro", "ssr"]
+imageURL: ""
+hidden: true
+---
+
+React has become the default answer to frontend development. Got a website to build? React. Need some interactivity? React. Building a blog? Somehow, React. But somewhere along the way, we've lost sight of simpler, more appropriate solutions for many use cases 🤔
+
+Working in the content industry, I've been part of a shift back to Server-Side Rendering (SSR), minimal JavaScript, and frameworks like Astro that prioritize lean, fast-loading pages. It's time we had an honest conversation about when React is overkill.
+
+## The React Default Trap
+
+This feels eerily familiar to the "No jQuery" movement from a decade ago. Remember when [youmightnotneedjquery.com](https://youmightnotneedjquery.com/) showed us that vanilla JavaScript could do most of what jQuery did? We collectively realized that jQuery's 30kb overhead wasn't worth it for simple DOM manipulation when browsers had native APIs.
+
+We're seeing the same pattern with React today. Just as jQuery became the default answer for any JavaScript need, React has become the default for any frontend requirement. Except this time, the cost of React is nowhere near jQuery's 30kb - it's significantly higher.
+
+React solved real problems for Facebook - managing complex state across massive applications with millions of users. But most of us aren't building Facebook. We're building:
+
+- Marketing websites with a contact form
+- Blogs with some interactive elements
+- Content sites that need fast loading times
+- Landing pages with minimal interactivity
+
+Yet somehow, we reach for React by default, bringing along:
+
+- Complex build toolchains
+- Large bundle sizes (45kb+ before your actual code)
+- Over-engineering for simple problems
+- Dependency management headaches
+
+## The Case for Simpler Alternatives
+
+### Vanilla JavaScript Is Surprisingly Powerful
+
+Modern JavaScript can handle component-like patterns without frameworks:
+
+```javascript
+function createComponent(name, onClick) {
+  return `
+    <button onclick="${onClick}">
+      Hello, ${name}!
+    </button>
+  `;
+}
+
+document.getElementById("app").innerHTML = createComponent(
+  "World",
+  "handleClick()"
+);
+```
+
+Sure, it's not as elegant as JSX, but for simple interactivity, it's fast, lightweight, and has zero dependencies.
+
+### Web Components: Framework-Agnostic Building Blocks
+
+Web Components are browser-native and work everywhere:
+
+```javascript
+class ToggleButton extends HTMLElement {
+  connectedCallback() {
+    this.innerHTML = `<button>Toggle</button>`;
+    this.querySelector("button").onclick = () => this.toggle();
+  }
+
+  toggle() {
+    this.classList.toggle("active");
+  }
+}
+
+customElements.define("toggle-button", ToggleButton);
+```
+
+No build step, no virtual DOM overhead, just native browser APIs.
+
+### The SSR Renaissance
+
+Frameworks like Astro, Eleventy, and SvelteKit are proving that server-rendered HTML with minimal JavaScript can deliver exceptional user experiences:
+
+- **Faster initial loads** - HTML renders immediately
+- **Better SEO** - Search engines get actual content
+- **Improved Core Web Vitals** - Less JavaScript = better performance scores
+- **Simpler deployment** - Static files are easier to cache and serve
+
+## When You Actually Need React
+
+React isn't evil - it's just often unnecessary. You probably need React when you have:
+
+### Complex State Management
+
+- Multiple components sharing state
+- Real-time data synchronization
+- Complex user interactions that affect many parts of the UI
+
+### Large Development Teams
+
+- Need consistent patterns across developers
+- Benefit from React's ecosystem and tooling
+- Have dedicated frontend specialists
+
+### True Web Applications
+
+- Dashboards with lots of interactive elements
+- Real-time collaborative tools
+- Complex workflows with multiple steps
+
+## The Content Industry Shift
+
+In content-driven businesses, we've realized that:
+
+**Performance Trumps Developer Experience**: A fast-loading blog post converts better than a React-powered one that takes 3 seconds to become interactive.
+
+**SEO Actually Matters**: Server-rendered content still wins for search visibility, especially for content sites. This is shifting to Answering Engine Optimization, where LLMs consuming your site need actual content, making SSR even more important in the AI age.
+
+**Simplicity Scales Better**: Fewer dependencies mean fewer security updates, compatibility issues, and build failures.
+
+## Practical Alternatives by Use Case
+
+### For Static Sites
+
+- **Astro**: Component-based with minimal JS
+- **Eleventy**: Simple, fast static site generator
+- **Hugo**: Blazing fast builds for content sites
+
+### For Light Interactivity
+
+- **Alpine.js**: 4kb of reactive behavior
+- **htmx**: Dynamic HTML without custom JavaScript
+- **Vanilla JS**: Much more cross-browser standardized and stable now, plus AI generators can create perfectly good vanilla JavaScript code
+
+### For Performance-Critical Apps
+
+- **Preact**: 3kb React alternative with 90% compatibility
+- **Svelte**: Compile-time optimization
+- **Vanilla JS**: Ultimate performance and control
+
+## The Astro Approach
+
+Astro exemplifies this philosophy perfectly. You write component-like code but ship minimal JavaScript:
+
+```astro
+---
+// This runs at build time
+const posts = await getPosts();
+---
+
+<div class="blog-list">
+  {
+    posts.map(post => (
+      <article class="post-card">
+        <h2>{post.title}</h2>
+        <p>{post.excerpt}</p>
+      </article>
+    ))
+  }
+</div>
+
+<style>
+  .post-card {
+    /* Scoped CSS, no runtime cost */
+  }
+</style>
+```
+
+You get the developer experience of components without the runtime overhead.
+
+## The Performance Reality Check
+
+Let's be honest about the numbers:
+
+- **React**: 45kb+ before your code
+- **Preact**: 3kb with similar API
+- **Alpine.js**: 4kb for reactive behavior
+- **Vanilla JS**: 0kb overhead
+
+For a content site, that React overhead could be your entire JavaScript budget.
+
+## Start Simple, Scale When Needed
+
+The best approach? Follow the YAGNI principle ("You Ain't Gonna Need It"):
+
+1. **Start with HTML/CSS** - Solve 80% of problems
+2. **Add vanilla JS** - Handle simple interactions
+3. **Introduce lightweight libraries** - Alpine.js, htmx for more complex needs
+4. **Consider React** - Only when complexity genuinely requires it
+
+## I'm Not Alone in This Thinking
+
+Turns out, many developers are having the same realization. There's been a wave of posts with literally the same title:
+
+- [Forget Virtual DOM: Rediscovering Vanilla DOM](https://www.codetinkerer.com/2024/01/04/forget-virtual-dom-rediscovering-vanilla-dom.html)
+- [You Don't Need React for Building Websites](https://dev.to/starbist/you-don-t-need-react-for-building-websites-455f)
+- [Why You Probably Don't Need React](https://davegebler.com/post/musings/why-you-probably-dont-need-react)
+- [You Don't Need React in 2024](https://medium.com/@dmitry.sobolevsky/you-dont-need-react-in-2024-45257fa9b25b)
+- [You May Not Need React](https://www.dshomoye.dev/you-may-not-need-react/)
+- [So Don't Overreact, But I'm So Over React](https://dev.to/besworks/so-dont-overreact-but-im-so-over-react-i52)
+
+We're all reaching the same conclusion: React became the default when it should be a conscious choice based on actual requirements.
+
+## The Bottom Line
+
+React is a powerful tool that solved important problems. But like any tool, it's not appropriate for every job. In the rush to embrace modern development, we've sometimes forgotten that simpler solutions often deliver better user experiences.
+
+Before reaching for React, ask yourself:
+
+- Do I need complex state management?
+- Will my users benefit from client-side rendering?
+- Is the JavaScript overhead worth the developer experience?
+
+Sometimes the answer is yes. Often, it's no.
+
+The web platform has grown incredibly powerful. Modern CSS handles layouts that once required JavaScript. Browser APIs provide functionality that once needed libraries. HTML forms work great without React.
+
+Maybe it's time we rediscovered the elegance of keeping things simple 🚀
