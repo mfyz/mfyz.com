@@ -6,7 +6,7 @@
 
 3. [SCHEDULED] **Notion databases via API for automation**
 
-4. **taming claude code**
+4. [SCHEDULED] **taming claude code**
 
 5. **windsurf**
 
