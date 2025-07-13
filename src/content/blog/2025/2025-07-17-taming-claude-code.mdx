@@ -1,0 +1,274 @@
+---
+title: "Taming Claude Code"
+description: "How Claude Code revolutionized CLI-based development and practical tips for mastering this powerful AI coding assistant."
+date: 2025-07-17
+slug: "taming-claude-code"
+tags: ["claude-code", "ai", "cli", "development", "productivity", "anthropic"]
+imageURL: ""
+hidden: true
+---
+
+Claude Code has fundamentally changed how serious software engineers approach development. What started as another AI coding assistant has evolved into something that's gained the trust of developers worldwide through its extensible, native CLI-based experience that feels natural and powerful.
+
+## The CLI Renaissance in Development
+
+Modern software development has been quietly shifting back to CLI-based workflows. Think about it - most of our operational tasks already happen in the terminal: running tests with `npm test`, generating code with various CLIs like `create-react-app` or `rails generate`, interacting with databases through `psql` or `mysql`, managing infrastructure with `kubectl` or `terraform`, deploying with `vercel` or `gh`, managing GitHub repos with `gh`, working with Atlassian tools through their CLIs, provisioning AWS resources with `aws cli`, and countless other tools.
+
+This CLI-centric approach fits perfectly with Anthropic's models and their powerful "tool use" feature. Instead of trying to recreate IDE functionality, Claude Code leverages the terminal environment where developers already live and work. It can seamlessly interact with Git, run build tools, execute tests, manage dependencies, and integrate with any CLI tool in your development stack.
+
+The shift from IDE-based to CLI-based AI assistance makes complete sense when you think about it. Your terminal already has access to everything - your file system, your tools, your deployment pipelines. Claude Code just makes that environment infinitely more intelligent.
+
+## My "Shut Up and Take My Money" Moment
+
+I'll be honest - I was skeptical about Claude Code initially. Another AI coding tool? Plus, it's a CLI-only experience. Even though I love and appreciate CLI tools, I also still love my IDE and the comfort of clicking on folders and files, seeing everything at once, having my VS Code (or Windsurf/Cursor forks) extensions that make my life easier when coding. So the CLI-only view felt weird at first. I didn't jump on it day one. But after enough noise in the developer community and growing curiosity, I decided to give it a try.
+
+I got hooked almost too quickly.
+
+This was the first time in a long, long time I had that immediate [Fry from Futurama "shut up and take my money"](https://knowyourmeme.com/memes/shut-up-and-take-my-money) reaction to a pretty steep subscription price. And I was so glad with that decision.
+
+![Shut up and take my money meme](https://i.kym-cdn.com/entries/icons/original/000/005/574/takemymoney.jpg)
+
+The tool just works in a way that feels natural. It understands context, can work with multiple files simultaneously, integrates with your existing workflow, and most importantly - it actually makes you more productive rather than fighting against your development process.
+
+## My Essential Claude Code Tips and Tricks
+
+Here are my own tweaks and insights from Boris Churnney (creator of Claude Code) in his excellent [Claude Code best practices post](https://www.anthropic.com/engineering/claude-code-best-practices). These are the most impactful ways to level up your Claude Code game:
+
+### CLI Basics & Command Line Arguments
+
+Claude Code is a CLI first and foremost, so all the things you're used to doing with other bash-based CLIs work here:
+
+- **Pass command line arguments** that run on startup
+- **Use `-p` for headless mode** when you want to script interactions
+- **Chain with other command line tools** - pipe data in and out
+- **Run multiple instances** simultaneously for different tasks
+- **Launch sub-agents** - Claude Code can actually spawn other Claude Code instances using the Task tool
+
+### Give it Images & Screenshots
+
+Give it visual feedback - this dramatically improves Claude Code's effectiveness:
+
+**Quick Screenshots on macOS**: Use `Shift + Cmd + Ctrl + 4` to copy a screenshot, then `Ctrl + V` (not Cmd + V) to paste it into Claude.
+
+**Two powerful use cases:**
+
+1. **Mockup Implementation**: Design a mockup, paste it into Claude, and ask it to build the interface
+2. **Feedback Loops**: Ask Claude to build something, take a screenshot of the result, feed it back for iterations
+
+**Automated Screenshots**: Set up the Puppeteer MCP server to have Claude automatically screenshot web apps and iterate based on visual feedback.
+
+### Use MCP (Model Context Protocol) Servers
+
+Claude Code functions as both an MCP server and client, opening up incredible integration possibilities:
+
+- **Database Integration**: Use the Postgres MCP server to connect Claude directly to your database
+- **API Wrappers**: Many companies like Cloudflare provide MCP servers for up-to-date documentation
+- **Custom Integrations**: Build your own MCP servers for internal tools and APIs
+
+But be careful and aware of which permissions you are giving with your tokens when connecting to MCP servers - some may have broad access to your systems and data.
+
+### Fetching URLs & Documentation
+
+When MCP servers aren't available, Claude Code can fetch URLs directly:
+
+- **Live Documentation**: Paste documentation URLs for Claude to reference current API specs
+- **Domain Knowledge**: I built a Bluey Uno game for my daughter by having Claude fetch the actual Uno rules from unorules.com instead of relying on training data
+
+### Claude.md - Your Project's Context
+
+This is probably the most impactful feature for long-term productivity:
+
+**What it is**: A prompt loaded with every request that can include:
+
+- Common bash commands for your project
+- Style and linting guidelines
+- How to run tests
+- Repository etiquette
+- Architecture decisions
+
+**Setup**: Use `/init` in any directory to have Claude scan and create an initial claude.md file.
+
+**Organization**:
+
+- Global claude.md in `~/.claude/` for universal preferences
+- Project-specific claude.md in project roots
+- Subdirectory claude.md files for module-specific instructions
+
+**Maintenance**: Refactor your claude.md files regularly. Keep them specific and relevant - they're loaded on every conversation turn, so quality over quantity matters.
+
+### Make Claude Create Slash Commands
+
+Create custom prompts in `~/.claude/commands/` for repeated tasks:
+
+- `/solve-github-issue` for systematic issue resolution
+- `/refactor` with specific code quality guidelines
+- `/review-pr` for consistent code review standards
+- `/lint` for project-specific linting workflows
+
+Here's my workflow: I work with Claude Code on a specific task, and once it's all done, I ask it to create a slash command document for me based on what we just accomplished. Then I converse with it to tweak and tighten the command until it's perfect.
+
+Slash commands support command line arguments that get interpolated into the prompt template.
+
+### UI Tips That Make a Difference
+
+**Tab Completion**: Use tab to complete files and directories. The more specific you are about what files to work with, the better results you get.
+
+**Interrupt Early and Often**: Hit escape as soon as you see Claude going off track. Don't hesitate to stop and redirect - your sessions will be much more effective.
+
+**Undo Work**: If Claude breaks something, ask it to undo work from the previous turn rather than trying to debug forward.
+
+### Version Control Integration
+
+The biggest failure mode with Claude Code is letting it get overly ambitious and break a working codebase. Mitigate this with aggressive version control:
+
+- **Commit after every major change** - ask Claude to do this
+- **Let Claude write commit messages** - they're often the best commits you'll ever have
+- **Revert more often** than you normally would
+- **Install GitHub CLI** - Claude will use it for all GitHub interactions
+- **Have Claude file PRs and do code reviews**
+
+### Managing Context
+
+Context management can make or break long coding sessions:
+
+**Watch the Auto-Compacting Indicator**: Always know how much context you have left
+
+**Proactive Compacting**: Compact at natural break points (after commits, completed tasks) rather than waiting for auto-compact
+
+**Consider Clearing**: Sometimes starting fresh is better than compacting
+
+**Use External Memory**:
+
+- GitHub issues for task tracking
+- Scratchpads for planning
+- Documentation for complex requirements
+
+## The Power of Claude Code Hooks
+
+Hooks are hands down one of the most amazing and extensible features in Claude Code, yet surprisingly underutilized. This system makes Claude Code incredibly powerful by letting you customize and extend its behavior in ways that perfectly fit your development workflow.
+
+### Five Types of Hooks
+
+Claude Code supports five different hook types:
+
+- **Pre-tool use**: Runs before tool execution
+- **Post-tool use**: Runs after tool execution
+- **Notification**: Triggers on specific events
+- **Stop**: Runs when processes halt
+- **Sub-agent stop**: Triggers when sub-agents complete
+
+### My Simple But Transformative Setup
+
+Right now, I'm using a super light but novel use case: sound notifications. I have hooks that:
+
+1. **Play a "Hey" sound** when Claude needs my input or attention
+2. **Play a completion sound** when Claude has fully finished a task
+
+Here's my current hook setup:
+
+```bash
+# ~/.claude/hooks/on_user_input_required.sh
+#!/bin/bash
+say "Hey" &
+```
+
+```bash
+# ~/.claude/hooks/on_task_complete.sh
+#!/bin/bash
+afplay /System/Library/Sounds/Glass.aiff &
+```
+
+This might seem simple, but it's transformative for workflow. I can step away from my computer, work on other tasks, and get audio cues about Claude's status without constantly checking the terminal.
+
+### Advanced Hook Possibilities
+
+The real power comes from understanding that hooks can:
+
+**Block and Redirect Commands**: Use exit code 2 to show errors to the model and make it adjust its process. For example, a "use bun" hook that stops Claude from using npm and redirects it to use bun instead.
+
+**Safety Guards for Autonomous Mode**: I've seen people write pre-tool use hooks that block super dangerous shell commands like `rm -rf`, `kill`/`pkill`, etc., then open Claude sessions in "YOLO mode" - giving it a single prompt to go fully automated until it thinks the task is complete. It's up to your prompt engineering and existing testing/automation/checks to ensure Claude doesn't break anything before finishing its task. I'm not that brave yet, but it's a fascinating use case for truly autonomous development workflows.
+
+**Enforce Development Standards**:
+
+- Run linters and formatters on every code change
+- Block access to sensitive files or directories
+- Enforce coding standards and conventions
+- Validate test coverage before commits
+
+**Automate Workflow Integration**:
+
+- Run tests automatically after code changes
+- Send notifications to Slack/Discord/phone when tasks complete
+- Commit and push code when features are finished
+- Update project management tools
+- Trigger CI/CD pipelines
+- Log detailed audit trails of all tool usage
+
+**Smart Tool Interception**:
+
+```bash
+# Example: Log all bash commands for auditing
+echo "$CLAUDE_HOOK_INPUT" | jq -r '.command' >> ~/.claude/command_log.txt
+```
+
+**Development Environment Control**:
+
+- Automatically switch Node versions based on project
+- Ensure proper environment variables are set
+- Validate dependencies before running commands
+- Auto-format code with Prettier/ESLint after changes
+
+### The JSON Hook Input System
+
+Hooks receive rich JSON data about the tool being used, allowing for sophisticated logic:
+
+```python
+#!/usr/bin/env python3
+import json
+import sys
+
+# Read hook input
+hook_input = json.loads(sys.stdin.read())
+
+# Log detailed information
+log_entry = {
+    "timestamp": datetime.now().isoformat(),
+    "tool": hook_input.get("tool"),
+    "command": hook_input.get("command"),
+    "project": os.getcwd()
+}
+
+# Save to audit log
+with open("~/.claude/audit.jsonl", "a") as f:
+    f.write(json.dumps(log_entry) + "\n")
+```
+
+### Why Hooks Make Claude Code Extraordinary
+
+The hooks system transforms Claude Code from a smart coding assistant into a fully integrated development environment that adapts to your exact workflow. Every single task completion can trigger:
+
+- **Quality gates** through automated linting and testing
+- **Team notifications** keeping everyone informed of progress
+- **Environment management** ensuring consistent development setups
+- **Audit trails** for compliance and debugging
+- **Workflow automation** reducing manual overhead
+
+This extensibility makes Claude Code not just a tool you use, but a platform you can build upon. The level of control and customization possible through hooks is remarkable - you can essentially make Claude Code behave exactly how you want it to behave in your specific development context.
+
+The hooks system exemplifies what makes Claude Code special: it doesn't force you into a specific way of working, but rather adapts and extends to fit seamlessly into your existing processes while making them infinitely more intelligent and automated.
+
+## The Bottom Line
+
+Claude Code represents a fundamental shift in how we think about AI-assisted development. It's not trying to replace your IDE or change your workflow - it's making your existing CLI-based development process incredibly more powerful.
+
+The key to "taming" Claude Code is understanding that it's not just a chatbot that writes code. It's a sophisticated development partner that can:
+
+- Understand your project's context through claude.md files
+- Integrate with your entire toolchain through CLI access
+- Maintain conversation history across complex, multi-step tasks
+- Learn your preferences and patterns over time
+- Automate routine tasks while handling complex problem-solving
+
+Start with the basics - proper claude.md setup, good version control hygiene, and effective context management. Then gradually explore the more advanced features like MCP integrations and custom hooks.
+
+The investment in learning Claude Code pays off quickly. Once you've tamed it, you'll wonder how you ever developed software without it 🚀

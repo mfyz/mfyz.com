@@ -16,7 +16,7 @@
 
 8. [SCHEDULED] **Stuff you can do with wasm on your browser**
 
-9. **you may not need react**
+9. [SCHEDULED] **you may not need react**
 
 10. **How I vibe-charting with mermaid, coding IDEs**
 
