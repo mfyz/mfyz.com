@@ -1,0 +1,71 @@
+---
+title: "Why People Are Moving from Next.js"
+description: "Exploring the growing trend of developers and companies migrating away from Next.js, the reasons behind this movement, and where they're heading instead."
+date: 2025-08-15
+slug: "why-people-moving-from-nextjs"
+tags:
+  ["nextjs", "web-development", "migration", "astro", "eleventy", "performance"]
+imageURL: ""
+hidden: true
+---
+
+Next.js has been the go-to React framework for years, powering everything from personal blogs to enterprise applications. But lately, there's been a noticeable trend: developers and companies are moving away from Next.js. Let's explore why this is happening and where they're going instead 🚀
+
+If you've been following web development discussions lately, you've probably noticed an uptick in "Why we left Next.js" blog posts. This isn't just anecdotal - it's a genuine trend that's worth understanding. I'm part of this movement myself, having migrated two sites from Next.js to Astro and plain React app with Vite.
+
+## Why Developers Are Moving Away
+
+Next.js started as an elegant solution to React's server-side rendering challenges, but it's evolved into something much more complex. What was once a "just add Next.js" solution now requires significant architectural decisions with App Router vs. Pages Router, Server vs. Client Components, and multiple runtime options.
+
+Performance has become a major concern. [Etch migrated to Eleventy](https://etch.co/blog/we-migrated-our-site-to-eleventy-and-increased-performance-by-24-percent) and saw their Lighthouse score jump from 76 to 97, while reducing JavaScript from 2,161KB to just 11.3KB. As they put it: "Tooling has gotten out of the way, and the website is just a website again."
+
+Cost is another factor - Next.js applications can become expensive to run at scale, requiring robust server infrastructure for features many sites don't actually need.
+
+## Where Are They Going?
+
+The migration patterns are diverse. Static site generators like Eleventy and Hugo are popular for content sites, while Astro's island architecture and SvelteKit's compile-time optimizations attract those wanting modern developer experience with better performance. Some teams are even going back to vanilla JavaScript and web components for maximum simplicity.
+
+## Others Who Made the Move
+
+[Jean Tinland wrote about leaving Next.js behind](https://www.jeantinland.com/blog/leaving-nextjs-behind/), citing concerns about vendor lock-in with Vercel's ecosystem and wanting more control over hosting decisions. He moved to a simpler Hono-based setup with self-hosted deployment.
+
+In my own research, I found several other recent posts documenting similar moves: companies like Northflank publicly shared their decision to "ditch Next.js and never look back," while multiple Medium articles from 2024-2025 discuss why companies are moving away from the framework entirely.
+
+## My Own Journey
+
+After using Wordpress for my blogging platform over a decade, I [moved from WordPress to Astro](/moved-blog-from-wordpress-to-astro/) earlier this year, documenting the entire process and [performance improvements](/wordpress-to-astro-migration-performance-comparison/).
+
+When considering alternatives during that migration, Next.js was definitely on top of my list since I'm comfortable with React and Next.js is still my go to framework when spinning up a web application. But I quickly realized it wasn't the right fit for a content-focused site. For a personal blog, I didn't need complex state management, heavy client-side JavaScript bundles, or the overhead that comes with React for mostly static content.
+
+Astro proved to be the perfect middle ground - component-based development when needed, but with fast build times and minimal JavaScript shipped to browsers. This connects to my recent post about [how you may not need React](/you-may-not-need-react/) - we've gotten into the habit of reaching for complex solutions when simpler ones work better.
+
+## Next.js Is Still Great (For The Right Use Case)
+
+Let me be clear: **Next.js is still an amazing framework**. It's not going anywhere, and for many use cases, it's still the best choice.
+
+You probably want Next.js for complex web applications like dashboards, e-commerce platforms, or SaaS applications with lots of interactive components. Large development teams benefit from React's ecosystem, and if your project genuinely needs React's component model and state management, Next.js provides excellent tooling on top of that foundation.
+
+### Vercel is like comfort food for next.js and react developers
+
+Beyond next.js, I like vercel provides a solid alternative to host next.js (and other) applications in a modern hosting platform. It's soo easy and comfortable. Hard to not love.
+But I want to give a caution here that while vercel is great at many things, it may not work for any scale. So choose wisely when it comes to your hosting provider and how much you are coupling with vercel's platform features versus staying pure on next.js framework so when you want to move, so it wouldn't become a big deal.
+
+## The Pattern We're Seeing
+
+The move away from Next.js mirrors the broader conversation in web development - a movement toward right-sizing technology choices, performance-first thinking, and reducing unnecessary complexity. Many developers aren't saying Next.js is bad; they're saying it's overkill for their specific needs.
+
+This is healthy! It shows maturation in our industry where we're moving beyond "one size fits all" solutions toward more thoughtful technology selection.
+
+## What This Means
+
+If you're currently using Next.js and it's working well, there's no need to panic. But it's worth asking: Do you need the complexity Next.js brings? Are you using features that justify the overhead?
+
+For new projects, consider what type of site you're building - content sites often benefit from static generators, while complex applications still benefit from Next.js's robust tooling.
+
+The migration trend away from Next.js isn't anti-Next.js - it's pro-choice. It's developers and companies being more intentional about their technology decisions, considering factors like performance, complexity, cost, and maintainability.
+
+Next.js revolutionized React development and made server-side rendering accessible to many teams. But as the web platform has evolved and our understanding of performance has matured, it's natural that some use cases are better served by other approaches.
+
+The key is making informed decisions based on your specific requirements, not following trends or using what's most popular. Whether that's Next.js, Astro, Eleventy, or something else entirely depends on what you're building and who you're building it for.
+
+Choose tools that serve your users first, your developers second, and trends last 🎯

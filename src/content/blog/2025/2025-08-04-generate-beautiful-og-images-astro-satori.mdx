@@ -1,0 +1,233 @@
+---
+title: "Generate beautiful og images to your blog posts in astro using satori"
+description: "Learn how to automatically generate stunning Open Graph images for your Astro blog posts using Satori and @resvg/resvg-js with practical examples and code snippets."
+date: 2025-08-04
+tags: ["astro", "satori", "og-images", "social-media", "web-development"]
+imageURL: "https://mfyz.com/blog/2025/good-error-message.jpg"
+hidden: true
+---
+
+import ImageZoom from "@components/ImageZoom.astro";
+
+Open Graph (OG) images are crucial for link sharing - they're the visual preview that appears when someone shares your blog post on Twitter, LinkedIn, Facebook, Slack, iMessage, Discord, or any other platform that supports rich link previews. Instead of manually creating these images for every post, I've automated the process using **Satori** and **Astro**.
+
+In this post, I'll show you exactly how I implemented automatic OG image generation for this blog, complete with code examples you can copy and adapt for your own projects.
+
+## What is Satori?
+
+[Satori](https://github.com/vercel/satori) is a library developed by Vercel that converts HTML and CSS into SVG. It's perfect for generating images programmatically because:
+
+- ✅ It supports most CSS features you'd need for image generation
+- ✅ Works in both Node.js and edge environments
+- ✅ Generates crisp SVG output that can be converted to PNG
+- ✅ Supports custom fonts and complex layouts
+
+## Project Setup
+
+First, let's install the required dependencies:
+
+```bash
+npm install satori @resvg/resvg-js
+```
+
+- **satori**: Generates SVG from HTML/CSS-like objects
+- **@resvg/resvg-js**: Converts SVG to PNG format
+
+## The Implementation
+
+Here's how I structured the OG image generation system in my Astro blog:
+
+### 1. Main Generator Function
+
+```javascript
+// src/utils/generateOgImage.js
+import { Resvg } from "@resvg/resvg-js";
+import postOgImage from "./og-template/post.js";
+
+function svgBufferToPngBuffer(svg) {
+  const resvg = new Resvg(svg);
+  const pngData = resvg.render();
+  return pngData.asPng();
+}
+
+export async function generateOgImageForPost({ post }) {
+  const svg = await postOgImage(post);
+  return svgBufferToPngBuffer(svg);
+}
+```
+
+This function takes a post object and returns a PNG buffer. Simple and clean! 🎨
+
+### 2. The Template Engine
+
+Here's where the magic happens - the actual template that generates our OG images:
+
+```javascript
+// src/utils/og-template/post.js
+import satori from "satori";
+import path from "path";
+import fs from "fs";
+
+function safeText(text) {
+  const emojiPattern = /[^\x00-\x7F]+/gu;
+  return text.replace(emojiPattern, "").trim();
+}
+
+export default async post => {
+  const robotoFontPath = path.resolve("./public/fonts/roboto-bold.ttf");
+  const robotoFontBuffer = fs.readFileSync(robotoFontPath);
+
+  // Get the background image as base64
+  const bgImagePath = path.resolve("./public/images/og_bg.png");
+  const bgImageBuffer = fs.readFileSync(bgImagePath);
+
+  // Create the structure using vanilla JS objects instead of JSX
+  const svg = await satori(
+    {
+      type: "div",
+      props: {
+        style: {
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          background: `url('data:image/png;base64,${bgImageBuffer.toString("base64")}')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          position: "relative",
+        },
+        children: [
+          {
+            type: "p",
+            props: {
+              style: {
+                fontSize: 82,
+                fontWeight: "bold",
+                color: "#222222",
+                textAlign: "center",
+                maxWidth: "85%",
+                maxHeight: "100%",
+                overflow: "hidden",
+                fontFamily: "Roboto",
+                textShadow: "1px 3px 6px rgba(0,0,0,0.2)",
+              },
+              children: safeText(post.data.title),
+            },
+          },
+        ],
+      },
+    },
+    {
+      width: 1200,
+      height: 630,
+      embedFont: true,
+      fonts: [
+        {
+          name: "Roboto",
+          data: robotoFontBuffer,
+          style: "bold",
+        },
+      ],
+    }
+  );
+
+  return svg;
+};
+```
+
+### Key Implementation Details:
+
+**🎯 Font Handling**: I load Roboto Bold from the public folder and embed it directly in the SVG for consistent rendering.
+
+**🖼️ Background Image**: The template uses a background image (`og_bg.png`) that I created to match my blog's branding.
+
+**✂️ Text Sanitization**: The `safeText` function removes emojis and non-ASCII characters to prevent rendering issues.
+
+**📏 Optimal Dimensions**: 1200x630 pixels is the recommended size for most social platforms.
+
+### 3. Astro Integration
+
+This is how we integrate the generator with Astro's routing system:
+
+```javascript
+// src/pages/[slug]/og.png.js
+import { getCollection } from "astro:content";
+import { generateOgImageForPost } from "../../utils/generateOgImage.js";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => !data.hidden);
+
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+export async function GET({ props }) {
+  const image = await generateOgImageForPost(props);
+
+  return new Response(image, {
+    headers: { "Content-Type": "image/png" },
+  });
+}
+
+// Set to true to ensure static generation at build time
+export const prerender = true;
+```
+
+This creates a route like `/my-blog-post/og.png` for each blog post that generates and serves the OG image. The beauty of this approach is that Astro renders all images at build time with `prerender: true`, which means they're served statically with incredible efficiency without needing to re-render on every request.
+
+## Using the Generated Images
+
+In your blog post layouts, reference the generated OG image:
+
+```astro
+---
+// In your blog post layout
+const ogImageUrl = `${Astro.site}${Astro.params.slug}/og.png`;
+---
+
+<head>
+  <meta property="og:image" content={ogImageUrl} />
+  <meta name="twitter:image" content={ogImageUrl} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+</head>
+```
+
+## Performance Considerations
+
+**⚡ Build-time Generation**: Using `prerender: true` ensures all OG images are generated at build time, not on request.
+
+**🗜️ File Size**: PNG images are around 50-100KB each, which is acceptable for social media previews.
+
+**🚀 CDN Friendly**: Since images are pre-generated, they can be served efficiently from your CDN.
+
+## Make it your own
+
+While this post focuses on my Astro implementation, the core Satori-based generation logic can easily be used as a standalone Node.js script. The `generateOgImageForPost()` function and template system are framework-agnostic and can run anywhere Node.js is available.
+
+Here are some alternative approaches:
+
+**🏗️ Build-time Generation**: Run the generator as a build script with any CMS (WordPress, Strapi, Contentful, etc.) and save the images to your static assets folder.
+
+**📦 Standalone Package**: Extract the generation logic into a reusable npm package for use across different projects.
+
+**⚡ Serverless Functions**: Deploy the generator as a serverless function for on-demand image generation.
+
+**🔄 CI/CD Integration**: Include the generator in your deployment pipeline to automatically create OG images for new content.
+
+The beauty of Satori is that it's not tied to any specific framework - you can generate beautiful OG images anywhere you can run JavaScript!
+
+You can also extend this system further by:
+
+**🎨 Multiple Templates**: Create different templates for different post categories
+**🏷️ Tag-based Styling**: Change colors or layouts based on post tags
+**👤 Author Images**: Add author avatars to the generated images
+**📊 Dynamic Backgrounds**: Generate different background patterns programmatically
+
+Automatic OG image generation with Satori and Astro is a game-changer for content creators. It ensures every blog post has a professional-looking social media preview without the manual work of designing each image.
+
+The setup takes some initial effort, but once it's running, you'll never have to think about OG images again. Your social media shares will look consistent and professional, potentially increasing click-through rates and engagement. You can check out the complete implementation in my blog's [GitHub repository](https://github.com/mfyz/mfyz.com).
