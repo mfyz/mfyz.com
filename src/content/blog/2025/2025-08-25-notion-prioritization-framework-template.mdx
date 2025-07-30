@@ -18,7 +18,7 @@ hidden: true
 
 import ImageZoom from "@components/ImageZoom.astro";
 
-There are millions of ways to track and prioritize work. After years of experience trying tons of different methods and tools, I've developed this framework that works for me. To be honest, I don't strictly follow this framework all the time and often go off script. But I use this framework as the guiding principle to reset and come back to when things get chaotic.
+There are millions of ways to track and prioritize work. After years of experience trying tons of different methods and tools, I've developed this framework that works for me. While this isn't a strict Getting Things Done (GTD) implementation, it borrows the core principle of capturing everything in a trusted system so your mind can focus on execution rather than remembering. To be honest, I don't strictly follow this framework all the time and often go off script. But I use this framework as the guiding principle to reset and come back to when things get chaotic.
 
 The "why" behind having any framework is to stay focused. Being able to "park" stuff easily, and prevent getting overwhelmed.
 
@@ -81,7 +81,16 @@ We use the project's scores when we calculate a task's overall score. This is pr
   width="500"
 />
 
-The formula above generates a numeric score that I can then visualize with emoji boxes with different colors. This helps my eyes quickly scan and get a feel about things when I scroll around and read tasks in different projects.
+The formula combines your task's individual scores with the project's importance:
+
+```
+(
+  ((prop("Reach") * prop("Impact") / prop("Effort")) * 0.5)
+  + (toNumber(first(prop("⚡️ Prj.Score"))) * 0.5)
+)
+```
+
+This gives equal weight (50/50) to the task's inherent value and the project it belongs to. The formula above generates a numeric score that I can then visualize with emoji boxes with different colors. This helps my eyes quickly scan and get a feel about things when I scroll around and read tasks in different projects.
 
 <img
   src="/images/blog/notion-gtd-prioritization-framework-template/notion-task-score-display.jpeg"
@@ -128,7 +137,7 @@ In the end, this view gives me the bird's eye view. I can also spot the tasks I 
 
 This framework has been game-changing for my productivity and focus. It strikes the right balance between structure and flexibility, helping me make better decisions about what to work on without being overly rigid about it.
 
-You can clone and use this Notion template for your own projects and tasks. I've included all the formulas, database structures, and views that make this system work.
+You can clone and use this Notion template for your own projects and tasks. All these formulas are included in the template with working examples, so you don't need to recreate them from scratch. I've included all the database structures and views that make this system work.
 
 [Clone My Notion Template →](https://www.notion.so/mfyz/Prioritization-Template-24009782d550801b804af5d462287227?source=copy_link)
 
