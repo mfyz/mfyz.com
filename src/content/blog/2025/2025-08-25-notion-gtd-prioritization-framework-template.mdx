@@ -86,7 +86,7 @@ The formula combines your task's individual scores with the project's importance
 ```
 (
   ((prop("Reach") * prop("Impact") / prop("Effort")) * 0.5)
-  + (toNumber(first(prop("⚡️ Prj.Score"))) * 0.5)
+  + (toNumber(first(prop("Prj.Score"))) * 0.5)
 )
 ```
 
