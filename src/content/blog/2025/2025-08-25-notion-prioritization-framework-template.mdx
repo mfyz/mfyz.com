@@ -1,0 +1,135 @@
+---
+title: "My Notion GTD and Prioritization Framework + Template"
+description: "A practical GTD and prioritization framework built in Notion that helps stay focused, organize tasks by projects, and make better decisions about what to work on next."
+date: 2025-08-25
+slug: "notion-gtd-prioritization-framework-template"
+tags:
+  [
+    "productivity",
+    "notion",
+    "gtd",
+    "prioritization",
+    "framework",
+    "project-management",
+  ]
+imageURL: ""
+hidden: true
+---
+
+import ImageZoom from "@components/ImageZoom.astro";
+
+There are millions of ways to track and prioritize work. After years of experience trying tons of different methods and tools, I've developed this framework that works for me. To be honest, I don't strictly follow this framework all the time and often go off script. But I use this framework as the guiding principle to reset and come back to when things get chaotic.
+
+The "why" behind having any framework is to stay focused. Being able to "park" stuff easily, and prevent getting overwhelmed.
+
+Here's a recent example: I found myself using post-it notes to track the important stuff, and ended up having 15 stickies near my desk, making me consistently worry about some of them at any given time. Moving all of those to this framework brought clarity and peace of mind.
+
+## Thinking Tasks in Projects
+
+A good way to think about any new thing is to think of them as "projects". Even though there are some exceptions, the majority of the time, a task falls into a group of other tasks around the same objective. There are some projects that are ongoing (like writing for my blog), and some are clear targeted objectives, or time-boxed projects (like "Write X blog posts in October").
+
+This also helps organize ideas and thoughts in the right places, even if you don't have plans to start on them anytime soon.
+
+It creates a good sub-prioritization practice. When my mind is ready to think about that specific project, I can think about everything I have about that project and what's the most impactful thing I can work on with my limited time.
+
+My prioritization framework has a dozen or so projects at any given time. Half of them are ongoing, long-term projects, and half are short-term.
+
+<ImageZoom
+  src="/images/blog/notion-gtd-prioritization-framework-template/notion-projects-list.JPG"
+  alt="List of projects view in the main Notion page. This list shows different projects that have emoji/icon selected for each one. Each project name is brief, short names. All of them have both appetite and importance fields filled, so each one shows a value as progressbar values, that can be easily read by scanning the list"
+  width={800}
+  height={600}
+/>
+
+The key reason I have projects is that when I think about the effort/impact rank of a task, my mind scores them relative within the project itself. Consider you're planning to re-do your kitchen. Within this project there are 100 tasks you may need to do. When you consider your tasks' values, in terms of effort and impact, you would prioritize them within the project, not with a strict "effort=5 means X many hours/days" approach. I generally follow an always "relative" approach.
+
+While there are dozens of different frameworks for ranking/scoring for prioritization, I generally operate with importance (impact) and appetite in mind. In my personal prioritization tasks document, importance is impact to my own family. In my work prioritization doc, it's impact to the company. Appetite is really important to me. It helps me put value to projects that I am really energized and motivated about, even if they don't have high impact to my personal or work life. It keeps me curious, learning, and enjoying what I do.
+
+I have two numeric fields where I enter 1-10 scores and make them show as progress bars in Notion for the "Projects" database. Projects is an inline-database in a page that I use as my main/inbox page to see my tasks.
+
+<img
+  src="/images/blog/notion-gtd-prioritization-framework-template/notion-property-progressbar.jpeg"
+  alt="Edit property pop-up that shows a number format field's configuration in Notion. It is being configured as progressbar display, divided by 10"
+  width="500"
+/>
+
+A project record is a simple record that has a few other fields.
+
+<ImageZoom
+  src="/images/blog/notion-gtd-prioritization-framework-template/notion-project-detail.PNG"
+  alt="A project detail page 'Short URL Service' example, showing score fields filled appetite/importance, and calculates score field. Score field has zap emoji at the beginning, it means this is a formula field, and should not be manually entered."
+  width={800}
+  height={400}
+/>
+
+## Tasks
+
+Tasks have a relational field to the Project database. I create a view that groups tasks by projects, so I can easily expand/collapse and see how many tasks are in each project at any given time.
+
+<ImageZoom
+  src="/images/blog/notion-gtd-prioritization-framework-template/notion-tasks-grouped.jpeg"
+  alt="List of tasks grouped by projects. All groups are collapsed, so only the project list-like list is showing. But manually sorted by importance, each collapsed row shows how many tasks in each group. In the same page, a collapsed toggle heading shows list of projects, and another collapsed toggling heading shows 'Formulas' that shows the source of formulas"
+  width={800}
+  height={600}
+/>
+
+We use the project's scores when we calculate a task's overall score. This is probably the most important part of my framework - a task's project, and the project's score matter. You can tweak the weights in this score to make it matter a lot more or less. But I find this approach balanced and really useful because it helps me see mundane but really important tasks, as well as the ones I am dying to do (that I feel super hyped about) but in projects that don't matter much. It's a guide. I often just take a peek at these scores, use them in my decision-making, and sometimes I obey them, sometimes I ignore them. But I almost always use them as a grounding guide to remind me to stay focused on things I need to stay focused on.
+
+<img
+  src="/images/blog/notion-gtd-prioritization-framework-template/notion-task-score-formula.jpeg"
+  alt="Task score field that calculates simple 1-10 score for a task and calculates the numeric value. This is used on other formula fields"
+  width="500"
+/>
+
+The formula above generates a numeric score that I can then visualize with emoji boxes with different colors. This helps my eyes quickly scan and get a feel about things when I scroll around and read tasks in different projects.
+
+<img
+  src="/images/blog/notion-gtd-prioritization-framework-template/notion-task-score-display.jpeg"
+  alt="Task score display field formula pop-up, shows the formula of the colored emojis using another numeric calculated field called 'Score'"
+  width="500"
+/>
+
+Formula:
+
+```
+repeat(
+  if(prop("⚡️ Score") <= 2, "⬛️",
+    if(prop("⚡️ Score") <= 4, "🟩",
+      if(prop("⚡️ Score") <= 6, "🟨",
+        if(prop("⚡️ Score") <= 8, "🟧", "🟥")
+      )
+    )
+  ),
+  round(prop("⚡️ Score"))
+)
++ repeat("⬜", 10 - round(prop("⚡️ Score"))).style("gray")
++ " "+ round(prop("⚡️ Score"))
+```
+
+There are a few other properties for the task object that I use for different views in the same database. The one I generally use is "Focus" which contains my "hand-picked" tasks that I generally pick a few of, then switch to the Focused tasks list to see my day or week.
+
+<ImageZoom
+  src="/images/blog/notion-gtd-prioritization-framework-template/notion-task-detail.jpeg"
+  alt="A task detail screen showing all fields we described in other screenshot descriptions, also due date, urgent checkbox, focus checkbox, blocking, blocked by relational fields."
+  width={800}
+  height={600}
+/>
+
+In the end, this view gives me the bird's eye view. I can also spot the tasks I added and didn't score. I do scoring practice once in a while and review my priorities and projects.
+
+<ImageZoom
+  src="/images/blog/notion-gtd-prioritization-framework-template/notion-tasks-expanded.jpeg"
+  alt="List of tasks, groups expanded, so actual tasks are visible. Tasks show visually calculated overall score. Score display for tasks uses colored box emojis to make higher score tasks show the progress bar with red color, as the score of a task gets lower, the color gets orange, yellow, green, black colors. Tasks have status values, scores: effort, impact, reach, and 'project' link. All of these are used to calculate the overall task score. All of these field values are visible in this screenshot"
+  width={800}
+  height={800}
+/>
+
+## Get the Template
+
+This framework has been game-changing for my productivity and focus. It strikes the right balance between structure and flexibility, helping me make better decisions about what to work on without being overly rigid about it.
+
+You can clone and use this Notion template for your own projects and tasks. I've included all the formulas, database structures, and views that make this system work.
+
+[Clone My Notion Template →](https://www.notion.so/mfyz/Prioritization-Template-24009782d550801b804af5d462287227?source=copy_link)
+
+Give it a try and adapt it to your own workflow. The key is finding what works for you and sticking with it long enough to see the benefits of having a consistent prioritization system.
