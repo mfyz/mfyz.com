@@ -4,6 +4,7 @@ import BlogPost from "@layouts/BlogPost.astro";
 import Layout from "@layouts/Layout.astro";
 import BlogGrid from "@components/BlogGrid.astro";
 import BlogSharingAndReactions from "@components/BlogSharingAndReactions.astro";
+import NewsletterPopup from "@components/NewsletterPopup.astro";
 import { getPosts, getAllPosts, getRelatedPosts } from "@utils/getPosts.ts";
 import "@styles/blog-grid.css";
 
@@ -132,4 +133,5 @@ export const prerender = true;
       }
     </div>
   </BlogPost>
+  <NewsletterPopup lang={isTurkish ? "tr" : "en"} />
 </Layout>

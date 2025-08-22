@@ -1,0 +1,120 @@
+---
+import NewsletterForm from "@components/NewsletterForm.astro";
+
+interface Props {
+  lang?: "en" | "tr";
+}
+
+const { lang = "en" } = Astro.props;
+const isTurkish = lang === "tr";
+---
+
+<div
+  id="newsletter-popup"
+  class="newsletter-popup fixed bottom-6 right-6 z-50 hidden w-72 rounded-lg border border-gray-200 bg-white px-6 pb-6 pt-4 shadow-2xl dark:border-gray-700 dark:bg-gray-800"
+>
+  <button
+    id="popup-close"
+    class="absolute right-2 top-2 rounded-lg p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-white"
+    aria-label={isTurkish ? "Kapat" : "Close"}
+  >
+    <svg
+      class="h-5 w-5"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M6 18L18 6M6 6l12 12"></path>
+    </svg>
+  </button>
+
+  <p
+    class="mb-3 mr-8 whitespace-pre-line text-sm font-medium text-gray-900 dark:text-white"
+  >
+    {
+      isTurkish
+        ? "📝 En son yazıları kaçırmayın,\nbültene abone olun!"
+        : "📝 Don't miss the latest posts,\nsubscribe to newsletter!"
+    }
+  </p>
+
+  <NewsletterForm lang={lang} compact={true} />
+</div>
+
+<style>
+  .newsletter-popup {
+    animation: slideInRight 0.3s ease-out;
+  }
+
+  .newsletter-popup.hiding {
+    animation: slideOutRight 0.3s ease-out forwards;
+  }
+
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideOutRight {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const popup = document.getElementById("newsletter-popup");
+    const closeBtn = document.getElementById("popup-close");
+
+    if (!popup || !closeBtn) return;
+
+    // Check if user has already seen/closed the popup in this session
+    const popupClosed = sessionStorage.getItem("newsletter-popup-closed");
+    if (popupClosed) return;
+
+    const showPopup = () => {
+      popup.classList.remove("hidden");
+    };
+
+    const hidePopup = () => {
+      popup.classList.add("hiding");
+      setTimeout(() => {
+        popup.classList.add("hidden");
+        popup.classList.remove("hiding");
+      }, 300);
+      sessionStorage.setItem("newsletter-popup-closed", "true");
+    };
+
+    // Close button handler
+    closeBtn.addEventListener("click", hidePopup);
+
+    // Close on Escape key
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape" && !popup.classList.contains("hidden")) {
+        hidePopup();
+      }
+    });
+
+    // Show popup after 10 seconds
+    setTimeout(() => {
+      showPopup();
+    }, 10000); // 10 seconds
+  });
+</script>
