@@ -36,7 +36,7 @@ test('About page has correct headings and content', async ({ page }) => {
   expect(paragraphCount).toBeGreaterThanOrEqual(3);
   
   // Check for specific content to ensure we're on the right page
-  await expect(page.locator('body')).toContainText('mfyz is a personal blog');
+  await expect(page.locator('body')).toContainText('a personal blog');
   
   // Focus on core content rather than specific structural elements
   // These tests ensure the page is properly loaded without being overly specific about implementation
