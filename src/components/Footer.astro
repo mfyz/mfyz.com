@@ -1,100 +1,159 @@
 ---
 // Get the current language from the Astro global
-const { lang = "en" } = Astro.props;
+const { lang = "en", size } = Astro.props;
 const isTurkish = lang === "tr";
 ---
 
 <footer class="mt-12 border-t border-gray-200 dark:border-gray-700">
-  <div class="container py-8">
-    <!-- <section>
-      <h2>Subscribe to mfyz.com Newsletter</h2>
+  <div
+    class={`mx-auto max-w-${size === "small" ? "3xl" : "5xl"} ${size === "small" ? "px-5 md:px-3 lg:px-4" : "px-4 sm:px-6 lg:px-8 xl:px-0"} py-8`}
+  >
+    <!-- Two column layout - stack on mobile/tablet, side-by-side on desktop -->
+    <div class="grid gap-8 lg:grid-cols-2 lg:gap-12">
+      <!-- Left column - Site branding and links -->
       <div>
-        Never miss new articles from mfyz.com.
-        <div>
+        <!-- Site logo/title -->
+        <h2 class="mb-4">
+          <a
+            href={isTurkish ? "/tr" : "/"}
+            class="mfyz-logo font-secondary text-xl dark:text-white"
+          >
+            mfyz
+          </a>
+        </h2>
+
+        <!-- Links -->
+        <div
+          class="flex flex-wrap gap-4 text-sm text-gray-500 dark:text-gray-400"
+        >
+          <a
+            href={isTurkish ? "/hakkinda/" : "/about/"}
+            class="transition-colors hover:text-primary"
+          >
+            {isTurkish ? "Hakkında" : "About"}
+          </a>
+
+          <a
+            href={isTurkish ? "/" : "/tr/"}
+            class="transition-colors hover:text-primary"
+          >
+            {isTurkish ? "English" : "Türkçe"}
+          </a>
+
+          <a
+            href={isTurkish ? "/lisans/" : "/license/"}
+            class="transition-colors hover:text-primary"
+          >
+            {isTurkish ? "Lisans" : "License"}
+          </a>
+
+          <a
+            href={isTurkish ? "/tr/rss.xml" : "/rss.xml"}
+            class="flex items-center gap-1 transition-colors hover:text-primary"
+            title={isTurkish ? "RSS Beslemesi" : "RSS Feed"}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="h-4 w-4"
+            >
+              <path d="M4 11a9 9 0 0 1 9 9"></path>
+              <path d="M4 4a16 16 0 0 1 16 16"></path>
+              <circle cx="5" cy="19" r="1"></circle>
+            </svg>
+            RSS
+          </a>
+        </div>
+
+        <!-- Copyright text -->
+        <div class="mt-4 text-xs text-gray-400 dark:text-gray-500">
+          © 2003 MFYZ. {
+            isTurkish ? "Tüm hakları saklıdır" : "All rights reserved"
+          }
+        </div>
+      </div>
+
+      <!-- Right column - Newsletter subscription -->
+      <div>
+        <p class="mb-3 text-sm text-gray-600 dark:text-gray-400">
+          {
+            isTurkish
+              ? "En son yazıları almak için bültene abone olun."
+              : "Subscribe to newsletter to get latest posts."
+          }
+        </p>
+        <div id="mc_embed_signup">
           <form
             id="mc-embedded-subscribe-form"
-            action="https://mfyz.us2.list-manage.com/subscribe/post?u=d428f29bd92f8490a71f5b5de&id=ff24006d41"
+            class="validate"
+            action={`https://mfyz.us2.list-manage.com/subscribe/post?u=d428f29bd92f8490a71f5b5de&id=${isTurkish ? "4ce398796d" : "ff24006d41"}`}
             method="post"
             name="mc-embedded-subscribe-form"
             novalidate=""
             target="_blank"
           >
-            <div>
-              <input
-                id="mce-EMAIL"
-                name="EMAIL"
-                required=""
-                type="email"
-                value=""
-                placeholder="email address"
-              />
-              <input
-                id="mc-embedded-subscribe"
-                name="subscribe"
-                type="submit"
-                value="Subscribe"
-              />
+            <div id="mc_embed_signup_scroll" class="flex">
+              <div class="flex-1">
+                <input
+                  id="mce-EMAIL"
+                  class="email w-full rounded-l-md border border-r-0 border-gray-300 px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+                  name="EMAIL"
+                  required=""
+                  type="email"
+                  value=""
+                  placeholder={isTurkish ? "e-posta adresi" : "email address"}
+                />
+              </div>
+              <div class="btn">
+                <button
+                  id="mc-embedded-subscribe"
+                  class="button flex cursor-pointer items-center justify-center rounded-r-md border border-l-0 border-primary bg-primary py-1.5 pl-3 pr-2.5 text-sm font-medium text-white transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+                  name="subscribe"
+                  type="submit"
+                  aria-label={isTurkish
+                    ? "Bültene abone ol"
+                    : "Subscribe to newsletter"}
+                >
+                  <svg
+                    class="h-6 w-6"
+                    fill="white"
+                    viewBox="0 0 1024 1024"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g>
+                      <path
+                        d="m862 224.3c-1-30.2-25.6-54.7-56-55.1-2.9 0-5.8-.2-8.6-.2h-603.9c-14.5 0-29 .2-43.5.2-16.3 0-32.3 6.1-43.3 18.5-10.3 11.5-14.6 25.8-14.6 41v482 16.8c0 20.7 10.6 40.3 28.9 50.4 17.3 9.5 38.8 7.1 57.9 7.1h403.1c-1.8-3-3.4-6.5-5-9.9-1.5-3.3-3-6.6-4.3-10-26.2-65.7-17.3-144.2 26.2-201.3 24.5-32.2 56.7-56.4 94.6-70.7 41.3-15.6 88.5-16.8 130.7-4.1 6.1 1.8 12 3.9 17.9 6.3 3.4 1.4 6.7 2.8 10 4.4 3.4 1.6 7 3.3 10 5v-279.5c-.1-.3-.1-.6-.1-.9zm-93.9 93.2c-11.3 6.8-22.5 13.6-33.8 20.4-49.5 29.9-99 59.7-148.5 89.6-31.3 18.9-62.7 37.8-94 56.7-8.9 5.4-21.3 5.6-30.3 0-11.3-7.1-22.6-14.1-33.9-21.2-49.6-31-99.3-62-148.9-93-31.2-19.5-62.3-38.9-93.5-58.4-14.2-8.9-18.5-26.3-10.8-41.1 7.4-14 27.7-19.1 41-10.8 11.3 7 22.6 14.1 33.9 21.1 49.6 31 99.2 61.9 148.9 92.9 26.2 16.3 52.3 32.9 78.5 49 6.2-3.7 12.4-7.3 18.6-11 49.5-29.9 99-59.6 148.5-89.5 31.3-18.9 62.7-37.8 94-56.7 14.4-8.7 32.3-2.7 41.1 10.8 8.9 13.9 2.7 33.1-10.8 41.2z"
+                      ></path>
+                      <path
+                        d="m931.4 672.4c-.2-2.2-.4-4.5-.7-6.7-.3-.5-.3-2.3-.4-2.9-1.6-9.7-3.9-19.3-7-28.6-.8-2.3-1.6-4.6-2.4-6.9-.4-1.1-.9-2.3-1.3-3.4 0 0 0 0 0-.1-.3-.8-.9-1.5-1.1-1.7-1.7-3.1-2.8-7-4.4-9.9-4.4-8.5-9.4-16.7-15-24.4-.5-.7-1-1.5-1.6-2.2-.2-.2-.4-.4-.5-.6-1.5-1.8-3-3.7-4.6-5.5-2.8-3.2-5.7-6.4-8.7-9.4-3.5-3.6-7.2-7-11-10.2-1.6-1.4-3.3-2.8-4.9-4.1-.2-.2-.3-.3-.5-.4.2.1.4.3.6.4.3.2.4.3.5.4-.3-.3-1.6-1.3-1.8-1.4 0 0 .2.2.6.5-.7-.5-1.5-1.1-2.2-1.6-7.3-5.4-15.1-10.2-23.1-14.4-3-1.6-6.1-3.1-9.2-4.5-.6-.3-1.2-.5-1.8-.8 0 0-.1 0-.1-.1-.6-.3-1.5-.6-1.9-.8-5.1-2-10.2-3.8-15.4-5.4-5.5-1.7-11.2-3.1-16.8-4.2-2.9-.6-5.8-1-8.7-1.5-.1 0-.1 0-.2 0h-.1c-.1 0-.1 0-.2 0-.2 0-.3 0-.5 0-.1 0-.1 0-.2 0s-.1 0-.2 0-.2 0-.3 0h-.1c-.1 0-.1 0-.2 0h-.1c-.5-.1-1-.1-1.5-.2-10.7-1.1-21.5-1.3-32.3-.6-2.3.1-4.6.3-6.9.6-.3 0-.9 0-1.4.1 0 0-.4.1-1.4.3-4 .6-8.1 1.3-12 2.2-8.8 1.9-17.4 4.4-25.7 7.5-1.7.6-4.9 1.2-6.2 2.4 1-.4 1.7-.7 2-.9-.2.1-.5.2-.9.4s-.8.4-1.2.5c-.8.4-1.6.7-2.4 1.1-3.6 1.7-7.1 3.5-10.6 5.3-7.7 4.2-15.1 8.9-22.1 14.2-.5.4-1.1.8-1.6 1.2 0 0-.1.1-.1.1-.2.2-.3.3-.4.4-1.7 1.4-3.4 2.8-5 4.2-3.1 2.7-6.1 5.5-9.1 8.4-3.1 3.1-6.1 6.3-9 9.5-1.3 1.5-2.6 3-3.8 4.5-.7.8-1.3 1.7-2 2.5.1-.1.2-.3.3-.4 2.6-3.6-2.2 2.6-.3.4-5 6.7-9.6 13.7-13.7 21-2.2 3.8-4.2 7.8-6 11.7-.4.8-1.3 2.2-1.9 3.4 0 .3-.1.8-.4 1.5-.4 1-.8 2.1-1.2 3.1-3.1 8.1-5.6 16.5-7.6 25-1 4.4-1.8 8.7-2.5 13.2 0-.1 0-.3 0-.4v.5c0 .3 0 .6-.1.8-.1.5-.1.9-.2 1.4-.3 2.3-.5 4.6-.6 6.9-.8 10.3-.7 20.7.3 31 .2 1.8.4 3.5.6 5.3v.3c-.7-4.3.2 2.6 0 0 0 .1 0 .3.1.5.5 2.9.9 5.8 1.5 8.6 1 5.1 2.3 10.2 3.7 15.2 1.6 5.5 3.5 10.9 5.6 16.3 0 0 .8 2 1.2 2.8-.2-.4-.4-.9-.5-1.1.1.1.1.3.3.6.3.7.4.9.4.8.3.8.7 1.5.7 1.5 1.1 2.3 2.2 4.6 3.3 6.9 4.3 8.4 9.2 16.5 14.8 24.2.8 1.1 1.6 2.2 2.4 3.2 0 0 .1.1.1.1 1.4 1.6 2.7 3.3 4.1 5 2.9 3.4 6 6.8 9.2 10 3.5 3.6 7.2 7 10.9 10.3 1.4 1.2 2.9 2.5 4.4 3.7.1.1.3.3.6.5.7.6 1.1 1 1.4 1.2-.2-.2-.6-.6-1-.9.6.5 1.2.9 1.7 1.3 7.5 5.5 15.4 10.5 23.7 14.9 4 2.1 8.2 4.5 12.4 6.1-.4-.2-.7-.3-.8-.4.2 0 .6.2 1.3.5.9.4 1.8.7 2.7 1.1 2.3.9 4.6 1.7 6.8 2.5 9.1 3.1 18.4 5.5 27.8 7.1.9.2 1.8.4 2.8.6.1 0 .5 0 1.6.2 2.5.3 5 .6 7.5.8 4.6.4 9.1.6 13.7.6 4.7 0 9.4-.1 14.1-.4 2.3-.2 4.6-.3 6.9-.6.9-.1 1.8-.2 2.7-.3-.2 0-.4.1-.5.1-3 .5 5.2-.6.6-.1 8.5-1.4 16.9-3.1 25.2-5.5 4.3-1.3 8.5-2.7 12.7-4.2 1-.4 2.7-.8 4.1-1.3 0-.1.4-.4 1-.7 1.2-.6 2.4-1.1 3.6-1.6 7.6-3.5 14.9-7.5 21.9-12 3.7-2.4 7.3-4.8 10.8-7.5.6-.4 1.1-.8 1.7-1.3.2-.2.4-.3.4-.4 1.7-1.4 3.4-2.8 5-4.2 6.3-5.4 12.1-11.3 17.6-17.5 1.7-2 3.4-4 5.1-6 .1-.1.3-.4.5-.6-.8 1.3.9-.2 1.1-1.5 0 .3-.6.9-1.1 1.4.1-.1.2-.3.3-.5 2.6-3.5 5.1-7.1 7.5-10.7 4.5-7 8.6-14.3 12.2-21.8.6-1.2 1.1-2.4 1.7-3.6.4-.8.7-1.6 1.1-2.4-.3.8-.7 1.6-1 2.3 1-1.1 1.4-3.5 2-4.9 1.6-4.2 3-8.4 4.3-12.6 2.5-8.2 4.4-16.6 5.7-25 .1-.9.3-1.8.4-2.7-.1.9-.2 1.7-.3 2.6.5-.7.4-3.2.5-4.1.2-1.8.3-3.7.5-5.5.3-4.7.5-9.3.5-14-.2-5.5-.4-10.6-.8-15.6zm-96.3 44.6h-40.1v41c0 16.8-13.7 29.3-30 30-16.2.7-30-14.3-30-30v-41h-40.6c-16.8 0-29.3-13.7-30-30-.7-16.2 14.3-30 30-30h40.6v-39.7c0-16.8 13.8-29.3 30-30s30 14.3 30 30v39.7h40.1c16.8 0 29.3 13.8 30 30 .8 16.2-14.3 30-30 30z"
+                      ></path>
+                    </g>
+                  </svg>
+                </button>
+              </div>
+              <div
+                style="position: absolute; left: -5000px;"
+                aria-hidden="true"
+              >
+                <input
+                  tabindex="-1"
+                  name="b_d428f29bd92f8490a71f5b5de_ff24006d41"
+                  type="text"
+                  value=""
+                />
+              </div>
+              <div class="clear"></div>
             </div>
           </form>
         </div>
       </div>
-    </section> -->
-    <div
-      class="flex flex-wrap items-center justify-center gap-2 text-sm text-gray-500 dark:text-gray-400"
-    >
-      <!-- About link -->
-      <a
-        href={isTurkish ? "/hakkinda/" : "/about/"}
-        class="text-gray-500 transition-colors hover:text-primary"
-      >
-        {isTurkish ? "Hakkında" : "About"}
-      </a>
-
-      <span class="mx-2">&bull;</span>
-
-      <!-- License link -->
-      <a
-        href={isTurkish ? "/lisans/" : "/license/"}
-        class="text-gray-500 transition-colors hover:text-primary"
-      >
-        {isTurkish ? "Lisans" : "License"}
-      </a>
-
-      <span class="mx-2">&bull;</span>
-
-      <!-- RSS link -->
-      <a
-        href={isTurkish ? "/tr/rss.xml" : "/rss.xml"}
-        class="flex items-center gap-1 text-gray-500 transition-colors hover:text-primary"
-        title={isTurkish ? "RSS Beslemesi" : "RSS Feed"}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="h-4 w-4"
-        >
-          <path d="M4 11a9 9 0 0 1 9 9"></path>
-          <path d="M4 4a16 16 0 0 1 16 16"></path>
-          <circle cx="5" cy="19" r="1"></circle>
-        </svg>
-        RSS
-      </a>
-
-      <span class="mx-2">&bull;</span>
-
-      <!-- Copyright text -->
-      <span>
-        © 2003 MFYZ. {
-          isTurkish ? "Tüm hakları saklıdır" : "All rights reserved"
-        }
-      </span>
     </div>
   </div>
 </footer>
