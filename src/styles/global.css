@@ -151,17 +151,6 @@ body {
     transition: opacity 0.3s ease;
   }
 
-  /* Invert logo icon in dark mode */
-  @media (prefers-color-scheme: dark) {
-    .mfyz-logo::before {
-      filter: invert(1);
-    }
-
-    .mfyz-logo::after {
-      filter: invert(1);
-    }
-  }
-
   /* Support for class-based dark mode */
   .dark .mfyz-logo::before,
   .dark .mfyz-logo::after {
