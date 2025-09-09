@@ -288,6 +288,464 @@ const ogImageBasedOnPath =
       setTimeout(initCodeBlocks, 500);
     </script>
 
+    <!-- Mermaid diagrams enhancement script -->
+    <script is:inline>
+      /**
+       * Mermaid Diagrams Enhancement Script
+       *
+       * Automatically detects code blocks with 'mermaid' language and converts them to diagrams
+       */
+
+      console.log("Mermaid enhancement script loaded");
+
+      // Initialize Mermaid diagrams
+      async function initMermaidDiagrams() {
+        console.log("Scanning for Mermaid code blocks");
+
+        // Debug: Log all code blocks and their classes
+        const allCodeBlocks = Array.from(document.querySelectorAll("pre code"));
+        console.log(`Found ${allCodeBlocks.length} total code blocks`);
+        allCodeBlocks.forEach((block, i) => {
+          console.log(
+            `Code block ${i}: className="${block.className}", textContent preview="${block.textContent.substring(0, 50).trim()}"`
+          );
+        });
+
+        // Try multiple selectors to find mermaid blocks
+        const selectors = [
+          'pre[data-language="mermaid"] code',
+          'pre code[class*="language-mermaid"]',
+          'pre code[class*="mermaid"]',
+          'pre code[data-language="mermaid"]',
+          'pre[class*="language-mermaid"] code',
+          'pre[class*="mermaid"] code',
+        ];
+
+        let mermaidBlocks = [];
+        for (const selector of selectors) {
+          const blocks = Array.from(document.querySelectorAll(selector));
+          if (blocks.length > 0) {
+            console.log(
+              `Found ${blocks.length} mermaid blocks with selector: ${selector}`
+            );
+            mermaidBlocks = blocks;
+            break;
+          }
+        }
+
+        // Fallback: look for code blocks that contain mermaid syntax
+        if (mermaidBlocks.length === 0) {
+          console.log("No mermaid blocks found by class, checking content...");
+          const potentialMermaidBlocks = allCodeBlocks.filter(block => {
+            const text = block.textContent.trim().toLowerCase();
+            return (
+              text.startsWith("graph ") ||
+              text.startsWith("flowchart ") ||
+              text.startsWith("sequencediagram") ||
+              text.startsWith("pie ") ||
+              text.includes("participant ")
+            );
+          });
+
+          if (potentialMermaidBlocks.length > 0) {
+            console.log(
+              `Found ${potentialMermaidBlocks.length} potential mermaid blocks by content analysis`
+            );
+            mermaidBlocks = potentialMermaidBlocks;
+          }
+        }
+
+        if (mermaidBlocks.length === 0) {
+          console.log("No Mermaid diagrams found");
+          return;
+        }
+
+        console.log(
+          `Found ${mermaidBlocks.length} Mermaid diagram(s) to render`
+        );
+
+        try {
+          // Dynamically load Mermaid from CDN
+          if (!window.mermaid) {
+            console.log("Loading Mermaid from CDN...");
+
+            // Create and load the script
+            const script = document.createElement("script");
+            script.src =
+              "https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js";
+            script.type = "module";
+
+            await new Promise((resolve, reject) => {
+              script.onload = resolve;
+              script.onerror = reject;
+              document.head.appendChild(script);
+            });
+
+            console.log("Mermaid library loaded successfully");
+          }
+
+          // Initialize Mermaid with theme support
+          const isDarkMode =
+            document.documentElement.classList.contains("dark");
+
+          mermaid.initialize({
+            startOnLoad: false,
+            theme: isDarkMode ? "dark" : "default",
+            themeVariables: {
+              primaryColor: "#8b5cf6",
+              primaryBorderColor: "#7c3aed",
+              secondaryColor: "#fbbf24",
+              tertiaryColor: "#fff",
+              background: isDarkMode ? "#1f2937" : "#ffffff",
+              mainBkg: isDarkMode ? "#1f2937" : "#ffffff",
+              secondBkg: isDarkMode ? "#374151" : "#f3f4f6",
+              tertiaryBkg: isDarkMode ? "#4b5563" : "#e5e7eb",
+              primaryTextColor: isDarkMode ? "#f3f4f6" : "#1f2937",
+              lineColor: isDarkMode ? "#6b7280" : "#d1d5db",
+              textColor: isDarkMode ? "#f3f4f6" : "#1f2937",
+              mainContrastColor: isDarkMode ? "#f3f4f6" : "#1f2937",
+              darkMode: isDarkMode,
+            },
+            flowchart: {
+              htmlLabels: true,
+              curve: "basis",
+            },
+            sequence: {
+              diagramMarginX: 50,
+              diagramMarginY: 30,
+              actorMargin: 50,
+              width: 150,
+              height: 65,
+              boxMargin: 10,
+              boxTextMargin: 5,
+              noteMargin: 10,
+              messageMargin: 35,
+            },
+          });
+
+          // Process each Mermaid code block
+          for (let i = 0; i < mermaidBlocks.length; i++) {
+            const codeElement = mermaidBlocks[i];
+            const preElement = codeElement.parentElement;
+            let chartDefinition = codeElement.textContent.trim();
+
+            if (!chartDefinition) continue;
+
+            try {
+              console.log(
+                `Rendering Mermaid diagram ${i + 1}/${mermaidBlocks.length}`
+              );
+
+              // Store reference to button group for restoration if needed
+              const codeBlockWrapper = preElement.parentElement;
+              let buttonGroup = null;
+              if (
+                codeBlockWrapper &&
+                codeBlockWrapper.classList.contains("code-block-wrapper")
+              ) {
+                buttonGroup = codeBlockWrapper.querySelector(
+                  ".code-buttons-group"
+                );
+              }
+
+              // Parse styling attributes from multiple sources
+              let customWidth = "";
+              let customHeight = "";
+              let customAlign = "";
+              let showBorder = false;
+              let compactMode = false;
+
+              // Auto-detect pie charts for compact mode
+              const isPieChart = chartDefinition
+                .trim()
+                .toLowerCase()
+                .includes("pie title");
+
+              // Method 1: Check for attributes in data attributes
+              if (preElement.dataset.width) {
+                customWidth =
+                  preElement.dataset.width.includes("%") ||
+                  preElement.dataset.width.includes("px")
+                    ? preElement.dataset.width
+                    : `${preElement.dataset.width}px`;
+              }
+              if (preElement.dataset.height) {
+                customHeight =
+                  preElement.dataset.height.includes("%") ||
+                  preElement.dataset.height.includes("px")
+                    ? preElement.dataset.height
+                    : `${preElement.dataset.height}px`;
+              }
+              if (preElement.dataset.align) {
+                customAlign = preElement.dataset.align;
+              }
+              if (preElement.dataset.border !== undefined) {
+                showBorder = true;
+              }
+              if (preElement.dataset.compact !== undefined) {
+                compactMode = true;
+              }
+
+              // Method 2: Parse styling from HTML comment before the pre element
+              let previousNode = preElement.previousSibling;
+              while (
+                previousNode &&
+                previousNode.nodeType === 3 &&
+                !previousNode.textContent.trim()
+              ) {
+                // Skip whitespace text nodes
+                previousNode = previousNode.previousSibling;
+              }
+
+              if (previousNode && previousNode.nodeType === 8) {
+                // Comment node
+                const comment = previousNode.textContent.trim();
+                const widthMatch = comment.match(/width=["']([^"']+)["']/);
+                const heightMatch = comment.match(/height=["']([^"']+)["']/);
+                const alignMatch = comment.match(/align=["']([^"']+)["']/);
+                const borderMatch = comment.match(/border/);
+
+                if (widthMatch && !customWidth) {
+                  customWidth =
+                    widthMatch[1].includes("%") || widthMatch[1].includes("px")
+                      ? widthMatch[1]
+                      : `${widthMatch[1]}px`;
+                }
+                if (heightMatch && !customHeight) {
+                  customHeight =
+                    heightMatch[1].includes("%") ||
+                    heightMatch[1].includes("px")
+                      ? heightMatch[1]
+                      : `${heightMatch[1]}px`;
+                }
+                if (alignMatch && !customAlign) {
+                  customAlign = alignMatch[1];
+                }
+                if (borderMatch && !showBorder) {
+                  showBorder = true;
+                }
+              }
+
+              // Method 3: Parse styling from first line of code if it starts with %% (mermaid comment)
+              const lines = chartDefinition.split("\n");
+              if (lines[0].trim().startsWith("%%")) {
+                const firstLine = lines[0].trim();
+                const widthMatch = firstLine.match(/width=(\w+)/);
+                const heightMatch = firstLine.match(/height=(\w+)/);
+                const alignMatch = firstLine.match(/align=(\w+)/);
+                const centerMatch = firstLine.match(/center/);
+                const borderMatch = firstLine.match(/border/);
+
+                if (widthMatch && !customWidth) {
+                  customWidth =
+                    widthMatch[1].includes("%") || widthMatch[1].includes("px")
+                      ? widthMatch[1]
+                      : `${widthMatch[1]}px`;
+                }
+                if (heightMatch && !customHeight) {
+                  customHeight =
+                    heightMatch[1].includes("%") ||
+                    heightMatch[1].includes("px")
+                      ? heightMatch[1]
+                      : `${heightMatch[1]}px`;
+                }
+                if (alignMatch && !customAlign) {
+                  customAlign = alignMatch[1];
+                }
+                if (centerMatch && !customAlign) {
+                  customAlign = "center";
+                }
+                if (borderMatch && !showBorder) {
+                  showBorder = true;
+                }
+
+                // Remove the styling comment from chart definition
+                const chartWithoutSizing = lines.slice(1).join("\n").trim();
+                if (chartWithoutSizing) {
+                  chartDefinition = chartWithoutSizing;
+                }
+              }
+
+              // Create container for the diagram
+              const diagramContainer = document.createElement("div");
+              diagramContainer.className =
+                "mermaid-container my-8 w-full overflow-x-auto";
+
+              // Apply custom width if specified
+              if (customWidth) {
+                diagramContainer.style.width = customWidth;
+                diagramContainer.style.maxWidth = customWidth;
+              }
+
+              // Apply alignment if specified
+              if (customAlign === "center") {
+                // Only center if we have a custom width, otherwise it doesn't make sense
+                if (customWidth) {
+                  diagramContainer.style.margin = "2rem auto";
+                  diagramContainer.style.display = "block";
+                  diagramContainer.classList.remove("w-full");
+                }
+              } else if (customAlign === "left") {
+                if (customWidth) {
+                  diagramContainer.style.marginLeft = "0";
+                  diagramContainer.style.marginRight = "auto";
+                  diagramContainer.classList.remove("w-full");
+                }
+              } else if (customAlign === "right") {
+                if (customWidth) {
+                  diagramContainer.style.marginLeft = "auto";
+                  diagramContainer.style.marginRight = "0";
+                  diagramContainer.classList.remove("w-full");
+                }
+              }
+
+              const diagramWrapper = document.createElement("div");
+              let wrapperClasses = "mermaid-diagram rounded-lg min-h-[100px]";
+
+              // Apply border and padding styling
+              if (showBorder) {
+                wrapperClasses +=
+                  " border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-900 p-4";
+              } else {
+                wrapperClasses += " bg-transparent";
+              }
+
+              // Force left alignment for the content inside the wrapper
+              if (!customAlign || (customAlign && !customWidth)) {
+                wrapperClasses += " text-left";
+              }
+
+              diagramWrapper.className = wrapperClasses;
+
+              // Apply custom height if specified
+              if (customHeight) {
+                diagramWrapper.style.height = customHeight;
+                diagramWrapper.style.minHeight = customHeight;
+              }
+
+              // Generate unique ID for this diagram
+              const uniqueId = `mermaid-diagram-${i}-${Date.now()}`;
+
+              // Render the diagram first (before replacing the element)
+              const { svg } = await mermaid.render(uniqueId, chartDefinition);
+
+              // Only if rendering succeeds, replace the code block
+              diagramWrapper.innerHTML = svg;
+              diagramContainer.appendChild(diagramWrapper);
+              preElement.parentNode.replaceChild(diagramContainer, preElement);
+
+              // Hide copy/wrap buttons now that we've successfully replaced the element
+              if (buttonGroup) {
+                buttonGroup.style.display = "none";
+              }
+
+              // Make SVG responsive (unless custom height is specified)
+              const svgElement = diagramWrapper.querySelector("svg");
+              if (svgElement) {
+                if (!customHeight) {
+                  svgElement.removeAttribute("height");
+                  svgElement.style.height = "auto";
+                }
+                if (!customWidth) {
+                  svgElement.style.maxWidth = "100%";
+                }
+
+                // Apply custom dimensions directly to SVG if specified
+                if (customWidth) {
+                  svgElement.style.width = customWidth;
+                  svgElement.style.maxWidth = customWidth; // Override Mermaid's max-width
+                }
+                if (customHeight) {
+                  svgElement.style.height = customHeight;
+                  svgElement.style.maxHeight = customHeight; // Override Mermaid's max-height
+                }
+
+                // Ensure left alignment when no explicit centering is requested
+                if (!customAlign || (customAlign && !customWidth)) {
+                  svgElement.style.display = "block";
+                  svgElement.style.marginLeft = "0";
+                  svgElement.style.marginRight = "auto";
+                }
+
+                // Apply compact mode for pie charts automatically
+                if (isPieChart) {
+                  // Scale up the pie chart content and crop the whitespace
+                  svgElement.style.transform = "scale(1.8)";
+                  svgElement.style.transformOrigin = "65% center";
+
+                  // Adjust the container to hide overflow
+                  const container = svgElement.parentElement;
+                  if (container) {
+                    container.style.overflow = "hidden";
+                  }
+                }
+              }
+
+              const styleInfo = [];
+              if (customWidth || customHeight)
+                styleInfo.push(
+                  `${customWidth || "auto"} x ${customHeight || "auto"}`
+                );
+              if (customAlign) styleInfo.push(customAlign);
+              if (showBorder) styleInfo.push("bordered");
+              if (isPieChart) styleInfo.push("compact");
+
+              console.log(
+                `Successfully rendered Mermaid diagram ${i + 1}${styleInfo.length ? ` (${styleInfo.join(", ")})` : ""}`
+              );
+            } catch (error) {
+              console.warn(
+                `Mermaid rendering failed for diagram ${i + 1}, falling back to code block:`,
+                error
+              );
+
+              // If we already replaced the element, we need to restore it
+              // But since we moved the replacement logic after successful render,
+              // the original code block should still be there
+
+              // Don't replace anything - keep the original code block
+              console.log(`Diagram ${i + 1} will remain as a code block`);
+            }
+          }
+        } catch (error) {
+          console.warn(
+            "Failed to load Mermaid library, code blocks will remain as code blocks:",
+            error
+          );
+
+          // Restore copy/wrap buttons for all mermaid code blocks since they'll stay as code blocks
+          mermaidBlocks.forEach(codeElement => {
+            const preElement = codeElement.parentElement;
+            const codeBlockWrapper = preElement.parentElement;
+            if (
+              codeBlockWrapper &&
+              codeBlockWrapper.classList.contains("code-block-wrapper")
+            ) {
+              const buttonGroup = codeBlockWrapper.querySelector(
+                ".code-buttons-group"
+              );
+              if (buttonGroup && buttonGroup.style.display === "none") {
+                buttonGroup.style.display = "";
+              }
+            }
+          });
+
+          console.log(
+            "All Mermaid code blocks will remain as regular code blocks"
+          );
+        }
+      }
+
+      // Initialize on first load
+      document.addEventListener("DOMContentLoaded", initMermaidDiagrams);
+
+      // Re-initialize on Astro page transitions
+      document.addEventListener("astro:page-load", initMermaidDiagrams);
+
+      // Fallback - try to initialize after a short delay
+      setTimeout(initMermaidDiagrams, 1000);
+    </script>
+
     <Footer lang={pageLang} size={size} />
   </body>
 </html>

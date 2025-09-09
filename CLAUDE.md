@@ -59,7 +59,37 @@ Available for use in MDX posts:
 - `Note` - Highlighted note boxes
 - `Rating` - Star rating display
 - `Message` - Chat-style message bubbles with avatars
-- `Mermaid` - Interactive diagrams and charts (flowcharts, sequence diagrams, etc.) with lazy loading
+
+### Mermaid Diagrams
+Interactive diagrams and charts with client-side rendering and smart fallback:
+- **Native Markdown**: Use standard code blocks with `mermaid` language
+- **Client-side rendering**: Loads Mermaid.js from CDN only when needed
+- **Graceful fallback**: Failed diagrams remain as syntax-highlighted code blocks
+- **Auto-compact pie charts**: Pie charts automatically get optimized spacing
+
+#### Mermaid Styling Options
+Add styling options via Mermaid comments on the first line:
+
+```markdown
+```mermaid
+%% width=600 height=400 center border
+flowchart TD
+  A --> B
+```
+```
+
+**Available properties:**
+- `width=400` - Set custom width (pixels or %, e.g., `width=50%`)
+- `height=300` - Set custom height (pixels or %, e.g., `height=200`)
+- `center` - Center align the diagram (requires width)
+- `align=left|center|right` - Explicit alignment (requires width)
+- `border` - Add border, background, and shadow (card style)
+
+**Examples:**
+- `%% width=500` - 500px wide, left-aligned, no border
+- `%% width=400 center border` - 400px wide, centered with border
+- `%% height=300` - Auto width, 300px height, left-aligned
+- `%% width=600 height=400 center` - Custom size, centered
 
 ### Styling & Design
 - **Framework**: Tailwind CSS with typography plugin
