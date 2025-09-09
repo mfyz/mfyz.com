@@ -59,6 +59,7 @@ Available for use in MDX posts:
 - `Note` - Highlighted note boxes
 - `Rating` - Star rating display
 - `Message` - Chat-style message bubbles with avatars
+- `Mermaid` - Interactive diagrams and charts (flowcharts, sequence diagrams, etc.) with lazy loading
 
 ### Styling & Design
 - **Framework**: Tailwind CSS with typography plugin
@@ -81,6 +82,30 @@ Available for use in MDX posts:
 - **Git Hooks**: Pre-commit linting and formatting
 - **Content Collections**: Astro's type-safe content system with automatic language detection
 - **Internal Links**: Always use absolute paths without host (e.g., `/post-slug/` not `https://mfyz.com/post-slug/`)
+
+### Blog Post Creation Guidelines
+When creating new blog posts:
+1. **File Location**: Place posts in `src/content/blog/YYYY/` folder where YYYY is the year
+2. **File Naming**: Use format `YYYY-MM-DD-slug-name.mdx` (e.g., `2025-09-08-cdn-stacking-proxying-why-bad.mdx`)
+3. **Turkish Posts**: Place in `src/content/blog/tr/YYYY/` folder with same naming convention
+4. **Date Handling**: 
+   - If no specific date is given, check current date using `date` command
+   - If relative date is described (e.g., "tomorrow", "next week"), calculate from current date
+   - Always use the date in both the filename and front matter
+5. **Required Front Matter Fields**:
+   ```yaml
+   ---
+   title: "Post Title"
+   description: "Post description"
+   date: YYYY-MM-DD
+   slug: "url-slug"
+   tags: ["tag1", "tag2"]
+   imageURL: "https://images.unsplash.com/..." # or empty string
+   ---
+   ```
+6. **Optional Front Matter Fields**:
+   - `hidden: true` - For draft posts
+   - `language: "tr"` - Automatically set for Turkish posts based on folder
 
 ### Language & Internationalization
 - **Dual Language**: English (default) and Turkish content

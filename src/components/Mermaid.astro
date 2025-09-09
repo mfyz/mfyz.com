@@ -1,0 +1,207 @@
+---
+// Mermaid.astro - Lazy-loaded Mermaid diagram component
+
+const { title } = Astro.props;
+
+// Get the Mermaid chart definition from slot content
+const chartContent = await Astro.slots.render("default");
+// Extract the text content from the rendered HTML (removing any HTML tags)
+const chart = chartContent.replace(/<[^>]*>/g, "").trim();
+
+// Generate a unique ID for this diagram instance
+const diagramId = `mermaid-${Math.random().toString(36).substr(2, 9)}`;
+---
+
+<div class="mermaid-container my-8">
+  {
+    title && (
+      <h4 class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+        {title}
+      </h4>
+    )
+  }
+  <div
+    id={diagramId}
+    class="mermaid-diagram rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-900"
+    data-mermaid={chart}
+  >
+    <div class="flex items-center justify-center py-8 text-gray-500">
+      <svg
+        class="mr-2 h-6 w-6 animate-spin"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <circle
+          class="opacity-25"
+          cx="12"
+          cy="12"
+          r="10"
+          stroke="currentColor"
+          stroke-width="4"></circle>
+        <path
+          class="opacity-75"
+          fill="currentColor"
+          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+        ></path>
+      </svg>
+      Loading diagram...
+    </div>
+  </div>
+</div>
+
+<script client:load>
+  // Initialize Mermaid when this script loads
+  (async () => {
+    try {
+      console.log("Mermaid client script starting...");
+
+      // Wait a moment to ensure DOM is ready
+      await new Promise(resolve => {
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", resolve);
+        } else {
+          resolve();
+        }
+      });
+
+      // Dynamic import of Mermaid
+      const mermaidModule = await import("mermaid");
+      const mermaid = mermaidModule.default;
+
+      console.log("Mermaid module imported successfully");
+
+      // Configure Mermaid with theme support
+      const isDarkMode = document.documentElement.classList.contains("dark");
+
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: isDarkMode ? "dark" : "default",
+        themeVariables: {
+          primaryColor: "#8b5cf6",
+          primaryBorderColor: "#7c3aed",
+          secondaryColor: "#fbbf24",
+          tertiaryColor: "#fff",
+          background: isDarkMode ? "#1f2937" : "#ffffff",
+          mainBkg: isDarkMode ? "#1f2937" : "#ffffff",
+          secondBkg: isDarkMode ? "#374151" : "#f3f4f6",
+          tertiaryBkg: isDarkMode ? "#4b5563" : "#e5e7eb",
+          primaryTextColor: isDarkMode ? "#f3f4f6" : "#1f2937",
+          lineColor: isDarkMode ? "#6b7280" : "#d1d5db",
+          textColor: isDarkMode ? "#f3f4f6" : "#1f2937",
+          mainContrastColor: isDarkMode ? "#f3f4f6" : "#1f2937",
+          darkMode: isDarkMode,
+        },
+        flowchart: {
+          htmlLabels: true,
+          curve: "basis",
+        },
+        sequence: {
+          diagramMarginX: 50,
+          diagramMarginY: 30,
+          actorMargin: 50,
+          width: 150,
+          height: 65,
+          boxMargin: 10,
+          boxTextMargin: 5,
+          noteMargin: 10,
+          messageMargin: 35,
+        },
+      });
+
+      console.log("Mermaid initialized");
+
+      // Find all Mermaid diagram containers
+      const diagrams = document.querySelectorAll(
+        ".mermaid-diagram[data-mermaid]"
+      );
+      console.log(`Found ${diagrams.length} Mermaid diagrams to render`);
+
+      for (let i = 0; i < diagrams.length; i++) {
+        const diagram = diagrams[i];
+        const chartDefinition = diagram.getAttribute("data-mermaid");
+
+        if (chartDefinition && chartDefinition.trim()) {
+          try {
+            console.log(`Rendering diagram ${i + 1}/${diagrams.length}`);
+            console.log(
+              `Chart definition (first 100 chars):`,
+              chartDefinition.substring(0, 100)
+            );
+
+            // Clear loading state
+            diagram.innerHTML = "";
+
+            // Generate unique ID for this render
+            const uniqueId = `mermaid-diagram-${i}-${Date.now()}`;
+
+            // Render the diagram
+            const { svg } = await mermaid.render(uniqueId, chartDefinition);
+            diagram.innerHTML = svg;
+
+            // Make SVG responsive
+            const svgElement = diagram.querySelector("svg");
+            if (svgElement) {
+              svgElement.removeAttribute("height");
+              svgElement.style.maxWidth = "100%";
+              svgElement.style.height = "auto";
+            }
+
+            console.log(`Successfully rendered diagram ${i + 1}`);
+          } catch (error) {
+            console.error(`Error rendering Mermaid diagram ${i + 1}:`, error);
+            diagram.innerHTML = `
+              <div class="text-red-500 p-4 text-center">
+                <p class="font-semibold">Error rendering diagram</p>
+                <p class="text-sm mt-1">${error.message}</p>
+              </div>
+            `;
+          }
+        }
+      }
+    } catch (error) {
+      console.error("Error loading Mermaid:", error);
+      // Show error in all diagram containers
+      document
+        .querySelectorAll(".mermaid-diagram[data-mermaid]")
+        .forEach(diagram => {
+          diagram.innerHTML = `
+          <div class="text-red-500 p-4 text-center">
+            <p class="font-semibold">Failed to load diagram library</p>
+            <p class="text-sm mt-1">Check console for details: ${error.message}</p>
+          </div>
+        `;
+        });
+    }
+  })();
+</script>
+
+<style>
+  .mermaid-container {
+    @apply w-full overflow-x-auto;
+  }
+
+  .mermaid-diagram {
+    @apply min-h-[100px];
+  }
+
+  /* Ensure Mermaid diagrams are responsive */
+  .mermaid-diagram svg {
+    @apply h-auto max-w-full;
+  }
+
+  /* Override Mermaid's default styles for better integration */
+  .mermaid-diagram .node rect,
+  .mermaid-diagram .node circle,
+  .mermaid-diagram .node ellipse,
+  .mermaid-diagram .node polygon {
+    @apply transition-all duration-200;
+  }
+
+  .mermaid-diagram .node:hover rect,
+  .mermaid-diagram .node:hover circle,
+  .mermaid-diagram .node:hover ellipse,
+  .mermaid-diagram .node:hover polygon {
+    @apply opacity-80;
+  }
+</style>
