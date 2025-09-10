@@ -10,12 +10,12 @@ This is mfyz.com, a personal blog built with Astro framework featuring bilingual
 
 ### Development & Building
 - `npm run dev` or `npm start` - Start development server (includes smart server check)
-- `npm run build` - Build for production
+- `npm run build` - Build for production - Don't run build unless you are specifically asked. Build takes time and is not needed for most changes.
 - `npm run preview` - Preview production build
 - `npm run tunnel` - Expose dev server via ngrok
 
 ### Testing & Quality
-- `npm test` - Run unit tests with coverage
+- `npm test` - Run unit tests with coverage - Always run tests after making changes so you don't break anything. Running tests are fast. If test command exists non-zero it means it failes even though output looks "PASS". If you see non-zero exit code, run tests again with grepping the failure lines to find what's broken and fix them.
 - `npm run test:watch` - Run tests in watch mode
 - `npm run test:e2e` - Run Playwright end-to-end tests
 - `npm run test:e2e:ui` - Run E2E tests with UI

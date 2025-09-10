@@ -167,16 +167,11 @@ const ogImageBasedOnPath =
        * This script attaches copy and word wrap toggle buttons to code blocks in the document.
        */
 
-      console.log("Code blocks script loaded");
-
       // Initialize immediately and also on page transition with Astro
       function initCodeBlocks() {
-        console.log("Initializing code block buttons");
         const copyButtonLabel = "Copy";
         const wrapButtonLabel = "Wrap";
         const codeBlocks = Array.from(document.querySelectorAll("pre"));
-
-        console.log(`Found ${codeBlocks.length} code blocks to enhance`);
 
         for (const codeBlock of codeBlocks) {
           // Skip if this code block already has buttons
@@ -296,20 +291,9 @@ const ogImageBasedOnPath =
        * Automatically detects code blocks with 'mermaid' language and converts them to diagrams
        */
 
-      console.log("Mermaid enhancement script loaded");
-
       // Initialize Mermaid diagrams
       async function initMermaidDiagrams() {
-        console.log("Scanning for Mermaid code blocks");
-
-        // Debug: Log all code blocks and their classes
         const allCodeBlocks = Array.from(document.querySelectorAll("pre code"));
-        console.log(`Found ${allCodeBlocks.length} total code blocks`);
-        allCodeBlocks.forEach((block, i) => {
-          console.log(
-            `Code block ${i}: className="${block.className}", textContent preview="${block.textContent.substring(0, 50).trim()}"`
-          );
-        });
 
         // Try multiple selectors to find mermaid blocks
         const selectors = [
@@ -325,9 +309,6 @@ const ogImageBasedOnPath =
         for (const selector of selectors) {
           const blocks = Array.from(document.querySelectorAll(selector));
           if (blocks.length > 0) {
-            console.log(
-              `Found ${blocks.length} mermaid blocks with selector: ${selector}`
-            );
             mermaidBlocks = blocks;
             break;
           }
@@ -335,7 +316,6 @@ const ogImageBasedOnPath =
 
         // Fallback: look for code blocks that contain mermaid syntax
         if (mermaidBlocks.length === 0) {
-          console.log("No mermaid blocks found by class, checking content...");
           const potentialMermaidBlocks = allCodeBlocks.filter(block => {
             const text = block.textContent.trim().toLowerCase();
             return (
@@ -348,27 +328,17 @@ const ogImageBasedOnPath =
           });
 
           if (potentialMermaidBlocks.length > 0) {
-            console.log(
-              `Found ${potentialMermaidBlocks.length} potential mermaid blocks by content analysis`
-            );
             mermaidBlocks = potentialMermaidBlocks;
           }
         }
 
         if (mermaidBlocks.length === 0) {
-          console.log("No Mermaid diagrams found");
           return;
         }
-
-        console.log(
-          `Found ${mermaidBlocks.length} Mermaid diagram(s) to render`
-        );
 
         try {
           // Dynamically load Mermaid from CDN
           if (!window.mermaid) {
-            console.log("Loading Mermaid from CDN...");
-
             // Create and load the script
             const script = document.createElement("script");
             script.src =
@@ -380,8 +350,6 @@ const ogImageBasedOnPath =
               script.onerror = reject;
               document.head.appendChild(script);
             });
-
-            console.log("Mermaid library loaded successfully");
           }
 
           // Initialize Mermaid with theme support
@@ -432,10 +400,6 @@ const ogImageBasedOnPath =
             if (!chartDefinition) continue;
 
             try {
-              console.log(
-                `Rendering Mermaid diagram ${i + 1}/${mermaidBlocks.length}`
-              );
-
               // Store reference to button group for restoration if needed
               const codeBlockWrapper = preElement.parentElement;
               let buttonGroup = null;
@@ -454,6 +418,8 @@ const ogImageBasedOnPath =
               let customAlign = "";
               let showBorder = false;
               let compactMode = false;
+              let customScale = "";
+              let customScalePos = "";
 
               // Auto-detect pie charts for compact mode
               const isPieChart = chartDefinition
@@ -485,6 +451,12 @@ const ogImageBasedOnPath =
               if (preElement.dataset.compact !== undefined) {
                 compactMode = true;
               }
+              if (preElement.dataset.scale) {
+                customScale = preElement.dataset.scale;
+              }
+              if (preElement.dataset.scalePos) {
+                customScalePos = preElement.dataset.scalePos;
+              }
 
               // Method 2: Parse styling from HTML comment before the pre element
               let previousNode = preElement.previousSibling;
@@ -504,6 +476,10 @@ const ogImageBasedOnPath =
                 const heightMatch = comment.match(/height=["']([^"']+)["']/);
                 const alignMatch = comment.match(/align=["']([^"']+)["']/);
                 const borderMatch = comment.match(/border/);
+                const scaleMatch = comment.match(/scale=["']?([\d.]+%?)["']?/i);
+                const scalePosMatch = comment.match(
+                  /scalePos=["']?([\d.]+%?)["']?/i
+                );
 
                 if (widthMatch && !customWidth) {
                   customWidth =
@@ -524,6 +500,12 @@ const ogImageBasedOnPath =
                 if (borderMatch && !showBorder) {
                   showBorder = true;
                 }
+                if (scaleMatch && !customScale) {
+                  customScale = scaleMatch[1];
+                }
+                if (scalePosMatch && !customScalePos) {
+                  customScalePos = scalePosMatch[1];
+                }
               }
 
               // Method 3: Parse styling from first line of code if it starts with %% (mermaid comment)
@@ -535,6 +517,12 @@ const ogImageBasedOnPath =
                 const alignMatch = firstLine.match(/align=(\w+)/);
                 const centerMatch = firstLine.match(/center/);
                 const borderMatch = firstLine.match(/border/);
+                const scaleMatch = firstLine.match(
+                  /scale=["']?([\d.]+%?)["']?/i
+                );
+                const scalePosMatch = firstLine.match(
+                  /scalePos=["']?([\d.]+%?)["']?/i
+                );
 
                 if (widthMatch && !customWidth) {
                   customWidth =
@@ -557,6 +545,12 @@ const ogImageBasedOnPath =
                 }
                 if (borderMatch && !showBorder) {
                   showBorder = true;
+                }
+                if (scaleMatch && !customScale) {
+                  customScale = scaleMatch[1];
+                }
+                if (scalePosMatch && !customScalePos) {
+                  customScalePos = scalePosMatch[1];
                 }
 
                 // Remove the styling comment from chart definition
@@ -669,9 +663,33 @@ const ogImageBasedOnPath =
 
                 // Apply compact mode for pie charts automatically
                 if (isPieChart) {
+                  // Parse and apply custom scale
+                  let scaleValue = "1.8"; // default
+                  if (customScale) {
+                    // Remove quotes and validate numeric value
+                    const cleanScale = customScale.replace(/["']/g, "").trim();
+                    if (/^\d*\.?\d+$/.test(cleanScale)) {
+                      scaleValue = cleanScale;
+                    }
+                  }
+
+                  // Parse and apply custom scale position
+                  let scalePosValue = "center"; // default
+                  if (customScalePos) {
+                    // Remove quotes and handle both percentage and plain numbers
+                    const cleanScalePos = customScalePos
+                      .replace(/["']/g, "")
+                      .trim();
+                    if (/^\d*\.?\d+%?$/.test(cleanScalePos)) {
+                      scalePosValue = cleanScalePos.includes("%")
+                        ? cleanScalePos
+                        : cleanScalePos + "%";
+                    }
+                  }
+
                   // Scale up the pie chart content and crop the whitespace
-                  svgElement.style.transform = "scale(1.8)";
-                  svgElement.style.transformOrigin = "65% center";
+                  svgElement.style.transform = `scale(${scaleValue})`;
+                  svgElement.style.transformOrigin = `${scalePosValue} center`;
 
                   // Adjust the container to hide overflow
                   const container = svgElement.parentElement;
@@ -689,10 +707,6 @@ const ogImageBasedOnPath =
               if (customAlign) styleInfo.push(customAlign);
               if (showBorder) styleInfo.push("bordered");
               if (isPieChart) styleInfo.push("compact");
-
-              console.log(
-                `Successfully rendered Mermaid diagram ${i + 1}${styleInfo.length ? ` (${styleInfo.join(", ")})` : ""}`
-              );
             } catch (error) {
               console.warn(
                 `Mermaid rendering failed for diagram ${i + 1}, falling back to code block:`,
@@ -704,7 +718,6 @@ const ogImageBasedOnPath =
               // the original code block should still be there
 
               // Don't replace anything - keep the original code block
-              console.log(`Diagram ${i + 1} will remain as a code block`);
             }
           }
         } catch (error) {
@@ -729,10 +742,6 @@ const ogImageBasedOnPath =
               }
             }
           });
-
-          console.log(
-            "All Mermaid code blocks will remain as regular code blocks"
-          );
         }
       }
 

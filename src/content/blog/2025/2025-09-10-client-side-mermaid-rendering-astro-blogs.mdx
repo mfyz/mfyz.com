@@ -24,6 +24,19 @@ I wanted something simpler.
 
 Instead of all that complexity, I detect `mermaid` code blocks and replace them dynamically on the client-side. This gives me zero build impact with no server-side processing, graceful fallbacks when diagrams fail, progressive enhancement that works without JS, native markdown authoring without component imports, and flexible custom styling control with smart handling for different chart types. Bonus: my page SSR still has the source of the diagram which makes it SEO/Agent-friendly.
 
+Here is an example mermaid code block I would put in my markdown posts:
+
+````markdown
+```mermaid
+pie title "Project Status"
+  "Complete" : 60
+  "In Progress" : 30
+  "Planned" : 10
+```
+````
+
+And here is the dynamic detection, importing mermaid.js from CDN and rendering the diagram on the fly:
+
 ```javascript
 // Detect mermaid code blocks
 const mermaidBlocks = document.querySelectorAll(
@@ -66,7 +79,6 @@ pie title "Project Status"
   "Complete" : 60
   "In Progress" : 30
   "Planned" : 10
-`` `
 ```
 ````
 
@@ -249,7 +261,7 @@ flowchart TD
 And here's how I spend my day (centered, with a border):
 
 ```mermaid
-%% width=500 height=400 center border
+%% width=550 height=400 scale=2.7 scalePos=55 center border
 pie title "My Work Day"
   "Meetings": 60
   "Slack": 10
