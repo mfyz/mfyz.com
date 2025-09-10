@@ -10,12 +10,12 @@ This is mfyz.com, a personal blog built with Astro framework featuring bilingual
 
 ### Development & Building
 - `npm run dev` or `npm start` - Start development server (includes smart server check)
-- `npm run build` - Build for production
+- `npm run build` - Build for production - Don't run build unless you are specifically asked. Build takes time and is not needed for most changes.
 - `npm run preview` - Preview production build
 - `npm run tunnel` - Expose dev server via ngrok
 
 ### Testing & Quality
-- `npm test` - Run unit tests with coverage
+- `npm test` - Run unit tests with coverage - Always run tests after making changes so you don't break anything. Running tests are fast. If test command exists non-zero it means it failes even though output looks "PASS". If you see non-zero exit code, run tests again with grepping the failure lines to find what's broken and fix them.
 - `npm run test:watch` - Run tests in watch mode
 - `npm run test:e2e` - Run Playwright end-to-end tests
 - `npm run test:e2e:ui` - Run E2E tests with UI
@@ -60,6 +60,37 @@ Available for use in MDX posts:
 - `Rating` - Star rating display
 - `Message` - Chat-style message bubbles with avatars
 
+### Mermaid Diagrams
+Interactive diagrams and charts with client-side rendering and smart fallback:
+- **Native Markdown**: Use standard code blocks with `mermaid` language
+- **Client-side rendering**: Loads Mermaid.js from CDN only when needed
+- **Graceful fallback**: Failed diagrams remain as syntax-highlighted code blocks
+- **Auto-compact pie charts**: Pie charts automatically get optimized spacing
+
+#### Mermaid Styling Options
+Add styling options via Mermaid comments on the first line:
+
+```markdown
+```mermaid
+%% width=600 height=400 center border
+flowchart TD
+  A --> B
+```
+```
+
+**Available properties:**
+- `width=400` - Set custom width (pixels or %, e.g., `width=50%`)
+- `height=300` - Set custom height (pixels or %, e.g., `height=200`)
+- `center` - Center align the diagram (requires width)
+- `align=left|center|right` - Explicit alignment (requires width)
+- `border` - Add border, background, and shadow (card style)
+
+**Examples:**
+- `%% width=500` - 500px wide, left-aligned, no border
+- `%% width=400 center border` - 400px wide, centered with border
+- `%% height=300` - Auto width, 300px height, left-aligned
+- `%% width=600 height=400 center` - Custom size, centered
+
 ### Styling & Design
 - **Framework**: Tailwind CSS with typography plugin
 - **Dark Mode**: Class-based dark mode implementation
@@ -81,6 +112,30 @@ Available for use in MDX posts:
 - **Git Hooks**: Pre-commit linting and formatting
 - **Content Collections**: Astro's type-safe content system with automatic language detection
 - **Internal Links**: Always use absolute paths without host (e.g., `/post-slug/` not `https://mfyz.com/post-slug/`)
+
+### Blog Post Creation Guidelines
+When creating new blog posts:
+1. **File Location**: Place posts in `src/content/blog/YYYY/` folder where YYYY is the year
+2. **File Naming**: Use format `YYYY-MM-DD-slug-name.mdx` (e.g., `2025-09-08-cdn-stacking-proxying-why-bad.mdx`)
+3. **Turkish Posts**: Place in `src/content/blog/tr/YYYY/` folder with same naming convention
+4. **Date Handling**: 
+   - If no specific date is given, check current date using `date` command
+   - If relative date is described (e.g., "tomorrow", "next week"), calculate from current date
+   - Always use the date in both the filename and front matter
+5. **Required Front Matter Fields**:
+   ```yaml
+   ---
+   title: "Post Title"
+   description: "Post description"
+   date: YYYY-MM-DD
+   slug: "url-slug"
+   tags: ["tag1", "tag2"]
+   imageURL: "https://images.unsplash.com/..." # or empty string
+   ---
+   ```
+6. **Optional Front Matter Fields**:
+   - `hidden: true` - For draft posts
+   - `language: "tr"` - Automatically set for Turkish posts based on folder
 
 ### Language & Internationalization
 - **Dual Language**: English (default) and Turkish content

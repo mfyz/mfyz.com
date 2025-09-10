@@ -1,0 +1,206 @@
+---
+title: "CDN Stacking & Proxying: Why It's a Bad Idea"
+description: "Learn why chaining multiple CDNs together creates more problems than it solves, and discover better approaches to content delivery optimization."
+date: 2025-09-08
+slug: "cdn-stacking-proxying-why-bad"
+tags: ["cdn", "performance", "infrastructure", "networking", "web-optimization"]
+hidden: true
+---
+
+Ever wondered what happens when you try to make your website "super fast" by using multiple CDNs at once? Spoiler: it's like adding more wheels to your car thinking it'll go faster.
+
+## What Is CDN Stacking?
+
+CDN stacking is routing traffic through multiple CDNs in sequence:
+
+```mermaid
+graph LR
+  U[User] --> C[Cloudflare]
+  C --> F[Fastly]
+  F --> CF[CloudFront]
+  CF --> O[Origin Server]
+  style U fill:#e1f5fe
+  style O fill:#fff3e0
+```
+
+People think this gives them the "best of all worlds" – DDoS protection + edge computing + AWS integration. Reality: it's taking three highways to reach one destination.
+
+## The 6 Major Problems
+
+### 1. Increased Latency
+
+```mermaid
+%% width=500
+graph TD
+  subgraph "Single CDN"
+    U1[User] -->|20ms| CDN1[CDN Edge]
+    CDN1 -->|30ms| O1[Origin]
+  end
+  subgraph "Stacked CDNs"
+    U2[User] -->|20ms| C1[CDN 1]
+    C1 -->|15ms| C2[CDN 2]
+    C2 -->|15ms| C3[CDN 3]
+    C3 -->|30ms| O2[Origin]
+  end
+  O1 -.->|"Total: 50ms"| X1[✓ Fast]
+  O2 -.->|"Total: 80ms"| X2[✗ 60% Slower]
+  style X1 fill:#c8e6c9
+  style X2 fill:#ffcdd2
+```
+
+### 2. Cache Invalidation Hell
+
+```mermaid
+sequenceDiagram
+  participant Dev as Developer
+  participant CDN1
+  participant CDN2
+  participant CDN3
+  participant User
+  Dev->>CDN1: Purge cache
+  Note over CDN1: Wait 2-5 min
+  CDN1-->>User: ❌ Old content
+  Dev->>CDN2: Purge cache
+  Note over CDN2: Wait 2-5 min
+  CDN2-->>User: ❌ Old content
+  Dev->>CDN3: Purge cache
+  Note over CDN3: Wait 2-5 min
+  CDN3-->>User: ✅ New content
+  Note over User: 15+ minutes of inconsistent content!
+```
+
+### 3. Debugging Nightmare
+
+Each CDN layer has separate:
+
+- Logs & monitoring dashboards
+- Custom headers & error pages
+- Rate limiting rules
+- Security configurations
+
+Finding one 503 error source = hours of detective work.
+
+### 4. Cost Multiplication
+
+```mermaid
+%% width=600 height=400 center
+pie title "Monthly CDN Costs"
+  "Bandwidth x3" : 35
+  "Request fees x3" : 25
+  "Storage x3" : 20
+  "Support contracts x3" : 20
+```
+
+Real example: $8,000/month for stacked CDNs vs $2,000 for single CDN.
+
+### 5. SSL/TLS Certificate Chaos
+
+- Multiple certificate renewals
+- Inter-CDN handshake failures
+- Extra TLS negotiation time
+
+### 6. Header Corruption
+
+Headers get modified, stripped, duplicated, or reordered. Authentication breaks when CDN #2 strips what CDN #1 adds.
+
+## Real Horror Story
+
+**Black Friday Price Disaster:**
+
+- CDN #1: 1-hour cache
+- CDN #2: 30-minute cache
+- CDN #3: 2-hour cache
+
+Result: Three different prices shown simultaneously. Millions lost.
+
+## Better Alternatives
+
+### Option 1: Parallel Multi-CDN (Not Stacked!)
+
+```mermaid
+%% height=400
+graph TB
+  DNS[DNS Load Balancer]
+  DNS -->|50% traffic| Path1[Cloudflare]
+  DNS -->|50% traffic| Path2[Fastly]
+  Path1 --> O1[Origin]
+  Path2 --> O1
+  style DNS fill:#e3f2fd
+  style O1 fill:#fff3e0
+```
+
+### Option 2: Origin Shield Pattern
+
+```mermaid
+graph LR
+  U[Users] --> E[CDN Edge Nodes]
+  E --> S[Origin Shield]
+  S --> O[Origin Server]
+  style S fill:#fce4ec
+  style O fill:#fff3e0
+```
+
+Reduces origin load without vendor complexity.
+
+### Option 3: Optimize Single CDN
+
+Instead of stacking:
+
+- Configure proper cache headers
+- Use edge workers for logic
+- Enable HTTP/3
+- Set up smart purging
+
+## When Multiple CDNs Make Sense
+
+✅ **Legitimate uses:**
+
+- A/B testing providers (parallel, not stacked)
+- Different CDNs for different content types
+- Gradual migration periods
+
+```mermaid
+%% width=450
+graph TD
+  subgraph "Good: Content-based routing"
+    R[Router]
+    R -->|Static assets| CDN_A
+    R -->|Video streams| CDN_B
+    R -->|API calls| CDN_C
+    CDN_A --> O[Origin]
+    CDN_B --> O
+    CDN_C --> O
+  end
+```
+
+## The Right Approach
+
+```mermaid
+flowchart TD
+  Start([Need better performance?])
+  Start --> Audit[CDN properly configured?]
+  Audit -->|No| Config[Fix configuration]
+  Audit -->|Yes| Features[Using CDN features?]
+  Features -->|No| Enable[Enable optimizations]
+  Features -->|Yes| Monitor[Monitoring in place?]
+  Monitor -->|No| Setup[Setup monitoring]
+  Monitor -->|Yes| Origin[Origin optimized?]
+  Origin -->|No| Optimize[Optimize backend]
+  Origin -->|Yes| Done([Performance optimized!])
+  Config --> Done
+  Enable --> Done
+  Setup --> Done
+  Optimize --> Done
+  style Start fill:#e1f5fe
+  style Done fill:#c8e6c9
+```
+
+## Key Takeaways
+
+1. **One well-configured CDN > Multiple stacked CDNs**
+2. **Complexity ≠ Performance**
+3. **Monitor first, add complexity last**
+
+CDN stacking is like wearing three winter coats – you're not warmer, just unable to move. Keep it simple, configure it well, and your users (and ops team) will thank you.
+
+Have you seen CDN stacking disasters? Share your stories!
