@@ -70,26 +70,22 @@ Interactive diagrams and charts with client-side rendering and smart fallback:
 #### Mermaid Styling Options
 Add styling options via Mermaid comments on the first line:
 
-```markdown
+````markdown
 ```mermaid
 %% width=600 height=400 center border
 flowchart TD
   A --> B
 ```
-```
+````
 
-**Available properties:**
+**Available mermaid styling properties:**
 - `width=400` - Set custom width (pixels or %, e.g., `width=50%`)
 - `height=300` - Set custom height (pixels or %, e.g., `height=200`)
 - `center` - Center align the diagram (requires width)
 - `align=left|center|right` - Explicit alignment (requires width)
 - `border` - Add border, background, and shadow (card style)
-
-**Examples:**
-- `%% width=500` - 500px wide, left-aligned, no border
-- `%% width=400 center border` - 400px wide, centered with border
-- `%% height=300` - Auto width, 300px height, left-aligned
-- `%% width=600 height=400 center` - Custom size, centered
+- `scale=2.7` - Set custom scale (decimal)
+- `scalePos=60%` - Set custom scale X position (percentage) - Only for pie charts
 
 ### Styling & Design
 - **Framework**: Tailwind CSS with typography plugin
@@ -130,7 +126,6 @@ When creating new blog posts:
    date: YYYY-MM-DD
    slug: "url-slug"
    tags: ["tag1", "tag2"]
-   imageURL: "https://images.unsplash.com/..." # or empty string
    ---
    ```
 6. **Optional Front Matter Fields**:

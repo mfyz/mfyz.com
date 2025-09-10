@@ -4,7 +4,7 @@ export default getViteConfig({
   test: {
     globals: true,
     environment: 'node',
-    exclude: ['**/node_modules/**', '**/e2e/**', '**/.astro/**', '**/dist/**'],
+    exclude: ['**/node_modules/**', '**/e2e/**', '**/.astro/**', '**/dist/**', '**/DELETE_*/**', '**/DELETE_*.js', '**/DOUBLE_DELETE_*/**', '**/DOUBLE_DELETE_*.js'],
     deps: {
       optimizer: {
         ssr: {
@@ -37,7 +37,9 @@ export default getViteConfig({
         '**/*.test.{js,ts}', 
         '**/*.spec.{js,ts}', 
         '**/index.{js,ts}',
-        '**/node_modules/**'
+        '**/node_modules/**',
+        '**/DELETE_*', // Exclude files marked for deletion
+        '**/public/js/**' // Exclude public JS files from coverage (tested via utility tests)
       ],
       all: true, // Report coverage for all files in included directories, not just imported ones
     }
