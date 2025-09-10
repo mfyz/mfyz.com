@@ -9,7 +9,7 @@ export default {
     'py-1', 'px-2', 'text-xs', 'text-white', 'font-medium',
     'rounded-l', 'rounded-r', 'border-r', 'border-gray-400', 'dark:border-gray-600',
     'whitespace-pre-wrap', 'active-button', 'copied',
-    'code-buttons-group', 'code-block-wrapper',
+    'code-buttons-group', 'code-block-wrapper', 'font-size-code', 'tooltip',
     // Mermaid classes
     'mermaid-container', 'mermaid-diagram'
   ],

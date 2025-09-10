@@ -9,6 +9,7 @@
 function initCodeBlocks() {
   const copyButtonLabel = "Copy";
   const wrapButtonLabel = "Wrap";
+  const fontSizeButtonLabel = "Font Size";
   const codeBlocks = Array.from(document.querySelectorAll("pre"));
 
   for (const codeBlock of codeBlocks) {
@@ -25,22 +26,35 @@ function initCodeBlocks() {
     // Create button group container
     const buttonGroup = document.createElement("div");
     buttonGroup.className =
-      "code-buttons-group absolute right-3 -top-3 flex rounded overflow-hidden";
+      "code-buttons-group absolute right-3 -top-3 flex rounded";
 
-    // Create word wrap toggle button (first in the group) - icon only
+    // Create font size toggle button (first in the group) - icon only
+    const fontSizeButton = document.createElement("button");
+    fontSizeButton.className =
+      "font-size-code tooltip bg-gray-500 dark:bg-gray-700 hover:bg-gray-600 dark:hover:bg-gray-600 py-1 px-2 text-xs text-white font-medium rounded-l flex items-center justify-center";
+    fontSizeButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/><path d="M16 12h6"/><path d="M19 9v6"/></svg>`;
+    fontSizeButton.setAttribute("aria-label", fontSizeButtonLabel);
+    fontSizeButton.setAttribute("aria-pressed", "false");
+    fontSizeButton.setAttribute("data-tooltip", "Toggle small font size");
+
+    // Create first divider
+    const divider1 = document.createElement("div");
+    divider1.className = "border-r border-gray-400 dark:border-gray-600";
+
+    // Create word wrap toggle button (second in the group) - icon only
     const wrapButton = document.createElement("button");
     wrapButton.className =
-      "wrap-code bg-gray-500 dark:bg-gray-700 hover:bg-gray-600 dark:hover:bg-gray-600 py-1 px-2 text-xs text-white font-medium rounded-l flex items-center justify-center";
+      "wrap-code tooltip bg-gray-500 dark:bg-gray-700 hover:bg-gray-600 dark:hover:bg-gray-600 py-1 px-2 text-xs text-white font-medium flex items-center justify-center";
     wrapButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M3 6h18"/><path d="M3 12h10"/><path d="M3 18h18"/><path d="M17 12v6"/><path d="M17 12l-4 4"/><path d="M17 12l4 4"/></svg>`;
     wrapButton.setAttribute("aria-label", wrapButtonLabel);
     wrapButton.setAttribute("aria-pressed", "false");
-    wrapButton.setAttribute("title", "Toggle word wrap");
+    wrapButton.setAttribute("data-tooltip", "Toggle word wrap");
 
-    // Create divider between buttons
-    const divider = document.createElement("div");
-    divider.className = "border-r border-gray-400 dark:border-gray-600";
+    // Create second divider
+    const divider2 = document.createElement("div");
+    divider2.className = "border-r border-gray-400 dark:border-gray-600";
 
-    // Create copy button (second in the group) - icon with text
+    // Create copy button (third in the group) - icon with text
     const copyButton = document.createElement("button");
     copyButton.className =
       "copy-code bg-gray-500 dark:bg-gray-700 hover:bg-gray-600 dark:hover:bg-gray-600 py-1 px-2 text-xs text-white font-medium rounded-r flex items-center";
@@ -80,6 +94,35 @@ function initCodeBlocks() {
       }
     });
 
+    // Toggle font size on click
+    fontSizeButton.addEventListener("click", () => {
+      const isPressed = fontSizeButton.getAttribute("aria-pressed") === "true";
+      const newPressedState = !isPressed;
+      fontSizeButton.setAttribute("aria-pressed", newPressedState.toString());
+
+      if (newPressedState) {
+        code.style.fontSize = "0.7em";
+        code.style.lineHeight = "1.2";
+        code.style.setProperty("line-height", "1.2", "important"); // Override any existing line-height
+        codeBlock.style.lineHeight = "1.2"; // Also apply to pre element
+        codeBlock.style.setProperty("line-height", "1.2", "important");
+        fontSizeButton.classList.add("active-button");
+        fontSizeButton.classList.add("bg-blue-600", "dark:bg-blue-800");
+        fontSizeButton.classList.remove("bg-gray-500", "dark:bg-gray-700");
+        fontSizeButton.setAttribute("data-tooltip", "Reset font size");
+      } else {
+        code.style.fontSize = "";
+        code.style.lineHeight = "";
+        code.style.removeProperty("line-height");
+        codeBlock.style.lineHeight = "";
+        codeBlock.style.removeProperty("line-height");
+        fontSizeButton.classList.remove("active-button");
+        fontSizeButton.classList.remove("bg-blue-600", "dark:bg-blue-800");
+        fontSizeButton.classList.add("bg-gray-500", "dark:bg-gray-700");
+        fontSizeButton.setAttribute("data-tooltip", "Toggle small font size");
+      }
+    });
+
     // Copy to clipboard on click
     copyButton.addEventListener("click", () => {
       navigator.clipboard.writeText(originalCode);
@@ -96,8 +139,10 @@ function initCodeBlocks() {
     });
 
     // Add buttons to button group
+    buttonGroup.appendChild(fontSizeButton);
+    buttonGroup.appendChild(divider1);
     buttonGroup.appendChild(wrapButton);
-    buttonGroup.appendChild(divider);
+    buttonGroup.appendChild(divider2);
     buttonGroup.appendChild(copyButton);
 
     // Add button group to wrapper
