@@ -9,8 +9,8 @@
  */
 import http from 'http';
 
-// Get the port from command line args or use default
-const PORT = process.argv[2] || 4321;
+// Get the port from command line args, env var, or use default
+const PORT = process.argv[2] || process.env.PORT || 6543;
 const HOST = 'localhost';
 
 console.log(`Checking if server is already running on ${HOST}:${PORT}...`);

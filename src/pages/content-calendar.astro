@@ -1,0 +1,719 @@
+---
+import "../styles/global.css";
+import { getPosts } from "@utils/getPosts.ts";
+
+// Hide this utility page on production builds
+if (import.meta.env.PROD) {
+  return Astro.redirect("/404");
+}
+
+// Fetch all posts, including hidden/WIP
+const allPosts = await getPosts({
+  includeHidden: true,
+  sorted: true,
+  language: "all",
+});
+
+// Build a lightweight date -> posts map for the client
+function toKey(d) {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
+
+// Parse a frontmatter date as a LOCAL calendar day to avoid timezone shifts.
+// If value is 'YYYY-MM-DD', create new Date(y, m-1, d) which is local midnight.
+function parseLocalYmd(value) {
+  if (value instanceof Date) {
+    // Normalize using UTC components to avoid local timezone shifting the calendar day
+    const y = value.getUTCFullYear();
+    const mo = value.getUTCMonth();
+    const d = value.getUTCDate();
+    return new Date(y, mo, d);
+  }
+  if (typeof value === "string") {
+    const m = value.match(/^\s*(\d{4})-(\d{2})-(\d{2})/);
+    if (m) {
+      const y = Number(m[1]);
+      const mo = Number(m[2]) - 1;
+      const d = Number(m[3]);
+      return new Date(y, mo, d);
+    }
+  }
+  // Fallback: construct and then normalize to local date
+  const d = new Date(value);
+  return new Date(d.getFullYear(), d.getMonth(), d.getDate());
+}
+
+const postsByDate = {};
+for (const post of allPosts) {
+  const d = parseLocalYmd(post.data.date);
+  const key = toKey(d);
+  const isTrPath = String(post.id).startsWith("tr/");
+  const langField = post && post.data && post.data["lang"];
+  const isTrLang =
+    typeof langField === "string" && langField.toLowerCase() === "tr";
+  const lang = isTrLang || isTrPath ? "tr" : "en";
+  const entry = {
+    title: post.data.title,
+    lang,
+    hidden: !!post.data.hidden,
+    slug: post.slug,
+  };
+  if (!postsByDate[key]) postsByDate[key] = [];
+  postsByDate[key].push(entry);
+}
+
+// Stats
+const totalCount = allPosts.length;
+const trCount = allPosts.filter(p => {
+  const isTrPath = String(p.id).startsWith("tr/");
+  const langField = p && p.data && p.data["lang"];
+  const isTrLang =
+    typeof langField === "string" && langField.toLowerCase() === "tr";
+  return isTrPath || isTrLang;
+}).length;
+const enCount = totalCount - trCount;
+const hiddenCount = allPosts.filter(p => !!p.data.hidden).length;
+
+// Initial period
+const currentDate = new Date();
+const currentYear = currentDate.getFullYear();
+const currentMonth = currentDate.getMonth();
+---
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Content Calendar | mfyz</title>
+  <meta
+    name="description"
+    content="Overview of published and planned posts by date. Year and month calendar views for quick scanning."
+  />
+  <meta property="og:title" content="Content Calendar" />
+  <meta
+    property="og:description"
+    content="Overview of published and planned posts by date."
+  />
+</head>
+
+<section class="w-full px-3 md:px-4 lg:px-6">
+  <div
+    class="mb-3 flex items-center gap-2 rounded-md border border-gray-200 bg-white p-2 text-sm shadow-sm"
+  >
+    <a
+      href="/"
+      class="inline-flex items-center rounded border border-gray-300 bg-white p-1 hover:bg-gray-50"
+      title="Home"
+      aria-label="Home"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        class="h-4 w-4"
+      >
+        <path
+          d="M12 3.172 2.586 12.586a2 2 0 0 0 1.414 3.414H6v5a1 1 0 0 0 1 1h4v-6h2v6h4a1 1 0 0 0 1-1v-5h2a2 2 0 0 0 1.414-3.414L12 3.172z"
+        ></path>
+      </svg>
+    </a>
+    <h1 class="font-secondary text-lg font-normal">Content Calendar</h1>
+    <div class="ml-auto flex items-center gap-1">
+      <button
+        id="viewYear"
+        class="btn inline-flex items-center rounded border border-gray-300 bg-white px-2 py-1 text-xs hover:bg-gray-50 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600"
+        >Year</button
+      >
+      <button
+        id="viewMonth"
+        class="btn inline-flex items-center rounded border border-gray-300 bg-white px-2 py-1 text-xs hover:bg-gray-50 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600"
+        >Month</button
+      >
+      <span class="mx-2 text-gray-300 dark:text-gray-600">|</span>
+      <button
+        id="prevPeriod"
+        class="btn inline-flex items-center rounded border border-gray-300 bg-white px-2 py-1 text-xs hover:bg-gray-50 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600"
+        aria-label="Previous"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          class="h-4 w-4"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M15.75 19.5L8.25 12l7.5-7.5"></path>
+        </svg>
+      </button>
+      <button
+        id="today"
+        class="btn inline-flex items-center rounded border border-blue-500 bg-blue-50 px-2 py-1 text-xs text-blue-700 hover:bg-blue-100 dark:border-blue-600 dark:bg-blue-900/30 dark:text-blue-300"
+        >Today</button
+      >
+      <button
+        id="nextPeriod"
+        class="btn inline-flex items-center rounded border border-gray-300 bg-white px-2 py-1 text-xs hover:bg-gray-50 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600"
+        aria-label="Next"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          class="h-4 w-4"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M8.25 4.5L15.75 12l-7.5 7.5"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div
+    id="periodLabel"
+    class="mb-2 text-center text-sm font-medium text-gray-600"
+  >
+  </div>
+  <div id="calendar" class="calendar-container"></div>
+
+  <div
+    class="mt-3 flex flex-wrap items-center gap-4 rounded-md border border-gray-200 bg-white p-3 text-xs text-gray-600 shadow-sm"
+  >
+    <div><strong class="text-gray-900">Total:</strong> {totalCount}</div>
+    <div><strong class="text-gray-900">English:</strong> {enCount}</div>
+    <div><strong class="text-gray-900">Turkish:</strong> {trCount}</div>
+    <div><strong class="text-gray-900">Hidden:</strong> {hiddenCount}</div>
+    <div class="ml-auto flex items-center gap-2">
+      <span class="inline-flex items-center gap-1"
+        ><span class="h-2 w-2 rounded-full bg-blue-500"></span> EN</span
+      >
+      <span class="inline-flex items-center gap-1"
+        ><span class="h-2 w-2 rounded-full bg-orange-500"></span> TR</span
+      >
+      <span class="inline-flex items-center gap-1"
+        ><span class="h-2 w-2 rounded-full bg-gray-400"></span> Hidden</span
+      >
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ postsByDate, currentYear, currentMonth }}>
+  let viewMode = "year";
+  let currentYearView = currentYear;
+  let currentMonthView = currentMonth;
+
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  // Monday-start calendar
+  const weekdayNames = ["M", "T", "W", "T", "F", "S", "S"];
+
+  // Initialize from URL (persist view & period)
+  (function initFromUrl() {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const v = params.get("view");
+      const y = parseInt(params.get("y") || "");
+      const m = parseInt(params.get("m") || "");
+      if (v === "month") {
+        viewMode = "month";
+        if (!Number.isNaN(y)) currentYearView = y;
+        if (!Number.isNaN(m)) currentMonthView = Math.min(11, Math.max(0, m));
+      } else if (v === "year") {
+        viewMode = "year";
+        if (!Number.isNaN(y)) currentYearView = y;
+      }
+    } catch (_) {
+      // ignore
+    }
+  })();
+
+  function getDaysInMonth(year, month) {
+    return new Date(year, month + 1, 0).getDate();
+  }
+
+  function getFirstDayOfMonth(year, month) {
+    // JS getDay(): 0=Sun..6=Sat. Convert to Monday-start index 0..6
+    const dow = new Date(year, month, 1).getDay();
+    return (dow + 6) % 7;
+  }
+
+  function formatDate(date) {
+    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+  }
+
+  function renderMonth(year, month, isFullView = false) {
+    const daysInMonth = getDaysInMonth(year, month);
+    const firstDay = getFirstDayOfMonth(year, month);
+    const daysInPrevMonth =
+      month === 0
+        ? getDaysInMonth(year - 1, 11)
+        : getDaysInMonth(year, month - 1);
+
+    let html = '<div class="month-grid">';
+    html += `<div class="month-header">${monthNames[month]} ${year}</div>`;
+    html += '<div class="weekdays">';
+    for (const day of weekdayNames) {
+      html += `<div>${day}</div>`;
+    }
+    html += "</div>";
+    html += '<div class="days-grid">';
+
+    const today = formatDate(new Date());
+
+    for (let i = firstDay - 1; i >= 0; i--) {
+      const day = daysInPrevMonth - i;
+      const prevMonth = month === 0 ? 11 : month - 1;
+      const prevYear = month === 0 ? year - 1 : year;
+      const dateStr = formatDate(new Date(prevYear, prevMonth, day));
+      html += renderDayCell(
+        dateStr,
+        day,
+        true,
+        dateStr === today,
+        isFullView,
+        today
+      );
+    }
+
+    for (let day = 1; day <= daysInMonth; day++) {
+      const dateStr = formatDate(new Date(year, month, day));
+      html += renderDayCell(
+        dateStr,
+        day,
+        false,
+        dateStr === today,
+        isFullView,
+        today
+      );
+    }
+
+    const totalCells = firstDay + daysInMonth;
+    const remainingCells = totalCells % 7 === 0 ? 0 : 7 - (totalCells % 7);
+    for (let day = 1; day <= remainingCells; day++) {
+      const nextMonth = month === 11 ? 0 : month + 1;
+      const nextYear = month === 11 ? year + 1 : year;
+      const dateStr = formatDate(new Date(nextYear, nextMonth, day));
+      html += renderDayCell(
+        dateStr,
+        day,
+        true,
+        dateStr === today,
+        isFullView,
+        today
+      );
+    }
+
+    html += "</div></div>";
+    return html;
+  }
+
+  function renderDayCell(
+    dateStr,
+    dayNum,
+    isOtherMonth,
+    isToday,
+    isFullView,
+    todayStr
+  ) {
+    const posts = postsByDate[dateStr] || [];
+    let className = "day-cell";
+    if (isOtherMonth) className += " other-month";
+    if (isToday) className += " today";
+    const hasHidden = posts.some(p => p.hidden);
+    const hasRegular = posts.some(p => !p.hidden);
+    const isPastDay = todayStr ? dateStr < todayStr : false;
+    const isFutureDay = todayStr ? dateStr > todayStr : false;
+    // Apply highlight rules for both views
+    if (hasHidden && isPastDay) className += " has-hidden-past";
+    else if (hasHidden && isFutureDay) className += " has-hidden-future";
+    else if (hasRegular && (isPastDay || isToday))
+      className += " has-regular-past";
+
+    let html = `<div class="${className}">`;
+    html += `<div class="day-number">${dayNum}</div>`;
+
+    if (posts.length > 0) {
+      if (isFullView) {
+        html += '<div class="post-list">';
+        for (const post of posts) {
+          const lang = post.lang === "tr" ? "turkish" : "english";
+          const hidden = post.hidden ? " hidden" : "";
+          const title = post.title;
+          html += `<div class="post-item ${lang}${hidden}" data-title="${post.title}" data-slug="${post.slug}">${title}</div>`;
+        }
+        html += "</div>";
+      } else {
+        // Year view: show compact dots
+        html += '<div class="post-list">';
+        for (const post of posts) {
+          const lang = post.lang === "tr" ? "turkish" : "english";
+          const hidden = post.hidden ? " hidden" : "";
+          const safeTitle = post.title.replace(/"/g, "&quot;");
+          html += `<span class="post-dot tooltip ${lang}${hidden}" data-tooltip="${safeTitle}" title="${safeTitle}" aria-label="${safeTitle}" data-slug="${post.slug}" data-hidden="${post.hidden ? "1" : "0"}"></span>`;
+        }
+        html += "</div>";
+      }
+    }
+
+    html += "</div>";
+    return html;
+  }
+
+  function renderCalendar() {
+    const calendar = document.getElementById("calendar");
+    const periodLabel = document.getElementById("periodLabel");
+
+    if (viewMode === "year") {
+      calendar.className = "calendar-container calendar-year";
+      periodLabel.textContent = currentYearView.toString();
+
+      let html = "";
+      for (let month = 0; month < 12; month++) {
+        html += renderMonth(currentYearView, month, false);
+      }
+      calendar.innerHTML = html;
+    } else if (viewMode === "month") {
+      calendar.className = "calendar-container month-view";
+
+      // Determine prev and next months with year rollover
+      const prevMonth = (currentMonthView + 11) % 12;
+      const prevYear =
+        currentMonthView === 0 ? currentYearView - 1 : currentYearView;
+      const nextMonth = (currentMonthView + 1) % 12;
+      const nextYear =
+        currentMonthView === 11 ? currentYearView + 1 : currentYearView;
+
+      const titles = [
+        `${monthNames[prevMonth]} ${prevYear}`,
+        `${monthNames[currentMonthView]} ${currentYearView}`,
+        `${monthNames[nextMonth]} ${nextYear}`,
+      ];
+      periodLabel.textContent = titles.join(" • ");
+
+      let html = "";
+      html += renderMonth(prevYear, prevMonth, true);
+      html += renderMonth(currentYearView, currentMonthView, true);
+      html += renderMonth(nextYear, nextMonth, true);
+      calendar.innerHTML = html;
+    }
+
+    document.querySelectorAll(".post-item").forEach(item => {
+      item.addEventListener("click", function () {
+        const slug = this.dataset.slug;
+        let url = `/${slug}/`;
+        if (this.classList.contains("hidden")) {
+          url += (url.includes("?") ? "&" : "?") + "preview=1";
+        }
+        window.open(url, "_blank");
+      });
+    });
+
+    // Clickable dots in year view (open post, respect hidden preview)
+    document.querySelectorAll(".post-dot").forEach(dot => {
+      dot.addEventListener("click", function () {
+        const slug = this.dataset.slug;
+        if (!slug) return;
+        let url = `/${slug}/`;
+        const isHidden =
+          this.dataset.hidden === "1" || this.classList.contains("hidden");
+        if (isHidden) {
+          url += (url.includes("?") ? "&" : "?") + "preview=1";
+        }
+        window.open(url, "_blank");
+      });
+    });
+
+    // Persist to URL
+    writeStateToUrl();
+  }
+
+  function updateButtonStates() {
+    document
+      .querySelectorAll(".btn")
+      .forEach(btn => btn.classList.remove("active"));
+    if (viewMode === "year")
+      document.getElementById("viewYear").classList.add("active");
+    else if (viewMode === "month")
+      document.getElementById("viewMonth").classList.add("active");
+  }
+
+  document.getElementById("viewYear").addEventListener("click", () => {
+    viewMode = "year";
+    updateButtonStates();
+    renderCalendar();
+  });
+  document.getElementById("viewMonth").addEventListener("click", () => {
+    viewMode = "month";
+    updateButtonStates();
+    renderCalendar();
+  });
+
+  document.getElementById("prevPeriod").addEventListener("click", () => {
+    if (viewMode === "year") {
+      currentYearView--;
+    } else if (viewMode === "month") {
+      currentMonthView--;
+      if (currentMonthView < 0) {
+        currentMonthView = 11;
+        currentYearView--;
+      }
+    }
+    renderCalendar();
+  });
+
+  document.getElementById("nextPeriod").addEventListener("click", () => {
+    if (viewMode === "year") {
+      currentYearView++;
+    } else if (viewMode === "month") {
+      currentMonthView++;
+      if (currentMonthView > 11) {
+        currentMonthView = 0;
+        currentYearView++;
+      }
+    }
+    renderCalendar();
+  });
+
+  document.getElementById("today").addEventListener("click", () => {
+    const today = new Date();
+    currentYearView = today.getFullYear();
+    currentMonthView = today.getMonth();
+    renderCalendar();
+  });
+
+  updateButtonStates();
+  renderCalendar();
+
+  function writeStateToUrl() {
+    const params = new URLSearchParams();
+    params.set("view", viewMode);
+    if (viewMode === "year") {
+      params.set("y", String(currentYearView));
+    } else if (viewMode === "month") {
+      params.set("y", String(currentYearView));
+      params.set("m", String(currentMonthView));
+    }
+    const newUrl = `${location.pathname}?${params.toString()}`;
+    history.replaceState(null, "", newUrl);
+  }
+</script>
+
+<style is:global>
+  .btn.active {
+    border-color: #3b82f6;
+    background: #eff6ff;
+    color: #1d4ed8;
+  }
+  .dark .btn.active {
+    border-color: #2563eb;
+    background: rgba(30, 58, 138, 0.3);
+    color: #93c5fd;
+  }
+
+  .calendar-container {
+    display: grid;
+    gap: 12px;
+  }
+  .calendar-year {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  @media (max-width: 1024px) {
+    .calendar-year {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media (max-width: 768px) {
+    .calendar-year {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .month-grid {
+    background: var(--month-bg, #fff);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    overflow: visible;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  }
+  .month-header {
+    background: #f1f5f9;
+    color: #6b7280;
+    text-align: center;
+    padding: 8px;
+    font-weight: 600;
+    font-size: 13px;
+    margin: 0;
+    letter-spacing: normal;
+  }
+  .weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background: #e5e7eb;
+    margin: 0;
+  }
+  .weekdays > div {
+    padding: 6px 4px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 11px;
+    border-right: 1px solid #d1d5db;
+    border-bottom: 1px solid #d1d5db;
+  }
+  .weekdays > div:last-child {
+    border-right: none;
+  }
+  .days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+  }
+  .day-cell {
+    background: white;
+    min-height: 42px;
+    padding: 4px;
+    border-right: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .day-cell:nth-child(7n) {
+    border-right: none;
+  }
+  .day-cell.other-month {
+    background: #fafafa;
+    color: #bdbdbd;
+  }
+  .day-cell.has-hidden-future {
+    background: #fef3c7;
+  }
+  .day-cell.has-hidden-past {
+    background: #fca5a5;
+  }
+  .day-cell.has-regular-past {
+    background: #dcfce7;
+  }
+  .day-cell.today {
+    outline: 2px solid #3b82f6;
+    outline-offset: -2px;
+  }
+  .day-number {
+    font-size: 11px;
+    font-weight: 600;
+    color: #6b7280;
+    line-height: 1;
+    margin-bottom: 2px;
+    letter-spacing: normal;
+  }
+  .day-cell.other-month .day-number {
+    color: #bdbdbd;
+  }
+  .post-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    margin-top: 2px;
+  }
+  .post-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 9999px;
+    display: inline-block;
+  }
+  .calendar-year .post-dot {
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+  }
+
+  .post-dot.english {
+    background: #3b82f6;
+  }
+  .post-dot.turkish {
+    background: #f59e0b;
+  }
+  .post-dot.hidden {
+    background: #a855f7;
+  }
+
+  .month-view .day-cell {
+    min-height: 88px;
+    padding: 6px;
+  }
+  .month-view .day-number {
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  .month-view .post-item {
+    font-size: 12px;
+    padding: 2px 6px;
+    margin: 2px 0;
+    border-radius: 3px;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+    cursor: pointer;
+    width: 100%;
+    display: block;
+    line-height: 1.35;
+    word-break: break-word;
+  }
+  .month-view .post-item.english {
+    background: #dbeafe;
+    color: #1e40af;
+  }
+  .month-view .post-item.turkish {
+    background: #ffedd5;
+    color: #9a3412;
+  }
+  .month-view .post-item.hidden {
+    background: #ede9fe;
+    color: #6d28d9;
+  }
+
+  /* Tighter tooltip padding for calendar only */
+  .calendar-container .tooltip::before {
+    padding: 2px 6px;
+  }
+
+  /* Smaller tiles in year view */
+  .calendar-year .month-header {
+    font-size: 12px;
+    padding: 6px;
+  }
+  .calendar-year .weekdays > div {
+    padding: 4px 2px;
+    font-size: 10px;
+  }
+  .calendar-year .day-cell {
+    min-height: 50px;
+    padding: 3px;
+  }
+</style>

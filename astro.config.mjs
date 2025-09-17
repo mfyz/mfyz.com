@@ -20,6 +20,10 @@ const shikiConfig = {
 // https://astro.build/config
 export default defineConfig({
   site: "https://mfyz.com",
+  server: {
+    port: parseInt(process.env.PORT || '6543'),
+    host: true
+  },
   integrations: [
     mdx({
       remarkPlugins: [remarkToc, remarkEmoticons],
@@ -58,5 +62,6 @@ export default defineConfig({
       })
     ]
   },
-  output: "static"
+  output: "static",
+  adapter: undefined
 });
