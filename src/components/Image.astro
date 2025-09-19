@@ -8,8 +8,14 @@ const {
   width,
   height,
   class: className = "",
+  caption = "",
   center = false,
 } = Astro.props;
+
+// Detect if default children are provided and whether caption prop is a renderable string
+const hasDefaultSlot = Astro.slots?.has?.("default") ?? false;
+const captionIsString =
+  typeof caption === "string" && caption.trim().length > 0;
 
 // Add center class if needed
 const combinedClassName = center ? `${className} mx-auto` : className;
@@ -24,4 +30,11 @@ const combinedClassName = center ? `${className} mx-auto` : className;
     class={combinedClassName}
     transition:name={src}
   />
+  {
+    (hasDefaultSlot || captionIsString) && (
+      <div class="-mt-3 mb-2 text-center text-sm italic text-gray-600 opacity-70 dark:text-gray-400">
+        {hasDefaultSlot ? <slot /> : caption}
+      </div>
+    )
+  }
 </div>

@@ -193,7 +193,7 @@ body {
     width: 24px;
     height: 24px;
     background: url("/images/star-icon.svg") no-repeat center center;
-    background-size: contain;
+    background-size: contain !important;
     transition: opacity 0.3s ease;
   }
 
@@ -212,7 +212,7 @@ body {
     width: 24px;
     height: 24px;
     background: url("/images/home.svg") no-repeat center center;
-    background-size: contain;
+    background-size: contain !important;
     opacity: 0;
     transition: opacity 0.3s ease;
   }

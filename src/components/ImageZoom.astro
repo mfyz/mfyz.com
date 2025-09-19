@@ -2,7 +2,15 @@
 // ImageZoom.astro - Pure vanilla JavaScript implementation with zero dependencies
 
 // Get props from the component invocation
-const { src, alt, width, height, class: className, maxZoomWidth } = Astro.props;
+const {
+  src,
+  alt,
+  width,
+  height,
+  class: className,
+  maxZoomWidth,
+  caption = "",
+} = Astro.props;
 
 // Create a unique ID for this image to help with targeting
 const uniqueId = `image-${Math.random().toString(36).substring(2, 9)}`;
@@ -11,6 +19,10 @@ const dialogId = `${uniqueId}-dialog`;
 // Calculate maximum width for zoomed image
 const zoomedMaxWidth = maxZoomWidth ? `${maxZoomWidth}px` : "95vw";
 
+// Detect if default children are provided and whether caption prop is a renderable string
+const hasDefaultSlot = Astro.slots?.has?.("default") ?? false;
+const captionIsString =
+  typeof caption === "string" && caption.trim().length > 0;
 // Calculate aspect ratio if both width and height are provided
 // const aspectRatio = width && height ? width / height : null;
 // const aspectRatioStyle = aspectRatio ? `aspect-ratio: ${aspectRatio};` : '';
@@ -30,6 +42,14 @@ const zoomedMaxWidth = maxZoomWidth ? `${maxZoomWidth}px` : "95vw";
     class={`transition-transform hover:scale-105 block ${className || ""}`}
   />
 </button>
+
+{
+  (hasDefaultSlot || captionIsString) && (
+    <div class="-mt-3 mb-2 text-center text-sm italic text-gray-600 opacity-70 dark:text-gray-400">
+      {hasDefaultSlot ? <slot /> : caption}
+    </div>
+  )
+}
 
 <!-- Dialog for the zoomed image -->
 <dialog
