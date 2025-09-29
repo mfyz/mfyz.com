@@ -1,0 +1,201 @@
+---
+title: "Post-Deployment Tests: Your Safety Net After the Code Ships"
+description: "Why post-deployment testing matters and how to implement it with GitHub Actions and Playwright. Real examples of testing web pages and API health checks."
+date: 2025-10-01
+slug: "post-deployment-tests-github-actions-playwright"
+tags: ["testing", "github-actions", "playwright", "devops", "ci-cd"]
+hidden: true
+---
+
+You know that feeling when you deploy to production and everything looks fine in your staging environment, but then users start reporting weird issues? That's exactly why we need tests that run **after** deployment.
+
+I've been burned by this scenario too many times. Your CI passes, staging looks perfect, but production has that one edge case you didn't think about. Maybe it's a third-party API that behaves differently in prod, or a database connection that's just slightly slower, or even a CDN cache that's serving stale content.
+
+## Why Post-Deployment Tests Matter
+
+Here's the thing: your pre-deployment tests verify your code works in isolation. But post-deployment tests verify your **entire system** works in the real world (of course you don't test **entire thing**, you only test business critical parts). They catch:
+
+- **Environment-specific issues** that don't show up in staging
+- **Third-party service failures** that your mocks can't simulate
+- **Performance problems** under real load conditions
+- **Configuration drift** between environments
+- **Infrastructure issues** that passed your infrastructure tests but fail under real usage
+
+Think of it as smoke testing, but automated and continuous.
+
+The real magic happens when you catch issues fast and can automatically rollback. I use Vercel for hosting, and their instant rollback feature is a lifesaver. When post-deployment tests fail, my workflow can trigger a rollback to the previous working deployment in seconds.
+
+## Setting Up GitHub Actions
+
+Before diving into the workflow, let me explain the approach. The idea is simple: after your deployment completes successfully, automatically run tests against the live environment. If something's broken, know about it immediately.
+
+I've been using GitHub Actions for this because it integrates seamlessly with my git workflow and CI/CD pipelines. Here's how I set it up:
+
+```yaml
+name: Post-Deployment Tests
+
+on:
+  workflow_run:
+    # This triggers after your deployment workflow completes
+    # Replace "Deploy to Production" with your actual deployment workflow name
+    workflows: ["Deploy to Production"]
+    types:
+      - completed
+  workflow_dispatch: # Manual trigger for testing
+
+jobs:
+  post-deployment-tests:
+    runs-on: ubuntu-latest
+    # Only run if the deployment was successful
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright
+        run: npx playwright install
+
+      - name: Run post-deployment tests
+        run: npx playwright test --config=playwright.prod.config.ts
+        env:
+          PROD_URL: ${{ vars.PROD_URL }}
+          HEALTH_CHECK_URL: ${{ vars.HEALTH_CHECK_URL }}
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: post-deployment-test-results
+          path: test-results/
+
+      - name: Notify Slack on Success
+        if: success()
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+            --data '{"text":"✅ Post-deployment tests passed! Production is healthy."}' \
+            ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      - name: Notify Slack on Failure
+        if: failure()
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+            --data '{"text":"🚨 Post-deployment tests failed! Check production immediately."}' \
+            ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      - name: Rollback on Vercel
+        if: failure()
+        run: |
+          # Get the previous deployment
+          PREV_DEPLOYMENT=$(curl -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
+            "https://api.vercel.com/v6/deployments?projectId=${{ vars.VERCEL_PROJECT_ID }}&limit=2" \
+            | jq -r '.deployments[1].uid')
+
+          # Promote previous deployment to production
+          curl -X PATCH -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            "https://api.vercel.com/v13/deployments/$PREV_DEPLOYMENT/promote" \
+            -d '{"target": "production"}'
+
+          echo "Rolled back to deployment: $PREV_DEPLOYMENT"
+```
+
+What I love about this setup:
+
+- **Triggers automatically** after successful deployment
+- **Immediate feedback** via Slack notifications (both success and failure)
+- **Automatic rollback** when tests fail using Vercel's API
+- **Manual trigger** for debugging issues
+
+What about the tests, what and how?
+
+## Example 1: Testing Web Page Elements
+
+Here's a simple Playwright test that checks your homepage is working. This catches the obvious stuff that users would immediately notice:
+
+```javascript
+// tests/post-deployment/homepage.spec.js
+import { test, expect } from "@playwright/test";
+
+test("homepage loads and works", async ({ page }) => {
+  await page.goto(process.env.PROD_URL);
+
+  // Page loads with correct title
+  await expect(page).toHaveTitle(/Home/);
+
+  // Critical elements are visible
+  await expect(page.locator("nav")).toBeVisible();
+  await expect(page.locator('[data-testid="hero-title"]')).toBeVisible();
+  await expect(page.locator("footer")).toBeVisible();
+
+  // Navigation has expected links
+  const navLinks = page.locator("nav a");
+  await expect(navLinks).toHaveCountGreaterThan(2);
+
+  // No console errors
+  const errors = [];
+  page.on("console", msg => msg.type() === "error" && errors.push(msg.text()));
+  await page.waitForLoadState("networkidle");
+  expect(errors).toHaveLength(0);
+});
+```
+
+This is a simplified example, but the principle can be expanded to cover more complex scenarios, multiple pages, and more. Playwright is really awesome testing framework for this. With Playwright, beyond just checking elements, you can catch broken CSS, missing elements, and JavaScript errors, even take screenshots and videos. Screenshots can also be used for visual comparison to detect % of change in the page/UI and trigger failure if it is beyond acceptable threshold.
+
+## Example 2: API Health Check Testing
+
+Here's where I use a centralized api endpoint to check all the dependencies (database, cache, etc.) and critical components. This test hits your API health check endpoint and verifies all your dependencies are working in single request; quick and very very effective:
+
+```javascript
+// tests/post-deployment/api-health.spec.js
+import { test, expect } from "@playwright/test";
+
+test("API health check passes", async ({ request }) => {
+  const response = await request.get(
+    `${process.env.HEALTH_CHECK_URL}/healthcheck`
+  );
+
+  expect(response.status()).toBe(200);
+
+  const data = await response.json();
+
+  // Main success flag should be true
+  expect(data.success).toBe(true);
+
+  // All checklist items should be healthy
+  const checklist = data.checklist;
+  expect(checklist.database).toBe(true);
+  expect(checklist.database_latency < 200).toBe(true);
+  expect(checklist.redis_cache).toBe(true);
+  expect(checklist.s3_reads).toBe(true);
+  expect(checklist.s3_reads_latency < 200).toBe(true);
+  expect(checklist.core_service_ping).toBe(true);
+  expect(checklist.environment_vars).toBe(true);
+
+  console.log(`✅ All services healthy: ${JSON.stringify(checklist)}`);
+});
+```
+
+If any service or dependency is down or slower than expected, you'll know it.
+
+## The Real Value: Fast Feedback and Automatic Recovery
+
+Here's what I've learned after running this setup for months:
+
+**Speed is everything**: When something breaks in production, every minute counts. These tests give you feedback within 2-3 minutes of deployment instead of waiting for user reports.
+
+**Automatic rollbacks save your sanity**: The Vercel integration is a game-changer. Failed tests trigger an instant rollback to the previous working version. No manual intervention, no downtime while you figure out what went wrong. I can't tell how much mental safety this provides. It can promote lazy behavior to slap features and changes that could break things, but the speed gain is worth it, and it's a tradeoff I'm willing to make.
+
+**Sleep better**: Knowing that your system will automatically detect and fix deployment issues means you're not constantly worried about breaking production.
+
+**Keep tests focused**: I run about 5-10 critical tests that cover the essentials. The goal isn't comprehensive coverage—it's catching the big obvious problems that would impact users immediately.
+
+I hope this helps you set up your own deployment confidence system. Trust me, the first time it automatically rolls back a broken deployment, you'll feel its magic.
