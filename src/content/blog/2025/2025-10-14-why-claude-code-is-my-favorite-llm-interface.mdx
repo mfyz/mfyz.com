@@ -1,0 +1,164 @@
+---
+title: "Why Claude Code is my favorite way to interact with LLMs"
+description: "Claude Code became my primary LLM interface thanks to its markdown commands, hooks system, and shell-based architecture that opens unlimited possibilities."
+date: 2025-10-14
+slug: "why-claude-code-is-my-favorite-llm-interface"
+tags: ["AI", "Claude", "Developer Tools", "CLI", "Automation"]
+hidden: true
+---
+
+Claude Code became my primary way I interact with LLMs. It's not just that Anthropic's models are best at coding and tool use (which makes them naturally great at agentic workflows). Claude Code nailed the UX on a few key things that I think are still hard to find in other tools.
+
+Let me walk you through what makes it special.
+
+## 1. Free-form, markdown-based commands system
+
+This is both a blessing and a curse because of its unpredictable nature. But let me explain why it's mostly a blessing.
+
+Most AI coding tools force you into rigid command structures. You type `/commit` or `/fix` and that's it. Your options are predetermined by the tool authors. It's limiting.
+
+Claude Code takes a different approach. You can create custom slash commands using simple markdown files. Drop a `.md` file in your `.claude/commands/` directory, and boom - you've got a new command. The file content becomes the prompt.
+
+Here's what I love about this: **the commands are just prompts**. You're not learning some proprietary syntax or command language. You're writing instructions in plain English (or whatever language you prefer). The markdown file can contain your specific preferences, coding standards, workflow steps - anything you'd normally type out repeatedly.
+
+I have commands for:
+
+- Writing blog posts in my specific style (which you're seeing in action right now)
+- Reviewing PRs with my team's standards
+- Generating API documentation that matches our format
+- Creating test files following our conventions
+- Searching for available domain names (more on this in a sec)
+
+The "curse" part? Sometimes the free-form nature means Claude might interpret your command differently than expected. But honestly, that's rare. And when it happens, you just refine your command file. The flexibility is worth the occasional ambiguity.
+
+What makes this powerful is that your commands evolve with your needs. As your project grows, as your team's practices change, you just update markdown files. No plugin updates, no waiting for the tool vendor to add features.
+
+Here's a real example - my `/domain-search` command. The entire thing is just a markdown file:
+
+```markdown
+# Domain name search command
+
+You're going to generate ideas for a new domain name and use
+the 'whois' command to check if they are available.
+
+Your steps:
+
+1. Ask the user to provide their goals or name ideas
+   for the new domain name.
+
+2. Generate a list of candidate ideas for their domain name.
+   Aim to generate about 200 ideas and write them down into ideas.md.
+
+   - A good domain name is:
+     - Not too long (less than 12 characters unless there's
+       a very good reason to make it longer)
+     - Catchy, easy to remember and say. Not too many words.
+     - Your candidate ideas should have about 75% using .com
+       suffixes and 25% using alternate suffixes like .net, .biz,
+       .io, .co, etc. Alternate suffixes should only be used when
+       they make sense for the product and they fit well with the name.
+
+3. For each idea, run `whois` to check if the name is actually available.
+   Ignore names that are not available.
+
+4. Finally, compile a ranked list of the best available names.
+   Save this to ideas.md.
+
+Next up, ask the user for more information!
+```
+
+That's it. Now I can type `/domain-search`, tell Claude what kind of project I'm working on, and it generates 200 domain ideas, checks availability using whois, filters out the taken ones, and gives me a ranked list.
+
+Notice the instructions are completely free-form. I'm telling Claude to use the `whois` shell tool, and it just works. This is a simple example, but it demonstrates something huge: **Claude Code can orchestrate any CLI tool you have installed**.
+
+Whois is probably the simplest example. My favorite ones? GitHub CLI (`gh`), Atlassian CLI (for Jira), Sentry CLI for error tracking. Many developer-oriented tools have CLI versions available. This opens up possibilities for what Claude Code can do, without even needing MCP servers or other complex setups.
+
+I have commands that:
+
+- Create GitHub issues from error logs
+- Update Jira tickets based on commit messages
+- Query Sentry for similar errors before I start debugging
+- Deploy to staging environments and wait for health checks
+
+And in yolo mode (be careful with this!), Claude can run these commands without asking for permission first. This can make Claude Code ridiculously powerful. I use yolo mode for my domain search command because I trust it to run whois checks. But I definitely don't use it for commands that deploy to production.
+
+This is what I mean by the markdown command system being powerful. You're not limited to coding tasks. Anything that can be described in text and executed with CLI tools becomes a custom command.
+
+## 2. Hooks system
+
+This is where Claude Code goes from "pretty good" to "holy sh\*t, this changes everything."
+
+Hooks let you inject custom shell commands at different points in Claude's workflow. You can run checks before Claude executes commands, validate outputs, enforce policies, integrate with other tools - the possibilities are genuinely unlimited.
+
+Here are real examples from my workflow:
+
+**Pre-tool-use hook for test commands**: I force Claude Code to use npm commands for running tests instead of directly calling Playwright or Jest. Why? Because I have specific configs for different test modes. My hook intercepts any direct `playwright` or `jest` commands and redirects them to the proper npm scripts. This ensures Claude always runs tests with my project's configurations.
+
+**Safety checks**: I check all shell command executions and block dangerous ones like `rm`, `unlink`, and a few other destructive commands. This way I don't need to worry about Claude accidentally destroying everything. The hook sees the command before it executes, checks it against a blocklist, and stops it if needed.
+
+**Logging everything**: There are scenarios where I want to log every single action Claude Code takes and analyze them later. I have a logging hook that captures all tool use, timestamps, inputs, and outputs. Super useful for debugging complex workflows or understanding how Claude approached a problem.
+
+The beauty of hooks is that they're just shell scripts. If you can do it in a terminal, you can do it in a hook. And Claude itself can help you write them.
+
+Here's a fun one I use - a `user_input_needed` hook that literally speaks to me when Claude needs my attention:
+
+```bash
+#!/bin/bash
+say "[[volm 0.5]] hey"
+```
+
+That's it. Three lines. When Claude pauses for my input, my Mac says "hey" at half volume. Simple, but super useful when I'm context-switching between tasks.
+
+Some people use hooks to integrate Claude Code with their company's internal tools. Others use them for compliance - ensuring every AI-generated code change is logged. I've seen hooks that automatically create JIRA tickets when Claude fixes bugs.
+
+The hook system is what transforms Claude Code from a standalone tool into something that fits perfectly into your existing development environment.
+
+## 3. Shell-based tooling
+
+I mentioned this in the previous section, but it's worth expanding because this is what makes claude code special than other agentic LLM tools just because claude code lives in the shell. This is a huge selling point to developers where they live in shell. This opens the door for unlimited possibilities.
+
+It's two-way integration. Claude Code can use any CLI tool (git, npm, docker, kubectl, you name it). But more importantly, and more fun possibilities in my opinion, is that other shell-based tools and scripts can use Claude Code as a regular shell command through what's called "prompt mode."
+
+Let me break down why this matters:
+
+**Claude using your tools**: When Claude needs to run tests, it uses your actual test runner. When it needs to check code style, it uses your actual linter with your config. It's not simulating your environment or approximating it - it's running in your real development setup. This means the code Claude writes is tested against your actual constraints, your actual dependencies, your actual configurations.
+
+**Your tools/scripts using Claude**: This is the game-changer. With prompt mode, you can pipe input to Claude from the command line:
+
+```bash
+echo "explain this error" | claude --prompt-mode < error.log
+```
+
+Or from within other scripts:
+
+```bash
+# In your deployment script
+if [ $ERROR_COUNT -gt 0 ]; then
+  claude --prompt-mode "Analyze these deployment errors and suggest fixes" < deployment.log
+fi
+```
+
+This makes claude code chainable, scritable, and be first class citizen to shell environment, not just chatting with LLM inside your terminal. Also growing ecosystem of infrastructure provides free-form sandboxed linux boxes, claude code becomes really portable (runs in many many places).
+
+I use this mode for:
+
+- **Automated PR reviews**: GitHub Actions runs Claude on every PR diff
+- **Log analysis**: Cron job that sends error logs to Claude for pattern analysis
+- **Database query generation**: Scripts that take natural language and output SQL
+- **Debugging helpers**: When a test fails in CI, Claude gets the output and suggests fixes
+
+And because it's just a CLI tool, it composes with standard Unix tools. Pipe, redirect, chain commands - everything you know about shell scripting applies.
+
+## Why this combination matters
+
+These three features - markdown commands, hooks, and shell integration - create something greater than the sum of their parts.
+
+The markdown commands let you customize Claude's behavior. The hooks let you control and extend that behavior. The shell integration lets you deploy that behavior anywhere in your workflow.
+
+Together, they make Claude Code feel less like a separate AI tool and more like a powerful colleague who happens to live in your terminal. A colleague who knows your codebase, follows your team's practices, integrates with your tools, and can be called upon from anywhere in your development workflow.
+
+I've tried a bunch of AI coding tools. Most feel like external services you visit when you need help. Claude Code feels like it's actually part of my development environment. It's there when I need it, stays out of the way when I don't, and plays nicely with everything else I use.
+
+That's why it's become my primary way to interact with LLMs. It's not just about the quality of the AI (though Claude's models are excellent). It's about the quality of the integration. And Claude Code absolutely nails that.
+
+If you want to dive deeper into what's possible with Claude Code, check out [awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code) - it's got tons of resources, example hooks, custom commands, integrations, and community tools. Pretty much everything you need to get the most out of Claude Code.

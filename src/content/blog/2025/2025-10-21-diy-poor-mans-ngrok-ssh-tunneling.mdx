@@ -1,9 +1,10 @@
 ---
 title: "Poor Man's ngrok: Build Your Own Tunnel with SSH"
-description: "Need to expose localhost for webhook testing but don't want random URLs or subscriptions? Here's how I use SSH tunneling and NGINX for a stable, free alternative."
-date: 2025-10-14
-slug: "diy-ngrok-ssh-tunneling"
-tags: ["devops", "ssh", "nginx", "development", "tunneling", "webhooks"]
+description: "Need to expose localhost for webhook testing but don't want random URLs or subscriptions? Here's how I use SSH tunneling and NGINX for a stable, free ngrok alternative."
+date: 2025-10-21
+slug: "diy-poor-mans-ngrok-ssh-tunneling"
+tags:
+  ["devops", "ssh", "nginx", "development", "tunneling", "webhooks", "ngrok"]
 hidden: true
 ---
 
@@ -13,7 +14,7 @@ ngrok is the standard solution, and it's great. But the free tier gives you rand
 
 I had a $5 DigitalOcean droplet sitting idle and realized: this is just SSH reverse tunneling. Here's how to set it up.
 
-## What You Need
+**What You Need:**
 
 - A VPS with public IP ($5/month DigitalOcean, Linode, whatever)
 - NGINX installed
