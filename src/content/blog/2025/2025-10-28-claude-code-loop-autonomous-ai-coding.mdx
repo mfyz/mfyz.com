@@ -1,0 +1,183 @@
+---
+title: "Claude Code Loop: The Ultimate YOLO Mode"
+description: "What happens when you let Claude Code run in a loop with minimal instructions? An experimental approach to autonomous AI coding that's equal parts fascinating and terrifying."
+date: 2025-10-28
+slug: "claude-code-loop-autonomous-ai-coding"
+tags: ["ai", "claude", "automation", "experiments"]
+hidden: true
+---
+
+I want to talk about something pretty wild I've been experimenting with lately. What if you just... let Claude Code run in a loop with minimal instructions and see what happens?
+
+This is the ultimate YOLO mode for AI coding. It's experimental, it's risky, and you should absolutely run it in a sandbox (ideally a Docker container). But it's also fascinating to watch.
+
+Vibe of the vibe coding. You give Claude a simple goal, then step back and let it do it over and over again, iteration after iteration. As high-level the goal and instructions are, more interesting it becomes.
+
+The concept is simple: run Claude Code in a loop, feeding it the same basic prompt repeatedly. After each iteration, Claude makes changes, and the loop continues. No hand-holding. No micro-managing. Just a simple instruction and trust.
+
+Here's the basic pattern:
+
+```bash
+while :; do
+  cat prompt.md | claude -p --dangerously-skip-permissions
+done
+```
+
+Yeah, that's it. Dead simple.
+
+## Why This Is Interesting
+
+When you let an AI agent work autonomously like this, some fascinating things happen:
+
+**Self-management emerges.** The agent starts to develop its own workflow. It writes tests for itself. It maintains scope. Sometimes it even "gives up" when it gets stuck (which is kind of hilarious and also kind of impressive).
+
+**Unexpected improvements.** You ask it to do X, and it might also improve Y and Z along the way. Not because you asked, but because it noticed they could be better. This is where Antrophics models shows its beyond you asked behavior.
+
+**Continuous progress.** While you sleep, the agent keeps working. You wake up to dozens of commits and a transformed codebase.
+
+**Rate Limit Gotcha**: You will run rate limits, but your loop will not care, it'll continuously try so it will continue when the rate limit window is reset. Don't run this in API/usage-based billing!!!
+
+## My Implementation
+
+I built a shell script that makes this process more observable and controllable. Here's what it does:
+
+```bash
+#!/usr/bin/env sh
+
+set -eu
+
+# Variables
+ITERATION_COUNT=50
+PROMPT_FILE="${1:-loop/prompt.md}"
+LOG_FILE="loop/loop.log"
+
+# Trap for both interrupt and normal exit
+trap 'cleanup; printf "\n[Interrupted]\n" >&2; exit 130' INT
+trap 'cleanup' EXIT
+
+# Empty the log file if it exists
+echo -n > "$LOG_FILE"
+
+run_once() {
+  # Run claude and tee output to log file and pipe to jq
+  cat "$PROMPT_FILE" \
+  | claude -p \
+    --verbose \
+    --dangerously-skip-permissions \
+    --include-partial-messages \
+    --output-format=stream-json \
+  | tee -a "$LOG_FILE" \
+  | jq -rj --unbuffered '
+      # Simplest possible approach to filter and format the stream
+      # Text blocks
+      if (.type=="stream_event" and .event.type=="content_block_delta" and .event.delta.type=="text_delta") then
+        # Handle actual text content
+        (.event.delta.text | gsub("\\r?\\n"; "\n"))
+
+      # New message block for spacing
+      elif (.type=="stream_event" and .event.type=="message_start") then
+        "\n\n💬 "
+
+      # Tool start
+      elif (.type=="stream_event" and .event.type=="content_block_start" and .event.content_block.type=="tool_use") then
+        "\n\n\u001b[33m🛠  Tool: " + .event.content_block.name + " \u001b[0m"
+
+      # Skip all other event types
+      else
+        empty
+      end
+    '
+  printf '\n\n'
+}
+
+i=1
+while [ "$i" -le $ITERATION_COUNT ]; do
+  printf '\n\n'
+  printf '%0.s▄' $(seq 1 80)
+  printf '\n\n\n\n'
+  (figlet -f doh "$i" | sed -E '/^[[:space:]]*$/d' | sed 's/^/    /') || true
+  printf '\n'
+
+  # Add JSON formatted log header with iteration number
+  echo "{\"type\":\"loop_start_marker\", \"message\":\"==================== New Claude Run $i - $(date) ====================\"}" >> "$LOG_FILE"
+
+  run_once
+
+  # commit and push changes (commented out for safety)
+  # git add .
+  # git commit -m "Loop iteration $i: $(claude --model haiku -p 'summarize the git changes and create one line git commit message')"
+  # git push
+
+  i=$((i+1))
+done
+
+echo "{\"type\":\"loop_all_completed\", \"message\":\"==================== Loop complete ====================\"}" >> "$LOG_FILE"
+
+# Done message
+printf '\n\n'
+printf '%0.s▄' $(seq 1 80)
+printf '\n\n\n'
+(printf '\033[32m'; figlet -f doh "Done" | sed -E '/^[[:space:]]*$/d' | sed 's/^/  /'; printf '\033[0m') || true
+printf '\n\n'
+```
+
+I keep this script in a `loop/` folder in my projects, along with the log files and prompt files. Keeps everything organized and easy to `.gitignore` if you don't want to commit the logs.
+
+This script both logs the outpus, as well as streams the output and makes it more readable using jq. So it's interesting to watch shell output, but it gets old, and after some point you just let it do its thing. Between each run, we print a big number in ASCII art (using figlet) to make it separated between runs.
+
+## Key Features I Added
+
+**Iteration control.** Instead of running forever, you set a max iteration count. This prevents your API bill from getting out of control while you're asleep.
+
+**Structured logging.** Using `jq` to parse the JSON stream and format it nicely. You see exactly what tools Claude is using and what it's thinking.
+
+**Clean interrupts.** Hit Ctrl+C and everything shuts down gracefully. No zombie processes.
+
+**Formatted output.** Those ASCII art iteration numbers? Completely unnecessary but incredibly satisfying.
+
+## The Claude Code Stream Format
+
+One thing I learned: Claude Code can output in `stream-json` format, which gives you structured data about everything that's happening:
+
+- Message starts and stops
+- Content deltas (the actual text being generated)
+- Tool calls (when Claude uses Read, Write, Bash, etc.)
+- Thinking blocks
+
+By piping this through `jq`, you can filter and format it however you want. I'm showing messages and tool calls, but filtering out the noise.
+
+## Safety Considerations
+
+Let me be super clear: this is very experimental. Do not use in your production code. Here's what you need to think about:
+
+**Run it in a sandbox.** Seriously. Docker container, VM, something disposable. Claude has `--dangerously-skip-permissions` enabled, which means it can do pretty much anything.
+
+**Watch your API or usage costs.** 50 iterations of Claude Sonnet can add up. Set reasonable limits and check your usage. I am on Max plan and running loops on 2 projects at the same time runs me out of rate limit window less than an hour.
+
+**Review the changes.** Don't blindly merge what comes out of this. The agent can make mistakes, introduce bugs, or go in unexpected directions. Especially in this loop mode, with high-level prompts, it can do way more than you asked, and unexpected stuff. Having a preview branch system (i.e Vercel preview deployments) helps a lot to test, and see what it actually produced. Doing PR review is must, but imagine the amount of changes and code produced out of 40-50 runs overnight... It won't be fun to sit and scroll code.
+
+**Version control is essential.** You want to be able to roll back easily. Git is your safety net here. Consider 1/4 of the time you'll just throw it away. If you are not using version control, get out of here :D
+
+## What This Enables
+
+So why do this? A few use cases come to mind:
+
+**Large-scale refactoring.** Give Claude a refactoring goal and let it work through your entire codebase systematically. This can be perfect to ask Claude Code to upgrade nodejs, react, etc. As long as you have a good test coverage before you start; Claude Code can do a lot of mundane work for you.
+
+**Project migrations.** "Port this from framework X to framework Y" is a perfect loop task. It's repetitive but requires judgment. I've successfully migrated integration tests to be unit tests (my KPI on a legacy PHP project was; running tests took 4 minutes, after unit test migration it took 2 seconds).
+
+**Documentation generation.** Let it work through files adding comments, docstrings, and README updates.
+
+**Test coverage improvement.** "Add tests for uncovered code" and watch the coverage climb.
+
+This approach treats AI coding differently. Instead of a tool you control precisely, it's more like an autonomous agent you point in a direction. It's scary because you're giving up control. It's exciting because the agent can surprise you with solutions you wouldn't have thought of.
+
+I've seen this approach produce some pretty impressive results overnight. I've also seen it go completely off the rails. The key is knowing when to use it and when to stick with traditional, supervised AI assistance.
+
+Prompt design is still critical though. Keep your prompts simple and focused ("Improve test coverage" works better than a page of detailed instructions), clear about scope (tell Claude what's in-bounds and what's off-limits), and outcome-oriented (describe what you want to achieve, not how to do it). My `prompt.md` files are usually 3-5 sentences max. The simpler, the better.
+
+Some open questions I'm still figuring out: When does the agent decide it's "done"? How do you measure progress beyond counting commits? What's the optimal iteration count? Can you chain different prompts? This is genuinely experimental territory.
+
+If you want to try this: set up a throwaway project or Docker container, install Claude Code CLI, create a simple `prompt.md` with your goal, and start with a low iteration count (like 5-10). The results might surprise you. Sometimes in good ways, sometimes in "well, that's not what I expected" ways.
+
+I'm planning to keep experimenting with this pattern and see where it goes. If you try it out, I'd love to hear what you discover. Just remember: sandbox, version control, and reasonable limits. YOLO mode doesn't mean reckless mode.
