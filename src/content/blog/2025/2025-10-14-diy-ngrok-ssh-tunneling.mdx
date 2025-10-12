@@ -1,0 +1,177 @@
+---
+title: "Poor Man's ngrok: Build Your Own Tunnel with SSH"
+description: "Need to expose localhost for webhook testing but don't want random URLs or subscriptions? Here's how I use SSH tunneling and NGINX for a stable, free alternative."
+date: 2025-10-14
+slug: "diy-ngrok-ssh-tunneling"
+tags: ["devops", "ssh", "nginx", "development", "tunneling", "webhooks"]
+hidden: true
+---
+
+You're testing webhooks locally. Stripe needs to hit your endpoint. GitHub needs to trigger your CI. The problem? They can't reach `localhost`.
+
+ngrok is the standard solution, and it's great. But the free tier gives you random URLs that change every restart. Updating webhook configs constantly gets old. The paid tier has persistent subdomains, but feels like overkill for occasional testing. Plus bandwidth limits, rate limits, and for some teams, security concerns about routing traffic through third parties.
+
+I had a $5 DigitalOcean droplet sitting idle and realized: this is just SSH reverse tunneling. Here's how to set it up.
+
+## What You Need
+
+- A VPS with public IP ($5/month DigitalOcean, Linode, whatever)
+- NGINX installed
+- A domain pointing to your server
+- 5 minutes
+
+## The SSH Tunnel
+
+Simple, one command:
+
+```bash
+ssh -R 7070:localhost:3000 -N your-server
+```
+
+This creates a reverse tunnel. Your server's port 7070 now forwards to your local port 3000. The `-N` flag means "just tunnel, don't run commands." That's it.
+
+I generally set up an alias or npm command like `npm run tunnel` in each project with its own port configured. Makes it universal across projects without remembering which port maps to which.
+
+## DNS Configuration
+
+Point your domain to your server. You have two options:
+
+**Wildcard CNAME** - Set up `*.dev.yourdomain.com` once, all subdomains automatically work. Easy but points all traffic to your box.
+
+**Manual A records** - Add each subdomain individually (`dev.yourdomain.com`, `dev2.yourdomain.com`, etc). More work but I prefer this. Don't want wildcard DNS routing everything to my server.
+
+## NGINX Configuration
+
+Create a basic config in `/etc/nginx/sites-available/dev.yourdomain.com`:
+
+```nginx
+server {
+    listen 80;
+    server_name dev.yourdomain.com;
+
+    location / {
+        proxy_pass http://localhost:7070;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+```
+
+Enable it:
+
+```bash
+sudo ln -s /etc/nginx/sites-available/dev.yourdomain.com /etc/nginx/sites-enabled/
+sudo nginx -t && sudo systemctl reload nginx
+```
+
+## SSL Setup
+
+Now add SSL with certbot:
+
+```bash
+sudo apt install certbot python3-certbot-nginx
+sudo certbot --nginx -d dev.yourdomain.com
+```
+
+Certbot modifies your NGINX config, adds SSL certificates, sets up HTTPS redirects, and configures automatic renewal. Certificates renew every 60 days automatically. Your final config looks like this:
+
+```nginx
+server {
+    server_name dev.yourdomain.com;
+
+    location / {
+        proxy_pass http://localhost:7070;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+    }
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/dev.yourdomain.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/dev.yourdomain.com/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+}
+
+server {
+    if ($host = dev.yourdomain.com) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+    listen 80;
+    server_name dev.yourdomain.com;
+    return 404; # managed by Certbot
+}
+```
+
+All those `# managed by Certbot` lines were added automatically. Now `https://dev.yourdomain.com` hits your local port 3000 with valid SSL.
+
+## Why This Works
+
+**Perfect for:**
+
+- **Testing OAuth flows**: Stable callback URLs that don't change between restarts
+- **Webhook testing**: Stripe payments, GitHub webhooks, Twilio callbacks
+- **Shopify apps**: Set the URL once in Partners dashboard, never update it
+- **Mobile app testing**: Point your app at a stable endpoint
+- **Client demos**: `https://demo.yourdomain.com` looks better than random ngrok URLs
+
+**Benefits:**
+
+- No rate limits. Trigger 500 test webhooks if you need to.
+- Stable URL. `https://dev.yourdomain.com` doesn't change.
+- No disconnects. Tunnels run for days without timeouts.
+- Multiple environments. Different ports = different subdomains:
+
+```bash
+ssh -R 7070:localhost:3000 -N your-server  # main
+ssh -R 7071:localhost:3001 -N your-server  # staging
+ssh -R 7072:localhost:3002 -N your-server  # experimental
+```
+
+**Trade-offs:**
+
+- You need a server ($5/month vs ngrok free tier - though if you already have a box, this is free)
+- Initial setup takes 5 minutes (vs 2 seconds for ngrok)
+- Manual reconnection if SSH drops (use `autossh` for auto-reconnect)
+
+## Make It Easy
+
+Add an alias:
+
+```bash
+# ~/.bashrc or ~/.zshrc
+alias tunnel='ssh -R 7070:localhost:3000 -N yourserver'
+```
+
+Now it's just `tunnel` and you're live.
+
+Better yet, use `~/.ssh/config`:
+
+```ssh-config
+Host tunnel
+    HostName your-server.com
+    User youruser
+    RemoteForward 7070 localhost:3000
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
+```
+
+Run `ssh -N tunnel`. The ServerAlive settings prevent timeouts.
+
+## That's It
+
+SSH reverse tunneling + NGINX + Let's Encrypt = stable development tunnel. No rate limits, no random URLs, no subscriptions.
+
+ngrok is still the best-in-class, scalable solution if you consistently need tunnels and don't mind paying for it. But for extended webhook testing or when you need stable URLs without ongoing costs, this setup wins. Set it up once, forget about it.
