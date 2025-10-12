@@ -1,8 +1,8 @@
 ---
-title: "Claude Code Loop: The Ultimate YOLO Mode"
+title: "Claude Code on Loop: The Ultimate YOLO Mode"
 description: "What happens when you let Claude Code run in a loop with minimal instructions? An experimental approach to autonomous AI coding that's equal parts fascinating and terrifying."
 date: 2025-10-28
-slug: "claude-code-loop-autonomous-ai-coding"
+slug: "claude-code-on-loop-autonomous-ai-coding"
 tags: ["ai", "claude", "automation", "experiments"]
 hidden: true
 ---
@@ -25,7 +25,7 @@ done
 
 Yeah, that's it. Dead simple.
 
-## Why This Is Interesting
+## It Gets Interesting
 
 When you let an AI agent work autonomously like this, some fascinating things happen:
 
@@ -123,40 +123,21 @@ printf '\n\n'
 
 I keep this script in a `loop/` folder in my projects, along with the log files and prompt files. Keeps everything organized and easy to `.gitignore` if you don't want to commit the logs.
 
-This script both logs the outpus, as well as streams the output and makes it more readable using jq. So it's interesting to watch shell output, but it gets old, and after some point you just let it do its thing. Between each run, we print a big number in ASCII art (using figlet) to make it separated between runs.
+The script uses Claude Code's `stream-json` format which gives you structured data about everything happening (messages, tool calls, thinking blocks). By piping through `jq`, you can filter and format it however you want. It's interesting to watch the shell output, but it gets old, and after some point you just let it do its thing. Between each run, we print a big number in ASCII art (using figlet) to make it separated.
 
-## Key Features I Added
+I also created a real-time log viewer web app to watch the logs in real-time. It's probably for another post.
 
-**Iteration control.** Instead of running forever, you set a max iteration count. This prevents your API bill from getting out of control while you're asleep.
+## Safety & Practical Considerations
 
-**Structured logging.** Using `jq` to parse the JSON stream and format it nicely. You see exactly what tools Claude is using and what it's thinking.
+This is very experimental. Do not use on production code. Here's what you need to know:
 
-**Clean interrupts.** Hit Ctrl+C and everything shuts down gracefully. No zombie processes.
+**Run it in a sandbox.** Docker container, VM, something disposable. Claude has `--dangerously-skip-permissions` enabled, which means it can do pretty much anything.
 
-**Formatted output.** Those ASCII art iteration numbers? Completely unnecessary but incredibly satisfying.
+**Watch your costs.** I'm on Max plan and running loops on 2 projects at the same time runs me out of rate limit window in less than an hour. Set iteration limits (the script defaults to 50).
 
-## The Claude Code Stream Format
+**Review everything.** Don't blindly merge what comes out of this. The agent can do way more than you asked, and unexpected stuff. Having a preview branch system (like Vercel preview deployments) helps. Imagine scrolling through 40-50 runs of changes overnight... not fun to review all of that. Also consider 1/4 of the time you may just throw it away.
 
-One thing I learned: Claude Code can output in `stream-json` format, which gives you structured data about everything that's happening:
-
-- Message starts and stops
-- Content deltas (the actual text being generated)
-- Tool calls (when Claude uses Read, Write, Bash, etc.)
-- Thinking blocks
-
-By piping this through `jq`, you can filter and format it however you want. I'm showing messages and tool calls, but filtering out the noise.
-
-## Safety Considerations
-
-Let me be super clear: this is very experimental. Do not use in your production code. Here's what you need to think about:
-
-**Run it in a sandbox.** Seriously. Docker container, VM, something disposable. Claude has `--dangerously-skip-permissions` enabled, which means it can do pretty much anything.
-
-**Watch your API or usage costs.** 50 iterations of Claude Sonnet can add up. Set reasonable limits and check your usage. I am on Max plan and running loops on 2 projects at the same time runs me out of rate limit window less than an hour.
-
-**Review the changes.** Don't blindly merge what comes out of this. The agent can make mistakes, introduce bugs, or go in unexpected directions. Especially in this loop mode, with high-level prompts, it can do way more than you asked, and unexpected stuff. Having a preview branch system (i.e Vercel preview deployments) helps a lot to test, and see what it actually produced. Doing PR review is must, but imagine the amount of changes and code produced out of 40-50 runs overnight... It won't be fun to sit and scroll code.
-
-**Version control is essential.** You want to be able to roll back easily. Git is your safety net here. Consider 1/4 of the time you'll just throw it away. If you are not using version control, get out of here :D
+**Version control is essential.** Git is your safety net here. If you are not using version control, get out of here :D
 
 ## What This Enables
 

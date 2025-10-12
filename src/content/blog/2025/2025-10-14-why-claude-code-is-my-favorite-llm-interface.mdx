@@ -138,6 +138,12 @@ if [ $ERROR_COUNT -gt 0 ]; then
 fi
 ```
 
+or even inline like:
+
+```bash
+git commit -m "🤖 $(claude --model haiku -p 'summarize the git changes and create one line git commit message')"
+```
+
 This makes claude code chainable, scritable, and be first class citizen to shell environment, not just chatting with LLM inside your terminal. Also growing ecosystem of infrastructure provides free-form sandboxed linux boxes, claude code becomes really portable (runs in many many places).
 
 I use this mode for:
