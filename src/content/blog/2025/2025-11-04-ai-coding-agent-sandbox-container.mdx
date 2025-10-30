@@ -1,0 +1,207 @@
+---
+title: "Sandboxing AI Coding Agents: Network Firewall + Restricted Shell Environment"
+description: "Running Claude Code or other AI agents with unrestricted network access? Here's how I built a secure, isolated dev container with iptables firewall to control exactly what they can reach."
+date: 2025-11-04
+slug: "ai-coding-agent-sandbox-container"
+tags:
+  [
+    "devops",
+    "docker",
+    "security",
+    "claude-code",
+    "ai",
+    "devcontainer",
+    "iptables",
+  ]
+hidden: true
+---
+
+I've been using Claude Code for development, and it's fantastic. But here's something that's been bugging me: these AI agents run with full network access. They can potentially reach any API, any service, any endpoint on the internet. Plus, you're handing over keys to your home - giving them access to your shell with all your CLI tools and environment variables from your host machine. That's scary when you think about it.
+
+Most of the time, that's fine. But what if you're working on sensitive projects? What if you want to ensure the agent can only access specific APIs? What if you want a truly isolated development environment where you control exactly what goes in and out?
+
+I built a sandboxed dev container that solves this. It runs Claude Code (or any AI coding agent) inside an isolated Docker environment with iptables firewall rules. Default deny everything, whitelist only what you need.
+
+Here's the setup: [github.com/mfyz/ai-coding-agent-devcontainer-sandbox-example](https://github.com/mfyz/ai-coding-agent-devcontainer-sandbox-example)
+
+## How It Works
+
+This is the official Claude Code suggested sandboxing approach using dev containers. **Claude Code runs INSIDE the container, not on your host.** This is key. The container has default-deny iptables firewall rules, whitelisted domains only, and isolated filesystem access.
+
+Dev containers are fully integrated with VSCode. You can open your project, inspect the app, debug, use all your VSCode extensions - everything happens inside the container seamlessly.
+
+The Dockerfile:
+
+```dockerfile
+FROM node:22-bookworm
+
+# Install iptables and essential tools
+RUN apt-get update && apt-get install -y \
+    git curl wget vim zsh \
+    iptables iproute2 sudo \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create non-root user
+RUN useradd -m -s /bin/bash -u 1000 devuser
+
+# Install Claude Code as devuser
+USER devuser
+RUN curl -fsSL https://claude.ai/install.sh | bash
+ENV PATH="/home/devuser/.local/bin:${PATH}"
+
+# Switch back to root for firewall initialization
+USER root
+```
+
+Claude installs as a non-root user, but the container entrypoint runs as root to configure iptables.
+
+The firewall script (`init-firewall.sh`):
+
+```bash
+#!/bin/bash
+
+# Flush existing rules
+iptables -F
+iptables -X
+
+# Default policy: DROP everything
+iptables -P INPUT DROP
+iptables -P FORWARD DROP
+iptables -P OUTPUT DROP
+
+# Allow loopback
+iptables -A INPUT -i lo -j ACCEPT
+iptables -A OUTPUT -o lo -j ACCEPT
+
+# Allow established connections
+iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+iptables -A OUTPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+# Allow DNS
+iptables -A OUTPUT -p udp --dport 53 -j ACCEPT
+iptables -A OUTPUT -p tcp --dport 53 -j ACCEPT
+
+# Whitelist function
+whitelist_domain() {
+    local domain=$1
+    local ips=$(dig +short $domain | grep -E '^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$')
+    for ip in $ips; do
+        iptables -A OUTPUT -d $ip -j ACCEPT
+    done
+}
+
+# Whitelist domains
+whitelist_domain "api.anthropic.com"
+whitelist_domain "claude.ai"
+whitelist_domain "registry.npmjs.org"
+whitelist_domain "github.com"
+whitelist_domain "catfact.ninja"       # Demo API (allowed)
+whitelist_domain "placehold.co"        # Demo image (allowed)
+# dog.ceo and picsum.photos intentionally NOT whitelisted for demo
+```
+
+Drops all traffic by default, allows loopback and established connections, enables DNS, then whitelists specific domains. Claude Code can reach Anthropic APIs, npm, GitHub, but nothing else unless you explicitly whitelist it.
+
+Docker Compose ties it together:
+
+```yaml
+version: "3.8"
+
+services:
+  dev-container:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dev-container
+    cap_add:
+      - NET_ADMIN # Required for iptables
+    volumes:
+      - ../src:/workspace
+      - claude-data:/home/devuser/.claude
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
+    command: /bin/bash -c "/usr/local/bin/init-firewall.sh && tail -f /dev/null"
+
+volumes:
+  claude-data:
+    driver: local
+```
+
+`NET_ADMIN` capability is required for iptables. Source code mounts from host (only what you explicitly mount), Claude's data persists in a Docker volume, and the firewall initializes on startup.
+
+## See It In Action
+
+To prove the firewall works, there's a demo Fastify app:
+
+```javascript
+app.get("/", async (request, reply) => {
+  // Try to fetch from whitelisted API
+  const catFactResult = await fetch("https://catfact.ninja/fact")
+    .then(r => r.json())
+    .catch(e => ({ error: e.message }));
+
+  // Try to fetch from blocked API
+  const dogImageResult = await fetch("https://dog.ceo/api/breeds/image/random")
+    .then(r => r.json())
+    .catch(e => ({ error: e.message }));
+
+  return `
+    <h1>Firewall Demo</h1>
+
+    <h2>Whitelisted API (catfact.ninja):</h2>
+    <pre>${JSON.stringify(catFactResult, null, 2)}</pre>
+
+    <h2>Blocked API (dog.ceo):</h2>
+    <pre>${JSON.stringify(dogImageResult, null, 2)}</pre>
+  `;
+});
+```
+
+Visit `http://localhost:3000`: Cat fact API succeeds (whitelisted), dog image API fails (blocked). Firewall in action.
+
+Getting started:
+
+```bash
+# Clone the repo
+git clone https://github.com/mfyz/ai-coding-agent-devcontainer-sandbox-example
+cd ai-coding-agent-devcontainer-sandbox-example
+
+# One command to start everything
+./run.sh
+
+# Or use individual scripts
+./start.sh        # Start container
+./shell.sh        # Enter container
+./claude.sh       # Run Claude Code inside container
+```
+
+Helper scripts: `run.sh` (quick start - builds, installs, runs), `start.sh`, `stop.sh`, `rebuild.sh`, `shell.sh` (enter container), `claude.sh` (run Claude inside container).
+
+## When This Makes Sense
+
+This setup provides network isolation (only whitelisted domains), filesystem isolation (only mounted volumes), process isolation (everything containerized), and auditability (you control the whitelist).
+
+**Use this when:**
+
+- Security matters (corporate environments, sensitive projects, compliance requirements)
+- You want controlled API access (whitelist specific services)
+- Multi-project setups with different security requirements
+- Learning what network calls AI agents make
+- Experimenting with full autonomous agentic workflows - bypass permissions, hardcore YOLO mode (see [Claude Code on Loop: The Ultimate YOLO Mode](/claude-code-on-loop-autonomous-ai-coding/))
+
+**Trade-offs:**
+
+- You need Docker (not everyone wants containers for dev)
+- Initial setup takes longer than just running `claude` on your host
+- Whitelist maintenance (explicitly add domains as needed)
+- Container overhead (minimal but exists)
+
+For casual development on personal projects? Probably overkill. Just run Claude on your host. But for security-conscious environments or when you need explicit control over network access, this works well.
+
+## That's It
+
+Default deny, explicit whitelist, container isolation. Full control over what AI coding agents can access.
+
+Clone the [repo](https://github.com/mfyz/ai-coding-agent-devcontainer-sandbox-example), adjust the whitelist for your needs, and you're running AI agents in a controlled environment. The demo app makes it easy to verify everything works.
