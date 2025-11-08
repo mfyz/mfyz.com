@@ -114,7 +114,7 @@ When creating new blog posts:
 1. **File Location**: Place posts in `src/content/blog/YYYY/` folder where YYYY is the year
 2. **File Naming**: Use format `YYYY-MM-DD-slug-name.mdx` (e.g., `2025-09-08-cdn-stacking-proxying-why-bad.mdx`)
 3. **Turkish Posts**: Place in `src/content/blog/tr/YYYY/` folder with same naming convention
-4. **Date Handling**: 
+4. **Date Handling**:
    - If no specific date is given, check current date using `date` command
    - If relative date is described (e.g., "tomorrow", "next week"), calculate from current date
    - Always use the date in both the filename and front matter
@@ -131,6 +131,12 @@ When creating new blog posts:
 6. **Optional Front Matter Fields**:
    - `hidden: true` - For draft posts
    - `language: "tr"` - Automatically set for Turkish posts based on folder
+7. **Image Assets Organization**:
+   - **Location**: Store images in `public/images/blog/YYYY/` where YYYY is the year
+   - **Simple posts (1-3 images)**: Place images directly in the year folder (e.g., `public/images/blog/2025/my-image.jpg`)
+   - **Complex posts (4+ images)**: Create a post-specific subfolder (e.g., `public/images/blog/2025/newsletter-digester/screenshot-1.jpg`)
+   - **Referencing in posts**: Use absolute paths from public root (e.g., `/images/blog/2025/my-image.jpg`)
+   - **Image naming**: Use descriptive, lowercase, hyphen-separated names
 
 ### Language & Internationalization
 - **Dual Language**: English (default) and Turkish content

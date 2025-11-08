@@ -1,0 +1,89 @@
+---
+title: "I Built an OSS Newsletter Digester That Uses AI to Send Me Daily Slack Summaries"
+description: "Too many newsletters and blog emails? I built a self-hosted tool that monitors them all, uses AI to generate smart summaries, and sends digests straight to Slack."
+date: 2025-11-11
+slug: "oss-newsletter-digester-ai-slack-summaries"
+tags: ["open-source", "ai", "slack", "rss", "nodejs", "docker", "side-project"]
+hidden: true
+---
+
+import ImageZoom from "@components/ImageZoom.astro";
+
+I want to talk about a problem that got out of control lately: content overload.
+
+AI FOMO hit hard. Over-subscribed to podcasts, newsletters, tech blogs. Every morning, I'm jumping between my inbox, browser tabs, and different blog sites trying to catch up. It became too much to read and follow. By the time I'm done, half my morning is gone and I've barely filtered what's actually worth reading. Or I have work, skip reading my daily content, and in 2 days it becomes a mountain of content and a source of anxiety.
+
+Sound familiar?
+
+I built something to fix this. A self-hosted newsletter and blog digester that monitors everything, uses AI to summarize what's new, and sends me a clean digest in Slack. Just one message in the morning with everything I care about.
+
+It's called [Newsletter & Blog Digester](https://github.com/mfyz/newsletter-blog-digester) and I'm sharing it as open source. Built primarily through vibe coding with strong opinions on technology choices.
+
+## How It Works
+
+It's a simple web app that runs inside a single Docker container. The app periodically checks your configured websites and newsletters. When it finds new content, it extracts the posts, sends them to OpenAI or local Ollama for summarization, and delivers the digest to Slack. Fully offline, lightweight, and self-hosted.
+
+Three extraction methods depending on the site:
+
+- **RSS feeds**: Standard feed parsing
+- **CSS selectors**: Define selector rules to extract title, link, date, content (Bonus: Use AI to create selectors)
+- **LLM extraction**: For complex pages, scrape the HTML and ask an LLM to figure out what's new (surprisingly effective, but only works in small newsletter content - or requires big context-window models)
+
+<ImageZoom
+  src="/images/blog/2025/newsletter-digester/4-site-configuration.jpg"
+  alt="Site configuration interface showing CSS selector and LLM extraction options"
+  width={2400}
+  height={1530}
+/>
+
+The web interface shows everything the digester has found. Expandable cards with summaries, full content when you need it. Mark posts as read, flag important ones, or delete what you don't care about.
+
+<ImageZoom
+  src="/images/blog/2025/newsletter-digester/1-posts.jpg"
+  alt="Posts View showing all extracted blog posts with expandable cards"
+  width={2400}
+  height={1530}
+/>
+
+But the real win is Slack integration. Instead of checking yet another app, the digest comes to me where I already am. Every morning, one message with everything new: titles, AI summaries, links to full content. Multi-channel support means I can route tech content to #tech, personal stuff to #reading.
+
+<ImageZoom
+  src="/images/blog/2025/newsletter-digester/2-post-detail-and-actions.jpg"
+  alt="Post detail view with actions: mark as read, flag, delete"
+  width={2400}
+  height={1530}
+/>
+
+## Tech Stack
+
+The stack is deliberately simple and lightweight. Node.js with Fastify, SQLite (better-sqlite3), Preact + HTM from CDN. No build step, no ORM, just raw SQL and plain JavaScript. Everything runs in a single Docker container.
+
+**Why these choices?**
+
+The entire frontend is under 5KB. Preact (3KB) + HTM (1KB) loaded from CDN. No webpack, no babel, no build pipeline. Edit code, refresh browser. That's it.
+
+**No dependencies bloat**: Preact and HTM come from CDN (esm.sh). Better-sqlite3 is synchronous, no promises cluttering the code. dprint for formatting is a Rust binary, zero npm dependencies and 10-100x faster than Prettier.
+
+**Single container**: Everything in one Docker container. No separate database container, no orchestration, no service discovery. Just `docker compose up` and you're running. SQLite file mounted as a volume, development mode auto-reloads.
+
+**Ollama or OpenAI**: I use Ollama with the gemma:4b model. Runs fast, doesn't require much resources, and keeps everything fully offline other than the content it pulls from sources. You can also use OpenAI API if you prefer cloud-based summarization.
+
+## What Could Be Better
+
+The summarization prompts are pretty basic. I'm generating general summaries when I should be extracting structured information (key technologies, problem being solved, difficulty level). Better prompts would make filtering more useful.
+
+I may continue iterating to introduce "relevance scoring" using another AI pass. Free-form describe what I'm more interested in, what I'm not interested in, then generate the digest based on a scoring system. Only surface content that actually matters to me.
+
+Tag-based routing would be smarter too. Right now you configure which Slack channel gets which sites. AI-extracted tags that route content automatically would be more flexible.
+
+Email delivery is another option if you want to keep it email-based. But I don't want more emails, so Slack works better for me.
+
+## Try It
+
+The code is on GitHub: [github.com/mfyz/newsletter-blog-digester](https://github.com/mfyz/newsletter-blog-digester)
+
+Setup: clone the repo, run `docker compose up -d`, open `http://localhost:5566`, configure your sites and Slack webhook. That's it.
+
+This legitimately changed how I consume content. My morning routine went from 30 minutes of tab management to 5 minutes of reading summaries and clicking through to what matters. Instead of reactive scanning, I get proactive filtering.
+
+Now that I go through content faster, that is relevant to me and my work; I'm sharing industry news and cool things I'm seeing, with my team more consistently and more often. That ignites real-time product engineering chatter and passion. Turns out when you're not drowning in content, you actually have time to share the good bits.
