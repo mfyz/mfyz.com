@@ -1,0 +1,305 @@
+---
+title: "uvu + Sinon: Fast, Lightweight Testing That Actually Feels Good"
+description: "Jest is slow. Vitest is heavy. uvu is a 5KB test runner that runs 205 tests in 190ms. Here's why I switched and built a custom reporter."
+date: 2025-12-02
+slug: "uvu-sinon-fast-lightweight-testing"
+tags: ["testing", "javascript", "uvu", "sinon", "jest", "performance"]
+hidden: true
+---
+
+I want to talk about testing frameworks. Jest dominated for years. Then Vitest came along and made things faster. But they're both still heavy, complex tools with lots of magic.
+
+I tried a lightweight approach on my newsletter digester project and testing feels like magic. 205 tests run in 190ms. 🤯 The entire test suite including mocking external APIs completes faster than Jest can even start up.
+
+Let me show you why uvu + Sinon is worth considering.
+
+## The Testing Framework Fatigue
+
+Jest changed JavaScript testing. Before Jest, testing was fragmented and painful. Jest unified everything: test runner, assertions, mocking, coverage. One tool, everything works.
+
+But Jest is slow. Really slow. Even with the `--maxWorkers` flag and all the optimizations, a medium-sized test suite takes 5-10 seconds. Large suites take minutes.
+
+Vitest improved this significantly. It's faster, uses Vite's infrastructure, and has a better developer experience. But it's still 10MB+ of dependencies with lots of moving parts.
+
+For my newsletter digester, I wanted something simpler. Something that runs tests fast without needing configuration or magic.
+
+## uvu: The 5KB Test Runner
+
+uvu is a test runner that's 5KB. Five kilobytes. It has one job: run tests fast.
+
+No built-in assertions (use Node's assert or any library). No built-in mocking (use Sinon). No magic. Just a blazingly fast test runner.
+
+Here's what 205 tests look like with uvu (using a custom reporter I built to see the whole picture - more on that below):
+
+```
+config-api
+
+    ✓ getAll should return config as object
+    ✓ getAll should return all config keys
+    ✓ update should update config values
+    ✓ update should update multiple config values
+    ✓ update should handle schedule updates and trigger cron reschedule
+    ✓ update should handle empty body
+    ✓ testAI should return 400 when API key missing
+    ✓ testAI should return 400 when base URL missing
+    ✓ testAI should return 400 when both key and URL missing
+
+cron-api
+
+    ✓ runNow should trigger background check and return success
+    ✓ runNow should not wait for check to complete
+    ✓ runNow should start check even with no active sites
+    ✓ runNow should handle multiple concurrent calls
+
+...
+
+Tests:  205 passed, 205 total
+Time:   0.19s
+```
+
+190 milliseconds for 205 tests. That includes database operations, API mocking, and full integration tests.
+
+Jest takes longer just to initialize.
+
+## The Setup
+
+Install uvu and sinon:
+
+```bash
+npm install -D uvu sinon c8
+```
+
+That's 3 packages. Total size: ~1MB. Compare that to Jest's 30MB or Vitest's 10MB.
+
+Here's a test file:
+
+```javascript
+import { suite } from "uvu";
+import * as assert from "uvu/assert";
+import sinon from "sinon";
+
+const SitesDB = suite("Sites DB");
+
+SitesDB.before.each(context => {
+  // Setup runs before each test
+  context.db = initTestDatabase();
+  context.stubs = [];
+});
+
+SitesDB.after.each(async context => {
+  // Cleanup runs after each test
+  context.stubs.forEach(stub => stub.restore());
+  await context.db.close();
+});
+
+SitesDB("should create a new site", async ({ db }) => {
+  const site = await db.createSite({
+    url: "https://example.com/rss",
+    title: "Test Blog",
+    type: "rss",
+  });
+
+  assert.ok(site.id);
+  assert.is(site.title, "Test Blog");
+  assert.is(site.type, "rss");
+});
+
+SitesDB("should fetch all sites", async ({ db }) => {
+  await db.createSite({
+    url: "https://example.com/rss",
+    title: "Blog 1",
+    type: "rss",
+  });
+  await db.createSite({
+    url: "https://example.com/feed",
+    title: "Blog 2",
+    type: "rss",
+  });
+
+  const sites = await db.getAllSites();
+
+  assert.is(sites.length, 2);
+});
+
+SitesDB.run();
+```
+
+Clean, simple, fast. No magic, no hidden configuration.
+
+## Mocking with Sinon
+
+uvu doesn't include mocking. That's by design. Use Sinon, which is the industry standard for mocking.
+
+Here's how I mock OpenAI API calls:
+
+```javascript
+import { suite } from "uvu";
+import * as assert from "uvu/assert";
+import sinon from "sinon";
+import axios from "axios";
+
+const Extractors = suite("Extractors");
+
+Extractors("should extract posts using LLM", async () => {
+  // Mock axios to return HTML
+  const axiosStub = sinon.stub(axios, "get").resolves({
+    data: "<html><article><h2>Post Title</h2></article></html>",
+  });
+
+  // Mock OpenAI response
+  const openaiStub = sinon.stub(global, "fetch").resolves({
+    ok: true,
+    json: async () => ({
+      choices: [
+        {
+          message: {
+            content: JSON.stringify([
+              { title: "Post Title", url: "https://example.com/post1" },
+            ]),
+          },
+        },
+      ],
+    }),
+  });
+
+  const posts = await extractWithLLM("https://example.com");
+
+  assert.is(posts.length, 1);
+  assert.is(posts[0].title, "Post Title");
+
+  // Cleanup
+  axiosStub.restore();
+  openaiStub.restore();
+});
+
+Extractors.run();
+```
+
+Sinon stubs are powerful. You can stub any function, spy on calls, fake timers, create test doubles. Everything you need for comprehensive testing.
+
+## Custom Test Reporter
+
+uvu's default output is minimal. I wanted something prettier with test names and clear visual hierarchy.
+
+I built a custom test runner that parses uvu output and reformats it:
+
+```javascript
+#!/usr/bin/env node
+import { exec } from "child_process";
+import { promisify } from "util";
+
+const execAsync = promisify(exec);
+
+const colors = {
+  reset: "\x1b[0m",
+  green: "\x1b[32m",
+  red: "\x1b[31m",
+  gray: "\x1b[90m",
+  bold: "\x1b[1m",
+};
+
+async function runTests() {
+  const startTime = Date.now();
+
+  const { stdout } = await execAsync(
+    "NODE_OPTIONS=--experimental-vm-modules node node_modules/uvu/bin.js src/server/__tests__"
+  );
+
+  // Parse and reformat output
+  const lines = stdout.split("\n");
+  let passed = 0;
+
+  for (const line of lines) {
+    if (line.includes(".test.js")) {
+      const fileName = line.replace(/.*\//, "").replace(".test.js", "");
+      console.log(`${colors.bold}${fileName}${colors.reset}`);
+    } else if (line.includes("✓")) {
+      const testName = extractTestName(line);
+      console.log(
+        `    ${colors.green}✓${colors.reset} ${colors.gray}${testName}${colors.reset}`
+      );
+      passed++;
+    }
+  }
+
+  const duration = ((Date.now() - startTime) / 1000).toFixed(2);
+
+  console.log("");
+  console.log(
+    `${colors.bold}Tests:${colors.reset}  ${colors.green}${passed} passed${colors.reset}, ${passed} total`
+  );
+  console.log(`${colors.bold}Time:${colors.reset}   ${duration}s`);
+}
+
+runTests();
+```
+
+This gives me nice, readable output with test names, file grouping, and timing:
+
+```
+config-api
+    ✓ getAll should return config as object
+    ✓ update should update config values
+    ✓ testAI should validate API keys
+
+cron
+    ✓ runCheck() should process active sites
+    ✓ updateSchedule() should validate cron expressions
+
+Tests:  205 passed, 205 total
+Time:   0.19s
+```
+
+Clean, fast, informative.
+
+## Coverage with c8
+
+uvu doesn't include coverage. Use c8, which is a native V8 coverage tool:
+
+```json
+{
+  "scripts": {
+    "test": "uvu src/server/__tests__",
+    "test:coverage": "c8 uvu src/server/__tests__"
+  }
+}
+```
+
+Run `npm run test:coverage` and you get full coverage reports:
+
+```
+File                | % Stmts | % Branch | % Funcs | % Lines
+--------------------|---------|----------|---------|--------
+All files           |   94.23 |    89.47 |   92.85 |   94.23
+ api/config.js      |     100 |      100 |     100 |     100
+ api/cron.js        |     100 |      100 |     100 |     100
+ api/sites.js       |   96.15 |    88.23 |     100 |   96.15
+ cron.js            |   91.66 |    85.71 |      90 |   91.66
+ db.js              |   97.56 |    92.85 |     100 |   97.56
+```
+
+c8 is fast and accurate because it uses Node's built-in coverage.
+
+## Try It Yourself
+
+The newsletter digester project uses uvu for all its tests:
+
+[github.com/mfyz/newsletter-blog-digester](https://github.com/mfyz/newsletter-blog-digester)
+
+Clone it, run `npm test`. You'll see 205 tests complete in under 200ms.
+
+Look at the test files in `src/server/__tests__/`. They're simple, explicit, and fast.
+
+The custom test runner is in `run-tests.js`. Feel free to copy it for your own projects.
+
+## Testing Should Be Fast
+
+We've normalized slow test suites. "Tests take 30 seconds" is considered acceptable. Some projects have test suites that take minutes.
+
+It doesn't have to be this way.
+
+uvu proves that testing can be fast without sacrificing capability. 205 comprehensive tests in 190ms. That's not magic, that's just good engineering.
+
+Fast tests change how you work. They become part of your development flow instead of something you run occasionally. That makes you more productive and your code more reliable.
+
+Try uvu. You might not go back.

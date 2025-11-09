@@ -1,0 +1,59 @@
+---
+title: "snarkdown: The 1KB Markdown Renderer That Does Just Enough"
+description: "Marked is 50KB. markdown-it is 100KB. snarkdown is 1KB and handles 90% of markdown use cases."
+date: 2025-12-09
+slug: "snarkdown-1kb-markdown-renderer"
+tags: ["javascript", "markdown", "performance", "libraries", "minimalism"]
+hidden: true
+---
+
+I want to share a tiny markdown library I found: snarkdown. It's 1KB and does just enough.
+
+Most projects reach for Marked (50KB) or markdown-it (100KB). For displaying blog post summaries or user comments, you don't need full CommonMark compliance. You need bold, italic, links, lists, code blocks. That's it.
+
+snarkdown is 1KB and renders exactly that.
+
+## What It Does (and Doesn't)
+
+Supports: bold, italic, strikethrough, links, lists, code blocks, headers. The basics.
+
+```markdown
+**bold** and _italic_
+[link](https://example.com)
+`code`
+
+- list item
+
+# heading
+```
+
+Doesn't support: tables, images, footnotes, reference-style links. If you need those, use Marked. If you don't, why ship 50KB?
+
+## How to Use It
+
+One function. Input markdown, get HTML:
+
+```javascript
+import snarkdown from "https://esm.sh/snarkdown@2.0.0";
+
+const markdown = "**Bold** and *italic* with [links](https://example.com)";
+const html = snarkdown(markdown);
+```
+
+Load from CDN, no build step. Here's how I use it in my newsletter digester:
+
+```javascript
+import snarkdown from "https://esm.sh/snarkdown@2.0.0";
+
+export default function Posts() {
+  return html`
+    <div dangerouslySetInnerHTML=${{ __html: snarkdown(post.summary) }} />
+  `;
+}
+```
+
+AI-generated summaries come back with basic markdown. snarkdown renders them instantly.
+
+My total frontend: Preact (3KB) + HTM (1KB) + snarkdown (1KB) = 5KB. Compare that to React + markdown-it = 275KB.
+
+See it in action: [github.com/mfyz/newsletter-blog-digester](https://github.com/mfyz/newsletter-blog-digester) - check `src/public/pages/Posts.js`. One line of code. That's it.

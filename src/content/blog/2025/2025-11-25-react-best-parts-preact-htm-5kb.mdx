@@ -1,0 +1,257 @@
+---
+title: "React's Best Parts in 5KB: Preact + HTM, No Build Tools Needed"
+description: "Modern React development means webpack, babel, and megabytes of dependencies. Preact + HTM gives you the same DX in 5KB from a CDN. No build step needed."
+date: 2025-11-25
+slug: "react-best-parts-preact-htm-5kb"
+tags: ["javascript", "preact", "react", "frontend", "performance", "no-build"]
+hidden: true
+---
+
+I want to talk about React fatigue. Not the framework itself, but the ecosystem around it.
+
+Modern React development means webpack or Vite, babel configuration, thousands of npm dependencies, and build steps that turn 50 lines of code into minutes of compilation. For a simple admin interface or internal tool, this is overkill.
+
+There's a better way. Preact (3KB) + HTM (1KB) gives you React's component model and JSX-like syntax in 5KB total. Loaded from a CDN. No build step, no transpilation, no configuration.
+
+Edit your code, refresh the browser. That's it.
+
+## The React Build Problem
+
+Don't get me wrong, React is great. The component model, hooks, and ecosystem are excellent. But somewhere along the way, using React became synonymous with complex build tooling.
+
+Want to use JSX? You need babel. Want to split code? You need webpack or Vite. Want to use modern JavaScript? You need transpilation. By the time you're done, you have:
+
+- 200MB+ in node_modules
+- A few minutes for initial install
+- 5-15 second dev server startup
+- Hot reload that sometimes works
+- Build configuration that breaks mysteriously
+
+For a production app serving millions of users, this complexity might be justified. But for an internal admin panel or a side project? You're spending more time fighting tooling than building features.
+
+## Preact + HTM: The Lightweight Alternative
+
+Preact is a 3KB React alternative with the same API. HTM is a 1KB library that gives you JSX-like syntax using tagged template literals.
+
+Together, they're 4KB. Compare that to React (45KB) + ReactDOM (130KB) = 175KB. That's a 40x difference.
+
+The killer feature: both load directly from a CDN. No build step needed.
+
+## Show Me
+
+Here's a complete component from my newsletter digester project:
+
+```javascript
+import { h } from "https://esm.sh/preact@10.19.3";
+import htm from "https://esm.sh/htm@3.1.1";
+
+const html = htm.bind(h);
+
+export default function Button({
+  children,
+  onClick,
+  variant = "primary",
+  disabled = false,
+}) {
+  const baseClass = "px-4 py-2 rounded-md font-medium transition-colors";
+
+  const variantClasses = {
+    primary: "bg-blue-600 text-white hover:bg-blue-700",
+    secondary: "bg-gray-200 text-gray-800 hover:bg-gray-300",
+    danger: "bg-red-600 text-white hover:bg-red-700",
+  };
+
+  const classes = `${baseClass} ${variantClasses[variant]}`;
+
+  return html`
+    <button
+      type="button"
+      class=${classes}
+      onClick=${onClick}
+      disabled=${disabled}
+    >
+      ${children}
+    </button>
+  `;
+}
+```
+
+This is real production code. No transpilation, no build step. Just JavaScript.
+
+## HTM Syntax
+
+HTM uses tagged template literals to give you JSX-like syntax without compilation:
+
+**Basic elements:**
+
+```javascript
+html`<div class="container">Hello World</div>`;
+```
+
+**Interpolation:**
+
+```javascript
+html`<h1>${title}</h1>`;
+```
+
+**Props:**
+
+```javascript
+html`<button onClick=${handleClick} disabled=${isDisabled}>Click</button>`;
+```
+
+**Components:**
+
+```javascript
+html`<${Button} variant="primary">Submit</${Button}>`;
+```
+
+**Conditionals:**
+
+```javascript
+html`${isLoading && html`<div>Loading...</div>`}`;
+```
+
+**Lists:**
+
+```javascript
+html`${items.map(item => html`<li key=${item.id}>${item.name}</li>`)}`;
+```
+
+It feels exactly like JSX. The only difference is using `html` tagged templates instead of JSX syntax.
+
+## State and Hooks
+
+Preact supports the same hooks API as React:
+
+```javascript
+import { h } from "https://esm.sh/preact@10.19.3";
+import { useState, useEffect } from "https://esm.sh/preact@10.19.3/hooks";
+import htm from "https://esm.sh/htm@3.1.1";
+
+const html = htm.bind(h);
+
+export default function Posts() {
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("/api/posts")
+      .then(r => r.json())
+      .then(data => {
+        setPosts(data);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return html`<div>Loading...</div>`;
+  }
+
+  return html`
+    <div class="posts">
+      ${posts.map(
+        post => html`
+          <div key=${post.id} class="post">
+            <h2>${post.title}</h2>
+            <p>${post.summary}</p>
+          </div>
+        `
+      )}
+    </div>
+  `;
+}
+```
+
+`useState`, `useEffect`, `useCallback`, `useMemo`, `useRef` - they all work exactly like React.
+
+## A Complete App
+
+Here's the entry point for my newsletter digester frontend:
+
+```javascript
+// index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newsletter Digester</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div id="app"></div>
+
+  <script type="module">
+    import { h, render } from 'https://esm.sh/preact@10.19.3';
+    import App from './pages/App.js';
+
+    render(h(App), document.getElementById('app'));
+  </script>
+</body>
+</html>
+```
+
+That's it. No webpack config, no babel setup, no package.json scripts. Just an HTML file that imports a JavaScript module.
+
+## Poor Man's Router
+
+The `App.js` component imports other components and handles routing with simple state:
+
+```javascript
+import { h } from "https://esm.sh/preact@10.19.3";
+import { useState } from "https://esm.sh/preact@10.19.3/hooks";
+import htm from "https://esm.sh/htm@3.1.1";
+import Posts from "./Posts.js";
+import Sites from "./Sites.js";
+import Config from "./Config.js";
+
+const html = htm.bind(h);
+
+export default function App() {
+  const [currentTab, setCurrentTab] = useState("posts");
+
+  return html`
+    <div class="min-h-screen bg-gray-50">
+      <header class="bg-white shadow">
+        <nav class="flex space-x-4">
+          <button onClick=${() => setCurrentTab("posts")}>Posts</button>
+          <button onClick=${() => setCurrentTab("sites")}>Sites</button>
+          <button onClick=${() => setCurrentTab("config")}>Config</button>
+        </nav>
+      </header>
+
+      <main class="mx-auto max-w-7xl px-4 py-8">
+        ${currentTab === "posts" && html`<${Posts} />`}
+        ${currentTab === "sites" && html`<${Sites} />`}
+        ${currentTab === "config" && html`<${Config} />`}
+      </main>
+    </div>
+  `;
+}
+```
+
+This is a full single-page app with client-side routing (via simple state conditionals), state management, and multiple views. Total bundle size: 5KB (Preact + HTM). Everything else loads from the same CDN.
+
+The hardest part is unlearning the assumption that frontend development requires build tools. Modern browsers support ES modules natively. The build tools are optional.
+
+## Real Project: Newsletter Digester
+
+Everything I described above is from my actual newsletter digester project. The entire frontend is Preact + HTM. No build step.
+
+It has:
+
+- Multiple pages (Posts, Sites, Config, Logs)
+- Reusable components (Button, Input, Select, Modal)
+- State management with hooks
+- API calls with fetch
+- Markdown rendering
+- Form handling
+
+Total frontend code: ~1500 lines of JavaScript. Total dependencies: 0 (everything from CDN). Build time: 0 seconds.
+
+Check out the code: [github.com/mfyz/newsletter-blog-digester](https://github.com/mfyz/newsletter-blog-digester)
+
+Look at the `src/public/` folder. Every file is just JavaScript. No transpilation, no bundling, no magic. Open any component and you'll see exactly what runs in the browser.
+
+For internal tools, admin panels, prototypes, and side projects, you don't need build complexity. You can ship a polished, maintainable frontend in 5KB with zero configuration. Less time fighting tooling, more time building features. Code that's easier to understand because there's no magic between your source and what runs in the browser.
