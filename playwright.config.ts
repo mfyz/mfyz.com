@@ -29,7 +29,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: 'http://localhost:4321',
+    baseURL: process.env.PORT ? `http://localhost:${process.env.PORT}` : 'http://localhost:6543',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -66,7 +66,7 @@ export default defineConfig({
   /* Run your local dev server before starting the tests */
   webServer: {
     command: 'node check-server-running.js || npm run dev',
-    url: 'http://localhost:4321',
+    url: process.env.PORT ? `http://localhost:${process.env.PORT}` : 'http://localhost:6543',
     reuseExistingServer: true, // Always try to reuse a running server
     stdout: 'pipe',
     stderr: 'pipe',
