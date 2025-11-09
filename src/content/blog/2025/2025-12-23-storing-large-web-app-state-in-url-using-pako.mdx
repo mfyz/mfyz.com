@@ -1,0 +1,118 @@
+---
+title: "Storing large web app state in URL using pako"
+description: "How to store and share complex application state in URLs using pako compression, discovered from Mermaid Live Editor's approach to making diagrams shareable."
+date: 2025-12-23
+slug: "storing-large-web-app-state-in-url-using-pako"
+tags: ["javascript", "web-development", "state-management", "compression"]
+hidden: true
+---
+
+A few weeks ago, this blog post made the rounds: [Your URL is your state](https://alfy.blog/2025/10/31/your-url-is-your-state.html). It brought the conversation about URL-based state management into the mainstream, and I absolutely loved it. The core argument is simple and powerful: URLs should store application state because they're shareable, bookmarkable, and make the back button actually work.
+
+I brought this post up in my team and we were nerding out about it. Someone said something that stuck with me: "whenever I see a site with search experience that does NOT store my search query in the URL, makes me cringe". 💯
+
+I mean come on! How hard is it to store and restore the search query in the URL? Why is this even a debate? When you don't, I refresh the page and lose everything. I have to type it again. The page isn't shareable, isn't bookmarkable, isn't referrable. You're breaking basic web functionality that's been around since the beginning.
+
+Here's my 2 cents to add to this conversation: what about when your state gets big?
+
+## When query strings aren't enough
+
+URL state management usually starts with query strings:
+
+```
+https://example.com/search?q=javascript&sort=date&page=2
+```
+
+This is perfect for simple key-value pairs. Your application state is basically:
+
+```javascript
+{
+  q: "javascript",
+  sort: "date",
+  page: 2
+}
+```
+
+Query strings and JSON objects? They're the same thing in different formats. One is URL-encoded text, the other is structured data. You serialize one way for URLs, another way for your app.
+
+Think about React state or any reactive front-end framework. At any point in time, your application state is essentially a simple key-value store that can be represented as a JSON object. Whether it's Redux, Zustand, Vue's reactive data, or useState hooks - it all boils down to serializable data.
+
+What happens when your state grows? Complex filters, multiple selections, nested configuration objects, editor content, canvas positions, diagram definitions?
+
+That's where pako comes in.
+
+## Discovering pako through Mermaid Live Editor
+
+I discovered pako through [Mermaid Live Editor](https://mermaid.live/). I really liked how you can create complex diagrams and instantly share them with a URL, and I was intrigued to learn how they were storing entire diagram definitions in URLs without hitting length limits.
+
+I reverse engineered it and found pako. It's a JavaScript implementation of zlib compression/decompression. Fast, small (45KB minified), simple API, and surprisingly good at compressing text.
+
+Here's the thing: text compresses decently. JSON compresses decently. Your application state? Pako can typically cut it in half.
+
+## Practical implementation
+
+Let's say you're building a data visualization tool. Your state might look like:
+
+```javascript
+const appState = {
+  dataset: "sales_2024",
+  filters: {
+    region: ["north", "south", "east"],
+    dateRange: { start: "2024-01-01", end: "2024-12-31" },
+    minValue: 1000,
+    categories: ["electronics", "furniture", "clothing"],
+  },
+  chartType: "bar",
+  groupBy: "month",
+  colorScheme: "categorical",
+  showLegend: true,
+  annotations: [{ x: "2024-06", text: "Q2 spike", color: "red" }],
+};
+```
+
+Without compression, this becomes a massive URL. With pako:
+
+```javascript
+import pako from "pako";
+
+// Compress and encode for URL
+function encodeState(state) {
+  const json = JSON.stringify(state);
+  const compressed = pako.deflate(json);
+  const base64 = btoa(String.fromCharCode.apply(null, compressed));
+  return base64;
+}
+
+// Decode and decompress from URL
+function decodeState(encoded) {
+  const compressed = Uint8Array.from(atob(encoded), c => c.charCodeAt(0));
+  const json = pako.inflate(compressed, { to: "string" });
+  return JSON.parse(json);
+}
+
+// Usage
+const encoded = encodeState(appState);
+const url = `https://example.com/viz?state=${encoded}`;
+
+// Later, restore from URL
+const params = new URLSearchParams(window.location.search);
+const state = decodeState(params.get("state"));
+```
+
+The compressed version is significantly smaller. Here are real numbers from testing pako with different sized state objects:
+
+| State Type             | Original Size | Compressed Size | Compression Ratio |
+| ---------------------- | ------------- | --------------- | ----------------- |
+| Small dashboard        | 4,193 chars   | 2,460 chars     | 41%               |
+| Enterprise dashboard   | 14,681 chars  | 7,636 chars     | 48%               |
+| Full application state | 22,537 chars  | 11,048 chars    | 51%               |
+
+The pattern is clear: pako achieves around **40-50% compression** on typical JSON state objects. Even a massive 22KB enterprise dashboard state compresses to 11KB, fitting comfortably within modern browser URL limits.
+
+A few practical considerations: URL length limits vary by browser - the safe threshold is around 2,000 characters for older browsers and CDNs, but modern browsers handle 32K+ (Chrome), 300K+ (Firefox), and 64K+ (Safari). Pako works everywhere modern JavaScript runs and compression happens in milliseconds.
+
+For simple state like search queries or filters, query strings work fine (`?search=laptop&sort=price`). For complex nested state, use compressed JSON (`?state=eJyNjkEKg...`). You can mix both approaches in the same URL.
+
+If your state gets truly massive and you're hitting URL limits, you can store the serialized object (compressed or not) in localStorage and reference it by ID in the URL (`?state_id=abc123`). This makes URLs computer-dependent rather than universally shareable, but it's still better than losing state on refresh and gives you a way to manage multiple saved states.
+
+Next time you're building a search interface, a data visualization, a diagram editor, or any stateful web app: put it in the URL. Make it shareable. Make the back button work. Make it bookmarkable. It's not hard.
