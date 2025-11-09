@@ -1,0 +1,144 @@
+---
+title: "Stupid Simple Setup to Run AI Locally on Any Computer"
+description: "Ollama + Gemma 2B runs capable AI locally on any computer. Free, offline, private - handles summaries and automation without cloud APIs or heavy resources."
+date: 2025-12-16
+slug: "stupid-simple-setup-run-ai-locally"
+tags: ["ai", "ollama", "gemma", "automation", "local-llm", "privacy"]
+hidden: true
+---
+
+import ImageZoom from "@components/ImageZoom.astro";
+
+When I built my [newsletter digester](/oss-newsletter-digester-ai-slack-summaries/), I initially reached for OpenAI's API. It worked great. But then I realized I was sending every blog post and newsletter to a cloud service for simple summarization. That felt wrong for a self-hosted tool focused on privacy.
+
+You can run a capable LLM locally that handles summarization, general Q&A, and daily automation without requiring a monster GPU. [Ollama](https://ollama.com) + Gemma 2B is the answer.
+
+## The Setup
+
+[Ollama](https://ollama.com) is the easiest way to run LLMs locally. One command to install, one command to download a model, and you're running. No Python environments, no CUDA configuration, no model file hunting.
+
+<ImageZoom
+  src="/images/blog/2025/ollama-screenshot.jpg"
+  alt="Ollama terminal interface running Gemma model"
+  width={1500}
+  height={1091}
+/>
+
+If you want more control and advanced features, [LM Studio](https://lmstudio.ai) is another excellent option with a full GUI and model management interface.
+
+<ImageZoom
+  src="/images/blog/2025/lmstudio-screenshot.jpg"
+  alt="LM Studio GUI interface with model management"
+  width={1500}
+  height={965}
+/>
+
+### The Model
+
+Gemma is Google's open model family. It resembles Gemini and was trained on similar data. The 2B parameter version is tiny (1.4GB download) and runs on basically anything, even older MacBooks or low-end servers.
+
+What you get:
+
+- **OpenAI-compatible API**: Drop-in replacement for GPT calls
+- **Fully offline**: No data leaves your machine
+- **Minimal resources**: 2-4GB RAM, any modern CPU
+- **Fast responses**: 20-50 tokens/second on modest hardware
+
+Perfect for summarization, content extraction, general answers, and daily automation.
+
+## Installation is Ridiculously Easy
+
+Download Ollama from [ollama.com](https://ollama.com/download) - works on macOS, Linux, and Windows.
+
+If you prefer command line: `brew install ollama` on macOS or `curl -fsSL https://ollama.com/install.sh | sh` on Linux.
+
+Download and run Gemma 2B:
+
+```bash
+ollama run gemma:2b
+```
+
+That's it. The first run downloads the model (1.4GB), then drops you into an interactive chat. Like ChatGPT but fully local.
+
+Want more accurate and smarter responses? Try `gemma:7b` (4.8GB) or `gemma2:9b` (5.5GB). Just swap the model name.
+
+## OpenAI-Compatible API
+
+The killer feature: Ollama provides an OpenAI-compatible API endpoint. If your code talks to OpenAI, it already works with Ollama. Just change the base URL.
+
+```javascript
+// OpenAI
+fetch("https://api.openai.com/v1/chat/completions", { ... })
+
+// Ollama
+fetch("http://localhost:11434/v1/chat/completions", { ... })
+```
+
+Same request structure, same response format. Different URL, different model name, no API key needed.
+
+Switch between cloud and local with environment variables. OpenAI for production, Ollama for development or privacy-sensitive tasks.
+
+## Real Usage: Newsletter Digester
+
+My newsletter digester uses Ollama for all AI operations. Here's the actual summarization code:
+
+```javascript
+import axios from "axios";
+
+const AI_BASE_URL = process.env.AI_BASE_URL || "http://localhost:11434/v1";
+const AI_MODEL = process.env.AI_MODEL || "gemma:2b";
+const AI_API_KEY = process.env.AI_API_KEY || "";
+
+async function summarizePost(content) {
+  const response = await axios.post(
+    `${AI_BASE_URL}/chat/completions`,
+    {
+      model: AI_MODEL,
+      messages: [
+        {
+          role: "system",
+          content:
+            "You are a helpful assistant that summarizes blog posts and articles. Provide concise 2-3 sentence summaries.",
+        },
+        {
+          role: "user",
+          content: `Summarize this article:\n\n${content}`,
+        },
+      ],
+      temperature: 0.3,
+    },
+    {
+      headers: {
+        "Content-Type": "application/json",
+        ...(AI_API_KEY && { Authorization: `Bearer ${AI_API_KEY}` }),
+      },
+    }
+  );
+
+  return response.data.choices[0].message.content;
+}
+```
+
+Environment variables control everything. Want to use OpenAI? Set `AI_BASE_URL=https://api.openai.com/v1` and `AI_MODEL=gpt-4o-mini`. Want local? Use defaults.
+
+The digester processes 20-50 blog posts daily. Gemma 2B summarizes each one in 3-5 seconds on my server (no GPU). Total cost: $0.00. Privacy impact: zero, everything stays local.
+
+Check the full code: [github.com/mfyz/newsletter-blog-digester](https://github.com/mfyz/newsletter-blog-digester)
+
+## The Good and Bad
+
+Summarization is where Gemma 2B really works. I feed it blog posts and newsletters, and it gives me clean 2-3 sentence summaries that are honestly comparable to GPT-3.5. Content extraction from HTML is reliable for simple cases - asking it to pull out titles, dates, and main points from markup.
+
+General Q&A works well enough for automation. "What is this code doing?", "Explain this error message" - these kinds of questions get solid answers. Not perfect, but good enough when you're processing content in bulk.
+
+Complex reasoning isn't happening with this model. Multi-step logic, deep technical analysis, anything requiring the model to think through multiple connected concepts - you need bigger models for that. Creative writing lacks personality. It can generate text, but it won't sound like GPT-4 or Claude.
+
+Long contexts degrade fast. Gemma 2B technically handles 8K tokens, but quality drops with really long inputs. Coding tasks are basic. It knows syntax and can explain simple functions, but don't expect [Claude Code](/taming-claude-code/) level assistance.
+
+Why I still prefer local: my content stays on my machine. No API calls to external services, no data leaving my infrastructure. It's free - no usage limits, no monthly bills, no surprise charges. No API rate limits or outages either. Localhost API calls are 20-50ms vs 200-500ms for OpenAI.
+
+You can experiment freely. Try different prompts, adjust parameters, run it 1000 times - doesn't matter. No cost anxiety.
+
+The trade-off is hardware and capability. But for everyday automation, Gemma 2B hits the sweet spot.
+
+My newsletter digester runs entirely on Ollama and has processed thousands of posts. Zero costs, zero privacy concerns, consistent performance. For simple automation tasks, local models are more than good enough.
