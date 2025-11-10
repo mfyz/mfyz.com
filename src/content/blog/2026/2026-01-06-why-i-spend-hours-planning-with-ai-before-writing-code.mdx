@@ -1,0 +1,74 @@
+---
+title: "The Power of plan.md: Why I Spend Hours Planning with AI Before Writing Code"
+description: "How I spend hours building detailed plan.md files with AI agents before writing any code, and why this upfront investment saves time and headaches later."
+date: 2026-01-06
+slug: "why-i-spend-hours-planning-with-ai-before-writing-code"
+tags: ["ai", "planning", "development", "llm"]
+hidden: true
+---
+
+My bulletproof recipe to AI agent-based coding: spending a ton of time on `plan.md` before writing a single line of code.
+
+This isn't your typical "write some notes before coding" advice. I'm talking about investing hours (sometimes days depending on the size of the project) collaborating with AI agents to build a comprehensive, detailed `plan.md` file that becomes the permanent context of the project.
+
+The challenge with AI agents is keeping them on track as the project grows. They want to jump straight into coding. My job is to hold them back, make them research, compare alternatives, help me make key decisions, document them, and iterate on the plan until it's holistic and solid.
+
+## Why I Build plan.md with AI Agents
+
+When I start a new project, I fire up Claude or another AI agent (i.e: windsurf, cursor) and start a deep conversation about the project. We talk through technology choices, competition if its a commercial idea, existing solutions, open source alternatives, architectural decisions, edge cases, and implementation details.
+
+The AI agent does the heavy lifting: researching solutions, comparing frameworks, noting tradeoffs, documenting decisions. I guide the conversation, ask questions, challenge assumptions, and make final calls. The output is a detailed `plan.md` file that captures everything.
+
+Here's what I get from this process:
+
+**Technology Research**: The AI agent compares different options. Should I use Fastify or Express? SQLite or PostgreSQL? Preact or React? We document the pros, cons, and why we chose what we chose.
+
+**Architectural Decisions**: How should the project be structured? What folders go where? Which patterns make sense? The plan captures the reasoning, not just the structure.
+
+**Implementation Details**: Database schemas, API endpoints, component hierarchies, file organization. All documented before I write code.
+
+**Edge Cases and Gotchas**: The AI helps think through failure scenarios, error handling, cleanup strategies. Things I might miss when coding.
+
+**Alternatives Considered**: When future-me wonders "why didn't we use X instead?", the plan has the answer. We considered X, here's why we didn't use it.
+
+One I'm comfortable with the plan I generally end my process with asking it to create a phased implementation plan. Each phase focused on a specific area (either a feature or a technical implementation that needs to happen before others), then I ask it to create todo list under each phase. I often ask it to number or letter phases and todos, like Phase 2: Drizzle Setup and Initial Database Schema, and have todos numbered like Todo 2.1: Create drizzle config, Todo 2.2: Create initial database schema (config, users, sites)...
+
+This helps me ask AI agent to slowly progress on the project, and I can control the agent better, like asking implement Phase 2 with new unit tests.
+
+## Recent Example: Newsletter Digester
+
+I recently built [newsletter-digester](https://github.com/fatih/newsletter-digester), a tool that checks websites/blogs, summarizes posts with AI, and sends digests to Slack. Before writing any code, I spent hours building the initial plan with Claude.
+
+The result was a long markdown file covering:
+
+- **Technology Stack**: Why Fastify? Why SQLite? Why Preact without a build system? Each choice documented with reasoning.
+- **Three Extraction Methods**: RSS feeds, CSS selector-based HTML parsing, and LLM-based extraction. The plan compares speed, cost, reliability, and use cases for each.
+- **Database Schema**: Complete table definitions with composite unique constraints for duplicate prevention, foreign keys, and cleanup strategies.
+- **API Structure**: Every endpoint documented (sites, posts, config, logs, cron) with request/response formats.
+- **Frontend Architecture**: No-build-system approach using Preact + HTM from CDN, with file structure and component breakdown.
+- **Visual Explainers**: ASCII diagrams showing the UI layout, mermaid diagrams for workflow, and code structure trees. These visual elements make complex architecture easier to understand at a glance.
+
+Here's the beautiful part: the plan documented WHY we chose each approach, not just WHAT we chose.
+
+For example, the plan includes comparison tables like this testing framework comparison, along with ASCII diagrams of the UI layout:
+
+```
+| Framework      | Size   | Speed            | Features                       |
+| -------------- | ------ | ---------------- | ------------------------------ |
+| uvu (chosen)   | 5KB    | ★★★★ Fastest     | Minimal, fast                  |
+| Vitest         | 10MB   | ★★★ Fast         | Full-featured, watch, coverage |
+| Node.js test   | 0KB    | ★★★★★★ Very fast | Basic, native                  |
+| Jest           | 30MB   | ★ Slow           | Full-featured, heavy           |
+```
+
+When I started coding, I didn't waste time second-guessing decisions. The plan had already worked through the tradeoffs.
+
+> "Give me six hours to chop down a tree and I will spend the first four sharpening the axe." - Abraham Lincoln
+
+The plan isn't just useful at the start. It becomes the permanent brain of the project. I constantly refer back to it when adding features ("How did we structure the API?"), fixing bugs ("Why did we use composite unique constraints?"), or making changes ("Should we add email digests? Did we already consider it?"). When requirements change, I update the plan first. This forces me to think through how the change fits with existing architecture.
+
+As projects grow, I create a `plans/` folder at the root and move the original to `initial-plan.md`. Then I create smaller, focused markdown files for new features or refactorings, repeating the same planning process at a smaller scale. Once a feature is fully implemented and the plans folder gets crowded, I create an `archived/` or `completed/` subfolder and move finished plans there. I keep them around for a while. When new features or refactorings relate to each other, it's great to refer back to the original plan when iterating.
+
+The `plan.md` is the single source of truth. It's not code comments scattered across files or git commit messages. It's a coherent narrative capturing not just what you built, but why you built it that way. Whether it's future-me or a teammate joining months later, the plan provides complete context without diving into code.
+
+It feels slow at first, but it saves massive amounts of time later. I'm not constantly backtracking or refactoring because I didn't think things through. The plan already made those calls, so I can focus on writing good code.
