@@ -16,7 +16,7 @@
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:debug": "playwright test --debug",
-    "kill": "lsof -t -i:${PORT:-6543} | xargs kill -9 2>/dev/null || true",
+    "kill-server": "lsof -t -i:${PORT:-6543} | xargs kill -9 2>/dev/null || true",
     "check": "astro check --minimumSeverity error",
     "check:full": "astro check",
     "prepare": "husky",
