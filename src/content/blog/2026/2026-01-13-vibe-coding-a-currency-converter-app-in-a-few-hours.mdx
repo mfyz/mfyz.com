@@ -1,0 +1,131 @@
+---
+title: "Vibe Coding with a Plan: Building a Currency Calculator PWA in a few hours"
+description: "How I built a mobile-first currency converter using ASCII mockups and vibe coding. From detailed planning to working PWA in 48 hours."
+date: 2026-01-13
+slug: "vibe-coding-a-currency-converter-app-in-a-few-hours"
+tags:
+  ["nextjs", "pwa", "typescript", "side-project", "tailwindcss", "vibe-coding"]
+hidden: true
+---
+
+import ImageZoom from "@components/ImageZoom.astro";
+
+[Last week I wrote about spending hours on plan.md files](/why-i-spend-hours-planning-with-ai-before-writing-code/) before writing code. This week, I want to show you what that looks like in practice.
+
+As a Turkish guy living in NYC, I'm constantly converting between currencies when I was traveling to Turkey. I generally type something like "500 TRY in USD" into Google for converting currencies. But I was finding myself doing this for the 20th time recently when I decided to build (vibe-code) a currency calculator PWA that I can add to my phone home screen as full screen web app.
+
+Here's how the planning process actually worked.
+
+## The Planning: About an Hour with Claude Code
+
+I opened a new chat with Claude Code and started iterating on a plan. Detailed technology choices, architecture decisions, and UX flows were discussed. My great coworking partner Claude Code.
+
+**Tech Stack Research**: Should I use Next.js or plain React? Which exchange rate API? I asked Claude to compare options. We discussed Open Exchange Rates (free tier, 1000 requests/month), Fixer.io (more expensive), and ExchangeRate-API. Documented the tradeoffs, picked Open Exchange Rates.
+
+**Architecture Decisions**: PWA requirements, offline caching strategy, localStorage schema. We worked through how to cache exchange rates (1 hour TTL), where to store settings and history, and how to structure the API route.
+
+**ASCII Mockups**: Here's where it got interesting. I didn't draw these myself. I described what I wanted to Claude Code, and it generated ASCII mockups. We iterated back and forth, refining the layout:
+
+```
+┌─────────────────────────────────────┐
+│  Settings                Auto-Reset │
+├─────────────────────────────────────┤
+│                                     │
+│    USD ↔ TRY   Rate: 34.52          │
+│    Updated: 5 min ago               │
+│                                     │
+├─────────────────────────────────────┤
+│                                     │
+│  ┌────────────┬───────────────────┐ │
+│  │            │ $1,500 ▶ ₺51,780  │ │  ← USD (bg: blue)
+│  │   1,500    ├───────────────────┤ │  ← INPUT here
+│  │            │ ₺1,500 ▶ $43      │ │  ← TRY (bg: amber)
+│  └────────────┴───────────────────┘ │
+│    ↑ input      ↑ source  ↑ result  │
+│   (editable)    (muted)   (bold)    │
+│                                     │
+├─────────────────────────────────────┤
+│  ┌───────┐ ┌───────┐ ┌────────┐     │
+│  │ +KDV  │ │ -KDV  │ │ +OTV25 │  ...│
+│  └───────┘ └───────┘ └────────┘     │
+│  ┌─────┐ ┌─────┐ ┌─────┐ ┌─────┐    │
+│  │ 50  │ │ 100 │ │ 500 │ │1000 │    │
+│  └─────┘ └─────┘ └─────┘ └─────┘    │
+├─────────────────────────────────────┤
+│                                     │
+│  ┌─────┐ ┌─────┐ ┌─────┐ ┌─────┐    │
+│  │  7  │ │  8  │ │  9  │ │  C  │    │
+│  └─────┘ └─────┘ └─────┘ └─────┘    │
+│  ┌─────┐ ┌─────┐ ┌─────┐ ┌─────┐    │
+│  │  4  │ │  5  │ │  6  │ │  ⌫  │    │
+│  └─────┘ └─────┘ └─────┘ └─────┘    │
+│  ┌─────┐ ┌─────┐ ┌─────┐ ┌─────┐    │
+│  │  1  │ │  2  │ │  3  │ │     │    │
+│  └─────┘ └─────┘ └─────┘ │  =  │    │
+│  ┌─────────────────────┐ │     │    │
+│  │          0          │ │     │    │
+│  └─────────────────────┘ └─────┘    │
+│                                     │
+├─────────────────────────────────────┤
+│  History                            │
+│  ─────────────────────────────────  │
+│  100: $100→₺3,452 | ₺100→$2.90  2m  │
+│  50 (+KDV): $59→₺2,036 | ...    5m  │
+└─────────────────────────────────────┘
+```
+
+This format is perfect for collaborating with AI. Both of us could look at it, understand it immediately, and modify it easily. Claude would update the ASCII, I'd review, suggest changes, and we'd iterate. Want to add a history section? Claude adds it to the mockup. Not sure about button placement? Move it around in ASCII and see how it feels.
+
+The mockup crystallized the entire UX: bidirectional display, tax multiplier buttons for Turkish VAT calculations (+KDV 18%, -KDV, +OTV25 25%), quick value shortcuts. Everything I needed, nothing I didn't.
+
+We also worked through the settings screen, the localStorage schema, even edge cases like what happens when the exchange rate API is down.
+
+I spent about an hour on just the [plan.md file](https://github.com/mfyz/trcalc/blob/main/plan.md) until I was really comfortable with every decision. Tech choices documented, features scoped, UI mocked up, data structures defined.
+
+## The Build: v1 in 5 Minutes
+
+With the plan locked in, implementation was trivial. I told Claude "implement plan.md" and it chomps away. The first working version was running in under 5 minutes. API route proxying to Open Exchange Rates, basic calculator interface, bidirectional conversion display.
+
+Then I spent the next few hours casually iterating. Adding the tax multiplier buttons. Polishing the mobile layout. Implementing dark mode. Setting up the PWA manifest and service worker. Adding history tracking with auto-reset.
+
+No decisions to make during coding because all the decisions were already made. Should I add offline support? Already in the plan. What about the settings page? Designed in ASCII. Where does history get stored? localStorage schema documented.
+
+<ImageZoom
+  src="/images/blog/2026/trcalc-screenshot.jpg"
+  alt="TRCalc currency calculator interface showing bidirectional conversion"
+  border={true}
+/>
+
+By Sunday morning, it was deployed to Vercel and on my phone's home screen. Next.js 16, TypeScript, Tailwind v4, Open Exchange Rates API. Dead simple architecture: API route proxies exchange rates, client caches in localStorage, pure client-side state management. No database, no auth.
+
+## Why ASCII Mockups Work So Well
+
+When I was chatting with Claude Code about the UX I wanted, I was just describing it. Then I asked can you show me how it would look like in ASCII, and I was surprised how well it was able to visualize it then iterated on it without any challenge. I often like to use something like excalidraw or similar, to visualize the UI, but ASCII is a lot faster and easier to iterate on. Especially with AI agents.
+
+The ASCII mockup did something unexpected: it forced mobile-first thinking because ASCII is naturally constrained. I couldn't get fancy. Just boxes and text. That constraint shaped the entire design. Mobile and ASCII Mockup is a match made in heaven.
+
+Also, ASCII is the perfect medium for AI collaboration. Claude can generate it, modify it, and discuss it without any tooling. No Figma, no screenshots, no drawing tools. Just text that both human and AI can manipulate easily.
+
+You can see the full planning process in the [plan.md file on GitHub](https://github.com/mfyz/trcalc/blob/main/plan.md). Complete tech stack comparisons, detailed UI mockups for both the calculator and settings screens, localStorage schema, API structure, even mobile-first design notes.
+
+## The Result
+
+I use this app multiple times daily when I plan to travel to Turkey or while traveling. It solves exactly my problem because I planned for exactly my problem, then built exactly that solution. It's probably super novel for everyone else, but this post is not about the app, it's about the process.
+
+The key features all came directly from the mockup:
+
+- **Bidirectional display** - Type once, see both USD→TRY and TRY→USD
+- **Tax buttons** - +KDV (18%), -KDV, +OTV25 for quick calculations
+- **Quick values** - One tap to convert common amounts (50, 100, 500, 1000)
+- **Auto-reset** - Switch apps and back, next keypress saves to history and clears
+- **PWA** - Add to home screen, works offline, feels native
+
+No feature bloat. No trying to predict what others might want. Just: here's the problem, here's the solution in ASCII, now make it real.
+
+If its interesting for you, here is the whole thing [open source in github](https://github.com/mfyz/trcalc). If you're dealing with currency conversions or tax calculations, fork it and make it yours. Change the currencies, adjust the tax rates, customize the quick values.
+
+That's vibe coding with a plan. Spend an hour planning with AI, five minutes building the first version, then iterate casually to polish.
+
+Since I repeated this approach a dozen times now; I can confidently say this process pretty solid approach to bring an idea to life with AI coding tools. What do you think?
+
+I saved the best part of this post for last point. I didn't use my computer at all. I used my iPhone while sipping my coffee in the sun while watching my kids play games. A follow up post is coming to talk about my on-the-go setup and how I use claude code from my phone.
