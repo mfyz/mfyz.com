@@ -1,0 +1,181 @@
+---
+import "../styles/global.css";
+import { getPosts } from "@utils/getPosts.ts";
+import { SITE } from "../consts";
+
+// Hide this utility page on production builds
+if (import.meta.env.PROD) {
+  return Astro.redirect("/404");
+}
+
+// Fetch posts with social_post field (including hidden posts for preview)
+const allPosts = await getPosts({
+  includeHidden: true,
+  sorted: true,
+  language: "all",
+});
+
+const socialPosts = allPosts.filter(post => post.data.social_post);
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Social Media Preview | mfyz</title>
+    <meta
+      name="description"
+      content="Preview how blog posts will appear on Twitter and LinkedIn"
+    />
+  </head>
+  <body class="bg-gray-50">
+    <div class="mx-auto max-w-7xl px-4 py-8">
+      <!-- Header -->
+      <div class="mb-6 flex items-center gap-4">
+        <a
+          href="/"
+          class="inline-flex items-center rounded border border-gray-300 bg-white p-2 hover:bg-gray-50"
+          title="Home"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            class="h-5 w-5"
+          >
+            <path
+              d="M12 3.172 2.586 12.586a2 2 0 0 0 1.414 3.414H6v5a1 1 0 0 0 1 1h4v-6h2v6h4a1 1 0 0 0 1-1v-5h2a2 2 0 0 0 1.414-3.414L12 3.172z"
+            ></path>
+          </svg>
+        </a>
+        <h1 class="font-secondary text-2xl font-normal text-gray-900">
+          Social Media Preview (with Hidden)
+        </h1>
+        <a
+          href="/social.xml"
+          target="_blank"
+          class="text-sm text-blue-600 hover:underline"
+        >
+          View Live social.xml Feed
+        </a>
+        <div class="ml-auto text-sm text-gray-600">
+          {socialPosts.length} posts with social content
+        </div>
+      </div>
+
+      <!-- Posts -->
+      <div class="space-y-12">
+        {
+          socialPosts.map(post => (
+            <div class="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+              <div class="mb-4 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <h2 class="font-secondary text-xl font-medium text-gray-900">
+                    {post.data.title}
+                  </h2>
+                  {post.data.hidden && (
+                    <span class="rounded border border-amber-200 bg-amber-100 px-2 py-1 text-xs font-medium text-amber-800">
+                      DRAFT
+                    </span>
+                  )}
+                </div>
+                <a
+                  href={
+                    post.data.hidden
+                      ? `/${post.slug}/?preview=1`
+                      : `/${post.slug}/`
+                  }
+                  target="_blank"
+                  class="text-sm text-blue-600 hover:underline"
+                >
+                  View Post →
+                </a>
+              </div>
+
+              <div class="mx-auto w-full" style="max-width: 600px;">
+                <div>
+                  <div class="overflow-hidden rounded-xl border border-gray-200 bg-white">
+                    <div class="p-4">
+                      <div class="mb-3 flex items-start gap-3">
+                        <div class="h-12 w-12 flex-shrink-0 rounded-full bg-gray-200" />
+                        <div class="min-w-0 flex-1">
+                          <div class="flex items-center gap-1">
+                            <span class="font-bold text-gray-900">
+                              {SITE.author}
+                            </span>
+                            <svg
+                              class="h-4 w-4 text-blue-500"
+                              viewBox="0 0 24 24"
+                              fill="currentColor"
+                            >
+                              <path
+                                d="M8.5 12.5l2.5 2.5 4.5-5"
+                                stroke="white"
+                                stroke-width="2"
+                                fill="none"
+                              />
+                              <circle
+                                cx="12"
+                                cy="12"
+                                r="10"
+                                fill="currentColor"
+                              />
+                            </svg>
+                            <span class="text-gray-500">@{SITE.author}</span>
+                          </div>
+                          <div class="mt-2 whitespace-pre-wrap text-[15px] leading-5 text-gray-900">
+                            {post.data.social_post?.trim()}
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="mt-3 overflow-hidden rounded-2xl border border-gray-200"
+                        style="max-width: 506px; margin-left: 60px;"
+                      >
+                        <img
+                          src={`/${post.slug}/og.png`}
+                          alt={post.data.title}
+                          class="block w-full"
+                          style="height: auto;"
+                          loading="lazy"
+                        />
+                        <div class="border-t border-gray-200 p-3">
+                          <div class="text-xs text-gray-500">
+                            {SITE.website}
+                          </div>
+                          <div class="mt-1 line-clamp-1 text-sm font-medium text-gray-900">
+                            {post.data.title}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      {
+        socialPosts.length === 0 && (
+          <div class="rounded-lg border border-gray-200 bg-white p-12 text-center">
+            <p class="text-gray-600">
+              No posts with{" "}
+              <code class="rounded bg-gray-100 px-2 py-1 text-sm">
+                social_post
+              </code>{" "}
+              field found.
+            </p>
+            <p class="mt-2 text-sm text-gray-500">
+              Add a{" "}
+              <code class="rounded bg-gray-100 px-2 py-1">social_post</code>{" "}
+              field to your blog post frontmatter to see previews here.
+            </p>
+          </div>
+        )
+      }
+    </div>
+  </body>
+</html>

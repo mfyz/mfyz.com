@@ -5,11 +5,16 @@
       "mcp__puppeteer__puppeteer_navigate",
       "mcp__puppeteer__puppeteer_evaluate",
       "mcp__puppeteer__puppeteer_screenshot",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_evaluate",
+      "mcp__playwright__browser_screenshot",
       "Bash(gh issue view:*)",
       "Bash(grep:*)",
       "Bash(npm run test:e2e:*)",
       "WebFetch(domain:github.com)",
-      "Bash(sips:*)"
+      "Bash(sips:*)",
+      "Bash(xmllint:*)",
+      "Bash(pkill:*)"
     ],
     "deny": []
   }

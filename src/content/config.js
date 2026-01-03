@@ -11,6 +11,11 @@ const blog = defineCollection({
     imageURL: z.string().optional(),
     tags: z.array(z.string()),
     hidden: z.boolean().optional().default(false),
+    // Social media post text (max 280 chars for Twitter compatibility)
+    social_post: z
+      .string()
+      .max(280, "Social post must be 280 characters or less")
+      .optional(),
   }),
 });
 
