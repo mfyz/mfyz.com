@@ -1,0 +1,114 @@
+---
+title: "Vibe Anywhere: Claude Code on the Go from My Phone (via SSH on a Cheap VPS)"
+description: "How I set up a cheap VPS with Claude Code and SSH access to vibe code from my iPhone while picking up kids, in coffee shop lines, and odd places."
+date: 2026-01-20
+slug: "vibe-anywhere-claude-code-on-the-go-from-my-phone"
+tags:
+  ["claude-code", "vibe-coding", "mobile", "ssh", "vps", "productivity", "ai"]
+hidden: true
+social_post: |
+  Claude Code became the center of how I compute. I needed it on the go.
+
+  The solution: SSH to a $6/mo VPS from my iPhone. Terminus + tmux + Claude Code.
+
+  Now I vibe code while picking up kids, in coffee shop lines, and odd places. My phone became a dev machine.
+---
+
+import ImageZoom from "@components/ImageZoom.astro";
+
+Claude Code has become the center of how I compute. Not just for coding, but for thinking through problems, automating tasks, and managing projects. I found myself reaching for it constantly, and that created a problem: I needed access to it everywhere, not just at my desk.
+
+I tried a few approaches. Web-based interfaces like Claude.ai work fine for conversations, but they're not the same as having the full Claude Code CLI with file system access, custom slash commands, and all my project context. I looked at various mobile apps and workarounds, but nothing felt right.
+
+Then I realized the answer was obvious: SSH into a cheap VPS and run Claude Code there.
+
+## The Setup: A $6/Month Dev Machine in My Pocket
+
+I grabbed a basic VPS (I'm using a $6/month box from Vultr, but any cheap provider works). Installed Claude Code, tmux, and a few essentials. On my iPhone, I use [Terminus](https://termius.com/) as my SSH client. It's not free, but the keyboard and session management are worth it for heavy terminal use.
+
+The result? Full Claude Code access from anywhere with cell signal.
+
+<ImageZoom
+  src="/images/blog/2026/claude-code-terminus-iphone.jpg"
+  alt="Claude Code running in Terminus on iPhone, showing a conversation about recent project changes"
+  border={true}
+/>
+
+I keep a tmux session running on the VPS with multiple windows: one for Claude Code, one for general shell work, and a few for active projects. When I SSH in from my phone, I just attach to the existing session. All my context is still there. Claude Code remembers what we were working on. Files are where I left them.
+
+## What Lives on My VPS
+
+This setup started as a way to access Claude Code on the go, but it's grown into something more. The VPS now runs:
+
+- **Claude Code** with all my custom slash commands and scripts
+- **My Obsidian vault** synced via git (I edit notes through Claude Code or vim)
+- **A few light Next.js and Astro projects** including this blog
+- **Custom automation scripts** that Claude Code can invoke
+
+The cheap VPS handles all of this easily. These aren't heavy workloads. Static site builds, text processing, API calls. A basic 1GB RAM instance is plenty.
+
+## Vibe Coding in Odd Places
+
+Having Claude Code in my pocket changed how I use dead time.
+
+Waiting to pick up my kids from school? I'll SSH in and knock out a small feature or fix a bug. Standing in the coffee shop line? Perfect time to ask Claude to draft a plan for something I've been thinking about. Sitting in a waiting room? Let's iterate on that blog post.
+
+These aren't long coding sessions. Maybe 5-15 minutes at a time. But they add up. More importantly, they keep momentum on projects that would otherwise stall waiting for "real" computer time.
+
+For longer sessions, I'll set up a foldable Bluetooth keyboard. Hotel desks become surprisingly productive workspaces. Coffee, phone on a stand, compact keyboard, and I'm iterating on ideas like I'm at my desk.
+
+<ImageZoom
+  src="/images/blog/2026/mobile-vibe-coding-hotel-setup.jpg"
+  alt="Mobile vibe coding setup in a hotel room: iPhone on stand with foldable keyboard, coffee, and AirPods"
+  border={true}
+/>
+
+The phone keyboard is obviously slower than a real keyboard. I've been experimenting with various dictation options on mobile to speed things up. On desktop, [Superwhisper](https://superwhisper.com/) is my favorite, but I haven't found a mobile equivalent that meets my UX bar yet. Still, there are ways to make it less painful.
+
+## The Magic of Seamless Handoff
+
+I leave tmux sessions at abrupt times without worrying about anything getting lost. Kid needs attention? Just lock the phone and walk away. My turn at the counter? Close Terminus mid-sentence.
+
+Then later, I SSH into the same box from my computer and literally continue typing, picking up exactly where I left off. The cursor is blinking right where I stopped. Claude Code's context is intact. Any files I was editing are still open.
+
+I find myself often [iterating on a plan.md](/why-i-spend-hours-planning-with-ai-before-writing-code/) during phone sessions. Sometimes I get halfway through implementing the plan but don't commit the code or anything. Doesn't matter. The super low bar to continue from my computer makes this setup really attractive. There's no "okay, where was I?" moment. I just sit down and keep going.
+
+This seamlessness changed my relationship with Claude Code. It made me just start talking with Claude anywhere about almost anything. I have a folder where I plan cabin build and landscaping topics for my weekend offscreen projects. Another folder for home automation ideas. Travel planning.
+
+None of this is "coding" in the traditional sense. But it's all stuff where having a smart collaborator helps me think through problems and organize my thoughts.
+
+## The Technical Details
+
+For anyone wanting to replicate this setup:
+
+**VPS Requirements:**
+
+- 1GB RAM minimum (2GB is comfortable)
+- Any Linux distro (I use Ubuntu)
+- Node.js 18+ for Claude Code
+- tmux for session persistence
+- Good SSH access (obviously)
+
+**iPhone Setup:**
+
+- Terminus for SSH (the pro version is worth it)
+- External keyboard for longer sessions (optional but nice)
+- Good cell signal or wifi
+
+**tmux Configuration:**
+I keep it simple. A few windows: one for Claude Code, one for shell, and one per active project. The key is session persistence. I can disconnect at any time and reconnect later with everything intact.
+
+**Claude Code Setup:**
+Same as desktop. Install via npm, authenticate, and configure your custom slash commands. The `.claude/` folder syncs across reconnects since it's on the VPS filesystem.
+
+## Is This for Everyone?
+
+Probably not. If you're happy using Claude Code only at your desk, that's fine. If you don't have random pockets of time to fill, you won't benefit from this.
+
+But if you're like me, constantly thinking about projects and frustrated that you can't act on ideas when they hit, this setup is transformative. The cheap VPS pays for itself in recovered dead time.
+
+The phone isn't replacing my laptop. But it's extending my reach. Claude Code went from something I use at my desk to something I use everywhere. And that changes how I think about what's possible in a spare 10 minutes.
+
+I've been running this setup for a few months now. The TRCalc app from my [previous post](/vibe-coding-a-currency-converter-app-in-a-few-hours/)? Built almost entirely from my phone while out and about. This blog post? Drafted the outline on my phone, picking up kids from school.
+
+The future of coding might not be about better IDEs or faster computers. It might just be about having your tools available whenever ideas strike.
