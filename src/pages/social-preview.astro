@@ -32,53 +32,70 @@ const socialPosts = allPosts.filter(post => post.data.social_post);
   <body class="bg-gray-50">
     <div class="mx-auto max-w-7xl px-4 py-8">
       <!-- Header -->
-      <div class="mb-6 flex items-center gap-4">
-        <a
-          href="/"
-          class="inline-flex items-center rounded border border-gray-300 bg-white p-2 hover:bg-gray-50"
-          title="Home"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            class="h-5 w-5"
+      <div
+        class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4"
+      >
+        <div class="flex items-center gap-3">
+          <a
+            href="/"
+            class="inline-flex items-center rounded border border-gray-300 bg-white p-2 hover:bg-gray-50"
+            title="Home"
           >
-            <path
-              d="M12 3.172 2.586 12.586a2 2 0 0 0 1.414 3.414H6v5a1 1 0 0 0 1 1h4v-6h2v6h4a1 1 0 0 0 1-1v-5h2a2 2 0 0 0 1.414-3.414L12 3.172z"
-            ></path>
-          </svg>
-        </a>
-        <h1 class="font-secondary text-2xl font-normal text-gray-900">
-          Social Media Preview (with Hidden)
-        </h1>
-        <a
-          href="/social.xml"
-          target="_blank"
-          class="text-sm text-blue-600 hover:underline"
-        >
-          View Live social.xml Feed
-        </a>
-        <div class="ml-auto text-sm text-gray-600">
-          {socialPosts.length} posts with social content
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="h-5 w-5"
+            >
+              <path
+                d="M12 3.172 2.586 12.586a2 2 0 0 0 1.414 3.414H6v5a1 1 0 0 0 1 1h4v-6h2v6h4a1 1 0 0 0 1-1v-5h2a2 2 0 0 0 1.414-3.414L12 3.172z"
+              ></path>
+            </svg>
+          </a>
+          <h1
+            class="font-secondary text-xl font-normal text-gray-900 sm:text-2xl"
+          >
+            Social Media Preview
+          </h1>
+        </div>
+        <div class="flex flex-wrap items-center gap-3 sm:ml-auto">
+          <a
+            href="/social.xml"
+            target="_blank"
+            class="text-sm text-blue-600 hover:underline"
+          >
+            View social.xml
+          </a>
+          <div class="text-sm text-gray-600">
+            {socialPosts.length} posts
+          </div>
         </div>
       </div>
 
       <!-- Posts -->
-      <div class="space-y-12">
+      <div class="space-y-6 sm:space-y-12">
         {
           socialPosts.map(post => (
-            <div class="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
-              <div class="mb-4 flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                  <h2 class="font-secondary text-xl font-medium text-gray-900">
-                    {post.data.title}
-                  </h2>
-                  {post.data.hidden && (
-                    <span class="rounded border border-amber-200 bg-amber-100 px-2 py-1 text-xs font-medium text-amber-800">
-                      DRAFT
-                    </span>
-                  )}
+            <div class="-mx-4 border-y border-gray-200 bg-white p-4 sm:mx-0 sm:rounded-lg sm:border sm:p-6 sm:shadow-sm">
+              <div class="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
+                <div class="flex flex-col gap-1">
+                  <div class="flex flex-wrap items-center gap-2">
+                    <h2 class="font-secondary text-lg font-medium text-gray-900 sm:text-xl">
+                      {post.data.title}
+                    </h2>
+                    {post.data.hidden && (
+                      <span class="rounded border border-amber-200 bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-800">
+                        DRAFT
+                      </span>
+                    )}
+                  </div>
+                  <div class="text-sm text-gray-500">
+                    {post.data.date.toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                    })}
+                  </div>
                 </div>
                 <a
                   href={
@@ -87,7 +104,7 @@ const socialPosts = allPosts.filter(post => post.data.social_post);
                       : `/${post.slug}/`
                   }
                   target="_blank"
-                  class="text-sm text-blue-600 hover:underline"
+                  class="self-start text-sm text-blue-600 hover:underline sm:self-auto"
                 >
                   View Post →
                 </a>

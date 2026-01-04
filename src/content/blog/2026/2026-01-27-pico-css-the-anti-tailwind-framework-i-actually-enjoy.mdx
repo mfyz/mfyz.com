@@ -1,0 +1,114 @@
+---
+title: "Pico CSS: The Anti-Tailwind Framework I Actually Enjoy"
+description: "Pico CSS is a minimalist CSS framework that styles semantic HTML elements by default. No build process, no utility class soup, just clean HTML that looks good."
+date: 2026-01-27
+slug: "pico-css-the-anti-tailwind-framework-i-actually-enjoy"
+tags: ["css", "frontend", "web-development", "pico-css", "tailwind"]
+hidden: true
+social_post: |
+  Found a CSS framework that made me question CSS framework bloat.
+
+  Pico CSS: 12KB gzipped, no build process, styles semantic HTML by default. <article> becomes a card. <button> just works.
+
+  Like reset.css on steroids. For small projects, I'm not reaching for Tailwind anymore.
+---
+
+I want to talk about a CSS framework that made me question CSS framework bloat. It's called [Pico CSS](https://picocss.com/), and it takes a completely different approach to styling web pages.
+
+You know how Tailwind works. You write something like `<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">`. Twenty classes for a button. And you need a build process to purge unused styles, otherwise you're shipping megabytes of CSS.
+
+Pico takes the opposite approach. You write `<button>Click me</button>` and it just looks good. That's it. No classes needed.
+
+## What Makes Pico Different
+
+Pico CSS is essentially reset.css on steroids. It styles native semantic HTML elements so your markup stays clean. An `<article>` renders as a card. A `<pre>` renders as a proper code block. Forms look polished without adding a single class.
+
+The framework uses fewer than 10 CSS classes total. There's even a completely class-less version for HTML purists.
+
+Here's a quick comparison. This is a typical form in a utility-first framework:
+
+```html
+<div class="mx-auto max-w-md overflow-hidden rounded-xl bg-white shadow-md">
+  <div class="p-8">
+    <form class="space-y-6">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Email</label>
+        <input
+          type="email"
+          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+        />
+      </div>
+      <button
+        class="flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
+```
+
+Same form with Pico:
+
+```html
+<article>
+  <form>
+    <label
+      >Email
+      <input type="email" />
+    </label>
+    <button>Submit</button>
+  </form>
+</article>
+```
+
+Both produce a styled card with a form inside. But one is readable HTML and the other is class soup.
+
+## Size and Performance
+
+Pico comes in at around **12 KB gzipped** (83KB uncompressed). Still way smaller than Bootstrap's 150+ KB. For small projects, landing pages, or documentation sites, this difference matters.
+
+No build process required. You can drop a single `<link>` tag in your HTML and you're done:
+
+```html
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+/>
+```
+
+Or install via npm if you prefer:
+
+```bash
+npm install @picocss/pico
+```
+
+## Built-in Dark Mode
+
+Dark mode works out of the box. Pico automatically respects the user's `prefers-color-scheme` preference. You can also toggle manually with a data attribute:
+
+```html
+<html data-theme="dark"></html>
+```
+
+No JavaScript required. No extra CSS files. It just works.
+
+## When to Use Pico
+
+Pico shines for documentation sites, landing pages, internal tools, prototypes, and side projects. Basically anything where you want decent styling without fighting CSS.
+
+It's not ideal for highly custom designs or large applications with complex component libraries. The tradeoff is speed and simplicity versus granular control.
+
+If you need to tweak things, Pico provides over 130 CSS variables and 20 pre-built color themes:
+
+```css
+:root {
+  --pico-primary: #e91e63;
+}
+```
+
+## My Take
+
+I've been reaching for Pico on smaller projects lately. For prototypes, documentation, or anything where I just want decent styling without thinking too hard, it's been a breath of fresh air.
+
+For complex UIs, I'll stick with Tailwind. But for everything else? Pico is now my default. Sometimes simpler really is better.
