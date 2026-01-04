@@ -1,0 +1,54 @@
+---
+title: "Cursor's Composer1: Trading Smarts for Speed (and Why That Works)"
+description: "Cursor released their own custom-trained coding model called Composer1. It's 4x faster than comparable models and surprisingly capable. Here's why it drew me back to the IDE."
+date: 2026-01-06
+slug: "cursor-composer1-trading-smarts-for-speed"
+tags: ["cursor", "ai", "coding", "llm", "ide", "vibe-coding"]
+hidden: true
+social_post: |
+  Most of my AI coding happens in terminal with Claude Code now. But Cursor's new Composer1 model drew me back.
+
+  4x faster than similar models. 250 tokens/sec. Trades a bit of smarts for a lot of speed.
+
+  For interactive coding, that tradeoff works.
+---
+
+Most of my AI-assisted coding happens in the terminal these days using [Claude Code](/vibe-anywhere-claude-code-on-the-go-from-my-phone/). But [Cursor's 2.0 release](https://cursor.com/blog/2-0) drew me back to the IDE. Not because of the UX improvements (though those are nice), but mainly because of their new custom-trained model: Composer1.
+
+It's really good. And it's flying.
+
+## What is Composer1?
+
+Composer is Cursor's first in-house coding model. It's a mixture-of-experts (MoE) language model that was trained specifically for software engineering tasks. The key difference from other models: it was trained in an agentic setting with access to real development tools like semantic search, code editing, terminal commands, and test runners.
+
+The training used reinforcement learning to optimize for fast, reliable code changes. The model learned behaviors like complex searching and unit testing on its own during training.
+
+What makes this compelling is Cursor's unique data advantage. They have the richest dataset on how developers actually code and interact with AI models. Which suggestions get accepted? Where are the gaps? What patterns work? Even if Claude Code grows its user base, Anthropic doesn't track developer behavior as closely as Cursor does inside the IDE. That training data is gold for building a coding-specific model.
+
+## Speed is the Killer Feature
+
+The numbers are impressive. Composer generates at around **250 tokens per second**. Compare that to Claude 4.5 Sonnet at 63 tokens/sec. That's roughly 4x faster.
+
+In practice, most conversational turns finish in under 30 seconds. It feels instant. When you're in the flow of iterating on code, that speed difference compounds quickly.
+
+The last time I felt speed making this much difference was when Gemini models first released. Gemini is excellent for general knowledge and probably the best default model for everyday AI conversations. But it's still way behind on coding, and most importantly, efficient tool calls for actual agentic coding that delivers results. Composer1 is really efficient on tool use and mostly accurate in its coding approaches. It feels like a model that came out of Anthropic, if they made a lite/fast version for Claude Code. And at times, you need a change that isn't sophisticated. It's obvious. Then the 4x speed really matters.
+
+According to [Cursor's benchmarks](https://cursor.com/blog/composer), Composer achieves "frontier coding results" while being 4x faster than similar models. They position it between the "Fast Frontier" tier (Haiku, Gemini Flash) and the "Best Frontier" tier (GPT-5, Claude 4.5 Sonnet).
+
+## The Tradeoff
+
+Let's be honest about the tradeoff. Composer doesn't feel as smart as Claude 4.5 Sonnet or GPT-5 in side-by-side tests. For complex reasoning or tricky UI generation, the frontier models still produce noticeably better results.
+
+But here's the thing: for interactive development where you're iterating quickly, the speed advantage often matters more than marginal quality improvements. You can course-correct fast when generations are instant. Waiting 2 minutes for a "perfect" response breaks the flow.
+
+In real-world tests building an AI agent, Composer coded the entire thing in under 3 minutes and used 200K tokens. Claude used 427K tokens (2.1x more) and took longer. Composer needed two small follow-ups, but the overall experience was faster.
+
+## The Sweet Spot: Smart Planning, Fast Execution
+
+Here's what actually works well for me: use smarter models like Opus for the heavy thinking and [planning phase](/why-i-spend-hours-planning-with-ai-before-writing-code/), then switch to Composer1 when it's time to implement.
+
+Once you have a solid plan.md with clear architecture decisions, tech choices, and phased implementation steps, Composer1 does a really good job chomping through well-planned work. There are many instances where it went one-shot to working state with more than OK results.
+
+The pattern is simple: think hard with a smart model, execute fast with a fast model. Composer1 doesn't need to be the smartest when the thinking is already done.
+
+Cursor 2.0 also ships with nice UX improvements: unified review interface for all file changes, an integrated browser for testing, and parallel agents powered by git worktrees. The new agent-centric interface takes some getting used to, but it's a more coherent workflow once you adapt. If you've been on the fence about Cursor, Composer1 makes it worth trying again.
