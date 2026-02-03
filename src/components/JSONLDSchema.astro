@@ -8,7 +8,6 @@ interface Props {
   description?: string;
   date?: Date;
   modifiedDate?: Date;
-  imageURL?: string;
   slug?: string;
   tags?: string[];
   // For breadcrumbs
@@ -21,7 +20,6 @@ const {
   description,
   date,
   modifiedDate,
-  imageURL,
   slug,
   tags,
   breadcrumbs,
@@ -35,15 +33,17 @@ const canonicalURL = slug
 const schemas: any[] = [];
 
 if (type === "article") {
-  // Article Schema
+  // Article Schema - use og.png for each post
+  const ogImageUrl = slug
+    ? `${SITE.website}/${slug}/og.png`
+    : `${SITE.website}/images/og_default.png`;
+
   schemas.push({
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: title,
     description: description,
-    image: imageURL
-      ? `${SITE.website}${imageURL}`
-      : `${SITE.website}/images/og_default.png`,
+    image: ogImageUrl,
     datePublished: date ? date.toISOString() : undefined,
     dateModified: modifiedDate
       ? modifiedDate.toISOString()

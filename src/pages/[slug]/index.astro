@@ -58,14 +58,18 @@ export const prerender = true;
     title={title}
     description={description}
     date={post.data.date}
-    imageURL={post.data.imageURL}
     slug={post.slug}
     tags={post.data.tags}
-    breadcrumbs={[
-      { name: "Home", url: "/" },
-      { name: isTurkish ? "Blog (TR)" : "Blog", url: isTurkish ? "/tr" : "/" },
-      { name: title, url: `/${post.slug}` },
-    ]}
+    breadcrumbs={isTurkish
+      ? [
+          { name: "Ana Sayfa", url: "/" },
+          { name: "Blog (TR)", url: "/tr" },
+          { name: title, url: `/${post.slug}` },
+        ]
+      : [
+          { name: "Home", url: "/" },
+          { name: title, url: `/${post.slug}` },
+        ]}
   />
   <BlogPost
     {...post.data}
