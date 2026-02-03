@@ -5,6 +5,7 @@ import Layout from "@layouts/Layout.astro";
 import BlogGrid from "@components/BlogGrid.astro";
 import BlogSharingAndReactions from "@components/BlogSharingAndReactions.astro";
 import NewsletterPopup from "@components/NewsletterPopup.astro";
+import JSONLDSchema from "@components/JSONLDSchema.astro";
 import { getPosts, getAllPosts, getRelatedPosts } from "@utils/getPosts.ts";
 import "@styles/blog-grid.css";
 
@@ -52,6 +53,20 @@ export const prerender = true;
   size="small"
   noContentWrapperClass
 >
+  <JSONLDSchema
+    type="article"
+    title={title}
+    description={description}
+    date={post.data.date}
+    imageURL={post.data.imageURL}
+    slug={post.slug}
+    tags={post.data.tags}
+    breadcrumbs={[
+      { name: "Home", url: "/" },
+      { name: isTurkish ? "Blog (TR)" : "Blog", url: isTurkish ? "/tr" : "/" },
+      { name: title, url: `/${post.slug}` },
+    ]}
+  />
   <BlogPost
     {...post.data}
     slug={post.slug}

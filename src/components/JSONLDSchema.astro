@@ -1,0 +1,115 @@
+---
+import { SITE } from "@/consts";
+
+interface Props {
+  type: "article" | "website" | "person";
+  // Article-specific props
+  title?: string;
+  description?: string;
+  date?: Date;
+  modifiedDate?: Date;
+  imageURL?: string;
+  slug?: string;
+  tags?: string[];
+  // For breadcrumbs
+  breadcrumbs?: Array<{ name: string; url: string }>;
+}
+
+const {
+  type,
+  title,
+  description,
+  date,
+  modifiedDate,
+  imageURL,
+  slug,
+  tags,
+  breadcrumbs,
+} = Astro.props;
+
+const canonicalURL = slug
+  ? new URL(`/${slug}`, SITE.website).toString()
+  : SITE.website;
+
+// Generate schemas based on type
+const schemas: any[] = [];
+
+if (type === "article") {
+  // Article Schema
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: title,
+    description: description,
+    image: imageURL
+      ? `${SITE.website}${imageURL}`
+      : `${SITE.website}/images/og_default.png`,
+    datePublished: date ? date.toISOString() : undefined,
+    dateModified: modifiedDate
+      ? modifiedDate.toISOString()
+      : date?.toISOString(),
+    author: {
+      "@type": "Person",
+      name: SITE.author,
+      url: SITE.website,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: SITE.title,
+      url: SITE.website,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE.website}/favicon.ico`,
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": canonicalURL,
+    },
+    keywords: tags ? tags.join(", ") : undefined,
+  });
+
+  // Breadcrumb Schema
+  if (breadcrumbs && breadcrumbs.length > 0) {
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: breadcrumbs.map((item, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: item.name,
+        item: `${SITE.website}${item.url}`,
+      })),
+    });
+  }
+} else if (type === "website") {
+  // WebSite Schema
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE.title,
+    description: SITE.description,
+    url: SITE.website,
+    author: {
+      "@type": "Person",
+      name: SITE.author,
+      url: SITE.website,
+    },
+  });
+} else if (type === "person") {
+  // Person Schema
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: SITE.author,
+    url: SITE.website,
+    description: SITE.description,
+  });
+}
+---
+
+{
+  schemas.map(schema => (
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  ))
+}
