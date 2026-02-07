@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "PORT=${PORT:-6543} node check-server-running.js || PORT=${PORT:-6543} astro dev",
     "start": "PORT=${PORT:-6543} node check-server-running.js || PORT=${PORT:-6543} astro dev",
-    "build": "astro build",
+    "build": "node scripts/generate-redirects.js && astro build",
     "preview": "PORT=${PORT:-6543} astro preview",
     "astro": "astro",
     "tunnel": "lt -p ${PORT:-6543} --subdomain mfyzcom",

@@ -13,5 +13,2397 @@
 				}
 			]
 		}
+	],
+	"redirects": [
+		{
+			"source": "/s/q9eq",
+			"destination": "/hello-rest-of-the-world/",
+			"permanent": true
+		},
+		{
+			"source": "/s/pbxz",
+			"destination": "/how-to-display-appstore-banner-in-your-web-page/",
+			"permanent": true
+		},
+		{
+			"source": "/s/rn1r",
+			"destination": "/ie-sucks-less/",
+			"permanent": true
+		},
+		{
+			"source": "/s/gdwt",
+			"destination": "/little-more-about-me/",
+			"permanent": true
+		},
+		{
+			"source": "/s/tjrb",
+			"destination": "/phpstorm-most-advanced-php-ide-so-far/",
+			"permanent": true
+		},
+		{
+			"source": "/s/7jk5",
+			"destination": "/mfyzcom-is-responsive/",
+			"permanent": true
+		},
+		{
+			"source": "/s/jacn",
+			"destination": "/database-integration-in-phpstorm-pycharm-or-rubymine/",
+			"permanent": true
+		},
+		{
+			"source": "/s/w7ow",
+			"destination": "/iphone5-and-ipad-minis-tend-to-fall-easier-and-more-often/",
+			"permanent": true
+		},
+		{
+			"source": "/s/d0t6",
+			"destination": "/profiling-and-optimization-on-facebook-php-sdk/",
+			"permanent": true
+		},
+		{
+			"source": "/s/ggs0",
+			"destination": "/integration-and-verification-of-ios-in-app-purchases/",
+			"permanent": true
+		},
+		{
+			"source": "/s/vx8c",
+			"destination": "/a-beginners-guide-to-html-css/",
+			"permanent": true
+		},
+		{
+			"source": "/s/omuf",
+			"destination": "/digital-nomads/",
+			"permanent": true
+		},
+		{
+			"source": "/s/4yg9",
+			"destination": "/mobile-simulators-on-cloud/",
+			"permanent": true
+		},
+		{
+			"source": "/s/efmx",
+			"destination": "/great-resource-to-learn-programming-swift/",
+			"permanent": true
+		},
+		{
+			"source": "/s/qvzu",
+			"destination": "/super-affordable-cloud-vps-scaleway/",
+			"permanent": true
+		},
+		{
+			"source": "/s/1u24",
+			"destination": "/becoming-tech-father/",
+			"permanent": true
+		},
+		{
+			"source": "/s/7662",
+			"destination": "/bad-product-design-multi-team-services-part-one-team/",
+			"permanent": true
+		},
+		{
+			"source": "/s/a93g",
+			"destination": "/working-home-father-sleep-biphasic-polyphasic-cycles/",
+			"permanent": true
+		},
+		{
+			"source": "/s/uh5v",
+			"destination": "/ipad-apple-pencil-best-works-notability-app/",
+			"permanent": true
+		},
+		{
+			"source": "/s/dyde",
+			"destination": "/create-baby-dashboard-cheap-tablet/",
+			"permanent": true
+		},
+		{
+			"source": "/s/o7jd",
+			"destination": "/bitbucket-static-website-hosting/",
+			"permanent": true
+		},
+		{
+			"source": "/s/7d3l",
+			"destination": "/written-communication-king/",
+			"permanent": true
+		},
+		{
+			"source": "/s/evc6",
+			"destination": "/use-quip-leverage-collaborative-writing-tool-team-communication/",
+			"permanent": true
+		},
+		{
+			"source": "/s/gbpb",
+			"destination": "/track-goes-space-ifttt/",
+			"permanent": true
+		},
+		{
+			"source": "/s/a2il",
+			"destination": "/web-ui-browser-automation-headless-browsers/",
+			"permanent": true
+		},
+		{
+			"source": "/s/thqn",
+			"destination": "/ive-screen-less-no-screen-saturdays-year-now/",
+			"permanent": true
+		},
+		{
+			"source": "/s/cp7u",
+			"destination": "/taking-long-scrolling-content-screenshots-mac/",
+			"permanent": true
+		},
+		{
+			"source": "/s/yt5c",
+			"destination": "/best-gtd-method-geeks-todo-txt/",
+			"permanent": true
+		},
+		{
+			"source": "/s/jxkw",
+			"destination": "/quick-and-dirty-set-up-graylog-in-5-minutes-with-docker/",
+			"permanent": true
+		},
+		{
+			"source": "/s/lnqr",
+			"destination": "/work-in-a-distraction-free-mode-on-your-computer/",
+			"permanent": true
+		},
+		{
+			"source": "/s/dvss",
+			"destination": "/time-to-take-a-break-from-your-computer/",
+			"permanent": true
+		},
+		{
+			"source": "/s/z16d",
+			"destination": "/using-heroku-for-a-quick-development-environment/",
+			"permanent": true
+		},
+		{
+			"source": "/s/jb69",
+			"destination": "/make-your-car-smarter-with-automatic/",
+			"permanent": true
+		},
+		{
+			"source": "/s/sr1h",
+			"destination": "/analytics-data-on-sql-database-best-database-and-table-design-for-billions-of-rows-of-data/",
+			"permanent": true
+		},
+		{
+			"source": "/s/wczp",
+			"destination": "/why-i-dont-like-wearables-that-are-attached-to-your-body/",
+			"permanent": true
+		},
+		{
+			"source": "/s/ep3m",
+			"destination": "/how-i-use-slack-as-my-dashboard/",
+			"permanent": true
+		},
+		{
+			"source": "/s/kllt",
+			"destination": "/wds-world-domination-summit/",
+			"permanent": true
+		},
+		{
+			"source": "/s/ashk",
+			"destination": "/single-javascript-file-node-express-instagram-authentication-oauth-and-get-user-photos/",
+			"permanent": true
+		},
+		{
+			"source": "/s/bq57",
+			"destination": "/using-cloudinary-for-image-cloud-storage-with-image-transformations-in-your-nodejs-express-app-in-heroku/",
+			"permanent": true
+		},
+		{
+			"source": "/s/z377",
+			"destination": "/importance-of-changelogs/",
+			"permanent": true
+		},
+		{
+			"source": "/s/tsj6",
+			"destination": "/developing-and-deploying-nodejs-express-apps-on-heroku/",
+			"permanent": true
+		},
+		{
+			"source": "/s/dvxu",
+			"destination": "/living-in-the-cloud-as-a-developer/",
+			"permanent": true
+		},
+		{
+			"source": "/s/y76l",
+			"destination": "/smarter-documents-quip-notion-airtable-coda-or-good-old-gdocsgsheets/",
+			"permanent": true
+		},
+		{
+			"source": "/s/5hps",
+			"destination": "/first-product-hunt/",
+			"permanent": true
+		},
+		{
+			"source": "/s/ylwc",
+			"destination": "/working-with-memcache-on-your-nodejs-app-on-heroku/",
+			"permanent": true
+		},
+		{
+			"source": "/s/m37k",
+			"destination": "/launch-of-my-latest-product-screenshot-tracker/",
+			"permanent": true
+		},
+		{
+			"source": "/s/q77z",
+			"destination": "/smarting-up-google-docs-and-sheets/",
+			"permanent": true
+		},
+		{
+			"source": "/s/6ad3",
+			"destination": "/just-launched-my-newest-product-in-producthunt-sheet2cal-organize-calendar-events-inside-from-your-google-sheets-doc/",
+			"permanent": true
+		},
+		{
+			"source": "/s/meek",
+			"destination": "/why-every-developer-needs-to-know-google-sheets-excel-programming/",
+			"permanent": true
+		},
+		{
+			"source": "/s/oe1d",
+			"destination": "/using-airtable-through-its-api-programmatically-as-almost-remote-database/",
+			"permanent": true
+		},
+		{
+			"source": "/s/lc5v",
+			"destination": "/how-figma-changed-how-we-collaborate-on-our-ux-and-ui-designs/",
+			"permanent": true
+		},
+		{
+			"source": "/s/jdur",
+			"destination": "/using-vercel-formerly-now-sh-for-super-fast-deployments/",
+			"permanent": true
+		},
+		{
+			"source": "/s/rgec",
+			"destination": "/i-used-windows10-temporarily-for-my-work-setup-for-10-days-after-10-years-of-being-apple-ecosystem-user-it-was-better-than-i-expected/",
+			"permanent": true
+		},
+		{
+			"source": "/s/1mgq",
+			"destination": "/mfyz-com-homepage-design-update/",
+			"permanent": true
+		},
+		{
+			"source": "/s/2ump",
+			"destination": "/better-code-history-with-gitlinter-commitlinter/",
+			"permanent": true
+		},
+		{
+			"source": "/s/yh41",
+			"destination": "/3-ways-of-redirections-in-react-router/",
+			"permanent": true
+		},
+		{
+			"source": "/s/3gk0",
+			"destination": "/ipad-pro-raspberry-pi-portable-development-environment-on-mobile/",
+			"permanent": true
+		},
+		{
+			"source": "/s/xzax",
+			"destination": "/having-reliable-internet-while-travelling-every-corner-of-the-world/",
+			"permanent": true
+		},
+		{
+			"source": "/s/aqkp",
+			"destination": "/mobile-internet-on-budget-using-tripmode-or-little-snitch-on-mac-to-control-your-bandwidth-usage-when-doing-mobile-internet-hotspot/",
+			"permanent": true
+		},
+		{
+			"source": "/s/ktqi",
+			"destination": "/using-gitlab-com-as-your-background-workers-using-ci-schedules/",
+			"permanent": true
+		},
+		{
+			"source": "/s/fwqg",
+			"destination": "/why-we-are-moving-from-gitlab-self-hosted-to-gitlab-com/",
+			"permanent": true
+		},
+		{
+			"source": "/s/h2y4",
+			"destination": "/how-to-use-genymotion-for-android-testing-simulator-emulator-on-macos-or-windows/",
+			"permanent": true
+		},
+		{
+			"source": "/s/8b4a",
+			"destination": "/using-ant-design-as-our-primary-react-js-ui-framework/",
+			"permanent": true
+		},
+		{
+			"source": "/s/ho5c",
+			"destination": "/our-git-workflow-at-nomad-interactive-branching-tagging/",
+			"permanent": true
+		},
+		{
+			"source": "/s/z62d",
+			"destination": "/hosting-your-own-private-npm-packages-with-self-hosted-npm-registry-using-verdaccio/",
+			"permanent": true
+		},
+		{
+			"source": "/s/gw6z",
+			"destination": "/monitoring-your-microservice-stack-with-simple-ping-health-checks-using-healthchecks-io-for-free/",
+			"permanent": true
+		},
+		{
+			"source": "/s/9tqo",
+			"destination": "/get-google-sheets-document-content-as-json-without-google-api-oauth/",
+			"permanent": true
+		},
+		{
+			"source": "/s/qyny",
+			"destination": "/google-sheets-zapier-is-a-perfect-gateway-for-quick-integrations-when-bootstrapping-a-new-tool-service/",
+			"permanent": true
+		},
+		{
+			"source": "/s/m0e8",
+			"destination": "/no-jquery-movement/",
+			"permanent": true
+		},
+		{
+			"source": "/s/17ai",
+			"destination": "/create-a-website-from-notion-document-collection-with-custom-subdomain-via-fruition-in-10-minutes/",
+			"permanent": true
+		},
+		{
+			"source": "/s/15tl",
+			"destination": "/intro-to-cloudflare-workers/",
+			"permanent": true
+		},
+		{
+			"source": "/s/rff6",
+			"destination": "/static-site-hosting-with-cloudflare-pages/",
+			"permanent": true
+		},
+		{
+			"source": "/s/p1xk",
+			"destination": "/using-axe-react-axe-to-audit-your-web-applications-accessibility/",
+			"permanent": true
+		},
+		{
+			"source": "/s/5dyb",
+			"destination": "/my-process-of-doing-macos-clean-reinstall-twice-on-intel-and-m1-macbook-air-in-search-of-better-performance-and-clean-start/",
+			"permanent": true
+		},
+		{
+			"source": "/s/xng0",
+			"destination": "/using-rclone-cronjobs-for-simple-server-backup-solution/",
+			"permanent": true
+		},
+		{
+			"source": "/s/5cf3",
+			"destination": "/using-wp-rocket-to-speed-up-your-wordpress-site/",
+			"permanent": true
+		},
+		{
+			"source": "/s/txpe",
+			"destination": "/analyze-and-optimize-webpack-bundles-size-and-contents/",
+			"permanent": true
+		},
+		{
+			"source": "/s/ev75",
+			"destination": "/easy-wordpress-backups-using-updraft/",
+			"permanent": true
+		},
+		{
+			"source": "/s/5v5u",
+			"destination": "/at-least-do-this-for-securing-your-wordpress-site-as-a-quick-win-use-wordfence/",
+			"permanent": true
+		},
+		{
+			"source": "/s/ob8x",
+			"destination": "/better-webpack-build-outputs-with-webpack-dashboard/",
+			"permanent": true
+		},
+		{
+			"source": "/s/n9xi",
+			"destination": "/optimize-your-bundle-size-by-eliminating-dead-code-tree-shaking-in-webpack/",
+			"permanent": true
+		},
+		{
+			"source": "/s/fiw9",
+			"destination": "/remove-unused-css-with-purgecss/",
+			"permanent": true
+		},
+		{
+			"source": "/s/v23x",
+			"destination": "/portable-wordpress-with-sqlite-instead-of-mysql/",
+			"permanent": true
+		},
+		{
+			"source": "/s/189e",
+			"destination": "/how-google-had-almost-10-years-head-start-on-voice-assistants-and-lost-its-competition-to-amazon/",
+			"permanent": true
+		},
+		{
+			"source": "/s/rgiv",
+			"destination": "/github-page-is-the-most-important-place-as-a-developer-and-here-is-why-it-is-so-important/",
+			"permanent": true
+		},
+		{
+			"source": "/s/zfmc",
+			"destination": "/better-cmdr-improved-command-line-history-using-atuin/",
+			"permanent": true
+		},
+		{
+			"source": "/s/3g1m",
+			"destination": "/create-quick-diagrams-and-wireframes-using-excalidraw-vscode/",
+			"permanent": true
+		},
+		{
+			"source": "/s/plep",
+			"destination": "/simple-gitlab-ci-cd-deployment-via-sshrsync/",
+			"permanent": true
+		},
+		{
+			"source": "/s/qhyk",
+			"destination": "/dotfiles-method-to-sync-your-command-line-configurations-between-machines/",
+			"permanent": true
+		},
+		{
+			"source": "/s/pkw7",
+			"destination": "/editing-and-previewing-mermaid-diagrams-on-your-docs-markdown-github-notion-confluence/",
+			"permanent": true
+		},
+		{
+			"source": "/s/iqb2",
+			"destination": "/creating-sequence-diagrams-using-mermaidjs-to-map-out-your-user-journey/",
+			"permanent": true
+		},
+		{
+			"source": "/s/evlo",
+			"destination": "/secure-your-applications-and-access-to-services-using-cloudflare-zero-trust/",
+			"permanent": true
+		},
+		{
+			"source": "/s/yw5u",
+			"destination": "/nocodb-open-source-airtable-a-rich-admin-tooling-with-ootb-rest-api-to-your-dbs/",
+			"permanent": true
+		},
+		{
+			"source": "/s/5464",
+			"destination": "/cronicle-my-new-go-to-task-scheduler-its-open-source/",
+			"permanent": true
+		},
+		{
+			"source": "/s/auc8",
+			"destination": "/metrics-to-pay-attention-to-when-optimizing-web-page-performance/",
+			"permanent": true
+		},
+		{
+			"source": "/s/gb06",
+			"destination": "/leveling-up-data-driven-product-development-game-using-posthog/",
+			"permanent": true
+		},
+		{
+			"source": "/s/dat2",
+			"destination": "/wordpress-headless-cpt-acf-building-a-flexible-content-platform/",
+			"permanent": true
+		},
+		{
+			"source": "/s/5186",
+			"destination": "/animating-systems-diagrams-with-draw-io/",
+			"permanent": true
+		},
+		{
+			"source": "/s/ov48",
+			"destination": "/portainer-gitops-a-simple-way-to-deploy-and-manage-your-self-hosted-applications/",
+			"permanent": true
+		},
+		{
+			"source": "/s/lm1r",
+			"destination": "/a-quick-way-to-tweak-cdn-edge-ttl-to-radically-improve-site-performance-and-seo/",
+			"permanent": true
+		},
+		{
+			"source": "/s/gudn",
+			"destination": "/monitor-everything-with-healthchecks-io/",
+			"permanent": true
+		},
+		{
+			"source": "/s/lcvk",
+			"destination": "/hosting-my-hobby-projects-from-cheap-hp-mini-desktop-from-my-closet-verizon-fios/",
+			"permanent": true
+		},
+		{
+			"source": "/s/8tch",
+			"destination": "/things-that-shouldnt-be-included-in-the-client-side-javascript-bundles/",
+			"permanent": true
+		},
+		{
+			"source": "/s/op00",
+			"destination": "/duplicati-for-backups/",
+			"permanent": true
+		},
+		{
+			"source": "/s/5j3o",
+			"destination": "/make-vercel-open-source-and-self-hosted-you-get-coolify/",
+			"permanent": true
+		},
+		{
+			"source": "/s/fcir",
+			"destination": "/convenient-white-boarding-with-confluence-whiteboards-for-atlassian-operated-teams/",
+			"permanent": true
+		},
+		{
+			"source": "/s/o39d",
+			"destination": "/github-actions-and-playwright-to-generate-web-page-screenshots/",
+			"permanent": true
+		},
+		{
+			"source": "/s/xdns",
+			"destination": "/kokorojs-minimal-text-to-speech-api-model-you-can-run-in-your-browser/",
+			"permanent": true
+		},
+		{
+			"source": "/s/fqlk",
+			"destination": "/turso-drizzle-perfect-sqlite-combo-in-production/",
+			"permanent": true
+		},
+		{
+			"source": "/s/wtwj",
+			"destination": "/how-we-scale-to-billions-of-news-media-readers-at-arc-xp/",
+			"permanent": true
+		},
+		{
+			"source": "/s/i259",
+			"destination": "/automate-everything-with-n8n/",
+			"permanent": true
+		},
+		{
+			"source": "/s/2z13",
+			"destination": "/fastify-vercel-best-vibes-single-file-2-mins/",
+			"permanent": true
+		},
+		{
+			"source": "/s/7tzi",
+			"destination": "/n8n-form-trigger-is-awesome/",
+			"permanent": true
+		},
+		{
+			"source": "/s/8bsr",
+			"destination": "/xmlhttprequest-vs-fetch-which-is-the-difference-and-which-javascript-api-should-you-use/",
+			"permanent": true
+		},
+		{
+			"source": "/s/xcws",
+			"destination": "/i-found-a-way-to-make-n8n-workflows-as-code/",
+			"permanent": true
+		},
+		{
+			"source": "/s/8ifh",
+			"destination": "/moved-blog-from-wordpress-to-astro/",
+			"permanent": true
+		},
+		{
+			"source": "/s/1r9m",
+			"destination": "/wordpress-to-astro-migration-performance-comparison/",
+			"permanent": true
+		},
+		{
+			"source": "/s/803g",
+			"destination": "/headless-cmses/",
+			"permanent": true
+		},
+		{
+			"source": "/s/1uh9",
+			"destination": "/mfyz-com-open-source-giscus-comments/",
+			"permanent": true
+		},
+		{
+			"source": "/s/vymu",
+			"destination": "/vibe-coding-a-news-site-with-arcxp-view-api-in-2hrs/",
+			"permanent": true
+		},
+		{
+			"source": "/s/q9vw",
+			"destination": "/wordpress-to-mdx-astro-migration-script/",
+			"permanent": true
+		},
+		{
+			"source": "/s/jy7x",
+			"destination": "/crafting-useful-error-messages/",
+			"permanent": true
+		},
+		{
+			"source": "/s/lj49",
+			"destination": "/n8n-ai-agent-block/",
+			"permanent": true
+		},
+		{
+			"source": "/s/rp6j",
+			"destination": "/notion-databases-api-automation/",
+			"permanent": true
+		},
+		{
+			"source": "/s/whfj",
+			"destination": "/taming-claude-code/",
+			"permanent": true
+		},
+		{
+			"source": "/s/s6cu",
+			"destination": "/coolest-wasm-superpowers/",
+			"permanent": true
+		},
+		{
+			"source": "/s/vnf8",
+			"destination": "/you-may-not-need-react/",
+			"permanent": true
+		},
+		{
+			"source": "/s/uvz3",
+			"destination": "/generate-beautiful-og-images-astro-satori/",
+			"permanent": true
+		},
+		{
+			"source": "/s/qequ",
+			"destination": "/why-people-moving-from-nextjs/",
+			"permanent": true
+		},
+		{
+			"source": "/s/ee5t",
+			"destination": "/notion-gtd-prioritization-framework-template/",
+			"permanent": true
+		},
+		{
+			"source": "/s/lyrs",
+			"destination": "/smart-client-side-rendered-mermaid-charts-on-astro-blogs/",
+			"permanent": true
+		},
+		{
+			"source": "/s/d6sr",
+			"destination": "/why-cdn-stacking-is-bad-idea/",
+			"permanent": true
+		},
+		{
+			"source": "/s/755k",
+			"destination": "/post-deployment-tests-github-actions-playwright/",
+			"permanent": true
+		},
+		{
+			"source": "/s/71ha",
+			"destination": "/how-markdown-based-blogging-changed-how-much-i-write/",
+			"permanent": true
+		},
+		{
+			"source": "/s/vtlx",
+			"destination": "/why-claude-code-is-my-favorite-llm-interface/",
+			"permanent": true
+		},
+		{
+			"source": "/s/dxel",
+			"destination": "/diy-poor-mans-ngrok-ssh-tunneling/",
+			"permanent": true
+		},
+		{
+			"source": "/s/q8jf",
+			"destination": "/claude-code-on-loop-autonomous-ai-coding/",
+			"permanent": true
+		},
+		{
+			"source": "/s/n35k",
+			"destination": "/ai-coding-agent-sandbox-container/",
+			"permanent": true
+		},
+		{
+			"source": "/s/3nsc",
+			"destination": "/oss-newsletter-digester-ai-slack-summaries/",
+			"permanent": true
+		},
+		{
+			"source": "/s/vdbd",
+			"destination": "/dprint-rust-based-code-formatter-faster-prettier/",
+			"permanent": true
+		},
+		{
+			"source": "/s/q9wt",
+			"destination": "/react-best-parts-preact-htm-5kb/",
+			"permanent": true
+		},
+		{
+			"source": "/s/e8cp",
+			"destination": "/uvu-sinon-fast-lightweight-testing/",
+			"permanent": true
+		},
+		{
+			"source": "/s/q1ao",
+			"destination": "/snarkdown-1kb-markdown-renderer/",
+			"permanent": true
+		},
+		{
+			"source": "/s/jap7",
+			"destination": "/stupid-simple-setup-run-ai-locally/",
+			"permanent": true
+		},
+		{
+			"source": "/s/m8zf",
+			"destination": "/storing-large-web-app-state-in-url-using-pako/",
+			"permanent": true
+		},
+		{
+			"source": "/s/73hy",
+			"destination": "/cursor-composer1-trading-smarts-for-speed/",
+			"permanent": true
+		},
+		{
+			"source": "/s/h2f5",
+			"destination": "/why-i-spend-hours-planning-with-ai-before-writing-code/",
+			"permanent": true
+		},
+		{
+			"source": "/s/lgdl",
+			"destination": "/vibe-coding-a-currency-converter-app-in-a-few-hours/",
+			"permanent": true
+		},
+		{
+			"source": "/s/1c5n",
+			"destination": "/vibe-anywhere-claude-code-on-the-go-from-my-phone/",
+			"permanent": true
+		},
+		{
+			"source": "/s/yr3l",
+			"destination": "/pico-css-the-anti-tailwind-framework-i-actually-enjoy/",
+			"permanent": true
+		},
+		{
+			"source": "/s/7v1j",
+			"destination": "/kitchen-sink-example/",
+			"permanent": true
+		},
+		{
+			"source": "/s/hzqq",
+			"destination": "/qbasic-kullanimi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/tk8r",
+			"destination": "/windows-xpde-performans-artisi-saglamak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/oq52",
+			"destination": "/ascii-karakter-kodlari/",
+			"permanent": true
+		},
+		{
+			"source": "/s/z5lm",
+			"destination": "/qbasic-ile-ilgili-temel-bilgiler/",
+			"permanent": true
+		},
+		{
+			"source": "/s/pkxv",
+			"destination": "/qbasicde-ekran-ve-grafik-komutlari/",
+			"permanent": true
+		},
+		{
+			"source": "/s/8xzq",
+			"destination": "/qbasicde-kontrol-yapilari-ve-donguler/",
+			"permanent": true
+		},
+		{
+			"source": "/s/jy8z",
+			"destination": "/girilen-iki-sayinin-obebini-bulan-program/",
+			"permanent": true
+		},
+		{
+			"source": "/s/b150",
+			"destination": "/girilen-sayinin-asal-olup-olmadigini-bulan-program/",
+			"permanent": true
+		},
+		{
+			"source": "/s/u655",
+			"destination": "/linuxta-dosya-parcalamak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/awq5",
+			"destination": "/1den-girilen-sayiya-kadar-olan-tamsayilarin-toplamini-bulan-program/",
+			"permanent": true
+		},
+		{
+			"source": "/s/fs9a",
+			"destination": "/girilen-sayinin-mukemmel-sayi-olup-olmadigini-bulan-program/",
+			"permanent": true
+		},
+		{
+			"source": "/s/wvur",
+			"destination": "/fibonacci-dizisini-hesaplayan-program/",
+			"permanent": true
+		},
+		{
+			"source": "/s/gyp9",
+			"destination": "/faktoriyel-hesaplayan-program/",
+			"permanent": true
+		},
+		{
+			"source": "/s/9i9t",
+			"destination": "/girilen-dizideki-en-buyuk-elemani-bulan-program/",
+			"permanent": true
+		},
+		{
+			"source": "/s/4vlk",
+			"destination": "/pi-sayisini-bulan-program/",
+			"permanent": true
+		},
+		{
+			"source": "/s/ba0s",
+			"destination": "/nnin-mli-kombinasyonunu-bulan-program/",
+			"permanent": true
+		},
+		{
+			"source": "/s/n249",
+			"destination": "/6-yuzlu-bir-zarin-atilmasi-deneyinin-simulasyonu/",
+			"permanent": true
+		},
+		{
+			"source": "/s/xmsi",
+			"destination": "/etcissue-ile-konsol-girislerini-cilginlastiralim/",
+			"permanent": true
+		},
+		{
+			"source": "/s/exmr",
+			"destination": "/php-nedir-phpye-nereden-ve-nasil-baslamali/",
+			"permanent": true
+		},
+		{
+			"source": "/s/uff8",
+			"destination": "/viin-mucizeleri-ve-ipuclari/",
+			"permanent": true
+		},
+		{
+			"source": "/s/uzt0",
+			"destination": "/konsolda-joker-karakterlerin-kullanimi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/vu37",
+			"destination": "/phpde-sabitler-server-ve-ortam-degiskenleri/",
+			"permanent": true
+		},
+		{
+			"source": "/s/z0ed",
+			"destination": "/phpde-donguler/",
+			"permanent": true
+		},
+		{
+			"source": "/s/cimx",
+			"destination": "/phpde-kontrol-yapilari-ifelse-if-switch-case/",
+			"permanent": true
+		},
+		{
+			"source": "/s/gsx5",
+			"destination": "/html-dersleri-6-sonsoz-ve-oneriler/",
+			"permanent": true
+		},
+		{
+			"source": "/s/gghm",
+			"destination": "/phpde-fonksiyonlar/",
+			"permanent": true
+		},
+		{
+			"source": "/s/jexf",
+			"destination": "/html-dersleri-5-form-ve-form-ogeleri/",
+			"permanent": true
+		},
+		{
+			"source": "/s/pgg0",
+			"destination": "/html-dersleri-4-tablolar-ve-cerceveler/",
+			"permanent": true
+		},
+		{
+			"source": "/s/4lwa",
+			"destination": "/html-dersleri-3-web-nesneleri-ve-resimler/",
+			"permanent": true
+		},
+		{
+			"source": "/s/1to3",
+			"destination": "/html-dersleri-2-basliklar-paragraflar-metin-bicimlendirme-ve-kopruler/",
+			"permanent": true
+		},
+		{
+			"source": "/s/jxih",
+			"destination": "/html-dersleri-1-yapi-ve-sayfa-ustbilgi-etiketleri/",
+			"permanent": true
+		},
+		{
+			"source": "/s/pfle",
+			"destination": "/html-dersleri-giris/",
+			"permanent": true
+		},
+		{
+			"source": "/s/wopq",
+			"destination": "/phpde-verileri-sayfa-sayfa-gostermek/",
+			"permanent": true
+		},
+		{
+			"source": "/s/w90w",
+			"destination": "/php-ile-grafiksel-sayac-uygulamasi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/r5if",
+			"destination": "/phpde-oturum-session-yonetimi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/4tpn",
+			"destination": "/temel-javascript-5-kucuk-uygulamalar/",
+			"permanent": true
+		},
+		{
+			"source": "/s/b4g1",
+			"destination": "/temel-javascript-4-zamanlayicilarla-calismak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/8roc",
+			"destination": "/temel-javascript-3-ciktilar-ve-nesneler/",
+			"permanent": true
+		},
+		{
+			"source": "/s/7eua",
+			"destination": "/temel-javascript-2-javascripte-girelim/",
+			"permanent": true
+		},
+		{
+			"source": "/s/28mi",
+			"destination": "/temel-javascript-1-javascript-hakkinda/",
+			"permanent": true
+		},
+		{
+			"source": "/s/m7kr",
+			"destination": "/pratik-ve-hizli-gentoo-kurlumu/",
+			"permanent": true
+		},
+		{
+			"source": "/s/aoqm",
+			"destination": "/gimpte-perspektif-araci-ve-3d-kup-yapimi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/6oul",
+			"destination": "/phpde-mysql-kullanimi-ve-temel-islemler/",
+			"permanent": true
+		},
+		{
+			"source": "/s/z7lg",
+			"destination": "/gimpde-yumusak-koseli-kutucuklar-yapmak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/mno1",
+			"destination": "/mysqlde-verileri-secme-listeleme-ve-arama-islemleri/",
+			"permanent": true
+		},
+		{
+			"source": "/s/c2xv",
+			"destination": "/gimpte-karanlik-resimleri-aydinlatmak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/q8re",
+			"destination": "/screen-ile-tasinabilir-konsollar/",
+			"permanent": true
+		},
+		{
+			"source": "/s/l4o9",
+			"destination": "/session-vs-cookie/",
+			"permanent": true
+		},
+		{
+			"source": "/s/8d22",
+			"destination": "/dosyalari-kitlemek/",
+			"permanent": true
+		},
+		{
+			"source": "/s/j7uc",
+			"destination": "/linuxta-kablosuz-ag-yapilandirmasi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/q0sm",
+			"destination": "/php-ile-curl-kutuphanesinin-kullanimi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/bgro",
+			"destination": "/rss-nedir-ne-ise-yarar-ne-yapmaliyiz/",
+			"permanent": true
+		},
+		{
+			"source": "/s/gpja",
+			"destination": "/acik-kaynak-kodlu-yazilim-nedir/",
+			"permanent": true
+		},
+		{
+			"source": "/s/y3z9",
+			"destination": "/phpde-mssql-baglantisi-ve-kullanimi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/neiw",
+			"destination": "/xml-extensible-markup-language/",
+			"permanent": true
+		},
+		{
+			"source": "/s/n5m0",
+			"destination": "/javascript-ile-mouse-koordinatlarini-buldurmak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/58p6",
+			"destination": "/php-ile-word-ve-excel-dosyalari-olusturmak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/ejwg",
+			"destination": "/php-projelerimizde-ayar-dosyasi-kullanmak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/pbqu",
+			"destination": "/mysqlde-triggerlar/",
+			"permanent": true
+		},
+		{
+			"source": "/s/34t0",
+			"destination": "/orneklerle-phpde-duzenli-ifadeler/",
+			"permanent": true
+		},
+		{
+			"source": "/s/efma",
+			"destination": "/projelerinize-cok-dil-konusmayi-ogretin/",
+			"permanent": true
+		},
+		{
+			"source": "/s/u7wh",
+			"destination": "/php-ile-dosya-gonderimi-upload/",
+			"permanent": true
+		},
+		{
+			"source": "/s/cs6o",
+			"destination": "/bir-sitenin-kod-duzeni-nasil-olmali/",
+			"permanent": true
+		},
+		{
+			"source": "/s/fwsr",
+			"destination": "/mp3-indirmeyin-radyo-kaydedin-stream-rip/",
+			"permanent": true
+		},
+		{
+			"source": "/s/4lhn",
+			"destination": "/konsoldan-aradigimiz-dosyayi-bulmak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/u3fu",
+			"destination": "/orneklerle-zaman-date-fonksiyonu/",
+			"permanent": true
+		},
+		{
+			"source": "/s/e3um",
+			"destination": "/icerik-yonetim-sistemleri/",
+			"permanent": true
+		},
+		{
+			"source": "/s/3afa",
+			"destination": "/phpmysql-sistemler-icin-uye-giris-cikis-kayit/",
+			"permanent": true
+		},
+		{
+			"source": "/s/2b6r",
+			"destination": "/xmlhttprequest-nedir/",
+			"permanent": true
+		},
+		{
+			"source": "/s/13y0",
+			"destination": "/yazilarimizdaki-linkleri-otomatik-cevirmek/",
+			"permanent": true
+		},
+		{
+			"source": "/s/2xjt",
+			"destination": "/sitemize-rss-export-mekanizmasi-kuralim/",
+			"permanent": true
+		},
+		{
+			"source": "/s/9dxz",
+			"destination": "/sekil-urller-yapmak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/g2jw",
+			"destination": "/css-ve-transparanlik/",
+			"permanent": true
+		},
+		{
+			"source": "/s/jrkz",
+			"destination": "/subversion-ile-proje-gelistirmek/",
+			"permanent": true
+		},
+		{
+			"source": "/s/ucz1",
+			"destination": "/subversion-sunucu-yayini-yapmak-ve-sunucu-erisimi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/r43a",
+			"destination": "/windowlinux-disk-ve-calisma-mantigi-benzerligi-farkliligi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/88kd",
+			"destination": "/full-time-is-bulma-kaynaklari-ve-oneriler/",
+			"permanent": true
+		},
+		{
+			"source": "/s/lo2t",
+			"destination": "/ubuntuda-apache-php-mysql-ve-phpmyadmin-kurulumu-lamp/",
+			"permanent": true
+		},
+		{
+			"source": "/s/8qmj",
+			"destination": "/ubuntu-icin-ideal-bir-calisma-ve-masaustu-ortami-icin-ipuclari/",
+			"permanent": true
+		},
+		{
+			"source": "/s/x0u7",
+			"destination": "/photoshop-ile-grafikleri-web-icin-optimize-etmek/",
+			"permanent": true
+		},
+		{
+			"source": "/s/8imz",
+			"destination": "/phpde-hata-ayiklama-debug/",
+			"permanent": true
+		},
+		{
+			"source": "/s/5hgf",
+			"destination": "/nihayet/",
+			"permanent": true
+		},
+		{
+			"source": "/s/n5pc",
+			"destination": "/ilk-tepkiler/",
+			"permanent": true
+		},
+		{
+			"source": "/s/92tr",
+			"destination": "/applein-yeni-oyuncagi-macbook-air/",
+			"permanent": true
+		},
+		{
+			"source": "/s/xsys",
+			"destination": "/degisiklikler/",
+			"permanent": true
+		},
+		{
+			"source": "/s/5udb",
+			"destination": "/html-dersleri-tekrar-dokumanlar-bolumunde/",
+			"permanent": true
+		},
+		{
+			"source": "/s/v6n7",
+			"destination": "/programcilar-icin-temel-javascript-bilgisi-yayinda/",
+			"permanent": true
+		},
+		{
+			"source": "/s/6h5f",
+			"destination": "/rss-destegi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/e9j5",
+			"destination": "/son-degisimler/",
+			"permanent": true
+		},
+		{
+			"source": "/s/hk5s",
+			"destination": "/6-yeni-dokuman-ve-yenilikler/",
+			"permanent": true
+		},
+		{
+			"source": "/s/vf10",
+			"destination": "/gimp-ile-web-animasyonu-olusturmak-gif/",
+			"permanent": true
+		},
+		{
+			"source": "/s/2al2",
+			"destination": "/ubuntuda-dns-cache-ile-daha-hizli-surf/",
+			"permanent": true
+		},
+		{
+			"source": "/s/y58p",
+			"destination": "/ubuntuda-ntfs-disklere-yazma-destegi-kazandirmak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/gfiw",
+			"destination": "/web-tasarimcisina-ogutler/",
+			"permanent": true
+		},
+		{
+			"source": "/s/uu73",
+			"destination": "/mootools-ile-ajax/",
+			"permanent": true
+		},
+		{
+			"source": "/s/c8jy",
+			"destination": "/mootools-ile-ipucu-aciklamalari-tooltip/",
+			"permanent": true
+		},
+		{
+			"source": "/s/7iu4",
+			"destination": "/leopardin-finderi-ve-chroma-player/",
+			"permanent": true
+		},
+		{
+			"source": "/s/qykn",
+			"destination": "/mootoolsda-nesne-seciciler-css-secicileri/",
+			"permanent": true
+		},
+		{
+			"source": "/s/mboc",
+			"destination": "/4-dokuman-daha/",
+			"permanent": true
+		},
+		{
+			"source": "/s/jdsi",
+			"destination": "/kagit-ustu-calismalari-dijitallestirmek/",
+			"permanent": true
+		},
+		{
+			"source": "/s/9ac0",
+			"destination": "/sayfamiza-social-bookmarking-buton-koyalim/",
+			"permanent": true
+		},
+		{
+			"source": "/s/y78h",
+			"destination": "/seo-optimizasyonu/",
+			"permanent": true
+		},
+		{
+			"source": "/s/vdy5",
+			"destination": "/pear-da-mdb2-ile-veritabani-islemleri/",
+			"permanent": true
+		},
+		{
+			"source": "/s/65vr",
+			"destination": "/pear-ve-mdb2-ile-prepare-execute-sayesinde-sql-injection-saldirilarina-karsi-koymak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/d4ys",
+			"destination": "/php-ve-pear/",
+			"permanent": true
+		},
+		{
+			"source": "/s/tezj",
+			"destination": "/belki-de-son-dokumanlar/",
+			"permanent": true
+		},
+		{
+			"source": "/s/g1w7",
+			"destination": "/php-dosyaniza-resim-dosya-gommek/",
+			"permanent": true
+		},
+		{
+			"source": "/s/j1y2",
+			"destination": "/tek-dosyali-projeler-siteler-uretmek/",
+			"permanent": true
+		},
+		{
+			"source": "/s/5fw3",
+			"destination": "/meetimer-ile-surfe-ayirdiginiz-vakti-izleyin/",
+			"permanent": true
+		},
+		{
+			"source": "/s/ftq4",
+			"destination": "/fatih-hayrioglunun-css-kitabi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/27ow",
+			"destination": "/morale-o-meter/",
+			"permanent": true
+		},
+		{
+			"source": "/s/hcc2",
+			"destination": "/durulduk-zombie-mode-on/",
+			"permanent": true
+		},
+		{
+			"source": "/s/4735",
+			"destination": "/firefox-3-beta-4-izlenimleri/",
+			"permanent": true
+		},
+		{
+			"source": "/s/d097",
+			"destination": "/save-the-developers-ie6ya-yasak-koymak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/z2rj",
+			"destination": "/buyumus-de-5-yil-olmus/",
+			"permanent": true
+		},
+		{
+			"source": "/s/u4x7",
+			"destination": "/mootools-vs-jquery/",
+			"permanent": true
+		},
+		{
+			"source": "/s/cdxh",
+			"destination": "/yeni-lisanslar-macheistden/",
+			"permanent": true
+		},
+		{
+			"source": "/s/pwqr",
+			"destination": "/ekmek-gibi-satilan-yeni-nesil-dizustuleri-lisans-ve-destek-sorunlari/",
+			"permanent": true
+		},
+		{
+			"source": "/s/z1mh",
+			"destination": "/apple-ruhunu-satiyor/",
+			"permanent": true
+		},
+		{
+			"source": "/s/rpz7",
+			"destination": "/flickr-pro-ve-fotograf-duzenleme-isleri/",
+			"permanent": true
+		},
+		{
+			"source": "/s/hjpu",
+			"destination": "/firefox-3-rekor-indirme-gunu/",
+			"permanent": true
+		},
+		{
+			"source": "/s/d8sq",
+			"destination": "/dinamiturk-ve-soberkoala-ile-youtube-erisimi-yapmak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/z83f",
+			"destination": "/firefox-3-cikmis/",
+			"permanent": true
+		},
+		{
+			"source": "/s/fa2k",
+			"destination": "/2-ozgur-yazilim-konferansi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/2aj0",
+			"destination": "/macosx-icin-ucretsiz-yazilimlar/",
+			"permanent": true
+		},
+		{
+			"source": "/s/37ay",
+			"destination": "/gunluklerin-blog-ozgunsuzlugu-ve-kalabalik/",
+			"permanent": true
+		},
+		{
+			"source": "/s/we25",
+			"destination": "/2-dokuman-ve-kisa-soluklu-yapilacaklar/",
+			"permanent": true
+		},
+		{
+			"source": "/s/b0qy",
+			"destination": "/google-chart-api-ile-grafik-cizdirmek/",
+			"permanent": true
+		},
+		{
+			"source": "/s/cefc",
+			"destination": "/gunluk-arsivi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/4xy0",
+			"destination": "/jquery-kaynaklari/",
+			"permanent": true
+		},
+		{
+			"source": "/s/1qs2",
+			"destination": "/sitede-kullanilan-bazi-ikonlar/",
+			"permanent": true
+		},
+		{
+			"source": "/s/a1pf",
+			"destination": "/web-ikonlari/",
+			"permanent": true
+		},
+		{
+			"source": "/s/jggq",
+			"destination": "/55-nefret-ettigim-sey-listeler/",
+			"permanent": true
+		},
+		{
+			"source": "/s/jlpb",
+			"destination": "/spamin-amaci-ve-populerligi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/k4ut",
+			"destination": "/finally-wordpress/",
+			"permanent": true
+		},
+		{
+			"source": "/s/23cf",
+			"destination": "/allah-butun-is-olmayanlara-blog-versin/",
+			"permanent": true
+		},
+		{
+			"source": "/s/gqsu",
+			"destination": "/sonunda-macbook-pro/",
+			"permanent": true
+		},
+		{
+			"source": "/s/3hza",
+			"destination": "/virtualbox-ile-sanallastirma/",
+			"permanent": true
+		},
+		{
+			"source": "/s/l5ds",
+			"destination": "/mfyzyi-kapattim/",
+			"permanent": true
+		},
+		{
+			"source": "/s/tbn0",
+			"destination": "/100-yil-sonra-bir-dokuman/",
+			"permanent": true
+		},
+		{
+			"source": "/s/wxyl",
+			"destination": "/mdb2-kullanimi-ve-sql-injection/",
+			"permanent": true
+		},
+		{
+			"source": "/s/50xc",
+			"destination": "/yeni-macbook-pro-modelleri-cikmis/",
+			"permanent": true
+		},
+		{
+			"source": "/s/wh96",
+			"destination": "/2-yeni-site-yayinda/",
+			"permanent": true
+		},
+		{
+			"source": "/s/yn46",
+			"destination": "/benim-bir-sitem-vardi-degil-mi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/wj28",
+			"destination": "/askere-gittim-donecem/",
+			"permanent": true
+		},
+		{
+			"source": "/s/tvew",
+			"destination": "/basarili-bulten-newsletter-mesaji-olusturmanin-5-kurali/",
+			"permanent": true
+		},
+		{
+			"source": "/s/vsyi",
+			"destination": "/facebook-connect-ile-kullanici-giris-cikis/",
+			"permanent": true
+		},
+		{
+			"source": "/s/nydi",
+			"destination": "/birakin-kullanici-yorumlarini-facebook-halletsin/",
+			"permanent": true
+		},
+		{
+			"source": "/s/yak8",
+			"destination": "/donusum-muhtesem-oldu/",
+			"permanent": true
+		},
+		{
+			"source": "/s/q3q2",
+			"destination": "/yenilikler-mfyznet-ve-dokumanlar/",
+			"permanent": true
+		},
+		{
+			"source": "/s/16zu",
+			"destination": "/kendi-portfolyo-twitter-temanizi-tasarlayin/",
+			"permanent": true
+		},
+		{
+			"source": "/s/2uph",
+			"destination": "/e-postalar-ve-htmlcss-imza-ile-guclu-imza/",
+			"permanent": true
+		},
+		{
+			"source": "/s/o9u5",
+			"destination": "/e-postalariniza-html-imza-ile-daha-ilgi-cekici-olun/",
+			"permanent": true
+		},
+		{
+			"source": "/s/i74r",
+			"destination": "/macosxde-mailapp-apple-mail-istemcisinde-html-imza-ayarlamak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/aa4v",
+			"destination": "/odullere-gelesin/",
+			"permanent": true
+		},
+		{
+			"source": "/s/9e8y",
+			"destination": "/firefox-35-hizlanmis/",
+			"permanent": true
+		},
+		{
+			"source": "/s/jzrz",
+			"destination": "/secmece-bunlar-ruffles-secen-secene/",
+			"permanent": true
+		},
+		{
+			"source": "/s/hpfw",
+			"destination": "/depolama-sikintilari/",
+			"permanent": true
+		},
+		{
+			"source": "/s/mnr4",
+			"destination": "/kulagima-3g-kacti-zipliyip-duruyorum-cikmiyor/",
+			"permanent": true
+		},
+		{
+			"source": "/s/f41v",
+			"destination": "/the-smashing-book-ortaligi-mahvedecek/",
+			"permanent": true
+		},
+		{
+			"source": "/s/1775",
+			"destination": "/mfyzorgun-kodlari-acildi-lifestream/",
+			"permanent": true
+		},
+		{
+			"source": "/s/oaw1",
+			"destination": "/phpde-pratikce-sorgu-cumlesi-olusturmak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/xli0",
+			"destination": "/hani-5-kurusluk-site-derler-ya-ondan-degil/",
+			"permanent": true
+		},
+		{
+			"source": "/s/4vcx",
+			"destination": "/twitter-istatistikleri-agustos-09/",
+			"permanent": true
+		},
+		{
+			"source": "/s/v8tb",
+			"destination": "/rsslerden-lifestream/",
+			"permanent": true
+		},
+		{
+			"source": "/s/vv7t",
+			"destination": "/rssleri-islemek-ve-lifestream/",
+			"permanent": true
+		},
+		{
+			"source": "/s/tjfj",
+			"destination": "/simplepie-ile-rss-islemek-okumak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/w9jp",
+			"destination": "/mysqlde-optimizasyon-analizi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/z5t0",
+			"destination": "/mysqlde-procedure-analyse-ile-optimizasyon-analizi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/mg3p",
+			"destination": "/wordpress-arastirmalari-ve-yakinda/",
+			"permanent": true
+		},
+		{
+			"source": "/s/ok3i",
+			"destination": "/twitter-insanlarina-genel-bakis-ve-twitter-turkleri/",
+			"permanent": true
+		},
+		{
+			"source": "/s/d339",
+			"destination": "/twitter-turkleri/",
+			"permanent": true
+		},
+		{
+			"source": "/s/whaa",
+			"destination": "/sosyal-mfyzcom-maksimum-kullanici-etkilesimi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/wzu2",
+			"destination": "/wanda-digitale-stajyer-araniyor/",
+			"permanent": true
+		},
+		{
+			"source": "/s/1hjn",
+			"destination": "/sosyal-medyada-kadinlarin-horozu-oter/",
+			"permanent": true
+		},
+		{
+			"source": "/s/j7zy",
+			"destination": "/macosx-ve-flash-player-problemleri/",
+			"permanent": true
+		},
+		{
+			"source": "/s/kojx",
+			"destination": "/phpde-gelen-istegin-ajax-cagrisi-olup-olmadigini-tespit-etmek/",
+			"permanent": true
+		},
+		{
+			"source": "/s/pm6c",
+			"destination": "/fluence-bir-blog-olsa/",
+			"permanent": true
+		},
+		{
+			"source": "/s/41ha",
+			"destination": "/odullere-devam/",
+			"permanent": true
+		},
+		{
+			"source": "/s/8qa8",
+			"destination": "/doritostan-hisseli-tatlar-kampanyasi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/bxn0",
+			"destination": "/benim-dalgam-senin-dalgani-dover/",
+			"permanent": true
+		},
+		{
+			"source": "/s/qdrn",
+			"destination": "/ya-hep-ya-hic-www-kullanin-veya-kullanmayin/",
+			"permanent": true
+		},
+		{
+			"source": "/s/kc29",
+			"destination": "/freelancerlarin-harcamalari-masraflari/",
+			"permanent": true
+		},
+		{
+			"source": "/s/333n",
+			"destination": "/easy-framework/",
+			"permanent": true
+		},
+		{
+			"source": "/s/bftn",
+			"destination": "/front-end-developer-araniyor/",
+			"permanent": true
+		},
+		{
+			"source": "/s/tn0i",
+			"destination": "/twistory-ile-twitter-gecmisinizi-takviminize-yedekleyin/",
+			"permanent": true
+		},
+		{
+			"source": "/s/o2ni",
+			"destination": "/url-kisaltma-servisleri-taranabilirligi-azaltiyor-mu/",
+			"permanent": true
+		},
+		{
+			"source": "/s/5nxp",
+			"destination": "/internette-bir-gun/",
+			"permanent": true
+		},
+		{
+			"source": "/s/6apa",
+			"destination": "/dinamik-sitemapxml-olusturmak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/lqah",
+			"destination": "/yeni-yiliniz-kutlu-olsun/",
+			"permanent": true
+		},
+		{
+			"source": "/s/igx2",
+			"destination": "/yeni-projeler-tekel-birasi-hisselitatlar-2faz/",
+			"permanent": true
+		},
+		{
+			"source": "/s/o380",
+			"destination": "/transfer-nexum-bogazicida-arayuz-gelistiricisiyim/",
+			"permanent": true
+		},
+		{
+			"source": "/s/1n8i",
+			"destination": "/ipad-hakkinda-neler-dusunuyorsunuz/",
+			"permanent": true
+		},
+		{
+			"source": "/s/hm9r",
+			"destination": "/pingsitemap-yeni-sayfalariniz-icin-arama-motorlarini-haberdar-edin/",
+			"permanent": true
+		},
+		{
+			"source": "/s/2nxb",
+			"destination": "/facebook-paylasim-detaylarini-kisisellestirme/",
+			"permanent": true
+		},
+		{
+			"source": "/s/b9kr",
+			"destination": "/sosyal-medyanin-dibine-vurmak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/gseg",
+			"destination": "/yeni-projeler-hisselitatlar-3faz-lays-ruffles-en-firlama/",
+			"permanent": true
+		},
+		{
+			"source": "/s/nkf5",
+			"destination": "/portfolyoda-yeni-markalar/",
+			"permanent": true
+		},
+		{
+			"source": "/s/f7ig",
+			"destination": "/button-elementlerinin-formu-submit-etmesini-durdurmak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/6d9y",
+			"destination": "/web-gelistiricileri-ve-musterilerin-takintilari-bolum-1/",
+			"permanent": true
+		},
+		{
+			"source": "/s/x4dn",
+			"destination": "/statik-imajlariniz-icin-cookie-bagimsiz-domain-kullanin/",
+			"permanent": true
+		},
+		{
+			"source": "/s/mwua",
+			"destination": "/the-social-network/",
+			"permanent": true
+		},
+		{
+			"source": "/s/h686",
+			"destination": "/startcraft-ii-cikti/",
+			"permanent": true
+		},
+		{
+			"source": "/s/6ptf",
+			"destination": "/fiber-internet/",
+			"permanent": true
+		},
+		{
+			"source": "/s/ol7b",
+			"destination": "/zamansiz-is-cikartmak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/8iuk",
+			"destination": "/development-surecinde-css-ve-js-dosyalarinin-cachlenmesini-engelleyin/",
+			"permanent": true
+		},
+		{
+			"source": "/s/thes",
+			"destination": "/nerede-nasil-calistiginin-ne-onemi-var/",
+			"permanent": true
+		},
+		{
+			"source": "/s/y5kp",
+			"destination": "/phpde-diziler-yerine-nesnelerle-calismaya-alismak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/o9cy",
+			"destination": "/css3-supportta-bariz-olan-ienin-hala-adam-olamamis-olmasi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/8gj1",
+			"destination": "/font-face-kullanmak-oldukca-guvenli/",
+			"permanent": true
+		},
+		{
+			"source": "/s/k7po",
+			"destination": "/wikipedia-10-yasina-giriyormus/",
+			"permanent": true
+		},
+		{
+			"source": "/s/8r9p",
+			"destination": "/sosyal-siteler/",
+			"permanent": true
+		},
+		{
+			"source": "/s/e5ia",
+			"destination": "/html5-logo/",
+			"permanent": true
+		},
+		{
+			"source": "/s/s3zr",
+			"destination": "/less-css/",
+			"permanent": true
+		},
+		{
+			"source": "/s/i3qw",
+			"destination": "/gitti-gidiyor-ebaya-gitti/",
+			"permanent": true
+		},
+		{
+			"source": "/s/khtc",
+			"destination": "/birbirleriyle-konusan-cihazlara-ihtiyacimiz-var/",
+			"permanent": true
+		},
+		{
+			"source": "/s/u8r8",
+			"destination": "/terkedilmis-mfyzcom/",
+			"permanent": true
+		},
+		{
+			"source": "/s/1ywa",
+			"destination": "/yeniden-deploy-edilmis-mfyzcom/",
+			"permanent": true
+		},
+		{
+			"source": "/s/c6lh",
+			"destination": "/web-projeleri-icin-springloops/",
+			"permanent": true
+		},
+		{
+			"source": "/s/qe2r",
+			"destination": "/recaptcha-aslinda-power-user-olmayanlari-eliyor/",
+			"permanent": true
+		},
+		{
+			"source": "/s/8j33",
+			"destination": "/dogal-hareketlere-ozenen-teknolojiler/",
+			"permanent": true
+		},
+		{
+			"source": "/s/b8h6",
+			"destination": "/eski-rss-entrylerinin-hepsinin-gorunmesi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/38gr",
+			"destination": "/tum-onyuz-phptale-tasindi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/fotp",
+			"destination": "/htaccess-ile-adresinizdeki-wwwyu-kaldirin/",
+			"permanent": true
+		},
+		{
+			"source": "/s/7ths",
+			"destination": "/jailbreak-apple-tv-ile-neler-yapiyorum/",
+			"permanent": true
+		},
+		{
+			"source": "/s/fbzz",
+			"destination": "/i-love-refactoring/",
+			"permanent": true
+		},
+		{
+			"source": "/s/9w5q",
+			"destination": "/spotifyin-amerikayi-kesfi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/ssrj",
+			"destination": "/degisime-devam-tam-guc-jquery/",
+			"permanent": true
+		},
+		{
+			"source": "/s/ymbm",
+			"destination": "/jquery-ile-sitenize-twitter-akisini-eklemek/",
+			"permanent": true
+		},
+		{
+			"source": "/s/2o5h",
+			"destination": "/twitter-zamazingosu/",
+			"permanent": true
+		},
+		{
+			"source": "/s/wbqi",
+			"destination": "/google-music-icin-ios-web-uygulamasi-yayinladi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/br7g",
+			"destination": "/bu-yil-tumblr-1-milyar-yazidan-10-milyara-cikmis/",
+			"permanent": true
+		},
+		{
+			"source": "/s/myy8",
+			"destination": "/mobil-tarayicilarin-destekledigi-html5-ozellikleri/",
+			"permanent": true
+		},
+		{
+			"source": "/s/2v92",
+			"destination": "/ios-icin-gelistirilen-uygulamayi-test-etmek/",
+			"permanent": true
+		},
+		{
+			"source": "/s/pffe",
+			"destination": "/facebook-muhendisinin-istifa-nedeni-ne-kadar-da-tanidik-degil-mi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/cskv",
+			"destination": "/teknoloji-girisimleri-neden-turkiyede-kolay-veya-hizli-buyuyemiyorlar/",
+			"permanent": true
+		},
+		{
+			"source": "/s/wbne",
+			"destination": "/php-siniflarinizi-restful-apilere-cevirin-restler/",
+			"permanent": true
+		},
+		{
+			"source": "/s/kiep",
+			"destination": "/php-ile-basit-http-authentication/",
+			"permanent": true
+		},
+		{
+			"source": "/s/w3gg",
+			"destination": "/less-ile-hiyerarsik-ve-fonksiyonel-css-yazmak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/s2fc",
+			"destination": "/yeni-header/",
+			"permanent": true
+		},
+		{
+			"source": "/s/8amn",
+			"destination": "/yeni-giris-sayfasi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/7tj3",
+			"destination": "/growlu-apple-alsa/",
+			"permanent": true
+		},
+		{
+			"source": "/s/b1eh",
+			"destination": "/google-plus-app-altyapisi-yapmayi-planliyor-mudur/",
+			"permanent": true
+		},
+		{
+			"source": "/s/qwtq",
+			"destination": "/pharma-hack-google-cloaking-hack-nedir/",
+			"permanent": true
+		},
+		{
+			"source": "/s/5utw",
+			"destination": "/teknolojiyi-hissetmek/",
+			"permanent": true
+		},
+		{
+			"source": "/s/lhob",
+			"destination": "/less-dosyalarinizi-anlik-csse-cevirin/",
+			"permanent": true
+		},
+		{
+			"source": "/s/feem",
+			"destination": "/eski-ie-surumlerini-html5-etiketlerini-anlar-hale-getirmek/",
+			"permanent": true
+		},
+		{
+			"source": "/s/q575",
+			"destination": "/web-tabanli-ve-acik-kaynak-kodlu-tilpark-muhasebe-yazilimi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/kn9c",
+			"destination": "/yuklenemeyen-resimleri-duzgun-gostermenin-yollari/",
+			"permanent": true
+		},
+		{
+			"source": "/s/rk2t",
+			"destination": "/web-projeleriniz-icin-guclu-bir-ui-kit-twitter-bootstrap/",
+			"permanent": true
+		},
+		{
+			"source": "/s/yihy",
+			"destination": "/phpde-tarih-karsilastirma/",
+			"permanent": true
+		},
+		{
+			"source": "/s/3b94",
+			"destination": "/htaccess-yardimiyla-tum-trafigi-tek-merkezden-yonetmek/",
+			"permanent": true
+		},
+		{
+			"source": "/s/g7y4",
+			"destination": "/yeni-arama-kutusu/",
+			"permanent": true
+		},
+		{
+			"source": "/s/awml",
+			"destination": "/jquery-ile-otomatik-boyutlanan-textarea/",
+			"permanent": true
+		},
+		{
+			"source": "/s/1xsm",
+			"destination": "/facebook-entegrasyonu/",
+			"permanent": true
+		},
+		{
+			"source": "/s/6e2y",
+			"destination": "/bir-gelistirici-neden-ingilizce-bilmelidir/",
+			"permanent": true
+		},
+		{
+			"source": "/s/nqkg",
+			"destination": "/css-catisi-kullanmanin-faydalari/",
+			"permanent": true
+		},
+		{
+			"source": "/s/1sie",
+			"destination": "/php-ile-tekil-anahtar-olusturmak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/mfqk",
+			"destination": "/opengraphe-giris/",
+			"permanent": true
+		},
+		{
+			"source": "/s/au9p",
+			"destination": "/htaccess-ile-ozellestirilmis-url-yapilariyla-karsilasacaginiz-medya-ve-cerez-problemleri-ve-cozumu/",
+			"permanent": true
+		},
+		{
+			"source": "/s/h3ff",
+			"destination": "/sayfa-gorsellerini-sayfa-yuklendiginde-degil-ekranda-goruntulendiginde-yuklemek/",
+			"permanent": true
+		},
+		{
+			"source": "/s/b8k1",
+			"destination": "/php-sdk-ile-facebook-api-hareketlerini-izleme-ve-optimize-etme-yontemleri/",
+			"permanent": true
+		},
+		{
+			"source": "/s/iggg",
+			"destination": "/wordpress-blogunuzun-rss-kaynagina-girdi-gorselleri-eklemek/",
+			"permanent": true
+		},
+		{
+			"source": "/s/upd7",
+			"destination": "/kucuk-projeleriniz-icin-tum-e-posta-stratejinizi-mailchimp-ile-yapin/",
+			"permanent": true
+		},
+		{
+			"source": "/s/3d1d",
+			"destination": "/google-search-api-ile-ajax-arama/",
+			"permanent": true
+		},
+		{
+			"source": "/s/ckax",
+			"destination": "/php-ile-zaman-farki-hesaplamak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/1nnf",
+			"destination": "/javascript-alert-fancy/",
+			"permanent": true
+		},
+		{
+			"source": "/s/s71e",
+			"destination": "/konum-bazli-servisler-ve-uygulamalarin-hayatimiza-kattiklari/",
+			"permanent": true
+		},
+		{
+			"source": "/s/pp8t",
+			"destination": "/ilginc-bir-geri-bildirim-hikayesi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/o4xi",
+			"destination": "/php-en-iyi-uygulama-gelistirme-kurallari/",
+			"permanent": true
+		},
+		{
+			"source": "/s/w6b0",
+			"destination": "/html5-form-ozellikleri/",
+			"permanent": true
+		},
+		{
+			"source": "/s/y2sj",
+			"destination": "/ios-uygulamanizi-web-sayfanizda-appstore-cubugu-ile-erisilebilir-hale-getirin/",
+			"permanent": true
+		},
+		{
+			"source": "/s/tl9c",
+			"destination": "/patlak-ie-toparliyor-mu/",
+			"permanent": true
+		},
+		{
+			"source": "/s/eafz",
+			"destination": "/phpstorm-bu-gune-kadarki-en-eli-yuzu-duzgun-php-idesi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/fcbk",
+			"destination": "/mfyzcom-artik-mobil-uyumlu/",
+			"permanent": true
+		},
+		{
+			"source": "/s/okle",
+			"destination": "/phpstorm-pycharm-veya-rubymine-kullanicilari-projenizi-veritabani-entegrasyonu-ile-gelistirin/",
+			"permanent": true
+		},
+		{
+			"source": "/s/6enc",
+			"destination": "/iphone5-ve-ipad-mini-dusurulmeye-daha-yatkin/",
+			"permanent": true
+		},
+		{
+			"source": "/s/9y5n",
+			"destination": "/ios-uygulama-ici-satis-entegrasyonu-ve-odemeleri-dogrulamak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/a1ck",
+			"destination": "/bir-turk-internet-faciasi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/tbh4",
+			"destination": "/css3-before-ve-after-sozde-elementleri/",
+			"permanent": true
+		},
+		{
+			"source": "/s/kugx",
+			"destination": "/radio-butonlari-css-ile-makyajlamak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/ts8g",
+			"destination": "/iosde-otomatik-yenilenen-abonelikleri-dogrulamak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/e85x",
+			"destination": "/mamp-ile-macosxde-php-tabanli-web-gelistirme-ortami-hazirlamak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/wfxp",
+			"destination": "/html-ve-css-baslangic-rehberi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/q23q",
+			"destination": "/cozunurluge-gore-tasarlamayin/",
+			"permanent": true
+		},
+		{
+			"source": "/s/7pum",
+			"destination": "/sitenizi-twitter-cards-ile-tweet-arkadasi-yapin/",
+			"permanent": true
+		},
+		{
+			"source": "/s/rzpx",
+			"destination": "/ise-yarayacak-birkac-fql-ve-facebook-api-sorgu-optimizasyonu/",
+			"permanent": true
+		},
+		{
+			"source": "/s/kjf3",
+			"destination": "/sequelpro-macosx-kullanicilari-icin-phpmyadmin-alternatifi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/nzlr",
+			"destination": "/css-ile-radio-butonlardan-segmented-control-yapmak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/fnno",
+			"destination": "/mongodb-ile-flortlesme-ve-mongolab-ile-bulut-veritabani/",
+			"permanent": true
+		},
+		{
+			"source": "/s/ao1i",
+			"destination": "/web-sayfalarinda-yapabileceginiz-basit-birkac-guvenlik-onlemi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/og9d",
+			"destination": "/minimalist-php-catisi-slim/",
+			"permanent": true
+		},
+		{
+			"source": "/s/yeqi",
+			"destination": "/bootstrapin-yeni-surumu-cikti/",
+			"permanent": true
+		},
+		{
+			"source": "/s/4gja",
+			"destination": "/cdn-nedir-ve-neden-kullanmalisiniz/",
+			"permanent": true
+		},
+		{
+			"source": "/s/pnb4",
+			"destination": "/grunt-nedir-bir-web-gelistiricisinin-neden-gorev-calistiricisina-ihtiyaci-var/",
+			"permanent": true
+		},
+		{
+			"source": "/s/g4p1",
+			"destination": "/son-2bucuk-yil-ve-sessizlik/",
+			"permanent": true
+		},
+		{
+			"source": "/s/i5mp",
+			"destination": "/dijital-gocebelik/",
+			"permanent": true
+		},
+		{
+			"source": "/s/h57f",
+			"destination": "/bulutda-calisan-mobil-simulatorler-nerede-kaldi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/j0ya",
+			"destination": "/swift-ogrenmek-isteyenlere/",
+			"permanent": true
+		},
+		{
+			"source": "/s/2xig",
+			"destination": "/ipadde-coda-ile-kodlamak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/woze",
+			"destination": "/bilgisayarsiz-ipadde-calismak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/x6ma",
+			"destination": "/yakinda-gelecek-olan-mfyz-com-guncellemesi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/2z4c",
+			"destination": "/baya-ucuz-sanal-sunucu-saglayici-scaleway/",
+			"permanent": true
+		},
+		{
+			"source": "/s/f2tf",
+			"destination": "/teknolojik-baba-olmak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/9yl9",
+			"destination": "/ingilizce-klavyeyle-turkce-yazmak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/6pu7",
+			"destination": "/kotu-urun-tasarimi-sadece-bir-takimda-calisabilirsin/",
+			"permanent": true
+		},
+		{
+			"source": "/s/vxto",
+			"destination": "/evden-calisan-baba-olmak-alternatif-uyku-duzenleri-ile-calisma-saatlerini-planlamak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/k5qo",
+			"destination": "/ipad-apple-pencilin-en-kullanisli-uygulamasi-notability/",
+			"permanent": true
+		},
+		{
+			"source": "/s/t82y",
+			"destination": "/ucuz-tablet-ile-bebek-monitoru-yapmak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/ku0o",
+			"destination": "/bitbucket-ile-statik-websitenizi-host-edebilirsiniz/",
+			"permanent": true
+		},
+		{
+			"source": "/s/urqq",
+			"destination": "/yazili-iletisimden-iyisi-yok/",
+			"permanent": true
+		},
+		{
+			"source": "/s/v3mn",
+			"destination": "/quipi-yazili-iletisimimizde-kullanarak-takim-etkilesimimizi-nasil-artiriyoruz/",
+			"permanent": true
+		},
+		{
+			"source": "/s/80e2",
+			"destination": "/uzayda-su-anda-kac-kisi-var-ifttt-ile-bunu-ogrenebilirsiniz/",
+			"permanent": true
+		},
+		{
+			"source": "/s/2260",
+			"destination": "/arayuzsuz-tarayicilari-web-tarayici-otomasyonu/",
+			"permanent": true
+		},
+		{
+			"source": "/s/fl90",
+			"destination": "/bir-yildan-fazladir-ekransiz-cumartesi-yapiyorum/",
+			"permanent": true
+		},
+		{
+			"source": "/s/di7o",
+			"destination": "/bilgisayar-kurtlari-icin-en-iyi-isleri-yoluna-koyma-methodu-todo-txt/",
+			"permanent": true
+		},
+		{
+			"source": "/s/6qkx",
+			"destination": "/docker-ile-kolayca-graylog-kurulumu-ve-ornek-nodejs-uygulamasindan-loglama/",
+			"permanent": true
+		},
+		{
+			"source": "/s/b65w",
+			"destination": "/product-huntdaki-ilk-urunum/",
+			"permanent": true
+		},
+		{
+			"source": "/s/gkp2",
+			"destination": "/son-urunum-screenshot-tracker-yayinda-ve-product-huntda/",
+			"permanent": true
+		},
+		{
+			"source": "/s/push",
+			"destination": "/blogumu-wordpress-ten-astroya-tasidim/",
+			"permanent": true
+		},
+		{
+			"source": "/s/34x8",
+			"destination": "/turkce-icerik-ile-bir-reset-daha/",
+			"permanent": true
+		},
+		{
+			"source": "/s/unnt",
+			"destination": "/wordpress-astro-performans-karsilastirmasi/",
+			"permanent": true
+		},
+		{
+			"source": "/s/k19u",
+			"destination": "/headless-cmsler/",
+			"permanent": true
+		},
+		{
+			"source": "/s/3rob",
+			"destination": "/mfyz-com-artik-acik-kaynak-kodlu-giscus-yorumlar/",
+			"permanent": true
+		},
+		{
+			"source": "/s/sajv",
+			"destination": "/arcxp-view-api-ile-haber-sitesi-kodlamak/",
+			"permanent": true
+		},
+		{
+			"source": "/s/qiep",
+			"destination": "/wordpress-mdx-astro-migration-scripti/",
+			"permanent": true
+		},
+		{
+			"source": "/s/jkwb",
+			"destination": "/kullaniciya-yardim-eden-hata-mesajlari/",
+			"permanent": true
+		}
 	]
 }

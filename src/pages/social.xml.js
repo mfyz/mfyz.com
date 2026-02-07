@@ -1,6 +1,7 @@
 import rss from "@astrojs/rss";
 import { SITE } from "../consts";
 import { getPosts } from "../utils/getPosts.ts";
+import { shortHash } from "../utils/shortHash.js";
 
 // Social media RSS feed - only includes posts with social_post field
 export async function GET(context) {
@@ -21,6 +22,7 @@ export async function GET(context) {
       link: `/${post.slug}/`,
       pubDate: new Date(post.data.date),
       category: "blog",
+      customData: `<short_url>${SITE.website}/s/${shortHash(post.slug)}</short_url>`,
     }))
     .sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime());
 
