@@ -14,7 +14,7 @@ const blog = defineCollection({
     // Social media post text (max 280 chars for Twitter compatibility)
     social_post: z
       .string()
-      .max(280, "Social post must be 280 characters or less")
+      .max(255, "Social post must be 255 characters or less")
       .optional(),
   }),
 });
