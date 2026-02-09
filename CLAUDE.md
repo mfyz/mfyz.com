@@ -135,12 +135,84 @@ When creating new blog posts:
 6. **Optional Front Matter Fields**:
    - `hidden: true` - For draft posts
    - `language: "tr"` - Automatically set for Turkish posts based on folder
+   - `social_post` - Social media announcement text (max 255 chars). Write as a multi-line YAML string (`|`). Should be conversational, hook-driven, and standalone (no links needed). Always include when scheduling posts.
 7. **Image Assets Organization**:
    - **Location**: Store images in `public/images/blog/YYYY/` where YYYY is the year
    - **Simple posts (1-3 images)**: Place images directly in the year folder (e.g., `public/images/blog/2025/my-image.jpg`)
    - **Complex posts (4+ images)**: Create a post-specific subfolder (e.g., `public/images/blog/2025/newsletter-digester/screenshot-1.jpg`)
    - **Referencing in posts**: Use absolute paths from public root (e.g., `/images/blog/2025/my-image.jpg`)
    - **Image naming**: Use descriptive, lowercase, hyphen-separated names
+
+### Blog Post Scheduling Workflow
+
+When scheduling a draft blog post from the life vault (or writing a new one), follow these steps:
+
+#### 1. Prepare the repo
+```bash
+cd ~/Development/mfyz.com
+git checkout main && git pull
+```
+
+#### 2. Create the post file
+- Create the `.mdx` file following the naming/path conventions above
+- Include `hidden: true` in front matter (keeps it invisible on the live site)
+- Fill all required front matter: `title`, `description`, `date`, `slug`, `tags`
+- Use Astro MDX components (`ImageZoom`, `YouTube`, `Note`, etc.) where appropriate
+
+#### 3. Determine the schedule date
+- Check open PRs to find the latest already-scheduled post:
+  ```bash
+  gh pr list --state open
+  ```
+- PR titles and descriptions use ISO date format (`YYYY-MM-DD`)
+- PR descriptions contain `/schedule YYYY-MM-DD` lines
+- Find the latest scheduled Tuesday, then pick the **following Tuesday** as the new schedule date
+- Posts are generally scheduled on **Tuesdays**
+
+#### 4. Push the hidden draft to main
+```bash
+git add src/content/blog/YYYY/<post-file>.mdx
+git commit -m "Add draft: <post-title>"
+git push
+```
+
+#### 5. Create the schedule branch and PR
+```bash
+# Branch name format: YYYY-MM-DD-slug
+git checkout -b YYYY-MM-DD-slug
+```
+- Remove `hidden: true` from the post's front matter
+- Commit and push the branch:
+  ```bash
+  git add src/content/blog/YYYY/<post-file>.mdx
+  git commit -m "Schedule: <post-title>"
+  git push -u origin YYYY-MM-DD-slug
+  ```
+- Create the PR with the schedule directive in the description:
+  ```bash
+  gh pr create --title "YYYY-MM-DD <post-title>" --body "$(cat <<'EOF'
+  /schedule YYYY-MM-DDT09:00:00-05:00
+
+  Short description of the post (optional).
+  EOF
+  )"
+  ```
+
+#### 6. Clean up local copy
+```bash
+git checkout main && git pull
+git branch -d YYYY-MM-DD-slug
+```
+
+#### 7. Done
+A GitHub Action watches for the `/schedule` directive and auto-merges the PR when the scheduled date arrives. No further manual action needed.
+
+#### Quick Reference
+| Step             | Branch | `hidden` | Action                    |
+|------------------|--------|----------|---------------------------|
+| Draft post       | main   | true     | Commit + push to main     |
+| Schedule branch  | new    | removed  | Commit + push + create PR |
+| Publish          | —      | —        | Auto-merged by GH Action  |
 
 ### Language & Internationalization
 - **Dual Language**: English (default) and Turkish content
