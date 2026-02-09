@@ -2,4 +2,4 @@
 # COMMIT_HASH=$(git rev-parse HEAD)
 # open "https://github.com/mfyz/mfyz.com/commit/$COMMIT_HASH"
 
-(sleep 2 && open "https://vercel.com/mfyz-projects/mfyz-com/deployments") &
+#(sleep 2 && open "https://vercel.com/mfyz-projects/mfyz-com/deployments") &
