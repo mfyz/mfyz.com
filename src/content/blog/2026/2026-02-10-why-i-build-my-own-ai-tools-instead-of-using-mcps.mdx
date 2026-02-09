@@ -1,0 +1,54 @@
+---
+title: "Why I Build My Own AI Tools Instead of Using MCPs"
+description: "Instead of giving Claude wide-open MCP access, I build tightly scoped custom tools. Here's why custom scripts beat MCP servers for personal AI workflows."
+date: 2026-02-10
+slug: "why-i-build-my-own-ai-tools-instead-of-using-mcps"
+tags: ["ai", "claude", "mcp", "tools", "automation"]
+hidden: true
+---
+
+I want to talk about something that's been bugging me about the current AI tooling ecosystem. Everyone's excited about MCP (Model Context Protocol) and how it lets Claude connect to everything. It's impressive, sure. But after building my own tool scripts for Gmail, Calendar, Google Drive, and more, I've come to a different, more efficient and safer approach.
+
+## MCP Issue #1: Wide Open Access
+
+When you connect an MCP server to Claude, often you're giving it the keys to the kingdom. Because majority of them lack granular permissions mechanisms. Install the Gmail MCP? Claude can now read your emails. It can also write them. Delete them. Do pretty much anything with your inbox.
+
+That's a lot of trust.
+
+I'm not saying MCPs are bad. They're convenient. But convenience comes with trade-offs that nobody seems to be talking about.
+
+## MCP Issue #2: Context Bloat
+
+There's also a cost issue that surprised me. When Claude uses an MCP, it loads tool schemas, connection details, and sometimes internal implementation hints into the context window. That's tokens you're paying for on every request. And it adds up.
+
+You don't need to describe everything an agent can do at all times. Claude and Opus are really smart. They can figure things out with minimal clues. And they're surprisingly good at using the shell. This matters because shell commands follow a universal convention. They have help pages. They have predictable patterns. Claude already knows how to explore and use them.
+
+So instead of loading heavy MCP schemas, I just tell Claude "here's a tool about X, run `--help` if you need to figure it out." The tool documentation lives in a single CLAUDE.md file. Minimal overhead.
+
+## My Approach: Tightly Scoped Custom Tools
+
+Instead of MCPs, I built simple Node.js or bash scripts that wrap any APIs. They live in global Claude config path, `~/.claude/tools/` folder. I control exactly what these tools can do. And more importantly, what they cannot do.
+
+Take my `gmail.js` tool. It can search emails. Read email content. Add or remove labels. Mark as read or unread.
+
+Notice what's missing? No delete. No send. No draft creation. I made that choice deliberately.
+
+Same with my `drive.js` and `contacts.js` tools. Delete is not implemented. On purpose.
+
+One may make the argument that Claude can read the scripts and reverse engineer and try destructive API calls. That's where you need to configure your API keys granularly and not have anything destructive, unless you really want full autonomy on your agents. But that would be a deliberate decision too, not the default.
+
+## When MCPs Make Sense
+
+I'm not saying never use MCPs. They make sense when you need full API access and trust the implementation. Or when someone else maintains the integration and you don't want that burden. Or when you're experimenting and don't care about restrictions yet.
+
+For my personal productivity system, though, I want those restrictions. I want Claude to be a helpful assistant that can read my calendar and check my email. I don't want it to be able to nuke my inbox or schedule meetings on my behalf.
+
+## Building Your Own Isn't Hard
+
+The tools I built are just JavaScript files that use official APIs. Gmail uses IMAP with Google App Passwords. Calendar, Tasks, Drive, Sheets, and YouTube all use Google's OAuth and their REST APIs.
+
+Almost all of it vibe coded. This part is actually fun. Making Claude Code build its own tools under your rules and needs.
+
+The code is simple enough that I understand every line. When something breaks, I can fix it, but usually don't because I ask Claude to fix it. When I want a new capability, I add it, again using Claude.
+
+Sometimes less capability means more control. And more control means you can actually trust the system.
