@@ -1,12 +1,10 @@
-name: Playwright Tests
+name: Post-Deployment Validation
 on:
-  push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
+  deployment_status:
 jobs:
   test:
-    timeout-minutes: 60
+    if: github.event.deployment_status.state == 'success'
+    timeout-minutes: 10
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -16,8 +14,10 @@ jobs:
     - name: Install dependencies
       run: npm ci
     - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
+      run: npx playwright install --with-deps chromium
     - name: Run Playwright tests
+      env:
+        BASE_URL: ${{ github.event.deployment_status.target_url }}
       run: npx playwright test
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
