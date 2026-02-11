@@ -3,7 +3,6 @@ import Layout from "@layouts/Layout.astro";
 import BlogGrid from "@components/BlogGrid.astro";
 import BlogList from "@components/BlogList.astro";
 import { getTurkishPosts } from "@utils/getPosts.ts";
-import "../../styles/blog-grid.css";
 
 // Get only Turkish posts
 const posts = await getTurkishPosts();

@@ -468,3 +468,73 @@ nav a {
 iframe.giscus-frame {
   outline: none;
 }
+
+/* Blog grid layout - must be in this file (not a separate CSS import)
+   because Astro inlines component-imported CSS as <style> tags that load
+   BEFORE this external Tailwind-processed CSS file. With equal specificity,
+   the later-loading rules here would override the inline ones. */
+
+.blog-grid ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-gap: 0;
+}
+
+.blog-grid li {
+  margin-bottom: 0;
+  border-radius: 0;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.main-content-wrapper .blog-grid a {
+  text-decoration: none;
+}
+
+.blog-grid h4,
+.blog-grid h3 {
+  color: #000000;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  font-weight: normal;
+}
+
+.dark .blog-grid .bg-\[\#fafafa\] h4,
+.dark .blog-grid .bg-\[\#fafafa\] h3 {
+  color: #333333;
+}
+
+.dark .blog-grid .bg-\[\#fafafa\] .text-gray-500 {
+  color: #555555;
+}
+
+.blog-grid ul > li {
+  padding: 2rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-bottom: 6rem;
+}
+
+@media (min-width: 640px) {
+  .blog-grid ul > li {
+    aspect-ratio: 1/1;
+    padding-bottom: 2rem;
+  }
+}
+
+.blog-grid {
+  margin-top: 2rem;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.2);
+}
+
+.blog-grid .bg-\[\#222\] h4,
+.blog-grid .bg-primary h4,
+.blog-grid .bg-\[\#222\] h1,
+.blog-grid .bg-\[\#222\] h2,
+.blog-grid .bg-\[\#222\] h3 {
+  color: #ffffff !important;
+}

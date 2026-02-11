@@ -766,6 +766,16 @@
 			"permanent": true
 		},
 		{
+			"source": "/s/x8vj",
+			"destination": "/why-i-build-my-own-ai-tools-instead-of-using-mcps/",
+			"permanent": true
+		},
+		{
+			"source": "/s/36pf",
+			"destination": "/claude-code-allowlist-command-substitution-bypass/",
+			"permanent": true
+		},
+		{
 			"source": "/s/7v1j",
 			"destination": "/kitchen-sink-example/",
 			"permanent": true
