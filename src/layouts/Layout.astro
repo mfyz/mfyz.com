@@ -145,6 +145,9 @@ const ogImageBasedOnPath =
 
     <!-- JSON-LD Structured Data -->
     <JSONLDSchema type="website" />
+
+    <!-- Named slot for additional head content (e.g., blog post markdown source link) -->
+    <slot name="head" />
   </head>
 
   <body
@@ -168,6 +171,9 @@ const ogImageBasedOnPath =
 
     <!-- Mermaid diagrams enhancement script -->
     <script src="/js/mermaid.js" is:inline></script>
+
+    <!-- Link preview cards script -->
+    <script src="/js/link-preview.js" is:inline></script>
 
     <Footer lang={pageLang} size={size} />
   </body>

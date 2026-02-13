@@ -53,6 +53,14 @@ export const prerender = true;
   size="small"
   noContentWrapperClass
 >
+  <!-- Markdown source discovery for AI agents -->
+  <link
+    slot="head"
+    type="text/markdown"
+    rel="alternate"
+    title="Markdown"
+    href={`https://raw.githubusercontent.com/mfyz/mfyz.com/main/src/content/blog/${post.id}`}
+  />
   <JSONLDSchema
     type="article"
     title={title}
@@ -74,6 +82,7 @@ export const prerender = true;
   <BlogPost
     {...post.data}
     slug={post.slug}
+    postId={post.id}
     content={post.body}
     isTurkish={isTurkish}
     frontmatter={metadata.frontmatter || {}}
