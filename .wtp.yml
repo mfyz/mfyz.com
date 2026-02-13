@@ -1,0 +1,18 @@
+version: "1.0"
+defaults:
+  base_dir: "../mfyz-worktrees"
+
+hooks:
+  post_create:
+    - type: symlink
+      from: "node_modules"
+      to: "node_modules"
+    - type: symlink
+      from: "dist"
+      to: "dist"
+    - type: copy
+      from: ".env"
+      to: ".env"
+    - type: copy
+      from: ".claude"
+      to: ".claude"
