@@ -71,7 +71,7 @@ body {
 .link-preview {
   position: fixed;
   z-index: 1000;
-  width: 320px;
+  width: 480px;
   max-width: calc(100vw - 2rem);
   background: white;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -89,7 +89,7 @@ body {
 
 .link-preview-image {
   width: 100%;
-  height: 120px;
+  height: 240px;
   object-fit: cover;
   background: linear-gradient(
     135deg,
@@ -108,10 +108,6 @@ body {
   color: #0c0a09;
   margin: 0 0 6px 0;
   line-height: 1.3;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 .link-preview-desc {

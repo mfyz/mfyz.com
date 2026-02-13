@@ -78,11 +78,8 @@ export function rehypeLinkPreview() {
       // Add preview data attributes
       node.properties['data-preview-title'] = post.title || '';
       node.properties['data-preview-desc'] = post.description || '';
-
-      // Add image if available
-      if (post.imageURL) {
-        node.properties['data-preview-image'] = post.imageURL;
-      }
+      // Store the href so we can construct OG image URL client-side
+      node.properties['data-preview-slug'] = href;
 
       // Add a class to mark it as an internal link with preview
       const existingClass = node.properties.className || [];

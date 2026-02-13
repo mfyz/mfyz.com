@@ -26,7 +26,7 @@
   function showPreview(link) {
     const title = link.dataset.previewTitle;
     const desc = link.dataset.previewDesc;
-    const image = link.dataset.previewImage;
+    const slug = link.dataset.previewSlug;
 
     if (!title || !desc) return;
 
@@ -42,8 +42,10 @@
     titleEl.textContent = title;
     descEl.textContent = desc;
 
-    if (image) {
-      imageEl.src = image;
+    // Use OG image (slug + /og.png)
+    if (slug) {
+      const ogImageUrl = `${slug}${slug.endsWith("/") ? "" : "/"}og.png`;
+      imageEl.src = ogImageUrl;
       imageEl.style.display = "block";
     } else {
       imageEl.style.display = "none";
@@ -60,8 +62,8 @@
 
   function positionCard(link) {
     const linkRect = link.getBoundingClientRect();
-    const cardWidth = 320;
-    const cardHeight = previewCard.offsetHeight || 200;
+    const cardWidth = 480;
+    const cardHeight = previewCard.offsetHeight || 300;
     const gap = 8;
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
