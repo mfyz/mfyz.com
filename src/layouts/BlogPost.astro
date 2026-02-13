@@ -5,8 +5,17 @@ import readingTime from "reading-time";
 import BlogHero from "@components/BlogHero.astro";
 import path from "path";
 
-const { title, date, imageURL, tags, content, slug, frontmatter, isTurkish } =
-  Astro.props;
+const {
+  title,
+  date,
+  imageURL,
+  tags,
+  content,
+  slug,
+  postId,
+  frontmatter,
+  isTurkish,
+} = Astro.props;
 
 const time = readingTime(content);
 ---
@@ -20,6 +29,7 @@ const time = readingTime(content);
       title={title}
       date={date}
       slug={slug}
+      postId={postId}
       content={content}
       tags={tags}
       lang={isTurkish ? "tr" : "en"}
