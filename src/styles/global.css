@@ -553,6 +553,34 @@ iframe.giscus-frame {
   outline: none;
 }
 
+/* Table of Contents sidebar */
+#toc-sidebar {
+  display: block;
+}
+
+#toc-sidebar,
+#toc-sidebar a {
+  padding: 0;
+}
+
+#toc-sidebar .toc-inner {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(156, 163, 175, 0.3) transparent;
+}
+
+#toc-sidebar .toc-inner::-webkit-scrollbar {
+  width: 3px;
+}
+
+#toc-sidebar .toc-inner::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#toc-sidebar .toc-inner::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.3);
+  border-radius: 3px;
+}
+
 /* Blog grid layout - must be in this file (not a separate CSS import)
    because Astro inlines component-imported CSS as <style> tags that load
    BEFORE this external Tailwind-processed CSS file. With equal specificity,

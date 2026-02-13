@@ -3,6 +3,7 @@ import type { CollectionEntry } from "astro:content";
 import Tags from "@components/Tags.astro";
 import readingTime from "reading-time";
 import BlogHero from "@components/BlogHero.astro";
+import TableOfContents from "@components/TableOfContents.astro";
 import path from "path";
 
 const {
@@ -15,6 +16,7 @@ const {
   postId,
   frontmatter,
   isTurkish,
+  headings = [],
 } = Astro.props;
 
 const time = readingTime(content);
@@ -37,4 +39,5 @@ const time = readingTime(content);
   </div>
   <div class="mt-6"></div>
   <slot />
+  <TableOfContents headings={headings} />
 </article>
