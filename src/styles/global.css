@@ -144,6 +144,12 @@ body {
   );
 }
 
+/* GitHub preview cards - image-only, no text content */
+.link-preview.github-preview .link-preview-image {
+  height: auto;
+  object-fit: contain;
+}
+
 /* Hide on mobile */
 @media (max-width: 768px) {
   .link-preview {

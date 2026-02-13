@@ -1,6 +1,6 @@
 /**
  * Link Preview Cards
- * Shows a preview card on hover for internal blog links with data attributes
+ * Shows a preview card on hover for internal blog links and GitHub repo links
  */
 
 (function () {
@@ -27,28 +27,48 @@
     const title = link.dataset.previewTitle;
     const desc = link.dataset.previewDesc;
     const slug = link.dataset.previewSlug;
-
-    if (!title || !desc) return;
+    const type = link.dataset.previewType;
 
     if (!previewCard) {
       previewCard = createPreviewCard();
     }
 
-    // Update content
     const titleEl = previewCard.querySelector(".link-preview-title");
     const descEl = previewCard.querySelector(".link-preview-desc");
     const imageEl = previewCard.querySelector(".link-preview-image");
+    const contentEl = previewCard.querySelector(".link-preview-content");
 
-    titleEl.textContent = title;
-    descEl.textContent = desc;
-
-    // Use OG image (slug + /og.png)
-    if (slug) {
-      const ogImageUrl = `${slug}${slug.endsWith("/") ? "" : "/"}og.png`;
-      imageEl.src = ogImageUrl;
+    if (type === "github") {
+      // GitHub repo preview - use Socialify image as the entire card
+      const repoPath = slug
+        .replace(/^https?:\/\/github\.com\//, "")
+        .replace(/\/$/, "");
+      const isDark = document.documentElement.classList.contains("dark");
+      const theme = isDark ? "Dark" : "Light";
+      const socialifyUrl =
+        `https://socialify.git.ci/${repoPath}/image` +
+        `?description=1&forks=1&language=1&name=1&owner=1&pattern=Plus&stargazers=1&theme=${theme}`;
+      imageEl.src = socialifyUrl;
       imageEl.style.display = "block";
+      // Hide text content - the Socialify image is a complete card
+      contentEl.style.display = "none";
+      previewCard.classList.add("github-preview");
     } else {
-      imageEl.style.display = "none";
+      // Internal link preview
+      if (!title || !desc) return;
+
+      titleEl.textContent = title;
+      descEl.textContent = desc;
+
+      if (slug) {
+        const ogImageUrl = `${slug}${slug.endsWith("/") ? "" : "/"}og.png`;
+        imageEl.src = ogImageUrl;
+        imageEl.style.display = "block";
+      } else {
+        imageEl.style.display = "none";
+      }
+      contentEl.style.display = "";
+      previewCard.classList.remove("github-preview");
     }
 
     // Position the card
@@ -137,7 +157,7 @@
   // Initialize on DOM ready
   function init() {
     const links = document.querySelectorAll(
-      "a.internal-link[data-preview-title]"
+      "a.internal-link[data-preview-title], a.github-link[data-preview-type='github']"
     );
 
     links.forEach(link => {

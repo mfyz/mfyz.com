@@ -53,8 +53,17 @@ async function buildPostMap() {
 }
 
 /**
+ * Parse a GitHub URL into owner/repo (returns null if not a repo URL)
+ */
+function parseGitHubRepo(url) {
+  const match = url.match(/^https?:\/\/github\.com\/([^/]+)\/([^/]+?)\/?$/);
+  if (!match) return null;
+  return { owner: match[1], repo: match[2] };
+}
+
+/**
  * Rehype plugin to add preview data attributes to internal blog post links
- * This enables hover preview cards without external API calls
+ * and GitHub repository links. Enables hover preview cards.
  */
 export function rehypeLinkPreview() {
   return async (tree) => {
@@ -64,10 +73,27 @@ export function rehypeLinkPreview() {
       if (node.tagName !== 'a') return;
 
       const href = node.properties?.href;
-      if (!href) return;
+      if (!href || typeof href !== 'string') return;
+
+      const existingClass = node.properties.className || [];
+      const addClass = (cls) => {
+        node.properties.className = Array.isArray(existingClass)
+          ? [...existingClass, cls]
+          : [existingClass, cls];
+      };
+
+      // Check for GitHub repo links
+      const ghRepo = parseGitHubRepo(href);
+      if (ghRepo) {
+        node.properties['data-preview-type'] = 'github';
+        node.properties['data-preview-title'] = `${ghRepo.owner}/${ghRepo.repo}`;
+        node.properties['data-preview-slug'] = href;
+        addClass('github-link');
+        return;
+      }
 
       // Only process internal links (start with /, not //, not http)
-      if (typeof href !== 'string' || !href.startsWith('/') || href.startsWith('//')) {
+      if (!href.startsWith('/') || href.startsWith('//')) {
         return;
       }
 
@@ -82,10 +108,7 @@ export function rehypeLinkPreview() {
       node.properties['data-preview-slug'] = href;
 
       // Add a class to mark it as an internal link with preview
-      const existingClass = node.properties.className || [];
-      node.properties.className = Array.isArray(existingClass)
-        ? [...existingClass, 'internal-link']
-        : [existingClass, 'internal-link'];
+      addClass('internal-link');
     });
   };
 }
