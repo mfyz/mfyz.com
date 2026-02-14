@@ -72,21 +72,45 @@
     var title = link.dataset.previewTitle;
     var desc = link.dataset.previewDesc;
     var slug = link.dataset.previewSlug;
-    if (!title || !desc) return;
+    var type = link.dataset.previewType;
 
     cancelHide();
     if (activeTrigger && activeTrigger !== link) hideActive();
 
     var card = getLinkPreviewCard();
-    card.querySelector(".link-preview-title").textContent = title;
-    card.querySelector(".link-preview-desc").textContent = desc;
-
+    var titleEl = card.querySelector(".link-preview-title");
+    var descEl = card.querySelector(".link-preview-desc");
     var img = card.querySelector(".link-preview-image");
-    if (slug) {
-      img.src = slug + (slug.endsWith("/") ? "" : "/") + "og.png";
+    var contentEl = card.querySelector(".link-preview-content");
+
+    if (type === "github") {
+      // GitHub repo preview — Socialify image as entire card
+      var repoPath = slug
+        .replace(/^https?:\/\/github\.com\//, "")
+        .replace(/\/$/, "");
+      var isDark = document.documentElement.classList.contains("dark");
+      var theme = isDark ? "Dark" : "Light";
+      img.src =
+        "https://socialify.git.ci/" +
+        repoPath +
+        "/image?description=1&forks=1&language=1&name=1&owner=1&pattern=Plus&stargazers=1&theme=" +
+        theme;
       img.style.display = "block";
+      contentEl.style.display = "none";
+      card.classList.add("github-preview");
     } else {
-      img.style.display = "none";
+      // Internal link preview
+      if (!title || !desc) return;
+      titleEl.textContent = title;
+      descEl.textContent = desc;
+      if (slug) {
+        img.src = slug + (slug.endsWith("/") ? "" : "/") + "og.png";
+        img.style.display = "block";
+      } else {
+        img.style.display = "none";
+      }
+      contentEl.style.display = "";
+      card.classList.remove("github-preview");
     }
 
     positionCard(link, card, 480);
@@ -148,9 +172,11 @@
     }
     hideActive();
 
-    // Link previews
+    // Link previews (internal + GitHub)
     document
-      .querySelectorAll("a.internal-link[data-preview-title]")
+      .querySelectorAll(
+        "a.internal-link[data-preview-title], a.github-link[data-preview-type='github']"
+      )
       .forEach(function (link) {
         link.addEventListener("mouseenter", function () {
           showLinkPreview(link);
