@@ -35,8 +35,8 @@ const shouldRender = tocHeadings.length >= 5;
               <a
                 href={`#${heading.slug}`}
                 class:list={[
-                  "toc-link -ml-px block border-l-2 py-1 text-sm leading-5 transition-colors duration-150",
-                  heading.depth === 3 ? "pl-10" : "pl-6",
+                  "toc-link -ml-px block border-l-2 py-1 pl-[20px] text-sm leading-5 transition-colors duration-150",
+                  heading.depth === 3 ? "pl-[36px]" : "",
                   "border-transparent text-gray-500 hover:border-gray-400 hover:text-gray-900 dark:text-gray-400 dark:hover:border-gray-500 dark:hover:text-gray-200",
                 ]}
                 data-slug={heading.slug}
