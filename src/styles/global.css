@@ -144,14 +144,6 @@ body {
   );
 }
 
-/* Hide on mobile */
-@media (max-width: 768px) {
-  .link-preview,
-  .glossary-popover {
-    display: none;
-  }
-}
-
 /* Glossary term inline styling */
 .glossary-term {
   text-decoration: underline;
@@ -223,6 +215,14 @@ body {
 
 :root.dark .glossary-popover-desc a {
   color: rgb(var(--primary-bright));
+}
+
+/* Hide popovers on mobile */
+@media (max-width: 768px) {
+  .link-preview,
+  .glossary-popover {
+    display: none;
+  }
 }
 
 @layer base {
