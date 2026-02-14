@@ -8,6 +8,7 @@ import { transformerNotationHighlight } from "@shikijs/transformers";
 import remarkToc from 'remark-toc'
 import { remarkEmoticons } from './src/remark-plugins/remark-emoticons.mjs'
 import { rehypeLinkPreview } from './src/remark-plugins/rehype-link-preview.mjs'
+import { rehypeGlossary } from './src/remark-plugins/rehype-glossary.mjs'
 
 // Define shared Shiki configuration
 const shikiConfig = {
@@ -28,7 +29,7 @@ export default defineConfig({
   integrations: [
     mdx({
       remarkPlugins: [remarkToc, remarkEmoticons],
-      rehypePlugins: [rehypeLinkPreview],
+      rehypePlugins: [rehypeLinkPreview, rehypeGlossary],
       syntaxHighlight: 'shiki',
       shikiConfig: shikiConfig, // Add Shiki config to MDX
     }),
@@ -37,7 +38,7 @@ export default defineConfig({
   ],
   markdown: {
     remarkPlugins: [remarkToc, remarkEmoticons],
-    rehypePlugins: [rehypeLinkPreview],
+    rehypePlugins: [rehypeLinkPreview, rehypeGlossary],
     shikiConfig: shikiConfig, // Reuse same config for consistency
   },
   vite: {
