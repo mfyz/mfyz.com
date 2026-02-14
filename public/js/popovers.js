@@ -138,6 +138,16 @@
   // ── Event wiring ──────────────────────────────────────────────
 
   function init() {
+    // After view transitions, old card elements may be detached from DOM.
+    // Reset references so they get recreated fresh.
+    if (linkPreviewCard && !document.body.contains(linkPreviewCard)) {
+      linkPreviewCard = null;
+    }
+    if (glossaryCard && !document.body.contains(glossaryCard)) {
+      glossaryCard = null;
+    }
+    hideActive();
+
     // Link previews
     document
       .querySelectorAll("a.internal-link[data-preview-title]")
