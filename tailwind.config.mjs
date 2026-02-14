@@ -11,7 +11,10 @@ export default {
     'whitespace-pre-wrap', 'active-button', 'copied',
     'code-buttons-group', 'code-block-wrapper', 'font-size-code', 'tooltip',
     // Mermaid classes
-    'mermaid-container', 'mermaid-diagram'
+    'mermaid-container', 'mermaid-diagram',
+    // TOC sidebar active state classes (toggled via JS)
+    'border-primary', 'dark:border-primary-light',
+    'text-gray-900', 'dark:text-gray-100', 'font-medium',
   ],
   darkMode: "class",
   theme: {
