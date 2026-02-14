@@ -57,26 +57,29 @@ function buildTermRegex(terms) {
  */
 export function rehypeGlossary() {
   return (tree) => {
-    const glossary = loadGlossary();
+    let glossary;
+    try {
+      glossary = loadGlossary();
+    } catch (e) {
+      // Inject a comment so we can see the error on the page
+      tree.children.unshift({
+        type: 'comment',
+        value: `glossary-error: ${e.message}`,
+      });
+      return;
+    }
     const terms = Object.keys(glossary);
+
+    // Diagnostic comment — remove after debugging
+    tree.children.unshift({
+      type: 'comment',
+      value: `glossary-plugin-ran: ${terms.length} terms loaded`,
+    });
+
     if (terms.length === 0) return;
 
     const regex = buildTermRegex(terms);
     const matched = new Set(); // Track which terms have been wrapped (first occurrence only)
-
-    visit(tree, 'text', (node, index, parent) => {
-      // Build ancestor chain by walking up
-      if (!parent || index === undefined) return;
-
-      // Collect ancestors via the visitor
-      const ancestors = [];
-      visit(tree, (n, _i, p) => {
-        if (n === node) return false; // stop
-      });
-
-      // Simpler approach: check parent chain directly
-      // visit with ancestors
-    });
 
     // Use visitParents-style approach by tracking ancestors manually
     function walkNode(node, ancestors) {
