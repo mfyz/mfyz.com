@@ -556,10 +556,6 @@ iframe.giscus-frame {
 /* Table of Contents sidebar */
 #toc-sidebar {
   display: block;
-}
-
-#toc-sidebar,
-#toc-sidebar a {
   padding: 0;
 }
 
