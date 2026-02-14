@@ -36,7 +36,7 @@ const shouldRender = tocHeadings.length >= 5;
                 href={`#${heading.slug}`}
                 class:list={[
                   "toc-link -ml-px block border-l-2 text-sm leading-6 transition-colors duration-150",
-                  heading.depth === 3 ? "pl-6" : "pl-3",
+                  heading.depth === 3 ? "pl-8" : "pl-4",
                   "border-transparent text-gray-500 hover:border-gray-400 hover:text-gray-900 dark:text-gray-400 dark:hover:border-gray-500 dark:hover:text-gray-200",
                 ]}
                 data-slug={heading.slug}
@@ -56,8 +56,14 @@ const shouldRender = tocHeadings.length >= 5;
     const toc = document.getElementById("toc-sidebar");
     if (!toc) return;
 
+    // Calculate where the content starts (below the hero)
+    const mainContent = document.querySelector(".main-content-wrapper");
+    if (!mainContent) return;
+
+    const contentTopOffset =
+      mainContent.getBoundingClientRect().top + window.scrollY;
+
     function positionTOC() {
-      const mainContent = document.querySelector(".main-content-wrapper");
       if (!mainContent) return;
 
       const rect = mainContent.getBoundingClientRect();
@@ -71,12 +77,23 @@ const shouldRender = tocHeadings.length >= 5;
 
       toc.style.display = "block";
       toc.style.left = `${rightEdge + 24}px`;
-      toc.style.top = "6rem";
       toc.style.width = `${Math.min(availableSpace - 48, 220)}px`;
+
+      // If we haven't scrolled past the content start, position absolutely
+      // Once scrolled past, switch to fixed positioning
+      const scrollY = window.scrollY;
+      if (scrollY < contentTopOffset - 96) {
+        toc.style.position = "absolute";
+        toc.style.top = `${contentTopOffset}px`;
+      } else {
+        toc.style.position = "fixed";
+        toc.style.top = "6rem";
+      }
     }
 
     positionTOC();
     window.addEventListener("resize", positionTOC);
+    window.addEventListener("scroll", positionTOC, { passive: true });
 
     const links = toc.querySelectorAll(
       ".toc-link"
@@ -133,6 +150,7 @@ const shouldRender = tocHeadings.length >= 5;
         () => {
           observer.disconnect();
           window.removeEventListener("resize", positionTOC);
+          window.removeEventListener("scroll", positionTOC);
         },
         { once: true }
       );
