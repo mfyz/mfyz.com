@@ -1,4 +1,3 @@
-import { visit } from 'unist-util-visit';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -70,12 +69,6 @@ export function rehypeGlossary() {
     }
     const terms = Object.keys(glossary);
 
-    // Diagnostic comment — remove after debugging
-    tree.children.unshift({
-      type: 'comment',
-      value: `glossary-plugin-ran: ${terms.length} terms loaded`,
-    });
-
     if (terms.length === 0) return;
 
     const regex = buildTermRegex(terms);
@@ -141,16 +134,13 @@ export function rehypeGlossary() {
         return;
       }
 
-      if (node.type === 'element' && node.children) {
-        // Process children in reverse so splicing doesn't affect indices
-        for (let i = node.children.length - 1; i >= 0; i--) {
+      if ((node.type === 'element' || node.type === 'root') && node.children) {
+        // Process forward so the FIRST occurrence of each term gets wrapped.
+        // Adjust index after splicing to skip over newly inserted nodes.
+        for (let i = 0; i < node.children.length; i++) {
+          const before = node.children.length;
           walkNode(node.children[i], [...ancestors, node]);
-        }
-      }
-
-      if (node.type === 'root' && node.children) {
-        for (let i = node.children.length - 1; i >= 0; i--) {
-          walkNode(node.children[i], [...ancestors, node]);
+          i += node.children.length - before;
         }
       }
     }
