@@ -10,7 +10,6 @@ social_post: |
   ls $(whoami) runs whoami even if it's not allowlisted. The shell evaluates the inner command first.
 
   Don't treat allowlists as a hard security boundary.
-hidden: true
 ---
 
 I've been using Claude Code's permission allowlist to lock down which commands the agent can run. You know the drill. Only allow specific commands like `ls`, `cat`, and your custom tools. Everything else gets blocked.
