@@ -44,7 +44,7 @@ export default defineConfig({
   vite: {
     server: {
       host: true,
-      allowedHosts: ["r.mfyz.net", "1411-2600-4040-9c38-ac00-edcd-e47b-422d-a90d.ngrok-free.app", "mfyzcom.loca.lt", ".mfyz.net", "localhost"],
+      allowedHosts: true,
     },
     optimizeDeps: {
       exclude: ["@resvg/resvg-js"],
