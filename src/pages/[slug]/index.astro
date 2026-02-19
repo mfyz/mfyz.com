@@ -144,6 +144,20 @@ export const prerender = true;
                 language: isTurkish ? "tr" : "en",
                 limit: 6,
               });
+            } else if (postsToShow.length < 6) {
+              const existingSlugs = new Set(postsToShow.map(p => p.slug));
+              const recentPosts = await getPosts({
+                excludeSlug: post.slug,
+                language: isTurkish ? "tr" : "en",
+                limit: 6,
+              });
+              const fillers = recentPosts.filter(
+                p => !existingSlugs.has(p.slug)
+              );
+              postsToShow = [
+                ...postsToShow,
+                ...fillers.slice(0, 6 - postsToShow.length),
+              ];
             }
             return (
               <div class="mt-16">
