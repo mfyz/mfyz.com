@@ -1,0 +1,92 @@
+---
+title: "Tarayıcıda WASM ile Gelen Süper Güçler 🚀"
+description: "WebAssembly ile tarayıcılarda masaüstü seviyesinde performans ve yetenekler. Python çalıştırmaktan SQL veritabanına kadar en etkileyici WASM kullanım alanları."
+slug: "tarayicida-wasm-super-gucleri"
+date: 2026-02-19
+tags: ["webassembly", "wasm", "tarayıcı", "performans", "web-geliştirme"]
+imageURL: ""
+lang: "tr"
+---
+
+WebAssembly, tarayıcılarda neler yapılabileceğini sessiz sedasız baştan aşağı değiştiriyor. JavaScript ile asla mümkün olmayacak şeyler artık tarayıcıda çalışıyor ve ben resmen şaşırıyorum her yeni projeyi gördüğümde 🚀
+
+## WASM Nedir?
+
+WebAssembly (WASM), tarayıcılarda neredeyse native hızda çalışan bir binary komut formatı. Basitçe anlatmak gerekirse: Rust, C++, Go gibi dillerde yazılmış kodları doğrudan tarayıcıda, masaüstü uygulaması performansına yakın şekilde çalıştırabiliyorsunuz.
+
+WASM ile tarayıcılarda yapılanlar resmen çılgın seviyelere ulaştı. Benim keşfettiğim en etkileyici kullanım alanları şunlar:
+
+## En Etkileyici WASM Süper Güçleri
+
+### 1. **Tarayıcıda Tam Teşekküllü SQL Veritabanı**
+
+Bunu ilk gördüğümde ağzım açık kaldı. [sql.js](https://github.com/sql-js/sql.js/) ile gerçek bir SQLite veritabanı ya da [PGlite](https://github.com/electric-sql/pglite) ile PostgreSQL çalıştırabiliyorsunuz. Join, index, transaction... SQL'den beklediğiniz her şey var.
+
+Yani tüm veritabanınız client-side çalışıyor, sıfır sunucu altyapısı. Offline çalışan karmaşık veri uygulamaları yapabilirsiniz, hassas verileri sunucuya göndermeden işleyebilirsiniz, veritabanı şemalarını anında prototipleyebilirsiniz. PGlite extension desteği bile sunuyor ve birkaç GB'a kadar veritabanlarını kaldırabiliyor. Resmen her tarayıcı sekmesine gömülü tam bir veritabanı sunucusu.
+
+### 2. **Tam Dil Runtime Desteği**
+
+WASM neredeyse her programlama dilini tarayıcıda çalıştırmanın kapısını açtı. Go WASM'a derleniyor, Rust kripto kütüphaneleri ve oyun motorlarını güçlendiriyor, C++ onlarca yıllık legacy kodu web'e taşıyor. Bunun dışında .NET ile Blazor sayesinde C# ile web uygulaması bile yazabiliyorsunuz.
+
+![WebAssembly'ye derlenebilen diller](/images/blog/2025/coolest-wasm-superpowers/wasm-languages-support.jpg)
+
+Ama asıl oyun değiştirici olan tam dil runtime'ları. Ruby (ruby.wasm ile), PHP, Lua, hatta Java (TeaVM ile) artık tarayıcıda çalışıyor. Her dil kendi ekosistemini, kütüphanelerini, framework'lerini doğrudan web platformuna taşıyor.
+
+Ama benim favorim Python.
+
+### 3. **Tarayıcıda Python**
+
+[Pyodide](https://pyodide.org/) veri bilimi için resmen devrim niteliğinde. Python'ın tüm bilimsel ekosistemi (NumPy, Pandas, Matplotlib, SciPy, scikit-learn) tarayıcıda neredeyse native hızda çalışıyor. Kurulum? Sıfır.
+
+Şaşırtıcı olan şu: Jupyter Notebook'lar da mükemmel çalışıyor. Zengin görselleştirmeler, markdown hücreleri, canlı kod çalıştırma... Hepsi tarayıcınızda lokal olarak çalışıyor. Sunucu kurulumu yok, conda ortamı yok, versiyon çakışması yok. Bir URL açın ve Python yazmaya başlayın.
+
+![JupyterLite demosu - tarayıcıda Python veri bilimi](/images/blog/2025/coolest-wasm-superpowers/jupyterlite-demo.gif)
+
+Milyonlarca satırlık CSV yükleyin, karmaşık veri dönüşümleri çalıştırın, makine öğrenmesi modelleri eğitin, interaktif görselleştirmeler oluşturun. Üstelik PyPI'dan pure Python paketlerini anında kurabiliyorsunuz. Dolayısıyla veri bilimciler tamamen client-side çalışan analitik iş akışları oluşturuyorlar. "Benim makinemde çalışıyor" problemi bitiyor, çünkü bir URL paylaşın, karşıdaki kişi analizinizi anında tekrarlayabiliyor.
+
+### 4. **Yükleme Yapmadan Video Düzenleme**
+
+[Modfy](https://modfy.video/) gibi araçlarla videoları tamamen tarayıcıda dönüştürüp düzenleyebilirsiniz. Yükleme beklemeye son. 4K videoları masaüstü performansında lokal olarak işleyebilirsiniz.
+
+### 5. **CAD ve 3D Modelleme**
+
+[OpenCascade.js](https://ocjs.org/) profesyonel CAD yeteneklerini web'e taşıyor. Masaüstü CAD yazılımlarında kullanılan aynı motorla karmaşık 3D modeller tasarlayabilirsiniz.
+
+![OpenCascade.js tarayıcıda CAD modelleme](/images/blog/2025/coolest-wasm-superpowers/opencascade-cad.jpg)
+
+### 6. **Gerçek Zamanlı Grafik Render**
+
+[Filament](https://google.github.io/filament/webgl/), masaüstü grafik motorlarıyla yarışan fiziksel tabanlı render sunuyor. Film kalitesinde 3D grafikler tarayıcıda mümkün.
+
+### 7. **Yüksek Performanslı Veri Görselleştirme**
+
+[Perspective](https://perspective.finos.org/) devasa veri setlerini gerçek zamanlı pivot tablolar ve grafiklerle işliyor. Finans firmaları bunu trading dashboard'ları için kullanıyor.
+
+### 8. **Oyun Devrimi**
+
+[wasmBoy](https://wasmboy.app/) ile klasik Game Boy oyunları, [CityBound](https://aeplay.org/citybound) ile binlerce ajanla şehir simülasyonları, [Diabloweb](https://d07riv.github.io/diabloweb/) ile orijinal Diablo tarayıcıda çalışıyor. Bunun dışında Unity oyunları da WASM'a export edilerek konsol kalitesinde oyun deneyimleri sunuyor.
+
+![Diablo 1 WebAssembly ile tarayıcıda çalışıyor](/images/blog/2025/coolest-wasm-superpowers/diablo-web-game.jpg)
+
+### 9. **Vektör Arama Motorları**
+
+[Voy](https://github.com/tantaraio/voy), makine öğrenmesi vektör benzerlik aramasını tarayıcıya getiriyor. Tamamen client-side çalışan öneri motorları yapabilirsiniz.
+
+## Peki Neden WASM?
+
+Performans farkları inanılmaz. Bazı WASM uygulamaları eşdeğer JavaScript'ten 20 kat daha hızlı çalışıyor. Fırlama bir istatistik! Ama sadece hız meselesi değil:
+
+**Gizlilik**: Verileriniz cihazınızdan çıkmıyor
+**Offline**: Uygulamalar bir kez yüklendikten sonra internet olmadan çalışıyor
+**Performans**: Karmaşık hesaplamalar için neredeyse native hız
+**Güvenlik**: Sandbox'lanmış çalışma ortamı
+
+## Daha Fazla Keşfetmek İsterseniz
+
+[awesome-wasm](https://github.com/mbasso/awesome-wasm) reposunda kapsamlı bir araç ve proje listesi var.
+
+[Made with WebAssembly](https://madewithwebassembly.com/) vitrininde neler mümkün olduğuna dair daha fazla etkileyici örnek bulabilirsiniz.
+
+WebAssembly hala gelişiyor ama web uygulamalarından beklentilerimizi çoktan değiştirdi. Masaüstü ve web uygulamaları arasındaki çizgi her geçen gün biraz daha bulanıklaşıyor 🌐
+
+Bu kullanım alanlarından hangisi sizi en çok heyecanlandırdı? Web geliştirmenin geleceği baya parlak görünüyor!
