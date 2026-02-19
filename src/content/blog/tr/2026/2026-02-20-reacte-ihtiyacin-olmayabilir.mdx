@@ -1,0 +1,217 @@
+---
+title: "React'e İhtiyacın Olmayabilir 🤔"
+description: "React'in ne zaman gereksiz olduğunu ve içerik odaklı web siteleri için daha basit teknolojilerin gücünü yeniden keşfetmeyi konuşuyoruz."
+slug: "reacte-ihtiyacin-olmayabilir"
+date: 2026-02-20
+tags: ["react", "web-geliştirme", "performans", "vanilla-js", "astro", "ssr"]
+imageURL: ""
+lang: "tr"
+---
+
+React, frontend geliştirmede varsayılan cevap haline geldi. Web sitesi mi yapacaksın? React. Biraz etkileşim mi lazım? React. Blog mu açıyorsun? O bile bir şekilde React. Ama bu arada daha basit ve birçok durumda daha uygun çözümleri gözden kaçırdık 🤔
+
+İçerik sektöründe çalışırken, Server-Side Rendering (SSR), minimal JavaScript ve Astro gibi hafif, hızlı yüklenen sayfalara öncelik veren framework'lere doğru ciddi bir kayma yaşadım. React'in ne zaman gereksiz olduğu hakkında dürüst bir konuşma yapmanın zamanı geldi.
+
+## React Varsayılan Tuzağı
+
+Bu durum bana on yıl önceki "No jQuery" hareketini hatırlatıyor. [youmightnotneedjquery.com](https://youmightnotneedjquery.com/) bize vanilla JavaScript'in jQuery'nin yaptığı çoğu şeyi yapabildiğini göstermişti, hatırlıyor musunuz? Tarayıcılar native API'ler sunuyorken jQuery'nin 30kb yükünü taşımanın mantıksız olduğunu topluca fark etmiştik.
+
+Aynı patern şimdi React ile tekrarlanıyor. jQuery nasıl her JavaScript ihtiyacı için varsayılan cevap olduysa, React de her frontend gereksinimi için öyle oldu. Tek fark şu: bu sefer maliyet jQuery'nin 30kb'ı kadar masum değil, çok daha yüksek.
+
+React gerçek bir sorunu çözdü (Facebook için). Milyonlarca kullanıcıyla devasa uygulamalarda karmaşık state yönetimi. Ama çoğumuz Facebook yapmıyoruz. Yaptığımız şeyler genelde:
+
+- Bir iletişim formu olan pazarlama siteleri
+- Biraz etkileşim içeren bloglar
+- Hızlı yüklenmesi gereken içerik siteleri
+- Minimum etkileşimli landing page'ler
+
+Ama biz yine de varsayılan olarak React'e uzanıyoruz ve yanında şunları da getiriyoruz:
+
+- Karmaşık build araçları
+- Büyük bundle boyutları (kendi kodunuzdan önce 45kb+)
+- Basit problemler için gereksiz mühendislik
+- Bağımlılık yönetimi baş ağrıları
+
+## Daha Basit Alternatiflerin Gücü
+
+### Vanilla JavaScript Düşündüğünüzden Güçlü
+
+Modern JavaScript, framework olmadan bile bileşen benzeri pattern'leri kaldırıyor:
+
+```javascript
+function createComponent(name, onClick) {
+  return `
+    <button onclick="${onClick}">
+      Hello, ${name}!
+    </button>
+  `;
+}
+
+document.getElementById("app").innerHTML = createComponent(
+  "World",
+  "handleClick()"
+);
+```
+
+JSX kadar şık olmayabilir ama basit etkileşimler için hızlı, hafif ve sıfır bağımlılık.
+
+### Web Components: Framework'den Bağımsız Yapı Taşları
+
+Web Components tarayıcı-native ve her yerde çalışıyor:
+
+```javascript
+class ToggleButton extends HTMLElement {
+  connectedCallback() {
+    this.innerHTML = `<button>Toggle</button>`;
+    this.querySelector("button").onclick = () => this.toggle();
+  }
+
+  toggle() {
+    this.classList.toggle("active");
+  }
+}
+
+customElements.define("toggle-button", ToggleButton);
+```
+
+Build adımı yok, virtual DOM yükü yok. Sadece native tarayıcı API'leri.
+
+### SSR Rönesansı
+
+Astro, Eleventy ve SvelteKit gibi framework'ler, minimal JavaScript ile sunucu tarafında render edilen HTML'in mükemmel kullanıcı deneyimleri sunabildiğini kanıtlıyor:
+
+- **Daha hızlı ilk yükleme**: HTML anında render oluyor
+- **Daha iyi SEO**: Arama motorları gerçek içeriğe ulaşıyor
+- **İyileştirilmiş Core Web Vitals**: Daha az JavaScript = daha iyi performans skorları
+- **Daha kolay deployment**: Statik dosyalar cache'lemesi ve sunması daha kolay
+
+## React'e Gerçekten Ne Zaman İhtiyacın Var?
+
+React kötü bir şey değil, çoğu zaman gereksiz. React'e muhtemelen şu durumlarda ihtiyacın var:
+
+### Karmaşık State Yönetimi
+
+- Birden fazla bileşenin state paylaşması
+- Gerçek zamanlı veri senkronizasyonu
+- UI'ın birçok yerini etkileyen karmaşık kullanıcı etkileşimleri
+
+### Büyük Geliştirme Ekipleri
+
+- Geliştiriciler arasında tutarlı pattern'lere ihtiyaç duyulması
+- React'in ekosisteminden ve araçlarından faydalanılması
+- Dedicated frontend uzmanlarının olması
+
+### Gerçek Web Uygulamaları
+
+- Çok sayıda etkileşimli element içeren dashboard'lar
+- Gerçek zamanlı işbirliği araçları
+- Birden fazla adım içeren karmaşık iş akışları
+
+## İçerik Sektöründeki Dönüşüm
+
+İçerik odaklı işlerde fark ettiğimiz bazı gerçekler var:
+
+**Performans, geliştirici deneyimini yener.** Hızlı yüklenen bir blog yazısı, etkileşimli hale gelmesi 3 saniye süren React destekli bir yazıdan daha iyi dönüşüm sağlıyor.
+
+**SEO gerçekten önemli.** Sunucu tarafında render edilen içerik, özellikle içerik siteleri için arama görünürlüğünde hala kazanıyor. Üstelik bu artık Answering Engine Optimization'a evriliyor. LLM'ler sitenizi tüketirken gerçek içeriğe ihtiyaç duyuyor, bu da SSR'ı AI çağında daha da önemli kılıyor.
+
+**Basitlik daha iyi ölçekleniyor.** Daha az bağımlılık, daha az güvenlik güncellemesi, daha az uyumluluk sorunu ve daha az build hatası demek.
+
+## Kullanım Senaryosuna Göre Pratik Alternatifler
+
+### Statik Siteler İçin
+
+- **Astro**: Bileşen tabanlı, minimum JS
+- **Eleventy**: Basit, hızlı statik site üreticisi
+- **Hugo**: İçerik siteleri için çok hızlı build
+
+### Hafif Etkileşim İçin
+
+- **Alpine.js**: 4kb'lık reaktif davranış
+- **htmx**: Özel JavaScript yazmadan dinamik HTML
+- **Vanilla JS**: Artık çok daha cross-browser standardize ve kararlı. Üstelik AI kod üreticileri gayet iyi vanilla JavaScript kodu üretebiliyor
+
+### Performans Kritik Uygulamalar İçin
+
+- **Preact**: %90 uyumlulukla 3kb'lık React alternatifi
+- **Svelte**: Derleme zamanı optimizasyonu
+- **Vanilla JS**: Maksimum performans ve kontrol
+
+## Astro Yaklaşımı
+
+Astro bu felsefeyi güzel bir şekilde örnekliyor. Bileşen benzeri kod yazıyorsunuz ama minimum JavaScript gönderiyorsunuz:
+
+```astro
+---
+// Bu build zamanında çalışır
+const posts = await getPosts();
+---
+
+<div class="blog-list">
+  {
+    posts.map(post => (
+      <article class="post-card">
+        <h2>{post.title}</h2>
+        <p>{post.excerpt}</p>
+      </article>
+    ))
+  }
+</div>
+
+<style>
+  .post-card {
+    /* Scoped CSS, çalışma zamanı maliyeti yok */
+  }
+</style>
+```
+
+Bileşenlerin geliştirici deneyimini alıyorsunuz ama runtime yükü olmadan.
+
+## Performans Gerçeklik Kontrolü
+
+Rakamlara dürüstçe bakalım:
+
+- **React**: Kendi kodunuzdan önce 45kb+
+- **Preact**: Benzer API ile 3kb
+- **Alpine.js**: Reaktif davranış için 4kb
+- **Vanilla JS**: 0kb ek yük
+
+Bir içerik sitesi için React'in bu yükü, tüm JavaScript bütçeniz olabilir.
+
+## Basit Başla, Gerektiğinde Büyüt
+
+En iyi yaklaşım? YAGNI prensibini takip edin ("You Ain't Gonna Need It" yani "Buna İhtiyacın Olmayacak"):
+
+1. **HTML/CSS ile başlayın**: Problemlerin %80'ini çözer
+2. **Vanilla JS ekleyin**: Basit etkileşimleri halledin
+3. **Hafif kütüphaneler kullanın**: Alpine.js, htmx gibi araçlarla daha karmaşık ihtiyaçları karşılayın
+4. **React'i düşünün**: Sadece karmaşıklık gerçekten gerektirdiğinde
+
+## Bu Düşüncede Yalnız Değilim
+
+Bu farkındalığa varan çok sayıda geliştirici var. Resmen aynı başlıkla yazılmış bir sürü yazı var:
+
+- [Forget Virtual DOM: Rediscovering Vanilla DOM](https://www.codetinkerer.com/2024/01/04/forget-virtual-dom-rediscovering-vanilla-dom.html)
+- [You Don't Need React for Building Websites](https://dev.to/starbist/you-don-t-need-react-for-building-websites-455f)
+- [Why You Probably Don't Need React](https://davegebler.com/post/musings/why-you-probably-dont-need-react)
+- [You Don't Need React in 2024](https://medium.com/@dmitry.sobolevsky/you-dont-need-react-in-2024-45257fa9b25b)
+- [You May Not Need React](https://www.dshomoye.dev/you-may-not-need-react/)
+- [So Don't Overreact, But I'm So Over React](https://dev.to/besworks/so-dont-overreact-but-im-so-over-react-i52)
+
+Hepimiz aynı sonuca varıyoruz: React bilinçli bir tercih olması gerekirken varsayılan haline geldi.
+
+## Son Söz
+
+React önemli problemleri çözen güçlü bir araç. Ama her araç gibi, her iş için uygun değil. Modern geliştirmeyi kucaklamak adına bazen daha basit çözümlerin daha iyi kullanıcı deneyimleri sunduğunu unuttuk.
+
+React'e uzanmadan önce kendinize sorun:
+
+- Karmaşık state yönetimine ihtiyacım var mı?
+- Kullanıcılarım client-side rendering'den faydalanacak mı?
+- JavaScript yükü, geliştirici deneyimine değer mi?
+
+Bazen cevap evet. Çoğu zaman hayır.
+
+Web platformu inanılmaz güçlendi. Modern CSS, bir zamanlar JavaScript gerektiren layout'ları kaldırıyor. Tarayıcı API'leri, bir zamanlar kütüphane gerektiren işlevleri sağlıyor. HTML formları React olmadan gayet iyi çalışıyor.
+
+Belki de basit tutmanın zarafetini yeniden keşfetmenin zamanı geldi 🚀
