@@ -1,0 +1,86 @@
+---
+title: "Folding phones and an on-the-go workable setup for devs"
+description: "After being an Apple fanboy forever, I switched to Galaxy Fold, then Pixel Fold 9. Foldables with Termux and a VPS turned my phone into a real dev workstation."
+date: 2026-03-03
+slug: "folding-phones-on-the-go-dev-setup"
+tags: ["android", "mobile", "productivity", "developer-tools", "hardware"]
+hidden: true
+---
+
+import ImageZoom from "@components/ImageZoom.astro";
+
+After being a forever Apple fanboy, I switched to a Galaxy Fold. Then I switched again to a Pixel Fold 9. And I think I'm staying. There's almost no reason to go back to iOS at this point.
+
+I wrote a while back about [running Claude Code from my iPhone via SSH](/vibe-anywhere-claude-code-on-the-go-from-my-phone/). That setup worked. But it also made me want more screen real estate. Which led me down a path I didn't expect.
+
+## Why a foldable?
+
+You probably won't guess the reason I wanted a bigger phone screen. It's **Claude Code**. I was already running Terminus on my iPhone with a remote VPS box, using Claude Code on the go. But a terminal on a 3.5-inch wide screen is cramped. You can get by, but you're squinting and scrolling constantly.
+
+The foldable screen changed that completely. Almost all TUI apps feel native and actually comfortable on this form factor. It went from "I can technically do this" to "I actually enjoy this."
+
+I switched more for the bigger screen than for the Android ecosystem. If Apple had a foldable, I might have stayed. But they don't, and Android's openness turned out to be the bigger win anyway.
+
+## What foldables are great at
+
+Beyond the terminal use case, a few things surprised me.
+
+**Web browsing** is amazing. You get actual desktop-ish versions of websites instead of cramped mobile layouts. It feels like a small tablet browser. This alone is worth it if you spend any time reading documentation or browsing GitHub on your phone.
+
+**Note taking** turned out to be the best use case. I completely switched to Obsidian because my AI agents and I collaborate on markdown files constantly, and Obsidian is perfect for that workflow. If you're a developer, it's extendable, very hackable. Having it on a big foldable screen makes it actually comfortable to type and edit notes on the go.
+
+**Multitasking** exists. Split screen apps work. I keep forgetting to use them though, so I can't say much here.
+
+**Media** is the thing most people buy foldables for. Bigger YouTube, bigger photos. I do neither, other than occasional browsing. Not my use case at all.
+
+**Replacing my iPad entirely.** This one caught me off guard. I had an iPad that I used for casual browsing, reading, and light note-taking. After a couple weeks with the foldable, I realized I hadn't touched the iPad once. The unfolded screen covers everything I used the iPad for, and it's always in my pocket. One less device to charge, sync, and carry around.
+
+## Termux: a real terminal on your phone
+
+While researching the Android ecosystem, I got excited about the [Android Virtualization Framework](https://source.android.com/docs/core/virtualization) (AVF). Basically containers on your phone. Like Docker in your pocket. But my Galaxy Fold's CPU didn't support it, which was a bummer. More on that later.
+
+So I fell back to Termux. I'd used it years ago on a Pixel device as a tech nerd side project, but never as a daily driver.
+
+This time around, I'm genuinely surprised. There's very little I've hit walls with. My primary runtime is Node.js, and other than a few packages here and there failing, I can run almost everything I use on most projects. Next.js apps, Astro apps, most Linux packages I rely on. My dotfiles needed a little tweaking but nothing I couldn't get working.
+
+I got my full development workflow going: SSH into my VPS, run Claude Code sessions, edit files in Obsidian, push to git. All from the phone. The foldable screen size makes it actually usable instead of just technically possible.
+
+On the Galaxy, I had a split experience though. Termux for local stuff, Terminus for SSH into remote boxes. Two different apps, two different UX patterns, two different keyboard behaviors. It worked, but it always felt a little fragmented.
+
+Once I switched to Pixel (more on that below), AVF gave me a proper Debian VM running locally with almost no battery impact. Now I just use Terminus for everything. SSH into the local VM, SSH into remote servers, all within one app. The whole terminal experience feels consistent and I'm really happy with how clean it is.
+
+<ImageZoom
+  src="/images/blog/2026/pixel-fold-claude-code-terminus.jpg"
+  alt="Pixel Fold 9 unfolded on a stand, showing Terminus with Claude Code running"
+  border={true}
+/>
+
+## Samsung Dex
+
+Samsung Dex is a really intriguing feature. I plugged my phone into a monitor and opened a Google Sheet in a larger view, with a browser window side by side. It works. Like, actually works as a desktop-ish experience.
+
+I did an [iPad Pro only experiment for 7 months](/ipad-pro-raspberry-pi-portable-development-environment-on-mobile/) a while back and it wasn't bad. Tools have evolved so much since then. I'm sure I'd last longer if I repeated that experiment today.
+
+## Switching again: Galaxy Fold to Pixel Fold 9
+
+After a couple months with the Galaxy Fold, I made another switch. Pixel Fold 9.
+
+Three reasons.
+
+First, the Android Virtualization Framework. The Pixel's newer CPU actually supports AVF, and I wanted to try running proper Linux VMs on my phone. Not that I'm going to run 20 containerized apps in my pocket. But being able to use containerized apps for sandboxing and isolated environments is really appealing to a developer.
+
+Second, I wanted to get closer to the Google ecosystem. Stock Android without Samsung's layer on top. Samsung's stuff is fine, but I found myself constantly opting out of things. Disabling Samsung apps, skipping Samsung accounts. Switching to Pixel felt like removing a bunch of unnecessary weight.
+
+Third, the form factor. The Pixel Fold 9 has a wider folded screen. It's basically a regular iPhone-sized phone in your hand, slightly bulkier, but you have the big screen when you need it. With the Galaxy, more often than not, I felt the folded screen was too narrow. I kept wanting to unfold it even for casual things like texting or checking email. The Pixel's folded screen is great by itself. You only unfold when you actually want the extra space.
+
+After using it for about a week, I noticed something unexpected. The Pixel UX has a lot of similarity to iOS. The animations, the gestures, the general feel of moving around the OS. I found myself in a familiar comfort zone, almost Apple-like. Coming from years of iPhone use, that made the transition feel natural instead of jarring.
+
+Stock Android is also just simpler. Less clutter, fewer duplicate apps, no Samsung account popups. The OS gets out of your way and lets you use your phone.
+
+## Why I'm probably not going back to Apple
+
+Terminus and Android's openness are the real reasons. On iOS, you're stuck with whatever Apple decides you can do on your device. On Android, if I want a terminal emulator that runs Node.js, I just install one. If I want to SSH into a server and run a full dev session, nothing stops me.
+
+Apple makes beautiful devices. I still think their hardware is better in some ways. But for a developer who wants a truly portable, on-the-go workstation that fits in a pocket, a foldable Android phone with Terminus and a VPS is hard to beat. Big screen, real terminal access, and an OS that doesn't get in your way. iOS can't offer that right now.
+
+And with the Pixel Fold 9 specifically, I get the stock Android experience with a form factor and general daily UX that feels familiar coming from Apple. Best of both worlds.
