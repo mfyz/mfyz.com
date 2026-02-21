@@ -6,7 +6,7 @@ import { shortHash } from "../utils/shortHash.js";
 // Social media RSS feed - only includes posts with social_post field
 export async function GET(context) {
   const allPosts = await getPosts({
-    language: "all",
+    language: "en",
     includeHidden: false,
     sorted: true,
   });

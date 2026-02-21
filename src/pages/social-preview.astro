@@ -12,7 +12,7 @@ if (import.meta.env.PROD) {
 const allPosts = await getPosts({
   includeHidden: true,
   sorted: true,
-  language: "all",
+  language: "en",
 });
 
 const socialPosts = allPosts.filter(post => post.data.social_post);
