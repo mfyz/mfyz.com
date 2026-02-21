@@ -39,5 +39,5 @@ const time = readingTime(content);
   </div>
   <div class="mt-6"></div>
   <slot />
-  <TableOfContents headings={headings} />
+  <TableOfContents headings={headings} lang={isTurkish ? "tr" : "en"} />
 </article>
