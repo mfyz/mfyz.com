@@ -1,0 +1,251 @@
+---
+title: "Build a URL Shortener with Cloudflare Workers and D1"
+description: "A quick walkthrough of building a URL shortener on Cloudflare's edge, using Workers, D1 (SQLite), and Hono. Plus how to lock down the admin with Zero Trust."
+date: 2026-02-24
+slug: "build-a-url-shortener-with-cloudflare-workers"
+tags: ["cloudflare", "workers", "serverless", "typescript", "tutorial"]
+hidden: true
+social_post: |
+  Built a URL shortener on Cloudflare Workers with D1 (edge SQLite) and Hono.
+
+  The whole thing is ~150 lines of TypeScript. Redirects in under 10ms globally. Free tier covers it easily.
+
+  Here's the full walkthrough with Zero Trust admin setup.
+---
+
+I wanted a personal URL shortener. Not a SaaS product, just something lightweight for my own links. Cloudflare Workers seemed like a perfect fit. Globally distributed, fast, and the free tier is more than enough for personal use.
+
+Here's how I built it.
+
+## The Stack
+
+- **Cloudflare Workers** for the runtime
+- **D1** for the database (SQLite at the edge)
+- **Hono** as the web framework (tiny, fast, built for edge)
+- **Cloudflare Zero Trust** to protect the admin (free for up to 50 users)
+
+That's it. No Docker, no server, no Postgres. Just TypeScript running on Cloudflare's edge network.
+
+## Setting Up
+
+Install Wrangler (Cloudflare's CLI tool) and scaffold the project:
+
+```bash
+npm install -g wrangler
+wrangler login
+mkdir url-shortener && cd url-shortener
+npm init -y
+npm install hono
+```
+
+Create your `wrangler.toml`:
+
+```toml
+name = "url-shortener"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+
+routes = [{ pattern = "s.yourdomain.com", custom_domain = true }]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "my-shortener"
+database_id = "your-database-id-here"
+```
+
+Create the D1 database from the Cloudflare dashboard (Workers & Pages > D1 > Create), then paste the database ID into your config. You can also create it via CLI with `wrangler d1 create my-shortener`, but I found the dashboard simpler for the initial setup since my API token didn't have the right permissions at first.
+
+## The Database
+
+One table. That's all you need.
+
+```sql
+CREATE TABLE IF NOT EXISTS links (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  slug TEXT NOT NULL UNIQUE,
+  url TEXT NOT NULL,
+  clicks INTEGER NOT NULL DEFAULT 0,
+  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+CREATE INDEX IF NOT EXISTS idx_slug ON links(slug);
+```
+
+Run it against your D1 database. You can paste this directly into the D1 Console tab in the dashboard, or use the CLI:
+
+```bash
+wrangler d1 execute my-shortener --file=schema.sql
+```
+
+## The Worker
+
+Here's the core of the app. A Hono server with three routes: redirect, admin API, and admin UI.
+
+### Redirect Handler
+
+The main job of a URL shortener. Look up the slug, redirect to the URL:
+
+```typescript
+import { Hono } from "hono";
+
+type Bindings = { DB: D1Database };
+const app = new Hono<{ Bindings: Bindings }>();
+
+app.get("/:slug", async c => {
+  const slug = c.req.param("slug");
+
+  if (slug === "favicon.ico" || slug === "robots.txt") {
+    return c.notFound();
+  }
+
+  const link = await c.env.DB.prepare(
+    "SELECT id, url FROM links WHERE slug = ?"
+  )
+    .bind(slug)
+    .first<{ id: number; url: string }>();
+
+  if (!link) return c.text("Not found", 404);
+
+  // Increment clicks without blocking the redirect
+  c.executionCtx.waitUntil(
+    c.env.DB.prepare("UPDATE links SET clicks = clicks + 1 WHERE id = ?")
+      .bind(link.id)
+      .run()
+  );
+
+  return c.redirect(link.url, 301);
+});
+
+export default app;
+```
+
+The `waitUntil` trick is nice. It fires the click counter update but doesn't make the user wait for it. The redirect happens immediately.
+
+### Admin API
+
+For creating and managing links, add a few API routes:
+
+```typescript
+// Create a short link
+app.post("/api/links", async c => {
+  const { url, slug: customSlug } = await c.req.json();
+
+  // Validate the URL
+  try {
+    new URL(url);
+  } catch {
+    return c.json({ error: "Invalid URL" }, 400);
+  }
+
+  const slug = customSlug || generateSlug();
+
+  const result = await c.env.DB.prepare(
+    "INSERT INTO links (slug, url) VALUES (?, ?) RETURNING *"
+  )
+    .bind(slug, url)
+    .first();
+
+  return c.json({ link: result }, 201);
+});
+
+// List all links
+app.get("/api/links", async c => {
+  const links = await c.env.DB.prepare(
+    "SELECT * FROM links ORDER BY created_at DESC LIMIT 50"
+  ).all();
+  return c.json({ links: links.results });
+});
+
+// Delete a link
+app.delete("/api/links/:slug", async c => {
+  const slug = c.req.param("slug");
+  await c.env.DB.prepare("DELETE FROM links WHERE slug = ?").bind(slug).run();
+  return c.json({ ok: true });
+});
+
+function generateSlug(): string {
+  const chars =
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  const bytes = new Uint8Array(6);
+  crypto.getRandomValues(bytes);
+  return Array.from(bytes, b => chars[b % chars.length]).join("");
+}
+```
+
+## Deploy and Test
+
+```bash
+# Local development with D1 emulator
+wrangler dev
+
+# Deploy to production
+wrangler deploy
+```
+
+Local dev with `wrangler dev` gives you a full D1 emulator, so you can test everything without touching production data. When you're ready, `wrangler deploy` pushes it to Cloudflare's edge globally.
+
+Add your custom domain in the Cloudflare dashboard under Workers & Pages > your worker > Settings > Domains & Routes.
+
+## Locking Down the Admin with Zero Trust
+
+This is the part I really liked. Instead of writing auth code in the worker, Cloudflare Zero Trust handles it at the network level. Your worker code doesn't need to know about authentication at all for browser-based access.
+
+1. Go to **Zero Trust** in the Cloudflare dashboard
+2. Create an **Access Application** for your domain
+3. Set the application domain to `s.yourdomain.com` with path `/admin*` and `/api/*`
+4. Add a policy (email OTP or GitHub OAuth)
+
+That's it. When someone tries to hit `/admin` or `/api/*`, Cloudflare intercepts the request and makes them authenticate first. Your worker only sees authenticated requests.
+
+For programmatic access (like from scripts or agents), you can add an API key as a fallback:
+
+```bash
+wrangler secret put API_KEY
+```
+
+Then check for it in your auth middleware:
+
+```typescript
+api.use("/*", async (c, next) => {
+  // CF Zero Trust sets these automatically
+  const cfJwt = c.req.header("Cf-Access-Jwt-Assertion");
+  const cfCookie = c.req.raw.headers
+    .get("Cookie")
+    ?.includes("CF_Authorization");
+  if (cfJwt || cfCookie) return next();
+
+  // Fallback: API key for programmatic access
+  const auth = c.req.header("Authorization");
+  if (c.env.API_KEY && auth === `Bearer ${c.env.API_KEY}`) return next();
+
+  return c.json({ error: "Unauthorized" }, 401);
+});
+```
+
+## Gotchas I Hit Along the Way
+
+A few things tripped me up during the build:
+
+**Wrangler API token permissions.** My initial token didn't have the right permissions to create D1 databases. Instead of fighting with token scopes, I just created the database from the Cloudflare dashboard. Worked fine. You only need the CLI for deployments really.
+
+**"No such table: links" after deploy.** I created the schema locally but forgot to run it on the production D1 instance. Local dev uses a separate emulated database. You need to run your schema against the remote database explicitly.
+
+**Zero Trust blocking API calls from the admin UI.** After adding ZT protection to `/api/*`, the admin page's fetch calls started failing. The browser was authenticated with ZT (had the cookie), but I wasn't forwarding it. The fix was checking for the `CF_Authorization` cookie in addition to the JWT header.
+
+## Free Tier Is More Than Enough
+
+For a personal URL shortener, you won't come close to the limits:
+
+- **Workers:** 100K requests/day
+- **D1 reads:** 5M rows/day
+- **D1 writes:** 100K rows/day
+- **D1 storage:** 5 GB
+- **Zero Trust:** 50 users
+
+The whole thing costs nothing to run.
+
+## What's Next
+
+I've got the shortener running at `s.mfyz.app` and I'm planning to add more workers to the same repo. The monorepo setup is simple, one folder per worker, each with its own `wrangler.toml` and `package.json`. Deploy independently with `cd workers/url-shortener && wrangler deploy`.
+
+If you want to build lightweight serverless apps without dealing with containers, cold starts, or infrastructure, Workers + D1 is a really solid combo.
