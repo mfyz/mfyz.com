@@ -51,6 +51,17 @@ This is mfyz.com, a personal blog built with Astro framework featuring bilingual
 - `src/consts.js` - Site constants and metadata
 - `check-server-running.js` - Smart development server management
 
+### OG Image Emoji Support
+OG images render a whitelisted set of emojis as Apple emoji PNGs via Satori's `graphemeImages` option. Emojis not in the whitelist will not render (they'll be invisible/blank).
+
+**Whitelisted emojis:** 🪄 ❤️ 🚀 🤔 ⭐ ✅ ⏰ ⏳ 👍 👎 👌
+
+**To add a new emoji:**
+1. Find the Unicode codepoint (e.g., `1f600` for 😀)
+2. Add the mapping in `src/utils/og-template/post.js` `graphemeImages` object
+3. CDN pattern: `https://cdn.jsdelivr.net/npm/emoji-datasource-apple@16.0.0/img/apple/64/{code}.png`
+4. Verify by checking the post's `og.png` endpoint
+
 ### Rich Content Components
 Available for use in MDX posts:
 - `ImageZoom` - Zoomable images for screenshots
