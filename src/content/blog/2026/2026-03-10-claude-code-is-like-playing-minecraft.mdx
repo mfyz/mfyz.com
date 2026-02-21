@@ -1,0 +1,89 @@
+---
+title: "Claude Code is like playing Minecraft"
+description: "The progression from punching trees to fighting dragons. How building with Claude Code follows the same tier-based progression as Minecraft, from simple CLI usage to full agent orchestration."
+date: 2026-03-10
+slug: "claude-code-is-like-playing-minecraft"
+tags: ["claude-code", "ai", "developer-tools", "automation", "agents"]
+hidden: true
+social_post: |
+  Using Claude Code feels like playing Minecraft. Punch trees, build a crafting table, construct a furnace, fight dragons. Each tier only works because you built the one below it.
+---
+
+import ImageZoom from "@components/ImageZoom.astro";
+
+Something hit me the other day. Using Claude Code feels exactly like playing Minecraft.
+
+Stay with me here.
+
+When you first start Minecraft, you punch a tree. That's it. No fancy tools, no diamond pickaxe, just your bare hands hitting wood. You collect some blocks, make a crafting table, and suddenly you can build basic wooden tools.
+
+That's your first interaction with Claude Code. You open a terminal, ask it to search for something, maybe read a file for you. Simple stuff. You're punching trees.
+
+But the interesting part isn't what Claude Code can do for you. It's what you can build _with_ it.
+
+## The crafting table: Claude Code in your shell
+
+Here's what most people miss about Claude Code. It runs in a terminal. That sounds obvious, but think about what that means. It's not trapped inside a browser tab or an IDE sidebar. It's a CLI tool. And CLI tools chain with other CLI tools.
+
+That was my crafting table moment.
+
+I started running Claude Code with the `-p` flag (prompt mode). You give it a prompt, it does the thing, it outputs to stdout. You can pipe it into other commands. Call it from shell scripts. Wrap it in a cron job. Make it part of any workflow that touches a terminal.
+
+This is where it stops being "an AI assistant" and starts being a building block. I wrote small scripts that call Claude Code to do specific things. Read my emails and summarize them. Check a log file and tell me if something looks wrong. Review a diff before I push it.
+
+Each script is tiny. But they chain together.
+
+In Minecraft terms, I went from punching trees to having a crafting table. Suddenly I could make things.
+
+## The furnace: a task manager for agents
+
+In Minecraft, the furnace takes what you already have and turns it into something stronger. You throw in raw iron ore and get iron ingots. Those become armor and better tools, things you couldn't make with just a crafting table. The furnace doesn't give you new materials. It upgrades what you already collected.
+
+I built a task management system that does the same thing. It takes those small shell scripts and turns them into something more powerful. Not for my human tasks, but for Claude Code agent tasks. It's a small CLI tool that queues up work, spawns Claude Code agents in the background, tracks what they're doing, and reports back when they're done.
+
+Then I built a scheduling layer on top. Now I have Claude Code running on a schedule, doing things while I sleep. Morning briefings. Server health checks. Email digests. The scheduler triggers the task manager, the task manager spawns the agent, the agent does the work.
+
+Each layer only works because the previous layer exists. The scheduler needs the task manager. The task manager needs the shell scripts. The shell scripts need Claude Code in prompt mode. You can't skip tiers. You have to build the crafting table before you can build the furnace.
+
+<ImageZoom
+  src="/images/blog/2026/task-manager-dashboard.jpg"
+  alt="Task manager dashboard showing completed agent tasks"
+/>
+
+I didn't set out to build an agent orchestration system. I just kept solving the next problem with the tools I already had. And those solutions became tools for the next problem.
+
+## Fighting dragons: Claude Code everywhere
+
+In Minecraft, once you have diamond gear, you go fight the Ender Dragon. That's endgame stuff.
+
+My version of fighting dragons was making Claude Code work wherever I work. I built Telegram and Slack interfaces to my task manager. Tools like [OpenClaw](https://openclaw.ai/) now offer ready-made versions of this kind of harness (more on that below). But I built mine from scratch. Now I can text a message from my phone and it becomes a task that a Claude Code agent picks up, works on, and reports back.
+
+<ImageZoom
+  src="/images/blog/2026/telegram-agent-morning-briefing.jpg"
+  alt="Telegram bot delivering a morning briefing with weather, alerts, and responding to a task request"
+  width={350}
+/>
+
+Sometimes I need the agent to have full context, access to my files, my git repos, my notes. Other times I want it isolated, working on something specific without touching anything else. The interfaces handle both.
+
+I'm writing this post and I can fire off a task from Telegram to check if my staging server is healthy. An agent spins up, runs the checks, and texts me back the results. All while I keep writing.
+
+That's the dragon fight. That's what the whole progression was building toward.
+
+## The progression is the point
+
+Both systems have the same structure. You don't start by fighting dragons. You start by punching trees. And every tier you reach only exists because you built the tier below it.
+
+There's a compound effect at play here. Each layer makes the next one easier. Once I had shell scripts, the task manager was a weekend project. Once I had the task manager, adding Telegram took 15 minutes. The early work pays dividends that stack up fast. It's like leveling up in an RPG. The first few levels are slow. But once your character has enough base stats, new abilities start unlocking faster.
+
+Now, you don't _have_ to build all of this yourself. Tools like [OpenClaw](https://openclaw.ai/) give you an out-of-the-box harness with Telegram, Slack, task management, and scheduling already wired up. I actually installed OpenClaw. It works. But I wasn't comfortable with its security boundaries, and I already had a good chunk of the functionality built my way. So I uninstalled it and used its approach and skills as inspiration to add to my own tooling instead.
+
+That's what Claude Code makes possible. You can go the pre-built route, or you can build your own flavor. Vanilla, from scratch, exactly the way you want it. Claude Code doesn't care. It's a building block, not a platform. It fits into whatever you're constructing.
+
+Most people use Claude Code like a chatbot. Ask a question, get an answer. That's fine. But it's like playing Minecraft in creative mode with cheats on. You're skipping the progression. And the progression is where the fun is.
+
+Because here's the thing. It's the journey, not the destination. I didn't build all of this because I needed a perfectly optimized agent system. I built it because each step was genuinely fun. Piping Claude Code into a shell script for the first time and watching it work? Fun. Sending a Telegram message from my phone and getting a real answer back from an agent? Fun. The destination keeps moving anyway. There's always another Nether fortress to explore.
+
+If you're just getting started, don't worry about the endgame. Punch some trees. Open a terminal and pipe Claude Code into something. See what happens.
+
+The rest builds itself.

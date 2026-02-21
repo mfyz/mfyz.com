@@ -146,13 +146,14 @@ When creating new blog posts:
 6. **Optional Front Matter Fields**:
    - `hidden: true` - For draft posts
    - `language: "tr"` - Automatically set for Turkish posts based on folder
-   - `social_post` - Social media announcement text (max 255 chars). Write as a multi-line YAML string (`|`). Should be conversational, hook-driven, and standalone (no links needed). Always include when scheduling posts.
+   - `social_post` - Social media announcement text (max 255 chars, enforced by schema). Write as a multi-line YAML string (`|`). Should be conversational, hook-driven, and standalone (no links needed). Always include when scheduling posts. **Count characters before writing and keep well under the limit.**
 7. **Image Assets Organization**:
    - **Location**: Store images in `public/images/blog/YYYY/` where YYYY is the year
    - **Simple posts (1-3 images)**: Place images directly in the year folder (e.g., `public/images/blog/2025/my-image.jpg`)
    - **Complex posts (4+ images)**: Create a post-specific subfolder (e.g., `public/images/blog/2025/newsletter-digester/screenshot-1.jpg`)
    - **Referencing in posts**: Use absolute paths from public root (e.g., `/images/blog/2025/my-image.jpg`)
    - **Image naming**: Use descriptive, lowercase, hyphen-separated names
+8. **After creating or editing a post**, run `npm run check` to validate the content schema. This catches frontmatter issues (e.g., social_post over 255 chars) before the dev server or build fails.
 
 ### Blog Post Scheduling Workflow
 
