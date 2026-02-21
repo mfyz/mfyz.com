@@ -7,9 +7,10 @@ interface Heading {
 
 interface Props {
   headings: Heading[];
+  lang?: string;
 }
 
-const { headings } = Astro.props;
+const { headings, lang = "en" } = Astro.props;
 
 // Filter to h2/h3 only (h1 is the post title)
 const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
@@ -27,7 +28,7 @@ const shouldRender = tocHeadings.length >= 5;
     >
       <div class="toc-inner max-h-[calc(100vh-8rem)] overflow-y-auto pr-2">
         <p class="mb-2 text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500">
-          On this page
+          {lang === "tr" ? "Bu sayfada" : "On this page"}
         </p>
         <ul class="space-y-1 border-l border-gray-200 dark:border-gray-700">
           {tocHeadings.map(heading => (
