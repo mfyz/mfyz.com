@@ -244,8 +244,10 @@ For a personal URL shortener, you won't come close to the limits:
 
 The whole thing costs nothing to run.
 
-## What's Next
+## Vibe-Coding Friendly
 
-I've got the shortener running at `s.mfyz.app` and I'm planning to add more workers to the same repo. The monorepo setup is simple, one folder per worker, each with its own `wrangler.toml` and `package.json`. Deploy independently with `cd workers/url-shortener && wrangler deploy`.
+One thing that surprised me is how well the whole Cloudflare ecosystem works for vibe-coding. Workers, D1, R2, Wrangler CLI, it all fits together with very little friction. There's no build step. You write TypeScript, run `wrangler deploy`, and it's live globally in seconds. Literally seconds. The deploy output tells you it took 4-5 seconds and that includes uploading. No Docker image to build, no CI pipeline to wait on, no cold starts to worry about.
 
-If you want to build lightweight serverless apps without dealing with containers, cold starts, or infrastructure, Workers + D1 is a really solid combo.
+Workers also supports preview URLs out of the box, which would be great for public apps. I disabled them because Zero Trust policies don't apply to preview URLs, and I didn't want the admin panel exposed on a preview domain. But if you're building something public-facing, preview URLs give you instant staging environments for every deploy.
+
+The monorepo setup is simple too. One folder per worker, each with its own `wrangler.toml` and `package.json`. Deploy independently with `cd workers/url-shortener && wrangler deploy`. I'm planning to add more workers to the same repo for other small tools. For lightweight serverless apps where you don't want to deal with containers or infrastructure, Workers + D1 is a really solid combo.
