@@ -32,7 +32,7 @@ No arguments needed. The command will scan all hidden posts and create PRs for t
 - **PR Title**: `{YYYY-MM-DD} Publish: {Post Title}` (e.g., `2026-01-20 Publish: Vibe Coding a Currency Converter App`)
 - **PR Description Format**:
   ```
-  /schedule 2026-01-20T09:00:00Z
+  /schedule 2026-01-20T08:00:00Z
 
   ## Post Details
   - **Title**: {Post Title}
@@ -79,7 +79,7 @@ git push -u origin publish/{filename}
 gh pr create \
   --title "{YYYY-MM-DD} Publish: {post title}" \
   --body "$(cat <<'EOF'
-/schedule {YYYY-MM-DD}T09:00:00Z
+/schedule {YYYY-MM-DD}T08:00:00Z
 
 ## Post Details
 - **Title**: {post title}
@@ -108,7 +108,7 @@ After processing all posts, provide a summary:
 
 - **Always return to main**: After each PR creation, switch back to `main` before processing the next post
 - **Date extraction**: Extract the date from the filename (format: `YYYY-MM-DD-slug.mdx`)
-- **Schedule time**: Default to 09:00:00Z (9 AM UTC) for the schedule time
+- **Schedule time**: Default to 08:00:00Z for the schedule time. The merge-schedule-action's `time_zone: "America/New_York"` setting means `localeDate()` interprets this as "8 AM in NY time". **IMPORTANT: Always use `Z` suffix (UTC notation), never use explicit offsets like `-05:00` or `-04:00`** — the action's `localeDate()` function creates a fake Date in the configured timezone, so using explicit offsets causes double-conversion and wrong merge times.
 - **Preview domain**: Use `https://mfyz.com/` as the base URL
 - **Skip kitchen-sink**: Ignore `kitchen-sink-example.mdx` as it's a test/example file
 - **Frontmatter editing**: Only remove the `hidden: true` line, preserve all other frontmatter
