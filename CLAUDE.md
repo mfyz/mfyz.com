@@ -203,7 +203,7 @@ git checkout -b YYYY-MM-DD-slug
 - Create the PR with the schedule directive in the description:
   ```bash
   gh pr create --title "YYYY-MM-DD <post-title>" --body "$(cat <<'EOF'
-  /schedule YYYY-MM-DDT09:00:00-05:00
+  /schedule YYYY-MM-DDT08:00:00Z
 
   Short description of the post (optional).
   EOF
