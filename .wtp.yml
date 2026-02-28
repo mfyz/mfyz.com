@@ -1,6 +1,6 @@
 version: "1.0"
 defaults:
-  base_dir: "../mfyz-worktrees"
+  base_dir: "../mfyz.com-worktrees"
 
 hooks:
   post_create:
