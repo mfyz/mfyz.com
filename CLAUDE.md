@@ -15,17 +15,21 @@ This is mfyz.com, a personal blog built with Astro framework featuring bilingual
 - `npm run tunnel` - Expose dev server via ngrok
 
 ### Testing & Quality
-- `npm test` - Run unit tests with coverage - Always run tests after making changes so you don't break anything. Running tests are fast. If test command exists non-zero it means it failes even though output looks "PASS". If you see non-zero exit code, run tests again with grepping the failure lines to find what's broken and fix them.
+- `npm test` - Run unit tests with coverage
 - `npm run test:watch` - Run tests in watch mode
 - `npm run test:e2e` - Run Playwright end-to-end tests
 - `npm run test:e2e:ui` - Run E2E tests with UI
-- `npm run check` - TypeScript check (errors only)
+- `npm run check` - **Run this after making changes.** Runs eslint, TypeScript check, and unit tests. If it exits non-zero, fix all issues before finishing.
+- `npm run check:types` - TypeScript/Astro check only (errors)
 - `npm run check:full` - Full TypeScript check with warnings
+- `npm run lint` - Run eslint on JS/TS files
+- `npm run lint:fix` - Auto-fix eslint issues
+- `npm run format` - Format files with Prettier
+- `npm run format:check` - Check formatting without writing
 
 ### Code Quality
-- Linting: Uses ESLint with Astro plugin
+- Linting: ESLint with Astro plugin
 - Formatting: Prettier with Astro, Tailwind plugins
-- Pre-commit: Husky + lint-staged for automated checks
 - The project uses TypeScript for type safety
 
 ## Architecture & Structure
@@ -116,7 +120,7 @@ flowchart TD
 - **Preview System**: Hidden posts accessible via `?preview=1` query parameter
 - **Hot Reloading**: Astro dev server with file watching (may need restart for content collection changes)
 - **Type Safety**: TypeScript throughout with strict checking
-- **Git Hooks**: Pre-commit linting and formatting
+- **Quality Checks**: Run `npm run check` after making changes to catch issues early
 - **Content Collections**: Astro's type-safe content system with automatic language detection
 - **Internal Links**: Always use absolute paths without host (e.g., `/post-slug/` not `https://mfyz.com/post-slug/`)
 - **Preview URLs**: When user asks for preview URLs, check hostname with `hostname` command:
@@ -153,7 +157,7 @@ When creating new blog posts:
    - **Complex posts (4+ images)**: Create a post-specific subfolder (e.g., `public/images/blog/2025/newsletter-digester/screenshot-1.jpg`)
    - **Referencing in posts**: Use absolute paths from public root (e.g., `/images/blog/2025/my-image.jpg`)
    - **Image naming**: Use descriptive, lowercase, hyphen-separated names
-8. **After creating or editing a post**, run `npm run check` to validate the content schema. This catches frontmatter issues (e.g., social_post over 255 chars) before the dev server or build fails.
+8. **After creating or editing a post**, run `npm run check:types` to validate the content schema. This catches frontmatter issues (e.g., social_post over 255 chars) before the dev server or build fails.
 
 ### Blog Post Scheduling Workflow
 
