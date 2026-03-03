@@ -20,7 +20,10 @@
     "check": "astro check --minimumSeverity error",
     "check:full": "astro check",
     "prepare": "husky",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "pm2:start": "PORT=${PORT:-6543} pm2 start ./node_modules/.bin/astro --name mfyz-blog -- dev && pm2 save",
+    "pm2:stop": "pm2 stop mfyz-blog",
+    "pm2:restart": "pm2 restart mfyz-blog"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
