@@ -3,14 +3,9 @@ import "../styles/global.css";
 import { getPosts } from "@utils/getPosts.ts";
 import { SITE } from "../consts";
 
-// Hide this utility page on production builds
-if (import.meta.env.PROD) {
-  return Astro.redirect("/404");
-}
-
-// Fetch posts with social_post field (including hidden posts for preview)
+// Fetch posts: show drafts in dev, only published in prod
 const allPosts = await getPosts({
-  includeHidden: true,
+  includeHidden: !import.meta.env.PROD,
   sorted: true,
   language: "en",
 });
@@ -120,115 +115,162 @@ const postsWithErrors = socialPosts.filter(
       <!-- Posts -->
       <div class="space-y-6 sm:space-y-12">
         {
-          socialPosts.map(post => (
-            <div class="-mx-4 border-y border-gray-200 bg-white p-4 sm:mx-0 sm:rounded-lg sm:border sm:p-6 sm:shadow-sm">
-              <div class="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
-                <div class="flex flex-col gap-1">
-                  <div class="flex flex-wrap items-center gap-2">
-                    <h2 class="font-secondary text-lg font-medium text-gray-900 sm:text-xl">
-                      {post.data.title}
-                    </h2>
-                    {post.data.hidden && (
-                      <span class="rounded border border-amber-200 bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-800">
-                        DRAFT
-                      </span>
-                    )}
-                    {(() => {
-                      const len = post.data.social_post?.trim().length || 0;
-                      const isOver = len > MAX_SOCIAL_LENGTH;
-                      return (
-                        <span
-                          class={`rounded px-2 py-0.5 text-xs font-medium ${isOver ? "border border-red-300 bg-red-100 text-red-800" : "border border-gray-200 bg-gray-100 text-gray-600"}`}
-                        >
-                          {len}/{MAX_SOCIAL_LENGTH} chars{" "}
-                          {isOver && `(+${len - MAX_SOCIAL_LENGTH})`}
-                        </span>
-                      );
-                    })()}
-                  </div>
-                  <div class="text-sm text-gray-500">
-                    {post.data.date.toLocaleDateString("en-US", {
-                      year: "numeric",
-                      month: "short",
-                      day: "numeric",
-                    })}
-                  </div>
-                </div>
-                <a
-                  href={
-                    post.data.hidden
-                      ? `/${post.slug}/?preview=1`
-                      : `/${post.slug}/`
-                  }
-                  target="_blank"
-                  class="self-start text-sm text-blue-600 hover:underline sm:self-auto"
-                >
-                  View Post →
-                </a>
-              </div>
+          socialPosts.map(post => {
+            const socialText = post.data.social_post?.trim() || "";
+            const postUrl = `${SITE.website}/${post.slug}/`;
+            const xIntentUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(socialText + " " + postUrl)}`;
+            const linkedInShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(postUrl)}`;
+            const copyText = `${socialText} ${postUrl}`;
 
-              <div class="mx-auto w-full" style="max-width: 600px;">
-                <div>
-                  <div class="overflow-hidden rounded-xl border border-gray-200 bg-white">
-                    <div class="p-4">
-                      <div class="mb-3 flex items-start gap-3">
-                        <div class="h-12 w-12 flex-shrink-0 rounded-full bg-gray-200" />
-                        <div class="min-w-0 flex-1">
-                          <div class="flex items-center gap-1">
-                            <span class="font-bold text-gray-900">
-                              {SITE.author}
-                            </span>
-                            <svg
-                              class="h-4 w-4 text-blue-500"
-                              viewBox="0 0 24 24"
-                              fill="currentColor"
-                            >
-                              <path
-                                d="M8.5 12.5l2.5 2.5 4.5-5"
-                                stroke="white"
-                                stroke-width="2"
-                                fill="none"
-                              />
-                              <circle
-                                cx="12"
-                                cy="12"
-                                r="10"
+            return (
+              <div
+                id={post.slug}
+                class="-mx-4 border-y border-gray-200 bg-white p-4 sm:mx-0 sm:rounded-lg sm:border sm:p-6 sm:shadow-sm"
+              >
+                <div class="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
+                  <div class="flex flex-col gap-1">
+                    <div class="flex flex-wrap items-center gap-2">
+                      <h2 class="font-secondary text-lg font-medium text-gray-900 sm:text-xl">
+                        {post.data.title}
+                      </h2>
+                      {post.data.hidden && (
+                        <span class="rounded border border-amber-200 bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-800">
+                          DRAFT
+                        </span>
+                      )}
+                      {(() => {
+                        const len = post.data.social_post?.trim().length || 0;
+                        const isOver = len > MAX_SOCIAL_LENGTH;
+                        return (
+                          <span
+                            class={`rounded px-2 py-0.5 text-xs font-medium ${isOver ? "border border-red-300 bg-red-100 text-red-800" : "border border-gray-200 bg-gray-100 text-gray-600"}`}
+                          >
+                            {len}/{MAX_SOCIAL_LENGTH} chars{" "}
+                            {isOver && `(+${len - MAX_SOCIAL_LENGTH})`}
+                          </span>
+                        );
+                      })()}
+                    </div>
+                    <div class="text-sm text-gray-500">
+                      {post.data.date.toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                      })}
+                    </div>
+                  </div>
+                  <a
+                    href={
+                      post.data.hidden
+                        ? `/${post.slug}/?preview=1`
+                        : `/${post.slug}/`
+                    }
+                    target="_blank"
+                    class="self-start text-sm text-blue-600 hover:underline sm:self-auto"
+                  >
+                    View Post →
+                  </a>
+                </div>
+
+                <div class="mx-auto w-full" style="max-width: 600px;">
+                  <div>
+                    <div class="overflow-hidden rounded-xl border border-gray-200 bg-white">
+                      <div class="p-4">
+                        <div class="mb-3 flex items-start gap-3">
+                          <div class="h-12 w-12 flex-shrink-0 rounded-full bg-gray-200" />
+                          <div class="min-w-0 flex-1">
+                            <div class="flex items-center gap-1">
+                              <span class="font-bold text-gray-900">
+                                {SITE.author}
+                              </span>
+                              <svg
+                                class="h-4 w-4 text-blue-500"
+                                viewBox="0 0 24 24"
                                 fill="currentColor"
-                              />
-                            </svg>
-                            <span class="text-gray-500">@{SITE.author}</span>
-                          </div>
-                          <div class="mt-2 whitespace-pre-wrap text-[15px] leading-5 text-gray-900">
-                            {post.data.social_post?.trim()}
+                              >
+                                <path
+                                  d="M8.5 12.5l2.5 2.5 4.5-5"
+                                  stroke="white"
+                                  stroke-width="2"
+                                  fill="none"
+                                />
+                                <circle
+                                  cx="12"
+                                  cy="12"
+                                  r="10"
+                                  fill="currentColor"
+                                />
+                              </svg>
+                              <span class="text-gray-500">@{SITE.author}</span>
+                            </div>
+                            <div class="mt-2 whitespace-pre-wrap text-[15px] leading-5 text-gray-900">
+                              {post.data.social_post?.trim()}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div
-                        class="mt-3 overflow-hidden rounded-2xl border border-gray-200"
-                        style="max-width: 506px; margin-left: 60px;"
-                      >
-                        <img
-                          src={`/${post.slug}/og.png`}
-                          alt={post.data.title}
-                          class="block w-full"
-                          style="height: auto;"
-                          loading="lazy"
-                        />
-                        <div class="border-t border-gray-200 p-3">
-                          <div class="text-xs text-gray-500">
-                            {SITE.website}
-                          </div>
-                          <div class="mt-1 line-clamp-1 text-sm font-medium text-gray-900">
-                            {post.data.title}
+                        <div
+                          class="mt-3 overflow-hidden rounded-2xl border border-gray-200"
+                          style="max-width: 506px; margin-left: 60px;"
+                        >
+                          <img
+                            src={`/${post.slug}/og.png`}
+                            alt={post.data.title}
+                            class="block w-full"
+                            style="height: auto;"
+                            loading="lazy"
+                          />
+                          <div class="border-t border-gray-200 p-3">
+                            <div class="text-xs text-gray-500">
+                              {SITE.website}
+                            </div>
+                            <div class="mt-1 line-clamp-1 text-sm font-medium text-gray-900">
+                              {post.data.title}
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
+
+                  {/* Share Buttons */}
+                  <div class="mt-4 flex gap-2">
+                    <a
+                      href={xIntentUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="flex flex-1 items-center justify-center gap-2 rounded-lg bg-black py-3 text-sm font-semibold text-white transition-opacity hover:opacity-80"
+                    >
+                      <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                      </svg>
+                      Post on X
+                    </a>
+                    <a
+                      href={linkedInShareUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="flex flex-1 items-center justify-center gap-2 rounded-lg bg-[#0A66C2] py-3 text-sm font-semibold text-white transition-opacity hover:opacity-80"
+                    >
+                      <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                      </svg>
+                      Share on LinkedIn
+                    </a>
+                  </div>
+
+                  {/* Copy text link */}
+                  <div class="mt-2 text-center">
+                    <button
+                      class="copy-btn text-xs text-gray-400 hover:text-gray-600"
+                      data-copy={copyText}
+                    >
+                      Copy share text
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))
+            );
+          })
         }
       </div>
 
@@ -251,5 +293,18 @@ const postsWithErrors = socialPosts.filter(
         )
       }
     </div>
+
+    <script>
+      document.querySelectorAll(".copy-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const text = btn.getAttribute("data-copy") || "";
+          navigator.clipboard.writeText(text).then(() => {
+            const original = btn.textContent;
+            btn.textContent = "Copied!";
+            setTimeout(() => (btn.textContent = original), 1500);
+          });
+        });
+      });
+    </script>
   </body>
 </html>
