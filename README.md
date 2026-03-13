@@ -3,13 +3,13 @@
 This is the Astro project for mfyz.com blog.
 
 - Built with Astro framework
-- Windsurf AI IDE used for both code and content updates. See `.windsurfrules` file for project conventions and design guidelines.
+- Claude Code is used for both code and content updates. See `CLAUDE.md` for project conventions and design guidelines.
 - Post scheduling is done via PR with GitHub Actions
 - Interactive Mermaid diagrams with client-side rendering and custom styling options
 
 ## Project Conventions
 
-The `.windsurfrules` file contains important design elements and component usage guidelines that must be followed. Key aspects include:
+`CLAUDE.md` contains important design elements and component usage guidelines that must be followed. Key aspects include:
 
 - Transition animations for cover images
 - Typography requirements (Georgia font for headings)

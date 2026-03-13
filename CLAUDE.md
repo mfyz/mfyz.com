@@ -247,7 +247,7 @@ A GitHub Action watches for the `/schedule` directive and auto-merges the PR whe
 
 ## Important Notes
 
-- Always follow the design guidelines in `.windsurfrules` for typography and visual elements
+- Always follow the design guidelines in this file for typography and visual elements
 - Maintain Georgia font for headings as a core brand element
 - Use the post filtering utilities rather than direct collection queries
 - Test both English and Turkish content paths when making changes
