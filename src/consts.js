@@ -7,6 +7,7 @@ export const SITE = {
     "Dijital bir yaratıcısı: Fatih Yıldız'ın yazılım mühendisliği, AI, dijital tasarım, ürün ve proje yönetimi konusundaki notları",
   title: "mfyz",
   ogImage: "/images/og_default.png",
+  goatcounterSite: "mfyz", // GoatCounter subdomain (mfyz.goatcounter.com)
 };
 
 export const CATEGORIES = {
