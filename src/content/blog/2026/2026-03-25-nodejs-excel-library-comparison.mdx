@@ -1,0 +1,215 @@
+---
+title: "I Tested Three Node.js Excel Libraries So You Don't Have To"
+description: "ExcelJS, SheetJS, and xlsx-populate — I tested all three for read/modify/write workflows on real Excel workbooks with data validations and cross-sheet dropdowns. Two of them silently broke my workbooks."
+date: 2026-03-25
+slug: "nodejs-excel-library-comparison"
+tags: ["node.js", "excel", "automation", "javascript"]
+social_post: |
+  I tested ExcelJS, SheetJS, and xlsx-populate for read/modify/write Excel workflows. Two of them silently broke my workbooks. The winner has ~1k GitHub stars vs 35k for the most popular option. npm download counts can be misleading.
+---
+
+I was building an automation tool to update Excel workbooks programmatically. Sounds simple enough: read a file, modify some rows, write it back. But the workbooks had complex features: data validations with cross-sheet dropdown references, embedded drawings, styles, formulas. The kind of stuff that breaks silently.
+
+I tested three popular Node.js libraries to see which one could handle a read/modify/write workflow without corrupting anything. The results surprised me.
+
+## What the workbooks contained
+
+Before getting into results, here's what I was working with:
+
+- Data validations with dropdown lists
+- Cross-sheet references (dropdown in Sheet2 pulling values from Sheet1)
+- Styles: fonts, colors, borders, fill patterns
+- Drawings: charts, images, embedded objects
+- Formulas with cell references
+
+Data validation was the real challenge. Cross-sheet dropdowns are everywhere in real-world Excel workbooks: hierarchical data entry, lookup tables, enforcing integrity across related sheets. When they break, users lose their dropdown functionality entirely. The workbook becomes unusable.
+
+## The libraries
+
+Three popular npm packages:
+
+1. **ExcelJS** (v4.4.0) — 13k+ GitHub stars, widely used
+2. **SheetJS (xlsx)** (v0.18.5) — the most popular Excel library, 35k+ stars
+3. **xlsx-populate** (v1.21.0) — less known, around 1k stars, focused on formatting preservation
+
+## How I tested
+
+I built a test workbook with 6 sheets, 7 data validation rules with cross-sheet references, dropdown lists pulling from other sheets (e.g., `=Components!$A$2:$A1013`), embedded drawings/charts, and various cell styles.
+
+Three test cases:
+
+1. Basic read/write: read the file, write it back unchanged
+2. Read/write with modifications: add rows, modify cells, write
+3. Cross-sheet validation: add a value to Sheet1, verify it shows up in Sheet2's dropdown
+
+Since xlsx files are ZIP archives containing XML, I compared the XML directly after each run:
+
+```bash
+unzip -d extracted/ workbook.xlsx
+# Compare xl/worksheets/sheet*.xml for dataValidations
+# Compare xl/styles.xml for style preservation
+```
+
+Things to check: `<dataValidations>` sections, `<drawing>` references, and `xl/styles.xml` size.
+
+## Results
+
+### ExcelJS: duplicate validations
+
+ExcelJS has a sorting bug in how it handles data validations. When it reads a range like `C2:C1013`, it expands the range into individual cell addresses: C2, C3, C4... C1013. Then on write, it sorts those addresses alphabetically. Alphabetically, `C10 < C2` because "1" < "2". This creates overlapping ranges and duplicate validation rules.
+
+| Feature           | Result                           |
+|-------------------|----------------------------------|
+| Data validations  | ❌ Duplicated (7 → 14 rules)     |
+| Cross-sheet refs  | ⚠️ Mangled ranges                |
+| Drawings          | ❌ Lost                          |
+| Styles            | ✅ Mostly preserved              |
+
+The XML comparison makes it obvious:
+
+```xml
+<!-- Original (correct) -->
+<dataValidations>
+  <dataValidation sqref="C2:C1013">
+    <formula1>Components!$A$2:$A1013</formula1>
+  </dataValidation>
+</dataValidations>
+
+<!-- After ExcelJS (broken) -->
+<dataValidations count="2">
+  <dataValidation sqref="C10:C1013">...</dataValidation>
+  <dataValidation sqref="C2:C1013">...</dataValidation>
+</dataValidations>
+```
+
+Seven validations became 14. Excel gets confused and the workbook behavior is corrupted.
+
+**Verdict: skip ExcelJS for workbooks that already have data validations.**
+
+### SheetJS: everything gone
+
+SheetJS is the most downloaded Excel library on npm by a wide margin. But the free Community version silently drops data validations on write, strips most styling, and bloated the file size by 375KB from unoptimized output.
+
+| Feature           | Result                           |
+|-------------------|----------------------------------|
+| Data validations  | ❌ Completely lost (7 → 0 rules) |
+| Cross-sheet refs  | ❌ Lost                          |
+| Drawings          | ❌ Lost                          |
+| Styles            | ❌ Mostly stripped (10KB → 1KB)  |
+
+The Pro version might handle this better, but I needed an open-source solution. SheetJS is still great for reading data or converting between formats. Just not for round-tripping complex workbooks.
+
+**Verdict: free version isn't built for this use case.**
+
+### xlsx-populate: everything preserved
+
+The XML came back clean:
+
+| Feature           | Result                           |
+|-------------------|----------------------------------|
+| Data validations  | ✅ Preserved exactly (7 → 7)     |
+| Cross-sheet refs  | ✅ Intact                        |
+| Drawings          | ✅ Preserved                     |
+| Styles            | ✅ Preserved                     |
+
+```xml
+<!-- Original -->
+<dataValidations>
+  <dataValidation sqref="C2:C1013">
+    <formula1>Components!$A$2:$A1013</formula1>
+  </dataValidation>
+</dataValidations>
+
+<!-- After xlsx-populate (identical) -->
+<dataValidations>
+  <dataValidation sqref="C2:C1013">
+    <formula1>Components!$A$2:$A1013</formula1>
+  </dataValidation>
+</dataValidations>
+```
+
+Minor encoding differences (some `&quot;` became `"`) and slight whitespace changes, but nothing that affects behavior.
+
+**Verdict: the right tool for read/modify/write workflows.**
+
+## The real test: adding linked rows
+
+Reading and writing without changes is table stakes. The real test was adding a new value to the source sheet and confirming it shows up in the dependent dropdown.
+
+```js
+const XlsxPopulate = require('xlsx-populate');
+
+async function addLinkedRows() {
+  const workbook = await XlsxPopulate.fromFileAsync('workbook.xlsx');
+
+  // Add new option to Components sheet (source of dropdown)
+  const componentsSheet = workbook.sheet('Components');
+  componentsSheet.cell('A11').value('New Component');
+
+  // Add row to Subcomponents sheet that references new component
+  const subcompSheet = workbook.sheet('Subcomponents');
+  subcompSheet.cell('C47').value('New Component'); // Dropdown column
+
+  await workbook.toFileAsync('modified.xlsx');
+}
+```
+
+Opened the modified file in Excel. Row 11 in Components had the new value. Cell C47 in Subcomponents had a working dropdown. "New Component" appeared in the options. Everything else still worked.
+
+## Summary
+
+| Feature               | ExcelJS          | SheetJS    | xlsx-populate  |
+|-----------------------|------------------|------------|----------------|
+| Data validations      | ❌ Duplicated    | ❌ Lost    | ✅ Preserved   |
+| Cross-sheet dropdowns | ❌ Broken        | ❌ Lost    | ✅ Working     |
+| Drawings/Charts       | ❌ Lost          | ❌ Lost    | ✅ Preserved   |
+| Styles                | ⚠️ ~Preserved    | ❌ Lost    | ✅ Preserved   |
+| File size impact      | +2KB             | +375KB     | -5KB           |
+| npm weekly downloads  | ~500k            | ~2M        | ~50k           |
+
+## Which one to use
+
+Use **xlsx-populate** when you need to preserve data validations with cross-sheet references, or when workbooks have dropdowns, conditional formatting, or other advanced features. Basically any read/modify/write workflow on existing workbooks.
+
+Use **ExcelJS** when you're generating new workbooks from scratch, validations are simple with no cross-sheet refs, or you need streaming support for very large files.
+
+Use **SheetJS** when you only need to read data, formatting doesn't matter, or you're converting to/from CSV or JSON. Also fine if you have the Pro license.
+
+## Why these libraries behave differently
+
+An xlsx file is a ZIP archive with XML inside:
+
+```
+workbook.xlsx (ZIP archive)
+├── [Content_Types].xml
+├── xl/
+│   ├── workbook.xml         # Sheet definitions
+│   ├── styles.xml           # All formatting
+│   ├── sharedStrings.xml    # String table
+│   ├── worksheets/
+│   │   ├── sheet1.xml       # Cell data + validations
+│   │   └── sheet2.xml
+│   └── drawings/            # Charts, images
+└── _rels/                   # Relationships
+```
+
+Data validations live in the worksheet XML:
+
+```xml
+<worksheet>
+  <sheetData>...</sheetData>
+  <dataValidations count="1">
+    <dataValidation type="list" sqref="C2:C1013">
+      <formula1>Components!$A$2:$A1013</formula1>
+    </dataValidation>
+  </dataValidations>
+</worksheet>
+```
+
+Libraries that parse this XML into an internal model and regenerate it on write (like ExcelJS) introduce transformation risk. Libraries that preserve the original XML structure (like xlsx-populate) don't have that problem. That's basically the whole story.
+
+## The takeaway
+
+xlsx-populate has fewer than 1,000 GitHub stars. ExcelJS has 13,000+. SheetJS has 35,000+.
+
+Popularity didn't matter here. For my use case — read an existing Excel file, modify it, write it back — only xlsx-populate got it right. Test the specific things you need before committing to a library. Especially with Excel.
