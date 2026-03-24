@@ -1,4 +1,6 @@
 ---
+import ViewCounter from "@components/ViewCounter.astro";
+
 const { post, isTurkish } = Astro.props;
 
 // Get the post title and generate the full URL for sharing
@@ -18,6 +20,9 @@ const blueskyUrl = `https://bsky.app/intent/compose?text=${encodedTitle}%0A${enc
 
 <div>
   <div class="flex items-center">
+    <ViewCounter slug={post.slug} />
+    <span class="mx-3"></span>
+
     <h3 class="mr-2 font-secondary text-sm">
       {isTurkish ? "Paylaş" : "Share"}
     </h3>

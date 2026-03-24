@@ -3,7 +3,6 @@ import { format } from "date-fns";
 import { getPatternName } from "@utils/get-pattern-name";
 import readingTime from "reading-time";
 import Tags from "@components/Tags.astro";
-import ViewCounter from "@components/ViewCounter.astro";
 
 // Turkish month names for localization
 const turkishMonths = {
@@ -127,8 +126,6 @@ function formatDatePreserveDay(dateStr: string | Date, useTurkish = false) {
 
             {isTurkish ? `${Math.ceil(time.minutes)} dk okuma` : time.text}
           </span>
-
-          <ViewCounter slug={slug} />
 
           {
             postId && (
