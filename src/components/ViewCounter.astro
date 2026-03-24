@@ -13,6 +13,7 @@ const gcEndpoint = `https://${gcSite}.goatcounter.com/count`;
 <span
   class="view-counter hidden items-center gap-1"
   data-slug={slug}
+  data-gc-site={gcSite}
 >
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +36,7 @@ const gcEndpoint = `https://${gcSite}.goatcounter.com/count`;
   <span class="view-count text-sm"></span>
 </span>
 
-<!-- GoatCounter count.js handles both tracking and the visit_count API -->
+<!-- GoatCounter count.js for tracking page views -->
 <script
   is:inline
   data-goatcounter={gcEndpoint}
@@ -44,64 +45,33 @@ const gcEndpoint = `https://${gcSite}.goatcounter.com/count`;
 ></script>
 
 <script>
-  declare global {
-    interface Window {
-      goatcounter?: {
-        visit_count?: (opts: Record<string, unknown>) => void;
-      };
-    }
-  }
-
   function initViewCounters() {
     const el = document.querySelector<HTMLElement>(".view-counter");
     if (!el) return;
 
     const slug = el.dataset.slug;
-    if (!slug) return;
+    const gcSite = el.dataset.gcSite;
+    if (!slug || !gcSite) return;
 
     const countEl = el.querySelector(".view-count");
     if (!countEl) return;
 
-    // Clear any previous content (Astro page transitions)
-    countEl.innerHTML = "";
+    // Reset on page transitions
+    countEl.textContent = "";
     el.classList.remove("flex");
     el.classList.add("hidden");
 
-    // Poll until window.goatcounter is loaded by count.js
-    const check = setInterval(() => {
-      if (
-        typeof window.goatcounter === "undefined" ||
-        typeof window.goatcounter.visit_count === "undefined"
-      ) {
-        return;
-      }
-      clearInterval(check);
-
-      // Use the official visit_count API with CSS selector
-      window.goatcounter.visit_count({
-        append: ".view-count",
-        type: "html",
-        no_branding: true,
-        path: slug,
-        style: "",
-        attr: { style: "" },
-      });
-
-      // Show the element once visit_count has populated it
-      const show = setInterval(() => {
-        if (countEl.textContent && countEl.textContent.trim() !== "") {
+    // Fetch count from JSON endpoint: /counter/SLUG.json (no slashes)
+    fetch(`https://${gcSite}.goatcounter.com/counter/${slug}.json`)
+      .then(r => (r.ok ? r.json() : null))
+      .then(data => {
+        if (data?.count) {
+          countEl.textContent = data.count;
           el.classList.remove("hidden");
           el.classList.add("flex");
-          clearInterval(show);
         }
-      }, 200);
-
-      // Stop checking after 5s
-      setTimeout(() => clearInterval(show), 5000);
-    }, 100);
-
-    // Stop polling after 5s if count.js never loads
-    setTimeout(() => clearInterval(check), 5000);
+      })
+      .catch(() => {});
   }
 
   document.addEventListener("astro:page-load", initViewCounters);
