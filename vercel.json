@@ -776,6 +776,26 @@
 			"permanent": true
 		},
 		{
+			"source": "/s/v7y7",
+			"destination": "/build-a-url-shortener-with-cloudflare-workers/",
+			"permanent": true
+		},
+		{
+			"source": "/s/926i",
+			"destination": "/folding-phones-on-the-go-dev-setup/",
+			"permanent": true
+		},
+		{
+			"source": "/s/9hey",
+			"destination": "/claude-code-is-like-playing-minecraft/",
+			"permanent": true
+		},
+		{
+			"source": "/s/kwwa",
+			"destination": "/nodejs-excel-library-comparison/",
+			"permanent": true
+		},
+		{
 			"source": "/s/7v1j",
 			"destination": "/kitchen-sink-example/",
 			"permanent": true
@@ -2413,6 +2433,16 @@
 		{
 			"source": "/s/jkwb",
 			"destination": "/kullaniciya-yardim-eden-hata-mesajlari/",
+			"permanent": true
+		},
+		{
+			"source": "/s/vaq8",
+			"destination": "/tarayicida-wasm-super-gucleri/",
+			"permanent": true
+		},
+		{
+			"source": "/s/itn0",
+			"destination": "/reacte-ihtiyacin-olmayabilir/",
 			"permanent": true
 		}
 	]

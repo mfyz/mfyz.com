@@ -10,7 +10,7 @@ const gcSite = SITE.goatcounterSite;
 ---
 
 <span
-  class="view-counter flex items-center gap-1"
+  class="view-counter hidden items-center gap-1"
   data-slug={slug}
   data-gc-site={gcSite}
 >
@@ -32,7 +32,7 @@ const gcSite = SITE.goatcounterSite;
       stroke-linejoin="round"
       d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"></path>
   </svg>
-  <span class="view-count text-sm" style="min-width: 1.5em;"></span>
+  <span class="view-count text-sm"></span>
 </span>
 
 <script>
@@ -51,26 +51,29 @@ const gcSite = SITE.goatcounterSite;
         location.hostname === "localhost" ||
         location.hostname === "127.0.0.1";
 
-      // Fetch current count
+      // Skip all GoatCounter requests on localhost
+      if (isLocal) return;
+
+      // Fetch current count — only show the component if successful
       fetch(`${baseUrl}/counter/${encodeURIComponent(pagePath)}.json`)
         .then(r => (r.ok ? r.json() : null))
         .then(data => {
           if (data?.count) {
             countEl.textContent = data.count;
+            el.classList.remove("hidden");
+            el.classList.add("flex");
           }
         })
         .catch(() => {});
 
-      // Record view after 10s delay (skip localhost, skip if already counted this session)
-      if (!isLocal) {
-        const sessionKey = `gc_viewed_${slug}`;
-        if (!sessionStorage.getItem(sessionKey)) {
-          setTimeout(() => {
-            const img = new Image();
-            img.src = `${baseUrl}/count?p=${encodeURIComponent(pagePath)}&t=${encodeURIComponent(document.title)}`;
-            sessionStorage.setItem(sessionKey, "1");
-          }, 10000);
-        }
+      // Record view after 10s delay (skip if already counted this session)
+      const sessionKey = `gc_viewed_${slug}`;
+      if (!sessionStorage.getItem(sessionKey)) {
+        setTimeout(() => {
+          const img = new Image();
+          img.src = `${baseUrl}/count?p=${encodeURIComponent(pagePath)}&t=${encodeURIComponent(document.title)}`;
+          sessionStorage.setItem(sessionKey, "1");
+        }, 10000);
       }
     });
   }
