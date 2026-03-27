@@ -1,0 +1,239 @@
+---
+title: "Astro Blogunda Satori ile Otomatik OG Görselleri Oluşturmak"
+description: "Astro blog yazılarınız için Satori ve @resvg/resvg-js kullanarak otomatik Open Graph görselleri nasıl oluşturulur? Kod örnekleriyle birlikte anlatıyorum."
+slug: "astro-blogunda-satori-ile-og-gorsel-olusturma"
+date: 2026-03-27
+tags: ["astro", "satori", "og-images", "sosyal-medya", "web geliştirme"]
+social_post: |
+  Astro blogunda her yazı için otomatik OG görseli üretmek istiyorsanız Satori tam size göre. Build zamanında üretiliyor, runtime maliyeti sıfır.
+---
+
+import ImageZoom from "@components/ImageZoom.astro";
+
+Bir blog yazısını Twitter'da, LinkedIn'de veya Slack'te paylaştığınızda çıkan o güzel önizleme görseli var ya, Open Graph (OG) görseli deniyor ona. Bu görseller paylaşımın tıklanma oranını doğrudan etkiliyor. Ama her yazı için tek tek Figma'da görsel hazırlamak? Yok artık.
+
+Ben bu süreci **Satori** ve **Astro** kullanarak tamamen otomatize ettim. Mesela şu anki yazının OG görseli de (İngilizcesi) otomatik oluşturuldu:
+
+![Bu yazının OG görseli](https://mfyz.com/generate-beautiful-og-images-astro-satori/og.png)
+
+Bu yazıda tam olarak nasıl yaptığımı, kopyalayıp kendi projenize uyarlayabileceğiniz kod örnekleriyle anlatacağım.
+
+## Satori nedir?
+
+[Satori](https://github.com/vercel/satori), Vercel'in geliştirdiği bir kütüphane. HTML ve CSS'i alıp SVG'ye dönüştürüyor. Programatik görsel üretmek için biçilmiş kaftan çünkü:
+
+- Çoğu CSS özelliğini destekliyor
+- Hem Node.js hem edge ortamlarında çalışıyor
+- Net SVG çıktısı veriyor (sonra PNG'ye çevirebiliyorsunuz)
+- İstediğiniz font'u ve karmaşık layout'lar kullanabiliyorsunuz
+
+## Kurulum
+
+Önce gerekli paketleri yüklüyoruz:
+
+```bash
+npm install satori @resvg/resvg-js
+```
+
+- **satori**: HTML/CSS benzeri objelerden SVG üretiyor
+- **@resvg/resvg-js**: SVG'yi PNG formatına çeviriyor
+
+## Nasıl çalışıyor?
+
+Sistemin yapısı aslında oldukça basit. Üç parçadan oluşuyor.
+
+### 1. Ana generator fonksiyonu
+
+```javascript
+// src/utils/generateOgImage.js
+import { Resvg } from "@resvg/resvg-js";
+import postOgImage from "./og-template/post.js";
+
+function svgBufferToPngBuffer(svg) {
+  const resvg = new Resvg(svg);
+  const pngData = resvg.render();
+  return pngData.asPng();
+}
+
+export async function generateOgImageForPost({ post }) {
+  const svg = await postOgImage(post);
+  return svgBufferToPngBuffer(svg);
+}
+```
+
+Post objesini alıyor, PNG buffer döndürüyor. Bu kadar.
+
+### 2. Template motoru
+
+Asıl işin yapıldığı yer burası. OG görselinin nasıl görüneceğini burada tanımlıyoruz:
+
+```javascript
+// src/utils/og-template/post.js
+import satori from "satori";
+import path from "path";
+import fs from "fs";
+
+function safeText(text) {
+  const emojiPattern = /[^\x00-\x7F]+/gu;
+  return text.replace(emojiPattern, "").trim();
+}
+
+export default async post => {
+  const robotoFontPath = path.resolve("./public/fonts/roboto-bold.ttf");
+  const robotoFontBuffer = fs.readFileSync(robotoFontPath);
+
+  // Arka plan görselini base64 olarak al
+  const bgImagePath = path.resolve("./public/images/og_bg.png");
+  const bgImageBuffer = fs.readFileSync(bgImagePath);
+
+  // JSX yerine vanilla JS objeleri kullanıyoruz
+  const svg = await satori(
+    {
+      type: "div",
+      props: {
+        style: {
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          background: `url('data:image/png;base64,${bgImageBuffer.toString("base64")}')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          position: "relative",
+        },
+        children: [
+          {
+            type: "p",
+            props: {
+              style: {
+                fontSize: 82,
+                fontWeight: "bold",
+                color: "#222222",
+                textAlign: "center",
+                maxWidth: "85%",
+                maxHeight: "100%",
+                overflow: "hidden",
+                fontFamily: "Roboto",
+                textShadow: "1px 3px 6px rgba(0,0,0,0.2)",
+              },
+              children: safeText(post.data.title),
+            },
+          },
+        ],
+      },
+    },
+    {
+      width: 1200,
+      height: 630,
+      embedFont: true,
+      fonts: [
+        {
+          name: "Roboto",
+          data: robotoFontBuffer,
+          style: "bold",
+        },
+      ],
+    }
+  );
+
+  return svg;
+};
+```
+
+### Dikkat edilmesi gereken noktalar
+
+**Font yönetimi**: Roboto Bold fontu public klasöründen yükleniyor ve doğrudan SVG'ye gömülüyor. Böylece her ortamda aynı görünüm garantileniyor.
+
+**Arka plan görseli**: Blog'umun tasarımına uygun bir `og_bg.png` hazırladım ve onu template'te kullanıyorum.
+
+**Metin temizleme**: `safeText` fonksiyonu emoji ve ASCII dışı karakterleri temizliyor. Satori bunlarla bazen sorun yaşayabiliyor.
+
+**Boyut**: 1200x630 piksel, sosyal medya platformlarının çoğunun önerdiği standart boyut.
+
+### 3. Astro entegrasyonu
+
+Generator'ü Astro'nun routing sistemine şöyle bağlıyoruz:
+
+```javascript
+// src/pages/[slug]/og.png.js
+import { getCollection } from "astro:content";
+import { generateOgImageForPost } from "../../utils/generateOgImage.js";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => !data.hidden);
+
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+export async function GET({ props }) {
+  const image = await generateOgImageForPost(props);
+
+  return new Response(image, {
+    headers: { "Content-Type": "image/png" },
+  });
+}
+
+// Build zamanında statik üretim için
+export const prerender = true;
+```
+
+Bu kod her blog yazısı için `/yazi-slug/og.png` şeklinde bir route oluşturuyor. `prerender: true` sayesinde tüm görseller build sırasında üretiliyor ve statik dosya olarak sunuluyor. Yani her istekte yeniden render yok, süper hızlı.
+
+## OG görsellerini kullanmak
+
+Blog post layout'unuzda üretilen görsele şöyle referans veriyorsunuz:
+
+```astro
+---
+// Blog post layout'unda
+const ogImageUrl = `${Astro.site}${Astro.params.slug}/og.png`;
+---
+
+<head>
+  <meta property="og:image" content={ogImageUrl} />
+  <meta name="twitter:image" content={ogImageUrl} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+</head>
+```
+
+## Performans
+
+**Build-time üretim**: `prerender: true` ile tüm OG görselleri build zamanında üretiliyor. Runtime'da hiçbir işlem yok.
+
+**Dosya boyutu**: PNG görseller 50-100KB civarında. Sosyal medya önizlemeleri için gayet uygun.
+
+**CDN dostu**: Görseller önceden üretildiği için CDN üzerinden verimli bir şekilde sunulabiliyor.
+
+## Kendi projenize uyarlamak
+
+Bu yazıda Astro implementasyonunu anlattım ama Satori tabanlı üretim mantığı aslında framework'den bağımsız. `generateOgImageForPost()` fonksiyonu ve template sistemi Node.js çalışan her yerde kullanılabilir.
+
+Birkaç alternatif yaklaşım:
+
+**Build-time üretim**: Herhangi bir CMS (WordPress, Strapi, Contentful vb.) ile build script'i olarak çalıştırıp görselleri static assets klasörüne kaydedebilirsiniz.
+
+**Standalone paket**: Üretim mantığını ayrı bir npm paketine çıkarıp farklı projelerde kullanabilirsiniz.
+
+**Serverless fonksiyonlar**: Generator'ü serverless function olarak deploy edip talep üzerine görsel üretebilirsiniz.
+
+**CI/CD entegrasyonu**: Deployment pipeline'ınıza ekleyip yeni içerikler için otomatik OG görselleri oluşturabilirsiniz.
+
+Satori'nin güzel tarafı herhangi bir framework'e bağlı olmaması. JavaScript çalıştırabildiğiniz her yerde OG görseli üretebilirsiniz.
+
+Sistemi daha da geliştirebilirsiniz:
+
+**Birden fazla template**: Farklı post kategorileri için farklı template'ler oluşturabilirsiniz.
+
+**Tag bazlı stil**: Post etiketlerine göre renk veya layout değiştirebilirsiniz.
+
+**Yazar görselleri**: Üretilen görsellere yazar avatarları ekleyebilirsiniz.
+
+**Dinamik arka planlar**: Programatik olarak farklı arka plan desenleri üretebilirsiniz.
+
+Ben bu sistemi kurduğumdan beri OG görselleri konusunda hiç düşünmedim. Her yeni yazı otomatik olarak profesyonel görünümlü bir sosyal medya önizlemesiyle geliyor. İlk kurulumu biraz zaman alıyor ama sonrasında tamamen otonom çalışıyor. Paylaşımlarınız tutarlı ve profesyonel görünüyor, tıklanma oranlarını olumlu etkiliyor. Kodun tamamını bloğumun [GitHub reposunda](https://github.com/mfyz/mfyz.com) inceleyebilirsiniz.
