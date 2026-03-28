@@ -1,0 +1,106 @@
+---
+title: "All You Need Is Markdown and JSON"
+description: "Most personal tools, AI workflows, and lightweight apps do not need a real database yet. Markdown with frontmatter and plain JSON can take you much further than people think."
+date: 2026-04-07
+slug: "all-you-need-is-markdown-and-json"
+tags: ["markdown", "json", "ai", "productivity", "developer-tools", "automation"]
+hidden: true
+social_post: |
+  Most small tools do not need a database yet. Markdown, frontmatter, JSON, bash, `jq`, and `duckdb` get you absurdly far, especially when AI agents are in the loop and love plain files.
+---
+
+Let's say you are creating a small app to manage your things. It can be anything: a personal dashboard, a writing workflow, a notes setup, maybe some tiny AI agent setup. Before you even know if the thing is useful, you are already thinking about Postgres schemas, ORMs, migrations, admin panels, API layers, and sync problems.
+
+Meanwhile the data would fit in a few folders.
+
+I think people reach for databases too early. Not because databases are bad. I like them and use them all the time. But for a surprisingly long stretch, **Markdown and JSON are enough**. If you're working with AI agents, they are often the best place to start.
+
+## Markdown is already enough for most human-facing content
+
+Markdown works because it stays out of the way. You can open it anywhere, edit it in any editor, read it on GitHub, diff it in git, and recover it later even if the app that created it disappears.
+
+For most things you read and write, that is enough structure already. Headings, links, lists, quotes, code blocks, and the occasional table cover notes, docs, blog posts, checklists, prompts, runbooks, and task files without much trouble. Most of the time richer formatting is not solving a real problem.
+
+I like systems that fail gracefully. A folder full of Markdown files fails gracefully.
+
+## Frontmatter makes Markdown programmable
+
+Plain Markdown is useful. **Markdown with frontmatter** becomes a system.
+
+Add a small YAML block at the top and the file stops being only a document. It also becomes a structured record your scripts can query and mutate.
+
+```md
+---
+title: "Fix homepage copy"
+status: "draft"
+priority: 8
+project: "mfyz.com"
+tags: ["writing", "marketing"]
+due: 2026-04-01
+---
+
+Rewrite the hero section and tighten the CTA.
+```
+
+Now that file is doing two jobs at once. A human can read it comfortably, and a program can filter or sort it by fields. That is enough to build lightweight databases for blog posts, tasks, bookmarks, content calendars, notes, reading lists, and all kinds of one-file-per-record setups.
+
+And because the data lives in files, you can inspect it with the tools you already have:
+
+```bash
+rg 'status: "draft"' ~/life/Projects
+rg 'tags:.*ai' ~/life/Notes
+find ~/life/Tasks -name '*.md' | wc -l
+```
+
+No dashboard needed. No app boot needed. Just files.
+
+## AI agents and shell tools work better with files than people think
+
+This matters even more now because AI agents are really good at file-based systems.
+
+Yes, agents can talk to APIs, databases, and external services. But plain files are still the easiest thing for them to work with. Read file, search file, update file, create file, compare diff. That is a very natural loop for an agent.
+
+The same is true for shell tools. People sometimes treat local files like a primitive approach, then forget what a modern SSD and a few good CLIs can do. Searching thousands of Markdown and JSON files is usually so fast you stop thinking about it.
+
+`rg` for search, `jq` for JSON transforms, `duckdb` for SQL over files. That combo gets silly pretty quickly.
+
+```bash
+rg -l 'project: "mfyz.com"' ~/life/Todos
+```
+
+That finds every todo for a project.
+
+```bash
+jq '.items[] | select(.status == "open") | .title' tasks.json
+```
+
+That pulls open titles from a JSON blob.
+
+```bash
+duckdb -c "
+  SELECT json_extract_string(j, '$.title') AS title
+  FROM read_json_auto('data/*.json') t(j)
+"
+```
+
+That runs SQL over a folder of JSON files.
+
+This is why I keep saying Bash and your disk are more capable than people think. A lot of "I need a real backend now" moments are actually just "I forgot how much I can get away with using local files."
+
+## Use Markdown for authored content, JSON for machine-shaped data
+
+My rule of thumb is simple. If humans author and read it, I usually want Markdown. If programs mostly generate, pass around, or mutate it, I usually want JSON.
+
+That means posts, notes, docs, prompts, and task records fit naturally in Markdown. API responses, cached data, structured exports, automation state, and nested config fit naturally in JSON.
+
+Those two formats cover a shocking amount of ground. Markdown keeps things readable. JSON keeps things universal. Both are easy for agents to inspect, edit, and transform.
+
+## Where this breaks
+
+There is a limit to this approach, obviously.
+
+Once you need heavy concurrency, strict transactions, or complex relational querying all the time, you are past the point where folders full of files should be your main database. Also, frontmatter gets ugly if you keep stuffing more and more machine-owned structure into it. That is usually a sign the record wants to be JSON, or that the whole system wants a real database.
+
+But that limit arrives later than people think.
+
+If you are building a personal tool, a lightweight internal app, a content workflow, or an AI-assisted system, starting with folders, Markdown, frontmatter, and JSON is often the highest-leverage move. You can outgrow it later if you need to. A lot of projects never do.
