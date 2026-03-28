@@ -124,7 +124,7 @@ flowchart TD
 - **Content Collections**: Astro's type-safe content system with automatic language detection
 - **Internal Links**: Always use absolute paths without host (e.g., `/post-slug/` not `https://mfyz.com/post-slug/`)
 - **Preview URLs**: When user asks for preview URLs, check hostname with `hostname` command:
-  - If hostname is `mfyz-remote`: use base URL `https://mfyzcom-remote.mfyz.net/`
+  - If hostname is `nox`: use base URL `https://mfyzcom-remote.mfyz.net/`
   - Otherwise: use `http://localhost:4321/` (Astro's default dev port)
   - Append the post slug and `?preview=1` for hidden posts
 
