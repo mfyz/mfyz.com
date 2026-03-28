@@ -1,0 +1,230 @@
+---
+title: "Designing Scalable CSV Importers: What a Good Importer Should Do"
+description: "A good CSV importer is not an upload form. It is a staged workflow that helps users inspect, fix, validate, and only then commit messy data."
+date: 2026-04-21
+slug: "designing-scalable-csv-importers-what-a-good-importer-should-do"
+tags: ["csv", "ux", "data", "imports", "admin-tools"]
+hidden: true
+social_post: |
+  Most CSV importers are too simplistic. Upload file, get errors, try again.
+
+  I wrote about what a good importer should actually do: stage, preview, validate, let users fix data, and only then commit. Trust is the feature.
+---
+
+import ImageZoom from "@components/ImageZoom.astro";
+
+Most CSV importers feel like a trap.
+
+You upload a file. The app thinks for a bit. Then one of two things happens. Either it imports everything and you quietly wonder what damage just landed in your database, or it throws a vague list of errors and sends you back to Excel.
+
+That workflow is fine for toy tools. It falls apart the moment the data is a little messy, the file is a little big, or the business rules stop being obvious.
+
+And real imports are almost always messy.
+
+You might have inconsistent dates. IDs with leading zeros sometimes, dashes other times. Duplicate rows. Missing accounts. Columns that move around every month.
+
+So I think a good importer should do something else entirely.
+
+It should not be an upload form. It should be a controlled workflow for turning messy external data into trusted internal data.
+
+The wrong mental model is:
+
+```text
+CSV file -> parse -> import
+```
+
+The better one is:
+
+```text
+CSV file -> stage -> preview -> validate -> fix -> revalidate -> commit
+```
+
+That extra structure is not bureaucracy. It is what makes the importer trustworthy.
+
+Let's use a simple example throughout this post. Imagine you're importing monthly wholesale sales data for a snack brand. Every month, retail partners send CSV exports. Some use `03/01/26`. Some use `1/3/26`. Some send store IDs with dashes. Some send only store names. A few rows are duplicates. Some rows refer to stores that do not exist in your system yet.
+
+This is not a parsing problem anymore. It is a reconciliation problem.
+
+After building many importers (including many bad ones), here is what I learned.
+
+## 1. Stage the data first
+
+The first thing a good importer should do is *not* import.
+
+It should store uploaded rows in a staging area first, separate from the real application tables. The moment you import directly into production tables, you lose your safe review step. Now every mistake is cleanup work.
+
+This is the line I keep coming back to:
+
+**A good importer should not ask users to trust the upload. It should give them a place to inspect it first.**
+
+## 2. Treat imports as sessions, not requests
+
+Imports are usually long-running. They may involve thousands of rows, several validation passes, and a human making decisions in the middle.
+
+So a good importer should not behave like one HTTP request. It should behave like a session. Create the session up front, persist its state on the server, and let the UI reconnect to it after refresh.
+
+This matters more than it sounds.
+
+Sometimes correcting an import is not a two-minute task. It can take a while. Someone uploads the data, another person reviews the questionable rows, a few fixes happen inside the tool, then validation runs again. That is already a session, whether the product models it that way or not.
+
+If that whole process feels fragile or disposable, the importer failed. Even if the backend is "correct."
+
+Resumability is UX.
+
+## 3. Make preview a real workspace
+
+A preview should not be a tiny sample table with five rows and a green checkmark.
+
+If preview is going to earn the user's trust, it needs to behave like a workspace. Show the real staged rows. Let people sort, filter, and page through them. Clearly mark clean rows, warnings, and errors.
+
+This is where many importers stay too shallow. They parse the file, maybe detect a few issues, then say "looks good" without giving the user enough surface area to actually verify anything.
+
+But operators do not think in terms of abstract correctness. They think in terms of triage.
+
+They want to know how many rows are broken, what kind of problems they have, and whether they can isolate the bad rows quickly. A good preview should help them answer those fast.
+
+This is the baseline view I want from an importer. A real preview table, with actual staged rows, clear statuses, and enough density to inspect what is going on.
+
+<ImageZoom
+  src="/images/blog/2026/scalable-csv-importers/preview-table.jpg"
+  alt="Preview table showing staged importer rows before validation and final import"
+  width={1600}
+  height={931}
+/>
+
+This is where filtering becomes part of the review experience. People should be able to narrow the preview to just the rows they care about instead of scanning the whole import manually.
+
+<ImageZoom
+  src="/images/blog/2026/scalable-csv-importers/filtering-preview.jpg"
+  alt="Importer filtering interface used to preview only the rows matching specific conditions"
+  width={1600}
+  height={362}
+/>
+
+## 4. Let users configure validation before you run it
+
+Some import rules are not universal. They are business choices.
+
+Take the monthly sales example. Maybe the incoming file has ambiguous dates. Should `03/04/26` be March 4 or April 3? Maybe some files have useless placeholder IDs, and you want to derive a fallback value from another field. Maybe duplicates should be blocked by default, but occasionally the operator needs to allow them.
+
+Those are not "backend implementation details." They are import decisions.
+
+So the importer should expose them clearly before validation starts. Date parsing mode, duplicate handling, or whether to create missing stores should be visible choices, not hidden code paths.
+
+Validation should not just be a wall of red text after the fact. It should be a configurable step with visible rules.
+
+Here is the kind of validation panel I mean. It is where operators define how staged data should be transformed before the importer judges it.
+
+<ImageZoom
+  src="/images/blog/2026/scalable-csv-importers/validation-options.jpg"
+  alt="Validation options panel for an importer with predefined transformation settings before validation"
+  width={1412}
+  height={542}
+/>
+
+## 5. Separate validation from commit
+
+This sounds obvious, but a lot of tools still blur these together.
+
+Validation should answer:
+
+> "What will happen if we import this?"
+
+Commit should answer:
+
+> "Okay, now do it."
+
+That separation changes the whole feel of the tool.
+
+When users know they can validate without side effects, they become more willing to explore, test assumptions, and fix problems properly. When validation is bundled with write operations, people get cautious for good reason.
+
+You want the importer to create confidence before it creates records.
+
+## 6. Make correction part of the workflow
+
+This is one of the biggest differences between a weak importer and a strong one.
+
+A weak importer says:
+
+"Here are 137 bad rows. Go fix your CSV and come back."
+
+A strong importer says:
+
+"Here are the rows. Fix them here if you want. Then re-run validation."
+
+That is a much better operator experience.
+
+Inline correction is especially useful when the mistakes are small. A wrong date in one row. A missing store name. An ID with formatting noise. A typo that prevents matching.
+
+If users have to leave the app, open the spreadsheet, fix the row, save a new file, re-upload, remap, and revalidate, the tool is creating work instead of removing it.
+
+And once you support correction inside the preview, the next step follows naturally:
+
+**save the change, then revalidate that row or the whole import.**
+
+That feedback loop is where the importer starts feeling solid.
+
+## 7. Error reporting should support triage, not just debugging
+
+A giant list of row-level errors is technically useful. It is not operationally friendly.
+
+A better approach is to count clean, warning, and error rows, group errors by type, and make those groups clickable. So instead of dumping 2,000 row messages, the UI can say there are 12 rows with invalid dates, 8 duplicates, and 4 unmatched stores.
+
+That is easier to reason about. It also tells the user whether this import needs five minutes of cleanup or a full stop.
+
+This kind of summary view works well because it turns a huge import into something a human can reason about quickly.
+
+<ImageZoom
+  src="/images/blog/2026/scalable-csv-importers/validation-status-summary.jpg"
+  alt="Validation status summary showing grouped importer errors and counts"
+  width={1484}
+  height={606}
+/>
+
+## 8. Reuse mapping when people add more files
+
+This one is easy to miss, but it is high leverage in real workflows.
+
+Column mapping is annoying. Not hard, just annoying. And when operators upload multiple files with the same general shape, forcing them to repeat mapping every time is needless friction.
+
+A good importer should let the user map once, then append more files into the same import session.
+
+If the importer already knows how "Store Name", "Account", and "Customer" map into the same target field, let it reuse that knowledge. That small detail makes the workflow feel much more intentional.
+
+## 9. Keep the shell generic, keep the brains schema-specific
+
+I do not think the right answer is one giant universal validator that tries to understand every import type through generic rules alone.
+
+The shell can be generic: file upload, mapping, staging, preview, filtering, inline edits, validation progress, final commit. But the actual validation and mutation logic should be schema-specific.
+
+In our sales example, that might mean normalizing date formats, matching products from messy external identifiers, resolving stores from several possible identifiers, deciding what counts as a duplicate, and computing extra derived fields during validation.
+
+In a customer import, the rules would be completely different.
+
+This is the part that makes an importer scalable over time. Reuse the workflow. Specialize the rules.
+
+For example, once the rule engine was in a good place, adding multiple file upload to the general importer became straightforward. It worked across all import models, because that capability did not change how validation and transformation rules were applied.
+
+## 10. Backend design is part of importer UX
+
+This is where a lot of frontend discussions go soft.
+
+People talk about import UX as if it is mostly a wizard problem. It isn't.
+
+If you want a good importer, the backend has to support it. Staged data storage, persisted import sessions, batched validation, batched processing, resumable progress, row-level updates, and reliable preview queries are all part of the UX.
+
+Without that, the UI can only fake confidence.
+
+The frontend might look polished, but under the hood it is still "upload and pray" with nicer buttons.
+
+## Trust is the feature
+
+Because importing external data is always a little uncomfortable. It is never fully clean, never fully under your control, and never as simple as the export button on the other system suggests.
+
+A good importer does not pretend that mess does not exist. It meets that mess head-on.
+
+It gives people a place to inspect the data, fix what is wrong, understand what will happen next, and only then commit.
+
+That is why the best importers feel calm. Not flashy. Not magical. Calm.
+
+And for a tool that sits between messy external data and your real system, that is exactly what users want.
