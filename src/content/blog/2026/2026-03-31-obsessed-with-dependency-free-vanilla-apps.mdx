@@ -1,0 +1,55 @@
+---
+title: "I Became Obsessed With Dependency-Free, Vanilla Apps"
+description: "How asking AI agents to build with vanilla Node.js and single-file HTML became my default approach, and why the code quality surprised me."
+date: 2026-03-31
+slug: "obsessed-dependency-free-vanilla-apps"
+tags: ["javascript", "web-development", "vanilla-js", "minimalism", "no-build", "ai-coding"]
+social_post: |
+  Started asking AI agents to build with vanilla Node.js and single-file HTML. No builds, no npm, just browser APIs and built-ins.
+
+  The output is clean, well-organized, and easy to ship. Turns out vanilla is a surprisingly good constraint.
+---
+
+I've been on a slow-motion rebellion against dependencies. It wasn't a conscious decision at first. I wrote about [not needing React](/you-may-not-need-react/). Then about [Preact + HTM in 5KB, no build step](/react-best-parts-preact-htm-5kb/). Then [snarkdown, the 1KB markdown renderer](/snarkdown-1kb-markdown-renderer/). Then [uvu, the 5KB test runner](/uvu-sinon-fast-lightweight-testing/). Each post was solving a specific problem. Not a philosophy, just a preference.
+
+But somewhere along the way I noticed: every time I started a new small project, my first instinct became "do I actually need this dependency?" Usually the answer was no. And then I started working with AI coding agents, and I took it to a new extreme.
+
+## Going Full Vanilla with AI Agents
+
+When I started using Claude Code and other AI agents for building tools, I began adding an explicit constraint in my prompts: "use vanilla Node.js" or "keep it vanilla HTML/CSS/JS." No framework. No npm packages unless something truly couldn't be avoided.
+
+I expected this to be limiting. I expected the AI to produce messy, unstructured code because there was no opinionated framework guiding it.
+
+That's not what happened.
+
+The code comes out clean. Well-organized. Readable. A vanilla Node.js script that reads files, calls an API, and writes output doesn't need Express. It needs `fs`, `https`, and maybe `readline`. All built-in. The AI knows this and uses them well.
+
+And the output is often simpler than framework-based alternatives because there's no indirection. You see exactly what runs. No magic, no middleware chain to trace through.
+
+## The Single-File Constraint
+
+I pushed it further. Not just vanilla, but single-file. One HTML file with embedded CSS and JavaScript. One Node.js script that does everything.
+
+For small tools and internal utilities, this works surprisingly well. The AI handles it cleanly. The file usually stays under a few hundred lines. And when I need to share it or deploy it, there's nothing to set up. No `package.json`, no `node_modules`, no build step.
+
+You open the file. You run it.
+
+I've shipped internal tools as a single `.html` file in a Slack message. The person on the other end opens it in their browser. I've also dropped files straight into a GitHub Pages repo when something needed a public URL. No CI pipeline, no build action, just a file in a repo. That's the whole deployment story.
+
+## It's Not That Different
+
+People assume frameworks do a lot of heavy lifting and vanilla code requires more steering. That hasn't been my experience with AI agents.
+
+I still tweak output. I still redirect when something goes sideways. But that happens with framework-based code too. The AI knows vanilla patterns just as well as it knows React or Express. Maybe better in some cases, because vanilla JavaScript is more universal, more stable, and has been around a lot longer.
+
+The extra effort to go vanilla is basically zero. The saved effort from skipping tooling setup and dependency management is real.
+
+## What Vanilla Actually Means
+
+When I say vanilla, I mean: no build step, no transpilation, no package manager, no bundler. Just the runtime.
+
+For Node.js scripts, that means built-in modules: `fs`, `path`, `http`, `crypto`, `readline`. They're all there. Most scripts don't need anything else. For the web, it means native browser APIs: `fetch`, `localStorage`, `URLSearchParams`. Modern browsers support all of it. If you need a bit of reactivity, import Preact and HTM from a CDN. Still no build step.
+
+For styling, raw CSS works. Or drop a `<link>` to [Pico CSS](/pico-css-the-anti-tailwind-framework-i-actually-enjoy/) in the head. One tag, no installation, looks decent out of the box.
+
+The thing I keep coming back to is no friction to start and no maintenance later. No security advisories. No breaking changes when a library releases v2. A year from now the script still runs. This is what obsession looks like for developers, I guess. Chasing the simplest possible solution that still does the job.
