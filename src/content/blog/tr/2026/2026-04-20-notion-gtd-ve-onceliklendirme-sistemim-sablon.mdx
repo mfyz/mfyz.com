@@ -1,0 +1,150 @@
+---
+title: "Notion GTD ve Önceliklendirme Sistemim + Şablon"
+description: "Notion'da kurduğum pratik GTD ve önceliklendirme sistemi; odakta kalmayı, görevleri projelere göre düzenlemeyi ve sırada neye çalışacağına daha iyi karar vermeyi kolaylaştırıyor."
+date: 2026-04-20
+slug: "notion-gtd-ve-onceliklendirme-sistemim-sablon"
+tags:
+  [
+    "üretkenlik",
+    "notion",
+    "gtd",
+    "önceliklendirme",
+    "framework",
+    "proje-yönetimi",
+  ]
+imageURL: ""
+lang: "tr"
+social_post: |
+  Notion'da GTD ve önceliklendirme için kullandığım kendi sistemimi ve kopyalayabileceğiniz şablonu anlattım. Görevleri projelerle bağlayıp neye odaklanacağımı daha net görüyorum.
+---
+
+import ImageZoom from "@components/ImageZoom.astro";
+
+İşleri takip etmek ve önceliklendirmek için milyon tane yöntem var. Yıllar boyunca bir sürü farklı araç ve yöntem denedikten sonra, benim için çalışan bu sistemi oluşturdum. Bu birebir, katı bir Getting Things Done (GTD) implementasyonu değil ama GTD'nin en önemli fikrini alıyor: her şeyi güvendiğiniz bir sisteme koymak. Böylece zihniniz hatırlamaya değil, işi yapmaya odaklanabiliyor.
+
+Açıkçası bu sistemi her zaman harfi harfine takip etmiyorum. Bazen baya dışına çıkıyorum. Ama işler karıştığında geri döndüğüm, beni tekrar hizaya sokan ana prensip olarak kullanıyorum.
+
+Herhangi bir framework'e sahip olmanın arkasındaki asıl sebep odakta kalmak. Bir şeyleri kolayca "park edebilmek" ve kafanın dolup taşmasını engellemek.
+
+Yakın zamandan bir örnek vereyim: Kendimi önemli şeyleri takip etmek için Post-it kullanırken buldum. Sonra bir baktım masamın etrafında 15 tane yapışkan not var ve gün içinde sürekli bir tanesi hakkında endişeleniyorum. Bunların hepsini bu sisteme taşımak ciddi bir netlik ve kafa rahatlığı getirdi.
+
+## Görevleri Proje Olarak Düşünmek
+
+Yeni gelen herhangi bir işi düşünmenin iyi yollarından biri, onu bir "proje" olarak düşünmek. Tabi ki istisnalar var ama çoğu zaman bir görev, aynı hedef etrafındaki başka görevlerin bir parçası oluyor. Bazı projeler sürekli devam ediyor (blog yazmak gibi), bazıları ise net hedefli veya zaman sınırlı oluyor (mesela "Ekim ayında X blog yazısı yaz").
+
+Bu yaklaşım, yakın zamanda başlamayı düşünmeseniz bile fikirleri ve notları doğru yerlere koymayı da kolaylaştırıyor.
+
+Bir de iyi bir alt önceliklendirme pratiği oluşturuyor. Zihnim o spesifik projeyi düşünmeye hazır olduğunda, o projeyle ilgili elimde ne varsa görebiliyorum ve sınırlı zamanımla en etkili ne yapabilirim diye bakabiliyorum.
+
+Benim önceliklendirme sistemimde herhangi bir anda yaklaşık bir düzine proje oluyor. Yarısı sürekli devam eden uzun vadeli projeler, yarısı da daha kısa vadeli işler.
+
+<ImageZoom
+  src="/images/blog/2025/notion-gtd-prioritization-framework-template/notion-projects-list.JPG"
+  alt="Ana Notion sayfasındaki proje listesi görünümü. Her proje için emoji veya ikon seçilmiş. Proje isimleri kısa tutulmuş. Hepsinde istek ve önem alanları dolu, bu yüzden her proje listede kolay taranabilen progress bar değerleriyle görünüyor."
+  width={800}
+  height={600}
+/>
+
+Projeler kullanmamın en önemli sebebi şu: Bir görevin efor/etki puanını düşünürken zihnim onu projenin kendi içinde göreceli olarak değerlendiriyor. Mutfağınızı yeniden yapmayı planladığınızı düşünün. Bu projenin içinde yapmanız gereken 100 görev olabilir. Bu görevlerin değerini, yani eforunu ve etkisini düşünürken onları proje içinde önceliklendirirsiniz. Yoksa katı bir "efor=5 demek X saat/gün" yaklaşımıyla bakmazsınız. Ben genelde her zaman göreceli bir yaklaşım izliyorum.
+
+Önceliklendirme için onlarca farklı puanlama framework'ü var ama ben çoğunlukla önem (impact) ve istek (appetite) üzerinden düşünüyorum. Kişisel önceliklendirme dokümanımda önem, kendi aileme olan etkisi demek. İş önceliklendirme dokümanımda ise şirkete olan etkisi. İstek benim için gerçekten önemli. Kişisel hayatıma veya iş hayatıma etkisi çok yüksek olmasa bile, beni heyecanlandıran ve motive eden projelere değer vermemi sağlıyor. Merakımı canlı tutuyor, öğrenmemi sağlıyor ve yaptığım işten keyif almama yardımcı oluyor.
+
+"Projects" database'i için 1-10 arası puan girdiğim iki sayısal alanım var. Notion'da bunları progress bar olarak gösteriyorum. Projects, ana/inbox sayfam olarak kullandığım sayfanın içinde duran inline bir database.
+
+<img
+  src="/images/blog/2025/notion-gtd-prioritization-framework-template/notion-property-progressbar.jpeg"
+  alt="Notion'da bir sayı formatı alanının konfigürasyonunu gösteren property düzenleme penceresi. Alan, 10'a bölünmüş progress bar görünümü olarak ayarlanıyor."
+  width="500"
+/>
+
+Bir proje kaydı, birkaç ek alanı olan basit bir kayıt aslında.
+
+<ImageZoom
+  src="/images/blog/2025/notion-gtd-prioritization-framework-template/notion-project-detail.PNG"
+  alt="Kısa URL Servisi örneğini gösteren proje detay sayfası. İstek ve önem puan alanları doldurulmuş, score alanı hesaplanmış. Score alanının başında yıldırım emojisi var, bu onun formül alanı olduğunu ve manuel girilmemesi gerektiğini gösteriyor."
+  width={800}
+  height={400}
+/>
+
+## Görevler
+
+Görevlerde Project database'ine bağlanan ilişkisel bir alan var. Görevleri projeye göre gruplayan bir görünüm oluşturuyorum. Böylece istediğim zaman grupları açıp kapatabiliyorum ve her projede kaç görev olduğunu hızlıca görebiliyorum.
+
+<ImageZoom
+  src="/images/blog/2025/notion-gtd-prioritization-framework-template/notion-tasks-grouped.jpeg"
+  alt="Projelere göre gruplanmış görev listesi. Tüm gruplar kapalı olduğu için sadece proje listesi benzeri bir görünüm var. Gruplar önem sırasına göre manuel sıralanmış ve her kapalı satırda o grupta kaç görev olduğu görünüyor. Aynı sayfada kapalı bir toggle başlığı proje listesini, başka bir kapalı toggle başlığı da formüllerin kaynağını gösteren Formulas bölümünü içeriyor."
+  width={800}
+  height={600}
+/>
+
+Bir görevin toplam skorunu hesaplarken projenin puanlarını da kullanıyorum. Muhtemelen bu sistemin en önemli kısmı burası: görevin ait olduğu proje ve o projenin skoru önemli. Bu skordaki ağırlıkları değiştirip proje etkisini daha fazla veya daha az önemli hale getirebilirsiniz. Ama ben bu yaklaşımı dengeli ve baya kullanışlı buluyorum. Çünkü hem sıkıcı ama gerçekten önemli görevleri görmemi sağlıyor, hem de yapmak için can attığım ama aslında çok da önemli olmayan projelerdeki görevleri fark ettiriyor.
+
+Bu bir rehber. Ben çoğu zaman bu skorlara sadece hızlıca bakıyorum, karar verirken kullanıyorum, bazen uyuyorum, bazen görmezden geliyorum. Ama neredeyse her zaman odakta kalmam gereken şeyleri hatırlatan bir zemin olarak kullanıyorum.
+
+<img
+  src="/images/blog/2025/notion-gtd-prioritization-framework-template/notion-task-score-formula.jpeg"
+  alt="Bir görev için 1-10 arası basit skor hesaplayan Task score alanı. Bu sayısal değer başka formül alanlarında kullanılıyor."
+  width="500"
+/>
+
+Formül, görevin kendi puanlarını projenin önemiyle birleştiriyor:
+
+```
+(
+  ((prop("Reach") * prop("Impact") / prop("Effort")) * 0.5)
+  + (toNumber(first(prop("Prj.Score"))) * 0.5)
+)
+```
+
+Bu formül, görevin kendi doğal değerine ve ait olduğu projeye eşit ağırlık veriyor (50/50). Yukarıdaki formül sayısal bir skor üretiyor. Ben de sonra bu skoru farklı renklerde emoji kutularıyla görselleştiriyorum. Farklı projelerdeki görevler arasında gezinirken gözümün hızlıca tarayıp bir his edinmesini sağlıyor.
+
+<img
+  src="/images/blog/2025/notion-gtd-prioritization-framework-template/notion-task-score-display.jpeg"
+  alt="Task score display formül penceresi. Score isimli başka bir sayısal hesaplanmış alanı kullanarak renkli emoji kutularını oluşturan formülü gösteriyor."
+  width="500"
+/>
+
+Formül:
+
+```
+repeat(
+  if(prop("⚡️ Score") <= 2, "⬛️",
+    if(prop("⚡️ Score") <= 4, "🟩",
+      if(prop("⚡️ Score") <= 6, "🟨",
+        if(prop("⚡️ Score") <= 8, "🟧", "🟥")
+      )
+    )
+  ),
+  round(prop("⚡️ Score"))
+)
++ repeat("⬜", 10 - round(prop("⚡️ Score"))).style("gray")
++ " "+ round(prop("⚡️ Score"))
+```
+
+Görev objesinde aynı database içinde farklı görünümler için kullandığım birkaç property daha var. En sık kullandığım "Focus" alanı. Buraya genelde elle seçtiğim birkaç görevi koyuyorum, sonra Focused tasks listesine geçip günümü veya haftamı oradan görüyorum.
+
+<ImageZoom
+  src="/images/blog/2025/notion-gtd-prioritization-framework-template/notion-task-detail.jpeg"
+  alt="Bir görev detay ekranı. Diğer ekran görüntülerinde bahsettiğimiz tüm alanların yanında due date, urgent checkbox, focus checkbox, blocking ve blocked by ilişkisel alanları da görünüyor."
+  width={800}
+  height={600}
+/>
+
+Sonuçta bu görünüm bana kuş bakışı bir tablo veriyor. Ayrıca eklediğim ama puanlamadığım görevleri de fark edebiliyorum. Arada bir puanlama pratiği yapıp önceliklerimi ve projelerimi gözden geçiriyorum.
+
+<ImageZoom
+  src="/images/blog/2025/notion-gtd-prioritization-framework-template/notion-tasks-expanded.jpeg"
+  alt="Grupları açılmış görev listesi. Gerçek görevler görünür halde. Görevler görsel olarak hesaplanmış toplam skoru gösteriyor. Görev skoru, yüksek puanlı görevleri kırmızı progress bar ile gösteren renkli kutu emojileri kullanıyor. Skor düştükçe renk turuncu, sarı, yeşil ve siyaha doğru gidiyor. Görevlerde status değerleri, efor, etki, erişim skorları ve proje bağlantısı görünüyor. Bunların tamamı toplam görev skorunu hesaplamak için kullanılıyor."
+  width={800}
+  height={800}
+/>
+
+## Şablonu Kopyalayabilirsiniz
+
+Bu sistem benim üretkenliğim ve odağım için ciddi fark yarattı. Yapı ve esneklik arasında doğru dengeyi kuruyor. Ne üzerinde çalışacağıma daha iyi karar vermemi sağlıyor ama bunu aşırı katı bir sisteme çevirmiyor.
+
+Bu Notion şablonunu kendi projeleriniz ve görevleriniz için klonlayıp kullanabilirsiniz. Tüm formüller çalışan örneklerle birlikte şablonun içinde var, yani sıfırdan kurmanız gerekmiyor. Sistemin çalışmasını sağlayan database yapılarını ve görünümleri de ekledim.
+
+[Notion Şablonumu Klonla →](https://www.notion.so/mfyz/Prioritization-Template-24009782d550801b804af5d462287227?source=copy_link)
+
+Bir deneyin ve kendi iş akışınıza göre uyarlayın. Asıl mesele size çalışan sistemi bulmak ve tutarlı bir önceliklendirme sisteminin faydasını görecek kadar uzun süre ona bağlı kalmak.
