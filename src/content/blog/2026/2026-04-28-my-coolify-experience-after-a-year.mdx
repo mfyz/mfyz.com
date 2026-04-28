@@ -1,0 +1,73 @@
+---
+title: "My Coolify Experience After a Year"
+description: "Coolify gets surprisingly close to the smooth deployment experience of Vercel, but the upgrade churn and observability gaps kept me cautious."
+date: 2026-04-28
+slug: "my-coolify-experience-after-a-year"
+tags: ["coolify", "self-hosting", "devops", "docker", "gitops"]
+social_post: |
+  Coolify feels like a self-hosted Vercel in the best ways. Easy setup, smooth GitOps, strong container UX.
+
+  But the upgrade treadmill, trust boundaries around core infra, and okay observability kept me cautious.
+---
+
+I've been spending more time self-hosting my own apps, and Coolify is one of those tools that clicks fast when you try it. I moved a couple of hobby projects off Vercel and onto my own server, and Coolify ended up being the part that made that move feel much less painful than I expected.
+
+The pitch is simple: give me some of the convenience of Vercel, but let me run it on my own infrastructure. That part is very appealing.
+
+Setup is easy.
+
+It doesn't feel like signing up for some giant ops project where you lose your whole weekend before seeing your first deployment. If you already think in terms of repos, containers, and servers you can SSH into, Coolify gets out of your way pretty quickly.
+
+## What I liked right away
+
+The biggest win for me was how easy it is to enable deployments through a GitOps-style workflow. You connect your repo, point things in the right direction, and Coolify handles a lot of the wiring. That part genuinely feels polished.
+
+This is where the Vercel comparison starts to make sense. Not because the products are identical, but because the workflow feels similarly convenient. Push code, trigger deployment, let the platform handle the glue.
+
+It also handles the subdomain and proxying layer in a way that feels surprisingly polished. Having generated subdomains out of the box is one of those things that sounds small until you remember how much little setup work usually hides behind it.
+
+And the preview deployment story is a real value-add. Recreating that "every PR gets its own preview URL" magic in a self-hosted setup is not just annoying. It is genuinely hard. You need the subdomain generation, proxying, deployment automation, and enough spare capacity that preview environments do not become a cost multiplier. That is exactly why preview deployments usually feel native to hosted platforms and awkward everywhere else. Coolify makes that much easier, which actually strengthens the case for self-hosting.
+
+I also think Coolify has a really good container management system. This matters more than it sounds. I moved over from using Portainer as my lightweight container and stack management layer, so I already had a baseline for what I wanted here.
+
+I want to clearly see what is running, inspect logs, check deployment history and activity, manage secrets, and do the basic operational stuff without friction. A lot of self-hosting tools can deploy containers, but actually managing them comfortably is a different story. Coolify gets this part beautifully right.
+
+With Coolify, I didn't feel like I was constantly dropping down to raw Docker for every little thing. For personal apps and smaller hosted services, that's a big deal. Good UX around containers removes a lot of the friction that usually makes self-hosting feel more annoying than it should.
+
+## My biggest concern
+
+The part that keeps me a little uneasy is the update story.
+
+Coolify sends upgrade notifications, which is good. I do want to know when things need attention. But after a while it starts to feel a bit like WordPress plugin maintenance. There are just too many moving parts, too many dependency upgrades, and too many moments where you wonder whether this week's update is the one that breaks something important.
+
+If you really want to stay on top of everything, this can turn into a weekly chore. And that changes the emotional feel of the platform. Instead of "nice, my deployment platform is handled," it becomes "nice, I now have another system that wants regular operational babysitting."
+
+That's probably my biggest concern with Coolify overall. Not setup. Not usability. Ongoing maintenance risk.
+
+## I still didn't want it owning everything
+
+There were also cases where I still wanted to run my own container directly instead of trusting Coolify with it.
+
+My central Postgres instance is the clearest example. It's not that Coolify can't run it. I just didn't want that layer of abstraction for something so central and shared. For something like that, I want to be very opinionated about networking hardening, how volumes are attached and managed, and how backups are configured and verified. Some pieces of infrastructure feel too important to hand over completely, even if the platform is capable.
+
+That's an important distinction. Coolify can be great for application deployment without necessarily becoming the owner of every critical service in your stack.
+
+And to be clear, I still think Coolify is a great choice even if you do not want it managing everything. You can still use the same Docker-based foundation with your own containers and even separate tooling for the parts you want to manage differently. Coolify does not really get in the way or lock the whole server down. That hybrid mode worked really well for me, and it is worth keeping in mind: Coolify does not have to be the answer for every single use case to still be extremely useful.
+
+## Observability is decent, but only decent
+
+I think Coolify's observability is okay. Not bad. Not amazing. Just okay.
+
+And "okay" is enough until you start wanting real visibility into what is happening. I noticed this almost immediately after installing it. My next instinct was to set up proper monitoring, log aggregation, and some kind of analysis pipeline around it.
+
+So yes, Coolify gives you a usable operational view and log drain routing. But if you want something robust and transparent, you'll probably end up running more tools beside it. That's not necessarily a failure of Coolify. It's just the reality that deployment convenience and deep observability are not the same thing.
+
+## Where I landed
+
+I still like and use Coolify.
+
+I think it's one of the easiest ways to get a self-hosted deployment platform that feels modern, Git-friendly, and actually pleasant to use. The setup is easy, the GitOps flow is smooth, and the container management side is genuinely strong.
+
+But I also wouldn't romanticize it. The upgrade churn is real. Some critical containers I would still rather manage myself. And the observability story is good enough to start, not good enough to stop.
+
+So that's where I landed with it: Coolify is impressive, useful, and worth trying. I just don't see it as "install once and forget forever" infrastructure. It's more like "install easily, benefit quickly, then stay involved."
