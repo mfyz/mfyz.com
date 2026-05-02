@@ -1,0 +1,118 @@
+---
+title: "Oat CSS after Pico"
+description: "Pico CSS is still great for clean semantic pages, but Oat CSS started making more sense once my interfaces needed more app-like UI primitives."
+date: 2026-05-05
+slug: "oat-css-after-pico"
+tags: ["css", "frontend", "web-development", "oat-css", "pico-css"]
+hidden: true
+social_post: |
+  I still like Pico CSS. But once a page starts acting more like a product, Oat CSS feels like a useful next step: semantic HTML, tiny footprint, and more built-in UI primitives.
+---
+
+I have gone through a few different phases with CSS.
+
+First it was the usual thing. Big frameworks, too many defaults, and a lot of visual baggage I did not really want. Then the utility-class phase. That solved one problem and created another. You stop fighting framework opinions, but your HTML starts looking like a compressed stylesheet.
+
+That is part of why I liked [Pico CSS](https://picocss.com/) when I wrote about it earlier. It felt like a reset back to sanity. Write semantic HTML, add one stylesheet, and things look good. No build step. No class soup. No giant component system pretending to be simple.
+
+And I still think Pico is good at that.
+
+If you are building a content page, documentation site, landing page, or a small internal tool, Pico makes a lot of sense. It stays out of your way. That is a real feature.
+
+But use cases shift.
+
+At some point, the interface stops being "a nice page with some forms" and starts behaving more like a product. You want tabs. Dropdowns. Dialogs. Toasts. Grouped controls. A few interaction patterns that feel native to the UI instead of glued on from five separate snippets you found online.
+
+That is where [Oat CSS](https://oat.ink/) started making more sense to me.
+
+## What Oat Is
+
+Oat is a semantic CSS framework too, but it leans a bit further into UI kit territory.
+
+You still get the clean HTML part, which is the piece I care about most. But Oat also gives you more interface primitives out of the box. It is not trying to become a huge front-end ecosystem. It is still tiny. It just covers more of the surface area that shows up once a project becomes more app-like.
+
+That difference matters.
+
+With Pico, the win is mostly "my HTML already looks good."
+
+With Oat, the win becomes "my HTML still looks clean, and I also have enough UI primitives to build a proper interface without reaching for a heavier stack too early."
+
+## Why This Clicked for Me
+
+In one of my projects, I was building out a small UI kit and kept running into the same question: how much of this do I really want to rebuild myself?
+
+Not just colors and spacing. That part is fine. I mean the repetitive interface plumbing around tabs, dropdown menus, toasts, dialogs, input groups, button groups, and the small interaction details that make a UI feel coherent.
+
+You can absolutely assemble those yourself on top of a minimal stylesheet.
+
+But that is also how "simple" setups quietly become custom design systems plus random utility code plus copy-pasted interaction helpers. At that point, you are not really staying minimal. You are just rebuilding a framework in a more fragmented way.
+
+Oat felt like a better balance.
+
+It gave me a semantic baseline I liked, plus enough built-in UI pieces that I could focus on shaping the product's visual identity instead of spending that energy recreating basic interface mechanics.
+
+That is the part I find most appealing about it. Not that it replaces all styling decisions. It does not. But it gets you to a useful starting line faster.
+
+## Pico Makes This Easier
+
+One thing I like about this path is that Pico does not paint you into a corner.
+
+Because Pico is semantic and class-light, your HTML usually does not become tightly coupled to Pico-specific class names. You are mostly writing the HTML you would have written anyway. Buttons are buttons. Forms are forms. Articles are articles.
+
+That makes moving from Pico to Oat feel much easier than moving away from something utility-heavy.
+
+You are not ripping styling decisions out of every tag. You are mostly keeping the same clean markup and giving it a richer set of UI behaviors.
+
+That is another reason I do not see this as a rejection of Pico. Pico is a good step in the same direction. Oat just gives you more room once the interface starts needing app-like primitives.
+
+## A Small Comparison to Pico
+
+I do not think this is a winner-loser situation.
+
+Pico and Oat are close in spirit, but they are not exactly solving the same problem.
+
+Pico feels better when the goal is:
+
+- clean semantic HTML
+- very little setup
+- content-first pages
+- forms, articles, docs, simple layouts
+
+Oat feels better when the goal starts leaning toward:
+
+- semantic HTML, but more interface primitives
+- small app shells
+- richer controls
+- light interaction patterns without a big framework commitment
+
+So this is less "I switched sides" and more "the kind of thing I was building changed."
+
+## Size Still Matters, But Not That Much
+
+One reason both of these frameworks are interesting is that they stay small.
+
+Current published size numbers make Oat look especially attractive:
+
+- Oat CSS `0.6.1`: about `32.6 KB` raw, `6.9 KB` gzipped
+- Oat JS `0.6.1`: about `6.1 KB` raw, `2.4 KB` gzipped
+- Pico CSS `2.1.1`: about `83.3 KB` raw, `11.6 KB` gzipped
+
+I would not choose between them because of those numbers alone.
+
+The better argument is that Oat gives you more useful surface area without becoming bloated. The size just makes that a little more appealing.
+
+## Where I Land Right Now
+
+I still like Pico. I do not think the earlier post was wrong.
+
+It is just that Pico feels best when the interface can stay mostly page-like.
+
+Oat becomes more interesting when the interface starts behaving more like a product, but you still want to keep the semantic HTML approach and avoid heavier front-end overhead.
+
+That is the niche where it clicked for me.
+
+So if I were choosing today, I would think about the shape of the project first.
+
+If I want a clean content-first UI fast, Pico is still a very good answer.
+
+If I want that same lightweight mindset, but with more built-in room to grow into app patterns, I would reach for Oat.
