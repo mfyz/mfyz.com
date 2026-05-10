@@ -1,0 +1,207 @@
+---
+title: "GitHub Actions ve Playwright ile Kod Yayına Çıktıktan Sonra Test Etmek"
+description: "Deploy sonrası testlerin neden önemli olduğu ve GitHub Actions ile Playwright kullanarak nasıl kurulacağı. Web sayfaları ve API health check'leri için gerçek örnekler."
+date: 2026-05-10
+slug: "github-actions-ve-playwright-ile-kod-yayina-ciktiktan-sonra-test-etmek"
+tags: ["testing", "github-actions", "playwright", "devops", "ci-cd"]
+lang: "tr"
+social_post: >-
+  Deploy sonrası testler, production'da kullanıcıdan önce problem yakalamanın
+  en pratik yollarından biri. GitHub Actions ve Playwright ile canlı ortamda
+  smoke test, Slack bildirimi ve otomatik rollback kurulumunu anlattım.
+---
+
+Production'a deploy attıktan sonra staging'de gayet iyi görünen bir şey canlı ortamda farklı davranabiliyor. Production'da test etmenin önemi de tam burada ortaya çıkıyor. Deploy **sonrası** çalışan testler, kullanıcılar fark etmeden kritik problemleri yakalamanın en pratik yollarından biri.
+
+CI yeşil, staging mükemmel, ama production'da aklınıza gelmeyen bir edge case bekliyor. Belki üçüncü parti bir API production'da farklı davranıyor. Belki database bağlantısı biraz daha yavaş. Belki de CDN cache'i eski içeriği servis ediyor.
+
+## Deploy Sonrası Testler Neden Önemli?
+
+Buradaki fark şu: deploy öncesi testler kodunuzun izole şekilde çalıştığını doğrular. Deploy sonrası testler ise **sistemin tamamının** gerçek dünyada çalıştığını kontrol eder (tabi ki gerçekten her şeyi test etmiyorsunuz, sadece iş açısından kritik parçaları test ediyorsunuz). Şunları yakalar:
+
+- **Ortam özelindeki problemler**. Staging'de görünmeyip production'da çıkan şeyler.
+- **Üçüncü parti servis arızaları**. Mock'ların simüle edemediği gerçek davranışlar.
+- **Performans problemleri**. Gerçek yük ve gerçek ağ koşullarında ortaya çıkan yavaşlıklar.
+- **Ortamlar arası konfigürasyon farkları**.
+- **Altyapı problemleri**. Infrastructure testlerinden geçmiş ama gerçek kullanımda patlayan durumlar.
+
+Bunu smoke test gibi düşünebilirsiniz, ama otomatik ve sürekli çalışan hali.
+
+Asıl değer, problemi hızlı yakalayıp otomatik rollback yapabildiğinizde ortaya çıkıyor. Ben hosting için Vercel kullanıyorum ve instant rollback özelliği gerçekten hayat kurtarıyor. Deploy sonrası testler fail ederse workflow birkaç saniye içinde bir önceki çalışan deployment'a geri dönebiliyor.
+
+## GitHub Actions Kurulumu
+
+Workflow'a dalmadan önce yaklaşımı anlatayım. Fikir basit: deploy başarıyla bittikten sonra canlı ortamı hedef alan testleri otomatik çalıştırıyorsunuz. Bir şey bozuksa hemen haberiniz oluyor.
+
+Ben bunun için GitHub Actions kullanıyorum çünkü git workflow'um ve CI/CD pipeline'larımla temiz şekilde entegre oluyor. Benim kurulumum şöyle:
+
+```yaml
+name: Post-Deployment Tests
+
+on:
+  workflow_run:
+    # Deploy workflow'unuz bittikten sonra tetiklenir
+    # "Deploy to Production" yerine kendi deploy workflow adınızı yazın
+    workflows: ["Deploy to Production"]
+    types:
+      - completed
+  workflow_dispatch: # Test etmek için manuel tetikleme
+
+jobs:
+  post-deployment-tests:
+    runs-on: ubuntu-latest
+    # Sadece deploy başarılı olduysa çalıştır
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright
+        run: npx playwright install
+
+      - name: Run post-deployment tests
+        run: npx playwright test --config=playwright.prod.config.ts
+        env:
+          PROD_URL: ${{ vars.PROD_URL }}
+          HEALTH_CHECK_URL: ${{ vars.HEALTH_CHECK_URL }}
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: post-deployment-test-results
+          path: test-results/
+
+      - name: Notify Slack on Success
+        if: success()
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+            --data '{"text":"✅ Post-deployment tests passed! Production is healthy."}' \
+            ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      - name: Notify Slack on Failure
+        if: failure()
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+            --data '{"text":"🚨 Post-deployment tests failed! Check production immediately."}' \
+            ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      - name: Rollback on Vercel
+        if: failure()
+        run: |
+          # Bir önceki deployment'ı al
+          PREV_DEPLOYMENT=$(curl -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
+            "https://api.vercel.com/v6/deployments?projectId=${{ vars.VERCEL_PROJECT_ID }}&limit=2" \
+            | jq -r '.deployments[1].uid')
+
+          # Önceki deployment'ı production'a promote et
+          curl -X PATCH -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            "https://api.vercel.com/v13/deployments/$PREV_DEPLOYMENT/promote" \
+            -d '{"target": "production"}'
+
+          echo "Rolled back to deployment: $PREV_DEPLOYMENT"
+```
+
+Bu kurulumda sevdiğim şeyler şunlar:
+
+- **Başarılı deploy'dan sonra otomatik tetikleniyor**.
+- **Slack bildirimleriyle hızlı geri bildirim veriyor** (başarıda da, hatada da).
+- **Testler fail ederse Vercel API ile otomatik rollback yapıyor**.
+- **Debug için manuel tetikleme imkanı var**.
+
+Peki testlerin kendisi nasıl görünüyor?
+
+## Örnek 1: Web Sayfası Elemanlarını Test Etmek
+
+Ana sayfanın çalıştığını kontrol eden basit bir Playwright testiyle başlayalım. Bu test, kullanıcıların hemen fark edeceği bariz problemleri yakalar:
+
+```javascript
+// tests/post-deployment/homepage.spec.js
+import { test, expect } from "@playwright/test";
+
+test("homepage loads and works", async ({ page }) => {
+  await page.goto(process.env.PROD_URL);
+
+  // Sayfa doğru title ile yükleniyor
+  await expect(page).toHaveTitle(/Home/);
+
+  // Kritik elemanlar görünür durumda
+  await expect(page.locator("nav")).toBeVisible();
+  await expect(page.locator('[data-testid="hero-title"]')).toBeVisible();
+  await expect(page.locator("footer")).toBeVisible();
+
+  // Navigasyonda beklenen linkler var
+  const navLinks = page.locator("nav a");
+  await expect(navLinks).toHaveCountGreaterThan(2);
+
+  // Console error yok
+  const errors = [];
+  page.on("console", msg => msg.type() === "error" && errors.push(msg.text()));
+  await page.waitForLoadState("networkidle");
+  expect(errors).toHaveLength(0);
+});
+```
+
+Bu basitleştirilmiş bir örnek, ama prensip çok daha karmaşık senaryolara, birden fazla sayfaya ve daha detaylı akışlara genişletilebilir. Playwright bu iş için gerçekten çok iyi bir test framework'ü. Sadece eleman kontrol etmekle kalmıyor, bozuk CSS'i, eksik elemanları, JavaScript hatalarını yakalayabiliyor. Hatta screenshot ve video alabiliyor.
+
+Screenshot'ları görsel karşılaştırma için de kullanabilirsiniz. Sayfa ya da UI belirli bir eşikten fazla değiştiyse test fail edebilir. Bu özellikle kritik landing page'ler veya checkout gibi para kazandıran akışlar için baya işe yarıyor.
+
+## Örnek 2: API Health Check Testi
+
+Ben burada genellikle tüm bağımlılıkları (database, cache, S3, core servisler falan) ve kritik bileşenleri kontrol eden merkezi bir API endpoint'i kullanıyorum. Test, API health check endpoint'inize istek atıyor ve tek request içinde bütün bağımlılıkların çalıştığını doğruluyor. Hızlı ve gerçekten çok etkili:
+
+```javascript
+// tests/post-deployment/api-health.spec.js
+import { test, expect } from "@playwright/test";
+
+test("API health check passes", async ({ request }) => {
+  const response = await request.get(
+    `${process.env.HEALTH_CHECK_URL}/healthcheck`
+  );
+
+  expect(response.status()).toBe(200);
+
+  const data = await response.json();
+
+  // Ana başarı bayrağı true olmalı
+  expect(data.success).toBe(true);
+
+  // Tüm checklist kalemleri sağlıklı olmalı
+  const checklist = data.checklist;
+  expect(checklist.database).toBe(true);
+  expect(checklist.database_latency < 200).toBe(true);
+  expect(checklist.redis_cache).toBe(true);
+  expect(checklist.s3_reads).toBe(true);
+  expect(checklist.s3_reads_latency < 200).toBe(true);
+  expect(checklist.core_service_ping).toBe(true);
+  expect(checklist.environment_vars).toBe(true);
+
+  console.log(`✅ All services healthy: ${JSON.stringify(checklist)}`);
+});
+```
+
+Herhangi bir servis ya da bağımlılık kapalıysa, ya da beklediğinizden yavaşsa, bunu kullanıcılar yazmadan önce siz öğreniyorsunuz.
+
+## Hızlı Geri Bildirim ve Otomatik Rollback
+
+Bu kurulumu aylarca çalıştırdıktan sonra öğrendiğim birkaç şey var:
+
+**Hız her şey**: Production'da bir şey bozulduğunda her dakika önemli. Bu testler size kullanıcı raporu beklemek yerine deploy'dan sonraki 2-3 dakika içinde geri bildirim veriyor.
+
+**Otomatik rollback zihninizi rahatlatıyor**: Vercel entegrasyonu gerçekten oyunu değiştiriyor. Fail eden testler, bir önceki çalışan versiyona anında rollback tetikliyor. Manuel müdahale yok, neyin yanlış gittiğini anlamaya çalışırken gereksiz downtime yok. Bunun ne kadar mental güvenlik sağladığını anlatmak zor. Tabi bir yandan insanı biraz tembelleştirip "nasıl olsa rollback var" rahatlığına da itebilir. Ama hız kazancı buna değer ve benim kabul ettiğim bir tradeoff.
+
+**Daha rahat uyuyorsunuz**: Sistemin deploy problemlerini otomatik yakalayıp düzelteceğini bilmek, production'ı bozma kaygısını ciddi şekilde azaltıyor.
+
+**Testleri odaklı tutun**: Ben genellikle en kritik şeyleri kapsayan 5-10 test çalıştırıyorum. Amaç kapsamlı test coverage değil. Amaç, kullanıcıları anında etkileyecek büyük ve bariz problemleri yakalamak.
+
+Umarım bu kendi deployment güven sisteminizi kurarken işinize yarar. İlk kez bozuk bir deployment'ın otomatik rollback edildiğini gördüğünüzde, bunun değerini baya net hissediyorsunuz.
