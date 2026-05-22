@@ -1,0 +1,170 @@
+---
+title: "Quick npm and pip Security Hardening Tweaks for Supply Chain Attacks"
+description: "After recent supply-chain attacks, a practical npm and pip hardening pass: disable install scripts, delay fresh packages, require hashed Python installs, and keep exceptions explicit."
+date: 2026-05-26
+slug: "quick-npm-pip-security-hardening-tweaks-supply-chain-attacks"
+tags: ["security", "npm", "python", "devops", "supply-chain"]
+hidden: true
+social_post: |
+  Recent supply-chain attacks changed one boring default for me: package installs should not run arbitrary setup code.
+
+  Quick npm + pip tweaks: disable scripts, add a 7-day age gate, require hashed wheel-only Python installs, and sandbox exceptions.
+---
+
+After the recent wave of supply chain attacks, I changed one boring default on
+my servers and dev machines:
+
+**Package installs should not run arbitrary setup code unless I explicitly ask
+for it.**
+
+This is not theoretical anymore. The
+[XZ backdoor](https://openssf.org/blog/2024/03/30/xz-backdoor-cve-2024-3094/)
+showed how much damage a trusted upstream package can do.
+[`tj-actions/changed-files`](https://www.aquasec.com/blog/github-action-tj-actions-changed-files-compromised/)
+showed how quickly CI secrets can leak. The
+[Axios npm compromise](https://www.stepsecurity.io/blog/axios-compromised-on-npm-malicious-versions-drop-remote-access-trojan)
+used a dependency with a `postinstall` payload. Microsoft's
+[Mini Shai-Hulud write-up](https://www.microsoft.com/en-us/security/blog/2026/05/20/mini-shai-hulud-compromised-antv-npm-packages-enable-ci-cd-credential-theft/)
+is another reminder that attackers are targeting CI/CD credentials directly.
+
+So here is the quick hardening pass I now want on machines that run `npm install`
+or `pip install`.
+
+## npm: disable install scripts and delay new packages
+
+Put this in your user npm config:
+
+```bash
+npm config set --location=user ignore-scripts true
+npm config set --location=user allow-git none
+npm config set --location=user min-release-age 7
+npm config set --location=user audit true
+npm config set --location=user strict-ssl true
+npm config set --location=user save-exact true
+```
+
+The two important ones:
+
+- `ignore-scripts=true` stops npm lifecycle scripts such as `preinstall`,
+  `install`, and `postinstall` from running automatically.
+- `min-release-age=7` tells npm to avoid package versions published less than
+  seven days ago.
+
+The age gate is not magic. A malicious package can wait. But a lot of registry
+attacks get noticed in the first hours or days, and I do not want my servers or
+CI runners to be in the first wave.
+
+You need a recent npm for `min-release-age`. I moved my server to Node `24.16.0`
+through nvm, which bundled npm `11.13.0`. I did not upgrade npm separately.
+
+## pip: wheel-only, hashes, and the same delay
+
+pip is different from npm. It does not have the same general `postinstall`
+lifecycle model, but source builds can still execute package build code. So the
+safer default is: wheels only, hashes required, and no fresh uploads.
+
+```bash
+python3 -m pip config --user set install.only-binary ':all:'
+python3 -m pip config --user set install.require-hashes true
+python3 -m pip config --user set install.uploaded-prior-to P7D
+python3 -m pip config --user set global.no-input true
+```
+
+This makes casual installs fail. That is intentional.
+
+If I type:
+
+```bash
+python3 -m pip install boltons==25.0.0
+```
+
+I want pip to complain that hashes are missing. Server installs should come from
+a pinned, hashed requirements file, not from whatever PyPI returns right now.
+
+pip documents both
+[hash-checking mode](https://pip.pypa.io/en/stable/topics/secure-installs/#hash-checking-mode)
+and
+[`uploaded-prior-to`](https://pip.pypa.io/en/stable/cli/pip_install/#cmdoption-uploaded-prior-to).
+
+## Change install habits too
+
+Config helps, but habits matter.
+
+For Node projects, prefer:
+
+```bash
+npm ci
+```
+
+over:
+
+```bash
+npm install
+```
+
+Keep `package-lock.json` committed.
+
+For Python projects, install from a locked file with hashes:
+
+```bash
+python3 -m pip install -r requirements.lock.txt
+```
+
+If a project cannot do this yet, that is useful information. It means the
+install path still depends on trust and timing.
+
+## Keep an explicit exception path
+
+Some packages really do need install scripts. Native modules compile things.
+Some tools download platform binaries. Some repos use `prepare` to install Git
+hooks.
+
+Fine. Make that explicit.
+
+Run trusted setup commands yourself:
+
+```bash
+npm run prepare
+```
+
+Or build native dependencies in a disposable environment with no secrets:
+
+- no SSH agent
+- no npm or PyPI token
+- no cloud credentials
+- no production `.env`
+- limited outbound network
+
+Then copy the artifact into the real environment.
+
+The point is not "never run setup code." The point is "do not let every
+transitive dependency run setup code by default."
+
+## Where I would start
+
+Start with servers and CI:
+
+1. Disable npm install scripts.
+2. Add the seven-day npm release-age gate.
+3. Make pip wheel-only, hash-required, and seven-day delayed.
+4. Use `npm ci` and locked Python requirements.
+5. Move exceptions into a no-secrets sandbox.
+
+This does not solve every supply chain problem. It will not catch malicious code
+that runs when you import a package. It will not save you from every compromised
+maintainer account.
+
+But it removes one dangerous default:
+
+**Installing dependencies should not automatically execute code on machines full
+of secrets.**
+
+That is a small change with a lot of upside.
+
+## References
+
+- [npm config docs](https://docs.npmjs.com/cli/v11/using-npm/config/)
+- [pip secure installs](https://pip.pypa.io/en/stable/topics/secure-installs/)
+- [pip install options](https://pip.pypa.io/en/stable/cli/pip_install/)
+- [Microsoft: Mini Shai-Hulud](https://www.microsoft.com/en-us/security/blog/2026/05/20/mini-shai-hulud-compromised-antv-npm-packages-enable-ci-cd-credential-theft/)
+- [StepSecurity: Axios compromised on npm](https://www.stepsecurity.io/blog/axios-compromised-on-npm-malicious-versions-drop-remote-access-trojan)
