@@ -513,8 +513,8 @@ async function initMermaidDiagrams() {
 
           // Apply custom dimensions directly to SVG if specified
           if (customWidth) {
-            svgElement.style.width = customWidth;
-            svgElement.style.maxWidth = customWidth; // Override Mermaid's max-width
+            svgElement.style.width = "100%";
+            svgElement.style.maxWidth = "100%";
           }
           if (customHeight) {
             svgElement.style.height = customHeight;
