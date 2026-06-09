@@ -376,16 +376,20 @@ const postsWithErrors = socialPosts.filter(
         });
       });
 
-      // LinkedIn's web share endpoint accepts the article URL only. Copy the
-      // commentary first, then open the share composer with the URL attached.
+      // LinkedIn's web share endpoint accepts the article URL only. Open it
+      // immediately, then copy the commentary for pasting into the composer.
       document.querySelectorAll(".linkedin-btn").forEach(btn => {
         btn.addEventListener("click", async e => {
           e.preventDefault();
 
           const shareUrl = btn.getAttribute("href");
           const text = btn.getAttribute("data-copy") || "";
-          const popup = window.open("about:blank", "_blank");
-          if (popup) popup.opener = null;
+          const popup = shareUrl ? window.open(shareUrl, "_blank") : null;
+          if (popup) {
+            popup.opener = null;
+          } else if (shareUrl) {
+            window.location.href = shareUrl;
+          }
 
           const copied = await copyText(text).catch(() => false);
           setTemporaryLabel(
@@ -393,12 +397,6 @@ const postsWithErrors = socialPosts.filter(
             ".linkedin-label",
             copied ? "Text copied" : "Copy failed"
           );
-
-          if (popup && shareUrl) {
-            popup.location.href = shareUrl;
-          } else if (shareUrl) {
-            window.location.href = shareUrl;
-          }
         });
       });
     </script>
