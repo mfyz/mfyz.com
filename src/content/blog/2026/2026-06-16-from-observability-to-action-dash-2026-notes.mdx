@@ -1,0 +1,108 @@
+---
+title: "From Observability to Action: My DASH 2026 Notes"
+description: "Two things stood out to me at Datadog DASH 2026: agentic automation is closing the loop, and agent observability is becoming a real operational discipline."
+date: 2026-06-16
+slug: "from-observability-to-action-dash-2026-notes"
+tags: ["datadog", "ai", "agents", "observability", "automation"]
+hidden: true
+social_post: |
+  Two things stood out to me at Datadog DASH 2026: agentic automation is closing the loop, and agent observability is becoming a real operational discipline.
+---
+
+import ImageZoom from "@components/ImageZoom.astro";
+
+I attended Datadog DASH this year, and two things stuck with me more than the long list of announcements.
+
+First, Datadog's AI work is clearly moving from "help me understand what happened" toward "help me fix it safely without needing me in every step." Second, agent observability feels much more mature than it did a year ago. Not as a buzzword, but as an actual operational discipline teams will need if agents are going to touch production systems.
+
+That combination is interesting.
+
+Observability has always been about shortening the path from signal to understanding. The DASH 2026 announcements made that path feel shorter again, but in a different way. Now the loop is starting to include action.
+
+## The loop is closing
+
+Traditionally, the incident flow looked something like this:
+
+1. Something breaks.
+2. Monitoring detects it.
+3. A human investigates dashboards, logs, traces, deploys, and recent changes.
+4. The human decides what to do.
+5. The human applies the fix or coordinates with another team.
+
+That workflow is familiar, but it is also full of handoffs. The painful part is not always the investigation itself. It is the context switching, the "who owns this?", the repeated fix for a known failure mode, and the delay between knowing the answer and applying the answer.
+
+Datadog's [Bits Infrastructure Operations](https://www.datadoghq.com/blog/bits-infrastructure-operations/) is the feature that made this feel concrete for me. It is positioned around detecting, investigating, and remediating infrastructure issues with guardrails. Not just surfacing a likely cause. Not just writing a nice summary. Actually moving toward a fix when the system has enough confidence and permission.
+
+That is the part that feels new.
+
+The important detail is the guardrail model. Bits can take automatic action only inside boundaries the team defines. For riskier cases, it prepares the investigation and remediation plan, then asks for approval. That is much more interesting than a generic "AI fixes production" story.
+
+<ImageZoom
+  src="/images/blog/2026/datadog-dash-bits-memory-investigation.webp"
+  alt="Bits investigation view using prior incident memory to verify a likely root cause"
+  width={1200}
+  height={675}
+/>
+
+I do not want agents randomly changing production.
+
+I do want agents to handle boring, repeated, well-understood operational work when the boundaries are clear.
+
+## Guardrails are the product
+
+The more I think about this, the more I think guardrails are not just a safety feature. They are the product surface that makes this usable.
+
+Autonomy without constraints is a demo. Autonomy with scoped permissions, approval paths, audit history, and rollback thinking is an operations tool.
+
+This lines up with something I kept hearing in different forms at DASH: deterministic first. If a workflow can be solved with fixed rules, clear policy, or a normal automation script, do that. You do not need an agent for every step.
+
+Earn the agent.
+
+Use the LLM where ambiguity exists: interpreting noisy context, comparing hypotheses, connecting symptoms across systems, explaining tradeoffs, and preparing a remediation plan. Keep deterministic checks deterministic. Keep permission boundaries explicit.
+
+This is the part many AI tools get wrong. They jump too quickly to "agent does everything." The stronger pattern is boring underneath and intelligent only where it needs to be.
+
+## Agent observability is growing up
+
+The second big takeaway for me was agent observability.
+
+As more teams build agents, the hard question changes from "can the agent do the task?" to "can we understand what the agent did, why it did it, and whether the outcome was good?"
+
+Datadog has been pushing on this with LLM and agent observability for a while, but this year it felt more complete. Their [DASH 2026 roundup](https://www.datadoghq.com/blog/dash-2026-new-feature-roundup-keynote/) talks about Agent Observability, Patterns, Bits Evals, and the broader agentic stack. The interesting part is that these are not just developer debugging tools. They are production operations tools.
+
+For normal software, we expect traces, metrics, logs, alerts, dashboards, and deployment correlation. Agents need the same treatment, but the shape is different.
+
+You need to see the steps. You need to see tool calls. You need to see where the agent branched, retried, looped, or gave up. You need to understand cost and latency. You need evaluations tied back to real production behavior.
+
+<ImageZoom
+  src="/images/blog/2026/datadog-dash-network-config-rollback.webp"
+  alt="Datadog network configuration rollback view showing agent instructions, applied fix, and a config diff"
+  width={1200}
+  height={634}
+/>
+
+The Bits investigation UI also stuck with me. The step-by-step workflow, with parallel branches evaluating different hypotheses, is exactly how this kind of investigation should feel. An agent should not hide the reasoning process behind one magical answer. It should expose enough structure that a human can inspect the path.
+
+That design pattern is bigger than incident response. Any serious agent workflow will need this kind of inspection surface if it is going to operate near production.
+
+## The seriousness is the signal
+
+The strongest signal from DASH was not that Datadog added AI features. Everyone is adding AI features.
+
+The stronger signal is that Datadog is trying to close the operational loop around agents: detect, investigate, act, observe, evaluate, and improve.
+
+That is the right direction.
+
+Agents should not replace every workflow. Many workflows should stay deterministic. Many production changes should still require human approval. But for messy operational work like incident investigation, release validation, repetitive remediation, and triage, the tooling is starting to look credible.
+
+The other thing that made DASH feel different was seeing how seriously high-stakes organizations are taking this. NASDAQ, large banks, betting platforms, and other critical infrastructure teams were showing real agent workflows, not toy demos.
+
+That says something about where this is going.
+
+There is a new scale of software engineering forming around agents. It is not just about writing more code or generating more summaries. It is about operating complex systems with enough precision, context, auditability, and control that serious companies can actually trust the workflow.
+
+That is where tools like Datadog become important. If agents are going to operate at that scale, observability cannot be an afterthought. It has to be part of the operating model.
+
+I have liked Datadog for a long time, and DASH reminded me why. They are not just adding AI features around the edges. They are building the kind of control plane teams need when agentic operations become real production work.
+
+I am also grateful my organization is one of their power users. Kudos to my team too. We were the top company by number of speakers at the conference, which is a pretty cool signal of how deeply this work is already happening around me.
