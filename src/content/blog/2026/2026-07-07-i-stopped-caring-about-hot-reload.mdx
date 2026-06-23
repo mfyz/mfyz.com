@@ -1,0 +1,54 @@
+---
+title: "I Stopped Caring About Hot Reload"
+description: "Agentic development changed how much I care about hot reload. I care less about preserving every browser state and more about seeing the truth quickly."
+date: 2026-07-07
+slug: "i-stopped-caring-about-hot-reload"
+tags: ["web-development", "developer-experience", "nextjs", "hmr", "ai-coding"]
+hidden: true
+social_post: |
+  Agentic development changed how much I care about hot reload.
+
+  I care less about preserving every browser state and more about seeing the truth quickly.
+---
+
+I used to care about hot reload much more than I do now.
+
+That made sense for the old loop. Big monitor, editor on one side, browser on the other, save every twenty seconds, watch the UI change. In that mode, hot reload felt like the center of frontend developer experience.
+
+That is not my default loop anymore.
+
+Most of my development is agentic now. I write a plan or a bounded request, let the agent make the change, inspect the diff, run checks, and reload the workflow I care about. The browser still matters, but it is less of a live canvas and more of a verifier.
+
+That changed my relationship with frontend precision too.
+
+If I ask an agent to build an internal admin screen, I am usually not checking whether spacing is off by 1px. I want it clean, functional, responsive, and honest about the data. The bar is not "pixel-perfect live-tweaked interface" for every surface. A lot of the time, functional-first review is the right review.
+
+There are still product surfaces where the details matter. Of course. But for many tools, prototypes, and internal workflows, I am much more relaxed than I used to be.
+
+That makes hot reload feel less sacred.
+
+HMR is still a great feature. The [webpack HMR docs](https://webpack.js.org/concepts/hot-module-replacement/) describe the promise well: update modules without a full reload and keep application state. When I am tuning a complex interaction, preserving state is useful. Styling, animation, forms, and deep UI flows all benefit from it.
+
+But the moment I press refresh to verify that hot reload did not lie to me, hot reload has already lost.
+
+That is the trust problem. Dan Abramov wrote about this in [My Wishlist for Hot Reloading](https://overreacted.io/my-wishlist-for-hot-reloading/) in 2018. Hot reload stops being worth it when you are not sure it worked, when it breaks in confusing ways, or when refreshing is easier.
+
+The [Next.js Fast Refresh docs](https://nextjs.org/docs/architecture/fast-refresh) show the tradeoff clearly. Most edits should update quickly, but some changes re-run importers, some fall back to a full reload, class component state is not preserved, and Hooks can re-run during refresh. Those rules are reasonable. I just do not want my whole workflow to depend on remembering them.
+
+The other reason I care less now: most tools are fast enough.
+
+Frameworks and build systems got much better. They cache well. They track dependency graphs. They rebuild changed parts instead of starting from scratch. In many projects, a reload is under a second, or at least single-digit seconds. Vite, Astro, Next, Turbopack, and similar tools made the boring path pretty good.
+
+If reload is cheap, HMR becomes a nice optimization. It is not the foundation.
+
+The caveat is important. This only works when reloads are cheap.
+
+If a project has a painful startup path, huge compile cost, slow seed data, fragile auth, or ten manual clicks before the useful screen, HMR matters a lot. For heavy apps, it may be the only affordable loop.
+
+But that is also the smell.
+
+If a clean reload is unbearable, the answer is not only better HMR. It is also faster startup, better seeds, deep links into expensive flows, smaller imports, reload-safe screens, and fewer local development traps. The [Next.js local development guide](https://nextjs.org/docs/app/guides/local-development) is full of this kind of tuning advice for a reason.
+
+So I still like HMR. I just stopped worshiping it.
+
+The real developer experience metric is not "did the browser avoid a refresh?" It is simpler: how quickly can I see the truth?
