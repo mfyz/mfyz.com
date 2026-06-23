@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="750" height="450">
+  <style>text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }</style>
+  <rect width="100%" height="100%" fill="white"/>
+  <text x="375" y="28" text-anchor="middle" font-size="16" font-weight="600">Weather condition distribution</text>
+  <path d="M 375 235 L 375 115 A 120 120 0 0 1 381.9488157231434 354.79863922451625 Z" fill="#4a90d9" stroke="white" stroke-width="2"/>
+  <path d="M 375 235 L 381.9488157231434 354.79863922451625 A 120 120 0 0 1 288.5243441653617 151.80167701227873 Z" fill="#50c878" stroke="white" stroke-width="2"/>
+  <path d="M 375 235 L 288.5243441653617 151.80167701227873 A 120 120 0 0 1 338.99717640320966 120.5281838483446 Z" fill="#f4a460" stroke="white" stroke-width="2"/>
+  <path d="M 375 235 L 338.99717640320966 120.5281838483446 A 120 120 0 0 1 375 115 Z" fill="#da70d6" stroke="white" stroke-width="2"/>
+  <path d="M 494.94964924280094 231.52413370092762 L 529.9349636052846 230.5103393636982 L 525 230.5103393636982" fill="none" stroke="#4a90d9" stroke-width="1.5"/>
+  <circle cx="494.94964924280094" cy="231.52413370092762" r="2" fill="#4a90d9"/>
+  <text x="525" y="234.5103393636982" text-anchor="start" font-size="10" fill="#4a90d9" font-weight="500">rain (49.1%)</text>
+  <path d="M 265.99049930680826 285.1690019695532 L 225 285.1690019695532" fill="none" stroke="#50c878" stroke-width="1.5"/>
+  <circle cx="265.99049930680826" cy="285.1690019695532" r="2" fill="#50c878"/>
+  <text x="225" y="289.1690019695532" text-anchor="end" font-size="10" fill="#50c878" font-weight="500">cloudy (38.1%)</text>
+  <path d="M 311.7959469287975 132.9938841276043 L 299.681836756817 113.44271191872846 L 225 113.44271191872846" fill="none" stroke="#f4a460" stroke-width="1.5"/>
+  <circle cx="311.7959469287975" cy="132.9938841276043" r="2" fill="#f4a460"/>
+  <text x="225" y="117.44271191872846" text-anchor="end" font-size="10" fill="#f4a460" font-weight="500">clear (8.0%)</text>
+  <path d="M 356.7876132563391 116.39009750826314 L 351.47566712277137 81.79554261483989 L 225 81.79554261483989" fill="none" stroke="#da70d6" stroke-width="1.5"/>
+  <circle cx="356.7876132563391" cy="116.39009750826314" r="2" fill="#da70d6"/>
+  <text x="225" y="85.79554261483989" text-anchor="end" font-size="10" fill="#da70d6" font-weight="500">snow (4.8%)</text>
+</svg>
