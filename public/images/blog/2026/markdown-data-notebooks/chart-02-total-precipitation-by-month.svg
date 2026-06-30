@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="540" viewBox="0 0 700 540">
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  </style>
+  <rect width="100%" height="100%" fill="white"/>
+  <text x="350" y="28" text-anchor="middle" font-size="16" font-weight="600">Total precipitation by month</text>
+  <g transform="translate(0, 50)">
+    <g transform="translate(0, 0)">
+      <text x="170" y="20" text-anchor="end" font-size="13">2024-01</text>
+      <rect x="180" y="0" width="369.74559686888455" height="30" fill="#4a90d9" rx="3"/>
+      <text x="557.7455968688846" y="20" font-size="12" fill="#333">944.7</text>
+    </g>
+    <g transform="translate(0, 40)">
+      <text x="170" y="20" text-anchor="end" font-size="13">2024-02</text>
+      <rect x="180" y="0" width="221.29158512720153" height="30" fill="#50c878" rx="3"/>
+      <text x="409.29158512720153" y="20" font-size="12" fill="#333">565.4</text>
+    </g>
+    <g transform="translate(0, 80)">
+      <text x="170" y="20" text-anchor="end" font-size="13">2024-03</text>
+      <rect x="180" y="0" width="427.7103718199608" height="30" fill="#f4a460" rx="3"/>
+      <text x="615.7103718199608" y="20" font-size="12" fill="#333">1092.8</text>
+    </g>
+    <g transform="translate(0, 120)">
+      <text x="170" y="20" text-anchor="end" font-size="13">2024-04</text>
+      <rect x="180" y="0" width="299.9608610567514" height="30" fill="#da70d6" rx="3"/>
+      <text x="487.9608610567514" y="20" font-size="12" fill="#333">766.4</text>
+    </g>
+    <g transform="translate(0, 160)">
+      <text x="170" y="20" text-anchor="end" font-size="13">2024-05</text>
+      <rect x="180" y="0" width="368.53228962818" height="30" fill="#20b2aa" rx="3"/>
+      <text x="556.53228962818" y="20" font-size="12" fill="#333">941.6</text>
+    </g>
+    <g transform="translate(0, 200)">
+      <text x="170" y="20" text-anchor="end" font-size="13">2024-06</text>
+      <rect x="180" y="0" width="319.37377690802344" height="30" fill="#ff6b6b" rx="3"/>
+      <text x="507.37377690802344" y="20" font-size="12" fill="#333">816</text>
+    </g>
+    <g transform="translate(0, 240)">
+      <text x="170" y="20" text-anchor="end" font-size="13">2024-07</text>
+      <rect x="180" y="0" width="241.252446183953" height="30" fill="#4ecdc4" rx="3"/>
+      <text x="429.252446183953" y="20" font-size="12" fill="#333">616.4</text>
+    </g>
+    <g transform="translate(0, 280)">
+      <text x="170" y="20" text-anchor="end" font-size="13">2024-08</text>
+      <rect x="180" y="0" width="351.5068493150685" height="30" fill="#95a5a6" rx="3"/>
+      <text x="539.5068493150685" y="20" font-size="12" fill="#333">898.1</text>
+    </g>
+    <g transform="translate(0, 320)">
+      <text x="170" y="20" text-anchor="end" font-size="13">2024-09</text>
+      <rect x="180" y="0" width="266.692759295499" height="30" fill="#4a90d9" rx="3"/>
+      <text x="454.692759295499" y="20" font-size="12" fill="#333">681.4</text>
+    </g>
+    <g transform="translate(0, 360)">
+      <text x="170" y="20" text-anchor="end" font-size="13">2024-10</text>
+      <rect x="180" y="0" width="236.94716242661448" height="30" fill="#50c878" rx="3"/>
+      <text x="424.94716242661445" y="20" font-size="12" fill="#333">605.4</text>
+    </g>
+    <g transform="translate(0, 400)">
+      <text x="170" y="20" text-anchor="end" font-size="13">2024-11</text>
+      <rect x="180" y="0" width="440" height="30" fill="#f4a460" rx="3"/>
+      <text x="628" y="20" font-size="12" fill="#333">1124.2</text>
+    </g>
+    <g transform="translate(0, 440)">
+      <text x="170" y="20" text-anchor="end" font-size="13">2024-12</text>
+      <rect x="180" y="0" width="295.18590998043055" height="30" fill="#da70d6" rx="3"/>
+      <text x="483.18590998043055" y="20" font-size="12" fill="#333">754.2</text>
+    </g>
+  </g>
+</svg>

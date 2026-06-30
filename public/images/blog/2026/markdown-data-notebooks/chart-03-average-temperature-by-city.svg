@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="380" viewBox="0 0 700 380">
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  </style>
+  <rect width="100%" height="100%" fill="white"/>
+  <text x="350" y="28" text-anchor="middle" font-size="16" font-weight="600">Average temperature by city</text>
+  <g transform="translate(0, 50)">
+    <g transform="translate(0, 0)">
+      <text x="170" y="20" text-anchor="end" font-size="13">Singapore</text>
+      <rect x="180" y="0" width="440" height="30" fill="#4a90d9" rx="3"/>
+      <text x="628" y="20" font-size="12" fill="#333">27.6</text>
+    </g>
+    <g transform="translate(0, 40)">
+      <text x="170" y="20" text-anchor="end" font-size="13">Cairo</text>
+      <rect x="180" y="0" width="384.2028985507246" height="30" fill="#50c878" rx="3"/>
+      <text x="572.2028985507246" y="20" font-size="12" fill="#333">24.1</text>
+    </g>
+    <g transform="translate(0, 80)">
+      <text x="170" y="20" text-anchor="end" font-size="13">Buenos Aires</text>
+      <rect x="180" y="0" width="282.17391304347825" height="30" fill="#f4a460" rx="3"/>
+      <text x="470.17391304347825" y="20" font-size="12" fill="#333">17.7</text>
+    </g>
+    <g transform="translate(0, 120)">
+      <text x="170" y="20" text-anchor="end" font-size="13">Tokyo</text>
+      <rect x="180" y="0" width="266.231884057971" height="30" fill="#da70d6" rx="3"/>
+      <text x="454.231884057971" y="20" font-size="12" fill="#333">16.7</text>
+    </g>
+    <g transform="translate(0, 160)">
+      <text x="170" y="20" text-anchor="end" font-size="13">Istanbul</text>
+      <rect x="180" y="0" width="258.2608695652174" height="30" fill="#20b2aa" rx="3"/>
+      <text x="446.2608695652174" y="20" font-size="12" fill="#333">16.2</text>
+    </g>
+    <g transform="translate(0, 200)">
+      <text x="170" y="20" text-anchor="end" font-size="13">New York</text>
+      <rect x="180" y="0" width="207.2463768115942" height="30" fill="#ff6b6b" rx="3"/>
+      <text x="395.2463768115942" y="20" font-size="12" fill="#333">13</text>
+    </g>
+    <g transform="translate(0, 240)">
+      <text x="170" y="20" text-anchor="end" font-size="13">London</text>
+      <rect x="180" y="0" width="186.52173913043475" height="30" fill="#4ecdc4" rx="3"/>
+      <text x="374.52173913043475" y="20" font-size="12" fill="#333">11.7</text>
+    </g>
+    <g transform="translate(0, 280)">
+      <text x="170" y="20" text-anchor="end" font-size="13">Reykjavik</text>
+      <rect x="180" y="0" width="62.17391304347826" height="30" fill="#95a5a6" rx="3"/>
+      <text x="250.17391304347825" y="20" font-size="12" fill="#333">3.9</text>
+    </g>
+  </g>
+</svg>
