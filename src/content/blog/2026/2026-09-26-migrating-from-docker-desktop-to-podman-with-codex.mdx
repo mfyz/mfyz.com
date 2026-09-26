@@ -1,15 +1,17 @@
 ---
-title: "Migrating from Docker Desktop to Podman with Codex"
-description: "Moving my local containers and databases to Podman, keeping Docker CLI and Compose, and having Codex handle the migration with me."
+title: "Migrating from Docker Desktop to Podman"
+description: "Moving my local containers and databases to Podman, keeping Docker CLI and Compose, and using an AI agent to help with the migration."
 date: 2026-09-26
 slug: "migrating-from-docker-desktop-to-podman-with-codex"
 tags: ["podman", "docker", "codex", "ai-coding", "developer-experience"]
 hidden: true
 social_post: |
-  I asked Codex to migrate my Mac from Docker Desktop to Podman. We kept Docker CLI and Compose, moved 21 volumes, and recovered from a failed backup before switching over.
+  I migrated my Mac from Docker Desktop to Podman with an AI agent's help. I kept Docker CLI and Compose, moved 21 volumes, and recovered from a failed backup before switching over.
 ---
 
-I wanted Docker Desktop off my Mac while keeping my usual `docker ps` and `docker compose` workflow. I also wanted everything installed through Homebrew. Pretty straightforward request, until we counted what was already running.
+Podman has been gaining attention: Podman Desktop passed [five million downloads in August 2026](https://podman-desktop.io/blog/5-million-lessons-learned), up from three million less than a year earlier. Downloads aren't active users, and Docker remains widely used in [Stack Overflow's 2025 survey](https://survey.stackoverflow.co/2025/technology#1-cloud-development). I wouldn't take that as evidence that Docker is fading.
+
+I wanted Docker Desktop off my Mac while keeping my usual `docker ps` and `docker compose` workflow. I also wanted everything installed through Homebrew. Pretty straightforward request, until I counted what was already running.
 
 There were 11 running application containers, three stopped ones, and a separate Portainer extension container. MySQL, PostgreSQL, Redis, local websites, a reverse proxy. Across 21 volumes, there was about 23 GB of data to preserve.
 
@@ -17,7 +19,7 @@ Uninstalling the app was going to be the last step.
 
 ## Keeping my existing workflow
 
-We installed Podman, the standalone Docker CLI, Compose, Buildx, and credential helpers through Homebrew. Podman runs a Linux VM on macOS; mine ended up with six CPUs and 8 GB of memory. Later in the session, I asked for Podman Desktop too. I still wanted a GUI for looking at containers and logs.
+I installed Podman, the standalone Docker CLI, Compose, Buildx, and credential helpers through Homebrew. Podman runs a Linux VM on macOS; mine ended up with six CPUs and 8 GB of memory. Later in the session, I asked for Podman Desktop too. I still wanted a GUI for looking at containers and logs.
 
 The CLI compatibility comes from pointing Docker at [Podman's Docker-compatible socket](https://podman-desktop.io/docs/migrating-from-docker/using-the-docker_host-environment-variable). Once the Podman machine is running:
 
@@ -27,20 +29,16 @@ docker context create podman --docker "host=unix://${PODMAN_SOCKET}"
 docker context use podman
 ```
 
-The data took more work. We saved the existing images and container filesystem changes, stopped the databases cleanly, and backed up their volumes. Then we restored everything into Podman, preserving ports, mounts, network aliases, and restart policies. Keeping the existing image versions also avoided accidentally turning this into a database upgrade.
+The data took more work. I saved the existing images and container filesystem changes, stopped the databases cleanly, and backed up their volumes. Then I restored everything into Podman, preserving ports, mounts, network aliases, and restart policies. Keeping the existing image versions also avoided accidentally turning this into a database upgrade.
 
-The result was the same 11 applications running, with the other three still stopped. Podman Desktop showed the same Compose projects. One detail from testing: our Buildx setup needed `docker build --load` to make built images available locally. Compose builds handled that automatically.
+The result was the same 11 applications running, with the other three still stopped. Podman Desktop showed the same Compose projects. One detail from testing: my Buildx setup needed `docker build --load` to make built images available locally. Compose builds handled that automatically.
 
-## Having Codex do the migration with me
+## Using an agent for the migration
 
-I gave Codex the outcome I wanted and asked it to check what would be affected. It inspected the machine before changing anything, counted the containers, traced their volumes and Compose files, and recorded the existing web responses.
+I used Codex, but the same approach applies to any coding agent with terminal access: give it the outcome, ask it to inspect the machine, and have it verify the result.
 
-That inventory was useful immediately. A reverse-proxy route already returned HTTP 502 before we touched anything. Without a baseline, we could easily have mistaken that for a migration problem.
+I started with an inventory of containers, volumes, and existing web responses. That caught a reverse-proxy route already returning HTTP 502. Having a baseline saved me from treating an old problem as a new one.
 
-The run had some rough edges. A large MySQL backup stream failed, and the recovery script restarted the original services. Codex changed the backup method to write directly to disk and checked the helper container's exit status before continuing. Homebrew also unexpectedly cleaned up unrelated packages during installation, which Codex then restored. This took retries and actual downtime.
+There were retries and actual downtime. When a MySQL backup stream failed, the recovery script restarted the original services. The agent switched to writing the backup directly to disk and checked that it completed before continuing.
 
-I liked being able to adjust the request while it worked. When I asked for the desktop app, Codex installed it and verified that it could see the existing machine and containers. Privileged cleanup still went through macOS's administrator prompt.
-
-The useful part was how much checking it could carry through: compare PostgreSQL database lists, check the web endpoints again, build and run a Compose smoke test, restart the VM, and confirm that the right containers came back. It also updated my shell helpers and left recovery notes.
-
-I now have Podman Desktop, my familiar Docker commands, and the migrated data. The backups and original Docker VM data are still there. I'll keep those around while I use the new setup for real work.
+I found the follow-through most useful: comparing database lists, checking endpoints, testing a Compose build, and restarting the VM to confirm the right containers came back. I now have Podman Desktop and my familiar Docker commands. I'm keeping the backups and original Docker VM data while I use the new setup for real work.

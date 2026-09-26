@@ -129,6 +129,8 @@ flowchart TD
   - Append the post slug and `?preview=1` for hidden posts
 
 ### Blog Post Creation Guidelines
+Write personal experience in first person singular ("I/my"), not "we/our". Describe an assisting agent's actions separately.
+
 When creating new blog posts:
 1. **File Location**: Place posts in `src/content/blog/YYYY/` folder where YYYY is the year
 2. **File Naming**: Use format `YYYY-MM-DD-slug-name.mdx` (e.g., `2025-09-08-cdn-stacking-proxying-why-bad.mdx`)
