@@ -130,7 +130,7 @@ flowchart TD
 
 ### Blog Post Creation Guidelines
 Write personal experience in first person singular ("I/my"), not "we/our". Describe an assisting agent's actions separately.
-Put copyable agent prompts in fenced `text` blocks with short, hard-wrapped lines (around 63 characters).
+Put copyable agent prompts in fenced `text` blocks with short, hard-wrapped lines (around 70 characters).
 
 When creating new blog posts:
 1. **File Location**: Place posts in `src/content/blog/YYYY/` folder where YYYY is the year

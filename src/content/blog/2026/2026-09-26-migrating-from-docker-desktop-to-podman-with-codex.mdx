@@ -38,12 +38,11 @@ I used Codex, but the same approach applies to any coding agent with terminal ac
 Getting started only took a few sentences. Here's a simplified version of my request, including Podman Desktop, which I added afterward:
 
 ```text
-Migrate my Mac from Docker Desktop to Podman and Podman
-Desktop, installing everything through Homebrew. Keep Docker
-CLI and Compose working, and configure my zshrc to use Podman's
-Docker context. First, count my containers and explain what
-will be affected. Preserve my containers and data, verify they
-work, then remove Docker Desktop.
+Migrate my Mac from Docker Desktop to Podman and Podman Desktop,
+installing everything through Homebrew. Keep Docker CLI and Compose
+working, and configure my zshrc to use Podman's Docker context. First,
+count my containers and explain what will be affected. Preserve my
+containers and data, verify they work, then remove Docker Desktop.
 ```
 
 I started with an inventory of containers, volumes, and existing web responses. That caught a reverse-proxy route already returning HTTP 502. Having a baseline saved me from treating an old problem as a new one.
