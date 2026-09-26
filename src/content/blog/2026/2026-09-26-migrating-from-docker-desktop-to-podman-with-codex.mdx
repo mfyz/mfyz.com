@@ -9,9 +9,9 @@ social_post: |
   I migrated my Mac from Docker Desktop to Podman with an AI agent's help. I kept Docker CLI and Compose, moved 21 volumes, and recovered from a failed backup before switching over.
 ---
 
-Podman has been gaining attention: Podman Desktop passed [five million downloads in August 2026](https://podman-desktop.io/blog/5-million-lessons-learned), up from three million less than a year earlier. Downloads aren't active users, and Docker remains widely used in [Stack Overflow's 2025 survey](https://survey.stackoverflow.co/2025/technology#1-cloud-development). I wouldn't take that as evidence that Docker is fading.
+I like open source software, and I was curious whether Podman could fully replace Docker Desktop in my daily workflow. So far, it has.
 
-I wanted Docker Desktop off my Mac while keeping my usual `docker ps` and `docker compose` workflow. I also wanted everything installed through Homebrew. Pretty straightforward request, until I counted what was already running.
+I wanted to keep my usual `docker ps` and `docker compose` commands and install everything through Homebrew. Before switching, I counted what was already running.
 
 There were 11 running application containers, three stopped ones, and a separate Portainer extension container. MySQL, PostgreSQL, Redis, local websites, a reverse proxy. Across 21 volumes, there was about 23 GB of data to preserve.
 
