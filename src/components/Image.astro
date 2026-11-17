@@ -9,6 +9,7 @@ const {
   height,
   class: className = "",
   caption = "",
+  captionAlign = "center",
   center = false,
 } = Astro.props;
 
@@ -32,7 +33,12 @@ const combinedClassName = center ? `${className} mx-auto` : className;
   />
   {
     (hasDefaultSlot || captionIsString) && (
-      <div class="-mt-3 mb-2 text-center text-sm italic text-gray-600 opacity-70 dark:text-gray-400">
+      <div
+        class:list={[
+          "-mt-3 mb-2 text-sm italic text-gray-600 opacity-70 dark:text-gray-400",
+          captionAlign === "left" ? "text-left" : "text-center",
+        ]}
+      >
         {hasDefaultSlot ? <slot /> : caption}
       </div>
     )
