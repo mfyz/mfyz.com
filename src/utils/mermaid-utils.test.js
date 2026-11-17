@@ -1,124 +1,18 @@
 import { describe, it, expect } from "vitest";
+import { readFileSync } from "node:fs";
+import vm from "node:vm";
 
-// Inline the utility functions for testing
-// These are extracted from the public/js/mermaid.js file
-
-function parseMermaidComment(commentLine) {
-  if (!commentLine || !commentLine.trim().startsWith("%%")) {
-    return {};
-  }
-
-  const line = commentLine.trim();
-  const attributes = {};
-
-  // Parse width (supports pixels, percentages, and plain numbers)
-  const widthMatch = line.match(/width=["']?([^"'\s]+)["']?/i);
-  if (widthMatch) {
-    const width = widthMatch[1];
-    attributes.width =
-      width.includes("%") || width.includes("px") ? width : `${width}px`;
-  }
-
-  // Parse height (supports pixels, percentages, and plain numbers)
-  const heightMatch = line.match(/height=["']?([^"'\s]+)["']?/i);
-  if (heightMatch) {
-    const height = heightMatch[1];
-    attributes.height =
-      height.includes("%") || height.includes("px") ? height : `${height}px`;
-  }
-
-  // Parse alignment
-  const alignMatch = line.match(/align=["']?([^"'\s]+)["']?/i);
-  if (alignMatch) {
-    attributes.align = alignMatch[1];
-  }
-
-  // Check for center keyword
-  if (line.match(/\bcenter\b/i)) {
-    attributes.align = "center";
-  }
-
-  // Check for border keyword
-  if (line.match(/\bborder\b/i)) {
-    attributes.border = true;
-  }
-
-  // Parse scale (supports decimals like 2.7)
-  const scaleMatch = line.match(/scale=["']?([\d.]+%?)["']?/i);
-  if (scaleMatch) {
-    attributes.scale = scaleMatch[1];
-  }
-
-  // Parse scalePos (supports percentages and decimals like 60% or 55)
-  const scalePosMatch = line.match(/scalePos=["']?([\d.]+%?)["']?/i);
-  if (scalePosMatch) {
-    attributes.scalePos = scalePosMatch[1];
-  }
-
-  return attributes;
-}
-
-function processScaleValue(scaleValue, defaultValue = "1.8") {
-  if (!scaleValue) {
-    return defaultValue;
-  }
-
-  // Remove quotes and trim
-  const cleanScale = scaleValue.replace(/["']/g, "").trim();
-
-  // Validate that it's a valid decimal number
-  // Allow: 1, 1.5, .5 but not: 10., abc, empty
-  if (/^(\d+(\.\d+)?|\.\d+)$/.test(cleanScale)) {
-    return cleanScale;
-  }
-
-  return defaultValue;
-}
-
-function processScalePosValue(scalePosValue, defaultValue = "center") {
-  if (!scalePosValue) {
-    return defaultValue;
-  }
-
-  // Remove quotes and trim
-  const cleanScalePos = scalePosValue.replace(/["']/g, "").trim();
-
-  // Validate that it's a valid decimal number with optional %
-  if (/^\d*\.?\d+%?$/.test(cleanScalePos)) {
-    // Add % if it's missing
-    return cleanScalePos.includes("%") ? cleanScalePos : cleanScalePos + "%";
-  }
-
-  return defaultValue;
-}
-
-function extractMermaidStyling(chartContent) {
-  if (!chartContent) {
-    return { chartDefinition: "", styling: {} };
-  }
-
-  const lines = chartContent.split("\n");
-  let styling = {};
-  let chartDefinition = chartContent;
-
-  // Check if first line is a Mermaid comment with styling
-  if (lines[0].trim().startsWith("%%")) {
-    styling = parseMermaidComment(lines[0]);
-
-    // Remove the styling comment from chart definition
-    const remainingLines = lines.slice(1).join("\n").trim();
-    chartDefinition = remainingLines || "";
-  }
-
-  return {
-    chartDefinition,
-    styling,
-  };
-}
-
-function isPieChart(chartDefinition) {
-  return chartDefinition.trim().toLowerCase().includes("pie title");
-}
+// Exercise the shipped script instead of copies of its parser functions.
+const source = readFileSync(
+  new URL("../../public/js/mermaid.js", import.meta.url),
+  "utf8"
+);
+const context = vm.createContext({
+  document: { addEventListener() {} },
+  setTimeout() {},
+});
+vm.runInContext(source, context);
+const { parseMermaidComment, extractMermaidStyling, isPieChart } = context;
 
 describe("Mermaid Utility Functions", () => {
   describe("parseMermaidComment", () => {
@@ -206,64 +100,6 @@ describe("Mermaid Utility Functions", () => {
     it("should return empty object for empty input", () => {
       const result = parseMermaidComment("");
       expect(result).toEqual({});
-    });
-  });
-
-  describe("processScaleValue", () => {
-    it("should return valid decimal values", () => {
-      expect(processScaleValue("2.7")).toBe("2.7");
-      expect(processScaleValue("1.5")).toBe("1.5");
-      expect(processScaleValue("0.8")).toBe("0.8");
-      expect(processScaleValue(".5")).toBe(".5");
-      expect(processScaleValue("3")).toBe("3");
-    });
-
-    it("should clean quoted values", () => {
-      expect(processScaleValue('"2.5"')).toBe("2.5");
-      expect(processScaleValue("'1.8'")).toBe("1.8");
-    });
-
-    it("should return default for invalid values", () => {
-      expect(processScaleValue("abc")).toBe("1.8");
-      expect(processScaleValue("10.")).toBe("1.8");
-      expect(processScaleValue("")).toBe("1.8");
-      expect(processScaleValue(null)).toBe("1.8");
-    });
-
-    it("should use custom default value", () => {
-      expect(processScaleValue("invalid", "2.0")).toBe("2.0");
-    });
-  });
-
-  describe("processScalePosValue", () => {
-    it("should handle percentage values", () => {
-      expect(processScalePosValue("60%")).toBe("60%");
-      expect(processScalePosValue("75%")).toBe("75%");
-    });
-
-    it("should add percentage to plain numbers", () => {
-      expect(processScalePosValue("60")).toBe("60%");
-      expect(processScalePosValue("75.5")).toBe("75.5%");
-    });
-
-    it("should clean quoted values", () => {
-      expect(processScalePosValue('"60%"')).toBe("60%");
-      expect(processScalePosValue("'75'")).toBe("75%");
-    });
-
-    it("should handle decimal percentages", () => {
-      expect(processScalePosValue("67.5%")).toBe("67.5%");
-      expect(processScalePosValue("67.5")).toBe("67.5%");
-    });
-
-    it("should return default for invalid values", () => {
-      expect(processScalePosValue("abc")).toBe("center");
-      expect(processScalePosValue("")).toBe("center");
-      expect(processScalePosValue(null)).toBe("center");
-    });
-
-    it("should use custom default value", () => {
-      expect(processScalePosValue("invalid", "50%")).toBe("50%");
     });
   });
 

@@ -1,0 +1,57 @@
+.mermaid-container {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 2rem 0;
+}
+
+.mermaid-diagram {
+  --pele-bg: #ffffff;
+  --pele-fg: #1f2937;
+  --pele-muted: #6b7280;
+  --pele-line: #64748b;
+  --pele-surface: #f8fafc;
+  --pele-surface-alt: #f1f5f9;
+  --pele-border: #cbd5e1;
+  --pele-accent: #7c3aed;
+  --pele-font: Rubik, sans-serif;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.dark .mermaid-diagram {
+  --pele-bg: #111827;
+  --pele-fg: #e5e7eb;
+  --pele-muted: #9ca3af;
+  --pele-line: #94a3b8;
+  --pele-surface: #1f2937;
+  --pele-surface-alt: #172033;
+  --pele-border: #475569;
+  --pele-accent: #c4b5fd;
+}
+
+.mermaid-diagram > svg {
+  display: block;
+  max-width: 100%;
+  margin: 0;
+}
+
+.mermaid-diagram.diagram-card {
+  border: 1px solid var(--pele-border);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  background: var(--pele-bg);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.05);
+}
+
+.diagram-compatibility-note,
+.diagram-error {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: #6b7280;
+}
+
+.dark .diagram-compatibility-note,
+.dark .diagram-error {
+  color: #9ca3af;
+}
