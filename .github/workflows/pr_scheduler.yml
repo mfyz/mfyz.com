@@ -4,8 +4,8 @@ on:
   pull_request:
     types: [opened, edited, synchronize, reopened, ready_for_review]
   schedule:
-    # GitHub cron is best-effort. Avoid the busy start of the hour and retry often.
-    - cron: '2-57/5 * * * *'
+    # Check twice an hour, away from the busy start of the hour.
+    - cron: '5,35 * * * *'
   workflow_dispatch:
     inputs:
       dry_run:
