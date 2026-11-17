@@ -1,0 +1,113 @@
+---
+title: "How I review my agents' plans before they write code"
+description: "I want to understand what my agents understood and give them direction. My plans still live in Markdown, but reviewing them has evolved beyond chat and plain files."
+date: 2026-12-01
+slug: "how-i-review-agent-plans-before-they-write-code"
+tags: ["agents", "planning", "developer-tools", "plannotator"]
+hidden: true
+social_post: |
+  I want to understand what my agents understood before they start building. My plans still live in Markdown, but the way I review them is changing: comments on passages, choices I can answer, and visuals I can interact with.
+---
+
+import Image from "@components/Image.astro";
+import ImageZoom from "@components/ImageZoom.astro";
+
+Nobody wants to read tons of bad writing from agents. But we do want to understand their understanding. Did it get what I'm trying to do? Where does it need me to steer it?
+
+I [wrote earlier about planning with agents before writing code](/why-i-spend-hours-planning-with-ai-before-writing-code/). We're evolving from working in plain Markdown files into easier ways to work with them. Still operating on Markdown, but interacting differently.
+
+Over time, I've borrowed ideas from other tools to make that experience more unique to me. And in this post, I want to talk about something really close to it: [Plannotator](https://plannotator.ai/).
+
+My version is super tangled with my own harness and the tooling around it. I've considered turning it into a skill, but I don't need to. Plannotator already does this really well and works across different agent tools.
+
+<Image
+  src="/images/blog/2026/agent-planning-loop.svg"
+  alt="Planning loop: document the solution, research the unknowns, refine the solution, and repeat"
+  width={960}
+  height={680}
+/>
+
+In the initial exploration, the first two steps happen together. We prompt the agent with an idea, and the unknowns get documented as it researches the solution. Then the agent needs our help to slowly address each unknown, or change the direction of the previous thinking through our input.
+
+## Help me see where you need me
+
+The most basic way to do that is to just chat with the agent and keep staring at the Markdown output or artifact. That's what we did before, keeping things in a single `plan.md`.
+
+Skills like `grill-me` made this easier. Instruct the agent to ask for your opinions, directions, and choices. Have it work through the unknowns with you, one at a time. That helps, even when the interaction is still in chat or in the form of Markdown files.
+
+But we still have to reread the output and figure out what the agent needs from us. Which decisions are waiting on me? Can those just be questions I can answer? In my setup, they appear alongside the plan, and my answers get folded back into it.
+
+Sometimes all the agent needs is an answer to a simple question, with a recommendation to help me choose:
+
+<Image
+  src="/images/blog/2026/plannotator-question-choices.webp"
+  alt="A Plannotator question asking whether to ship a retry worker behind a flag, with Yes recommended, No, and Other options"
+  width={480}
+  height={310}
+  center
+>
+  A simple question in <a href="https://plannotator.ai/inbox/">Plannotator Inbox</a>. Screenshot from their website.
+</Image>
+
+Sometimes it's not that simple.
+
+In a lot of cases, the agent already has a set opinion. Maybe it's wrong, or I just want to say, "Drop this idea," or "Change this." That's where commenting helps.
+
+We previously did this by describing where the "thing" we wanted to change or remove was.
+
+> The third paragraph, under that heading, after the bit about caching.
+
+That's a lot of manual copying and describing for something I can already see on the screen.
+
+<ImageZoom
+  src="/images/blog/2026/plannotator-plan-review.webp"
+  alt="Plannotator showing a selected plan heading, an inline comment, and an annotations sidebar"
+  width={896}
+  height={510}
+>
+  Plan review in <a href="https://plannotator.ai/">Plannotator</a>. Screenshot from their website.
+</ImageZoom>
+
+## Markdown doesn't have to be the interface
+
+Agents don't particularly care whether the output is human-readable prose or code. You can ask for Morse code. You can ask for Java code. So why stay stuck with Markdown when we want to see their understanding in a richer presentation?
+
+An actual presentation, or a rich interactive mockup. All of these can be done in a single format: HTML. You can explicitly ask the agent to produce it and click through what it's proposing before building the real thing.
+
+If you ask "make it nicer to read" or "visualize it for me," I bet it'll produce an HTML document. You can also be explicit:
+
+```text
+Show your understanding of this solution in a single HTML file.
+Make the proposed flow and unresolved decisions easy to inspect.
+Include an interactive mockup where it helps explain the behavior.
+Keep the written plan updated with the decisions we make.
+```
+
+The plan can still stay in Markdown in my vault. I'm asking for an easier way to see what the agent understood, without rereading the whole thing.
+
+<ImageZoom
+  src="/images/blog/2026/plannotator-html-annotation.webp"
+  alt="Plannotator displaying a rendered HTML page with highlighted text and a comment in the annotations sidebar"
+  width={1440}
+  height={902}
+>
+  Annotating rendered HTML in <a href="https://github.com/backnotprop/plannotator#html-artifacts-live-sites-and-guided-reviews">Plannotator</a>. Screenshot from their repository.
+</ImageZoom>
+
+## Richer output needs an easier way to give feedback
+
+If we want richer HTML output, how about giving feedback back? How do we describe our changes now? I want to point at the thing and comment on it.
+
+That's where tools like Plannotator make our lives easier. Select the text, or point to an element, and leave the feedback there. The agent gets the context with it.
+
+In my own setup, I collect comments, removal requests, and answers while reviewing, then submit them together. The agent revises the plan and the document refreshes in place. Revision stays in plan mode. Starting implementation is a separate action, once I'm happy with the direction.
+
+## Plannotator gives you a ready-made version
+
+[Plannotator](https://plannotator.ai/) is worth a look if you want this kind of review experience in your existing agent workflow. It's free and open source, runs locally, and integrates with agents including Claude Code and Codex.
+
+You can select text in a plan, comment on it, mark deletions, and send the feedback back to the agent. Its [HTML review](https://docs.plannotator.ai/open-source/workflows/html) also lets you annotate visible text or point to elements in a rendered page. It has [version history and plan comparisons](https://docs.plannotator.ai/open-source/workflows/version-history), so you can see what changed between revisions.
+
+My own version fits the tasks and plans I already keep in my vault. Pulling it out of that setup would mean untangling the review UI from my task runner and document handling. Plannotator already gives this experience a home across different agent tools, so I'd point people there rather than package up my personal version.
+
+If you're already asking agents to plan first, try giving that plan the same attention you'd give a document someone asked you to review. Point to the assumptions you disagree with. Cut the scope you don't need. Get the decisions into the plan before asking the agent to build it.

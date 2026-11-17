@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="680" viewBox="0 0 960 680" role="img" aria-labelledby="title desc">
+  <title id="title">An iterative planning loop</title>
+  <desc id="desc">Document the solution, research the unknowns, then incorporate the learnings into the solution. Repeat until the approach is clear enough to build.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="9" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M2 2 L9 6 L2 10" fill="none" stroke="#85919d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="960" height="680" fill="#faf9f6"/>
+  <g fill="none" stroke="#85919d" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)">
+    <path d="M621.602 148.758 A230 230 0 0 1 706.506 369.939"/>
+    <path d="M621.602 511.242 A230 230 0 0 1 263.871 408.665"/>
+    <path d="M253.494 290.061 A230 230 0 0 1 338.398 148.758"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+    <rect x="340" y="40" width="280" height="120" rx="8" fill="#eef2f8" stroke="#cbd5e1" stroke-width="1.5"/>
+    <text x="480" y="80" fill="#253247" font-size="25" font-weight="600">Document</text>
+    <text x="480" y="110" fill="#253247" font-size="25" font-weight="600">the solution</text>
+    <text x="480" y="138" fill="#5e6c7c" font-size="15">Make your current thinking visible.</text>
+
+    <rect x="539.186" y="385" width="280" height="120" rx="8" fill="#f8f0e3" stroke="#e4d1b2" stroke-width="1.5"/>
+    <text x="679.186" y="425" fill="#59482e" font-size="25" font-weight="600">Research</text>
+    <text x="679.186" y="455" fill="#59482e" font-size="25" font-weight="600">the unknowns</text>
+    <text x="679.186" y="483" fill="#7b6a51" font-size="15">Test assumptions. Find evidence.</text>
+
+    <rect x="110" y="270" width="280" height="120" rx="8" fill="#eaf2ed" stroke="#bfd2c5" stroke-width="1.5"/>
+    <text x="250" y="310" fill="#304e3d" font-size="25" font-weight="600">Refine</text>
+    <text x="250" y="340" fill="#304e3d" font-size="25" font-weight="600">the solution</text>
+    <text x="250" y="368" fill="#5c7665" font-size="15">Fold the learnings back into the plan.</text>
+
+    <text x="480" y="625" fill="#717b85" font-size="15">Repeat until the approach is clear enough to build.</text>
+  </g>
+</svg>
