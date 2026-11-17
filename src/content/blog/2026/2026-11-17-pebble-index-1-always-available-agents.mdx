@@ -1,0 +1,79 @@
+---
+title: "Pebble Index 01 gave my thoughts somewhere to go, sometimes to an agent"
+description: "Pebble Index 01 makes it easy to get thoughts out of my head. Keeping that growing collection useful takes a little gardening, sometimes with help from agents."
+date: 2026-11-17
+slug: "pebble-index-1-always-available-agents"
+tags: ["agents", "pebble", "wearables", "automation"]
+hidden: true
+social_post: |
+  Most of my random ideas show up between things. School pickup, driving, waiting around. I just want to say it, save it, and move on. A wearable that gets it out of my head, and sometimes into an agent's hands.
+---
+
+import Image from "@components/Image.astro";
+
+I already had agents available from my phone. I could send a message and have something working in the background before I got back to my computer.
+
+Then I got a button on my finger.
+
+<Image
+  src="/images/blog/2026/pebble-index-01-ring-on-handlebar.webp"
+  alt="Black Pebble Index 01 ring on a hand holding a bicycle handlebar"
+  width={1200}
+  height={720}
+>
+  Photo: <a href="https://repebble.com/blog/meet-pebble-index-01-external-memory-for-your-brain">Pebble</a>.
+</Image>
+
+The [Pebble Index 01](https://repebble.com/index) is a ring with a microphone and a physical button. Hold the button, say something, let go. It records while you press and sends the audio to your phone over Bluetooth. The phone handles transcription and whatever happens next. The ring itself isn't running an agent.
+
+You never charge it. Pebble estimates two to three years of battery life, and at my current usage, I expect to get close to three years out of it. That's one less device to remember to charge and put back on.
+
+That sounds like a small convenience over pulling out a phone. But it gives my thoughts somewhere to go, even more readily than the thing already sitting in my pocket. Sometimes a thought goes to an agent. Most of the time, I just want it out of my head.
+
+## A brain dumping ground
+
+An idea, a question, something I need to remember. I can say it and get back to what I was doing. I don't want to keep thinking about it or start a conversation. I just want to take a note and move on. It's surprising how many of these little thoughts show up in the moments between things, hundreds of times a day, wherever I happen to be.
+
+It's a one-way conversation. Say it and forget it. I don't expect a response or any interaction with the note, at least yet. I don't need feedback on my watch or phone screen either. Often I don't have an opportunity to look, like when I'm picking up my kids from school or driving. Oh my god, driving. Thousands of random thoughts and ideas come to me then. I just want to capture one and keep my eyes on the road. I can decide what to do with it later.
+
+### Gardening essentials
+
+It adds up fast, though. Make capturing a thought this easy and pretty soon you have a gigantic inbox. Small passing ideas sit next to things that could become substantial projects. Looking at all of them together can become its own work.
+
+I think of it as gardening. Clear out the weeds: ideas that sounded interesting for a moment but don't need to go anywhere. Prune the ones that have grown too big, and combine related notes. Water the promising ones with a little more thought. Give the bigger ideas a place in the right project, where I can think them through properly. Agents can help me sort through the pile, but I still need to decide what's worth keeping.
+
+### Can it get overwhelming?
+
+But with an outlet this easy to reach, I also wonder whether capturing so much could become overwhelming.
+
+A friend of mine and I were talking about whether running lots of agents at once could encourage more scattered, ADHD-like behavior. He sometimes gets overwhelmed by his thoughts and has experienced panic attacks. We wondered whether having an outlet this readily available would make him feel more anxious, with even more thoughts turning into things to manage.
+
+His experience was the opposite. He felt calmer because he could get a thought out of his head quickly, knowing it was saved somewhere. Having agents help organize those thoughts made it easier too. I liked that perspective. The same button that makes it easy to start more work can also make it easier to put a thought down and leave it for later.
+
+## Sometimes I send it to an agent
+
+Pebble's mobile app is the default destination for recordings. It works, but I want my notes to end up alongside everything else I'm already keeping and working on.
+
+I connected the ring to my second brain (an Obsidian vault) through a [webhook](https://developer.repebble.com/index-01/webhooks/). A recording becomes a todo in my inbox. I can leave it there, or say "plan previous" to have an agent plan the last capture. "Start previous" starts work on the last eligible capture. Those are commands I built into my own system.
+
+The phone still processes the recording, and sending it to my server needs a connection. Having the button within reach makes it easy to capture a thought. Starting agent work is a separate choice.
+
+## Being open makes a difference
+
+Pebble's [mobile app is open source](https://github.com/coredevices/mobileapp). I wasn't happy with how the webhook calls worked, so I asked for HMAC signing to let my server verify incoming requests. They suggested I create a PR. So I did, and [it was merged](https://github.com/coredevices/mobileapp/pull/373).
+
+<Image
+  src="/images/blog/2026/pebble-index-01-webhook-signing.webp"
+  alt="Pebble webhook settings with HMAC-SHA256 request signing enabled and the signing secret masked"
+  width={360}
+  height={808}
+  captionAlign="left"
+>
+  Webhook signing enabled in the Pebble app.
+</Image>
+
+I like being able to connect a physical device to tools I already use, and improve the integration when something is missing. I don't have to move my whole workflow into the device maker's app. Knowing it's open source has given me tons of ideas I've researched and considered building. Some could stay as private modifications for my own use. If an idea is useful more broadly, I can contribute it back to the community too.
+
+Pebble currently lists Index 01 at $75 with no subscription. For my use, the appeal is the simple hardware and the ability to send recordings into my own system.
+
+Earlier, [getting agents onto my phone](/vibe-anywhere-claude-code-on-the-go-from-my-phone/) changed where I could use them. The ring gives me a quicker place to put a thought, whether I want help with it now or just want to remember it later.
