@@ -1,0 +1,71 @@
+---
+title: "DIY heartbeats for your AI agents"
+description: "One cron entry, one Markdown prompt, and a server that stays on. A small way to give an agent something to check on its own schedule."
+date: 2026-12-15
+slug: "diy-heartbeats-for-your-ai-agents"
+tags: ["agents", "automation", "self-hosting"]
+hidden: true
+social_post: |
+  Take one cron job and one Markdown file. That’s enough to wake up an agent on a schedule and give it something to check. Here’s how I set mine up.
+---
+
+import Image from "@components/Image.astro";
+
+I have scripts that run on a schedule. Sometimes what I want is for someone to look at what came in overnight and tell me if anything jumps out. Are three customers describing the same problem in three different ways? That's a good job for an agent to wake up for.
+
+I call that a heartbeat. It's essentially agents on cron. A clock starts a fresh agent run, the agent checks one thing, and the run ends. If everything looks fine, it can leave a line in a log and get out of the way.
+
+## A desktop app may be all you need
+
+The big desktop apps are already pretty good at recurring work. I’d start there for a daily briefing or a weekly review, especially if I already keep the computer on for tasks that use local files. You can also schedule work in ChatGPT or Claude Cowork that runs remotely. In Cowork, choosing a local folder ties the task to that computer, and it needs to be awake with Claude Desktop open. See the [ChatGPT task docs](https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt) and [Claude Cowork task docs](https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-claude-cowork).
+
+In Cowork, open **Scheduled** in the sidebar and select a task. You can see past and upcoming runs, edit the prompt or frequency, pause the task, or run it on demand.
+
+<Image
+  src="/images/blog/2026/claude-cowork-scheduled-tasks.webp"
+  alt="Claude Cowork with Scheduled selected in the left sidebar and the Scheduled tasks page open"
+  width={1440}
+  height={809}
+>
+  The Scheduled page in Claude Cowork. Source: <a href="https://academy.claude.com/tutorials/delegating-and-scheduling-tasks-in-claude-cowork">Claude Academy</a>.
+</Image>
+
+I like the server option when the files and tools I want the agent to use are already on a server. My laptop can be shut, and the check still runs where the work happens.
+
+## The smallest server version
+
+Say you already export support reports to a folder on your server. Put a short prompt in `/srv/feedback-check/HEARTBEAT.md` next to the `feedback/` folder:
+
+```markdown
+Read the support reports added in the last day in feedback/.
+Look for separate reports that point to the same user-facing problem.
+If you find a likely pattern, notify me via Telegram with a short
+summary and the report IDs. Keep guesses about the cause explicit.
+Otherwise, leave a one-line summary in the run log. Don't edit reports.
+```
+
+On a Linux server with an authenticated Codex CLI, add this to your user's crontab. It runs daily at 8 a.m. in the server's timezone. Replace the CLI path and try the command in your terminal first. The Telegram step assumes the agent already has a Telegram tool. Without one, have it write the summary to the run log.
+
+```cron
+0 8 * * * cd /srv/feedback-check && /usr/local/bin/codex exec --sandbox read-only --skip-git-repo-check - < HEARTBEAT.md >> heartbeat.log 2>&1
+```
+
+“My download is empty” and “the export has headers but no rows” could be reports of the same problem. A script can count reports. The agent can compare what people actually saw and give me a couple of examples to investigate. A completion loop keeps coming back to one unfinished task. A heartbeat comes back tomorrow to see what changed.
+
+## What my heartbeat files look like
+
+My own setup has one cron job I call the heartbeat tick. On its half-hour cadence, the tick reads a global `HEARTBEAT.md` at the root of my vault and looks through my projects for their own `HEARTBEAT.md` files. Each file groups checks under headings like `30min`, `every3h`, and `nightly`. The tick reads the headings to see what's due, then starts a fresh agent run for each due bullet. Project checks run in the context of that project.
+
+Here's a small example in the same format:
+
+```markdown
+# 30min
+
+- Check whether the latest report finished. Flag failures that need attention.
+
+# nightly
+
+- Review the backup logs. Note errors that have shown up more than once.
+```
+
+I can tell what runs when just by reading the file. An agent can add a check under the right heading or move an existing one to a different frequency with a Markdown edit. When I want to see all the checks for a project, they're in one place.
