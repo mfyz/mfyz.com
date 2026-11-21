@@ -9,6 +9,7 @@ import remarkToc from "remark-toc";
 import { remarkEmoticons } from "./src/remark-plugins/remark-emoticons.mjs";
 import { rehypeLinkPreview } from "./src/remark-plugins/rehype-link-preview.mjs";
 import { rehypeGlossary } from "./src/remark-plugins/rehype-glossary.mjs";
+import draftReviewIntegration from "./scripts/draft-review/server.mjs";
 
 // Define shared Shiki configuration
 const shikiConfig = {
@@ -36,6 +37,7 @@ export default defineConfig({
     }),
     sitemap(),
     tailwind(),
+    draftReviewIntegration(),
   ],
   markdown: {
     remarkPlugins: [remarkToc, remarkEmoticons],

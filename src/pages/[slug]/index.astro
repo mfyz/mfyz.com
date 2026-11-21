@@ -45,6 +45,23 @@ export const prerender = true;
   }
 </script>
 
+{import.meta.env.DEV && (
+  <script is:inline type="module">
+    let activeToken;
+    function activateReview() {
+      const token = new URLSearchParams(location.hash.slice(1)).get("draft-review");
+      if (activeToken && activeToken !== token) return location.reload();
+      if (activeToken || !/^[a-f0-9]{48}$/.test(token ?? "")) return;
+      activeToken = token;
+      import("/__draft-review/client.js")
+        .then(({ mountReview }) => mountReview(document.querySelector("[data-draft-review-content]"), token))
+        .catch(error => console.error("Draft review:", error));
+    }
+    window.addEventListener("hashchange", activateReview);
+    activateReview();
+  </script>
+)}
+
 <Layout
   title={title}
   description={description}
@@ -52,6 +69,26 @@ export const prerender = true;
   size="small"
   noContentWrapperClass
 >
+  {import.meta.env.DEV && (
+    <script is:inline slot="head">
+      // Align Astro's initial history restore before its router module runs.
+      (() => {
+        const reviewToken = new URLSearchParams(location.hash.slice(1)).get("draft-review");
+        if (!/^[a-f0-9]{48}$/.test(reviewToken ?? "")) return;
+        try {
+          const position = JSON.parse(sessionStorage.getItem(`draft-review-scroll:${reviewToken}`));
+          if (Number.isFinite(position?.top)) {
+            history.scrollRestoration = "manual";
+            if (Number.isFinite(history.state?.scrollY)) {
+              history.replaceState({ ...history.state, scrollY: position.top }, "");
+            }
+          }
+        } catch {
+          // Review still works with browser storage disabled.
+        }
+      })();
+    </script>
+  )}
   <!-- Markdown source discovery for AI agents -->
   <link
     slot="head"
@@ -87,7 +124,7 @@ export const prerender = true;
     frontmatter={metadata.frontmatter || {}}
     headings={headings}
   >
-    <div class="main-content-wrapper">
+    <div class="main-content-wrapper" data-draft-review-content={import.meta.env.DEV ? "" : undefined}>
       <Content />
     </div>
     <div
