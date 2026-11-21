@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 305" role="img" aria-labelledby="title desc">
+  <title id="title">HTTP polling and WebSocket traffic on the same timeline</title>
+  <desc id="desc">The first row shows repeating HTTP requests from three view timers. After the server detects a board change, the board waits for its next poll. The second row shows a WebSocket notice at detection and later messages when other views have updates.</desc>
+  <style>
+    text { font: 18px system-ui, sans-serif; fill: #24354f; }
+    .label { font-weight: 700; }
+    .note { font-size: 16px; fill: #50617b; }
+    .wait { fill: #8b4c22; }
+    .track { fill: none; stroke: #b5c3d4; stroke-width: 2; }
+    .http { fill: #587699; }
+    .socket { fill: #237669; }
+  </style>
+  <defs>
+    <rect id="request" width="17" height="13" rx="3"/>
+  </defs>
+
+  <rect x="1" y="1" width="718" height="303" rx="15" fill="#fff" stroke="#cbd5e2"/>
+  <rect x="17" y="50" width="686" height="104" rx="10" fill="#f1f5fa" stroke="#dae3ee"/>
+  <rect x="17" y="170" width="686" height="87" rx="10" fill="#eaf6f2" stroke="#d3e7e0"/>
+
+  <text x="395" y="30" text-anchor="middle" class="note wait">Server detects board change</text>
+  <path d="M395 38V246" fill="none" stroke="#ae6942" stroke-width="2" stroke-dasharray="4 4"/>
+  <path class="track" d="M195 91H674 M195 218H674"/>
+
+  <text x="34" y="87" class="label">HTTP polling</text>
+  <text x="34" y="111" class="note">Three view timers</text>
+  <g class="http">
+    <use href="#request" x="205" y="84"/><use href="#request" x="244" y="84"/><use href="#request" x="281" y="84"/>
+    <use href="#request" x="324" y="84"/><use href="#request" x="363" y="84"/><use href="#request" x="400" y="84"/>
+    <use href="#request" x="443" y="84"/><use href="#request" x="482" y="84"/><use href="#request" x="519" y="84"/>
+    <use href="#request" x="562" y="84"/><use href="#request" x="601" y="84"/><use href="#request" x="638" y="84"/>
+  </g>
+  <rect x="395" y="120" width="48" height="8" rx="3" fill="#d99e76"/>
+  <text x="455" y="130" class="note wait">I wait for the board to catch up</text>
+
+  <text x="34" y="214" class="label">WebSocket</text>
+  <text x="34" y="238" class="note">One connection</text>
+  <g class="socket">
+    <use href="#request" x="395" y="212"/><use href="#request" x="516" y="212"/><use href="#request" x="624" y="212"/>
+  </g>
+  <text x="405" y="202" class="note">Board updates right away</text>
+
+  <path class="track" d="M195 275H674 M665 268L674 275L665 282"/>
+  <text x="195" y="296" class="note">Time</text>
+</svg>
