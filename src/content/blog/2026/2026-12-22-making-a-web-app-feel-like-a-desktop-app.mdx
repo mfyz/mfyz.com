@@ -1,0 +1,86 @@
+---
+title: "Making a web app feel like a desktop app"
+description: "How I kept work in place in the browser, and what benchmarks showed when I changed how data reaches the screen."
+date: 2026-12-22
+slug: "making-a-web-app-feel-like-a-desktop-app"
+tags: ["web", "performance", "websockets", "agents"]
+social_post: |
+  I wanted my web app to feel more like a desktop app. One thing made a bigger difference than I expected: an agent could finish in the background and its badge would update without moving what I was reading.
+---
+
+import Image from "@components/Image.astro";
+
+I spend most of my time in an app after it has already loaded. That's when I notice the little waits: opening the next item, switching back to a window, or waiting to see whether something finished.
+
+I built a web app to keep track of projects, notes, and the agents working on them. When I have a few agents working at once, I'll jump between todos, switch from a todo's notes to the agent session working on it, and glance at the board to see which sessions are still running and which are done.
+
+That's a lot of little checks. Is the todo up to date? Did the agent write anything new? Has another session finished? If each view makes its own API calls to answer those questions, even quick requests can add up. How the app gets those updates shapes how fast it feels long after the first page load.
+
+## Replicating the dock/taskbar UX
+
+I needed a way to see what I had open and switch between things I was working on. If I paused halfway through something, I wanted to come back to the same spot. And if work was still running in the background, I wanted to see its status at a glance.
+
+So I re-created the dock, a familiar pattern from desktop apps. In my app, minimized sessions show up as thumbnails along the left edge.
+
+<iframe
+  src="/demos/agent-session-windows.html"
+  title="An open task with four minimized sessions in the dock"
+  width="100%"
+  height="464"
+  loading="lazy"
+  sandbox=""
+  style="display: block; width: 100%; margin-bottom: 1.5rem; border: 1px solid #b8c3d6; border-radius: 6px;"
+></iframe>
+
+Here I'm tracing an export bug. In the dock I can see one session still running, two ready for review, and one that's done. I can glance at their badges while I read the open session, then pick up the next one when I'm ready.
+
+## How I sped up the flow of data
+
+As I added more features, the front end started to feel the cost of keeping everything up to date. Each new view had its own idea of what to check and how often. Even when the requests were quick, a change could sit on the server until the right view checked again. I noticed it most when I had several sessions open and was switching between them.
+
+### When polling started to add up
+
+I started with polling. It was quick to set up, and I hadn't thought through how much work those timers would do as the app grew.
+
+The board checked for changes, the task badge checked its status, and session history checked for new messages. I felt the cost once I started keeping several task windows open. Every window added more checks, even when nothing had changed.
+
+<Image
+  src="/images/blog/2026/polling-vs-websocket.svg"
+  alt="HTTP polling and WebSocket traffic share one time axis. The HTTP row shows repeated requests from three view timers and a wait for the next board poll. The WebSocket row shows a board notice at detection, followed by occasional updates."
+  width={720}
+  height={305}
+  center
+  caption="Illustrative timing. Each filled bar is an HTTP request or a WebSocket message."
+/>
+
+REST endpoints work well when a view needs to fetch something. When several views poll continuously, each request can repeat auth checks, state checks, and response prep. A lot of that work happens even when there's nothing new to show.
+
+I went through everything the page was checking and decided when each view actually needed an update. Then I moved those updates onto one shared WebSocket per browser window.
+
+Each view can still update at its own pace. The open session gets new history entries as they arrive. The server checks board revisions every five seconds and sends a notice when something changes. That check is shared, and the board then fetches the affected data over HTTP.
+
+Minimizing a session pauses its history updates and keeps its draft and scroll position. I still want the completion badge, so the summary stays subscribed. Opening the session again catches up on what I missed. If the socket is unavailable, HTTP polling is still there as a fallback.
+
+### Do the work before the user asks for it
+
+When I'm clearing my inbox, I open one email after another. I skim it, archive it, add a label, or mark it as junk. Some days I'm in archive, archive, archive mode and go through several emails in a second. A small wait between emails is enough to break that rhythm.
+
+While I read one email, the app fetches the ones around it. The median time to show the next email dropped from **215–288 ms to 41–53 ms**, or **76–86% less waiting** across matching scenarios. I tested with synthetic mail in Chromium, using five samples per device and cache scenario. I tracked how long the inbox took to open separately. On desktop, that cold load got slower over the full set of email changes.
+
+I applied the same idea on the server by keeping snapshots ready for frequently requested data. The Projects endpoint used to read project files, count todos, and collect Git data. Moving that work into a snapshot let the endpoint serve a result that was already prepared. In normal use, the median Projects API response time fell from **1,319 ms to 2 ms** after that change.
+
+### I want my app to keep up with me
+
+Take the dock in the mockup. In the browser test, I minimized five agent sessions. When one finished, its thumbnail switched to **Done** while the window was still tucked away. I opened it and saw the agent's last message and the half-written reply I'd left there. All five sessions shared one connection. I also checked that reopening a session still fetched its latest messages over HTTP when the socket was unavailable.
+
+<iframe
+  src="/demos/agent-session-windows.html#switching"
+  title="Switching between the export investigation and CSV documentation tasks, with the unsent reply still in place when the first task reopens"
+  width="100%"
+  height="464"
+  loading="lazy"
+  sandbox=""
+  style="display: block; width: 100%; margin-bottom: 1.5rem; border: 1px solid #b8c3d6; border-radius: 6px;"
+></iframe>
+
+A desktop app feels fast when it keeps up with what I'm doing. For this app, that meant having the next thing ready and letting the rest update in the background.
