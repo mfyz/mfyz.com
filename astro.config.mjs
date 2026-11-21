@@ -23,6 +23,7 @@ const shikiConfig = {
 // https://astro.build/config
 export default defineConfig({
   site: "https://mfyz.com",
+  devToolbar: { enabled: false },
   server: {
     port: parseInt(process.env.PORT || "6543"),
     host: true,

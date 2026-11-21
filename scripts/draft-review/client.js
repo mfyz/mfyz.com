@@ -200,6 +200,11 @@ export async function mountReview(content, token) {
         bottom: calc(14px + env(safe-area-inset-bottom)); white-space: nowrap;
         max-width: calc(100vw - 32px);
       }
+      .mobile-label { display: none; }
+      @media (max-width: 600px) {
+        .desktop-label { display: none; }
+        .mobile-label { display: inline; }
+      }
       @media (max-width: 360px) {
         .bar button { padding-inline: 5px; font-size: 12px; }
       }
@@ -275,8 +280,8 @@ export async function mountReview(content, token) {
     </section>
     <div class="working-ring" aria-hidden="true" hidden></div>
     <div class="bar" role="region" aria-label="Draft review">
-      <button type="button" class="pick" aria-label="Pick element" aria-pressed="false" title="Pick an element inside a mockup or diagram"><span aria-hidden="true">🎯</span> <span class="pick-label">Pick element</span></button>
-      <button type="button" class="count" aria-expanded="false"><span aria-hidden="true">📝</span> <span class="count-label">0 changes</span></button>
+      <button type="button" class="pick" aria-label="Pick element" aria-pressed="false" title="Pick an element inside a mockup or diagram"><span class="desktop-label" aria-hidden="true">🎯</span> <span class="pick-label desktop-label">Pick element</span><span class="mobile-label">Pick</span></button>
+      <button type="button" class="count" aria-expanded="false"><span aria-hidden="true">📝</span> <span class="count-label desktop-label">0 changes</span><span class="mobile-label count-compact">0</span></button>
       <button type="button" class="send" disabled><span aria-hidden="true">📤</span> <span class="send-label">Send Feedback</span></button>
       <div class="working" role="status" hidden><span class="spinner" aria-hidden="true"></span> Agent working…</div>
     </div>
@@ -314,6 +319,7 @@ export async function mountReview(content, token) {
   const highlights = globalThis.CSS?.highlights;
   const count = ui.querySelector(".count");
   const countLabel = ui.querySelector(".count-label");
+  const countCompact = ui.querySelector(".count-compact");
   const send = ui.querySelector(".send");
   const sendLabel = ui.querySelector(".send-label");
   const workingStatus = ui.querySelector(".working");
@@ -453,6 +459,9 @@ export async function mountReview(content, token) {
     const working = state === "submitted";
     countLabel.textContent = `${items.length} ${items.length === 1 ? "change" : "changes"}` +
       (alternatives.length ? ` · ${alternatives.length} ${alternatives.length === 1 ? "option set" : "option sets"}` : "");
+    count.setAttribute("aria-label", countLabel.textContent);
+    countCompact.textContent = String(items.length) +
+      (alternatives.length ? ` · ${alternatives.length}` : "");
     bar.dataset.working = String(working);
     send.hidden = count.hidden = pickButton.hidden = working;
     workingStatus.hidden = !working;
