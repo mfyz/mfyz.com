@@ -31,6 +31,7 @@ const captionIsString =
 <!-- Thumbnail image that triggers the zoom dialog -->
 <button
   id={uniqueId}
+  data-draft-review-widget={import.meta.env.DEV ? "ImageZoom" : undefined}
   class="m-0 block w-full cursor-zoom-in p-0 focus:outline-none"
   aria-label="Click to zoom image"
 >

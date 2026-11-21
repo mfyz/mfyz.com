@@ -22,7 +22,7 @@ const captionIsString =
 const combinedClassName = center ? `${className} mx-auto` : className;
 ---
 
-<div class="img-wrapper">
+<div class="img-wrapper" data-draft-review-widget={import.meta.env.DEV ? "Image" : undefined}>
   <img
     src={src}
     alt={alt}

@@ -1,4 +1,5 @@
 ---
+import { createHash } from "node:crypto";
 import { type CollectionEntry } from "astro:content";
 import BlogPost from "@layouts/BlogPost.astro";
 import Layout from "@layouts/Layout.astro";
@@ -18,6 +19,9 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
+const reviewRevision = import.meta.env.DEV
+  ? createHash("sha256").update(JSON.stringify([post.body, post.data])).digest("hex")
+  : undefined;
 
 const { Content, headings } = await post.render();
 const { title, description } = post.data;
@@ -124,7 +128,7 @@ export const prerender = true;
     frontmatter={metadata.frontmatter || {}}
     headings={headings}
   >
-    <div class="main-content-wrapper" data-draft-review-content={import.meta.env.DEV ? "" : undefined}>
+    <div class="main-content-wrapper" data-draft-review-content={reviewRevision}>
       <Content />
     </div>
     <div

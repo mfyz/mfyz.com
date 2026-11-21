@@ -129,6 +129,14 @@ function rememberScroll(content, token, round, status) {
   return {
     capture,
     saveForReload,
+    advance(nextRound) {
+      round = nextRound;
+      pinned = false;
+      if (!restoring) {
+        keepCheckpoint = false;
+        save(capture());
+      }
+    },
     pin(position = capture()) {
       if (pinned) return;
       pinned = true;
@@ -160,15 +168,21 @@ export async function mountReview(content, token) {
     }
   }
   if (!initial?.ok) return;
-  const { round, status } = await initial.json();
+  const { round: initialRound, status, alternatives: initialAlternatives, assetRevision } = await initial.json();
+  let round = initialRound;
+  let alternatives = initialAlternatives ?? [];
   const scrollMemory = rememberScroll(content, token, round, status);
-  const storageKey = `draft-review:${token}:${round}`;
-  let items = [];
-  try {
-    items = JSON.parse(sessionStorage.getItem(storageKey)) ?? [];
-  } catch {
-    // Feedback can still be submitted if browser storage is unavailable.
+  const storageKey = () => `draft-review:${token}:${round}`;
+
+  function loadItems() {
+    try {
+      return JSON.parse(sessionStorage.getItem(storageKey())) ?? [];
+    } catch {
+      return [];
+    }
   }
+
+  let items = loadItems();
 
   const host = document.createElement("div");
   const ui = host.attachShadow({ mode: "open" });
@@ -247,6 +261,11 @@ export async function mountReview(content, token) {
         position: fixed; box-sizing: border-box; pointer-events: none; z-index: 2147483644;
         border: 2px solid #e6a007; background: #ffd96530; border-radius: 3px;
       }
+      .options { max-height: min(33vh, 260px); overflow: auto; display: grid; gap: 6px; }
+      .options button { text-align: left; white-space: pre-wrap; }
+      .options button[aria-pressed="true"] { border-color: #8053c0; background: #e8d8ff; color: #311650; }
+      .alternatives-action { border-color: #8053c0; }
+      .outline[data-kind="alternatives"] { border-color: #8053c0; background: #ba8eff40; }
       .outline[data-kind="delete"] { border-color: #b4232e; background: #ff7d7d30; }
       .outline[data-kind="selection"] { border-color: #f3c751; background: #fff4b930; }
     </style>
@@ -265,9 +284,11 @@ export async function mountReview(content, token) {
     <div class="selection" aria-label="Selection tools" hidden>
       <div class="actions pick-tools">
         <button type="button" class="comment" title="Enter"><span aria-hidden="true">💬</span> Comment</button>
+        <button type="button" class="alternatives-action">Alternatives</button>
         <button type="button" class="delete danger" title="Delete or Backspace"><span aria-hidden="true">🗑️</span> Delete</button>
       </div>
       <form hidden>
+        <div class="options" role="group" aria-label="Alternatives" hidden></div>
         <textarea aria-label="Comment" placeholder="Leave a comment" rows="3" maxlength="3000" required></textarea>
         <div class="actions">
           <button type="button" class="remove-comment danger" aria-label="Delete comment" title="Delete comment" hidden><span aria-hidden="true">🗑️</span></button>
@@ -281,6 +302,7 @@ export async function mountReview(content, token) {
   const style = document.createElement("style");
   style.textContent = `
     @property --draft-review-angle { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+    ::highlight(draft-review-alternatives) { background: #cfaff9; color: #231034; }
     ::highlight(draft-review-comment) { background: #ffd965a6; }
     ::highlight(draft-review-delete) { background: #ff7d7da6; text-decoration: line-through; }
     ::highlight(draft-review-selection), .draft-review-active ::selection {
@@ -303,6 +325,7 @@ export async function mountReview(content, token) {
   const tools = ui.querySelector(".selection");
   const buttons = ui.querySelector(".pick-tools");
   const form = ui.querySelector("form");
+  const options = ui.querySelector(".options");
   const comment = ui.querySelector("textarea");
   const removeComment = ui.querySelector(".remove-comment");
   const pickButton = ui.querySelector(".pick");
@@ -318,6 +341,9 @@ export async function mountReview(content, token) {
   let submitting = false;
   let manualPick = false;
   let editing;
+  let editorKind = "comment";
+  let activeAlternative;
+  let selectedOption = null;
   let picking = false;
   let submitGesture;
   const widgets = mountWidgets(content, {
@@ -339,13 +365,16 @@ export async function mountReview(content, token) {
   function pickElement(item, target) {
     setPicking(false);
     if (state !== "open" || submitting || !item) return;
-    const existing = items.find(note => note.kind === "comment" && note.widget === item.widget &&
-      note.selector === item.selector && note.source === item.source && note.start === item.start &&
-      (item.start === undefined || note.quote === item.quote));
+    const sameTarget = note => note.widget === item.widget && note.selector === item.selector &&
+      note.source === item.source && note.start === item.start &&
+      (item.start === undefined || note.quote === item.quote);
+    const pending = alternatives.find(sameTarget);
+    if (pending) return openAlternatives(pending);
+    const existing = items.find(note => ["comment", "alternatives"].includes(note.kind) && sameTarget(note));
     selectElement(item, target);
     if (existing) {
       editing = existing;
-      openComment();
+      openComment(existing.kind);
     }
   }
 
@@ -396,8 +425,17 @@ export async function mountReview(content, token) {
     };
   }
 
-  function anchor({ start, quote }) {
-    return restoreRange(content, start, quote);
+  function anchor({ start, quote, prefix, suffix }) {
+    const original = restoreRange(content, start, quote);
+    if (original) return original;
+    const text = content.textContent;
+    const at = text.indexOf(quote);
+    if (at < 0) return null;
+    if (text.indexOf(quote, at + 1) === -1) return restoreRange(content, at, quote);
+    const context = `${prefix ?? ""}${quote}${suffix ?? ""}`;
+    const located = text.indexOf(context);
+    return located >= 0 && text.indexOf(context, located + 1) === -1
+      ? restoreRange(content, located + (prefix?.length ?? 0), quote) : null;
   }
 
   function setChanges(open) {
@@ -413,7 +451,8 @@ export async function mountReview(content, token) {
 
   function render() {
     const working = state === "submitted";
-    countLabel.textContent = `${items.length} ${items.length === 1 ? "change" : "changes"}`;
+    countLabel.textContent = `${items.length} ${items.length === 1 ? "change" : "changes"}` +
+      (alternatives.length ? ` · ${alternatives.length} ${alternatives.length === 1 ? "option set" : "option sets"}` : "");
     bar.dataset.working = String(working);
     send.hidden = count.hidden = pickButton.hidden = working;
     workingStatus.hidden = !working;
@@ -430,24 +469,29 @@ export async function mountReview(content, token) {
     commentRanges.clear();
     elementMarks.clear();
     outlines.replaceChildren();
-    const marked = { comment: [], delete: [] };
+    const marked = { comment: [], delete: [], alternatives: [] };
     items.forEach((item, index) => {
-      const range = item.selector ? null : anchor(item);
-      const target = item.selector ? widgets.findTarget(item) : null;
+      const response = item.kind === "alternative-response";
+      const range = !response && !item.selector ? anchor(item) : null;
+      const target = !response && item.selector ? widgets.findTarget(item) : null;
       if (target) markElement(target, item.kind);
       if (range) {
         marked[item.kind].push(range);
-        if (item.kind === "comment") commentRanges.set(item, range);
+        if (item.kind !== "delete") commentRanges.set(item, range);
       }
       const note = document.createElement("div");
       note.className = "note";
       const quote = document.createElement("blockquote");
       quote.textContent = `“${item.quote.trim()}”`;
       const message = document.createElement("p");
-      message.textContent = item.kind === "delete" ? "Delete this text" : item.comment;
+      message.textContent = item.kind === "delete" ? "Delete this text"
+        : item.kind === "alternatives" ? item.comment || "Requested alternatives"
+        : response && item.option !== null
+          ? `Selected: ${alternatives.find(choice => choice.id === item.id)?.options[item.option] ?? ""}`
+          : item.comment;
       note.append(quote, message);
       if (state === "open") {
-        if ((range || target) && item.kind === "comment") {
+        if (range || target) {
           const edit = document.createElement("button");
           edit.type = "button";
           edit.textContent = "✏️ Edit";
@@ -475,7 +519,27 @@ export async function mountReview(content, token) {
       }
       notes.append(note);
     });
-    if (!items.length) notes.textContent = "No changes yet.";
+    for (const choice of alternatives) {
+      const range = choice.selector ? null : anchor(choice);
+      const target = choice.selector ? widgets.findTarget(choice) : null;
+      if (target) markElement(target, "alternatives");
+      if (range) {
+        marked.alternatives.push(range);
+        commentRanges.set(choice, range);
+      }
+      const note = document.createElement("div");
+      note.className = "note";
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "alternatives-action";
+      button.textContent = `Alternatives for “${choice.quote.trim().slice(0, 100)}”`;
+      button.disabled = state !== "open" || submitting || composing;
+      button.addEventListener("click", () => openAlternatives(choice, { scroll: true }));
+      note.append(button);
+      notes.append(note);
+    }
+    if (!items.length && !alternatives.length) notes.textContent = "No changes yet.";
+    paint("alternatives", marked.alternatives);
     paint("comment", marked.comment);
     paint("delete", marked.delete);
     if (selectionElement) markElement(selectionElement, "selection");
@@ -508,8 +572,8 @@ export async function mountReview(content, token) {
 
   function persist() {
     try {
-      if (state === "submitted") sessionStorage.removeItem(storageKey);
-      else sessionStorage.setItem(storageKey, JSON.stringify(items));
+      if (state === "submitted") sessionStorage.removeItem(storageKey());
+      else sessionStorage.setItem(storageKey(), JSON.stringify(items));
     } catch {
       // Keep the current in-memory draft.
     }
@@ -518,7 +582,7 @@ export async function mountReview(content, token) {
 
   function positionTools() {
     if (tools.hidden) return;
-    const rect = selectionElement ? widgetRect(selectionElement) : selectionRange.getBoundingClientRect();
+    const rect = selectionElement ? widgetRect(selectionElement) : (selectionRange?.getBoundingClientRect() ?? count.getBoundingClientRect());
     const viewport = window.visualViewport;
     const top = viewport?.offsetTop ?? 0;
     const bottom = top + (viewport?.height ?? innerHeight);
@@ -540,6 +604,8 @@ export async function mountReview(content, token) {
     selectionElement = undefined;
     composing = false;
     editing = undefined;
+    activeAlternative = undefined;
+    selectedOption = null;
     manualPick = false;
     comment.value = "";
     form.hidden = true;
@@ -590,12 +656,18 @@ export async function mountReview(content, token) {
       );
       if (hit) {
         event.preventDefault();
-        return editComment(item, range);
+        return item.options ? openAlternatives(item) : editComment(item, range);
       }
     }
-    if (event.target.closest("a, button, input, summary, [contenteditable], [role=button]")) return;
     const line = event.target.closest("p, li, h2, h3, h4, h5, h6, pre, td, th, figcaption");
     if (!line || !content.contains(line)) return;
+    const control = event.target.closest("a, button, input, summary, [contenteditable], [role=button]");
+    if (control) {
+      const headingLink = /^H[2-6]$/.test(line.tagName) && line.id &&
+        control.getAttribute("href") === `#${line.id}`;
+      if (!headingLink) return;
+      event.preventDefault();
+    }
     const range = document.createRange();
     range.selectNodeContents(line);
     select(range, true);
@@ -607,23 +679,62 @@ export async function mountReview(content, token) {
     if (selection && !composing) clearSelection();
   });
 
-  function openComment() {
+  function openComment(kind = "comment", focus = true) {
     if (!selection || state !== "open") return;
     composing = true;
+    editorKind = kind;
+    options.hidden = kind !== "alternative-response";
+    comment.required = kind === "comment";
+    comment.setAttribute("aria-label", kind === "comment" ? "Comment" : "Direction (optional)");
+    comment.placeholder = kind === "comment" ? "Leave a comment"
+      : kind === "alternatives" ? "What should the alternatives aim for?"
+        : "Add direction to your choice or ask for another set";
     buttons.hidden = true;
     form.hidden = false;
     comment.value = editing?.comment ?? "";
     removeComment.hidden = !editing;
     render();
     positionTools();
-    comment.focus({ preventScroll: true });
+    if (focus) comment.focus({ preventScroll: true });
   }
 
   function editComment(item, range) {
     setChanges(false);
     select(range, true);
     editing = item;
-    openComment();
+    openComment(item.kind);
+  }
+
+  function openAlternatives(choice, { scroll = false } = {}) {
+    if (state !== "open" || submitting || composing) return;
+    setChanges(false);
+    clearSelection();
+    selection = choice;
+    selectionRange = choice.selector ? null : anchor(choice);
+    selectionElement = choice.selector ? widgets.findTarget(choice) : null;
+    if (scroll) {
+      const element = selectionRange?.startContainer.parentElement ??
+        selectionElement?.frame ?? selectionElement?.element;
+      element?.scrollIntoView({ block: "center", behavior: "instant" });
+    }
+
+    activeAlternative = choice;
+    editing = items.find(item => item.kind === "alternative-response" && item.id === choice.id);
+    selectedOption = editing?.option ?? null;
+    options.replaceChildren(...choice.options.map((text, index) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.textContent = text;
+      button.setAttribute("aria-pressed", String(index === selectedOption));
+      button.addEventListener("click", () => {
+        selectedOption = selectedOption === index ? null : index;
+        [...options.children].forEach((item, option) =>
+          item.setAttribute("aria-pressed", String(option === selectedOption)));
+      });
+      return button;
+    }));
+    tools.hidden = false;
+    openComment("alternative-response", false);
   }
 
   function removeItem(item) {
@@ -681,7 +792,8 @@ export async function mountReview(content, token) {
   });
   count.addEventListener("click", () => setChanges(changes.hidden));
   buttons.addEventListener("mousedown", event => event.preventDefault());
-  ui.querySelector(".comment").addEventListener("click", openComment);
+  ui.querySelector(".comment").addEventListener("click", () => openComment());
+  ui.querySelector(".alternatives-action").addEventListener("click", () => openComment("alternatives"));
   ui.querySelector(".delete").addEventListener("click", () => addItem("delete"));
   ui.querySelector(".cancel").addEventListener("click", clearSelection);
   removeComment.addEventListener("click", () => removeItem(editing));
@@ -694,8 +806,23 @@ export async function mountReview(content, token) {
   form.addEventListener("submit", event => {
     event.preventDefault();
     const text = comment.value.trim();
-    if (!text) return;
-    if (!editing) return addItem("comment", text);
+    if (editorKind === "alternative-response") {
+      if (selectedOption === null && !text) {
+        comment.focus();
+        return;
+      }
+      const { id, quote } = activeAlternative;
+      if (!editing && items.length >= 40) return showError("Send this round before adding more than 40 changes.");
+      const response = { kind: "alternative-response", id, option: selectedOption, comment: text, quote };
+      if (editing) items[items.indexOf(editing)] = response;
+      else items.push(response);
+      clearSelection();
+      showError("");
+      persist();
+      return;
+    }
+    if (editorKind === "comment" && !text) return;
+    if (!editing) return addItem(editorKind, text);
     editing.comment = text;
     clearSelection();
     persist();
@@ -734,10 +861,46 @@ export async function mountReview(content, token) {
       submitting = false;
       render();
     }
+    if (state === "submitted") void checkRound();
   });
 
-  widgets.restore(items.filter(item => item.selector));
+  function revealNewAlternatives() {
+    const newSets = alternatives.filter(choice => choice.updatedRound === round);
+    if (state !== "open" || newSets.length !== 1) return;
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      const choice = newSets[0];
+      const target = choice.selector && widgets.findTarget(choice);
+      const rect = target ? widgetRect(target) : (!choice.selector && anchor(choice)?.getBoundingClientRect());
+      if (!selection && rect?.bottom > 0 && rect.top < innerHeight) openAlternatives(choice);
+    }));
+  }
+
+  async function advanceRound(current) {
+    if (current.assetRevision !== assetRevision) return false;
+    const preview = await fetch(location.href, { cache: "no-store", signal: AbortSignal.timeout(3500) });
+    if (!preview.ok) throw new Error("The updated draft is still loading.");
+    const latest = document.createElement("template");
+    latest.innerHTML = await preview.text();
+    const latestRevision = latest.content.querySelector("[data-draft-review-content]")?.dataset.draftReviewContent;
+    if (!latestRevision || latestRevision !== content.dataset.draftReviewContent) return false;
+
+    round = current.round;
+    state = current.status;
+    alternatives = current.alternatives ?? [];
+    items = loadItems();
+    scrollMemory.advance(round);
+    setPicking(false);
+    setChanges(false);
+    clearSelection();
+    widgets.restore([...items, ...alternatives].filter(item => item.selector));
+    revealNewAlternatives();
+    return true;
+  }
+
+  widgets.restore([...items, ...alternatives].filter(item => item.selector));
   render();
+  revealNewAlternatives();
+  const pollDelay = () => state === "submitted" ? 650 : 4000;
   let roundCheck;
   let checking = false;
   async function checkRound() {
@@ -756,10 +919,11 @@ export async function mountReview(content, token) {
       if (response.ok) {
         const current = await response.json();
         if (current.round !== round) {
-          scrollMemory.saveForReload();
-          return location.reload();
-        }
-        if (current.status !== state) {
+          if (!(await advanceRound(current))) {
+            scrollMemory.saveForReload();
+            return location.reload();
+          }
+        } else if (current.status !== state) {
           state = current.status;
           if (state === "submitted") scrollMemory.pin();
           setPicking(false);
@@ -773,12 +937,12 @@ export async function mountReview(content, token) {
       checking = false;
     }
     if (state === "open" || state === "submitted") {
-      roundCheck = setTimeout(checkRound, state === "submitted" ? 2000 : 4000);
+      roundCheck = setTimeout(checkRound, pollDelay());
     }
   }
   window.addEventListener("pageshow", checkRound);
   document.addEventListener("visibilitychange", () => {
     if (!document.hidden) checkRound();
   });
-  roundCheck = setTimeout(checkRound, state === "submitted" ? 2000 : 4000);
+  roundCheck = setTimeout(checkRound, pollDelay());
 }

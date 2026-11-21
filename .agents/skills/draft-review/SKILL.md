@@ -48,15 +48,38 @@ in the parent chat to read the feedback. Use the quote and context to locate
 prose in the Markdown or MDX. For an element review, use the widget and element
 selectors plus the visible label. A local `source` URL can identify the HTML or
 SVG asset under `public/`. For an inline Pele diagram, edit the Mermaid source
-in the draft. A deletion requests removal of the selected text or element.
+in the draft. For an image, use its alt text and source URL to find the
+component invocation in the draft. A deletion requests removal of the
+selected text or element.
 Apply and verify the edits here. Keep the submitted round available if you hit
 a blocker.
+
+### Alternatives across rounds
+
+The review UI sends `alternatives` with an ID, an anchor, and optional
+direction. It sends `alternative-response` with the same ID, a zero-based
+`option` index or `null`, and an optional comment. `wait` includes the
+current option sets in the session's `alternatives` array.
+
+- For a new request or a response with `option: null`, keep the original
+  text in the draft. Generate two to eight options guided by the comment.
+  Write them to a temporary JSON file with shape
+  `[{"id":"<request-id>","options":["First option","Second option"]}]`
+  and pass it as the last argument to `next <token> <submitted-round>`.
+  Include every new or revised set. Unanswered sets carry forward.
+- For a response with a selected index, apply that option along with any
+  requested adjustment in its comment. Verify the draft before advancing.
+  The CLI removes that set from the next round. If the comment explicitly
+  asks for more options based on the selected one, supply a revised set instead.
+- If a comment with no selection explicitly gives final wording, apply it and
+  include `{"id":"<request-id>","resolved":true}` in the response JSON.
+  This clears the set. Treat an open-ended direction as a request to iterate.
 
 After the updated preview is ready, run
 `node scripts/draft-review/cli.mjs next <token> <submitted-round>`. Say
 “Updated draft ready” with the same link in a progress message, then watch the
 new round with a fresh watcher. Reuse the task name only if the tool allows it,
-or append the round number. The page reloads when the next round begins.
+or append the round number. The toolbar opens the next round in place when the preview is current.
 Each new round has a fresh 30 minutes.
 
 Stop if Fatih ends review or the round expires. If review ends explicitly, run

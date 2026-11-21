@@ -3,7 +3,7 @@ const widgets = "iframe[src], img[src], svg, .mermaid-diagram";
 function selectorFor(element, root) {
   const parts = [];
   for (let node = element; node && node !== root; node = node.parentElement) {
-    if (node.id) {
+    if (node.id && !node.hasAttribute("data-draft-review-widget")) {
       const id = "#" + CSS.escape(node.id);
       if (root.querySelectorAll(id).length === 1) return [id, ...parts].join(" > ");
     }
@@ -68,7 +68,7 @@ export function mountWidgets(content, { onPick, onSelection, onKeyDown, onLoad, 
     if (!picking || !root?.contains(element)) return;
     const native = root.ownerDocument.getSelection();
     if (native?.rangeCount && !native.isCollapsed) return;
-    const label = element.getAttribute("aria-label") || element.getAttribute("title") ||
+    const label = element.getAttribute("alt") || element.getAttribute("aria-label") || element.getAttribute("title") ||
       element.textContent.trim() || element.getAttribute("class") || element.localName;
     const source = sameSiteSrc(widget);
     event.preventDefault();
@@ -236,24 +236,36 @@ export function mountWidgets(content, { onPick, onSelection, onKeyDown, onLoad, 
 
   content.addEventListener("click", event => {
     if (!picking) return;
-    const widget = event.target.closest(".mermaid-diagram") ?? event.target.closest("svg");
-    if (widget && content.contains(widget)) pick(event, widget, widget);
+    const widget = event.target.closest(".mermaid-diagram") ??
+      event.target.closest("svg, img[src], [data-draft-review-widget]");
+    if (!widget || !content.contains(widget)) return;
+    pick(event, widget, widget);
   }, true);
   window.addEventListener("scroll", positionOverlays, { capture: true, passive: true });
   window.addEventListener("resize", positionOverlays);
 
   // WebKit does not dispatch script handlers in a script-disabled sandbox.
   // Read the native selection from the parent while the review is open.
-  const selectionCheck = setInterval(() => {
-    if (!isOpen()) return clearInterval(selectionCheck);
-    if (document.hidden || !frames.size) return;
-    for (const [widget, frame] of frames) {
-      if (widget !== frame) continue;
-      const doc = frameDocument(frame);
-      if (doc?.body) readTextSelection(widget, frame, doc.body);
-    }
-    onScroll();
-  }, 140);
+  let selectionCheck;
+  function resumeSelectionCheck() {
+    if (selectionCheck || !isOpen()) return;
+    selectionCheck = setInterval(() => {
+      if (!isOpen()) {
+        clearInterval(selectionCheck);
+        selectionCheck = undefined;
+        return;
+      }
+      if (document.hidden || !frames.size) return;
+      for (const [widget, frame] of frames) {
+        if (widget !== frame) continue;
+        const doc = frameDocument(frame);
+        if (doc?.body) readTextSelection(widget, frame, doc.body);
+      }
+      onScroll();
+    }, 140);
+  }
+
+  resumeSelectionCheck();
 
   return {
     findTarget,
@@ -268,6 +280,7 @@ export function mountWidgets(content, { onPick, onSelection, onKeyDown, onLoad, 
       }
     },
     restore(items) {
+      resumeSelectionCheck();
       content.querySelectorAll("iframe[src]").forEach(prepareFrame);
       for (const item of items) {
         if (!item.source) continue;
