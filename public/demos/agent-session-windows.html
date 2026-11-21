@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Task workspace with four minimized sessions</title>
+<style>
+:root{font:13px system-ui,-apple-system,sans-serif;color:#1a1a1a;background:#f5f5f5;--accent:#3b82f6;--border-color:#e0e0e0;--bg-primary:#fff;--bg-secondary:#f5f5f5;--bg-tertiary:#ebebeb;--text-primary:#1a1a1a;--text-secondary:#666;--text-muted:#777;--space-xs:4px;--space-sm:8px;--space-md:12px;--space-lg:16px;--space-xl:24px}
+*{box-sizing:border-box}body{margin:0}button,input,select,textarea{font:inherit}button,a,select{touch-action:manipulation}button{cursor:pointer}button:disabled{cursor:default;opacity:.5}a{color:inherit}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}[hidden]{display:none!important}
+.wf-surface .work-board-toolbar{height:28px;min-height:28px;display:flex;border-bottom:1px solid var(--border-color);background:var(--bg-primary);font-size:11px}
+.wf-surface .work-board-toolbar button{height:27px;padding:0 8px;border:0;border-right:1px solid var(--border-color);background:transparent;color:var(--text-secondary);border-radius:0;font:inherit;cursor:pointer}
+.wf-surface .work-board-toolbar button.active{background:var(--bg-tertiary);color:var(--text-primary)}
+.wf-surface .work-board-toolbar .work-grow{flex:1;border-right:1px solid var(--border-color)}
+.wf-surface .work-board{display:flex;flex:1;overflow:auto;min-height:0}
+.wf-surface .work-column{flex:0 0 300px;border-right:1px solid var(--border-color);min-height:440px}
+.wf-surface .work-column-heading{font-size:11px;color:var(--text-secondary);height:34px;display:flex;align-items:center;gap:4px;padding:0 8px;background:var(--bg-secondary);border-bottom:1px solid var(--border-color);font-weight:400}
+.wf-surface .work-column-heading i{display:inline-block;width:3px;height:12px;background:var(--column-color)}
+.wf-surface .work-todo-card{display:block;width:100%;text-align:left;border:0;border-bottom:1px solid var(--border-color);padding:8px;background:var(--bg-primary);color:var(--text-primary);font-size:13px;line-height:1.35;cursor:pointer;border-radius:0}
+.wf-surface .work-todo-card:hover{background:var(--bg-secondary)}
+.wf-surface .work-todo-card small{display:block;color:var(--text-secondary);font-size:10px;margin-top:2px}
+.wf-surface .work-task-meta{display:flex;gap:10px;padding:8px 12px;border-bottom:1px solid var(--border-color);font-size:11px;color:var(--text-secondary);white-space:nowrap;overflow:auto;min-height:34px}
+.wf-surface .work-user-message{padding:10px 12px;background:color-mix(in srgb,#3b82f6 18%,transparent);border-left:3px solid #60a5fa;border-bottom:1px solid var(--border-color);font-size:13px;line-height:1.6}
+.wf-surface .work-message{padding:10px 12px;font-size:13px;line-height:1.6;border-bottom:1px solid var(--border-color)}
+.wf-surface .work-tool{border-top:1px solid var(--border-color);border-bottom:1px solid var(--border-color);font-size:11px}
+.wf-surface .work-tool-label{padding:4px 12px;background:var(--bg-primary);color:var(--text-secondary);font-size:10px}
+.wf-surface .work-tool pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:3px 12px 7px;margin:0;font-size:11px;color:var(--text-secondary)}
+.wf-surface .work-agent-status{padding:6px 12px;border-bottom:1px solid var(--border-color);color:var(--text-secondary);font-size:11px}
+.wf-surface .work-compose{border-top:1px solid var(--border-color)}
+.wf-surface .work-compose-main{display:flex;height:44px}
+.wf-surface .work-compose textarea{resize:none;flex:1;min-width:0;padding:12px;border:0;background:var(--bg-primary);color:var(--text-primary);font:inherit;outline:none}
+.wf-surface .work-compose button{border:0;border-left:1px solid var(--border-color);background:transparent;color:var(--text-secondary);padding:8px 12px;cursor:pointer}
+.wf-surface .work-compose-foot{height:20px;border-top:1px dashed var(--border-color);padding:2px 12px;color:var(--text-muted);font-size:10px}
+.wf-surface .work-document-controls{position:absolute;left:-37px;top:-1px;display:flex;flex-direction:column;box-shadow:-4px 4px 12px #0006}
+.wf-surface .work-document-controls button{width:36px;height:36px;border:1px solid var(--border-color);background:var(--bg-primary);color:var(--text-secondary);font-size:20px;cursor:pointer}
+.wf-surface .work-document-head{display:flex;align-items:stretch;height:36px;min-height:36px;border-bottom:1px solid var(--border-color);font-size:11px;overflow:auto;white-space:nowrap}
+.wf-surface .work-document-head button{border:0;border-right:1px solid var(--border-color);background:var(--bg-primary);color:var(--text-secondary);padding:0 12px;white-space:nowrap;cursor:pointer;font:inherit;flex-shrink:0}
+.wf-surface .work-document-head button.active{background:var(--accent);color:white}
+.wf-surface .work-document-title{font-weight:600;padding:10px 8px;flex:1;min-width:80px;overflow:hidden;text-overflow:ellipsis}
+.wf-surface .work-document-content{flex:1;min-height:0;overflow:auto;position:relative}
+body { min-width: 0; }
+.wf-surface {
+  --window-top: 44px; --window-right: 44px; --window-left: 89px;
+  --thumbnail-width: 80px;
+  --switch-duration: 6s;
+  position: relative; height: 462px; background: #fff; overflow: hidden;
+}
+.app-nav { height: 36px; display: flex; align-items: stretch; border-bottom: 1px solid var(--border-color); }
+.app-nav span { display: grid; place-items: center; min-width: 36px; padding: 0 8px; border-right: 1px solid var(--border-color); }
+.app-nav .selected { color: #1d4ed8; background: #eaf2ff; }
+.wf-surface .work-board { height: calc(100% - 64px); }
+.wf-surface .work-column { flex: 1 0 29%; min-height: 0; }
+.wf-surface .work-board-toolbar span { padding: 5px 8px; border-right: 1px solid var(--border-color); }
+.shade { position: absolute; inset: 0; background: #0005; pointer-events: none; }
+.work-document-stage { position: absolute; inset: var(--window-top) var(--window-right) var(--window-top) var(--window-left); display: flex; flex-direction: column; background: var(--bg-primary); border: 1px solid #bcbcbc; box-shadow: 0 8px 22px #0005; }
+.wf-surface .work-document-controls { box-shadow: none; }
+.wf-surface .work-document-controls button { background: #fff; border-color: #bcbcbc; }
+.wf-surface .work-document-head { overflow: hidden; }
+.wf-surface .work-document-head button.active { background: #2563eb; }
+.wf-surface .work-document-title { min-width: 0; }
+.wf-surface .work-task-meta { min-height: 0; }
+.session { display: flex; flex: 1; flex-direction: column; min-height: 0; }
+.work-history { flex: 1; min-height: 0; overflow: auto; }
+.wf-surface .work-compose textarea { font-size: 12px; }
+.dock { position: absolute; z-index: 1; top: 50%; left: 0; width: 62px; transform: translateY(-50%); display: grid; gap: 3px; }
+.thumb { position: relative; display: block; height: 36px; margin-left: -18px; border: 1px solid #c2c2c2; background: repeating-linear-gradient(#fff 0 7px, #e8e8e8 7px 8px); box-shadow: 0 2px 5px #0004; }
+.thumb::before { content: ""; display: block; height: 7px; background: #bfdbfe; }
+.badge { position: absolute; right: 2px; bottom: 3px; padding: 1px 4px; border-radius: 6px; font-size: 10px; background: #eaf2ff; color: #194897; }
+.done { background: #dcfce7; color: #14652e; }
+@media (max-width: 450px) {
+  .wf-surface { --window-top: 38px; --window-right: 18px; --window-left: 61px; --thumbnail-width: 63px; }
+  .dock { width: 45px; }
+  .wf-surface .work-document-controls { left: -26px; top: -1px; }
+  .wf-surface .work-document-controls button { width: 25px; height: 29px; }
+  .wf-surface .work-document-head button { padding-inline: 8px; }
+  .app-nav span { min-width: 28px; padding-inline: 6px; }
+}
+  .followup { padding: 8px 12px; color: #555; }
+  .work-task-meta strong { overflow: hidden; text-overflow: ellipsis; }
+  .work-message, .work-user-message { overflow-wrap: anywhere; }
+  .work-history { scrollbar-width: thin; }
+
+  .wf-surface .work-todo-card { cursor: default; }
+.dock-item { min-width: 0; font-size: 10px; line-height: 1.25; }
+.dock-item > span:last-child { display: block; padding-left: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.review { background: #fff1ce; color: #744604; }
+.modal-tab { flex: none; padding: 10px 8px; border-right: 1px solid var(--border-color); }
+.modal-tab.active { color: #fff; background: #2563eb; }
+.window-actions { display: flex; align-self: stretch; flex: none; }
+.window-actions > span { display: grid; place-items: center; width: 27px; border-left: 1px solid var(--border-color); font-size: 16px; }
+.work-history .work-message, .work-history .work-user-message { padding-block: 7px; }
+.switch-only { display: none; }
+.switch-dock-slot { display: grid; min-width: 0; }
+.switch-dock-slot > .dock-item { grid-area: 1 / 1; }
+#switching:target .switch-view {
+  --dock-top: calc(50% - 101.5px);
+  --dock-scale-x: .12;
+  --dock-scale-y: .096;
+  --window-width: calc(100vw - var(--window-left) - var(--window-right));
+  --window-height: calc(462px - 2 * var(--window-top));
+  inset: var(--window-top) auto auto var(--window-left);
+  width: var(--window-width); height: var(--window-height);
+  transform-origin: top left; z-index: 2;
+  animation: switch-task var(--switch-duration) ease-in-out infinite both;
+}
+@supports (transform: scale(calc(1px / 1px))) {
+  #switching:target .switch-view {
+    --dock-scale-x: calc(var(--thumbnail-width) / var(--window-width));
+    --dock-scale-y: calc(36px / var(--window-height));
+  }
+}
+#switching:target .work-document-stage.switch-only { display: flex; }
+#switching:target .switch-dock-slot > .switch-only { display: block; }
+#switching:target .static-dock-only { display: none; }
+#switching:target .switch-view.switch-second { --dock-top: calc(50% - 50px); }
+#switching:target .switch-thumbnail { animation: switch-thumbnail var(--switch-duration) step-end infinite both; }
+#switching:target .switch-second { animation-delay: calc(var(--switch-duration) / -2); }
+#switching:target .draft-reply { display: block; }
+#switching:target .draft-reply + .followup-placeholder { display: none; }
+#switching:target .demo-pointer {
+  display: block; pointer-events: none; position: absolute; z-index: 3;
+  left: 24px; top: calc(50% - 85.5px);
+  animation: point-at-thumbnail var(--switch-duration) ease-in-out infinite;
+}
+.demo-pointer::before {
+  content: ""; position: absolute; left: -8px; top: -8px; width: 18px; height: 18px;
+  border: 2px solid #2563eb; border-radius: 50%; opacity: 0;
+  animation: thumbnail-click var(--switch-duration) linear infinite;
+}
+.demo-pointer svg { display: block; position: relative; }
+
+@keyframes switch-task {
+  0%, 42%, 100% {
+    left: var(--window-left); top: var(--window-top);
+    transform: scale(1); opacity: 1; visibility: visible;
+  }
+  47%, 97% {
+    left: -18px; top: var(--dock-top);
+    transform: scale(var(--dock-scale-x), var(--dock-scale-y));
+    opacity: .7; visibility: hidden;
+  }
+}
+@keyframes switch-thumbnail {
+  0%, 97% { visibility: hidden; }
+  47% { visibility: visible; }
+}
+@keyframes point-at-thumbnail {
+  0%, 31%, 91%, 100% { transform: translate(0, 0); }
+  36%, 86% { transform: translate(9px, 25.75px); }
+  41%, 81% { transform: translate(0, 51.5px); }
+}
+@keyframes thumbnail-click {
+  0%, 40%, 46%, 90%, 96%, 100% { opacity: 0; transform: scale(1.45); }
+  41%, 91% { opacity: 1; transform: scale(.65); }
+}
+@media (prefers-reduced-motion: reduce) {
+  #switching:target .switch-view, #switching:target .switch-thumbnail { animation: none; }
+  #switching:target .work-document-stage.switch-second,
+  #switching:target .switch-dock-slot > .switch-thumbnail,
+  #switching:target .demo-pointer { display: none; }
+  #switching:target .static-dock-only { display: block; }
+}
+</style>
+<main id="switching">
+<div class="wf-surface">
+      <div class="app-nav" aria-label="Workspace">
+      <span aria-hidden="true">⌂</span><span class="selected">▤ Todos</span><span>◷ Tasks</span><span>▧ Docs</span>
+    </div>
+    <div class="work-board-toolbar"><span aria-hidden="true">☰</span><span>Studio</span><span>All projects</span></div>
+    <div class="work-board">
+      <section class="work-column">
+        <div class="work-column-heading"><i style="--column-color:#f5b400"></i> Pending</div>
+        <div class="work-todo-card">Update the export help page</div>
+      </section>
+      <section class="work-column">
+        <div class="work-column-heading"><i style="--column-color:#4084ff"></i> In progress</div>
+        <div class="work-todo-card">Explain why the export has no rows<small>Studio</small></div>
+      </section>
+      <section class="work-column">
+        <div class="work-column-heading"><i style="--column-color:#14a35b"></i> Review</div>
+        <div class="work-todo-card">Check CSV column names</div>
+      </section>
+    </div>
+      <div class="shade" aria-hidden="true"></div>
+      <aside class="dock" aria-label="Minimized sessions">
+        <div class="switch-dock-slot">
+          <div class="dock-item static-dock-only"><span class="thumb"><span class="badge">Running</span></span><span>Review recent changes</span></div>
+          <div class="dock-item switch-only switch-thumbnail"><span class="thumb"><span class="badge">Running</span></span><span>Trace the export</span></div>
+        </div>
+        <div class="dock-item switch-thumbnail switch-second"><span class="thumb"><span class="badge review">Review</span></span><span>Check CSV headers</span></div>
+        <div class="dock-item"><span class="thumb"><span class="badge review">Review</span></span><span>Draft export help</span></div>
+        <div class="dock-item"><span class="thumb"><span class="badge done">Done</span></span><span>Verify download</span></div>
+      </aside>
+      <div class="demo-pointer switch-only" aria-hidden="true">
+        <svg width="19" height="23" viewBox="0 0 19 23">
+          <path d="M1 1v17.5l4.6-4.7 3.2 7.1 2.8-1.3-3.2-7.2H15Z" fill="#182433" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <section class="work-document-stage switch-view" aria-label="Trace the export">
+        <header class="work-document-head">
+          <span class="modal-tab">📝 Todo</span>
+          <span class="modal-tab active">🤖 Task</span>
+          <span class="work-document-title">Explain why the export has no rows</span>
+          <span class="window-actions" role="img" aria-label="Minimize and close window"><span aria-hidden="true">−</span><span aria-hidden="true">×</span></span>
+        </header>
+        <div class="session">
+          <div class="work-task-meta"><strong>Trace the export</strong> · Running</div>
+          <div class="work-history">
+            <div class="work-user-message">The preview shows 12 orders, but the CSV is empty. Can you take a look?</div>
+            <div class="work-tool">
+              <div class="work-tool-label">Terminal · Download the CSV with no filters</div>
+              <pre><code>$ curl -fsS --json '{"filters":[]}' http://localhost:3000/api/orders/export
+order_id,total</code></pre>
+            </div>
+            <div class="work-message">I got the same result. The CSV has column names but no orders.</div>
+            <div class="work-user-message">What if you filter to paid orders first?</div>
+            <div class="work-message">That works. The preview and the CSV both show 8 paid orders.</div>
+            <div class="work-user-message">What's different about the requests when no filter is set?</div>
+            <div class="work-message">The preview leaves out <code>filters</code>. The export sends <code>filters: []</code>. I'll check how the worker handles the empty list.</div>
+          </div>
+          <div class="work-compose followup">
+            <span class="switch-only draft-reply">Can you add a test for the empty filter list?</span>
+            <span class="followup-placeholder">Follow up…</span>
+          </div>
+        </div>
+      </section>
+      <section class="work-document-stage switch-only switch-view switch-second" aria-label="Check CSV column names">
+        <header class="work-document-head">
+          <span class="modal-tab">📝 Todo</span>
+          <span class="modal-tab active">🤖 Task</span>
+          <span class="work-document-title">Check CSV column names</span>
+          <span class="window-actions" role="img" aria-label="Minimize and close window"><span aria-hidden="true">−</span><span aria-hidden="true">×</span></span>
+        </header>
+        <div class="session">
+          <div class="work-task-meta"><strong>Check CSV headers</strong> · Ready for review</div>
+          <div class="work-history">
+            <div class="work-user-message">Can you check whether the CSV column names match the help page?</div>
+            <div class="work-message">The CSV uses <code>order_id</code> and <code>total</code>. The help page calls the first column <code>id</code>.</div>
+            <div class="work-user-message">Can you update the help page to match the CSV?</div>
+            <div class="work-message">I changed the example to use <code>order_id</code>. It's ready for review.</div>
+          </div>
+          <div class="work-compose followup">Follow up…</div>
+        </div>
+      </section>
+    </div>
+</main>
+</html>
